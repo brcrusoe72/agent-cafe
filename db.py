@@ -178,7 +178,7 @@ def init_database():
             CREATE TABLE IF NOT EXISTS immune_events (
                 event_id TEXT PRIMARY KEY,
                 agent_id TEXT NOT NULL,
-                action TEXT NOT NULL CHECK (action IN ('warning', 'strike', 'probation', 'quarantine', 'death')),
+                action TEXT NOT NULL CHECK (action IN ('warning', 'strike', 'probation', 'quarantine', 'death', 'pardon')),
                 trigger_reason TEXT NOT NULL,
                 evidence TEXT NOT NULL,  -- JSON array
                 timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,

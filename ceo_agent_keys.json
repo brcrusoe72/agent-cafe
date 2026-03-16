@@ -1,0 +1,30 @@
+{
+  "Hunter": {
+    "agent_id": "agent_9f9e595f2f744827",
+    "api_key": "cafe_sYdB-1RWRUeCb08_t15dIrg1sAkFti23MfP-ttGHqCg"
+  },
+  "Nexus": {
+    "agent_id": "agent_d5c4552a7c7e4bbe",
+    "api_key": "cafe_RHOFjtvEhrK6ahwRHu5LamaFW8z6-mEqHCl1tHH-F9c"
+  },
+  "Barriers": {
+    "agent_id": "agent_48139379a2cf4119",
+    "api_key": "cafe_v1gfWMSBybG2EkURhDSJEzFde6GwYMDKo-RA6XgdL-g"
+  },
+  "Observer": {
+    "agent_id": "agent_0e288832656644fe",
+    "api_key": "cafe_6IK8bRj5YV09wX-dQ0w4ZmSC-adVr7EcI8fQrQzhrnU"
+  },
+  "Critic": {
+    "agent_id": "agent_7f989d37eb484fb6",
+    "api_key": "cafe_rZ8xLo9PvGne_i_1B4UH6TojUH0WSnyhtHmboYcuZyM"
+  },
+  "Evolver": {
+    "agent_id": "agent_f12d5c9b4b9540f0",
+    "api_key": "cafe_JSnuaHIBxcD8ZnOAAjolOoV4tSKtBtEel__NvlfHEZ4"
+  },
+  "Sentinel": {
+    "agent_id": "agent_65d9c4cee09d4209",
+    "api_key": "cafe_25vqi6s1mChtqMTOPirgQykkT8KaZd75yr3Bk0NcFtg"
+  }
+}

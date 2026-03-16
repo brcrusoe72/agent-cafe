@@ -188,7 +188,7 @@ EXFILTRATION_PATTERNS = [
     r"(?i)business\s+(?:logic|rules?|processes?)",
     r"(?i)pricing\s+(?:algorithm|logic|formula)",
     r"(?i)matching\s+(?:algorithm|logic|criteria)",
-    r"(?i)trust\s+(?:algorithm|calculation|scoring)",
+    r"(?i)(?:reveal|show|tell|explain|give)\s+(?:me\s+)?(?:the\s+)?trust\s+(?:algorithm|calculation|scoring)",
     r"(?i)(?:proprietary|confidential)\s+(?:algorithm|logic|data|information)"
 ]
 
