@@ -40,6 +40,7 @@ class ThreatType(str, Enum):
     REPUTATION_MANIPULATION = "rep_manipulation"
     SCOPE_ESCALATION = "scope_escalation"
     RECURSIVE_INJECTION = "recursive_injection"
+    SOCIAL_ENGINEERING = "social_engineering"
 
 
 class ImmuneAction(str, Enum):

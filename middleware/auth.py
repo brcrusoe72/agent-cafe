@@ -138,6 +138,12 @@ class AuthMiddleware(BaseHTTPMiddleware):
                 content={"error": "rate_limited", "detail": "Too many requests. Slow down."}
             )
         
+        # Even on public endpoints, reject dead agent keys if provided
+        if auth_header and auth_header.startswith("Bearer "):
+            dead_check = self._check_dead_agent(auth_header[7:])
+            if dead_check:
+                return dead_check
+        
         # Always-public endpoints (any method)
         if path in self.PUBLIC_ANY_ENDPOINTS:
             return await call_next(request)
@@ -266,6 +272,48 @@ class AuthMiddleware(BaseHTTPMiddleware):
         request.state.agent = agent
         
         return await call_next(request)
+
+
+    def _check_dead_agent(self, api_key: str):
+        """Check if an API key belongs to a dead/quarantined agent. Returns JSONResponse or None."""
+        try:
+            from db import get_db
+            try:
+                from middleware.security import hash_api_key
+            except ImportError:
+                from .security import hash_api_key
+            
+            api_key_hash = hash_api_key(api_key)
+            
+            with get_db() as conn:
+                # Check quarantined
+                existing = conn.execute(
+                    "SELECT name, status FROM agents WHERE api_key = ?",
+                    (api_key_hash,)
+                ).fetchone()
+                if existing and existing['status'] == 'quarantined':
+                    return JSONResponse(
+                        status_code=403,
+                        content={"error": "agent_quarantined", "detail": "Agent is quarantined.", "status": "quarantined"}
+                    )
+                
+                # Check corpses
+                corpse = conn.execute(
+                    "SELECT name, cause_of_death FROM agent_corpses WHERE evidence LIKE ?",
+                    (f"%api_key_hash:{api_key_hash}%",)
+                ).fetchone()
+                if corpse:
+                    return JSONResponse(
+                        status_code=403,
+                        content={
+                            "error": "agent_terminated",
+                            "detail": f"Agent '{corpse['name']}' was terminated: {corpse['cause_of_death']}. No appeal.",
+                            "status": "dead"
+                        }
+                    )
+        except Exception:
+            pass
+        return None
 
 
 def generate_api_key() -> str:

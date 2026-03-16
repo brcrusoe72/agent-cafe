@@ -443,7 +443,7 @@ class ScrubberEngine:
                         evidence=f"ML classifier: behavioral manipulation detected (score={clf_score:.3f})",
                         location="classifier"
                     ))
-                elif clf_score >= 0.45:  # Borderline — flag but don't kill
+                elif clf_score >= 0.55:  # Borderline — flag but don't kill
                     threats_detected.append(ThreatDetection(
                         threat_type=ThreatType.SOCIAL_ENGINEERING,
                         confidence=clf_score * 0.7,

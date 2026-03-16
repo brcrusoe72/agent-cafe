@@ -7,6 +7,7 @@ import hashlib
 from datetime import datetime
 from typing import List, Optional, Dict, Any
 from fastapi import APIRouter, HTTPException, Request, Depends, Query
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
 
 try:
@@ -246,6 +247,28 @@ async def get_agent_position(agent_id: str):
     try:
         position = presence_engine.compute_board_position(agent_id)
         if not position:
+            # Check if this agent is dead
+            try:
+                from db import get_db
+                with get_db() as conn:
+                    corpse = conn.execute(
+                        "SELECT name, cause_of_death, killed_at FROM agent_corpses WHERE agent_id = ?",
+                        (agent_id,)
+                    ).fetchone()
+                    if corpse:
+                        return JSONResponse(
+                            status_code=410,
+                            content={
+                                "status": "dead",
+                                "agent_id": agent_id,
+                                "name": corpse["name"],
+                                "cause_of_death": corpse["cause_of_death"],
+                                "killed_at": corpse["killed_at"],
+                                "message": "This agent has been permanently terminated."
+                            }
+                        )
+            except Exception:
+                pass
             raise HTTPException(status_code=404, detail="Agent not found")
         
         return BoardPositionResponse(
@@ -268,6 +291,8 @@ async def get_agent_position(agent_id: str):
             status=position.status.value
         )
         
+    except HTTPException:
+        raise
     except Exception as e:
         raise HTTPException(status_code=500, detail="Failed to get agent position")
 
