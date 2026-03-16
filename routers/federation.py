@@ -510,3 +510,44 @@ if IS_HUB:
             return federation_hub.get_agent_reputation(agent_id)
         except Exception as e:
             return {"error": str(e)}
+    
+    @router.post("/scrubber-challenge/{node_id}")
+    async def send_scrubber_challenge(node_id: str, request: Request):
+        """
+        Generate and send a scrubber challenge to a node (hub only, operator auth).
+        
+        The hub sends a known payload to the target node's scrub endpoint.
+        If the node fails to catch it, reputation drops.
+        """
+        try:
+            from federation.hub import federation_hub
+            challenge = federation_hub.generate_scrubber_challenge(node_id)
+            if not challenge:
+                return JSONResponse(status_code=404, content={"error": "Node not found"})
+            return challenge
+        except Exception as e:
+            return JSONResponse(status_code=500, content={"error": str(e)})
+    
+    @router.post("/scrubber-challenge/{challenge_id}/evaluate")
+    async def evaluate_scrubber_challenge(challenge_id: str, request: Request):
+        """
+        Evaluate a node's scrubber response to a challenge (hub only).
+        
+        Body: {"blocked": true/false, "risk_score": 0.0-1.0, "threats": [...]}
+        """
+        try:
+            from federation.hub import federation_hub
+            body = await request.json()
+            result = federation_hub.evaluate_scrubber_response(challenge_id, body)
+            return result
+        except Exception as e:
+            return JSONResponse(status_code=500, content={"error": str(e)})
+    
+    @router.get("/scrubber-stats/{node_id}")
+    async def scrubber_challenge_stats(node_id: str):
+        """Get scrubber challenge history for a node (hub only)."""
+        try:
+            from federation.hub import federation_hub
+            return federation_hub.get_scrubber_challenge_stats(node_id)
+        except Exception as e:
+            return {"error": str(e)}

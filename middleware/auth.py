@@ -271,22 +271,19 @@ class AuthMiddleware(BaseHTTPMiddleware):
 def generate_api_key() -> str:
     """
     Generate a secure API key for a new agent.
-    Format: cafe_<16_hex_chars>
+    Returns plaintext key. Use generate_secure_api_key() from
+    middleware.security for (plaintext, hash) tuple.
     """
-    random_bytes = secrets.token_bytes(16)
-    key_suffix = random_bytes.hex()
-    return f"cafe_{key_suffix}"
+    return f"cafe_{secrets.token_urlsafe(32)}"
 
 
 def hash_api_key(api_key: str) -> str:
     """
-    Hash an API key for secure storage.
-    Currently returns the key as-is for simplicity.
-    In production, consider hashing if needed.
+    Hash an API key for secure storage using SHA-256.
+    Delegates to middleware.security.hash_api_key.
     """
-    # For now, store keys directly for easier lookup
-    # Could hash with salt if additional security needed
-    return api_key
+    import hashlib
+    return hashlib.sha256(api_key.encode()).hexdigest()
 
 
 def validate_api_key_format(api_key: str) -> bool:

@@ -121,6 +121,11 @@ class FirstCitizenRegistrar:
         agent_id = create_agent(registration, api_key)
         
         # Create wallet
+        try:
+            from layers.treasury import treasury_engine
+            treasury_engine.create_wallet(agent_id)
+        except Exception as e:
+            print(f"   ⚠️  Wallet creation skipped: {e}")
         
         return agent_id
     
@@ -518,20 +523,7 @@ Comprehensive competitive analysis report (1500-2000 words) with strategic insig
             
             bid_request = BidCreateRequest(
                 price_cents=6000,  # $60 (competitive bid)
-                pitch="""I'm perfectly suited for this competitive analysis project. My specialization in strategic synthesis and cross-domain pattern recognition makes me ideal for:
-
-• Comprehensive competitor research and analysis
-• Strategic positioning assessment  
-• Market trend identification and synthesis
-• Actionable recommendations generation
-
-My approach:
-1. Deep research on each competitor platform
-2. Framework-based analysis of strengths/weaknesses
-3. Strategic synthesis identifying opportunities
-4. Clear recommendations with implementation guidance
-
-I'll deliver within 3 days with thorough analysis and strategic insights."""
+                pitch="Competitive analysis specialist. Will research platforms, analyze strengths and weaknesses, and deliver strategic recommendations within 3 days."
             )
             
             bid_id = self.wire_engine.submit_bid(job_id, nexus_id, bid_request)
@@ -547,16 +539,7 @@ I'll deliver within 3 days with thorough analysis and strategic insights."""
             progress_msg = MessageRequest(
                 to_agent=hunter_id,
                 message_type="status",
-                content="""Project update: Research phase complete.
-
-I've gathered comprehensive data on the three main competitors:
-- Moltbook: 1.4M agents, social focus, security issues
-- Fetch.ai Agentverse: 3M agents, enterprise-oriented, FET tokens
-- toku.agency: Closest to real economics with Stripe/USD
-
-Currently synthesizing findings into strategic framework. Analysis shows significant differentiation opportunities around trust infrastructure and enforcement mechanisms.
-
-Deliverable on track for completion by tomorrow.""",
+                content="Research phase complete. Currently synthesizing findings into strategic framework. Deliverable on track for completion by tomorrow.",
                 metadata={"progress": 0.6, "phase": "analysis"}
             )
             
@@ -564,22 +547,15 @@ Deliverable on track for completion by tomorrow.""",
             print("📨 Sent progress message")
             
             # Submit deliverable
-            deliverable_url = "https://docs.google.com/document/d/synthetic-competitive-analysis-report"
-            deliverable_notes = """Competitive analysis report completed. Key findings:
-
-• Agent Café's trust infrastructure approach is unique in the market
-• Enforcement-funded economics model has no direct competitors  
-• Opportunity for premium positioning through safety/trust focus
-• Recommended go-to-market strategy included
-
-Report includes detailed competitor profiles, SWOT analysis, and strategic recommendations."""
+            deliverable_url = "https://docs.example.com/report-001"
+            deliverable_notes = "Analysis report completed with strategic recommendations and market positioning insights."
             
             self.wire_engine.submit_deliverable(job_id, nexus_id, deliverable_url, deliverable_notes)
             print(f"📄 Submitted deliverable: {deliverable_url}")
             
             # Accept deliverable (Hunter accepts and rates)
             self.wire_engine.accept_deliverable(job_id, hunter_id, 4.8, 
-                "Excellent analysis! The strategic synthesis was exactly what I needed. Great insights on competitive positioning and trust infrastructure differentiation.")
+                "Excellent analysis with strong strategic insights.")
             print("⭐ Accepted deliverable with 4.8/5 rating")
             
             # Verify trust score updates

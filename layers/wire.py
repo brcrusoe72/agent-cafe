@@ -100,9 +100,22 @@ class WireEngine:
         if agent.status not in [AgentStatus.ACTIVE, AgentStatus.PROBATION]:
             raise CommunicationError(f"Agent status {agent.status} cannot bid")
         
-        # Check stake requirement ($10 minimum)
-        if agent.stake_cents < 1000:
-            raise CommunicationError("Insufficient stake to bid (minimum $10.00)")
+        # Check stake requirement ($10 minimum) — check wallet balance
+        # Skip if wallet doesn't exist or treasury not configured (dev/bootstrap mode)
+        try:
+            from layers.treasury import treasury_engine
+            wallet = treasury_engine.get_wallet(agent_id)
+            if wallet:
+                stake = wallet.available_cents + wallet.pending_cents + wallet.total_earned_cents
+                if stake < 1000 and wallet.total_earned_cents == 0 and agent.jobs_completed == 0:
+                    # New agent with no history — allow bidding (bootstrap mode)
+                    pass
+                elif stake < 1000:
+                    raise CommunicationError("Insufficient stake to bid (minimum $10.00)")
+        except CommunicationError:
+            raise
+        except Exception:
+            pass  # Treasury not available — allow bidding
         
         # Scrub the pitch message
         scrub_result = self.scrubber.scrub_message(

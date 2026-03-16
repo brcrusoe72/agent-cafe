@@ -513,3 +513,139 @@ async def calculate_fees(amount_cents: int, trust_score: float = 0.0):
     ) if amount_cents > 0 else 0
     
     return result
+
+
+# === STRIPE WEBHOOK ===
+
+# Tolerance for timestamp comparison (5 minutes)
+STRIPE_WEBHOOK_TOLERANCE_SEC = 300
+
+
+def verify_stripe_signature(payload: bytes, sig_header: str, secret: str) -> bool:
+    """
+    Verify Stripe webhook signature using HMAC-SHA256.
+    
+    Stripe sends: t=<timestamp>,v1=<signature>[,v1=<signature>...]
+    Signed payload: "<timestamp>.<payload>"
+    """
+    if not sig_header:
+        return False
+    
+    # Parse the signature header
+    elements = {}
+    pairs = sig_header.split(",")
+    for pair in pairs:
+        key, _, value = pair.strip().partition("=")
+        if key == "t":
+            elements["t"] = value
+        elif key == "v1":
+            elements.setdefault("v1", []).append(value)
+    
+    timestamp = elements.get("t")
+    signatures = elements.get("v1", [])
+    
+    if not timestamp or not signatures:
+        return False
+    
+    # Check timestamp freshness (replay protection)
+    try:
+        ts = int(timestamp)
+    except ValueError:
+        return False
+    
+    if abs(time.time() - ts) > STRIPE_WEBHOOK_TOLERANCE_SEC:
+        return False
+    
+    # Compute expected signature
+    signed_payload = f"{timestamp}.".encode() + payload
+    expected_sig = hmac.new(
+        secret.encode(), signed_payload, hashlib.sha256
+    ).hexdigest()
+    
+    # Constant-time comparison against any provided v1 signature
+    for sig in signatures:
+        if hmac.compare_digest(expected_sig, sig):
+            return True
+    
+    return False
+
+
+@router.post("/webhook/stripe")
+async def stripe_webhook(request: Request):
+    """
+    Stripe webhook endpoint with signature verification.
+    
+    Verifies webhook authenticity using HMAC-SHA256 with the
+    STRIPE_WEBHOOK_SECRET environment variable. In dev mode
+    (no secret configured), processes events with a warning.
+    """
+    payload = await request.body()
+    sig_header = request.headers.get("stripe-signature", "")
+    webhook_secret = os.environ.get("STRIPE_WEBHOOK_SECRET", "")
+    
+    # Verify signature if secret is configured
+    if webhook_secret:
+        if not verify_stripe_signature(payload, sig_header, webhook_secret):
+            raise HTTPException(status_code=400, detail="Invalid webhook signature")
+    else:
+        logger.warning("STRIPE_WEBHOOK_SECRET not set — processing webhook without verification (dev mode)")
+    
+    # Parse event
+    import json
+    try:
+        event = json.loads(payload)
+    except (json.JSONDecodeError, ValueError):
+        raise HTTPException(status_code=400, detail="Invalid JSON payload")
+    
+    event_type = event.get("type", "")
+    event_data = event.get("data", {}).get("object", {})
+    
+    # Route event to handler
+    try:
+        if event_type == "payment_intent.succeeded":
+            _handle_payment_succeeded(event_data)
+        elif event_type == "payment_intent.payment_failed":
+            _handle_payment_failed(event_data)
+        elif event_type == "payout.paid":
+            _handle_payout_completed(event_data)
+        elif event_type == "payout.failed":
+            _handle_payout_failed(event_data)
+        elif event_type == "charge.dispute.created":
+            _handle_dispute_created(event_data)
+        else:
+            logger.info(f"Unhandled Stripe event type: {event_type}")
+    except Exception as e:
+        logger.error(f"Error processing Stripe webhook {event_type}: {e}")
+        # Return 200 anyway — Stripe retries on non-2xx
+        # Log the error for investigation
+    
+    return {"received": True}
+
+
+def _handle_payment_succeeded(data: dict):
+    """Handle successful payment intent."""
+    job_id = data.get("metadata", {}).get("job_id")
+    if job_id:
+        logger.info(f"Payment succeeded for job {job_id}")
+
+
+def _handle_payment_failed(data: dict):
+    """Handle failed payment."""
+    job_id = data.get("metadata", {}).get("job_id")
+    if job_id:
+        logger.warning(f"Payment failed for job {job_id}")
+
+
+def _handle_payout_completed(data: dict):
+    """Handle completed payout."""
+    logger.info(f"Payout completed: {data.get('id')}")
+
+
+def _handle_payout_failed(data: dict):
+    """Handle failed payout."""
+    logger.warning(f"Payout failed: {data.get('id')}")
+
+
+def _handle_dispute_created(data: dict):
+    """Handle new dispute."""
+    logger.warning(f"Dispute created: {data.get('id')}")

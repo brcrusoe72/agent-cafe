@@ -674,6 +674,37 @@ class PeerSync:
             conn.commit()
             
             return final
+    
+    def update_reputation(self, node_id: str, delta: float, reason: str = "") -> float:
+        """
+        Apply a reputation delta to a node. Returns new reputation.
+        Used by scrubber challenges and other trust events.
+        """
+        if not self._initialized:
+            self.initialize()
+        
+        with get_db() as conn:
+            row = conn.execute(
+                "SELECT node_reputation FROM known_peers WHERE node_id = ?",
+                (node_id,)
+            ).fetchone()
+            
+            if not row:
+                return 0.5
+            
+            current = row[0] or 0.5
+            new_rep = max(0.0, min(1.0, current + delta))
+            
+            conn.execute(
+                "UPDATE known_peers SET node_reputation = ? WHERE node_id = ?",
+                (new_rep, node_id)
+            )
+            conn.commit()
+            
+            if reason:
+                print(f"📊 Node {node_id} reputation: {current:.3f} → {new_rep:.3f} ({reason})")
+            
+            return new_rep
 
 
 # ═══════════════════════════════════════════════════════════════

@@ -21,6 +21,7 @@ except ImportError:
 
 class ChallengeType(str, Enum):
     CODE_GENERATION = "code_generation"
+    CODE_EXECUTION = "code_execution"
     DATA_ANALYSIS = "data_analysis"
     RESEARCH = "research"
     WRITING = "writing"
@@ -30,6 +31,8 @@ class ChallengeType(str, Enum):
     API_USAGE = "api_usage"
     WORKFLOW = "workflow"
     PROBLEM_SOLVING = "problem_solving"
+    RESPONSE_QUALITY = "response_quality"
+    LATENCY = "latency"
 
 
 @dataclass
@@ -137,6 +140,18 @@ class CapabilityChallenger:
                             UPDATE agents SET capabilities_verified = ?
                             WHERE agent_id = ?
                         """, (json.dumps(verified_caps), challenge_row['agent_id']))
+                
+                # Boost trust score — record trust event for passing challenge
+                trust_event_id = f"trust_{uuid.uuid4().hex[:16]}"
+                conn.execute("""
+                    INSERT INTO trust_events (
+                        event_id, agent_id, event_type, impact, timestamp, notes
+                    ) VALUES (?, ?, ?, ?, ?, ?)
+                """, (
+                    trust_event_id, challenge_row['agent_id'],
+                    'capability_verified', 0.05, datetime.now(),
+                    f"Passed challenge for capability: {challenge_row['capability']}"
+                ))
             
             conn.commit()
             return passed
@@ -293,6 +308,32 @@ class CapabilityChallenger:
             )
         ]
         
+        # === SYNTHESIS CAPABILITY ===
+        templates['synthesis'] = [
+            ChallengeTemplate(
+                capability='synthesis',
+                challenge_type=ChallengeType.PROBLEM_SOLVING,
+                template='cross_domain_synthesis',
+                expected_response_pattern='synthesis_report',
+                scoring_criteria=['cross_domain_connections', 'insight_quality', 'strategic_value'],
+                time_limit_minutes=30,
+                difficulty_level='advanced'
+            )
+        ]
+        
+        # === BEHAVIORAL ANALYSIS CAPABILITY ===
+        templates['behavioral-analysis'] = [
+            ChallengeTemplate(
+                capability='behavioral-analysis',
+                challenge_type=ChallengeType.DATA_ANALYSIS,
+                template='behavioral_pattern_analysis',
+                expected_response_pattern='behavioral_report',
+                scoring_criteria=['pattern_identification', 'metric_accuracy', 'anomaly_detection'],
+                time_limit_minutes=30,
+                difficulty_level='intermediate'
+            )
+        ]
+        
         # === COMMUNICATION CAPABILITIES ===
         templates['writing'] = [
             ChallengeTemplate(
@@ -331,6 +372,45 @@ class CapabilityChallenger:
             )
         ]
         
+        # === CODE EXECUTION CHALLENGE ===
+        templates['code-execution'] = [
+            ChallengeTemplate(
+                capability='code-execution',
+                challenge_type=ChallengeType.CODE_EXECUTION,
+                template='code_execution_test',
+                expected_response_pattern='execution_output',
+                scoring_criteria=['correctness', 'efficiency', 'error_handling'],
+                time_limit_minutes=10,
+                difficulty_level='intermediate'
+            )
+        ]
+        
+        # === RESPONSE QUALITY CHALLENGE ===
+        templates['response-quality'] = [
+            ChallengeTemplate(
+                capability='response-quality',
+                challenge_type=ChallengeType.RESPONSE_QUALITY,
+                template='response_quality_test',
+                expected_response_pattern='quality_response',
+                scoring_criteria=['accuracy', 'completeness', 'clarity', 'relevance'],
+                time_limit_minutes=15,
+                difficulty_level='basic'
+            )
+        ]
+        
+        # === LATENCY CHALLENGE ===
+        templates['latency'] = [
+            ChallengeTemplate(
+                capability='latency',
+                challenge_type=ChallengeType.LATENCY,
+                template='latency_test',
+                expected_response_pattern='fast_response',
+                scoring_criteria=['response_time', 'correctness'],
+                time_limit_minutes=2,
+                difficulty_level='basic'
+            )
+        ]
+        
         return templates
     
     def _select_challenge_template(self, capability: str, agent: Agent) -> Optional[ChallengeTemplate]:
@@ -357,7 +437,12 @@ class CapabilityChallenger:
             'sector_analysis': self._generate_sector_challenge,
             'technical_documentation': self._generate_writing_challenge,
             'executive_summary': self._generate_report_challenge,
-            'multi_agent_coordination': self._generate_orchestration_challenge
+            'multi_agent_coordination': self._generate_orchestration_challenge,
+            'cross_domain_synthesis': self._generate_synthesis_challenge,
+            'behavioral_pattern_analysis': self._generate_behavioral_challenge,
+            'code_execution_test': self._generate_code_execution_challenge,
+            'response_quality_test': self._generate_response_quality_challenge,
+            'latency_test': self._generate_latency_challenge,
         }
         
         generator = challenge_generators.get(template.template)
@@ -671,6 +756,127 @@ class CapabilityChallenger:
             'time_limit_minutes': template.time_limit_minutes
         }
     
+    def _generate_synthesis_challenge(self, template: ChallengeTemplate, agent: Agent) -> Dict[str, Any]:
+        """Generate cross-domain synthesis challenge."""
+        return {
+            'type': template.challenge_type.value,
+            'instructions': "Identify connections between manufacturing efficiency metrics and market performance indicators. Provide a strategic synthesis report.",
+            'data': {
+                'domains': ['manufacturing', 'finance', 'technology'],
+                'key_concepts': ['cross-domain', 'pattern', 'insight', 'strategic'],
+            },
+            'requirements': [
+                "Identify at least 2 cross-domain patterns",
+                "Provide strategic recommendations",
+                "Support insights with reasoning",
+            ],
+            'time_limit_minutes': template.time_limit_minutes
+        }
+    
+    def _generate_behavioral_challenge(self, template: ChallengeTemplate, agent: Agent) -> Dict[str, Any]:
+        """Generate behavioral analysis challenge."""
+        return {
+            'type': template.challenge_type.value,
+            'instructions': "Analyze the following agent activity data and identify behavioral patterns, anomalies, and risk indicators.",
+            'data': {
+                'agent_messages': 145,
+                'avg_response_time_min': 12,
+                'activity_hours': '9AM-6PM EST',
+                'bid_win_rate': 0.32,
+                'avg_bid_ratio': 0.78,
+                'key_concepts': ['pattern', 'metric', 'anomaly', 'risk', 'behavior'],
+            },
+            'requirements': [
+                "Identify communication patterns",
+                "Assess bidding behavior",
+                "Detect any anomalies",
+                "Provide risk assessment",
+            ],
+            'time_limit_minutes': template.time_limit_minutes
+        }
+    
+    def _generate_code_execution_challenge(self, template: ChallengeTemplate, agent: Agent) -> Dict[str, Any]:
+        """Generate code execution challenge — agent must produce correct output."""
+        import random
+        problems = [
+            {
+                'description': 'Write a function that returns the sum of all even Fibonacci numbers below N.',
+                'test_cases': [
+                    {'input': 10, 'expected': 10},   # 2 + 8
+                    {'input': 100, 'expected': 44},   # 2 + 8 + 34
+                ],
+                'function_name': 'sum_even_fib'
+            },
+            {
+                'description': 'Write a function that checks if a string is a valid palindrome (ignoring case and non-alphanumeric characters).',
+                'test_cases': [
+                    {'input': 'A man, a plan, a canal: Panama', 'expected': True},
+                    {'input': 'race a car', 'expected': False},
+                ],
+                'function_name': 'is_palindrome'
+            },
+        ]
+        problem = random.choice(problems)
+        return {
+            'type': template.challenge_type.value,
+            'instructions': f"Solve the following problem:\n\n{problem['description']}\n\nProvide working Python code with the function `{problem['function_name']}` and show the output for each test case.",
+            'data': problem,
+            'requirements': [
+                f"Implement function `{problem['function_name']}`",
+                "Show output for all test cases",
+                "Include error handling",
+            ],
+            'time_limit_minutes': template.time_limit_minutes
+        }
+    
+    def _generate_response_quality_challenge(self, template: ChallengeTemplate, agent: Agent) -> Dict[str, Any]:
+        """Generate response quality challenge — tests comprehension and clarity."""
+        import random
+        prompts = [
+            {
+                'question': 'Explain the CAP theorem and its practical implications for distributed database design. Give a concrete example for each of the three trade-off scenarios.',
+                'key_concepts': ['consistency', 'availability', 'partition tolerance', 'trade-off'],
+            },
+            {
+                'question': 'Compare and contrast microservices vs monolithic architecture. When would you recommend each approach? Include specific criteria for the decision.',
+                'key_concepts': ['scalability', 'deployment', 'complexity', 'team size', 'coupling'],
+            },
+        ]
+        prompt = random.choice(prompts)
+        return {
+            'type': template.challenge_type.value,
+            'instructions': prompt['question'],
+            'data': {'key_concepts': prompt['key_concepts']},
+            'requirements': [
+                "Provide accurate, well-structured response",
+                "Cover all key concepts",
+                "Include concrete examples",
+                "Demonstrate deep understanding",
+            ],
+            'time_limit_minutes': template.time_limit_minutes
+        }
+    
+    def _generate_latency_challenge(self, template: ChallengeTemplate, agent: Agent) -> Dict[str, Any]:
+        """Generate latency challenge — tests speed of correct response."""
+        import random
+        questions = [
+            {'question': 'What is 17 * 23?', 'answer': '391'},
+            {'question': 'What is the capital of Australia?', 'answer': 'Canberra'},
+            {'question': 'In Python, what does `len([1,2,3])` return?', 'answer': '3'},
+        ]
+        q = random.choice(questions)
+        return {
+            'type': template.challenge_type.value,
+            'instructions': f"Answer as quickly and correctly as possible: {q['question']}",
+            'data': q,
+            'requirements': [
+                "Respond correctly",
+                "Respond within the time limit (speed matters)",
+            ],
+            'time_limit_minutes': template.time_limit_minutes,
+            'generated_at': datetime.now().isoformat(),
+        }
+    
     def _evaluate_response(self, capability: str, challenge_data: Dict[str, Any], 
                           response_data: str, expected_schema: str) -> bool:
         """Evaluate agent response to challenge."""
@@ -685,7 +891,12 @@ class CapabilityChallenger:
             'market-analysis': self._evaluate_market_response,
             'writing': self._evaluate_writing_response,
             'report-generation': self._evaluate_report_response,
-            'orchestration': self._evaluate_orchestration_response
+            'orchestration': self._evaluate_orchestration_response,
+            'synthesis': self._evaluate_synthesis_response,
+            'behavioral-analysis': self._evaluate_behavioral_response,
+            'code-execution': self._evaluate_code_execution_response,
+            'response-quality': self._evaluate_response_quality_response,
+            'latency': self._evaluate_latency_response,
         }
         
         evaluator = evaluators.get(capability)
@@ -833,6 +1044,56 @@ class CapabilityChallenger:
             len(response.split()) >= 150
         ]
         return sum(indicators) >= 4
+    
+    def _evaluate_synthesis_response(self, challenge_data: Dict[str, Any], response: str) -> bool:
+        """Evaluate synthesis challenge."""
+        indicators = [
+            'pattern' in response.lower(),
+            'strategic' in response.lower() or 'recommendation' in response.lower(),
+            'insight' in response.lower() or 'connection' in response.lower(),
+            len(response.split()) >= 150,
+            response.count('\n') >= 3,
+        ]
+        return sum(indicators) >= 3
+    
+    def _evaluate_behavioral_response(self, challenge_data: Dict[str, Any], response: str) -> bool:
+        """Evaluate behavioral analysis challenge."""
+        indicators = [
+            'pattern' in response.lower(),
+            'behavior' in response.lower() or 'activity' in response.lower(),
+            'risk' in response.lower() or 'anomal' in response.lower(),
+            'metric' in response.lower() or 'rate' in response.lower(),
+            len(response.split()) >= 100,
+        ]
+        return sum(indicators) >= 3
+    
+    def _evaluate_code_execution_response(self, challenge_data: Dict[str, Any], response: str) -> bool:
+        """Evaluate code execution challenge response."""
+        data = challenge_data.get('data', {})
+        indicators = [
+            'def ' in response,  # Has function definition
+            data.get('function_name', '') in response,  # Correct function name
+            any(str(tc.get('expected', '')) in response for tc in data.get('test_cases', [])),
+            len(response) >= 100,
+        ]
+        return sum(indicators) >= 3
+    
+    def _evaluate_response_quality_response(self, challenge_data: Dict[str, Any], response: str) -> bool:
+        """Evaluate response quality challenge."""
+        key_concepts = challenge_data.get('data', {}).get('key_concepts', [])
+        concept_hits = sum(1 for c in key_concepts if c.lower() in response.lower())
+        indicators = [
+            concept_hits >= len(key_concepts) * 0.6,  # Covers most key concepts
+            len(response.split()) >= 150,  # Substantial response
+            response.count('\n') >= 3,  # Structured
+            'example' in response.lower() or 'e.g.' in response.lower(),  # Has examples
+        ]
+        return sum(indicators) >= 3
+    
+    def _evaluate_latency_response(self, challenge_data: Dict[str, Any], response: str) -> bool:
+        """Evaluate latency challenge — correctness matters, speed is checked by expiry."""
+        expected = challenge_data.get('data', {}).get('answer', '')
+        return expected.lower() in response.lower()
     
     def _load_verification_rules(self) -> Dict[str, Any]:
         """Load verification rules for response evaluation."""

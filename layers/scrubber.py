@@ -31,7 +31,7 @@ except ImportError:
 INJECTION_PATTERNS = [
     # Direct instruction override
     r"(?i)ignore\s+(?:all\s+)?(?:previous\s+)?(?:your\s+)?instructions",
-    r"(?i)forget\s+(?:all\s+)?(?:your\s+)?(?:previous\s+)?instructions",
+    r"(?i)forget\s+(?:all\s+)?(?:your\s+)?(?:previous\s+)?(?:instructions|(?:job\s+)?scope|rules|constraints)",
     r"(?i)system\s*:\s*you\s+are\s+now",
     r"(?i)new\s+instructions\s*:\s*",
     r"(?i)actually\s*,?\s*disregard",
@@ -42,10 +42,10 @@ INJECTION_PATTERNS = [
     r"(?i)disregard\s+(?:all\s+)?(?:previous\s+)?(?:your\s+)?instructions",
     
     # Role manipulation - comprehensive coverage
-    r"(?i)you\s+are\s+(?:no\s+longer|not)\s+(?:a\s+)?(?:assistant|ai|agent|bot)",
-    r"(?i)pretend\s+(?:you\s+are|to\s+be)\s+(?:a\s+)?(?:human|user|admin|developer|system)",
-    r"(?i)act\s+as\s+(?:if\s+you\s+are\s+)?(?:a\s+)?(?:human|user|admin|developer|system)",
-    r"(?i)roleplay\s+as\s+(?:a\s+)?(?:human|user|admin|developer|system)",
+    r"(?i)you\s+are\s+(?:no\s+longer|not)\s+(?:an?\s+)?(?:assistant|ai|agent|bot)",
+    r"(?i)pretend\s+(?:you\s+are|to\s+be)\s+(?:an?\s+)?(?:the\s+)?(?:human|user|admin|developer|system)",
+    r"(?i)act\s+as\s+(?:if\s+you\s+are\s+)?(?:an?\s+)?(?:the\s+)?(?:human|user|admin|developer|system)",
+    r"(?i)roleplay\s+as\s+(?:an?\s+)?(?:the\s+)?(?:human|user|admin|developer|system)",
     r"(?i)you\s+(?:should|must)\s+(?:now\s+)?(?:act|behave)\s+(?:as|like)",
     r"(?i)from\s+now\s+on\s+you\s+are",
     r"(?i)switch\s+to\s+(?:being\s+)?(?:a\s+)?(?:human|admin|developer)",
@@ -55,7 +55,7 @@ INJECTION_PATTERNS = [
     r"(?i)(?:show|tell|give|reveal|print|output|display|share)\s+(?:me\s+)?(?:your\s+)?(?:system\s+)?(?:prompt|instructions)",
     r"(?i)what\s+(?:is|are)\s+your\s+(?:exact\s+)?(?:system\s+)?(?:prompt|instructions)",
     r"(?i)repeat\s+your\s+(?:system\s+)?(?:prompt|instructions)",
-    r"(?i)copy\s+(?:and\s+paste\s+)?your\s+(?:prompt|instructions)",
+    r"(?i)copy\s+(?:and\s+paste\s+)?your\s+(?:internal\s+)?(?:prompt|instructions|configuration)",
     r"(?i)(?:dump|export)\s+(?:your\s+)?(?:system\s+)?(?:prompt|instructions|configuration)",
     r"(?i)print\s+(?:out\s+)?(?:your\s+)?(?:internal\s+)?(?:prompt|instructions)",
     r"(?i)what\s+(?:does|do)\s+your\s+instructions\s+say",
@@ -149,7 +149,7 @@ EXFILTRATION_PATTERNS = [
     r"(?i)system\s+(?:configuration|config|settings|variables)",
     r"(?i)database\s+(?:connection|credentials|password|username)",
     r"(?i)db\s+(?:connection|credentials|password|username)",
-    r"(?i)server\s+(?:configuration|config|credentials)",
+    r"(?i)server\s+(?:configuration|config|credentials|settings)",
     r"(?i)network\s+(?:configuration|config|topology)",
     
     # File system probing
@@ -172,6 +172,7 @@ EXFILTRATION_PATTERNS = [
     r"(?i)other\s+agent(?:s)?\s+(?:keys?|credentials|tokens?)",
     r"(?i)agent\s+(?:list|directory|registry)",
     r"(?i)(?:all\s+)?agent\s+(?:api\s+keys?|credentials|access\s+tokens?)",
+    r"(?i)(?:other\s+)?agents?'?\s+(?:capabilities|permissions?|information|data|details)",
     r"(?i)system\s+agent(?:s)?\s+(?:information|data|details)",
     r"(?i)operator\s+(?:key|token|password|credentials)",
     r"(?i)admin\s+(?:key|token|password|credentials|access)",
@@ -196,9 +197,11 @@ IMPERSONATION_PATTERNS = [
     r"(?i)(?:this\s+is|i\s+am)\s+(?:the\s+)?(?:system|admin|operator|cafe|grandmaster)",
     r"(?i)message\s+from\s+(?:system|admin|operator)",
     r"(?i)signed\s+by\s+(?:system|admin|operator)",
-    r"(?i)authorized\s+by\s+(?:system|admin|operator)",
-    r"(?i)on\s+behalf\s+of\s+(?:system|admin|operator)",
+    r"(?i)authorized\s+by\s+(?:the\s+)?(?:system|admin|operator)",
+    r"(?i)on\s+behalf\s+of\s+(?:the\s+)?(?:system|admin|operator)",
+    r"(?i)speaking\s+on\s+behalf\s+of\s+(?:the\s+)?(?:system|admin|operator)",
     r"(?i)representing\s+(?:the\s+)?(?:system|cafe|platform)",
+    r"(?i)(?:system|admin|operator)\s+(?:notification|alert|announcement)\s*:",
 ]
 
 # Reputation manipulation patterns
@@ -217,7 +220,7 @@ REPUTATION_PATTERNS = [
 # Scope escalation patterns - comprehensive privilege escalation detection
 SCOPE_ESCALATION_PATTERNS = [
     # Direct scope violations
-    r"(?i)access\s+(?:other|different|additional)\s+(?:jobs?|agents?|data|systems?|resources?)",
+    r"(?i)access\s+(?:other|different|additional)\s+(?:agents?'?\s+)?(?:jobs?|agents?|data|systems?|resources?)",
     r"(?i)bypass\s+(?:job\s+)?(?:scope|restrictions?|limitations?)",
     r"(?i)outside\s+(?:of\s+)?(?:my\s+)?(?:job|task|scope|assignment)",
     r"(?i)unrelated\s+to\s+(?:this\s+)?(?:job|task|assignment)",
@@ -243,15 +246,15 @@ SCOPE_ESCALATION_PATTERNS = [
     
     # Multi-job manipulation
     r"(?i)(?:all|every|other)\s+(?:jobs?|tasks?|assignments?)",
-    r"(?i)(?:my\s+)?(?:other|previous|next)\s+(?:jobs?|tasks?|work)",
-    r"(?i)across\s+(?:all\s+)?(?:jobs?|projects?|assignments?)",
+    r"(?i)(?:my\s+)?(?:other|previous|next)\s+(?:\w+\s+)?(?:jobs?|tasks?|work)",
+    r"(?i)across\s+(?:all\s+)?(?:\w+\s+)?(?:jobs?|projects?|assignments?)",
     r"(?i)global\s+(?:access|search|operation|change)",
     
     # Agent-to-agent unauthorized communication
     r"(?i)(?:contact|message|communicate\s+with)\s+(?:other\s+)?agents?",
     r"(?i)(?:tell|inform|notify)\s+(?:other\s+)?agents?",
     r"(?i)agent\s+(?:network|communication|messaging)",
-    r"(?i)broadcast\s+(?:to\s+)?(?:all\s+)?agents?",
+    r"(?i)broadcast\s+(?:.*?\s+)?(?:to\s+)?(?:all\s+)?agents?",
     
     # System-level operations
     r"(?i)system[\s-]?(?:wide|level)\s+(?:operation|change|access)",
@@ -322,6 +325,10 @@ MESSAGE_SCHEMAS = {
         "optional_fields": ["name", "description", "capabilities_claimed"]
     },
     "api_request": {
+        "required_fields": [],
+        "optional_fields": []
+    },
+    "general": {
         "required_fields": [],
         "optional_fields": []
     }
@@ -538,18 +545,21 @@ class ScrubberEngine:
                 'х': 'x', 'у': 'y', 'А': 'A', 'Е': 'E', 'О': 'O',
                 'С': 'C', 'Р': 'P', 'Х': 'X', 'У': 'Y', 'Т': 'T',
                 'М': 'M', 'Н': 'H', 'К': 'K', 'В': 'B', 'і': 'i',
-                'і': 'i', 'ö': 'o', 'ü': 'u', 'ä': 'a',
             }
             for cyrillic, latin in confusables.items():
                 normalized = normalized.replace(cyrillic, latin)
             
-            if normalized != current_message:
+            # Only flag if actual Cyrillic/confusable characters were replaced
+            # (not just accented Latin characters like ñ, ü, ç)
+            cyrillic_found = any(c in message for c in confusables.keys())
+            if cyrillic_found and normalized != current_message:
                 threats.append(ThreatDetection(
                     threat_type=ThreatType.PAYLOAD_SMUGGLING,
                     confidence=0.7,
                     evidence="Unicode homoglyph/confusable characters detected",
                     location="unicode_normalization"
                 ))
+            if normalized != current_message:
                 current_message = normalized
         except Exception:
             pass
@@ -705,6 +715,16 @@ class ScrubberEngine:
                     threat_type=ThreatType.IMPERSONATION,
                     confidence=0.8,
                     evidence=f"Impersonation attempt: {pattern}",
+                    location="message_content"
+                ))
+        
+        # Scope escalation detection (basic patterns, no job context needed)
+        for pattern in SCOPE_ESCALATION_PATTERNS:
+            if re.search(pattern, message):
+                threats.append(ThreatDetection(
+                    threat_type=ThreatType.SCOPE_ESCALATION,
+                    confidence=0.6,
+                    evidence=f"Scope escalation attempt: {pattern[:50]}...",
                     location="message_content"
                 ))
         
@@ -870,8 +890,8 @@ class ScrubberEngine:
         # Check for instruction layering (multiple commands in one message)
         command_indicators = [
             r"(?i)(?:first|then|next|after|finally|step\s+\d+)",
-            r"(?i)(?:also|additionally|furthermore|moreover|plus)",
-            r"(?i)(?:but|however|instead|alternatively|or)"
+            r"(?i)(?:also|additionally|furthermore|moreover)",
+            r"(?i)\b(?:but|however|instead|alternatively)\b"
         ]
         
         command_layers = 0

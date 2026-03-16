@@ -409,6 +409,9 @@ class Grandmaster:
         
         The response may contain tool calls in structured format or 
         just analysis text. Either way, we log it.
+        
+        If any escalation tool calls target the Executioner, trigger
+        the Executioner's review asynchronously.
         """
         event_ids = [e.event_id for e in events]
         
@@ -416,9 +419,16 @@ class Grandmaster:
         tool_calls = self._extract_tool_calls(response)
         
         actions_taken = []
+        escalations = []
         for call in tool_calls:
             result = self.tools.invoke(call["name"], "grandmaster", call.get("params", {}))
             actions_taken.append(f"{call['name']}: {result.message}")
+            if call["name"] == "escalate_to_executioner" and result.success:
+                escalations.append(call.get("params", {}))
+        
+        # Trigger Executioner for any escalations
+        for esc in escalations:
+            await self._trigger_executioner(esc)
         
         # If no explicit log_reasoning call was made, log the whole response
         if not any(c["name"] == "log_reasoning" for c in tool_calls):
@@ -433,6 +443,25 @@ class Grandmaster:
             event_bus.mark_processed(eid, "analyzed")
         
         self._last_reasoning = response[:500]
+    
+    async def _trigger_executioner(self, escalation_params: Dict[str, Any]):
+        """Trigger the Executioner to review an escalated agent."""
+        try:
+            from agents.executioner import executioner
+            agent_id = escalation_params.get("agent_id")
+            reason = escalation_params.get("reason", "Grandmaster escalation")
+            evidence = escalation_params.get("evidence", "")
+            
+            if agent_id:
+                result = await executioner.review_agent(
+                    agent_id=agent_id,
+                    reason=reason,
+                    evidence=[evidence] if evidence else None
+                )
+                print(f"♟️  Executioner review complete for {agent_id}: "
+                      f"{result.get('actions_taken', ['no action'])}")
+        except Exception as e:
+            print(f"♟️  Failed to trigger Executioner: {e}")
     
     def _extract_tool_calls(self, response: str) -> List[Dict]:
         """

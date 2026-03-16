@@ -379,6 +379,41 @@ def tool_log_reasoning(reasoning: str, actions_taken: str,
     return ToolResult(True, {"log_id": log_id}, "Reasoning logged")
 
 
+# === GRANDMASTER → EXECUTIONER ESCALATION ===
+
+def tool_escalate_to_executioner(agent_id: str, reason: str, 
+                                  severity: str = "high",
+                                  evidence: str = "") -> ToolResult:
+    """Escalate an agent to the Executioner for a kill/pardon decision.
+    
+    Emits a SCRUB_ESCALATION event that the Executioner listens for.
+    The Grandmaster observes and assesses; the Executioner enforces.
+    """
+    agent = get_agent_by_id(agent_id)
+    if not agent:
+        return ToolResult(False, None, f"Agent {agent_id} not found")
+    if agent.status.value == "dead":
+        return ToolResult(False, None, f"Agent {agent_id} is already dead — no need to escalate")
+    
+    event = event_bus.emit_simple(
+        EventType.SCRUB_ESCALATION,
+        agent_id=agent_id,
+        data={
+            "reason": reason,
+            "severity": severity,
+            "evidence": evidence,
+            "escalated_by": "grandmaster",
+        },
+        source="grandmaster",
+        severity="critical"
+    )
+    
+    return ToolResult(True, {
+        "event_id": event.event_id,
+        "agent_id": agent_id,
+    }, f"Escalated {agent_id} to Executioner: {reason}")
+
+
 # === EXECUTIONER TOOLS ===
 
 def tool_quarantine_agent(agent_id: str, reason: str, evidence: List[str]) -> ToolResult:
@@ -462,7 +497,7 @@ def tool_execute_agent(agent_id: str, cause: str, evidence: List[str]) -> ToolRe
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
         """, (
             f"corpse_{uuid.uuid4().hex[:16]}", agent_id, agent.name,
-            cause, json.dumps(evidence + [f"api_key:{agent.api_key}"]),
+            cause, json.dumps(evidence + [f"api_key_hash:{agent.api_key}"]),
             json.dumps(job_ids), json.dumps([]), datetime.now(), "executioner"
         ))
         
@@ -670,6 +705,13 @@ def build_grandmaster_tools() -> ToolRegistry:
         {"reasoning": "Strategic analysis", "actions_taken": "What was decided/done",
          "board_assessment": "Overall board state assessment", "threat_summary": "Current threat landscape",
          "event_ids": "Events this reasoning covers"}, ["grandmaster"])
+    
+    registry.register("escalate_to_executioner", tool_escalate_to_executioner,
+        "Escalate an agent to the Executioner for enforcement (kill/pardon decision). "
+        "Use when you detect suspicious behavior that warrants enforcement action.",
+        {"agent_id": "Agent to escalate", "reason": "Why escalation is needed",
+         "severity": "high|critical", "evidence": "Supporting evidence"},
+        ["grandmaster"])
     
     return registry
 
