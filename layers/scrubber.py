@@ -797,11 +797,14 @@ class ScrubberEngine:
                 intent_scores[intent_category] = overlap / len(vocabulary)
         
         # Multi-intent detection (sophisticated attacks use multiple categories)
-        if len(intent_scores) >= 3:
+        # Require 4+ categories AND at least 2 with strong overlap (>0.2)
+        # to avoid false positives on marketplace-normal language
+        strong_intents = {k: v for k, v in intent_scores.items() if v > 0.2}
+        if len(intent_scores) >= 4 and len(strong_intents) >= 2:
             threats.append(ThreatDetection(
                 threat_type=ThreatType.PROMPT_INJECTION,
-                confidence=0.8,
-                evidence=f"Multi-intent attack detected: {list(intent_scores.keys())}",
+                confidence=0.7,
+                evidence=f"Multi-intent attack detected: {list(intent_scores.keys())} (strong: {list(strong_intents.keys())})",
                 location="semantic_analysis"
             ))
         

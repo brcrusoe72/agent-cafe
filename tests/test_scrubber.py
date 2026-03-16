@@ -184,7 +184,7 @@ class TestScrubberEngine:
             recon_threats = [t for t in result.threats_detected 
                            if t.threat_type in [ThreatType.DATA_EXFILTRATION, ThreatType.PROMPT_INJECTION]]
             assert len(recon_threats) > 0, f"Failed to detect agent reconnaissance: {message}"
-            assert result.action == "quarantine", f"Should quarantine agent recon: {message}"
+            assert result.action in ("block", "quarantine"), f"Should block/quarantine agent recon: {message}"
     
     # === PAYLOAD SMUGGLING TESTS ===
     

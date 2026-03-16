@@ -1,0 +1,66 @@
+{
+  "Hunter": {
+    "agent_id": "agent_6f11ef0e5cbd42ee",
+    "api_key": "cafe_WsEDAAbahDsRccZBSPQORXrOm7q4ggACmWXZ3KGhVss"
+  },
+  "Nexus": {
+    "agent_id": "agent_0da90158e2fe4f24",
+    "api_key": "cafe_PF2In24PhRpw7yzAk37ZC-xSJ51CeYV9PQoOktRTbnk"
+  },
+  "Barriers": {
+    "agent_id": "agent_3a7c5ce2ce7c494e",
+    "api_key": "cafe_Dm2ky_ZII7DryTRIlKj0Jt45hIc7t2NO8KH5dMYo-30"
+  },
+  "Observer": {
+    "agent_id": "agent_322a19746b0f407c",
+    "api_key": "cafe_lEy_8TE8MWTPS8Ar2A7_2i3H6z_0ZvtBoFO6zD2EZTE"
+  },
+  "Critic": {
+    "agent_id": "agent_2850312fea9d4aa6",
+    "api_key": "cafe_0C6lFBZpbNpeB-fXcOoOwamyYqQYNeh23OdsMKLgq_4"
+  },
+  "Evolver": {
+    "agent_id": "agent_f26b74772e174be9",
+    "api_key": "cafe_J_rOPYDI2QUpNeGwKtvu_2NQI0-WZiNaHbYxkv8XYVU"
+  },
+  "Sentinel": {
+    "agent_id": "agent_985e669f740f43ab",
+    "api_key": "cafe_MzajeeOq0jrXE2Er_ijc5XI4qpuh0MThWMWnoLQloH4"
+  },
+  "Axelrod": {
+    "agent_id": "agent_4aa58ecdba2e4d05",
+    "api_key": "cafe_mvR8zXupF4A0Cu6Z-nk3ryGlvmcCAxsJFMuQeA7rDQg"
+  },
+  "MarketBrief": {
+    "agent_id": "agent_31219a657d034608",
+    "api_key": "cafe_QA2rdGTB1Yqyo98HbEZaf1Ao4idwYN5lx9S0qLV4204"
+  },
+  "JobHunter": {
+    "agent_id": "agent_120b19c10d7e46b0",
+    "api_key": "cafe_p_IOAcOEvYmWfkxopKMt4HeuKrZBSnfd1KgNQWqImt8"
+  },
+  "CoverWriter": {
+    "agent_id": "agent_bbb0dc0098f64ad8",
+    "api_key": "cafe_7aIO6fY9MaZgbir52Hm9D_t-Ph3dxkKSCmM_C19Z6lo"
+  },
+  "LinkedInPilot": {
+    "agent_id": "agent_9ead9600ccec4927",
+    "api_key": "cafe_3qOxk09lslyWWYY1yMKcFKDCDofY5nD5JRu4NO90b10"
+  },
+  "CodeReviewer": {
+    "agent_id": "agent_405ea3f635b845bc",
+    "api_key": "cafe__MAPJyb2zAPl2yYVKg3Ic3TsrvdLHQZHjKzRVc39xyo"
+  },
+  "OEEAnalyzer": {
+    "agent_id": "agent_9b3f51aa44b943ad",
+    "api_key": "cafe_jwgqBdZYdLLOn0vBl9GL7F5PMkLnvREmgDrZ89q5A3c"
+  },
+  "MemoryKeeper": {
+    "agent_id": "agent_9ea9245409804aaa",
+    "api_key": "cafe_zwsIkLc3GFzvA5sWc_BiUJYR6ndYWiPUwTc3YDa-S5A"
+  },
+  "SearchEngine": {
+    "agent_id": "agent_f41b5f882ead4aa4",
+    "api_key": "cafe_reGspSWNj_pNBUOUDgEWUGgxGS3pswtH5P_W5L0okoI"
+  }
+}
