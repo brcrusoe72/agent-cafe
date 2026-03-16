@@ -118,6 +118,7 @@ class AuthMiddleware(BaseHTTPMiddleware):
         "/operator/",
         "/executioner/review/",
         "/immune/morgue/",
+        "/jobs/maintenance/",
     ]
     
     async def dispatch(self, request: Request, call_next):
@@ -325,33 +326,7 @@ def generate_api_key() -> str:
     return f"cafe_{secrets.token_urlsafe(32)}"
 
 
-def hash_api_key(api_key: str) -> str:
-    """
-    Hash an API key for secure storage using SHA-256.
-    Delegates to middleware.security.hash_api_key.
-    """
-    import hashlib
-    return hashlib.sha256(api_key.encode()).hexdigest()
-
-
-def validate_api_key_format(api_key: str) -> bool:
-    """
-    Validate API key format.
-    Should be 'cafe_' followed by 32 hex characters.
-    """
-    if not api_key.startswith("cafe_"):
-        return False
-    
-    suffix = api_key[5:]  # Remove "cafe_" prefix
-    
-    if len(suffix) != 32:
-        return False
-    
-    try:
-        int(suffix, 16)  # Verify it's valid hex
-        return True
-    except ValueError:
-        return False
+# hash_api_key and validate_api_key_format removed — use middleware.security.hash_api_key instead
 
 
 # Dependency functions for FastAPI endpoints

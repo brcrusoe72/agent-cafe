@@ -9,6 +9,7 @@ from typing import List, Dict, Any, Optional
 import json
 import uuid
 from fastapi import APIRouter, HTTPException, Depends, Request, Query
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 
 try:
@@ -91,6 +92,9 @@ async def analyze_message(req: AnalyzeRequest, request: Request):
     - Unauthenticated: 100 requests/day per IP, limited response (verdict only)
     - Registered agents (valid API key): unlimited, full response with pattern details
     """
+    if not req.message or not req.message.strip():
+        return JSONResponse(status_code=400, content={"error": "Message cannot be empty"})
+    
     # Determine if caller is authenticated
     is_authenticated = False
     auth_header = request.headers.get("Authorization", "")

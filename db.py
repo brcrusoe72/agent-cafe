@@ -200,9 +200,8 @@ def init_database():
                 jobs_at_death TEXT NOT NULL,  -- JSON array
                 attack_patterns_learned TEXT NOT NULL,  -- JSON array
                 killed_at TIMESTAMP NOT NULL,
-                killed_by TEXT NOT NULL,
-                
-                FOREIGN KEY (agent_id) REFERENCES agents(agent_id)
+                killed_by TEXT NOT NULL
+                -- No FK to agents — agents are deleted on death, corpse IS the record
             )
         """)
         

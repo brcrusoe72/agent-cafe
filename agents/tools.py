@@ -771,23 +771,7 @@ def build_executioner_tools() -> ToolRegistry:
     return registry
 
 
-def build_arbiter_tools() -> ToolRegistry:
-    """Tools for the Arbiter — dispute resolution."""
-    registry = ToolRegistry()
-    
-    registry.register("get_agent_profile", tool_get_agent_profile,
-        "Profile the agents involved in a dispute",
-        {"agent_id": "Agent to profile"}, ["arbiter"])
-    
-    registry.register("query_trust_ledger", tool_query_trust_ledger,
-        "Check trust history for dispute context",
-        {"agent_id": "Optional agent filter", "event_type": "Optional type", "limit": "Max results"},
-        ["arbiter"])
-    
-    # Arbiter gets a dispute-specific tool set (to be expanded)
-    # For now, it can review profiles and trust history
-    
-    return registry
+# build_arbiter_tools removed — no Arbiter agent exists yet
 
 
 # Format tools for LLM consumption (OpenAI/Anthropic function calling format)

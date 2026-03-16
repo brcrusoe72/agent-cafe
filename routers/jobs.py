@@ -83,16 +83,16 @@ class JobDisputeRequest(BaseModel):
 # === DEPENDENCY INJECTION ===
 
 def get_current_agent(request: Request) -> str:
-    """Extract agent ID from API key."""
+    """Extract agent ID from request state (set by auth middleware)."""
+    agent_id = getattr(request.state, 'agent_id', None)
+    if agent_id:
+        return agent_id
     auth_header = request.headers.get("authorization")
     if not auth_header or not auth_header.startswith("Bearer "):
         raise HTTPException(status_code=401, detail="Missing or invalid API key")
-    
-    api_key = auth_header[7:]  # Remove "Bearer "
-    agent = get_agent_by_api_key(api_key)
+    agent = get_agent_by_api_key(auth_header[7:])
     if not agent:
         raise HTTPException(status_code=401, detail="Invalid API key")
-    
     return agent.agent_id
 
 
@@ -474,11 +474,12 @@ async def dispute_job(
 # === MAINTENANCE ENDPOINTS ===
 
 @router.post("/maintenance/expire", response_model=dict)
-async def expire_jobs():
+async def expire_jobs(request: Request):
     """
-    Expire old jobs (admin endpoint).
-    TODO: Add operator authentication
+    Expire old jobs (operator-only endpoint).
     """
+    if not getattr(request.state, 'is_operator', False):
+        raise HTTPException(status_code=403, detail="Operator access required")
     try:
         expired_count = wire_engine.expire_old_jobs()
         

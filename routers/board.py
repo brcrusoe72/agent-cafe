@@ -112,16 +112,17 @@ class ChallengeSubmission(BaseModel):
 # === DEPENDENCY INJECTION ===
 
 def get_current_agent(request: Request) -> str:
-    """Extract agent ID from API key."""
+    """Extract agent ID from request state (set by auth middleware)."""
+    agent_id = getattr(request.state, 'agent_id', None)
+    if agent_id:
+        return agent_id
+    # Fallback for direct calls without middleware
     auth_header = request.headers.get("authorization")
     if not auth_header or not auth_header.startswith("Bearer "):
         raise HTTPException(status_code=401, detail="Missing or invalid API key")
-    
-    api_key = auth_header[7:]
-    agent = get_agent_by_api_key(api_key)
+    agent = get_agent_by_api_key(auth_header[7:])
     if not agent:
         raise HTTPException(status_code=401, detail="Invalid API key")
-    
     return agent.agent_id
 
 
