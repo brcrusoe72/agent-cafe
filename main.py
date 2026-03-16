@@ -127,6 +127,13 @@ async def startup_event():
         from federation.node import node_identity
         from federation.sync import init_federation_tables
         init_federation_tables()
+        
+        # Initialize hardening tables
+        try:
+            from federation.hardening import init_hardening_tables
+            init_hardening_tables()
+        except Exception as e:
+            print(f"⚠️  Federation hardening init: {e}")
         await node_identity.start()
         
         # If running as hub, start hub services too

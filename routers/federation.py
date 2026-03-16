@@ -167,14 +167,37 @@ async def receive_message(request: Request):
         return JSONResponse(status_code=400, content={"error": f"Invalid message format: {e}"})
     
     if IS_HUB:
-        return await _handle_hub_message(message)
+        return await _handle_hub_message(message, request)
     else:
         return await _handle_node_message(message)
 
 
-async def _handle_hub_message(message: FederationMessage) -> JSONResponse:
-    """Route message through hub message router."""
+async def _handle_hub_message(message: FederationMessage, request: Request = None) -> JSONResponse:
+    """Route message through federation gate (hardening) then hub router."""
     try:
+        # Run through federation hardening gate BEFORE hub processing
+        try:
+            from federation.hardening import federation_gate
+            source_ip = request.client.host if request and request.client else "unknown"
+            accepted, gate_details = federation_gate.process_inbound(
+                node_id=message.source_node,
+                source_ip=source_ip,
+                message=message
+            )
+            if not accepted:
+                return JSONResponse(
+                    status_code=403,
+                    content={
+                        "status": "rejected",
+                        "rejected_by": gate_details.get("rejected_by", "unknown"),
+                        "reason": gate_details.get("reason", "Federation gate rejected message"),
+                    }
+                )
+        except ImportError:
+            pass  # Hardening not available — allow through (dev mode)
+        except Exception as e:
+            print(f"⚠️  Federation gate error (allowing through): {e}")
+
         from federation.hub import hub_router
         result = hub_router.route(message)
         return JSONResponse(content=result)
