@@ -460,6 +460,18 @@ async def submit_challenge_response(
         
         passed = capability_challenger.submit_challenge_response(challenge_id, submission.response_data)
         
+        try:
+            from agents.event_bus import event_bus, EventType
+            event_bus.emit_simple(
+                EventType.CAPABILITY_VERIFIED if passed else EventType.CAPABILITY_FAILED,
+                agent_id=agent_id,
+                data={"challenge_id": challenge_id, "passed": passed},
+                source="board",
+                severity="info"
+            )
+        except Exception:
+            pass
+        
         if passed:
             return {
                 "success": True,

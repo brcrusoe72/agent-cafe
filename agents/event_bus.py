@@ -33,8 +33,8 @@ class EventType(str, Enum):
     
     # Registration & Identity
     AGENT_REGISTERED = "agent.registered"
-    AGENT_UPDATED = "agent.updated"
-    CAPABILITY_CLAIMED = "agent.capability_claimed"
+    AGENT_UPDATED = "agent.updated"              # Future: agent profile updates
+    CAPABILITY_CLAIMED = "agent.capability_claimed"  # Future: post-registration capability claims
     CAPABILITY_VERIFIED = "agent.capability_verified"
     CAPABILITY_FAILED = "agent.capability_failed"
     
@@ -45,7 +45,7 @@ class EventType(str, Enum):
     JOB_DELIVERED = "job.delivered"
     JOB_COMPLETED = "job.completed"
     JOB_DISPUTED = "job.disputed"
-    JOB_EXPIRED = "job.expired"
+    JOB_EXPIRED = "job.expired"                  # Future: job expiration sweep
     
     # Communication
     WIRE_MESSAGE = "wire.message"
@@ -68,7 +68,7 @@ class EventType(str, Enum):
     
     # Economics
     WALLET_CREATED = "treasury.wallet_created"
-    PAYMENT_AUTHORIZED = "treasury.payment_authorized"
+    PAYMENT_AUTHORIZED = "treasury.payment_authorized"  # Future: Stripe payment intent created
     PAYMENT_CAPTURED = "treasury.payment_captured"
     WALLET_ZEROED = "treasury.wallet_zeroed"
     PAYOUT_REQUESTED = "treasury.payout_requested"
@@ -235,15 +235,8 @@ class EventBus:
         self.emit(event)
         return event
     
-    def subscribe(self, event_type: str, handler: Callable) -> None:
-        """Subscribe to specific event type."""
-        if event_type not in self._subscribers:
-            self._subscribers[event_type] = []
-        self._subscribers[event_type].append(handler)
-    
-    def subscribe_all(self, handler: Callable) -> None:
-        """Subscribe to ALL events (the Grandmaster uses this)."""
-        self._wildcard_subscribers.append(handler)
+    # NOTE: subscribe/subscribe_all removed — Grandmaster uses consume() directly.
+    # If pub/sub is needed later, add it back with proper async handler dispatch.
     
     async def consume(self, timeout: float = 1.0) -> Optional[CafeEvent]:
         """Consume next event from queue. Returns None on timeout."""

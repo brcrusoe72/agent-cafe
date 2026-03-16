@@ -12,6 +12,21 @@ from typing import Dict, Any, List, Optional, Tuple
 from dataclasses import asdict
 from enum import Enum
 
+def _emit_treasury_event(event_type, agent_id="", data=None):
+    """Emit treasury event. Non-blocking."""
+    try:
+        from agents.event_bus import event_bus, EventType
+        event_bus.emit_simple(
+            getattr(EventType, event_type),
+            agent_id=agent_id,
+            data=data or {},
+            source="treasury",
+            severity="info"
+        )
+    except Exception:
+        pass
+
+
 # Stripe integration (optional - graceful degradation if not available)
 try:
     import stripe
@@ -215,6 +230,7 @@ class TreasuryEngine:
             """, (agent_id, 0, 0, 0, 0))
             
             conn.commit()
+            _emit_treasury_event("WALLET_CREATED", agent_id=agent_id)
             
             return AgentWallet(
                 agent_id=agent_id,
@@ -345,6 +361,11 @@ class TreasuryEngine:
                 
                 conn.commit()
                 
+                _emit_treasury_event("PAYMENT_CAPTURED", agent_id=agent_id, data={
+                    "job_id": job_id, "gross_cents": gross_amount,
+                    "net_cents": net_amount, "tier": tier['tier']
+                })
+                
                 return {
                     'success': True,
                     'gross_amount_cents': gross_amount,
@@ -467,6 +488,7 @@ class TreasuryEngine:
                 WHERE agent_id = ?
             """, (agent_id,))
             conn.commit()
+            _emit_treasury_event("WALLET_ZEROED", agent_id=agent_id)
     
     def get_treasury_stats(self) -> Treasury:
         """Get current treasury statistics."""

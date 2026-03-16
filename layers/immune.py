@@ -348,18 +348,41 @@ class ImmuneEngine:
         """Execute the determined immune action."""
         
         if action == ImmuneAction.WARNING:
-            return self._execute_warning(agent_id, violation_type.value, evidence)
+            event = self._execute_warning(agent_id, violation_type.value, evidence)
         elif action == ImmuneAction.STRIKE:
-            return self._execute_strike(agent_id, violation_type.value, evidence)
+            event = self._execute_strike(agent_id, violation_type.value, evidence)
         elif action == ImmuneAction.PROBATION:
-            return self._execute_probation(agent_id, violation_type.value, evidence)
+            event = self._execute_probation(agent_id, violation_type.value, evidence)
         elif action == ImmuneAction.QUARANTINE:
-            return self._execute_quarantine(agent_id, violation_type.value, evidence)
+            event = self._execute_quarantine(agent_id, violation_type.value, evidence)
         elif action == ImmuneAction.DEATH:
-            death_event, _ = self.kill_agent(agent_id, violation_type.value, evidence)
-            return death_event
+            event, _ = self.kill_agent(agent_id, violation_type.value, evidence)
         else:
             raise ValueError(f"Unknown immune action: {action}")
+        
+        # Emit to event bus
+        action_to_event = {
+            ImmuneAction.WARNING: "IMMUNE_WARNING",
+            ImmuneAction.STRIKE: "IMMUNE_STRIKE",
+            ImmuneAction.PROBATION: "IMMUNE_PROBATION",
+            ImmuneAction.QUARANTINE: "IMMUNE_QUARANTINE",
+            ImmuneAction.DEATH: "IMMUNE_DEATH",
+        }
+        try:
+            from agents.event_bus import event_bus, EventType
+            event_name = action_to_event.get(action)
+            if event_name:
+                event_bus.emit_simple(
+                    getattr(EventType, event_name),
+                    agent_id=agent_id,
+                    data={"violation": violation_type.value, "action": action.value},
+                    source="immune",
+                    severity="critical" if action in (ImmuneAction.DEATH, ImmuneAction.QUARANTINE) else "warning"
+                )
+        except Exception:
+            pass
+        
+        return event
     
     def _execute_warning(self, agent_id: str, reason: str, evidence: List[str]) -> ImmuneEvent:
         """Issue warning to agent."""

@@ -272,6 +272,9 @@ class WireEngine:
         
         if scrub_result.action in ["block", "quarantine"]:
             self._handle_scrub_violation(from_agent, scrub_result, job_id)
+            _emit_event("WIRE_MESSAGE_BLOCKED", agent_id=from_agent, data={
+                "job_id": job_id, "action": scrub_result.action
+            })
             raise CommunicationError(f"Message blocked: {scrub_result.action}")
         
         # Use scrubbed content
@@ -311,6 +314,10 @@ class WireEngine:
                     "threats_detected": len(scrub_result.threats_detected)
                 }, conn=conn)
                 
+                _emit_event("WIRE_MESSAGE", agent_id=from_agent, data={
+                    "job_id": job_id, "message_id": message_id,
+                    "to_agent": message_request.to_agent
+                })
                 return message_id
                 
             except Exception as e:

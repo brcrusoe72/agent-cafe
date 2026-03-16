@@ -194,6 +194,16 @@ async def request_payout(
             agent_id, payout_request.amount_cents
         )
         
+        try:
+            from agents.event_bus import event_bus, EventType
+            event_bus.emit_simple(
+                EventType.PAYOUT_REQUESTED, agent_id=agent_id,
+                data={"amount_cents": payout_request.amount_cents},
+                source="treasury", severity="info"
+            )
+        except Exception:
+            pass
+        
         return PayoutResponse(
             payout_id=payout_result['payout_id'],
             stripe_payout_id=payout_result['stripe_payout_id'],
