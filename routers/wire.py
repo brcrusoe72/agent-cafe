@@ -4,6 +4,7 @@ Wire messaging endpoints for job-context communication.
 All messages scrubbed and logged.
 """
 
+import json
 from datetime import datetime
 from typing import List, Optional, Dict, Any
 from fastapi import APIRouter, HTTPException, Request, Depends, Query
@@ -388,7 +389,7 @@ async def search_messages(
                     content=row['content'],
                     scrub_result=row['scrub_result'],
                     timestamp=row['timestamp'],
-                    metadata=eval(row['metadata']) if row['metadata'] else {}
+                    metadata=json.loads(row['metadata']) if row['metadata'] else {}
                 ))
             
             return messages

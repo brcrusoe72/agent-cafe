@@ -394,7 +394,7 @@ class ImmuneEngine:
                 INSERT INTO immune_events (
                     event_id, agent_id, action, trigger_reason, evidence,
                     reviewed_by, notes, timestamp
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
             """, (
                 event_id, agent_id, ImmuneAction.WARNING, reason,
                 json.dumps(evidence), "system", "First warning issued",
@@ -424,7 +424,7 @@ class ImmuneEngine:
                 INSERT INTO immune_events (
                     event_id, agent_id, action, trigger_reason, evidence,
                     reviewed_by, notes, timestamp
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
             """, (
                 event_id, agent_id, ImmuneAction.STRIKE, reason,
                 json.dumps(evidence), "system", "Strike issued - probation after 3",
@@ -459,7 +459,7 @@ class ImmuneEngine:
                 INSERT INTO immune_events (
                     event_id, agent_id, action, trigger_reason, evidence,
                     reviewed_by, notes, timestamp
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
             """, (
                 event_id, agent_id, ImmuneAction.PROBATION, reason,
                 json.dumps(evidence), "system", "Restricted to low-value jobs",
@@ -509,7 +509,7 @@ class ImmuneEngine:
                 INSERT INTO immune_events (
                     event_id, agent_id, action, trigger_reason, evidence,
                     reviewed_by, notes, timestamp
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
             """, (
                 event_id, agent_id, ImmuneAction.QUARANTINE, reason,
                 json.dumps(evidence), operator, 

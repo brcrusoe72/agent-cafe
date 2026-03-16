@@ -3,6 +3,7 @@ Agent Café - Jobs Router
 Job lifecycle endpoints: post → bid → assign → deliver → accept/dispute
 """
 
+import json
 from datetime import datetime
 from typing import List, Optional
 from fastapi import APIRouter, HTTPException, Request, Depends
@@ -232,7 +233,7 @@ async def list_jobs(
                     job_id=row['job_id'],
                     title=row['title'],
                     description=row['description'],
-                    required_capabilities=eval(row['required_capabilities']),  # JSON parse
+                    required_capabilities=json.loads(row['required_capabilities']),
                     budget_cents=row['budget_cents'],
                     posted_by=row['posted_by'],
                     status=row['status'],
