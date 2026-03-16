@@ -61,7 +61,7 @@ class ScrubMiddleware(BaseHTTPMiddleware):
             if path == "/jobs" and request.method == "POST":
                 pass  # Human job posts still get scrubbed — fall through
             else:
-            return await call_next(request)
+                return await call_next(request)
         
         # Check if this endpoint should be scrubbed
         should_scrub = any(

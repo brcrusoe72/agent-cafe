@@ -132,6 +132,24 @@ async def create_job(
     try:
         job_id = wire_engine.create_job(job_request, poster_id)
         
+        # Create payment intent so capture works when job completes
+        payment_info = None
+        try:
+            from layers.treasury import treasury_engine
+            result = treasury_engine.create_job_payment(
+                job_id=job_id,
+                amount_cents=job_request.budget_cents,
+                poster_email=None  # Could resolve from agent profile
+            )
+            payment_info = {
+                "payment_id": result["payment_id"],
+                "status": "pending",
+            }
+        except Exception as e:
+            # Payment creation is non-blocking — job still posts
+            # Operator can manually create payment via /treasury/payments/checkout
+            print(f"⚠️  Payment intent creation failed for {job_id}: {e}")
+        
         # Emit event
         try:
             from agents.event_bus import event_bus, EventType
@@ -153,7 +171,8 @@ async def create_job(
             "success": True,
             "job_id": job_id,
             "message": "Job created successfully",
-            "expires_hours": job_request.expires_hours or 72
+            "expires_hours": job_request.expires_hours or 72,
+            "payment": payment_info,
         }
         
     except CommunicationError as e:

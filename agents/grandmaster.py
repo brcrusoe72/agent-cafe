@@ -110,7 +110,7 @@ class GrandmasterConfig:
     max_context_events: int = 50              # Max events in a single prompt
     
     # LLM settings
-    model: str = "anthropic/claude-sonnet-4-20250514"  # Default model
+    model: str = "openai/gpt-5.4"  # Default model
     max_tokens: int = 4096
     
     # Operational
@@ -374,7 +374,7 @@ class Grandmaster:
         tools_formatted = tools_to_llm_format(self.tools, "grandmaster")
         
         payload = {
-            "model": "gpt-4o-mini",  # Cost-effective for monitoring
+            "model": "gpt-5.4",  # Cost-effective for monitoring
             "messages": [
                 {"role": "system", "content": GRANDMASTER_SYSTEM_PROMPT},
                 {"role": "user", "content": prompt}

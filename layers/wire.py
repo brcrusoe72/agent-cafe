@@ -467,8 +467,10 @@ class WireEngine:
         except Exception:
             pass  # Completion message is secondary
         
+        # Recompute board position (single source of truth for trust score)
         try:
-            self._recalculate_trust_score(job.assigned_to)
+            from layers.presence import presence_engine
+            presence_engine.compute_board_position(job.assigned_to)
         except Exception:
             pass  # Trust recalc is secondary
         
@@ -686,11 +688,50 @@ class WireEngine:
                 new_conn.commit()
     
     def _handle_scrub_violation(self, agent_id: str, scrub_result, job_id: str) -> None:
-        """Handle scrubber violations - will integrate with immune system."""
-        # TODO: Integrate with immune layer when built
-        print(f"⚠️  Scrub violation by {agent_id} on job {job_id}: {scrub_result.action}")
-        print(f"   Threats: {[t.threat_type for t in scrub_result.threats_detected]}")
-        print(f"   Risk score: {scrub_result.risk_score}")
+        """Handle scrubber violations — route through immune system for graduated response."""
+        try:
+            from layers.immune import immune_engine, ViolationType
+
+            # Map scrub action to violation type
+            if scrub_result.action == "quarantine":
+                violation = ViolationType.SCRUB_QUARANTINE
+            else:
+                violation = ViolationType.SCRUB_BLOCK
+
+            # Override with specific threat type if detected
+            for threat in scrub_result.threats_detected:
+                tt = threat.threat_type
+                if hasattr(tt, 'value'):
+                    tt = tt.value
+                if tt == "prompt_injection":
+                    violation = ViolationType.PROMPT_INJECTION
+                    break
+                elif tt == "data_exfiltration":
+                    violation = ViolationType.DATA_EXFILTRATION
+                    break
+                elif tt == "impersonation":
+                    violation = ViolationType.IMPERSONATION
+                    break
+
+            evidence = [
+                f"job:{job_id}",
+                f"action:{scrub_result.action}",
+                f"risk_score:{scrub_result.risk_score}",
+                f"threats:{[t.threat_type for t in scrub_result.threats_detected]}",
+            ]
+
+            immune_engine.process_violation(
+                agent_id=agent_id,
+                violation_type=violation,
+                evidence=evidence,
+                trigger_context={
+                    "source": "wire_engine",
+                    "job_id": job_id,
+                    "original_message": scrub_result.original_message[:500],
+                }
+            )
+        except Exception as e:
+            print(f"⚠️  Wire immune escalation failed for {agent_id}: {e}")
     
     def _calculate_trust_impact(self, rating: float, job_value_cents: int) -> float:
         """Calculate trust score impact from job completion."""
@@ -702,47 +743,8 @@ class WireEngine:
         
         return base_impact * value_multiplier
     
-    def _recalculate_trust_score(self, agent_id: str) -> float:
-        """Recalculate agent's trust score from trust events."""
-        with get_db() as conn:
-            # Get all trust events for agent
-            trust_rows = conn.execute("""
-                SELECT impact, timestamp FROM trust_events 
-                WHERE agent_id = ? ORDER BY timestamp DESC LIMIT 50
-            """, (agent_id,)).fetchall()
-            
-            if not trust_rows:
-                return 0.0
-            
-            # Calculate weighted average with recency bias
-            total_impact = 0.0
-            total_weight = 0.0
-            
-            for i, row in enumerate(trust_rows):
-                # Weight decreases with age and position (recent events matter more)
-                weight = 1.0 / (i + 1) * 0.95 ** i
-                total_impact += row['impact'] * weight
-                total_weight += weight
-            
-            if total_weight == 0:
-                new_score = 0.0
-            else:
-                new_score = total_impact / total_weight
-            
-            # Clamp to [0.0, 1.0]
-            new_score = max(0.0, min(1.0, new_score + 0.5))  # +0.5 to center around neutral
-            
-            # Update agent record
-            conn.execute("""
-                UPDATE agents SET trust_score = ? WHERE agent_id = ?
-            """, (new_score, agent_id))
-            
-            conn.commit()
-        
-        _emit_event("TRUST_UPDATED", agent_id=agent_id, data={
-            "new_score": new_score, "events_count": len(trust_rows)
-        })
-        return new_score
+    # Trust score calculation removed — presence_engine.compute_board_position()
+    # is the single source of truth for trust scores. See layers/presence.py.
 
 
 # Global wire engine instance
