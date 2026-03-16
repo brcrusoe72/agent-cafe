@@ -12,13 +12,13 @@ from fastapi import APIRouter, HTTPException, Depends, Request, Query
 from pydantic import BaseModel
 
 try:
-    from ..middleware.auth import get_operator_access
+    from ..middleware.auth import get_operator_access, scrub_daily_limiter
     from ..middleware.scrub_middleware import get_scrub_stats, get_recent_threats
     from ..layers.scrubber import get_scrubber, learn_from_agent_kill, get_scrubber_stats
     from ..models import ThreatType, ThreatDetection, ScrubResult
     from ..db import get_known_patterns, add_known_pattern, get_db
 except ImportError:
-    from middleware.auth import get_operator_access
+    from middleware.auth import get_operator_access, scrub_daily_limiter
     from middleware.scrub_middleware import get_scrub_stats, get_recent_threats
     from layers.scrubber import get_scrubber, learn_from_agent_kill, get_scrubber_stats
     from models import ThreatType, ThreatDetection, ScrubResult
@@ -77,6 +77,78 @@ class PatternAnalysisResponse(BaseModel):
 
 
 # === ENDPOINTS ===
+
+
+class AnalyzeRequest(BaseModel):
+    message: str
+    message_type: Optional[str] = "general"
+
+
+@router.post("/analyze")
+async def analyze_message(req: AnalyzeRequest, request: Request):
+    """
+    Analyze a message for threats. Free public endpoint.
+    - Unauthenticated: 100 requests/day per IP, limited response (verdict only)
+    - Registered agents (valid API key): unlimited, full response with pattern details
+    """
+    # Determine if caller is authenticated
+    is_authenticated = False
+    auth_header = request.headers.get("Authorization", "")
+    if auth_header.startswith("Bearer "):
+        token = auth_header[7:]
+        try:
+            try:
+                from ..db import get_agent_by_api_key
+            except ImportError:
+                from db import get_agent_by_api_key
+            agent = get_agent_by_api_key(token)
+            if agent:
+                is_authenticated = True
+        except Exception:
+            pass
+
+    # Rate limit unauthenticated users
+    if not is_authenticated:
+        client_ip = request.client.host if request.client else "unknown"
+        if not scrub_daily_limiter.is_allowed(f"scrub:{client_ip}", max_per_day=100):
+            raise HTTPException(
+                status_code=429,
+                detail="Daily limit reached (100 requests/day). Register an agent for unlimited access."
+            )
+
+    try:
+        scrubber = get_scrubber()
+        result = scrubber.scrub_message(
+            message=req.message,
+            message_type=req.message_type or "general",
+        )
+
+        # Base response for everyone
+        response = {
+            "clean": result.clean,
+            "action": result.action,
+            "risk_score": result.risk_score,
+            "threat_types": [t.threat_type.value if hasattr(t.threat_type, 'value') else str(t.threat_type) for t in result.threats_detected],
+        }
+
+        # Full details only for authenticated agents
+        if is_authenticated:
+            response["threats_detected"] = [
+                {
+                    "threat_type": t.threat_type.value if hasattr(t.threat_type, 'value') else str(t.threat_type),
+                    "confidence": t.confidence,
+                    "evidence": t.evidence,
+                    "location": t.location,
+                }
+                for t in result.threats_detected
+            ]
+            response["scrubbed_message"] = result.scrubbed_message
+
+        return response
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Analysis failed: {str(e)}")
+
 
 @router.get("/stats", response_model=ScrubStatsResponse)
 async def get_scrubbing_statistics(

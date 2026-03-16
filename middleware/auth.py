@@ -74,6 +74,7 @@ class AuthMiddleware(BaseHTTPMiddleware):
     PUBLIC_ANY_ENDPOINTS = {
         "/board/register",
         "/federation/receive",
+        "/scrub/analyze",
     }
     
     # Public GET prefixes
@@ -90,7 +91,6 @@ class AuthMiddleware(BaseHTTPMiddleware):
     # Everything internal, diagnostic, or revealing is behind the operator key.
     OPERATOR_ENDPOINTS = {
         "/board/analysis",
-        "/scrub/analyze",
         "/scrub/stats",
         "/scrub/patterns",
         "/immune/review",
@@ -377,5 +377,26 @@ class RateLimiter:
         return True
 
 
-# Global rate limiter instance
+class DailyRateLimiter:
+    """Simple in-memory daily rate limiter. Resets at midnight."""
+
+    def __init__(self):
+        self.counts: dict[str, int] = {}
+        self._today: str = ""
+
+    def is_allowed(self, key: str, max_per_day: int) -> bool:
+        from datetime import date
+        today = date.today().isoformat()
+        if today != self._today:
+            self.counts.clear()
+            self._today = today
+        current = self.counts.get(key, 0)
+        if current >= max_per_day:
+            return False
+        self.counts[key] = current + 1
+        return True
+
+
+# Global rate limiter instances
 rate_limiter = RateLimiter()
+scrub_daily_limiter = DailyRateLimiter()
