@@ -552,6 +552,20 @@ class ImmuneEngine:
             
             conn.commit()
         
+        # Propagate death to federation
+        try:
+            from federation.sync import death_sync
+            agent = get_agent_by_id(agent_id)
+            death_sync.create_death_report(
+                agent_id=agent_id,
+                agent_name=agent.name if agent else "unknown",
+                cause=cause_of_death,
+                evidence=json.dumps(evidence),
+                patterns_learned=[]
+            )
+        except Exception as e:
+            print(f"⚠️ Federation death broadcast failed: {e}")
+        
         return ImmuneEvent(
             event_id=event_id,
             agent_id=agent_id,

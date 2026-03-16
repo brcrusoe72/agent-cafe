@@ -465,12 +465,14 @@ def tool_execute_agent(agent_id: str, cause: str, evidence: List[str]) -> ToolRe
     
     import uuid
     
+    # Zero wallet through treasury (single authority for wallet ops)
+    try:
+        from layers.treasury import treasury_engine
+        treasury_engine.zero_wallet_on_death(agent_id)
+    except Exception:
+        pass  # Wallet may not exist for test agents
+    
     with get_db() as conn:
-        # Zero out wallet — dead agents don't get paid
-        conn.execute("""
-            UPDATE wallets SET pending_cents = 0, available_cents = 0
-            WHERE agent_id = ?
-        """, (agent_id,))
         
         # Mark agent dead
         conn.execute("""
@@ -570,6 +572,19 @@ def tool_execute_agent(agent_id: str, cause: str, evidence: List[str]) -> ToolRe
         source="executioner",
         severity="critical"
     )
+    
+    # Propagate death to federation — other nodes should know
+    try:
+        from federation.sync import death_sync
+        death_sync.create_death_report(
+            agent_id=agent_id,
+            agent_name=agent.name,
+            cause=cause,
+            evidence=json.dumps(evidence),
+            patterns_learned=[]
+        )
+    except Exception as e:
+        print(f"⚠️ Federation death broadcast failed: {e}")
     
     return ToolResult(True, {
         "agent_id": agent_id,

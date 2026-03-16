@@ -445,40 +445,55 @@ class ScrubMiddleware(BaseHTTPMiddleware):
     async def _trigger_quarantine(self, agent_id: str, scrub_result):
         """Trigger immediate quarantine through immune system."""
         try:
-            # Import here to avoid circular dependency
             try:
-                from ..layers.immune import trigger_quarantine
+                from ..layers.immune import immune_engine, ViolationType
             except ImportError:
-                from layers.immune import trigger_quarantine
+                from layers.immune import immune_engine, ViolationType
             
             evidence = [f"Scrubber detected: {t.evidence}" for t in scrub_result.threats_detected]
             
-            await trigger_quarantine(
+            # Map scrub threat types to violation types
+            threat_types = [t.threat_type.value for t in scrub_result.threats_detected]
+            if "data_exfiltration" in threat_types:
+                violation = ViolationType.DATA_EXFILTRATION
+            elif "impersonation" in threat_types:
+                violation = ViolationType.IMPERSONATION
+            else:
+                violation = ViolationType.PROMPT_INJECTION
+            
+            immune_engine.process_violation(
                 agent_id=agent_id,
-                trigger_reason=f"Message scrubber quarantine (risk: {scrub_result.risk_score:.2f})",
-                evidence=evidence
+                violation_type=violation,
+                evidence=evidence,
+                trigger_context={"source": "scrub_middleware", "risk_score": scrub_result.risk_score}
             )
             
         except Exception as e:
-            print(f"Warning: Could not trigger quarantine for {agent_id}: {e}")
+            # Security enforcement failure — log loudly, don't silently swallow
+            print(f"🚨 CRITICAL: Quarantine failed for {agent_id}: {e}")
+            raise
     
     async def _record_strike(self, agent_id: str, scrub_result):
-        """Record a strike against the agent."""
+        """Record a strike against the agent via graduated immune response."""
         try:
-            # Import here to avoid circular dependency
             try:
-                from ..layers.immune import record_strike
+                from ..layers.immune import immune_engine, ViolationType
             except ImportError:
-                from layers.immune import record_strike
+                from layers.immune import immune_engine, ViolationType
             
-            await record_strike(
+            evidence = [f"Threat: {t.threat_type.value} - {t.evidence}" for t in scrub_result.threats_detected]
+            
+            # Strikes go through process_violation for graduated response
+            immune_engine.process_violation(
                 agent_id=agent_id,
-                reason=f"Blocked message (risk: {scrub_result.risk_score:.2f})",
-                evidence=[f"Threat: {t.threat_type.value} - {t.evidence}" for t in scrub_result.threats_detected]
+                violation_type=ViolationType.SCRUB_BLOCK,
+                evidence=evidence,
+                trigger_context={"source": "scrub_middleware", "risk_score": scrub_result.risk_score}
             )
             
         except Exception as e:
-            print(f"Warning: Could not record strike for {agent_id}: {e}")
+            print(f"🚨 CRITICAL: Strike recording failed for {agent_id}: {e}")
+            raise
 
 
 # === UTILITY FUNCTIONS ===

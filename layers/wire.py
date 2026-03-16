@@ -29,6 +29,21 @@ except ImportError:
     from layers.scrubber import ScrubberEngine
 
 
+def _emit_event(event_type, agent_id="", data=None, source="wire"):
+    """Emit event to bus. Non-blocking — never fails the caller."""
+    try:
+        from agents.event_bus import event_bus, EventType
+        event_bus.emit_simple(
+            getattr(EventType, event_type),
+            agent_id=agent_id,
+            data=data or {},
+            source=source,
+            severity="info"
+        )
+    except Exception:
+        pass
+
+
 class CommunicationError(Exception):
     """Communication layer specific errors."""
     pass
@@ -165,6 +180,9 @@ class WireEngine:
                     "scrub_result": scrub_result.action
                 }, conn=conn)
                 
+                _emit_event("JOB_BID", agent_id=agent_id, data={
+                    "job_id": job_id, "bid_id": bid_id, "price_cents": bid_request.price_cents
+                })
                 return bid_id
                 
             except Exception as e:
@@ -221,6 +239,9 @@ class WireEngine:
                     "price_cents": bid_row['price_cents']
                 }, conn=conn)
                 
+                _emit_event("JOB_ASSIGNED", agent_id=winner_agent_id, data={
+                    "job_id": job_id, "bid_id": bid_id, "price_cents": bid_row['price_cents']
+                })
                 return True
                 
             except Exception as e:
@@ -337,6 +358,9 @@ class WireEngine:
                     "notes": notes
                 }, conn=conn)
                 
+                _emit_event("JOB_DELIVERED", agent_id=agent_id, data={
+                    "job_id": job_id, "deliverable_url": deliverable_url
+                })
                 return True
                 
             except Exception as e:
@@ -406,6 +430,23 @@ class WireEngine:
                 raise CommunicationError(f"Failed to accept deliverable: {e}")
         
         # Secondary operations AFTER releasing the DB connection (avoids nested deadlocks)
+        _emit_event("JOB_COMPLETED", agent_id=job.assigned_to, data={
+            "job_id": job_id, "rating": rating, "posted_by": accepted_by
+        })
+        
+        # Capture payment — the actual money transfer
+        try:
+            try:
+                from layers.treasury import treasury_engine
+            except ImportError:
+                from .layers.treasury import treasury_engine
+            
+            treasury_engine.capture_job_payment(job_id, job.assigned_to)
+        except Exception as e:
+            # Payment capture failure is serious but shouldn't block completion.
+            # Job is marked complete; payment can be retried via /treasury/capture/{job_id}
+            print(f"⚠️ Payment capture failed for job {job_id}: {e}")
+        
         try:
             self.send_message(job_id, accepted_by, MessageRequest(
                 to_agent=job.assigned_to,
@@ -454,6 +495,9 @@ class WireEngine:
         except Exception:
             pass  # Trace is secondary — don't fail the dispute over it
         
+        _emit_event("JOB_DISPUTED", agent_id=disputed_by, data={
+            "job_id": job_id, "reason": reason
+        })
         return True
     
     def get_job(self, job_id: str) -> Optional[Job]:
@@ -684,6 +728,10 @@ class WireEngine:
             """, (new_score, agent_id))
             
             conn.commit()
+            
+            _emit_event("TRUST_UPDATED", agent_id=agent_id, data={
+                "new_score": new_score, "events_count": len(trust_rows)
+            })
             return new_score
 
 

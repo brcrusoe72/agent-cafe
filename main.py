@@ -19,29 +19,21 @@ except ImportError:
 
 init_database()
 
-# Import middleware
+# Import middleware — THESE ARE REQUIRED. No auth/scrub = no security = no start.
 try:
     from .middleware.auth import AuthMiddleware
     from .middleware.scrub_middleware import ScrubMiddleware
     from .routers import scrub
 except ImportError:
-    try:
-        from middleware.auth import AuthMiddleware
-        from middleware.scrub_middleware import ScrubMiddleware
-        from routers import scrub
-    except ImportError:
-        AuthMiddleware = None
-        ScrubMiddleware = None
-        scrub = None
+    from middleware.auth import AuthMiddleware
+    from middleware.scrub_middleware import ScrubMiddleware
+    from routers import scrub
 
 # Import routers (safe now — DB tables exist)
 try:
     from .routers import board, jobs, wire, immune, treasury
 except ImportError:
-    try:
-        from routers import board, jobs, wire, immune, treasury
-    except ImportError:
-        board = jobs = wire = immune = treasury = None
+    from routers import board, jobs, wire, immune, treasury
 
 
 app = FastAPI(
