@@ -40,8 +40,8 @@ def _emit_event(event_type, agent_id="", data=None, source="wire"):
             source=source,
             severity="info"
         )
-    except Exception:
-        pass
+    except Exception as e:
+        print(f"⚠️ Event emission failed for {event_type}: {e}")
 
 
 class CommunicationError(Exception):
@@ -57,6 +57,9 @@ class WireEngine:
     
     def create_job(self, job_request: JobCreateRequest, posted_by: str) -> str:
         """Create a new job with interaction trace."""
+        if job_request.budget_cents is not None and job_request.budget_cents < 100:
+            raise CommunicationError("Budget must be at least $1.00 (100 cents)")
+        
         job_id = f"job_{uuid.uuid4().hex[:16]}"
         trace_id = f"trace_{uuid.uuid4().hex[:16]}"
         
@@ -180,13 +183,13 @@ class WireEngine:
                     "scrub_result": scrub_result.action
                 }, conn=conn)
                 
-                _emit_event("JOB_BID", agent_id=agent_id, data={
-                    "job_id": job_id, "bid_id": bid_id, "price_cents": bid_request.price_cents
-                })
-                return bid_id
-                
             except Exception as e:
                 raise CommunicationError(f"Failed to submit bid: {e}")
+        
+        _emit_event("JOB_BID", agent_id=agent_id, data={
+            "job_id": job_id, "bid_id": bid_id, "price_cents": bid_request.price_cents
+        })
+        return bid_id
     
     def assign_job(self, job_id: str, bid_id: str, assigned_by: str) -> bool:
         """Assign job to winning bidder."""
@@ -239,13 +242,13 @@ class WireEngine:
                     "price_cents": bid_row['price_cents']
                 }, conn=conn)
                 
-                _emit_event("JOB_ASSIGNED", agent_id=winner_agent_id, data={
-                    "job_id": job_id, "bid_id": bid_id, "price_cents": bid_row['price_cents']
-                })
-                return True
-                
             except Exception as e:
                 raise CommunicationError(f"Failed to assign job: {e}")
+        
+        _emit_event("JOB_ASSIGNED", agent_id=winner_agent_id, data={
+            "job_id": job_id, "bid_id": bid_id, "price_cents": bid_row['price_cents']
+        })
+        return True
     
     def send_message(self, job_id: str, from_agent: str, message_request: MessageRequest) -> str:
         """Send a message within job context with full scrubbing."""
@@ -314,14 +317,14 @@ class WireEngine:
                     "threats_detected": len(scrub_result.threats_detected)
                 }, conn=conn)
                 
-                _emit_event("WIRE_MESSAGE", agent_id=from_agent, data={
-                    "job_id": job_id, "message_id": message_id,
-                    "to_agent": message_request.to_agent
-                })
-                return message_id
-                
             except Exception as e:
                 raise CommunicationError(f"Failed to send message: {e}")
+        
+        _emit_event("WIRE_MESSAGE", agent_id=from_agent, data={
+            "job_id": job_id, "message_id": message_id,
+            "to_agent": message_request.to_agent
+        })
+        return message_id
     
     def submit_deliverable(self, job_id: str, agent_id: str, deliverable_url: str, notes: str = "") -> bool:
         """Submit deliverable for a job."""
@@ -365,13 +368,13 @@ class WireEngine:
                     "notes": notes
                 }, conn=conn)
                 
-                _emit_event("JOB_DELIVERED", agent_id=agent_id, data={
-                    "job_id": job_id, "deliverable_url": deliverable_url
-                })
-                return True
-                
             except Exception as e:
                 raise CommunicationError(f"Failed to submit deliverable: {e}")
+        
+        _emit_event("JOB_DELIVERED", agent_id=agent_id, data={
+            "job_id": job_id, "deliverable_url": deliverable_url
+        })
+        return True
     
     def accept_deliverable(self, job_id: str, accepted_by: str, rating: float, feedback: str = "") -> bool:
         """Accept deliverable and complete job."""
@@ -735,11 +738,11 @@ class WireEngine:
             """, (new_score, agent_id))
             
             conn.commit()
-            
-            _emit_event("TRUST_UPDATED", agent_id=agent_id, data={
-                "new_score": new_score, "events_count": len(trust_rows)
-            })
-            return new_score
+        
+        _emit_event("TRUST_UPDATED", agent_id=agent_id, data={
+            "new_score": new_score, "events_count": len(trust_rows)
+        })
+        return new_score
 
 
 # Global wire engine instance

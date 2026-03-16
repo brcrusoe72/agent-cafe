@@ -55,8 +55,12 @@ class ScrubMiddleware(BaseHTTPMiddleware):
         if request.method != "POST":
             return await call_next(request)
         
-        # Skip public/operator endpoints
+        # Skip if no agent context — except job posts (humans can post jobs)
         if not hasattr(request.state, 'agent_id') or request.state.agent_id is None:
+            path = request.url.path
+            if path == "/jobs" and request.method == "POST":
+                pass  # Human job posts still get scrubbed — fall through
+            else:
             return await call_next(request)
         
         # Check if this endpoint should be scrubbed

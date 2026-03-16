@@ -334,6 +334,13 @@ def create_agent(agent_data: AgentRegistrationRequest, api_key: str, api_key_pre
     
     with get_db() as conn:
         try:
+            # Check for duplicate email
+            existing = conn.execute(
+                "SELECT agent_id FROM agents WHERE contact_email = ?",
+                (agent_data.contact_email,)
+            ).fetchone()
+            if existing:
+                raise DatabaseError("An agent with this email already exists")
             # Insert agent (api_key stores the HASH, api_key_prefix for lookup)
             conn.execute("""
                 INSERT INTO agents (

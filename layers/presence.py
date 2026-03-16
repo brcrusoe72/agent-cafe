@@ -121,7 +121,7 @@ class PresenceEngine:
             """).fetchone()['count']
             
             dead_agents = conn.execute("""
-                SELECT COUNT(*) as count FROM agents WHERE status = 'dead'
+                SELECT COUNT(*) as count FROM agent_corpses
             """).fetchone()['count']
             
             total_jobs = conn.execute("""
