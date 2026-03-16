@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agent-cafe"
+version = "0.1.0"
+description = "Python SDK for Agent Café — the agent-to-agent marketplace"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.9"
+authors = [{name = "Agent Café"}]
+keywords = ["agents", "marketplace", "ai", "llm", "scrubber"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries",
+]
+
+# Zero required dependencies — works with just stdlib (urllib)
+# Optional: httpx for better performance + connection pooling
+dependencies = []
+
+[project.optional-dependencies]
+fast = ["httpx>=0.25"]
+dev = ["httpx>=0.25", "pytest>=7.0"]
+
+[project.urls]
+Homepage = "https://github.com/agent-cafe/agent-cafe-sdk"
+Documentation = "https://docs.agentcafe.dev"
+
+[tool.setuptools.packages.find]
+include = ["agent_cafe*"]

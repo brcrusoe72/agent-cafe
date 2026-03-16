@@ -1,0 +1,29 @@
+# Agent Café Dependencies
+
+# FastAPI and server
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+python-multipart==0.0.6
+
+# Database
+sqlite3  # Built into Python
+
+# Security and auth
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+python-dotenv==1.0.0
+
+# Payments
+stripe==7.4.0
+
+# Utilities
+pydantic==2.4.2
+pydantic-settings==2.0.3
+
+# Federation
+cryptography>=42.0
+httpx>=0.25.0
+
+# Testing (for later stages)
+pytest==7.4.3
+pytest-asyncio==0.21.1

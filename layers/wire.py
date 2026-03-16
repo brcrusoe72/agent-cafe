@@ -1,0 +1,678 @@
+"""
+Agent Café - Communication Layer 📡 (The Wire)
+Where actual work happens. Every interaction is logged, traced, and attributed.
+No anonymous messages. No off-the-record conversations.
+"""
+
+import json
+import hashlib
+import uuid
+from datetime import datetime, timedelta
+from typing import List, Optional, Dict, Any, Tuple
+from dataclasses import asdict
+
+try:
+    from ..models import (
+        Job, JobStatus, Bid, WireMessage, InteractionTrace,
+        JobCreateRequest, BidCreateRequest, MessageRequest,
+        TrustEvent, AgentStatus
+    )
+    from ..db import get_db, DatabaseError, get_agent_by_id
+    from .scrubber import ScrubberEngine
+except ImportError:
+    from models import (
+        Job, JobStatus, Bid, WireMessage, InteractionTrace,
+        JobCreateRequest, BidCreateRequest, MessageRequest,
+        TrustEvent, AgentStatus
+    )
+    from db import get_db, DatabaseError, get_agent_by_id
+    from layers.scrubber import ScrubberEngine
+
+
+class CommunicationError(Exception):
+    """Communication layer specific errors."""
+    pass
+
+
+class WireEngine:
+    """Core communication engine managing job lifecycle and messaging."""
+    
+    def __init__(self):
+        self.scrubber = ScrubberEngine()
+    
+    def create_job(self, job_request: JobCreateRequest, posted_by: str) -> str:
+        """Create a new job with interaction trace."""
+        job_id = f"job_{uuid.uuid4().hex[:16]}"
+        trace_id = f"trace_{uuid.uuid4().hex[:16]}"
+        
+        with get_db() as conn:
+            try:
+                expires_at = None
+                if job_request.expires_hours:
+                    expires_at = datetime.now() + timedelta(hours=job_request.expires_hours)
+                
+                # Create job
+                conn.execute("""
+                    INSERT INTO jobs (
+                        job_id, title, description, required_capabilities, budget_cents,
+                        posted_by, status, posted_at, expires_at, interaction_trace_id
+                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """, (
+                    job_id, job_request.title, job_request.description,
+                    json.dumps(job_request.required_capabilities), job_request.budget_cents,
+                    posted_by, JobStatus.OPEN, datetime.now(), expires_at, trace_id
+                ))
+                
+                # Create interaction trace
+                conn.execute("""
+                    INSERT INTO interaction_traces (trace_id, job_id, started_at)
+                    VALUES (?, ?, ?)
+                """, (trace_id, job_id, datetime.now()))
+                
+                conn.commit()
+                
+                # Create initial trace event
+                self._add_trace_event(trace_id, "job_created", {
+                    "posted_by": posted_by,
+                    "title": job_request.title,
+                    "budget_cents": job_request.budget_cents,
+                    "expires_hours": job_request.expires_hours
+                }, conn=conn)
+                
+                return job_id
+                
+            except Exception as e:
+                raise CommunicationError(f"Failed to create job: {e}")
+    
+    def submit_bid(self, job_id: str, agent_id: str, bid_request: BidCreateRequest) -> str:
+        """Submit a bid for a job with scrubbing."""
+        # Verify job exists and is open
+        job = self.get_job(job_id)
+        if not job:
+            raise CommunicationError("Job not found")
+        if job.status != JobStatus.OPEN:
+            raise CommunicationError(f"Job is {job.status}, not open for bids")
+        
+        # Verify agent exists and can bid
+        agent = get_agent_by_id(agent_id)
+        if not agent:
+            raise CommunicationError("Agent not found")
+        if agent.status not in [AgentStatus.ACTIVE, AgentStatus.PROBATION]:
+            raise CommunicationError(f"Agent status {agent.status} cannot bid")
+        
+        # Check stake requirement ($10 minimum)
+        if agent.stake_cents < 1000:
+            raise CommunicationError("Insufficient stake to bid (minimum $10.00)")
+        
+        # Scrub the pitch message
+        scrub_result = self.scrubber.scrub_message(
+            bid_request.pitch, 
+            message_type="bid",
+            job_context={"job_id": job_id, "agent_id": agent_id}
+        )
+        
+        if scrub_result.action in ["block", "quarantine"]:
+            # This will trigger immune response
+            self._handle_scrub_violation(agent_id, scrub_result, job_id)
+            raise CommunicationError(f"Bid rejected: {scrub_result.action}")
+        
+        # Use scrubbed version if cleaned
+        final_pitch = scrub_result.scrubbed_message or bid_request.pitch
+        
+        bid_id = f"bid_{uuid.uuid4().hex[:16]}"
+        
+        with get_db() as conn:
+            try:
+                # Check for existing bid
+                existing = conn.execute("""
+                    SELECT bid_id FROM bids WHERE job_id = ? AND agent_id = ?
+                """, (job_id, agent_id)).fetchone()
+                
+                if existing:
+                    raise CommunicationError("Agent already has a bid on this job")
+                
+                # Create bid
+                conn.execute("""
+                    INSERT INTO bids (
+                        bid_id, job_id, agent_id, price_cents, pitch, 
+                        submitted_at, status
+                    ) VALUES (?, ?, ?, ?, ?, ?, ?)
+                """, (
+                    bid_id, job_id, agent_id, bid_request.price_cents,
+                    final_pitch, datetime.now(), "pending"
+                ))
+                
+                conn.commit()
+                
+                # Add to interaction trace
+                self._add_trace_event(job.interaction_trace_id, "bid_submitted", {
+                    "bid_id": bid_id,
+                    "agent_id": agent_id,
+                    "price_cents": bid_request.price_cents,
+                    "scrub_result": scrub_result.action
+                }, conn=conn)
+                
+                return bid_id
+                
+            except Exception as e:
+                raise CommunicationError(f"Failed to submit bid: {e}")
+    
+    def assign_job(self, job_id: str, bid_id: str, assigned_by: str) -> bool:
+        """Assign job to winning bidder."""
+        job = self.get_job(job_id)
+        if not job:
+            raise CommunicationError("Job not found")
+        if job.status != JobStatus.OPEN:
+            raise CommunicationError(f"Job is {job.status}, cannot assign")
+        
+        # Verify assignment authority
+        if job.posted_by != assigned_by:
+            # TODO: Check operator privileges
+            raise CommunicationError("Only job poster can assign")
+        
+        with get_db() as conn:
+            try:
+                # Get winning bid
+                bid_row = conn.execute("""
+                    SELECT * FROM bids WHERE bid_id = ? AND job_id = ?
+                """, (bid_id, job_id)).fetchone()
+                
+                if not bid_row:
+                    raise CommunicationError("Bid not found")
+                
+                winner_agent_id = bid_row['agent_id']
+                
+                # Update job status
+                conn.execute("""
+                    UPDATE jobs SET status = ?, assigned_to = ? WHERE job_id = ?
+                """, (JobStatus.ASSIGNED, winner_agent_id, job_id))
+                
+                # Update winning bid
+                conn.execute("""
+                    UPDATE bids SET status = 'accepted' WHERE bid_id = ?
+                """, (bid_id,))
+                
+                # Reject all other bids
+                conn.execute("""
+                    UPDATE bids SET status = 'rejected' 
+                    WHERE job_id = ? AND bid_id != ?
+                """, (job_id, bid_id))
+                
+                conn.commit()
+                
+                # Add to interaction trace
+                self._add_trace_event(job.interaction_trace_id, "job_assigned", {
+                    "bid_id": bid_id,
+                    "winner_agent_id": winner_agent_id,
+                    "assigned_by": assigned_by,
+                    "price_cents": bid_row['price_cents']
+                }, conn=conn)
+                
+                return True
+                
+            except Exception as e:
+                raise CommunicationError(f"Failed to assign job: {e}")
+    
+    def send_message(self, job_id: str, from_agent: str, message_request: MessageRequest) -> str:
+        """Send a message within job context with full scrubbing."""
+        # Verify job exists and agent is involved
+        job = self.get_job(job_id)
+        if not job:
+            raise CommunicationError("Job not found")
+        
+        # Verify agent is part of this job
+        if from_agent not in [job.posted_by, job.assigned_to]:
+            raise CommunicationError("Agent not authorized for this job")
+        
+        # Scrub the message
+        scrub_result = self.scrubber.scrub_message(
+            message_request.content,
+            message_type=message_request.message_type or "wire_message",
+            job_context={
+                "job_id": job_id,
+                "from_agent": from_agent,
+                "to_agent": message_request.to_agent,
+                "metadata": message_request.metadata or {}
+            }
+        )
+        
+        if scrub_result.action in ["block", "quarantine"]:
+            self._handle_scrub_violation(from_agent, scrub_result, job_id)
+            raise CommunicationError(f"Message blocked: {scrub_result.action}")
+        
+        # Use scrubbed content
+        final_content = scrub_result.scrubbed_message or message_request.content
+        content_hash = hashlib.sha256(final_content.encode()).hexdigest()
+        
+        # Create signature (simple for now - could be cryptographic)
+        signature = hashlib.sha256(f"{from_agent}:{job_id}:{content_hash}:{datetime.now().isoformat()}".encode()).hexdigest()
+        
+        message_id = f"msg_{uuid.uuid4().hex[:16]}"
+        
+        with get_db() as conn:
+            try:
+                # Store message
+                conn.execute("""
+                    INSERT INTO wire_messages (
+                        message_id, job_id, from_agent, to_agent, message_type,
+                        content, content_hash, signature, scrub_result, 
+                        timestamp, metadata
+                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """, (
+                    message_id, job_id, from_agent, message_request.to_agent,
+                    message_request.message_type, final_content, content_hash,
+                    signature, scrub_result.action, datetime.now(),
+                    json.dumps(message_request.metadata or {})
+                ))
+                
+                conn.commit()
+                
+                # Add to interaction trace
+                self._add_trace_event(job.interaction_trace_id, "message_sent", {
+                    "message_id": message_id,
+                    "from_agent": from_agent,
+                    "to_agent": message_request.to_agent,
+                    "message_type": message_request.message_type,
+                    "scrub_result": scrub_result.action,
+                    "threats_detected": len(scrub_result.threats_detected)
+                }, conn=conn)
+                
+                return message_id
+                
+            except Exception as e:
+                raise CommunicationError(f"Failed to send message: {e}")
+    
+    def submit_deliverable(self, job_id: str, agent_id: str, deliverable_url: str, notes: str = "") -> bool:
+        """Submit deliverable for a job."""
+        job = self.get_job(job_id)
+        if not job:
+            raise CommunicationError("Job not found")
+        if job.assigned_to != agent_id:
+            raise CommunicationError("Only assigned agent can submit deliverable")
+        if job.status not in [JobStatus.ASSIGNED, JobStatus.IN_PROGRESS]:
+            raise CommunicationError(f"Job status {job.status} cannot submit deliverable")
+        
+        with get_db() as conn:
+            try:
+                # Update job with deliverable
+                conn.execute("""
+                    UPDATE jobs SET status = ?, deliverable_url = ? WHERE job_id = ?
+                """, (JobStatus.DELIVERED, deliverable_url, job_id))
+                
+                conn.commit()
+                
+                # Send deliverable notification message
+                if notes:
+                    self.send_message(job_id, agent_id, MessageRequest(
+                        to_agent=job.posted_by,
+                        message_type="deliverable",
+                        content=f"Deliverable submitted: {deliverable_url}\n\nNotes: {notes}",
+                        metadata={"deliverable_url": deliverable_url}
+                    ))
+                else:
+                    self.send_message(job_id, agent_id, MessageRequest(
+                        to_agent=job.posted_by,
+                        message_type="deliverable",
+                        content=f"Deliverable submitted: {deliverable_url}",
+                        metadata={"deliverable_url": deliverable_url}
+                    ))
+                
+                # Add to trace
+                self._add_trace_event(job.interaction_trace_id, "deliverable_submitted", {
+                    "agent_id": agent_id,
+                    "deliverable_url": deliverable_url,
+                    "notes": notes
+                }, conn=conn)
+                
+                return True
+                
+            except Exception as e:
+                raise CommunicationError(f"Failed to submit deliverable: {e}")
+    
+    def accept_deliverable(self, job_id: str, accepted_by: str, rating: float, feedback: str = "") -> bool:
+        """Accept deliverable and complete job."""
+        job = self.get_job(job_id)
+        if not job:
+            raise CommunicationError("Job not found")
+        if job.posted_by != accepted_by:
+            raise CommunicationError("Only job poster can accept deliverable")
+        if job.status != JobStatus.DELIVERED:
+            raise CommunicationError(f"Job status {job.status} cannot be accepted")
+        
+        if not (1.0 <= rating <= 5.0):
+            raise CommunicationError("Rating must be between 1.0 and 5.0")
+        
+        with get_db() as conn:
+            try:
+                # Complete the job
+                completed_at = datetime.now()
+                conn.execute("""
+                    UPDATE jobs SET status = ?, completed_at = ? WHERE job_id = ?
+                """, (JobStatus.COMPLETED, completed_at, job_id))
+                
+                # Complete the interaction trace
+                conn.execute("""
+                    UPDATE interaction_traces SET completed_at = ?, outcome = ?
+                    WHERE job_id = ?
+                """, (completed_at, "completed", job_id))
+                
+                # Create trust event
+                trust_event_id = f"trust_{uuid.uuid4().hex[:16]}"
+                trust_impact = self._calculate_trust_impact(rating, job.budget_cents)
+                
+                conn.execute("""
+                    INSERT INTO trust_events (
+                        event_id, agent_id, event_type, job_id, rating, 
+                        impact, timestamp, notes
+                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                """, (
+                    trust_event_id, job.assigned_to, "job_completion", 
+                    job_id, rating, trust_impact, datetime.now(), feedback
+                ))
+                
+                # Update agent stats
+                conn.execute("""
+                    UPDATE agents SET 
+                        jobs_completed = jobs_completed + 1,
+                        avg_rating = (avg_rating * jobs_completed + ?) / (jobs_completed + 1),
+                        last_active = ?
+                    WHERE agent_id = ?
+                """, (rating, datetime.now(), job.assigned_to))
+                
+                # Add to trace (same connection — no deadlock)
+                self._add_trace_event(job.interaction_trace_id, "job_completed", {
+                    "accepted_by": accepted_by,
+                    "rating": rating,
+                    "feedback": feedback,
+                    "trust_impact": trust_impact
+                }, conn=conn)
+                
+                conn.commit()
+                
+            except Exception as e:
+                raise CommunicationError(f"Failed to accept deliverable: {e}")
+        
+        # Secondary operations AFTER releasing the DB connection (avoids nested deadlocks)
+        try:
+            self.send_message(job_id, accepted_by, MessageRequest(
+                to_agent=job.assigned_to,
+                message_type="completion",
+                content=f"Deliverable accepted! Rating: {rating}/5\n\nFeedback: {feedback}",
+                metadata={"rating": rating, "feedback": feedback}
+            ))
+        except Exception:
+            pass  # Completion message is secondary
+        
+        try:
+            self._recalculate_trust_score(job.assigned_to)
+        except Exception:
+            pass  # Trust recalc is secondary
+        
+        return True
+    
+    def dispute_job(self, job_id: str, disputed_by: str, reason: str) -> bool:
+        """Dispute a job outcome."""
+        job = self.get_job(job_id)
+        if not job:
+            raise CommunicationError("Job not found")
+        if disputed_by not in [job.posted_by, job.assigned_to]:
+            raise CommunicationError("Only job participants can dispute")
+        if job.status not in [JobStatus.DELIVERED, JobStatus.COMPLETED]:
+            raise CommunicationError(f"Job status {job.status} cannot be disputed")
+        
+        with get_db() as conn:
+            try:
+                # Mark job as disputed
+                conn.execute("""
+                    UPDATE jobs SET status = ? WHERE job_id = ?
+                """, (JobStatus.DISPUTED, job_id))
+                
+                conn.commit()
+                
+            except Exception as e:
+                raise CommunicationError(f"Failed to dispute job: {e}")
+        
+        # Add trace event AFTER releasing the write lock (avoids nested connection deadlock)
+        try:
+            self._add_trace_event(job.interaction_trace_id, "job_disputed", {
+                "disputed_by": disputed_by,
+                "reason": reason
+            })
+        except Exception:
+            pass  # Trace is secondary — don't fail the dispute over it
+        
+        return True
+    
+    def get_job(self, job_id: str) -> Optional[Job]:
+        """Get job by ID."""
+        with get_db() as conn:
+            row = conn.execute("""
+                SELECT * FROM jobs WHERE job_id = ?
+            """, (job_id,)).fetchone()
+            
+            if not row:
+                return None
+            
+            return Job(
+                job_id=row['job_id'],
+                title=row['title'],
+                description=row['description'],
+                required_capabilities=json.loads(row['required_capabilities']),
+                budget_cents=row['budget_cents'],
+                posted_by=row['posted_by'],
+                status=JobStatus(row['status']),
+                assigned_to=row['assigned_to'],
+                deliverable_url=row['deliverable_url'],
+                posted_at=datetime.fromisoformat(row['posted_at']),
+                expires_at=datetime.fromisoformat(row['expires_at']) if row['expires_at'] else None,
+                completed_at=datetime.fromisoformat(row['completed_at']) if row['completed_at'] else None,
+                interaction_trace_id=row['interaction_trace_id']
+            )
+    
+    def get_job_bids(self, job_id: str) -> List[Bid]:
+        """Get all bids for a job."""
+        with get_db() as conn:
+            rows = conn.execute("""
+                SELECT * FROM bids WHERE job_id = ? ORDER BY submitted_at
+            """, (job_id,)).fetchall()
+            
+            bids = []
+            for row in rows:
+                bids.append(Bid(
+                    bid_id=row['bid_id'],
+                    job_id=row['job_id'],
+                    agent_id=row['agent_id'],
+                    price_cents=row['price_cents'],
+                    pitch=row['pitch'],
+                    submitted_at=datetime.fromisoformat(row['submitted_at']),
+                    status=row['status']
+                ))
+            
+            return bids
+    
+    def get_job_messages(self, job_id: str) -> List[WireMessage]:
+        """Get all messages for a job."""
+        with get_db() as conn:
+            rows = conn.execute("""
+                SELECT * FROM wire_messages WHERE job_id = ? ORDER BY timestamp
+            """, (job_id,)).fetchall()
+            
+            messages = []
+            for row in rows:
+                messages.append(WireMessage(
+                    message_id=row['message_id'],
+                    job_id=row['job_id'],
+                    from_agent=row['from_agent'],
+                    to_agent=row['to_agent'],
+                    message_type=row['message_type'],
+                    content=row['content'],
+                    content_hash=row['content_hash'],
+                    signature=row['signature'],
+                    scrub_result=row['scrub_result'],
+                    timestamp=datetime.fromisoformat(row['timestamp']),
+                    metadata=json.loads(row['metadata'])
+                ))
+            
+            return messages
+    
+    def get_interaction_trace(self, job_id: str) -> Optional[InteractionTrace]:
+        """Get full interaction trace for a job."""
+        job = self.get_job(job_id)
+        if not job:
+            return None
+        
+        with get_db() as conn:
+            trace_row = conn.execute("""
+                SELECT * FROM interaction_traces WHERE job_id = ?
+            """, (job_id,)).fetchone()
+            
+            if not trace_row:
+                return None
+            
+            # Get all related data
+            messages = self.get_job_messages(job_id)
+            
+            # Get scrub events
+            scrub_rows = conn.execute("""
+                SELECT * FROM scrub_results WHERE trace_id = ? ORDER BY timestamp
+            """, (trace_row['trace_id'],)).fetchall()
+            
+            scrub_events = []
+            for row in scrub_rows:
+                scrub_events.append({
+                    "scrub_id": row['scrub_id'],
+                    "clean": bool(row['clean']),
+                    "original_message": row['original_message'],
+                    "scrubbed_message": row['scrubbed_message'],
+                    "threats_detected": json.loads(row['threats_detected']),
+                    "risk_score": row['risk_score'],
+                    "action": row['action'],
+                    "timestamp": row['timestamp']
+                })
+            
+            # Get trust events
+            trust_rows = conn.execute("""
+                SELECT * FROM trust_events WHERE job_id = ? ORDER BY timestamp
+            """, (job_id,)).fetchall()
+            
+            trust_events = [dict(row) for row in trust_rows]
+            
+            return InteractionTrace(
+                trace_id=trace_row['trace_id'],
+                job_id=job_id,
+                messages=messages,
+                scrub_events=scrub_events,
+                trust_events=trust_events,
+                payment_events=[],  # TODO: Add payment events from treasury layer
+                immune_events=[],   # TODO: Add immune events
+                started_at=datetime.fromisoformat(trace_row['started_at']),
+                completed_at=datetime.fromisoformat(trace_row['completed_at']) if trace_row['completed_at'] else None,
+                outcome=trace_row['outcome']
+            )
+    
+    def expire_old_jobs(self) -> int:
+        """Expire jobs that have passed their deadline."""
+        expired_count = 0
+        
+        with get_db() as conn:
+            # Find expired jobs
+            expired_jobs = conn.execute("""
+                SELECT job_id, interaction_trace_id FROM jobs 
+                WHERE status = 'open' AND expires_at < ?
+            """, (datetime.now(),)).fetchall()
+            
+            for job_row in expired_jobs:
+                # Mark as expired
+                conn.execute("""
+                    UPDATE jobs SET status = ? WHERE job_id = ?
+                """, (JobStatus.EXPIRED, job_row['job_id']))
+                
+                # Update trace
+                self._add_trace_event(job_row['interaction_trace_id'], "job_expired", {
+                    "expired_at": datetime.now().isoformat()
+                }, conn=conn)
+                
+                expired_count += 1
+            
+            conn.commit()
+            return expired_count
+    
+    def _add_trace_event(self, trace_id: str, event_type: str, event_data: Dict[str, Any], conn=None) -> None:
+        """Add an event to the interaction trace.
+        
+        Pass existing `conn` to avoid nested connection deadlocks in SQLite.
+        """
+        def _do_insert(c):
+            c.execute("""
+                INSERT INTO trace_events (event_id, trace_id, event_type, event_data, timestamp)
+                VALUES (?, ?, ?, ?, ?)
+            """, (
+                f"tevt_{uuid.uuid4().hex[:16]}", trace_id, event_type,
+                json.dumps(event_data), datetime.now()
+            ))
+        
+        if conn is not None:
+            _do_insert(conn)
+        else:
+            with get_db() as new_conn:
+                _do_insert(new_conn)
+                new_conn.commit()
+    
+    def _handle_scrub_violation(self, agent_id: str, scrub_result, job_id: str) -> None:
+        """Handle scrubber violations - will integrate with immune system."""
+        # TODO: Integrate with immune layer when built
+        print(f"⚠️  Scrub violation by {agent_id} on job {job_id}: {scrub_result.action}")
+        print(f"   Threats: {[t.threat_type for t in scrub_result.threats_detected]}")
+        print(f"   Risk score: {scrub_result.risk_score}")
+    
+    def _calculate_trust_impact(self, rating: float, job_value_cents: int) -> float:
+        """Calculate trust score impact from job completion."""
+        # Base impact from rating (1-5 scale to -0.1 to +0.1)
+        base_impact = (rating - 3.0) * 0.033  # 5=+0.1, 1=-0.1, 3=0
+        
+        # Scale by job value (larger jobs have more impact)
+        value_multiplier = min(1.0 + (job_value_cents / 10000), 2.0)  # Cap at 2x
+        
+        return base_impact * value_multiplier
+    
+    def _recalculate_trust_score(self, agent_id: str) -> float:
+        """Recalculate agent's trust score from trust events."""
+        with get_db() as conn:
+            # Get all trust events for agent
+            trust_rows = conn.execute("""
+                SELECT impact, timestamp FROM trust_events 
+                WHERE agent_id = ? ORDER BY timestamp DESC LIMIT 50
+            """, (agent_id,)).fetchall()
+            
+            if not trust_rows:
+                return 0.0
+            
+            # Calculate weighted average with recency bias
+            total_impact = 0.0
+            total_weight = 0.0
+            
+            for i, row in enumerate(trust_rows):
+                # Weight decreases with age and position (recent events matter more)
+                weight = 1.0 / (i + 1) * 0.95 ** i
+                total_impact += row['impact'] * weight
+                total_weight += weight
+            
+            if total_weight == 0:
+                new_score = 0.0
+            else:
+                new_score = total_impact / total_weight
+            
+            # Clamp to [0.0, 1.0]
+            new_score = max(0.0, min(1.0, new_score + 0.5))  # +0.5 to center around neutral
+            
+            # Update agent record
+            conn.execute("""
+                UPDATE agents SET trust_score = ? WHERE agent_id = ?
+            """, (new_score, agent_id))
+            
+            conn.commit()
+            return new_score
+
+
+# Global wire engine instance
+wire_engine = WireEngine()

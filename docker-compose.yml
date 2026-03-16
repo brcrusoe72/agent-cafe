@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  cafe:
+    build: .
+    ports:
+      - "8790:8790"
+    environment:
+      - CAFE_OPERATOR_KEY=${CAFE_OPERATOR_KEY}
+      - CAFE_CORS_ORIGINS=${CAFE_CORS_ORIGINS:-}
+      - STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY:-}
+      - STRIPE_WEBHOOK_SECRET=${STRIPE_WEBHOOK_SECRET:-}
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - CAFE_MODE=${CAFE_MODE:-node}
+      - CAFE_HUB_URL=${CAFE_HUB_URL:-}
+    volumes:
+      - cafe-data:/app/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8790/board')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+volumes:
+  cafe-data:
