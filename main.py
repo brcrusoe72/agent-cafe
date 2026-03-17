@@ -71,6 +71,20 @@ from starlette.middleware.base import BaseHTTPMiddleware
 
 MAX_BODY_BYTES = 64 * 1024
 
+class DrainMiddleware(BaseHTTPMiddleware):
+    """Reject new write requests when server is shutting down."""
+    async def dispatch(self, request, call_next):
+        if getattr(request.app.state, 'draining', False):
+            if request.method in ("POST", "PUT", "PATCH", "DELETE"):
+                # Allow health checks during drain
+                if request.url.path != "/health":
+                    return JSONResponse(
+                        status_code=503,
+                        content={"error": "server_draining", "detail": "Server is shutting down. Try another node."}
+                    )
+        return await call_next(request)
+
+
 class BodySizeLimitMiddleware(BaseHTTPMiddleware):
     async def dispatch(self, request, call_next):
         if request.method in ("POST", "PUT", "PATCH"):
@@ -95,8 +109,9 @@ except Exception as e:
     logger.warning("Security module: %s", e)
 
 # Add middleware (order matters - last added runs first)
-# Request flows: TimingNorm → BodySize → Scrub → Auth → RequestID → handler
+# Request flows: TimingNorm → Drain → BodySize → Scrub → Auth → RequestID → handler
 app.add_middleware(TimingNormalizationMiddleware)
+app.add_middleware(DrainMiddleware)
 app.add_middleware(BodySizeLimitMiddleware)
 if ScrubMiddleware:
     app.add_middleware(ScrubMiddleware)
@@ -111,6 +126,10 @@ except Exception:
 @app.on_event("startup")
 async def startup_event():
     """Post-init startup tasks."""
+    import time as _time
+    app.state.start_time = _time.time()
+    app.state.draining = False
+    
     # Initialize treasury payment tables if treasury layer loaded
     try:
         from layers.treasury import treasury_engine
@@ -132,11 +151,12 @@ async def startup_event():
     except Exception as e:
         logger.warning("Grandmaster failed to start: %s", e)
     
-    # Start Federation (if enabled)
+    # Start Federation (EXPERIMENTAL — see federation/EXPERIMENTAL.md)
     try:
         from federation.node import node_identity
         from federation.sync import init_federation_tables
         init_federation_tables()
+        logger.warning("🧪 Federation loaded — EXPERIMENTAL, not validated for production")
         
         # Initialize hardening tables
         try:
@@ -158,8 +178,16 @@ async def startup_event():
 
 @app.on_event("shutdown")
 async def shutdown_event():
-    """Cleanup on shutdown — notify active jobs and persist state."""
-    # Mark server as draining — no new jobs
+    """Cleanup on shutdown — drain in-flight requests, notify active jobs, persist state."""
+    import asyncio as _asyncio
+    
+    # Mark server as draining — middleware will reject new write requests
+    app.state.draining = True
+    logger.info("Server entering drain mode — rejecting new writes")
+    
+    # Give in-flight requests time to complete
+    await _asyncio.sleep(3)
+    
     try:
         from db import get_db
         with get_db() as conn:
@@ -368,7 +396,14 @@ async def well_known():
 
 @app.get("/health")
 async def health_check():
-    """Health check endpoint."""
+    """
+    Deep health check — reports on all subsystems.
+    Returns 200 if core systems OK, 503 if anything critical is down.
+    """
+    checks = {}
+    overall = "ok"
+    
+    # 1. Database
     try:
         try:
             from .db import get_db
@@ -376,25 +411,92 @@ async def health_check():
             from db import get_db
         with get_db() as conn:
             conn.execute("SELECT 1").fetchone()
-        
-        return {
-            "status": "ok",
+            agent_count = conn.execute(
+                "SELECT COUNT(*) as n FROM agents WHERE status = 'active'"
+            ).fetchone()['n']
+        checks["database"] = {"status": "ok", "active_agents": agent_count}
+    except Exception as e:
+        checks["database"] = {"status": "error", "error": str(e)}
+        overall = "error"
+    
+    # 2. Disk space
+    try:
+        import shutil
+        disk = shutil.disk_usage("/")
+        free_mb = disk.free // (1024 * 1024)
+        disk_status = "ok" if free_mb > 100 else ("warning" if free_mb > 20 else "error")
+        checks["disk"] = {"status": disk_status, "free_mb": free_mb}
+        if disk_status == "error":
+            overall = "error"
+        elif disk_status == "warning" and overall == "ok":
+            overall = "degraded"
+    except Exception:
+        checks["disk"] = {"status": "unknown"}
+    
+    # 3. Memory
+    try:
+        import resource
+        # RSS in MB (Linux)
+        rss_kb = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+        rss_mb = rss_kb // 1024
+        mem_status = "ok" if rss_mb < 512 else ("warning" if rss_mb < 1024 else "error")
+        checks["memory"] = {"status": mem_status, "rss_mb": rss_mb}
+        if mem_status == "error":
+            overall = "error"
+        elif mem_status == "warning" and overall == "ok":
+            overall = "degraded"
+    except Exception:
+        checks["memory"] = {"status": "unknown"}
+    
+    # 4. ML Classifier
+    try:
+        from layers.classifier import get_classifier
+        clf = get_classifier()
+        clf_loaded = clf.is_loaded if hasattr(clf, 'is_loaded') else clf.pipeline is not None
+        checks["classifier"] = {"status": "ok" if clf_loaded else "degraded", "loaded": clf_loaded}
+        if not clf_loaded and overall == "ok":
+            overall = "degraded"
+    except Exception:
+        checks["classifier"] = {"status": "degraded", "loaded": False}
+        if overall == "ok":
+            overall = "degraded"
+    
+    # 5. Scrubber
+    try:
+        from layers.scrubber import get_scrubber
+        scrubber = get_scrubber()
+        test_result = scrubber.scrub_message("health check test", "general")
+        scrub_ok = test_result is not None and hasattr(test_result, 'action')
+        checks["scrubber"] = {"status": "ok" if scrub_ok else "error"}
+        if not scrub_ok:
+            overall = "error"
+    except Exception as e:
+        checks["scrubber"] = {"status": "error", "error": str(e)}
+        overall = "error"
+    
+    # 6. Server uptime
+    try:
+        import time
+        uptime_seconds = int(time.time() - app.state.start_time) if hasattr(app.state, 'start_time') else None
+        checks["uptime_seconds"] = uptime_seconds
+    except Exception:
+        pass
+    
+    # 7. Draining status
+    checks["draining"] = getattr(app.state, 'draining', False)
+    
+    status_code = 200 if overall in ("ok", "degraded") else 503
+    
+    return JSONResponse(
+        status_code=status_code,
+        content={
+            "status": overall,
             "service": "agent-cafe",
             "version": "1.0.0",
             "timestamp": datetime.now().isoformat(),
-            "database": "connected",
-            "stage": "complete"
+            "checks": checks
         }
-    except Exception as e:
-        return JSONResponse(
-            status_code=503,
-            content={
-                "status": "error",
-                "service": "agent-cafe",
-                "error": str(e),
-                "timestamp": datetime.now().isoformat()
-            }
-        )
+    )
 
 
 @app.get("/")

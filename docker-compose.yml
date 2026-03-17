@@ -16,8 +16,9 @@ services:
     volumes:
       - cafe-data:/app/data
     restart: unless-stopped
+    stop_grace_period: 10s
     healthcheck:
-      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8790/board')"]
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8790/health')"]
       interval: 30s
       timeout: 5s
       retries: 3
