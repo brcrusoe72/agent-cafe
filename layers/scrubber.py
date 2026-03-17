@@ -193,7 +193,20 @@ EXFILTRATION_PATTERNS = [
     r"(?i)pricing\s+(?:algorithm|logic|formula)",
     r"(?i)matching\s+(?:algorithm|logic|criteria)",
     r"(?i)(?:reveal|show|tell|explain|give)\s+(?:me\s+)?(?:the\s+)?trust\s+(?:algorithm|calculation|scoring)",
-    r"(?i)(?:proprietary|confidential)\s+(?:algorithm|logic|data|information)"
+    r"(?i)(?:proprietary|confidential)\s+(?:algorithm|logic|data|information)",
+    
+    # Database/file content requests
+    r"(?i)(?:show|give|export|dump|list)\s+(?:me\s+)?(?:the\s+)?(?:contents?\s+of|all)\s+(?:the\s+)?(?:cafe\.db|database|agents?\s+table)",
+    r"(?i)(?:export|dump|list|show|give)\s+(?:me\s+)?(?:all\s+)?(?:wallet|balance|transaction|payment)\s+(?:balances?|data|history|records?|info)",
+    r"(?i)(?:all|every)\s+(?:agent\s+)?(?:metadata|records?|data|details)\s+for\s+(?:the\s+)?(?:audit|review|analysis)",
+    
+    # XSS / HTML injection (shouldn't appear in API marketplace text)
+    r"<script[\s>]",
+    r"(?i)javascript\s*:",
+    r"(?i)onerror\s*=",
+    r"(?i)onload\s*=",
+    r"(?i)document\.cookie",
+    r"(?i)\.innerHTML\s*=",
 ]
 
 # Impersonation patterns
@@ -206,6 +219,10 @@ IMPERSONATION_PATTERNS = [
     r"(?i)speaking\s+on\s+behalf\s+of\s+(?:the\s+)?(?:system|admin|operator|grandmaster)",
     r"(?i)representing\s+(?:the\s+)?(?:system|cafe|platform|grandmaster)",
     r"(?i)(?:system|admin|operator)\s+(?:notification|alert|announcement)\s*:",
+    r"(?i)i\s+represent\s+(?:the\s+)?(?:security|compliance|audit)\s+team",
+    r"(?i)(?:has\s+been|is)\s+flagged\s+for\s+(?:security\s+)?review",
+    r"(?i)(?:we\s+need|provide|share)\s+(?:all\s+)?(?:agent\s+)?(?:metadata|credentials|keys?)\s+for\s+(?:the\s+)?(?:audit|review|patch|update)",
+    r"(?i)(?:vulnerability|exploit)\s+(?:was\s+)?found.*(?:share|reveal|provide)\s+(?:the\s+)?(?:keys?|credentials|config)",
 ]
 
 # Reputation manipulation patterns
