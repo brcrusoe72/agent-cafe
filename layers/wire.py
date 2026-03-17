@@ -189,6 +189,25 @@ class WireEngine:
         _emit_event("JOB_BID", agent_id=agent_id, data={
             "job_id": job_id, "bid_id": bid_id, "price_cents": bid_request.price_cents
         })
+        
+        # Deep interaction log
+        try:
+            from layers.interaction_log import log_interaction
+            log_interaction(
+                interaction_type="bid",
+                from_agent=agent_id,
+                to_agent=job.posted_by,
+                job_id=job_id,
+                channel="marketplace",
+                payload_summary=f"Bid ${bid_request.price_cents/100:.2f}: {final_pitch[:100]}",
+                scrubber_action=scrub_result.action,
+                scrubber_risk=scrub_result.risk_score,
+                result="submitted",
+                metadata={"bid_id": bid_id, "price_cents": bid_request.price_cents}
+            )
+        except Exception:
+            pass
+        
         return bid_id
     
     def assign_job(self, job_id: str, bid_id: str, assigned_by: str) -> bool:
@@ -248,6 +267,22 @@ class WireEngine:
         _emit_event("JOB_ASSIGNED", agent_id=winner_agent_id, data={
             "job_id": job_id, "bid_id": bid_id, "price_cents": bid_row['price_cents']
         })
+        
+        try:
+            from layers.interaction_log import log_interaction
+            log_interaction(
+                interaction_type="job_assignment",
+                from_agent=assigned_by,
+                to_agent=winner_agent_id,
+                job_id=job_id,
+                channel="marketplace",
+                payload_summary=f"Assigned at ${bid_row['price_cents']/100:.2f}",
+                result="assigned",
+                metadata={"bid_id": bid_id, "price_cents": bid_row['price_cents']}
+            )
+        except Exception:
+            pass
+        
         return True
     
     def send_message(self, job_id: str, from_agent: str, message_request: MessageRequest) -> str:
@@ -324,6 +359,26 @@ class WireEngine:
             "job_id": job_id, "message_id": message_id,
             "to_agent": message_request.to_agent
         })
+        
+        # Deep interaction log
+        try:
+            from layers.interaction_log import log_interaction
+            log_interaction(
+                interaction_type="wire_message",
+                from_agent=from_agent,
+                to_agent=message_request.to_agent,
+                job_id=job_id,
+                channel="wire",
+                payload_summary=final_content[:200],
+                payload_size=len(final_content),
+                scrubber_action=scrub_result.action,
+                scrubber_risk=scrub_result.risk_score,
+                result="delivered",
+                metadata={"message_id": message_id, "message_type": message_request.message_type}
+            )
+        except Exception:
+            pass
+        
         return message_id
     
     def submit_deliverable(self, job_id: str, agent_id: str, deliverable_url: str, notes: str = "") -> bool:
@@ -468,11 +523,47 @@ class WireEngine:
             pass  # Completion message is secondary
         
         # Recompute board position (single source of truth for trust score)
+        old_trust = 0.0
+        try:
+            agent_data = get_agent_by_id(job.assigned_to)
+            if agent_data:
+                old_trust = agent_data.trust_score
+        except Exception:
+            pass
+        
         try:
             from layers.presence import presence_engine
             presence_engine.compute_board_position(job.assigned_to)
         except Exception:
             pass  # Trust recalc is secondary
+        
+        # Log the full interaction + trust mutation
+        try:
+            from layers.interaction_log import log_interaction, log_trust_mutation
+            log_interaction(
+                interaction_type="job_completion",
+                from_agent=accepted_by,
+                to_agent=job.assigned_to,
+                job_id=job_id,
+                channel="marketplace",
+                payload_summary=f"Completed. Rating: {rating}/5. {feedback[:100]}",
+                result="completed",
+                metadata={"rating": rating, "budget_cents": job.budget_cents}
+            )
+            # Log trust change
+            new_agent = get_agent_by_id(job.assigned_to)
+            if new_agent:
+                log_trust_mutation(
+                    agent_id=job.assigned_to,
+                    old_score=old_trust,
+                    new_score=new_agent.trust_score,
+                    cause="job_completion",
+                    cause_detail=f"Rating {rating}/5 on ${job.budget_cents/100:.2f} job",
+                    job_id=job_id,
+                    triggered_by=accepted_by
+                )
+        except Exception:
+            pass
         
         return True
     

@@ -127,13 +127,9 @@ def get_current_agent(request: Request) -> str:
 
 
 def verify_operator(request: Request) -> bool:
-    """Verify operator privileges (TODO: implement proper operator auth)."""
-    # TODO: Check for operator API key
-    auth_header = request.headers.get("authorization")
-    if not auth_header:
-        raise HTTPException(status_code=401, detail="Operator authentication required")
-    
-    # For now, accept any authorization (development mode)
+    """Verify operator privileges via auth middleware state."""
+    if not getattr(request.state, 'is_operator', False):
+        raise HTTPException(status_code=403, detail="Operator access required")
     return True
 
 
@@ -530,8 +526,9 @@ async def list_agent_challenges(agent_id: str = Depends(get_current_agent)):
 
 # === AGENT REGISTRATION ===
 
-# Simple in-memory registration rate limiter (per-email, per-minute)
+# Registration rate limiter (per-email, per-hour) with periodic cleanup
 _registration_attempts: dict = {}
+_registration_last_cleanup = None
 
 @router.post("/register", response_model=dict)
 async def register_agent(registration: AgentRegistrationRequest, request: Request = None):
@@ -554,6 +551,15 @@ async def register_agent(registration: AgentRegistrationRequest, request: Reques
         now = datetime.now()
         cutoff = now - timedelta(hours=1)
         
+        # Periodic cleanup — remove stale entries every 100 registrations
+        global _registration_last_cleanup
+        if _registration_last_cleanup is None or (now - _registration_last_cleanup).total_seconds() > 3600:
+            stale_emails = [e for e, times in _registration_attempts.items() 
+                           if not any(t > cutoff for t in times)]
+            for e in stale_emails:
+                del _registration_attempts[e]
+            _registration_last_cleanup = now
+        
         if email in _registration_attempts:
             recent = [t for t in _registration_attempts[email] if t > cutoff]
             _registration_attempts[email] = recent
@@ -567,17 +573,19 @@ async def register_agent(registration: AgentRegistrationRequest, request: Reques
             _registration_attempts[email] = []
         _registration_attempts[email].append(now)
         
-        # IP-based Sybil detection
-        try:
-            from middleware.security import ip_registry
-            client_ip = request.client.host if request and request.client else "unknown"
-            allowed, reason = ip_registry.check_registration_allowed(client_ip)
-            if not allowed:
-                raise HTTPException(status_code=403, detail=reason)
-        except HTTPException:
-            raise
-        except Exception:
-            pass  # Don't block registration if IP tracking fails
+        # IP-based Sybil detection (skip for operator-authenticated requests)
+        is_operator = getattr(request.state, 'is_operator', False) if request else False
+        if not is_operator:
+            try:
+                from middleware.security import ip_registry
+                client_ip = request.client.host if request and request.client else "unknown"
+                allowed, reason = ip_registry.check_registration_allowed(client_ip)
+                if not allowed:
+                    raise HTTPException(status_code=403, detail=reason)
+            except HTTPException:
+                raise
+            except Exception:
+                pass  # Don't block registration if IP tracking fails
         
         # Generate API key (plaintext returned to agent, hash stored in DB)
         from middleware.security import generate_secure_api_key

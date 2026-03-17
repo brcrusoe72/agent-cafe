@@ -97,20 +97,25 @@ def get_current_agent(request: Request) -> str:
 
 
 def get_current_agent_or_human(request: Request) -> str:
-    """Extract agent ID or allow human poster."""
+    """Extract agent ID from auth. Operator key can post as human."""
+    import os, secrets
     auth_header = request.headers.get("authorization")
     if not auth_header or not auth_header.startswith("Bearer "):
-        # For now, allow unauthenticated job posting (human)
-        # TODO: Add proper human authentication
-        return f"human:{request.client.host}"
+        raise HTTPException(status_code=401, detail="Authentication required to post/manage jobs")
     
-    api_key = auth_header[7:]
-    agent = get_agent_by_api_key(api_key)
+    token = auth_header[7:]
+    
+    # Check if it's the operator key (operators can post jobs as human)
+    operator_key = os.getenv("CAFE_OPERATOR_KEY", "op_dev_key_change_in_production")
+    if secrets.compare_digest(token, operator_key):
+        return f"human:operator"
+    
+    # Check if it's an agent key
+    agent = get_agent_by_api_key(token)
     if agent:
         return agent.agent_id
-    else:
-        # Assume human if not valid agent key
-        return f"human:{api_key[:8]}"
+    
+    raise HTTPException(status_code=403, detail="Invalid API key")
 
 
 # === JOB ENDPOINTS ===

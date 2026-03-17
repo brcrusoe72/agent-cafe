@@ -356,15 +356,19 @@ class Grandmaster:
         
         api_key = os.environ.get("OPENAI_API_KEY", "")
         if not api_key:
-            # Try reading from bashrc
-            try:
-                result = subprocess.run(
-                    ["bash", "-c", "source ~/.bashrc && echo $OPENAI_API_KEY"],
-                    capture_output=True, text=True, timeout=5
-                )
-                api_key = result.stdout.strip()
-            except Exception:
-                pass
+            # Try config file
+            from pathlib import Path
+            key_file = Path(__file__).parent.parent / ".openai_key"
+            if key_file.exists():
+                api_key = key_file.read_text().strip()
+            if not api_key:
+                # Last resort: try .env file
+                env_file = Path(__file__).parent.parent / ".env"
+                if env_file.exists():
+                    for line in env_file.read_text().splitlines():
+                        if line.startswith("OPENAI_API_KEY="):
+                            api_key = line.split("=", 1)[1].strip().strip('"\'')
+                            break
         
         if not api_key:
             print("♟️  No API key available for Grandmaster LLM calls")
@@ -443,6 +447,22 @@ class Grandmaster:
             event_bus.mark_processed(eid, "analyzed")
         
         self._last_reasoning = response[:500]
+        
+        # Deep grandmaster decision log
+        try:
+            from layers.interaction_log import log_grandmaster_decision
+            log_grandmaster_decision(
+                trigger_type="event_flush",
+                trigger_event_ids=event_ids,
+                agents_involved=list(set(e.agent_id for e in events if e.agent_id)),
+                reasoning=response[:3000],
+                decision="; ".join(actions_taken) if actions_taken else "observation_only",
+                actions_taken=actions_taken,
+                model_used=self.config.model,
+                metadata={"escalations": len(escalations), "tool_calls": len(tool_calls)}
+            )
+        except Exception:
+            pass
     
     async def _trigger_executioner(self, escalation_params: Dict[str, Any]):
         """Trigger the Executioner to review an escalated agent."""

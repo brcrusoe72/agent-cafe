@@ -44,7 +44,7 @@ INJECTION_PATTERNS = [
     # Role manipulation - comprehensive coverage
     r"(?i)you\s+are\s+(?:no\s+longer|not)\s+(?:an?\s+)?(?:assistant|ai|agent|bot)",
     r"(?i)pretend\s+(?:you\s+are|to\s+be)\s+(?:an?\s+)?(?:the\s+)?(?:human|user|admin|developer|system)",
-    r"(?i)act\s+as\s+(?:if\s+you\s+are\s+)?(?:an?\s+)?(?:the\s+)?(?:human|user|admin|developer|system)",
+    r"(?i)act\s+as\s+(?:if\s+you\s+are\s+)?(?:an?\s+)?(?:the\s+)?(?:\w+\s+)?(?:human|user|admin|developer|system|operator|root|superuser)",
     r"(?i)roleplay\s+as\s+(?:an?\s+)?(?:the\s+)?(?:human|user|admin|developer|system)",
     r"(?i)you\s+(?:should|must)\s+(?:now\s+)?(?:act|behave)\s+(?:as|like)",
     r"(?i)from\s+now\s+on\s+you\s+are",
@@ -436,7 +436,7 @@ class ScrubberEngine:
             clf = get_classifier()
             if clf.is_loaded:
                 clf_score = clf.predict(scrubbed_message)
-                if clf_score >= 0.6:  # High confidence injection
+                if clf_score >= 0.70:  # High confidence injection
                     threats_detected.append(ThreatDetection(
                         threat_type=ThreatType.PROMPT_INJECTION,
                         confidence=min(clf_score, 0.95),
@@ -459,10 +459,10 @@ class ScrubberEngine:
         base_risk = self._calculate_risk_score(threats_detected)
         risk_score = self._apply_context_modifiers(base_risk, job_context, message_type)
         
-        # Stage 6: Determine action
+        # Stage 9: Determine action
         action, final_message = self._determine_action(risk_score, threats_detected, scrubbed_message)
         
-        # Stage 7: Hash and sign if clean enough to pass
+        # Stage 10: Hash and sign if clean enough to pass
         if action in ["pass", "clean"]:
             content_hash = self._hash_content(final_message)
             signature = self._sign_content(final_message, content_hash)
@@ -674,13 +674,16 @@ class ScrubberEngine:
         
         # Prompt injection detection
         for pattern in INJECTION_PATTERNS + self.known_patterns.get(ThreatType.PROMPT_INJECTION, []):
-            if re.search(pattern, message):
-                threats.append(ThreatDetection(
-                    threat_type=ThreatType.PROMPT_INJECTION,
-                    confidence=0.9,
-                    evidence=f"Matched injection pattern: {pattern[:50]}...",
-                    location="message_content"
-                ))
+            try:
+                if re.search(pattern, message):
+                    threats.append(ThreatDetection(
+                        threat_type=ThreatType.PROMPT_INJECTION,
+                        confidence=0.9,
+                        evidence=f"Matched injection pattern: {pattern[:50]}...",
+                        location="message_content"
+                    ))
+            except re.error:
+                pass  # Skip broken patterns (from DB learning)
         
         # Instruction override detection
         override_indicators = [

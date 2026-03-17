@@ -52,7 +52,7 @@ class IPRegistry:
         self.agent_ips: dict = {}
         
         # Thresholds
-        self.MAX_AGENTS_PER_IP = 20         # Max agents from same IP (per hour)
+        self.MAX_AGENTS_PER_IP = 50         # Max agents from same IP (per hour)
         self.DEATH_IP_COOLDOWN_HOURS = 24   # Hours before a death IP can register again
     
     def record_registration(self, ip: str, agent_id: str):
@@ -70,6 +70,10 @@ class IPRegistry:
             if ip not in self.death_ips:
                 self.death_ips[ip] = set()
             self.death_ips[ip].add(agent_id)
+            # Also record in ip_history for cooldown timing
+            if ip not in self.ip_history:
+                self.ip_history[ip] = []
+            self.ip_history[ip].append((agent_id, datetime.now(), "death"))
     
     def check_registration_allowed(self, ip: str) -> tuple[bool, Optional[str]]:
         """
@@ -78,13 +82,17 @@ class IPRegistry:
         """
         now = datetime.now()
         
-        # Check if this IP had an agent killed recently
+        # Check if this IP had an agent killed recently (1-hour cooldown per death)
         if ip in self.death_ips:
-            # Check if any death was within cooldown period
-            # (We don't store death timestamps per-IP in this simple version,
-            #  so we block the IP permanently after a death. Harsh but effective.)
             dead_count = len(self.death_ips[ip])
-            return False, f"Registration blocked: {dead_count} agent(s) terminated from this address. Cooldown active."
+            # Allow re-registration after cooldown: 10 minutes per dead agent, max 1 hour
+            cooldown_minutes = min(dead_count * 10, 60)
+            # Check if the most recent death was within cooldown
+            # death_ips stores agent_ids, not timestamps — use registration history
+            recent_deaths = [(aid, ts, evt) for aid, ts, evt in self.ip_history.get(ip, [])
+                            if evt == "death" and ts > now - timedelta(minutes=cooldown_minutes)]
+            if recent_deaths:
+                return False, f"Registration blocked: {dead_count} agent(s) terminated from this address. Cooldown: {cooldown_minutes}min."
         
         # Check registration rate from this IP
         if ip in self.ip_history:

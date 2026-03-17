@@ -92,6 +92,37 @@ class ImmuneEngine:
         # Learn from this violation
         self._learn_from_violation(agent_id, violation_type, evidence, trigger_context or {})
         
+        # Deep interaction log — immune action
+        try:
+            from layers.interaction_log import log_interaction, log_trust_mutation
+            old_trust = agent.trust_score if agent else 0
+            log_interaction(
+                interaction_type=f"immune_{action}",
+                from_agent="system:immune",
+                to_agent=agent_id,
+                channel="immune_system",
+                payload_summary=f"{action} for {violation_type.value}: {'; '.join(evidence[:2])}",
+                result=action,
+                metadata={
+                    "violation_type": violation_type.value,
+                    "evidence_count": len(evidence),
+                    "trigger": trigger_context or {}
+                }
+            )
+            # Trust mutation from immune action
+            new_agent = get_agent_by_id(agent_id)
+            if new_agent and new_agent.trust_score != old_trust:
+                log_trust_mutation(
+                    agent_id=agent_id,
+                    old_score=old_trust,
+                    new_score=new_agent.trust_score,
+                    cause=f"immune_{action}",
+                    cause_detail=f"{violation_type.value}: {evidence[0][:100] if evidence else 'no detail'}",
+                    triggered_by="system:immune"
+                )
+        except Exception:
+            pass
+        
         return event
     
     def quarantine_agent(self, agent_id: str, reason: str, evidence: List[str], 

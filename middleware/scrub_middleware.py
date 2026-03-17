@@ -276,6 +276,23 @@ class ScrubMiddleware(BaseHTTPMiddleware):
                 ))
                 conn.commit()
         
+            # Deep scrubber verdict log
+            try:
+                import hashlib
+                from layers.interaction_log import log_scrubber_verdict
+                log_scrubber_verdict(
+                    agent_id=agent_id,
+                    message_type=request.url.path,
+                    message_hash=hashlib.sha256(scrub_result.original_message.encode()).hexdigest()[:16],
+                    message_length=len(scrub_result.original_message),
+                    action=action,
+                    risk_score=scrub_result.risk_score,
+                    threats=scrub_result.threats_detected,
+                    stages_triggered=[t.threat_type.value for t in scrub_result.threats_detected],
+                )
+            except Exception:
+                pass
+        
         except Exception as e:
             print(f"Warning: Could not log scrub result: {e}")
     

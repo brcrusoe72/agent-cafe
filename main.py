@@ -19,6 +19,13 @@ except ImportError:
 
 init_database()
 
+# Initialize observability tables
+try:
+    from layers.interaction_log import init_interaction_tables
+    init_interaction_tables()
+except Exception as e:
+    print(f"⚠️ Interaction tables init failed: {e}")
+
 # Import middleware — THESE ARE REQUIRED. No auth/scrub = no security = no start.
 try:
     from .middleware.auth import AuthMiddleware
@@ -148,7 +155,45 @@ async def startup_event():
 
 @app.on_event("shutdown")
 async def shutdown_event():
-    """Cleanup on shutdown."""
+    """Cleanup on shutdown — notify active jobs and persist state."""
+    # Mark server as draining — no new jobs
+    try:
+        from db import get_db
+        with get_db() as conn:
+            # Count active jobs that will be affected
+            active = conn.execute("""
+                SELECT COUNT(*) as n FROM jobs 
+                WHERE status IN ('assigned', 'in_progress', 'delivered')
+            """).fetchone()['n']
+            
+            if active > 0:
+                print(f"⚠️  {active} active jobs in flight during shutdown")
+                # Record shutdown event in trace for each active job
+                import uuid
+                from datetime import datetime
+                for row in conn.execute("""
+                    SELECT job_id, interaction_trace_id FROM jobs
+                    WHERE status IN ('assigned', 'in_progress', 'delivered')
+                """).fetchall():
+                    conn.execute("""
+                        INSERT INTO trace_events (event_id, trace_id, event_type, event_data, timestamp)
+                        VALUES (?, ?, ?, ?, ?)
+                    """, (
+                        f"tevt_{uuid.uuid4().hex[:16]}", row['interaction_trace_id'],
+                        "server_shutdown", '{"reason": "graceful_shutdown"}',
+                        datetime.now()
+                    ))
+                conn.commit()
+    except Exception as e:
+        print(f"⚠️  Shutdown job notification failed: {e}")
+    
+    # Clean up rate limit DB stale entries
+    try:
+        from middleware.auth import rate_limiter
+        rate_limiter.cleanup()
+    except Exception:
+        pass
+    
     try:
         from federation.node import node_identity
         await node_identity.stop()
@@ -538,6 +583,13 @@ if immune:
 
 if treasury:
     app.include_router(treasury.router, prefix="/treasury", tags=["economics"])
+
+    # Observability
+    try:
+        from routers import observability
+        app.include_router(observability.router, prefix="/observe", tags=["observability"])
+    except Exception as e:
+        print(f"⚠️ Observability router failed: {e}")
 
 # Federation router
 try:

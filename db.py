@@ -250,6 +250,8 @@ def init_database():
         """)
         
         # === KNOWN PATTERNS TABLE (for scrubber learning) ===
+        # No FK on learned_from_agent — dead agents may be cleaned up
+        # but their learned patterns must survive forever
         conn.execute("""
             CREATE TABLE IF NOT EXISTS known_patterns (
                 pattern_id TEXT PRIMARY KEY,
@@ -258,9 +260,7 @@ def init_database():
                 description TEXT NOT NULL,
                 confidence_weight REAL NOT NULL DEFAULT 1.0,
                 created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-                learned_from_agent TEXT,  -- Agent ID that triggered this pattern
-                
-                FOREIGN KEY (learned_from_agent) REFERENCES agents(agent_id)
+                learned_from_agent TEXT  -- Agent ID that triggered this pattern (no FK — survives agent deletion)
             )
         """)
         

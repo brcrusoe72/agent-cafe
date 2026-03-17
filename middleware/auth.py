@@ -118,6 +118,11 @@ class AuthMiddleware(BaseHTTPMiddleware):
         "/federation/learning/ingest",
         "/gc/status",
         "/gc/run",
+        "/observe/pulse",
+        "/observe/interactions",
+        "/observe/grandmaster",
+        "/observe/scrubber",
+        "/observe/feed",
     }
     
     # Operator prefix patterns
@@ -126,6 +131,7 @@ class AuthMiddleware(BaseHTTPMiddleware):
         "/executioner/review/",
         "/immune/morgue/",
         "/jobs/maintenance/",
+        "/observe/",
     ]
     
     async def dispatch(self, request: Request, call_next):
@@ -140,11 +146,17 @@ class AuthMiddleware(BaseHTTPMiddleware):
         else:
             rate_key = f"ip:{request.client.host}" if request.client else "ip:unknown"
         
-        if not rate_limiter.is_allowed(rate_key, max_requests=60, window_minutes=1):
-            return JSONResponse(
-                status_code=429,
-                content={"error": "rate_limited", "detail": "Too many requests. Slow down."}
-            )
+        # Registration and public reads have their own rate limits (security.py / board.py)
+        # Don't double-rate-limit them with the general limiter
+        is_registration = path == "/board/register" and method == "POST"
+        is_public_read = method == "GET" and path in self.PUBLIC_GET_ENDPOINTS
+        
+        if not is_registration and not is_public_read:
+            if not rate_limiter.is_allowed(rate_key, max_requests=60, window_minutes=1):
+                return JSONResponse(
+                    status_code=429,
+                    content={"error": "rate_limited", "detail": "Too many requests. Slow down."}
+                )
         
         # Even on public endpoints, reject dead agent keys if provided
         if auth_header and auth_header.startswith("Bearer "):
@@ -154,6 +166,12 @@ class AuthMiddleware(BaseHTTPMiddleware):
         
         # Always-public endpoints (any method)
         if path in self.PUBLIC_ANY_ENDPOINTS:
+            # Still check if operator key is present (for privilege escalation on public endpoints)
+            if auth_header and auth_header.startswith("Bearer "):
+                import os, secrets
+                op_key = os.getenv("CAFE_OPERATOR_KEY", "op_dev_key_change_in_production")
+                if secrets.compare_digest(auth_header[7:], op_key):
+                    request.state.is_operator = True
             return await call_next(request)
         
         # Docs/API schema are operator-only (falls through to operator check below)
@@ -375,56 +393,110 @@ def require_agent_status(allowed_statuses: list[str]):
     return decorator
 
 
-# Rate limiting helpers
+# Rate limiting helpers — SQLite-backed for persistence across restarts
+import sqlite3
+from pathlib import Path
+
+_RATE_DB_PATH = Path(__file__).parent.parent / "rate_limits.db"
+
+def _get_rate_db():
+    """Get rate limit DB connection (separate from main DB to avoid contention)."""
+    conn = sqlite3.connect(str(_RATE_DB_PATH), timeout=5)
+    conn.execute("PRAGMA journal_mode = WAL")
+    conn.execute("PRAGMA busy_timeout = 2000")
+    conn.execute("""
+        CREATE TABLE IF NOT EXISTS rate_events (
+            key TEXT NOT NULL,
+            ts REAL NOT NULL
+        )
+    """)
+    conn.execute("CREATE INDEX IF NOT EXISTS idx_rate_key_ts ON rate_events(key, ts)")
+    conn.execute("""
+        CREATE TABLE IF NOT EXISTS daily_counts (
+            key TEXT NOT NULL,
+            day TEXT NOT NULL,
+            count INTEGER NOT NULL DEFAULT 0,
+            PRIMARY KEY (key, day)
+        )
+    """)
+    return conn
+
+
 class RateLimiter:
-    """Simple in-memory rate limiter for API keys."""
-    
-    def __init__(self):
-        self.requests = {}  # api_key -> list of timestamps
+    """SQLite-backed rate limiter. Survives restarts."""
     
     def is_allowed(self, api_key: str, max_requests: int = 100, window_minutes: int = 60) -> bool:
         """Check if request is within rate limit."""
-        from datetime import datetime, timedelta
+        import time
+        now = time.time()
+        cutoff = now - (window_minutes * 60)
         
-        now = datetime.now()
-        window_start = now - timedelta(minutes=window_minutes)
-        
-        # Clean old requests
-        if api_key in self.requests:
-            self.requests[api_key] = [
-                timestamp for timestamp in self.requests[api_key]
-                if timestamp > window_start
-            ]
-        else:
-            self.requests[api_key] = []
-        
-        # Check limit
-        if len(self.requests[api_key]) >= max_requests:
-            return False
-        
-        # Add current request
-        self.requests[api_key].append(now)
-        return True
+        try:
+            conn = _get_rate_db()
+            # Prune old entries for this key
+            conn.execute("DELETE FROM rate_events WHERE key = ? AND ts < ?", (api_key, cutoff))
+            # Count recent
+            count = conn.execute(
+                "SELECT COUNT(*) FROM rate_events WHERE key = ? AND ts >= ?",
+                (api_key, cutoff)
+            ).fetchone()[0]
+            
+            if count >= max_requests:
+                conn.close()
+                return False
+            
+            # Record this request
+            conn.execute("INSERT INTO rate_events (key, ts) VALUES (?, ?)", (api_key, now))
+            conn.commit()
+            conn.close()
+            return True
+        except Exception:
+            return True  # Fail open on DB errors — don't block legit requests
+
+
+    def cleanup(self):
+        """Remove entries older than 2 hours (call periodically)."""
+        import time
+        try:
+            conn = _get_rate_db()
+            conn.execute("DELETE FROM rate_events WHERE ts < ?", (time.time() - 7200,))
+            conn.commit()
+            conn.close()
+        except Exception:
+            pass
 
 
 class DailyRateLimiter:
-    """Simple in-memory daily rate limiter. Resets at midnight."""
-
-    def __init__(self):
-        self.counts: dict[str, int] = {}
-        self._today: str = ""
+    """SQLite-backed daily rate limiter. Survives restarts."""
 
     def is_allowed(self, key: str, max_per_day: int) -> bool:
         from datetime import date
         today = date.today().isoformat()
-        if today != self._today:
-            self.counts.clear()
-            self._today = today
-        current = self.counts.get(key, 0)
-        if current >= max_per_day:
-            return False
-        self.counts[key] = current + 1
-        return True
+        
+        try:
+            conn = _get_rate_db()
+            # Clean old days
+            conn.execute("DELETE FROM daily_counts WHERE day < ?", (today,))
+            
+            row = conn.execute(
+                "SELECT count FROM daily_counts WHERE key = ? AND day = ?",
+                (key, today)
+            ).fetchone()
+            
+            current = row[0] if row else 0
+            if current >= max_per_day:
+                conn.close()
+                return False
+            
+            conn.execute("""
+                INSERT INTO daily_counts (key, day, count) VALUES (?, ?, 1)
+                ON CONFLICT(key, day) DO UPDATE SET count = count + 1
+            """, (key, today))
+            conn.commit()
+            conn.close()
+            return True
+        except Exception:
+            return True  # Fail open
 
 
 # Global rate limiter instances

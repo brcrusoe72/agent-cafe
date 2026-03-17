@@ -17,11 +17,16 @@ from agents.tools import (
 from agents.grandmaster import Grandmaster, GrandmasterConfig
 from agents.executioner import Executioner
 
+# Ensure DB is initialized for tests that touch agent lookups
+os.environ.setdefault("CAFE_DB_PATH", ":memory:")
+from db import init_database as init_db
+
 
 class TestEscalationTool:
     """Test the escalate_to_executioner tool."""
     
     def setup_method(self):
+        init_db()
         event_bus.initialize()
     
     def test_escalation_tool_registered_in_grandmaster(self):

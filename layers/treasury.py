@@ -259,7 +259,6 @@ class TreasuryEngine:
                 total_withdrawn_cents=row['total_withdrawn_cents'],
                 stripe_connect_id=row['stripe_connect_id']
             )
-            return True
     
     def can_agent_bid(self, agent_id: str) -> Tuple[bool, str]:
         """Check if agent is eligible to bid."""
