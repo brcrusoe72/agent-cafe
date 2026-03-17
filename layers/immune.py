@@ -613,13 +613,27 @@ class ImmuneEngine:
         try:
             from federation.sync import death_sync
             agent = get_agent_by_id(agent_id)
-            death_sync.create_death_report(
+            report = death_sync.create_death_report(
                 agent_id=agent_id,
                 agent_name=agent.name if agent else "unknown",
                 cause=cause_of_death,
                 evidence=json.dumps(evidence),
                 patterns_learned=[]
             )
+            # Send the report to the hub (async, fire-and-forget)
+            try:
+                import asyncio
+                from federation.node import node_identity
+                if node_identity.is_federated:
+                    try:
+                        loop = asyncio.get_running_loop()
+                        loop.create_task(node_identity.send_death_report(report))
+                        logger.info("Death report queued for hub broadcast: agent %s", agent_id)
+                    except RuntimeError:
+                        asyncio.run(node_identity.send_death_report(report))
+                        logger.info("Death report sent to hub: agent %s", agent_id)
+            except Exception as e:
+                logger.debug("Death report hub send skipped: %s", e)
         except Exception as e:
             logger.warning("Federation death broadcast failed: %s", e)
         

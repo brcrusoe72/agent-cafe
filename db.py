@@ -3,6 +3,7 @@ Agent Café - Database Layer
 SQLite tables matching all models with proper indexing.
 """
 
+import os
 import sqlite3
 import json
 from datetime import datetime
@@ -16,7 +17,7 @@ except ImportError:
     from models import *
 
 
-DATABASE_PATH = Path(__file__).parent / "cafe.db"
+DATABASE_PATH = Path(os.environ.get("CAFE_DB_PATH", Path(__file__).parent / "cafe.db"))
 
 
 def init_database():

@@ -62,7 +62,11 @@ class NodeIdentity:
     
     def __init__(self, data_dir: Optional[Path] = None):
         if data_dir is None:
-            data_dir = Path(__file__).parent.parent / "federation_data"
+            env_dir = os.environ.get("CAFE_FEDERATION_DATA_DIR")
+            if env_dir:
+                data_dir = Path(env_dir)
+            else:
+                data_dir = Path(__file__).parent.parent / "federation_data"
         
         self.data_dir = data_dir
         self.data_dir.mkdir(parents=True, exist_ok=True)
@@ -460,6 +464,27 @@ class NodeIdentity:
             message_type=MessageType.NODE_REPUTATION_BATCH,
             target="hub",
             payload={"agent_scores": agent_scores}
+        )
+        
+        response = await self._send_to_hub(message)
+        return response is not None
+    
+    async def send_death_report(self, report: Dict[str, Any]) -> bool:
+        """Send a death report to the hub for cross-node broadcasting."""
+        if not self._registered_with_hub:
+            return False
+        
+        message = self.sign_message(
+            message_type=MessageType.NODE_DEATH_REPORT,
+            target="hub",
+            payload={
+                "agent_id": report.get("agent_id", ""),
+                "agent_name": report.get("agent_name", "unknown"),
+                "cause": report.get("cause", "unknown"),
+                "evidence_hash": report.get("evidence_hash", ""),
+                "patterns_learned": report.get("patterns_learned", []),
+                "killed_at": report.get("killed_at", datetime.now(timezone.utc).isoformat()),
+            }
         )
         
         response = await self._send_to_hub(message)

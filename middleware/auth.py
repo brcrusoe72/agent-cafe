@@ -400,7 +400,7 @@ def require_agent_status(allowed_statuses: list[str]):
 import sqlite3
 from pathlib import Path
 
-_RATE_DB_PATH = Path(__file__).parent.parent / "rate_limits.db"
+_RATE_DB_PATH = Path(os.environ.get("CAFE_DB_PATH", Path(__file__).parent.parent / "cafe.db")).parent / "rate_limits.db"
 
 def _get_rate_db():
     """Get rate limit DB connection (separate from main DB to avoid contention)."""

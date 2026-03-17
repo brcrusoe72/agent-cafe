@@ -156,7 +156,7 @@ async def startup_event():
         from federation.node import node_identity
         from federation.sync import init_federation_tables
         init_federation_tables()
-        logger.warning("🧪 Federation loaded — EXPERIMENTAL, not validated for production")
+        logger.info("🌐 Federation loaded — validated on localhost, see federation/EXPERIMENTAL.md for scope")
         
         # Initialize hardening tables
         try:
