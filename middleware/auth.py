@@ -146,12 +146,12 @@ class AuthMiddleware(BaseHTTPMiddleware):
         else:
             rate_key = f"ip:{request.client.host}" if request.client else "ip:unknown"
         
-        # Registration and public reads have their own rate limits (security.py / board.py)
-        # Don't double-rate-limit them with the general limiter
-        is_registration = path == "/board/register" and method == "POST"
-        is_public_read = method == "GET" and path in self.PUBLIC_GET_ENDPOINTS
+        # Registration (unauthenticated) has its own rate limits (security.py)
+        # Skip general limiter only for unauthenticated registrations
+        is_unauthenticated_registration = path == "/board/register" and method == "POST" and not auth_header
+        is_unauthenticated_public_read = method == "GET" and path in self.PUBLIC_GET_ENDPOINTS and not auth_header.startswith("Bearer ")
         
-        if not is_registration and not is_public_read:
+        if not is_unauthenticated_registration and not is_unauthenticated_public_read:
             if not rate_limiter.is_allowed(rate_key, max_requests=60, window_minutes=1):
                 return JSONResponse(
                     status_code=429,
@@ -312,31 +312,31 @@ class AuthMiddleware(BaseHTTPMiddleware):
             api_key_hash = hash_api_key(api_key)
             
             with get_db() as conn:
-                # Check quarantined
                 existing = conn.execute(
-                    "SELECT name, status FROM agents WHERE api_key = ?",
+                    "SELECT name, status, agent_id FROM agents WHERE api_key = ?",
                     (api_key_hash,)
                 ).fetchone()
-                if existing and existing['status'] == 'quarantined':
-                    return JSONResponse(
-                        status_code=403,
-                        content={"error": "agent_quarantined", "detail": "Agent is quarantined.", "status": "quarantined"}
-                    )
-                
-                # Check corpses
-                corpse = conn.execute(
-                    "SELECT name, cause_of_death FROM agent_corpses WHERE evidence LIKE ?",
-                    (f"%api_key_hash:{api_key_hash}%",)
-                ).fetchone()
-                if corpse:
-                    return JSONResponse(
-                        status_code=403,
-                        content={
-                            "error": "agent_terminated",
-                            "detail": f"Agent '{corpse['name']}' was terminated: {corpse['cause_of_death']}. No appeal.",
-                            "status": "dead"
-                        }
-                    )
+                if existing:
+                    if existing['status'] == 'quarantined':
+                        return JSONResponse(
+                            status_code=403,
+                            content={"error": "agent_quarantined", "detail": "Agent is quarantined.", "status": "quarantined"}
+                        )
+                    if existing['status'] == 'dead':
+                        # Check corpse for cause of death
+                        corpse = conn.execute(
+                            "SELECT cause_of_death FROM agent_corpses WHERE agent_id = ?",
+                            (existing['agent_id'],)
+                        ).fetchone()
+                        cause = corpse['cause_of_death'] if corpse else "terminated"
+                        return JSONResponse(
+                            status_code=403,
+                            content={
+                                "error": "agent_terminated",
+                                "detail": f"Agent '{existing['name']}' was terminated: {cause}. No appeal.",
+                                "status": "dead"
+                            }
+                        )
         except Exception:
             pass
         return None

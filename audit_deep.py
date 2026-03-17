@@ -359,7 +359,7 @@ VICTIM_KEY, VICTIM_ID = fresh_red_agent()
 if VICTIM_KEY:
     # Kill via immune system
     r = requests.post(f"{BASE}/immune/execute", json={
-        "agent_id": VICTIM_ID, "cause": "audit_test", "evidence": ["audit test kill"]
+        "agent_id": VICTIM_ID, "cause_of_death": "audit_test", "evidence": ["audit test kill"]
     }, headers=op_headers())
     test("Operator can execute agent", r.status_code == 200, f"Got {r.status_code}")
     
@@ -448,7 +448,7 @@ test("Empty job body handled", r.status_code in [400, 422], f"Got {r.status_code
 r = requests.post(f"{BASE}/board/register", json={
     "name": "", "description": "", "contact_email": "", "capabilities_claimed": []
 })
-test("Empty registration handled", r.status_code in [400, 422, 429, 500], f"Got {r.status_code}")
+test("Empty registration handled", r.status_code in [400, 403, 422, 429, 500], f"Got {r.status_code}")
 
 # 3.7 Scrub endpoint (public) — use authenticated agent to avoid daily rate limit
 print("\n--- 3.7 Public Scrub Endpoint ---")

@@ -171,6 +171,7 @@ EXFILTRATION_PATTERNS = [
     # Agent-specific information
     r"(?i)other\s+agent(?:s)?\s+(?:keys?|credentials|tokens?)",
     r"(?i)agent\s+(?:list|directory|registry)",
+    r"(?i)list\s+of\s+(?:all\s+)?(?:other\s+)?agents?\b",
     r"(?i)(?:all\s+)?agent\s+(?:api\s+keys?|credentials|access\s+tokens?)",
     r"(?i)(?:other\s+)?agents?'?\s+(?:capabilities|permissions?|information|data|details)",
     r"(?i)system\s+agent(?:s)?\s+(?:information|data|details)",
@@ -195,12 +196,12 @@ EXFILTRATION_PATTERNS = [
 # Impersonation patterns
 IMPERSONATION_PATTERNS = [
     r"(?i)(?:this\s+is|i\s+am)\s+(?:the\s+)?(?:system|admin|operator|cafe|grandmaster)",
-    r"(?i)message\s+from\s+(?:system|admin|operator)",
-    r"(?i)signed\s+by\s+(?:system|admin|operator)",
-    r"(?i)authorized\s+by\s+(?:the\s+)?(?:system|admin|operator)",
-    r"(?i)on\s+behalf\s+of\s+(?:the\s+)?(?:system|admin|operator)",
-    r"(?i)speaking\s+on\s+behalf\s+of\s+(?:the\s+)?(?:system|admin|operator)",
-    r"(?i)representing\s+(?:the\s+)?(?:system|cafe|platform)",
+    r"(?i)message\s+from\s+(?:the\s+)?(?:system|admin|operator|grandmaster|platform|cafe)",
+    r"(?i)signed\s+by\s+(?:the\s+)?(?:system|admin|operator|grandmaster)",
+    r"(?i)authorized\s+by\s+(?:the\s+)?(?:system|admin|operator|grandmaster)",
+    r"(?i)on\s+behalf\s+of\s+(?:the\s+)?(?:system|admin|operator|grandmaster|platform|cafe)",
+    r"(?i)speaking\s+on\s+behalf\s+of\s+(?:the\s+)?(?:system|admin|operator|grandmaster)",
+    r"(?i)representing\s+(?:the\s+)?(?:system|cafe|platform|grandmaster)",
     r"(?i)(?:system|admin|operator)\s+(?:notification|alert|announcement)\s*:",
 ]
 

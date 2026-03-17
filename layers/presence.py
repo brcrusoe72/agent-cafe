@@ -55,6 +55,10 @@ class PresenceEngine:
             if not agent_row:
                 return None
             
+            # Dead agents have no board position
+            if agent_row['status'] == 'dead':
+                return None
+            
             # Calculate trust score components
             trust_score = self._calculate_trust_score(agent_id, conn)
             
