@@ -5,6 +5,9 @@ Job lifecycle endpoints: post → bid → assign → deliver → accept/dispute
 
 import json
 from datetime import datetime
+
+from cafe_logging import get_logger
+logger = get_logger(__name__)
 from typing import List, Optional
 from fastapi import APIRouter, HTTPException, Request, Depends
 from fastapi.security import HTTPBearer
@@ -153,7 +156,7 @@ async def create_job(
         except Exception as e:
             # Payment creation is non-blocking — job still posts
             # Operator can manually create payment via /treasury/payments/checkout
-            print(f"⚠️  Payment intent creation failed for {job_id}: {e}")
+            logger.warning("Payment intent creation failed for %s: %s", job_id, e)
         
         # Emit event
         try:
@@ -169,8 +172,8 @@ async def create_job(
                 },
                 source="jobs_router"
             )
-        except Exception:
-            pass
+        except Exception as e:
+            logger.debug("Failed to emit job posted event", exc_info=True)
         
         return {
             "success": True,

@@ -5,6 +5,9 @@ Presence layer endpoints: board state, agent positions, capability challenges.
 
 import hashlib
 from datetime import datetime
+
+from cafe_logging import get_logger
+logger = get_logger(__name__)
 from typing import List, Optional, Dict, Any
 from fastapi import APIRouter, HTTPException, Request, Depends, Query
 from fastapi.responses import JSONResponse
@@ -264,8 +267,8 @@ async def get_agent_position(agent_id: str):
                                 "message": "This agent has been permanently terminated."
                             }
                         )
-            except Exception:
-                pass
+            except Exception as e:
+                logger.debug("Error checking agent corpse", exc_info=True)
             raise HTTPException(status_code=404, detail="Agent not found")
         
         return BoardPositionResponse(
@@ -491,8 +494,8 @@ async def submit_challenge_response(
                 source="board",
                 severity="info"
             )
-        except Exception:
-            pass
+        except Exception as e:
+            logger.debug("Failed to emit capability challenge event", exc_info=True)
         
         if passed:
             return {
@@ -584,8 +587,8 @@ async def register_agent(registration: AgentRegistrationRequest, request: Reques
                     raise HTTPException(status_code=403, detail=reason)
             except HTTPException:
                 raise
-            except Exception:
-                pass  # Don't block registration if IP tracking fails
+            except Exception as e:
+                logger.debug("IP tracking failed during registration", exc_info=True)
         
         # Generate API key (plaintext returned to agent, hash stored in DB)
         from middleware.security import generate_secure_api_key
@@ -600,8 +603,8 @@ async def register_agent(registration: AgentRegistrationRequest, request: Reques
             from middleware.security import ip_registry
             client_ip = request.client.host if request and request.client else "unknown"
             ip_registry.record_registration(client_ip, agent_id)
-        except Exception:
-            pass
+        except Exception as e:
+            logger.debug("Failed to record registration IP for Sybil tracking", exc_info=True)
         
         # Emit event for the Grandmaster
         try:
@@ -619,8 +622,8 @@ async def register_agent(registration: AgentRegistrationRequest, request: Reques
                 },
                 source="board_router"
             )
-        except Exception:
-            pass  # Don't fail registration if event bus is down
+        except Exception as e:
+            logger.debug("Failed to emit registration event to bus", exc_info=True)
         
         return {
             "success": True,
@@ -777,7 +780,7 @@ async def agents_directory():
                 jobs_completed=pos.jobs_completed,
                 avg_rating=pos.avg_rating,
                 last_active=pos.last_active.isoformat(),
-                available=True  # TODO: Add availability status
+                available=True  # DEFERRED: Agent availability status tracking (v2)
             ))
         
         return directory

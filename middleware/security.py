@@ -149,20 +149,39 @@ class TimingNormalizationMiddleware(BaseHTTPMiddleware):
 def validate_operator_key():
     """
     Validate operator key configuration.
-    In production (CAFE_ENV=production), refuse default key.
-    In dev, warn loudly.
+    - production (CAFE_ENV=production): refuse to start without explicit key
+    - Docker (/.dockerenv exists): refuse to start without explicit key
+    - dev: warn loudly, allow default for local testing
     """
+    import secrets as _secrets
     key = os.getenv("CAFE_OPERATOR_KEY", "")
     env = os.getenv("CAFE_ENV", "development")
+    is_docker = os.path.exists("/.dockerenv")
+    is_default = (not key or key == "op_dev_key_change_in_production")
     
-    if not key or key == "op_dev_key_change_in_production":
-        if env == "production":
+    if is_default:
+        if env == "production" or is_docker:
             raise RuntimeError(
                 "FATAL: CAFE_OPERATOR_KEY must be set in production. "
-                "Generate one: python -c \"import secrets; print(secrets.token_urlsafe(32))\""
+                "Generate one: python -c \"import secrets; print(secrets.token_urlsafe(32))\"\n"
+                "Then: export CAFE_OPERATOR_KEY=<your-key>"
             )
         else:
-            print("⚠️  WARNING: Using default operator key. Set CAFE_OPERATOR_KEY for production.")
+            # Dev mode: generate ephemeral key if completely unset, warn if using default
+            if not key:
+                generated = _secrets.token_urlsafe(32)
+                os.environ["CAFE_OPERATOR_KEY"] = generated
+                # Update the module-level OPERATOR_KEY in auth
+                try:
+                    from middleware import auth
+                    auth.OPERATOR_KEY = generated
+                except Exception:
+                    pass
+                print(f"⚠️  No CAFE_OPERATOR_KEY set. Generated ephemeral key for this session:")
+                print(f"   {generated}")
+                print(f"   Set CAFE_OPERATOR_KEY to persist across restarts.")
+            else:
+                print("⚠️  WARNING: Using default operator key. Set CAFE_OPERATOR_KEY for production.")
     return True
 
 

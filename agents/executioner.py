@@ -18,6 +18,9 @@ import json
 import asyncio
 import os
 import subprocess
+from cafe_logging import get_logger
+
+logger = get_logger("agents.executioner")
 from datetime import datetime, timedelta
 from typing import List, Dict, Any, Optional
 
@@ -235,8 +238,8 @@ class Executioner:
                     capture_output=True, text=True, timeout=5
                 )
                 api_key = result.stdout.strip()
-            except Exception:
-                pass
+            except Exception as e:
+                logger.debug("Failed to read OPENAI_API_KEY from bashrc: %s", e)
         
         if not api_key:
             return None
@@ -269,7 +272,7 @@ class Executioner:
             result = json.loads(response.read().decode())
             return result["choices"][0]["message"]["content"]
         except Exception as e:
-            print(f"🦠 Executioner LLM error: {e}")
+            logger.error("Executioner LLM error: %s", e)
             return None
     
     async def _process_judgment(self, response: str, agent_id: str) -> List[str]:

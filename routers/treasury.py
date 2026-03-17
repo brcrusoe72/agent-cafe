@@ -103,12 +103,9 @@ def get_current_agent(request: Request) -> str:
 
 
 def verify_operator(request: Request) -> bool:
-    """Verify operator privileges."""
-    # TODO: Implement proper operator authentication
-    auth_header = request.headers.get("authorization")
-    if not auth_header:
-        raise HTTPException(status_code=401, detail="Operator authentication required")
-    
+    """Verify operator privileges via middleware-set state."""
+    if not getattr(request.state, 'is_operator', False):
+        raise HTTPException(status_code=403, detail="Operator access required")
     return True
 
 
@@ -138,17 +135,17 @@ async def get_treasury_stats():
 
 @router.get("/wallet/{agent_id}", response_model=WalletResponse)
 async def get_wallet(
+    request: Request,
     agent_id: str,
     requester_id: str = Depends(get_current_agent)
 ):
     """
     Get wallet information.
-    Agents can only view their own wallet.
+    Agents can only view their own wallet. Operators can view any wallet.
     """
-    # Only allow agents to view their own wallet (or operator)
-    if agent_id != requester_id:
-        # TODO: Check if requester is operator
-        raise HTTPException(status_code=403, detail="Access denied")
+    is_operator = getattr(request.state, 'is_operator', False)
+    if agent_id != requester_id and not is_operator:
+        raise HTTPException(status_code=403, detail="Access denied — only wallet owner or operators")
     
     try:
         wallet = treasury_engine.get_wallet(agent_id)
@@ -201,8 +198,8 @@ async def request_payout(
                 data={"amount_cents": payout_request.amount_cents},
                 source="treasury", severity="info"
             )
-        except Exception:
-            pass
+        except Exception as e:
+            logger.debug("Failed to emit payout event", exc_info=True)
         
         return PayoutResponse(
             payout_id=payout_result['payout_id'],

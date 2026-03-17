@@ -19,6 +19,9 @@ from datetime import datetime, timedelta
 from typing import Optional, Dict, Any, List, Tuple
 from dataclasses import dataclass, asdict
 
+from cafe_logging import get_logger
+logger = get_logger(__name__)
+
 try:
     from ..db import get_db
 except ImportError:
@@ -158,7 +161,7 @@ def log_interaction(
             ))
             conn.commit()
     except Exception as e:
-        print(f"⚠️ interaction_log write failed: {e}")
+        logger.warning("interaction_log write failed: %s", e)
     return log_id
 
 
@@ -196,7 +199,7 @@ def log_grandmaster_decision(
             ))
             conn.commit()
     except Exception as e:
-        print(f"⚠️ grandmaster_decisions write failed: {e}")
+        logger.warning("grandmaster_decisions write failed: %s", e)
     return decision_id
 
 
@@ -237,7 +240,7 @@ def log_scrubber_verdict(
             ))
             conn.commit()
     except Exception as e:
-        print(f"⚠️ scrubber_verdicts write failed: {e}")
+        logger.warning("scrubber_verdicts write failed: %s", e)
     return verdict_id
 
 
@@ -266,7 +269,7 @@ def log_trust_mutation(
             ))
             conn.commit()
     except Exception as e:
-        print(f"⚠️ trust_mutations write failed: {e}")
+        logger.warning("trust_mutations write failed: %s", e)
     return mutation_id
 
 
@@ -280,8 +283,8 @@ def update_grandmaster_outcome(decision_id: str, outcome: str):
                 WHERE decision_id = ?
             """, (outcome, datetime.now(), decision_id))
             conn.commit()
-    except Exception:
-        pass
+    except Exception as e:
+        logger.debug("Failed to update grandmaster outcome", exc_info=True)
 
 
 # === QUERY FUNCTIONS ===

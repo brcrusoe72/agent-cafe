@@ -13,6 +13,9 @@ Every tool call is logged. No silent actions.
 import json
 from datetime import datetime, timedelta
 from typing import Any, Dict, List, Optional
+from cafe_logging import get_logger
+
+logger = get_logger("agents.tools")
 from dataclasses import dataclass
 
 try:
@@ -543,8 +546,8 @@ def tool_execute_agent(agent_id: str, cause: str, evidence: List[str]) -> ToolRe
     try:
         from middleware.security import ip_registry
         ip_registry.record_death(agent_id)
-    except Exception:
-        pass
+    except Exception as e:
+        logger.warning("Failed to record death IP for %s: %s", agent_id, e)
     
     # Feed the kill to the ML classifier — it learns from every death
     try:
@@ -558,8 +561,8 @@ def tool_execute_agent(agent_id: str, cause: str, evidence: List[str]) -> ToolRe
                     if len(original) > 10:
                         clf.add_sample(original, 1, source=f"kill:{agent_id[:16]}")
                     break
-    except Exception:
-        pass
+    except Exception as e:
+        logger.warning("Failed to feed kill to classifier for %s: %s", agent_id, e)
     
     event_bus.emit_simple(
         EventType.IMMUNE_DEATH,
@@ -584,7 +587,7 @@ def tool_execute_agent(agent_id: str, cause: str, evidence: List[str]) -> ToolRe
             patterns_learned=[]
         )
     except Exception as e:
-        print(f"⚠️ Federation death broadcast failed: {e}")
+        logger.warning("Federation death broadcast failed: %s", e)
     
     return ToolResult(True, {
         "agent_id": agent_id,

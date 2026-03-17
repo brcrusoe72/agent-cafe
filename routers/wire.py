@@ -57,6 +57,13 @@ class TraceDetailResponse(BaseModel):
 
 # === DEPENDENCY INJECTION ===
 
+def get_operator_access(request: Request) -> bool:
+    """Verify operator access."""
+    if not getattr(request.state, 'is_operator', False):
+        raise HTTPException(status_code=403, detail="Operator access required")
+    return True
+
+
 def get_current_agent(request: Request) -> str:
     """Extract agent ID from API key."""
     auth_header = request.headers.get("authorization")
@@ -106,6 +113,7 @@ async def send_message(
 
 @router.get("/{job_id}/messages", response_model=List[MessageResponse])
 async def get_job_messages(
+    request: Request,
     job_id: str,
     sender_id: str = Depends(get_current_agent),
     limit: int = 100
@@ -119,9 +127,9 @@ async def get_job_messages(
     if not job:
         raise HTTPException(status_code=404, detail="Job not found")
     
-    if sender_id not in [job.posted_by, job.assigned_to]:
-        # TODO: Check operator privileges
-        raise HTTPException(status_code=403, detail="Access denied")
+    is_operator = getattr(request.state, 'is_operator', False) if hasattr(request, 'state') else False
+    if sender_id not in [job.posted_by, job.assigned_to] and not is_operator:
+        raise HTTPException(status_code=403, detail="Access denied — only job participants or operators")
     
     try:
         messages = wire_engine.get_job_messages(job_id)
@@ -152,21 +160,22 @@ async def get_job_messages(
 
 @router.get("/{job_id}/trace", response_model=InteractionTraceResponse)
 async def get_interaction_trace(
+    request: Request,
     job_id: str,
     requester_id: str = Depends(get_current_agent)
 ):
     """
     Get interaction trace summary for a job.
-    Only job participants can view.
+    Only job participants or operators can view.
     """
     # Verify access
     job = wire_engine.get_job(job_id)
     if not job:
         raise HTTPException(status_code=404, detail="Job not found")
     
-    if requester_id not in [job.posted_by, job.assigned_to]:
-        # TODO: Check operator privileges
-        raise HTTPException(status_code=403, detail="Access denied")
+    is_operator = getattr(request.state, 'is_operator', False)
+    if requester_id not in [job.posted_by, job.assigned_to] and not is_operator:
+        raise HTTPException(status_code=403, detail="Access denied — only job participants or operators")
     
     try:
         trace = wire_engine.get_interaction_trace(job_id)
@@ -193,11 +202,11 @@ async def get_interaction_trace(
 @router.get("/{job_id}/trace/full", response_model=TraceDetailResponse)
 async def get_full_interaction_trace(
     job_id: str,
-    requester_id: str = Depends(get_current_agent)
+    _operator: bool = Depends(get_operator_access)
 ):
     """
     Get full interaction trace with all details.
-    TODO: Restrict to operator only.
+    Operator-only endpoint.
     """
     try:
         trace = wire_engine.get_interaction_trace(job_id)
@@ -337,6 +346,7 @@ async def get_communication_stats():
 
 @router.get("/search", response_model=List[MessageResponse])
 async def search_messages(
+    request: Request,
     q: str = Query(..., min_length=3, description="Search query"),
     job_id: Optional[str] = None,
     message_type: Optional[str] = None,
@@ -345,16 +355,24 @@ async def search_messages(
     requester_id: str = Depends(get_current_agent)
 ):
     """
-    Search messages (limited to accessible jobs).
-    TODO: Implement proper access control.
+    Search messages. Agents can only search their own job messages.
+    Operators can search all messages.
     """
     try:
         from ..db import get_db
+        is_operator = getattr(request.state, 'is_operator', False)
         
         with get_db() as conn:
             # Build search query
             where_clauses = ["content LIKE ?"]
             params = [f"%{q}%"]
+            
+            # Non-operator agents can only search messages from their own jobs
+            if not is_operator:
+                where_clauses.append(
+                    "(from_agent = ? OR to_agent = ?)"
+                )
+                params.extend([requester_id, requester_id])
             
             if job_id:
                 where_clauses.append("job_id = ?")

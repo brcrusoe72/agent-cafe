@@ -11,6 +11,9 @@ from datetime import datetime, timedelta
 from typing import List, Optional, Dict, Any, Tuple
 from dataclasses import asdict
 
+from cafe_logging import get_logger
+logger = get_logger(__name__)
+
 try:
     from ..models import (
         Job, JobStatus, Bid, WireMessage, InteractionTrace,
@@ -41,7 +44,7 @@ def _emit_event(event_type, agent_id="", data=None, source="wire"):
             severity="info"
         )
     except Exception as e:
-        print(f"⚠️ Event emission failed for {event_type}: {e}")
+        logger.warning("Event emission failed for %s: %s", event_type, e)
 
 
 class CommunicationError(Exception):
@@ -132,8 +135,8 @@ class WireEngine:
                     raise CommunicationError("Insufficient stake to bid (minimum $10.00)")
         except CommunicationError:
             raise
-        except Exception:
-            pass  # Treasury not available — allow bidding
+        except Exception as e:
+            logger.debug("Treasury not available — allowing bidding", exc_info=True)
         
         # Scrub the pitch message
         scrub_result = self.scrubber.scrub_message(
@@ -205,8 +208,8 @@ class WireEngine:
                 result="submitted",
                 metadata={"bid_id": bid_id, "price_cents": bid_request.price_cents}
             )
-        except Exception:
-            pass
+        except Exception as e:
+            logger.debug("Failed to log bid interaction", exc_info=True)
         
         return bid_id
     
@@ -218,9 +221,8 @@ class WireEngine:
         if job.status != JobStatus.OPEN:
             raise CommunicationError(f"Job is {job.status}, cannot assign")
         
-        # Verify assignment authority
+        # Verify assignment authority (operator override handled at router layer)
         if job.posted_by != assigned_by:
-            # TODO: Check operator privileges
             raise CommunicationError("Only job poster can assign")
         
         with get_db() as conn:
@@ -280,8 +282,8 @@ class WireEngine:
                 result="assigned",
                 metadata={"bid_id": bid_id, "price_cents": bid_row['price_cents']}
             )
-        except Exception:
-            pass
+        except Exception as e:
+            logger.debug("Failed to log job assignment interaction", exc_info=True)
         
         return True
     
@@ -376,8 +378,8 @@ class WireEngine:
                 result="delivered",
                 metadata={"message_id": message_id, "message_type": message_request.message_type}
             )
-        except Exception:
-            pass
+        except Exception as e:
+            logger.debug("Failed to log wire message interaction", exc_info=True)
         
         return message_id
     
@@ -510,7 +512,7 @@ class WireEngine:
         except Exception as e:
             # Payment capture failure is serious but shouldn't block completion.
             # Job is marked complete; payment can be retried via /treasury/capture/{job_id}
-            print(f"⚠️ Payment capture failed for job {job_id}: {e}")
+            logger.warning("Payment capture failed for job %s: %s", job_id, e)
         
         try:
             self.send_message(job_id, accepted_by, MessageRequest(
@@ -519,8 +521,8 @@ class WireEngine:
                 content=f"Deliverable accepted! Rating: {rating}/5\n\nFeedback: {feedback}",
                 metadata={"rating": rating, "feedback": feedback}
             ))
-        except Exception:
-            pass  # Completion message is secondary
+        except Exception as e:
+            logger.debug("Completion message send failed (secondary)", exc_info=True)
         
         # Recompute board position (single source of truth for trust score)
         old_trust = 0.0
@@ -528,14 +530,14 @@ class WireEngine:
             agent_data = get_agent_by_id(job.assigned_to)
             if agent_data:
                 old_trust = agent_data.trust_score
-        except Exception:
-            pass
+        except Exception as e:
+            logger.debug("Failed to get old trust score for agent", exc_info=True)
         
         try:
             from layers.presence import presence_engine
             presence_engine.compute_board_position(job.assigned_to)
-        except Exception:
-            pass  # Trust recalc is secondary
+        except Exception as e:
+            logger.debug("Trust recalc failed (secondary)", exc_info=True)
         
         # Log the full interaction + trust mutation
         try:
@@ -562,8 +564,8 @@ class WireEngine:
                     job_id=job_id,
                     triggered_by=accepted_by
                 )
-        except Exception:
-            pass
+        except Exception as e:
+            logger.debug("Failed to log job completion interaction", exc_info=True)
         
         return True
     
@@ -595,8 +597,8 @@ class WireEngine:
                 "disputed_by": disputed_by,
                 "reason": reason
             })
-        except Exception:
-            pass  # Trace is secondary — don't fail the dispute over it
+        except Exception as e:
+            logger.debug("Trace event for dispute failed (secondary)", exc_info=True)
         
         _emit_event("JOB_DISPUTED", agent_id=disputed_by, data={
             "job_id": job_id, "reason": reason
@@ -723,8 +725,8 @@ class WireEngine:
                 messages=messages,
                 scrub_events=scrub_events,
                 trust_events=trust_events,
-                payment_events=[],  # TODO: Add payment events from treasury layer
-                immune_events=[],   # TODO: Add immune events
+                payment_events=[],  # DEFERRED: Cross-layer event aggregation (v2)
+                immune_events=[],   # DEFERRED: Cross-layer event aggregation (v2)
                 started_at=datetime.fromisoformat(trace_row['started_at']),
                 completed_at=datetime.fromisoformat(trace_row['completed_at']) if trace_row['completed_at'] else None,
                 outcome=trace_row['outcome']
@@ -822,7 +824,7 @@ class WireEngine:
                 }
             )
         except Exception as e:
-            print(f"⚠️  Wire immune escalation failed for {agent_id}: {e}")
+            logger.warning("Wire immune escalation failed for %s: %s", agent_id, e)
     
     def _calculate_trust_impact(self, rating: float, job_value_cents: int) -> float:
         """Calculate trust score impact from job completion."""

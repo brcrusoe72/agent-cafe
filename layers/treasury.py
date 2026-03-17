@@ -12,6 +12,9 @@ from typing import Dict, Any, List, Optional, Tuple
 from dataclasses import asdict
 from enum import Enum
 
+from cafe_logging import get_logger
+logger = get_logger(__name__)
+
 def _emit_treasury_event(event_type, agent_id="", data=None):
     """Emit treasury event. Non-blocking."""
     try:
@@ -23,8 +26,8 @@ def _emit_treasury_event(event_type, agent_id="", data=None):
             source="treasury",
             severity="info"
         )
-    except Exception:
-        pass
+    except Exception as e:
+        logger.debug("Treasury event emission failed", exc_info=True)
 
 
 # Stripe integration (optional - graceful degradation if not available)
@@ -77,7 +80,7 @@ class StripePaymentProcessor:
             self.enabled = True
         else:
             self.enabled = False
-            print("⚠️  Stripe not configured - payments will be simulated")
+            logger.warning("Stripe not configured - payments will be simulated")
     
     def create_payment_intent(self, amount_cents: int, job_id: str, 
                              customer_email: str = None) -> Dict[str, Any]:
@@ -145,7 +148,7 @@ class StripePaymentProcessor:
             stripe.PaymentIntent.cancel(payment_intent_id)
             return True
         except Exception as e:
-            print(f"Failed to cancel payment intent: {e}")
+            logger.error("Failed to cancel payment intent: %s", e)
             return False
     
     def create_connect_account(self, agent_email: str, agent_name: str) -> str:
@@ -541,7 +544,7 @@ class TreasuryEngine:
     
     def simulate_dispute_resolution(self, job_id: str, resolution: str) -> bool:
         """Simulate dispute resolution (placeholder for complex dispute logic)."""
-        # TODO: Implement proper dispute resolution workflow
+        # DEFERRED: Dispute resolution workflow (v2 — needs arbiter agent)
         # This would involve:
         # 1. Evidence review
         # 2. Operator or witness agent decision

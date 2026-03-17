@@ -24,6 +24,9 @@ import asyncio
 import subprocess
 import os
 from datetime import datetime, timedelta
+
+from cafe_logging import get_logger
+logger = get_logger(__name__)
 from typing import List, Dict, Any, Optional
 from dataclasses import dataclass, field
 
@@ -152,7 +155,7 @@ class Grandmaster:
         unprocessed = event_bus.get_unprocessed(limit=50)
         if unprocessed:
             self._event_buffer.extend(unprocessed)
-            print(f"♟️  Grandmaster found {len(unprocessed)} unprocessed events from before restart")
+            logger.info("Grandmaster found %d unprocessed events from before restart", len(unprocessed))
         
         # Emit startup event
         event_bus.emit_simple(
@@ -165,7 +168,7 @@ class Grandmaster:
         )
         
         self._task = asyncio.create_task(self._run_loop())
-        print(f"♟️  Grandmaster is watching the board (model: {self.config.model})")
+        logger.info("Grandmaster is watching the board (model: %s)", self.config.model)
     
     async def stop(self):
         """Stop the Grandmaster's watch."""
@@ -176,7 +179,7 @@ class Grandmaster:
                 await self._task
             except asyncio.CancelledError:
                 pass
-        print("♟️  Grandmaster stepping away from the board")
+        logger.info("Grandmaster stepping away from the board")
     
     async def _run_loop(self):
         """Main event processing loop."""
@@ -210,7 +213,7 @@ class Grandmaster:
             except asyncio.CancelledError:
                 raise
             except Exception as e:
-                print(f"♟️  Grandmaster error: {e}")
+                logger.error("Grandmaster error: %s", e)
                 await asyncio.sleep(5)  # Back off on errors
     
     async def _flush_buffer(self, reason: str = "timer"):
@@ -240,7 +243,7 @@ class Grandmaster:
                 self._events_processed += len(events)
                 self._calls_made += 1
         except Exception as e:
-            print(f"♟️  Grandmaster LLM error: {e}")
+            logger.error("Grandmaster LLM error: %s", e)
             # Re-buffer events on failure (but don't retry critical ones forever)
             for event in events:
                 if event.severity != "critical":
@@ -339,12 +342,12 @@ class Grandmaster:
             return stdout.decode().strip()
             
         except asyncio.TimeoutError:
-            print("♟️  Grandmaster LLM call timed out (120s)")
+            logger.warning("Grandmaster LLM call timed out (120s)")
             return None
         except FileNotFoundError:
             return await self._call_llm_fallback(prompt)
         except Exception as e:
-            print(f"♟️  Grandmaster LLM call error: {e}")
+            logger.error("Grandmaster LLM call error: %s", e)
             return await self._call_llm_fallback(prompt)
     
     async def _call_llm_fallback(self, prompt: str) -> Optional[str]:
@@ -371,7 +374,7 @@ class Grandmaster:
                             break
         
         if not api_key:
-            print("♟️  No API key available for Grandmaster LLM calls")
+            logger.warning("No API key available for Grandmaster LLM calls")
             return None
         
         # Use OpenAI API directly
@@ -404,7 +407,7 @@ class Grandmaster:
             content = result["choices"][0]["message"]["content"]
             return content
         except Exception as e:
-            print(f"♟️  Grandmaster fallback LLM error: {e}")
+            logger.error("Grandmaster fallback LLM error: %s", e)
             return None
     
     async def _process_response(self, response: str, events: List[CafeEvent]):
@@ -461,8 +464,8 @@ class Grandmaster:
                 model_used=self.config.model,
                 metadata={"escalations": len(escalations), "tool_calls": len(tool_calls)}
             )
-        except Exception:
-            pass
+        except Exception as e:
+            logger.warning("Failed to log grandmaster decision: %s", e)
     
     async def _trigger_executioner(self, escalation_params: Dict[str, Any]):
         """Trigger the Executioner to review an escalated agent."""
@@ -478,10 +481,9 @@ class Grandmaster:
                     reason=reason,
                     evidence=[evidence] if evidence else None
                 )
-                print(f"♟️  Executioner review complete for {agent_id}: "
-                      f"{result.get('actions_taken', ['no action'])}")
+                logger.info("Executioner review complete for %s: %s", agent_id, result.get('actions_taken', ['no action']))
         except Exception as e:
-            print(f"♟️  Failed to trigger Executioner: {e}")
+            logger.error("Failed to trigger Executioner: %s", e)
     
     def _extract_tool_calls(self, response: str) -> List[Dict]:
         """

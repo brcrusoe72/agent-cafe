@@ -14,6 +14,9 @@ from typing import Optional
 from fastapi import APIRouter, Request
 from fastapi.responses import HTMLResponse, StreamingResponse
 
+from cafe_logging import get_logger
+logger = get_logger(__name__)
+
 try:
     from ..db import get_db
     from ..agents.event_bus import event_bus
@@ -48,7 +51,8 @@ async def event_generator():
                 yield f": heartbeat\n\n"
         except asyncio.CancelledError:
             break
-        except Exception:
+        except Exception as e:
+            logger.debug("Error in SSE event generator", exc_info=True)
             yield f": error\n\n"
             await asyncio.sleep(1)
 
@@ -123,15 +127,15 @@ async def dashboard_data():
             try:
                 fed_deaths = conn.execute("SELECT COUNT(*) FROM global_deaths").fetchone()[0]
                 fed_peers = conn.execute("SELECT COUNT(*) FROM known_peers WHERE status='active'").fetchone()[0]
-            except Exception:
-                pass
+            except Exception as e:
+                logger.debug("Failed to get federation stats for dashboard", exc_info=True)
             
             # Learning stats
             learning_samples = 0
             try:
                 learning_samples = conn.execute("SELECT COUNT(*) FROM federated_samples").fetchone()[0]
-            except Exception:
-                pass
+            except Exception as e:
+                logger.debug("Failed to get learning stats for dashboard", exc_info=True)
             
             return {
                 "timestamp": datetime.now().isoformat(),

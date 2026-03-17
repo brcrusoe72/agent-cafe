@@ -15,6 +15,9 @@ from typing import Optional, Dict, Any, List
 from fastapi import APIRouter, Request, Body
 from fastapi.responses import JSONResponse
 
+from cafe_logging import get_logger
+logger = get_logger(__name__)
+
 try:
     from ..federation.node import node_identity
     from ..federation.protocol import (
@@ -61,8 +64,8 @@ async def federation_info():
         try:
             from federation.hub import federation_hub
             info["network"] = federation_hub._network_stats()
-        except Exception:
-            pass
+        except Exception as e:
+            logger.debug("Failed to get hub network stats", exc_info=True)
     
     return info
 
@@ -196,7 +199,7 @@ async def _handle_hub_message(message: FederationMessage, request: Request = Non
         except ImportError:
             pass  # Hardening not available — allow through (dev mode)
         except Exception as e:
-            print(f"⚠️  Federation gate error (allowing through): {e}")
+            logger.warning("Federation gate error (allowing through): %s", e)
 
         from federation.hub import hub_router
         result = hub_router.route(message)
@@ -247,7 +250,7 @@ async def _handle_node_message(message: FederationMessage) -> JSONResponse:
             return JSONResponse(content={"status": "ok"})
         
         elif msg_type == MessageType.HUB_DELIST_WARNING.value:
-            print(f"⚠️  DELIST WARNING: {message.payload.get('reason')}")
+            logger.warning("DELIST WARNING: %s", message.payload.get('reason'))
             return JSONResponse(content={"status": "ok", "acknowledged": True})
         
         elif msg_type == MessageType.RELAY_JOB_BROADCAST.value:
@@ -267,7 +270,7 @@ async def _handle_node_message(message: FederationMessage) -> JSONResponse:
         
         elif msg_type == MessageType.RELAY_BID_ACCEPTED.value:
             # Notification that our agent's bid was accepted on a remote job
-            # TODO: Notify the local agent
+            # DEFERRED: Local agent notification on federation message receipt (v2)
             return JSONResponse(content={"status": "ok"})
         
         elif msg_type == MessageType.RELAY_DELIVERABLE.value:
@@ -361,8 +364,8 @@ async def query_trust(agent_id: str):
                     "capabilities": json.loads(row["capabilities_verified"]) if row["capabilities_verified"] else [],
                     "status": row["status"]
                 }
-    except Exception:
-        pass
+    except Exception as e:
+        logger.debug("Failed to query local trust for agent", exc_info=True)
     
     # Check remote trust cache
     remote = reputation_sync.get_effective_trust(agent_id)
@@ -411,8 +414,8 @@ async def explain_trust(
             if row:
                 remote_jobs = row["jobs_completed"]
                 remote_rating = row["avg_rating"]
-    except Exception:
-        pass
+    except Exception as e:
+        logger.debug("Failed to get local agent data for trust explain", exc_info=True)
     
     explanation = trust_bridge.explain(
         home_trust=home_trust,

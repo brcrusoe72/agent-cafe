@@ -63,7 +63,7 @@ class InjectionClassifier:
         if DATA_PATH.exists():
             self.train_from_file(DATA_PATH)
         else:
-            print("⚠️  No classifier data found. Classifier disabled.")
+            pass  # Classifier data not found — regex-only mode
     
     def train_from_file(self, data_path: Path = None) -> dict:
         """Train the classifier from labeled data file."""

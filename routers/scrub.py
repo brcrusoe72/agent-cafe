@@ -12,6 +12,9 @@ from fastapi import APIRouter, HTTPException, Depends, Request, Query
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 
+from cafe_logging import get_logger
+logger = get_logger(__name__)
+
 try:
     from ..middleware.auth import get_operator_access, scrub_daily_limiter
     from ..middleware.scrub_middleware import get_scrub_stats, get_recent_threats
@@ -539,7 +542,7 @@ async def _generate_pattern_recommendations() -> List[str]:
         return recommendations[:5]  # Return top 5 recommendations
     
     except Exception as e:
-        print(f"Error generating pattern recommendations: {e}")
+        logger.error("Error generating pattern recommendations: %s", e)
         return []
 
 

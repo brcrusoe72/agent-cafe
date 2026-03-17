@@ -13,6 +13,9 @@ from fastapi import Request, Response, HTTPException
 from fastapi.responses import JSONResponse
 from starlette.middleware.base import BaseHTTPMiddleware
 
+from cafe_logging import get_logger
+logger = get_logger(__name__)
+
 try:
     from ..layers.scrubber import scrub_message, get_scrubber_stats
     from ..models import ThreatType
@@ -124,7 +127,7 @@ class ScrubMiddleware(BaseHTTPMiddleware):
             return await call_next(request)
             
         except Exception as e:
-            print(f"Error in scrub middleware: {e}")
+            logger.error("Error in scrub middleware: %s", e)
             # On error, block the request for safety
             raise HTTPException(
                 status_code=400,
@@ -181,7 +184,7 @@ class ScrubMiddleware(BaseHTTPMiddleware):
                         "description": row['description']
                     }
         except Exception as e:
-            print(f"Warning: Could not load job context for {job_id}: {e}")
+            logger.warning("Could not load job context for %s: %s", job_id, e)
         
         return None
     
@@ -290,11 +293,11 @@ class ScrubMiddleware(BaseHTTPMiddleware):
                     threats=scrub_result.threats_detected,
                     stages_triggered=[t.threat_type.value for t in scrub_result.threats_detected],
                 )
-            except Exception:
-                pass
+            except Exception as e:
+                logger.debug("Failed to log scrubber verdict", exc_info=True)
         
         except Exception as e:
-            print(f"Warning: Could not log scrub result: {e}")
+            logger.warning("Could not log scrub result: %s", e)
     
     # Threat types that are instant death — no quarantine, no appeal
     DEATH_THREATS = {
@@ -411,8 +414,8 @@ class ScrubMiddleware(BaseHTTPMiddleware):
             result = tool_execute_agent(agent_id, cause, evidence)
             
             if result.success:
-                print(f"☠️  DEATH PENALTY: Agent {agent_id} executed for prompt injection. "
-                      f"{result.data.get('jobs_killed', 0)} jobs killed.")
+                logger.info("☠️  DEATH PENALTY: Agent %s executed for prompt injection. %d jobs killed.",
+                           agent_id, result.data.get('jobs_killed', 0))
                 
                 # Learn from the kill — extract patterns for the scrubber
                 for t in death_threats:
@@ -423,11 +426,11 @@ class ScrubMiddleware(BaseHTTPMiddleware):
                             description=f"Learned from kill of {agent_id}: {t.evidence[:100]}",
                             learned_from=agent_id
                         )
-                    except Exception:
-                        pass
+                    except Exception as e:
+                        logger.debug("Failed to learn pattern from kill", exc_info=True)
             
         except Exception as e:
-            print(f"⚠️  Failed to execute agent {agent_id}: {e}")
+            logger.warning("Failed to execute agent %s: %s", agent_id, e)
             # Fall back to quarantine if execution mechanism fails
             await self._trigger_quarantine(agent_id, scrub_result)
     
@@ -460,8 +463,8 @@ class ScrubMiddleware(BaseHTTPMiddleware):
                 source="scrub_middleware",
                 severity=severity
             )
-        except Exception:
-            pass  # Don't let event bus issues block scrubbing
+        except Exception as e:
+            logger.debug("Event bus emission failed during scrubbing", exc_info=True)
     
     async def _trigger_quarantine(self, agent_id: str, scrub_result):
         """Trigger immediate quarantine through immune system."""
@@ -491,7 +494,7 @@ class ScrubMiddleware(BaseHTTPMiddleware):
             
         except Exception as e:
             # Security enforcement failure — log loudly, don't silently swallow
-            print(f"🚨 CRITICAL: Quarantine failed for {agent_id}: {e}")
+            logger.error("CRITICAL: Quarantine failed for %s: %s", agent_id, e)
             raise
     
     async def _record_strike(self, agent_id: str, scrub_result):
@@ -513,7 +516,7 @@ class ScrubMiddleware(BaseHTTPMiddleware):
             )
             
         except Exception as e:
-            print(f"🚨 CRITICAL: Strike recording failed for {agent_id}: {e}")
+            logger.error("CRITICAL: Strike recording failed for %s: %s", agent_id, e)
             raise
 
 
@@ -567,7 +570,7 @@ def get_scrub_stats() -> Dict[str, Any]:
             }
     
     except Exception as e:
-        print(f"Error getting scrub stats: {e}")
+        logger.error("Error getting scrub stats: %s", e)
         return {"error": str(e)}
 
 
@@ -597,5 +600,5 @@ def get_recent_threats(limit: int = 50) -> List[Dict[str, Any]]:
             return threats
     
     except Exception as e:
-        print(f"Error getting recent threats: {e}")
+        logger.error("Error getting recent threats: %s", e)
         return []

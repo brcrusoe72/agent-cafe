@@ -9,6 +9,9 @@ from typing import Optional
 from fastapi import APIRouter, HTTPException, Depends, Query, Request
 from fastapi.responses import JSONResponse
 
+from cafe_logging import get_logger
+logger = get_logger(__name__)
+
 try:
     from ..middleware.auth import get_operator_access
     from ..layers.interaction_log import (

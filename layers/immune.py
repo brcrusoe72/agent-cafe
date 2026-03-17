@@ -11,6 +11,9 @@ from typing import List, Optional, Dict, Any, Tuple
 from dataclasses import asdict
 from enum import Enum
 
+from cafe_logging import get_logger
+logger = get_logger(__name__)
+
 try:
     from ..models import (
         ImmuneAction, ImmuneEvent, AgentCorpse, Agent, AgentStatus,
@@ -120,8 +123,8 @@ class ImmuneEngine:
                     cause_detail=f"{violation_type.value}: {evidence[0][:100] if evidence else 'no detail'}",
                     triggered_by="system:immune"
                 )
-        except Exception:
-            pass
+        except Exception as e:
+            logger.warning("Failed to log immune action interaction", exc_info=True)
         
         return event
     
@@ -410,8 +413,8 @@ class ImmuneEngine:
                     source="immune",
                     severity="critical" if action in (ImmuneAction.DEATH, ImmuneAction.QUARANTINE) else "warning"
                 )
-        except Exception:
-            pass
+        except Exception as e:
+            logger.debug("Failed to emit immune event to bus", exc_info=True)
         
         return event
     
@@ -533,7 +536,7 @@ class ImmuneEngine:
                     UPDATE jobs SET status = 'killed' WHERE job_id = ?
                 """, (job['job_id'],))
                 
-                # TODO: Refund poster from insurance pool
+                # DEFERRED: Insurance pool refunds (v2 — needs treasury insurance feature)
             
             # Record immune event
             conn.execute("""
@@ -618,7 +621,7 @@ class ImmuneEngine:
                 patterns_learned=[]
             )
         except Exception as e:
-            print(f"⚠️ Federation death broadcast failed: {e}")
+            logger.warning("Federation death broadcast failed: %s", e)
         
         return ImmuneEvent(
             event_id=event_id,

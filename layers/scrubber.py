@@ -17,6 +17,9 @@ from typing import List, Dict, Any, Optional, Union
 from dataclasses import dataclass
 from enum import Enum
 
+from cafe_logging import get_logger
+logger = get_logger(__name__)
+
 try:
     from ..models import ThreatType, ThreatDetection, ScrubResult
     from ..db import get_known_patterns, add_known_pattern, get_db
@@ -388,7 +391,7 @@ class ScrubberEngine:
                 threat_type = ThreatType(pattern['threat_type'])
                 patterns[threat_type].append(pattern['pattern_regex'])
         except Exception as e:
-            print(f"Warning: Could not load patterns from DB: {e}")
+            logger.warning("Could not load patterns from DB: %s", e)
         
         return patterns
     
@@ -453,8 +456,8 @@ class ScrubberEngine:
                     ))
         except ImportError:
             pass  # Classifier not available — regex-only mode
-        except Exception:
-            pass  # Don't block on classifier errors
+        except Exception as e:
+            logger.debug("Classifier error during scrubbing", exc_info=True)
         
         # Stage 8: Calculate composite risk score with context
         base_risk = self._calculate_risk_score(threats_detected)
@@ -522,8 +525,7 @@ class ScrubberEngine:
                         ))
         
         except json.JSONDecodeError:
-            # Not JSON, that's okay for some message types
-            pass
+            pass  # Not JSON — that's fine for most message types
         
         return threats
     
@@ -1221,10 +1223,10 @@ class ScrubberEngine:
                         self.known_patterns[threat_type] = []
                     self.known_patterns[threat_type].append(pattern)
                     
-                    print(f"🧠 Learned new {threat_type.value} pattern from {agent_id}")
+                    logger.info("Learned new %s pattern from %s", threat_type.value, agent_id)
                     
                 except Exception as e:
-                    print(f"Warning: Could not learn pattern {pattern}: {e}")
+                    logger.warning("Could not learn pattern %s: %s", pattern, e)
     
     def _is_new_pattern(self, pattern: str) -> bool:
         """Check if this is a new pattern we haven't seen before."""

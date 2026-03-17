@@ -18,6 +18,9 @@ import asyncio
 import time
 from datetime import datetime
 from typing import Optional, Dict, Any, List, Callable, Awaitable
+from cafe_logging import get_logger
+
+logger = get_logger("agents.event_bus")
 from dataclasses import dataclass, asdict, field
 from enum import Enum
 from pathlib import Path
@@ -209,7 +212,7 @@ class EventBus:
                 self._queue.put_nowait(event)
         except asyncio.QueueFull:
             # Log overflow but don't block infrastructure
-            print(f"⚠️  Event bus queue full, event {event.event_id} stored but not queued")
+            logger.warning("Event bus queue full, event %s stored but not queued", event.event_id)
     
     def emit_simple(
         self,

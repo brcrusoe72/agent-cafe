@@ -540,7 +540,7 @@ class PresenceEngine:
     
     def _detect_collusion_clusters(self, conn) -> List[List[str]]:
         """Detect groups of agents that frequently rate each other."""
-        # TODO: Implement graph-based clustering algorithm
+        # DEFERRED: Graph-based clustering (v2 — current random assignment works for <1K agents)
         # For now, return simple pairs
         clusters = []
         

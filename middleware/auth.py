@@ -8,6 +8,9 @@ import secrets
 import hashlib
 from typing import Optional
 
+from cafe_logging import get_logger
+logger = get_logger(__name__)
+
 from fastapi import Request, Response, HTTPException
 from fastapi.responses import JSONResponse
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
@@ -275,8 +278,8 @@ class AuthMiddleware(BaseHTTPMiddleware):
                                 "status": "dead"
                             }
                         )
-            except Exception:
-                pass
+            except Exception as e:
+                logger.debug("Error checking dead/quarantined agent status", exc_info=True)
             
             return JSONResponse(status_code=403, content={"detail": "Invalid API key or agent not active"})
         
@@ -337,8 +340,8 @@ class AuthMiddleware(BaseHTTPMiddleware):
                                 "status": "dead"
                             }
                         )
-        except Exception:
-            pass
+        except Exception as e:
+            logger.debug("Error in dead agent check", exc_info=True)
         return None
 
 
@@ -450,7 +453,8 @@ class RateLimiter:
             conn.commit()
             conn.close()
             return True
-        except Exception:
+        except Exception as e:
+            logger.debug("Rate limiter DB error, failing open", exc_info=True)
             return True  # Fail open on DB errors — don't block legit requests
 
 
@@ -462,8 +466,8 @@ class RateLimiter:
             conn.execute("DELETE FROM rate_events WHERE ts < ?", (time.time() - 7200,))
             conn.commit()
             conn.close()
-        except Exception:
-            pass
+        except Exception as e:
+            logger.debug("Rate limiter cleanup failed", exc_info=True)
 
 
 class DailyRateLimiter:
@@ -495,7 +499,8 @@ class DailyRateLimiter:
             conn.commit()
             conn.close()
             return True
-        except Exception:
+        except Exception as e:
+            logger.debug("Daily rate limiter DB error, failing open", exc_info=True)
             return True  # Fail open
 
 

@@ -91,13 +91,9 @@ class ViolationReport(BaseModel):
 # === DEPENDENCY INJECTION ===
 
 def verify_operator(request: Request) -> bool:
-    """Verify operator privileges."""
-    # TODO: Implement proper operator authentication
-    auth_header = request.headers.get("authorization")
-    if not auth_header:
-        raise HTTPException(status_code=401, detail="Operator authentication required")
-    
-    # For now, accept any authorization (development mode)
+    """Verify operator privileges via middleware-set state."""
+    if not getattr(request.state, 'is_operator', False):
+        raise HTTPException(status_code=403, detail="Operator access required")
     return True
 
 
@@ -222,17 +218,17 @@ async def get_attack_patterns():
 
 @router.get("/history/{agent_id}", response_model=List[ImmuneEventResponse])
 async def get_agent_immune_history(
+    request: Request,
     agent_id: str,
     requester_id: str = Depends(get_current_agent)
 ):
     """
     Get immune history for an agent.
-    Agents can view their own history.
+    Agents can view their own history. Operators can view any agent's history.
     """
-    # Only allow agents to view their own history (or operator)
-    if agent_id != requester_id:
-        # TODO: Check if requester is operator
-        raise HTTPException(status_code=403, detail="Access denied")
+    is_operator = getattr(request.state, 'is_operator', False)
+    if agent_id != requester_id and not is_operator:
+        raise HTTPException(status_code=403, detail="Access denied — only agent owner or operators")
     
     try:
         history = immune_engine.get_agent_immune_history(agent_id)

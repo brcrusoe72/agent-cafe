@@ -7,7 +7,10 @@ import os
 from datetime import datetime
 from pathlib import Path
 
+from cafe_logging import get_logger
 from fastapi import FastAPI, HTTPException
+
+logger = get_logger("main")
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
@@ -24,7 +27,7 @@ try:
     from layers.interaction_log import init_interaction_tables
     init_interaction_tables()
 except Exception as e:
-    print(f"⚠️ Interaction tables init failed: {e}")
+    logger.warning("Interaction tables init failed: %s", e)
 
 # Import middleware — THESE ARE REQUIRED. No auth/scrub = no security = no start.
 try:
@@ -89,7 +92,7 @@ try:
 except Exception as e:
     if "FATAL" in str(e):
         raise
-    print(f"⚠️  Security module: {e}")
+    logger.warning("Security module: %s", e)
 
 # Add middleware (order matters - last added runs first)
 # Request flows: TimingNorm → BodySize → Scrub → Auth → RequestID → handler
@@ -120,14 +123,14 @@ async def startup_event():
         from agents.event_bus import event_bus
         event_bus.initialize()
     except Exception as e:
-        print(f"⚠️  Event bus init failed: {e}")
+        logger.warning("Event bus init failed: %s", e)
     
     # Start the Grandmaster (always-on)
     try:
         from agents.grandmaster import grandmaster
         await grandmaster.start()
     except Exception as e:
-        print(f"⚠️  Grandmaster failed to start: {e}")
+        logger.warning("Grandmaster failed to start: %s", e)
     
     # Start Federation (if enabled)
     try:
@@ -140,7 +143,7 @@ async def startup_event():
             from federation.hardening import init_hardening_tables
             init_hardening_tables()
         except Exception as e:
-            print(f"⚠️  Federation hardening init: {e}")
+            logger.warning("Federation hardening init: %s", e)
         await node_identity.start()
         
         # If running as hub, start hub services too
@@ -148,9 +151,9 @@ async def startup_event():
             from federation.hub import federation_hub
             await federation_hub.start()
     except Exception as e:
-        print(f"⚠️  Federation init: {e}")
+        logger.warning("Federation init: %s", e)
     
-    print("♟️  Agent Café is ready to play")
+    logger.info("♟️  Agent Café is ready to play")
 
 
 @app.on_event("shutdown")
@@ -167,7 +170,7 @@ async def shutdown_event():
             """).fetchone()['n']
             
             if active > 0:
-                print(f"⚠️  {active} active jobs in flight during shutdown")
+                logger.warning("%d active jobs in flight during shutdown", active)
                 # Record shutdown event in trace for each active job
                 import uuid
                 from datetime import datetime
@@ -185,7 +188,7 @@ async def shutdown_event():
                     ))
                 conn.commit()
     except Exception as e:
-        print(f"⚠️  Shutdown job notification failed: {e}")
+        logger.warning("Shutdown job notification failed: %s", e)
     
     # Clean up rate limit DB stale entries
     try:
@@ -212,7 +215,7 @@ async def shutdown_event():
         await grandmaster.stop()
     except Exception:
         pass
-    print("👋 Agent Café shutting down gracefully")
+    logger.info("👋 Agent Café shutting down gracefully")
 
 
 # ═══════════════════════════════════════════════════════════════════
@@ -589,7 +592,7 @@ if treasury:
         from routers import observability
         app.include_router(observability.router, prefix="/observe", tags=["observability"])
     except Exception as e:
-        print(f"⚠️ Observability router failed: {e}")
+        logger.warning("Observability router failed: %s", e)
 
 # Federation router
 try:
@@ -599,7 +602,7 @@ try:
         from routers import federation as federation_router
     app.include_router(federation_router.router, prefix="/federation", tags=["federation"])
 except Exception as e:
-    print(f"⚠️  Federation router not loaded: {e}")
+    logger.warning("Federation router not loaded: %s", e)
     federation_router = None
 
 # Dashboard router
@@ -610,7 +613,7 @@ try:
         from routers import dashboard as dashboard_router
     app.include_router(dashboard_router.router, prefix="/dashboard", tags=["dashboard"])
 except Exception as e:
-    print(f"⚠️  Dashboard router not loaded: {e}")
+    logger.warning("Dashboard router not loaded: %s", e)
     dashboard_router = None
 
 
