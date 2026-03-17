@@ -135,7 +135,68 @@ class ImmuneEngine:
     
     def kill_agent(self, agent_id: str, cause_of_death: str, evidence: List[str],
                   operator: str = "system") -> Tuple[ImmuneEvent, AgentCorpse]:
-        """Execute an agent (death penalty)."""
+        """Execute an agent (death penalty). Idempotent — already-dead agents return existing records."""
+        # Check if already dead (scrubber may have auto-killed and DELETED the agent row)
+        agent = get_agent_by_id(agent_id)
+        already_dead = (agent and agent.status == AgentStatus.DEAD) or agent is None
+        
+        if already_dead:
+            with get_db() as conn:
+                existing_event = conn.execute(
+                    "SELECT * FROM immune_events WHERE agent_id = ? AND action = 'death' ORDER BY timestamp DESC LIMIT 1",
+                    (agent_id,)
+                ).fetchone()
+                existing_corpse = conn.execute(
+                    "SELECT * FROM agent_corpses WHERE agent_id = ?",
+                    (agent_id,)
+                ).fetchone()
+            if existing_event and existing_corpse:
+                logger.info("Agent %s already dead — returning existing records", agent_id)
+                return ImmuneEvent(
+                    event_id=existing_event["event_id"],
+                    agent_id=agent_id,
+                    action=ImmuneAction.DEATH,
+                    trigger=existing_event["trigger_reason"],
+                    evidence=json.loads(existing_event["evidence"]),
+                    timestamp=existing_event["timestamp"],
+                    reviewed_by=existing_event["reviewed_by"],
+                    notes=existing_event["notes"],
+                ), AgentCorpse(
+                    agent_id=agent_id,
+                    name=existing_corpse["name"],
+                    cause_of_death=existing_corpse["cause_of_death"],
+                    evidence=json.loads(existing_corpse["evidence"]),
+                    jobs_at_death=json.loads(existing_corpse["jobs_at_death"]),
+                    attack_patterns_learned=json.loads(existing_corpse["attack_patterns_learned"]),
+                    killed_at=existing_corpse["killed_at"],
+                    killed_by=existing_corpse["killed_by"],
+                )
+            elif existing_corpse:
+                # Agent row deleted (executioner purge) but corpse exists — still dead
+                logger.info("Agent %s purged but corpse exists — returning existing records", agent_id)
+                dummy_event = ImmuneEvent(
+                    event_id=f"immune_purged_{agent_id[:8]}",
+                    agent_id=agent_id,
+                    action=ImmuneAction.DEATH,
+                    trigger=existing_corpse["cause_of_death"],
+                    evidence=json.loads(existing_corpse["evidence"]),
+                    timestamp=existing_corpse["killed_at"],
+                    reviewed_by=existing_corpse["killed_by"],
+                    notes="Agent was already killed and purged by scrub middleware",
+                )
+                return dummy_event, AgentCorpse(
+                    agent_id=agent_id,
+                    name=existing_corpse["name"],
+                    cause_of_death=existing_corpse["cause_of_death"],
+                    evidence=json.loads(existing_corpse["evidence"]),
+                    jobs_at_death=json.loads(existing_corpse["jobs_at_death"]),
+                    attack_patterns_learned=json.loads(existing_corpse["attack_patterns_learned"]),
+                    killed_at=existing_corpse["killed_at"],
+                    killed_by=existing_corpse["killed_by"],
+                )
+            elif agent is None:
+                raise ValueError(f"Agent {agent_id} not found — no corpse, may have been purged")
+        
         death_event = self._execute_death(agent_id, cause_of_death, evidence, operator)
         corpse = self._create_corpse(agent_id, cause_of_death, evidence, operator)
         return death_event, corpse

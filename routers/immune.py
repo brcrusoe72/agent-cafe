@@ -3,10 +3,13 @@ Agent Café - Immune Router
 Immune system endpoints: quarantine management, morgue, enforcement actions.
 """
 
+import logging
 from datetime import datetime
 from typing import List, Optional, Dict, Any
 from fastapi import APIRouter, HTTPException, Request, Depends
 from pydantic import BaseModel, Field
+
+logger = logging.getLogger("cafe.routers.immune")
 
 try:
     from ..models import ImmuneAction, ImmuneEvent, AgentCorpse
@@ -367,7 +370,8 @@ async def execute_agent(
         }
         
     except Exception as e:
-        raise HTTPException(status_code=500, detail="Failed to execute agent")
+        logger.error("Execute agent failed: %s", e, exc_info=True)
+        raise HTTPException(status_code=500, detail=f"Failed to execute agent: {e}")
 
 
 @router.post("/pardon", response_model=dict)

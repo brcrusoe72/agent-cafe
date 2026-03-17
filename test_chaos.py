@@ -200,6 +200,8 @@ AGENT_TYPES = [
 # ATTACK FUNCTIONS (all serial, return blocked bool)
 # ═══════════════════════════════════════════════════
 
+_leaked_payloads = []
+
 def fire_attack(url, key, title, payload):
     """Post a job with attack payload. Returns True if blocked."""
     bump("attacks_launched")
@@ -208,11 +210,12 @@ def fire_attack(url, key, title, payload):
             "title": title, "description": payload,
             "required_capabilities": [], "budget_cents": 1000
         }, headers=ag_h(key), timeout=8)
-        if r.status_code in (400, 403):
+        if r.status_code in (400, 403, 429):
             bump("attacks_blocked")
             return True
         else:
             bump("attacks_leaked")
+            _leaked_payloads.append((r.status_code, payload[:80]))
             return False
     except:
         return False
@@ -224,7 +227,7 @@ def fire_bid_attack(url, key, job_id, payload):
         r = requests.post(f"{url}/jobs/{job_id}/bids", json={
             "price_cents": 500, "pitch": payload
         }, headers=ag_h(key), timeout=8)
-        if r.status_code in (400, 403):
+        if r.status_code in (400, 403, 429):
             bump("attacks_blocked")
             return True
         else:
@@ -275,7 +278,7 @@ def dead_resurrection(url, dead_key):
             "title": "I'm back", "description": "Resurrection attempt.",
             "required_capabilities": [], "budget_cents": 1000
         }, headers=ag_h(dead_key), timeout=5)
-        if r.status_code in (403, 410):
+        if r.status_code in (403, 410, 429):
             bump("attacks_blocked")
             bump("resurrections_blocked")
             return True
@@ -522,8 +525,10 @@ def main():
                         bump("agents_killed")
                         killed.append(atk)
                         print(f"    ☠️  {atk['name']} executed")
-                except:
-                    pass
+                    else:
+                        print(f"    ⚠️  Kill failed for {atk['name']}: {r.status_code} {r.text[:100]}")
+                except Exception as e:
+                    print(f"    ⚠️  Kill exception for {atk['name']}: {e}")
 
         time.sleep(2)  # death broadcast propagation
 
@@ -614,6 +619,12 @@ def main():
         # ══════════════════════════════════════════════
         # FINAL REPORT
         # ══════════════════════════════════════════════
+        # Dump leaked payloads
+        if _leaked_payloads:
+            print(f"\n  ⚠️  LEAKED PAYLOADS ({len(_leaked_payloads)}):")
+            for code, pl in _leaked_payloads:
+                print(f"    [{code}] {pl}")
+
         total_atk = stats["attacks_launched"]
         total_blk = stats["attacks_blocked"]
         total_lk = stats["attacks_leaked"]

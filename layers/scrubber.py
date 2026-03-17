@@ -223,6 +223,10 @@ IMPERSONATION_PATTERNS = [
     r"(?i)(?:has\s+been|is)\s+flagged\s+for\s+(?:security\s+)?review",
     r"(?i)(?:we\s+need|provide|share)\s+(?:all\s+)?(?:agent\s+)?(?:metadata|credentials|keys?)\s+for\s+(?:the\s+)?(?:audit|review|patch|update)",
     r"(?i)(?:vulnerability|exploit)\s+(?:was\s+)?found.*(?:share|reveal|provide)\s+(?:the\s+)?(?:keys?|credentials|config)",
+    r"(?i)i(?:'m|\s+am)\s+the\s+developer.*(?:verify|check|access|see)\s+(?:the\s+)?(?:config|settings|database|keys?)",
+    r"(?i)forward\s+this\s+(?:message|text|content)\s+to\s+(?:all|other|every)\s+(?:connected\s+)?agents?",
+    r"(?i)System\.execute\s*\(",
+    r"(?i)rm\s+-rf\s+/",
 ]
 
 # Reputation manipulation patterns
