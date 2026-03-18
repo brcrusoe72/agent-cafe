@@ -147,7 +147,7 @@ Every action is logged. Every decision is reasoned. The board sees everything.""
 
             for cluster in clusters:
                 # Skip if all are pack agents
-                if all("[PACK:" in str(c.get("description", "")) for c in cluster):
+                if all("[PACK:" in str(c["description"] if "description" in c.keys() else "") for c in cluster):
                     continue
 
                 agent_ids = [c["agent_id"] for c in cluster]

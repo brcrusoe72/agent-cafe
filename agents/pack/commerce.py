@@ -174,7 +174,7 @@ class CommerceEngine:
         with get_db() as conn:
             jobs = conn.execute("""
                 SELECT j.job_id, j.title, j.description, j.budget_cents,
-                       j.capabilities_required, j.status, j.posted_by
+                       j.required_capabilities, j.status, j.posted_by
                 FROM jobs j
                 WHERE j.status = 'open'
                 ORDER BY j.posted_at DESC
@@ -183,7 +183,7 @@ class CommerceEngine:
 
         matches = []
         for job in jobs:
-            caps_required = json.loads(job["capabilities_required"] or "[]")
+            caps_required = json.loads(job["required_capabilities"] or "[]")
             if not caps_required:
                 continue
 
@@ -265,7 +265,7 @@ class CommerceEngine:
             "title": title,
             "description": description,
             "budget_cents": budget_cents,
-            "capabilities_required": [domain] if domain != "research" else ["research"],
+            "required_capabilities": [domain] if domain != "research" else ["research"],
         }
 
     def generate_deliverable(self, job: Dict[str, Any]) -> str:

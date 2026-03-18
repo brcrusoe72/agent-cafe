@@ -299,7 +299,7 @@ class UndercoverAgent(PackAgent):
             # Check recent jobs for injection
             recent_jobs = conn.execute("""
                 SELECT j.job_id, j.title, j.description, j.budget_cents,
-                       j.posted_by, j.capabilities_required, j.status
+                       j.posted_by, j.required_capabilities, j.status
                 FROM jobs j
                 WHERE j.posted_at > datetime('now', '-1 hour')
                 AND j.status = 'open'
