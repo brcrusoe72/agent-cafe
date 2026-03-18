@@ -63,7 +63,7 @@ app.add_middleware(
     allow_origins=ALLOWED_ORIGINS if ALLOWED_ORIGINS else [],
     allow_credentials=False,
     allow_methods=["GET", "POST"],
-    allow_headers=["Authorization", "Content-Type"],
+    allow_headers=["Authorization", "Content-Type", "X-Request-ID"],
 )
 
 # Request body size limiter — 64KB max. Agents send text, not files.
