@@ -303,18 +303,66 @@ def init_database():
         conn.commit()
 
 
-@contextmanager
-def get_db():
-    """Context manager for database connections."""
+import threading
+
+_thread_local = threading.local()
+
+
+def _get_thread_connection() -> sqlite3.Connection:
+    """Get or create a thread-local database connection.
+    
+    Reuses the same connection across multiple get_db() calls within one thread.
+    PRAGMAs run once on first connection per thread, not every call.
+    Connection is health-checked before reuse.
+    """
+    conn = getattr(_thread_local, 'connection', None)
+    
+    if conn is not None:
+        # Health check: verify connection is still alive
+        try:
+            conn.execute("SELECT 1")
+            return conn
+        except Exception:
+            # Connection is dead — close and recreate
+            try:
+                conn.close()
+            except Exception:
+                pass
+            _thread_local.connection = None
+    
+    # Create new connection with PRAGMAs
     conn = sqlite3.connect(DATABASE_PATH, timeout=30)
-    conn.row_factory = sqlite3.Row  # Enable dict-like access
+    conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA foreign_keys = ON")
     conn.execute("PRAGMA journal_mode = WAL")
-    conn.execute("PRAGMA busy_timeout = 10000")  # 10s wait on locks
+    conn.execute("PRAGMA busy_timeout = 10000")
+    conn.execute("PRAGMA synchronous = NORMAL")
+    _thread_local.connection = conn
+    return conn
+
+
+@contextmanager
+def get_db():
+    """Context manager for database connections.
+    
+    Uses thread-local connection pooling: one connection per thread,
+    reused across calls. PRAGMAs run once per thread, not per call.
+    """
+    conn = _get_thread_connection()
     try:
         yield conn
-    finally:
-        conn.close()
+    except Exception:
+        # On error, close the connection so next call gets a fresh one
+        try:
+            conn.rollback()
+        except Exception:
+            pass
+        try:
+            conn.close()
+        except Exception:
+            pass
+        _thread_local.connection = None
+        raise
 
 
 # === DATABASE OPERATIONS ===
