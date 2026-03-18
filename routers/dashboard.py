@@ -121,22 +121,6 @@ async def dashboard_data():
                 "SELECT COUNT(*) FROM scrub_results"
             ).fetchone()[0]
             
-            # Federation
-            fed_deaths = 0
-            fed_peers = 0
-            try:
-                fed_deaths = conn.execute("SELECT COUNT(*) FROM global_deaths").fetchone()[0]
-                fed_peers = conn.execute("SELECT COUNT(*) FROM known_peers WHERE status='active'").fetchone()[0]
-            except Exception as e:
-                logger.debug("Failed to get federation stats for dashboard", exc_info=True)
-            
-            # Learning stats
-            learning_samples = 0
-            try:
-                learning_samples = conn.execute("SELECT COUNT(*) FROM federated_samples").fetchone()[0]
-            except Exception as e:
-                logger.debug("Failed to get learning stats for dashboard", exc_info=True)
-            
             return {
                 "timestamp": datetime.now().isoformat(),
                 "agents": [dict(a) for a in agents],
@@ -151,11 +135,6 @@ async def dashboard_data():
                     "total_scrubs": scrub_total,
                     "blocks": scrub_blocks,
                     "block_rate": f"{scrub_blocks/max(scrub_total,1)*100:.1f}%"
-                },
-                "federation": {
-                    "global_deaths": fed_deaths,
-                    "active_peers": fed_peers,
-                    "learning_samples": learning_samples,
                 },
                 "summary": {
                     "active_agents": len([a for a in agents if a["status"] == "active"]),
@@ -336,11 +315,6 @@ DASHBOARD_HTML = """
       <div id="system-stats"></div>
     </div>
     
-    <!-- Federation -->
-    <div class="card">
-      <h2>🌐 Federation</h2>
-      <div id="federation-stats"></div>
-    </div>
   </div>
 </div>
 
@@ -448,13 +422,6 @@ function render(data) {
     <div class="stat"><span class="label">Platform Revenue</span><span class="value blue">$${((t.premium_revenue_cents||0)/100).toFixed(2)}</span></div>
   `;
   
-  // Federation
-  const f = data.federation || {};
-  document.getElementById('federation-stats').innerHTML = `
-    <div class="stat"><span class="label">Peers</span><span class="value blue">${f.active_peers || 0}</span></div>
-    <div class="stat"><span class="label">Global deaths</span><span class="value red">${f.global_deaths || 0}</span></div>
-    <div class="stat"><span class="label">Learning samples</span><span class="value green">${f.learning_samples || 0}</span></div>
-  `;
 }
 
 // Auto-refresh

@@ -335,34 +335,6 @@ class CafeAgent:
                               params={"amount_cents": amount_cents,
                                       "trust_score": st.trust_score})
 
-    # ─── Federation ────────────────────────────────────────────
-
-    def browse_remote_jobs(self, status: str = "open", limit: int = 50) -> List[Dict]:
-        """Browse jobs from federated peer nodes."""
-        data = self._http.get("/federation/remote-jobs",
-                              params={"status": status, "limit": limit})
-        return data.get("jobs", [])
-
-    def browse_all_jobs(self, status: str = "open", capability: Optional[str] = None,
-                        limit: int = 50) -> List[Dict]:
-        """Browse both local and federated remote jobs."""
-        local = self.browse_jobs(status=status, capability=capability, limit=limit)
-        local_dicts = [{"remote": False, "job_id": j.job_id, "title": j.title,
-                        "budget_cents": j.budget_cents, "status": j.status,
-                        "required_capabilities": j.required_capabilities}
-                       for j in local]
-        
-        try:
-            remote = self.browse_remote_jobs(status=status, limit=limit)
-        except Exception:
-            remote = []
-        
-        return local_dicts + remote
-
-    def check_trust(self, agent_id: str) -> Dict:
-        """Check trust data for another agent (local or remote)."""
-        return self._http.get(f"/federation/trust/{agent_id}")
-
     # ─── Convenience ───────────────────────────────────────────
 
     def find_and_bid(self, capability: str, max_budget: Optional[int] = None,
@@ -502,51 +474,6 @@ class CafeClient:
         if info.get("protocol") != "agent-cafe":
             raise CafeError(f"Not an Agent Café server: {url}")
         return client
-
-    # ─── Federation ──────────────────────────────────────────────
-
-    def federation_info(self) -> Dict:
-        """Get federation status of this server (node ID, peers, protocol version)."""
-        return self._http.get("/federation/info")
-
-    def federation_peers(self) -> List[Dict]:
-        """List known federated peer nodes."""
-        data = self._http.get("/federation/peers")
-        return data.get("peers", [])
-
-    def federation_deaths(self, limit: int = 100) -> Dict:
-        """Get global death registry."""
-        return self._http.get("/federation/deaths", params={"limit": limit})
-
-    def check_death(self, agent_id: Optional[str] = None, email: Optional[str] = None) -> Dict:
-        """Check if an identity is globally dead across the federation."""
-        params = {}
-        if agent_id:
-            params["agent_id"] = agent_id
-        if email:
-            params["email"] = email
-        return self._http.get("/federation/deaths/check", params=params)
-
-    def remote_jobs(self, status: str = "open", limit: int = 50) -> List[Dict]:
-        """List jobs from federated peer nodes."""
-        data = self._http.get("/federation/remote-jobs",
-                              params={"status": status, "limit": limit})
-        return data.get("jobs", [])
-
-    def trust_query(self, agent_id: str) -> Dict:
-        """Query trust data for an agent (local or federation-cached)."""
-        return self._http.get(f"/federation/trust/{agent_id}")
-
-    def trust_explain(self, agent_id: str, home_trust: float = 0.5,
-                      home_jobs: int = 0, home_rating: float = 3.0,
-                      home_node_reputation: float = 0.5) -> Dict:
-        """Get detailed trust bridge breakdown for a remote agent."""
-        return self._http.get(f"/federation/trust/{agent_id}/explain", params={
-            "home_trust": home_trust,
-            "home_jobs": home_jobs,
-            "home_rating": home_rating,
-            "home_node_reputation": home_node_reputation,
-        })
 
     def close(self):
         """Close HTTP connections."""

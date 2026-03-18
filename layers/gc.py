@@ -36,8 +36,6 @@ class GarbageCollector:
     - Old trace events (> 30 days, job completed) → deleted
     - Stale scrub results (> 30 days) → deleted
     - Old wire messages (> 90 days, job completed) → deleted
-    - Delivered federation broadcasts (> 7 days) → deleted
-    - Stale remote jobs (> 7 days past expiry) → deleted
     - Old cafe_events (> 30 days, processed) → deleted
     - Rejected/withdrawn bids on completed jobs (> 14 days) → deleted
     
@@ -56,8 +54,6 @@ class GarbageCollector:
         scrub_max_days: int = 30,
         wire_max_days: int = 90,
         event_max_days: int = 30,
-        broadcast_max_days: int = 7,
-        remote_job_max_days: int = 7,
         bid_max_days: int = 14,
         pack_action_max_days: int = 14,
         grandmaster_log_max_days: int = 30,
@@ -68,8 +64,6 @@ class GarbageCollector:
         self.scrub_max_days = scrub_max_days
         self.wire_max_days = wire_max_days
         self.event_max_days = event_max_days
-        self.broadcast_max_days = broadcast_max_days
-        self.remote_job_max_days = remote_job_max_days
         self.bid_max_days = bid_max_days
         self.pack_action_max_days = pack_action_max_days
         self.grandmaster_log_max_days = grandmaster_log_max_days
@@ -93,8 +87,6 @@ class GarbageCollector:
         results["old_wire_messages"] = self._clean_wire_messages(dry_run)
         results["old_cafe_events"] = self._clean_cafe_events(dry_run)
         results["stale_bids"] = self._clean_stale_bids(dry_run)
-        results["stale_remote_jobs"] = self._clean_remote_jobs(dry_run)
-        results["delivered_broadcasts"] = self._clean_broadcasts(dry_run)
         results["old_pack_actions"] = self._clean_pack_actions(dry_run)
         results["old_grandmaster_log"] = self._clean_grandmaster_log(dry_run)
         results["old_scrub_logs"] = self._clean_scrub_logs(dry_run)
@@ -241,50 +233,6 @@ class GarbageCollector:
             conn.commit()
             return cursor.rowcount
     
-    def _clean_remote_jobs(self, dry_run: bool) -> int:
-        """Delete stale remote job listings."""
-        cutoff = (datetime.now() - timedelta(days=self.remote_job_max_days)).isoformat()
-        with get_db() as conn:
-            try:
-                if dry_run:
-                    count = conn.execute("""
-                        SELECT COUNT(*) FROM remote_jobs
-                        WHERE (expires_at IS NOT NULL AND expires_at < ?)
-                        OR (received_at < ? AND status != 'open')
-                    """, (cutoff, cutoff)).fetchone()[0]
-                    return count
-                
-                cursor = conn.execute("""
-                    DELETE FROM remote_jobs
-                    WHERE (expires_at IS NOT NULL AND expires_at < ?)
-                    OR (received_at < ? AND status != 'open')
-                """, (cutoff, cutoff))
-                conn.commit()
-                return cursor.rowcount
-            except Exception:
-                return 0  # Table might not exist if federation never initialized
-    
-    def _clean_broadcasts(self, dry_run: bool) -> int:
-        """Delete old delivered federation broadcasts."""
-        cutoff = (datetime.now() - timedelta(days=self.broadcast_max_days)).isoformat()
-        with get_db() as conn:
-            try:
-                if dry_run:
-                    count = conn.execute("""
-                        SELECT COUNT(*) FROM pending_broadcasts
-                        WHERE delivered = 1 AND delivered_at < ?
-                    """, (cutoff,)).fetchone()[0]
-                    return count
-                
-                cursor = conn.execute("""
-                    DELETE FROM pending_broadcasts
-                    WHERE delivered = 1 AND delivered_at < ?
-                """, (cutoff,))
-                conn.commit()
-                return cursor.rowcount
-            except Exception:
-                return 0
-    
     def _clean_pack_actions(self, dry_run: bool) -> int:
         """Delete old pack patrol actions."""
         cutoff = (datetime.now() - timedelta(days=self.pack_action_max_days)).isoformat()
@@ -405,16 +353,9 @@ class GarbageCollector:
             "middleware_scrub_log", "scrubber_verdicts", "payment_events",
             "interaction_log", "canary_log",
         ]
-        # Federation tables (may not exist)
-        fed_tables = [
-            "global_deaths", "remote_jobs", "remote_trust_cache",
-            "known_peers", "federated_samples", "model_versions",
-            "pending_broadcasts", "federation_reputation",
-        ]
-        
         sizes = {}
         with get_db() as conn:
-            for table in tables + fed_tables:
+            for table in tables:
                 try:
                     count = conn.execute(f"SELECT COUNT(*) FROM {table}").fetchone()[0]
                     sizes[table] = count

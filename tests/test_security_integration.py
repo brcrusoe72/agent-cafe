@@ -308,30 +308,29 @@ class TestRateLimiting:
 
 
 # ═══════════════════════════════════════════════════════════════
-# 7. FEDERATION LOCKDOWN
+# 7. FEDERATION REMOVED — verify endpoints are gone
 # ═══════════════════════════════════════════════════════════════
 
-class TestFederationLockdown:
+class TestFederationRemoved:
 
-    def test_learning_endpoints_require_auth(self):
-        """Federation learning endpoints are operator-only."""
+    def test_federation_endpoints_not_accessible(self):
+        """Federation was removed — all endpoints should 404 or 401."""
+        for ep in ["/federation/info", "/federation/peers", "/federation/deaths",
+                   "/federation/remote-jobs", "/federation/receive"]:
+            r = requests.get(f"{BASE_URL}{ep}", timeout=30)
+            assert r.status_code in (401, 404), f"{ep} still accessible: {r.status_code}"
+
+    def test_federation_learning_not_accessible(self):
+        """Federation learning endpoints should not exist."""
         for ep in ["/federation/learning/retrain", "/federation/learning/ingest"]:
             r = requests.post(f"{BASE_URL}{ep}", json={}, timeout=30)
-            assert r.status_code in (401, 403), f"{ep} not protected: {r.status_code}"
-            r2 = requests.get(f"{BASE_URL}{ep}", timeout=30)
-            assert r2.status_code in (401, 403, 405), f"GET {ep} not protected: {r2.status_code}"
+            assert r.status_code in (401, 404), f"{ep} still accessible: {r.status_code}"
 
-    def test_federation_receive_rejects_unsigned(self):
-        """POST /federation/receive rejects unsigned messages (or 404 if not mounted)."""
+    def test_federation_receive_not_accessible(self):
+        """POST /federation/receive should not exist."""
         r = requests.post(f"{BASE_URL}/federation/receive",
                           json={"type": "test", "source": "attacker"}, timeout=30)
-        # 404 = federation not mounted (acceptable), otherwise should reject unsigned
-        assert r.status_code in (400, 401, 403, 404, 422), f"Unsigned federation msg accepted: {r.status_code}"
-
-    def test_federation_info_public_or_not_mounted(self):
-        r = requests.get(f"{BASE_URL}/federation/info", timeout=30)
-        # 200 = public info, 404 = not mounted, 401 = behind auth (federation disabled)
-        assert r.status_code in (200, 401, 404)
+        assert r.status_code in (401, 404), f"Federation receive still accessible: {r.status_code}"
 
 
 # ═══════════════════════════════════════════════════════════════

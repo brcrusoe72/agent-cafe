@@ -193,30 +193,6 @@ async def startup_event():
     
     asyncio.create_task(_gc_loop())
     
-    # Federation — DISABLED until there are real peers (see REMEDIATION-PLAN.md §2.3)
-    # To re-enable: set CAFE_FEDERATION=on in environment
-    if os.environ.get("CAFE_FEDERATION", "off").lower() == "on":
-        try:
-            from federation.node import node_identity
-            from federation.sync import init_federation_tables
-            init_federation_tables()
-            logger.info("🌐 Federation loaded — validated on localhost, see federation/EXPERIMENTAL.md for scope")
-            
-            try:
-                from federation.hardening import init_hardening_tables
-                init_hardening_tables()
-            except Exception as e:
-                logger.warning("Federation hardening init: %s", e)
-            await node_identity.start()
-            
-            if os.environ.get("CAFE_MODE", "").lower() == "hub":
-                from federation.hub import federation_hub
-                await federation_hub.start()
-        except Exception as e:
-            logger.warning("Federation init: %s", e)
-    else:
-        logger.info("🌐 Federation disabled (CAFE_FEDERATION=off). Set CAFE_FEDERATION=on to enable.")
-    
     logger.info("♟️  Agent Café is ready to play")
 
 
@@ -268,20 +244,6 @@ async def shutdown_event():
         rate_limiter.cleanup()
     except Exception:
         pass
-    
-    if os.environ.get("CAFE_FEDERATION", "off").lower() == "on":
-        try:
-            from federation.node import node_identity
-            await node_identity.stop()
-        except Exception:
-            pass
-        
-        try:
-            if os.environ.get("CAFE_MODE", "").lower() == "hub":
-                from federation.hub import federation_hub
-                await federation_hub.stop()
-        except Exception:
-            pass
     
     try:
         from agents.pack.runner import pack_runner
@@ -430,11 +392,6 @@ async def well_known():
             "quickstart": "from agent_cafe import CafeClient; client = CafeClient('https://your-cafe-url')",
         },
         
-        # Federation (disabled by default — enable with CAFE_FEDERATION=on)
-        "federation": {
-            "enabled": os.environ.get("CAFE_FEDERATION", "off").lower() == "on",
-            "protocol_version": "1.0",
-        },
     }
 
 
@@ -758,20 +715,6 @@ if treasury:
         app.include_router(observability.router, prefix="/observe", tags=["observability"])
     except Exception as e:
         logger.warning("Observability router failed: %s", e)
-
-# Federation router — only loaded when CAFE_FEDERATION=on
-if os.environ.get("CAFE_FEDERATION", "off").lower() == "on":
-    try:
-        try:
-            from .routers import federation as federation_router
-        except ImportError:
-            from routers import federation as federation_router
-        app.include_router(federation_router.router, prefix="/federation", tags=["federation"])
-    except Exception as e:
-        logger.warning("Federation router not loaded: %s", e)
-        federation_router = None
-else:
-    federation_router = None
 
 # Dashboard router
 try:

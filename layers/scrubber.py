@@ -1368,14 +1368,6 @@ def learn_from_agent_kill(agent_id: str, evidence_messages: List[str], attack_pa
     scrubber = get_scrubber()
     scrubber.learn_from_kill(agent_id, evidence_messages, attack_patterns)
     
-    # Feed to federated learning system
-    try:
-        from federation.learning import federated_learning
-        federated_learning.on_agent_kill(agent_id, evidence_messages, attack_patterns)
-    except Exception:
-        pass  # Federated learning is best-effort
-
-
 def get_scrubber_stats() -> Dict[str, Any]:
     """Get statistics about scrubber performance."""
     scrubber = get_scrubber()

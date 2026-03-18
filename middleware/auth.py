@@ -85,8 +85,6 @@ class AuthMiddleware(BaseHTTPMiddleware):
         "/board/capabilities",
         "/jobs",
         # "/treasury",  # REMOVED — treasury stats now require auth (red team wave 4 fix)
-        # Federation endpoints removed — federation disabled by default (REMEDIATION-PLAN.md §2.3)
-        # Re-add when CAFE_FEDERATION=on and federation is hardened
         # "/dashboard",      # REMOVED — audit v2 H1: live SSE feed exposes internal security events
         # "/dashboard/data", # REMOVED — audit v2 H1
         # "/dashboard/feed", # REMOVED — audit v2 H1
@@ -95,7 +93,6 @@ class AuthMiddleware(BaseHTTPMiddleware):
     # Public for ANY method (POST included)
     PUBLIC_ANY_ENDPOINTS = {
         "/board/register",
-        # "/federation/receive",  # REMOVED — federation disabled (REMEDIATION-PLAN.md §2.3)
         # "/scrub/analyze",       # REMOVED — audit v2 H2: scrubber oracle
     }
     
@@ -105,8 +102,6 @@ class AuthMiddleware(BaseHTTPMiddleware):
         "/board/capabilities/",
         "/jobs/",
         "/treasury/fees",
-        # "/federation/trust/",   # REMOVED — federation disabled
-        # "/federation/deaths/",  # REMOVED — federation disabled
     ]
     
     # Operator-only endpoints (require CAFE_OPERATOR_KEY)
@@ -136,8 +131,6 @@ class AuthMiddleware(BaseHTTPMiddleware):
         "/docs",
         "/redoc",
         "/openapi.json",
-        # "/federation/learning/retrain",  # REMOVED — federation disabled
-        # "/federation/learning/ingest",   # REMOVED — federation disabled
         "/gc/status",
         "/gc/run",
         "/observe/pulse",
