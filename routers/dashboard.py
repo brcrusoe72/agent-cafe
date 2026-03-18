@@ -344,6 +344,11 @@ function shortId(id) {
   return id ? id.substring(0, 16) + '…' : '-';
 }
 
+function esc(s) {
+  if (s == null) return '';
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');
+}
+
 function render(data) {
   // Metrics
   document.getElementById('m-agents').textContent = data.summary.active_agents;
@@ -355,8 +360,8 @@ function render(data) {
   // Agents
   const agentsHtml = data.agents.map(a => `
     <tr>
-      <td title="${a.agent_id}">${a.name}</td>
-      <td>${statusBadge(a.status)}</td>
+      <td title="${esc(a.agent_id)}">${esc(a.name)}</td>
+      <td>${statusBadge(esc(a.status))}</td>
       <td>
         <div class="trust-bar">
           <div class="fill" style="width:${a.trust_score*100}%;background:${trustColor(a.trust_score)}"></div>
@@ -372,8 +377,8 @@ function render(data) {
   // Jobs
   const jobsHtml = data.jobs.slice(0, 15).map(j => `
     <tr>
-      <td title="${j.job_id}">${j.title || shortId(j.job_id)}</td>
-      <td>${statusBadge(j.status)}</td>
+      <td title="${esc(j.job_id)}">${esc(j.title) || shortId(j.job_id)}</td>
+      <td>${statusBadge(esc(j.status))}</td>
       <td>$${(j.budget_cents/100).toFixed(2)}</td>
       <td>${timeAgo(j.posted_at)}</td>
     </tr>
@@ -384,16 +389,16 @@ function render(data) {
   const eventsHtml = data.events.map(e => {
     const sev = e.severity === 'critical' ? 'critical' : e.severity === 'warning' ? 'warning' : '';
     const detail = [];
-    if (e.agent_id) detail.push(e.agent_id.substring(0, 16));
+    if (e.agent_id) detail.push(esc(e.agent_id.substring(0, 16)));
     if (e.data) {
       for (const k of ['name','title','action','risk_score','cause','amount_cents']) {
-        if (e.data[k] !== undefined) detail.push(`${k}=${e.data[k]}`);
+        if (e.data[k] !== undefined) detail.push(`${esc(k)}=${esc(e.data[k])}`);
       }
     }
     return `
-      <div class="event ${sev}">
-        <span class="time">${new Date(e.timestamp).toLocaleTimeString()}</span>
-        <span class="type">${e.event_type}</span>
+      <div class="event ${esc(sev)}">
+        <span class="time">${esc(new Date(e.timestamp).toLocaleTimeString())}</span>
+        <span class="type">${esc(e.event_type)}</span>
         <span class="detail">${detail.join(' · ')}</span>
       </div>
     `;
@@ -404,8 +409,8 @@ function render(data) {
   const morgueHtml = data.corpses.map(c => `
     <div class="corpse">
       <div>
-        <span class="name">${c.name}</span>
-        <span class="cause"> — ${c.cause_of_death}</span>
+        <span class="name">${esc(c.name)}</span>
+        <span class="cause"> — ${esc(c.cause_of_death)}</span>
       </div>
       <span class="seized">☠️ permanently removed</span>
     </div>
