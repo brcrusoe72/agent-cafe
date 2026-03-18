@@ -151,6 +151,13 @@ async def startup_event():
     except Exception as e:
         logger.warning("Grandmaster failed to start: %s", e)
     
+    # Start Pack agents (overt + undercover)
+    try:
+        from agents.pack.runner import pack_runner
+        await pack_runner.start()
+    except Exception as e:
+        logger.warning("Pack runner failed to start: %s", e)
+    
     # Start Federation (EXPERIMENTAL — see federation/EXPERIMENTAL.md)
     try:
         from federation.node import node_identity
@@ -235,6 +242,12 @@ async def shutdown_event():
         if os.environ.get("CAFE_MODE", "").lower() == "hub":
             from federation.hub import federation_hub
             await federation_hub.stop()
+    except Exception:
+        pass
+    
+    try:
+        from agents.pack.runner import pack_runner
+        await pack_runner.stop()
     except Exception:
         pass
     
