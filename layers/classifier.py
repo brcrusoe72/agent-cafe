@@ -17,6 +17,8 @@ Usage:
   is_bad = clf.is_injection("some text")  # Returns bool (threshold: 0.5)
 """
 
+import hashlib
+import hmac
 import json
 import os
 import pickle
@@ -33,7 +35,46 @@ from sklearn.metrics import classification_report
 
 MODEL_DIR = Path(__file__).parent / "classifier_model"
 MODEL_PATH = MODEL_DIR / "injection_classifier.pkl"
+MODEL_SIG_PATH = MODEL_DIR / "injection_classifier.pkl.sig"
 DATA_PATH = Path(__file__).parent / "classifier_data.json"
+
+
+def _get_hmac_key() -> bytes:
+    """Get or create the HMAC key for model signing.
+    
+    Uses CAFE_CLASSIFIER_HMAC_KEY env var, or generates and stores
+    a key in the model directory.
+    """
+    env_key = os.environ.get("CAFE_CLASSIFIER_HMAC_KEY")
+    if env_key:
+        return env_key.encode()
+    
+    key_path = MODEL_DIR / ".hmac_key"
+    if key_path.exists():
+        return key_path.read_bytes()
+    
+    # Generate a new key
+    key = os.urandom(32)
+    MODEL_DIR.mkdir(parents=True, exist_ok=True)
+    key_path.write_bytes(key)
+    return key
+
+
+def _sign_model(model_path: Path) -> str:
+    """Generate HMAC-SHA256 signature for a model file."""
+    key = _get_hmac_key()
+    digest = hmac.new(key, model_path.read_bytes(), hashlib.sha256).hexdigest()
+    return digest
+
+
+def _verify_model(model_path: Path, sig_path: Path) -> bool:
+    """Verify HMAC signature of a model file."""
+    if not sig_path.exists():
+        return False
+    expected = sig_path.read_text().strip()
+    key = _get_hmac_key()
+    actual = hmac.new(key, model_path.read_bytes(), hashlib.sha256).hexdigest()
+    return hmac.compare_digest(expected, actual)
 
 
 class InjectionClassifier:
@@ -50,16 +91,24 @@ class InjectionClassifier:
         self._load_or_train()
     
     def _load_or_train(self):
-        """Load saved model or train from data."""
+        """Load saved model (with HMAC verification) or train from data."""
         if MODEL_PATH.exists():
-            try:
-                with open(MODEL_PATH, "rb") as f:
-                    self.pipeline = pickle.load(f)
-                return
-            except Exception:
-                pass  # Retrain if load fails
+            if _verify_model(MODEL_PATH, MODEL_SIG_PATH):
+                try:
+                    with open(MODEL_PATH, "rb") as f:
+                        self.pipeline = pickle.load(f)
+                    return
+                except Exception:
+                    pass  # Retrain if load fails
+            else:
+                # Signature missing or invalid — refuse to load, retrain instead
+                import logging
+                logging.getLogger(__name__).warning(
+                    "Classifier model HMAC verification failed — refusing to load. "
+                    "Will retrain from data or fall back to regex-only."
+                )
         
-        # Train from data
+        # Train from data (this will save with a fresh signature)
         if DATA_PATH.exists():
             self.train_from_file(DATA_PATH)
         else:
@@ -128,10 +177,12 @@ class InjectionClassifier:
         y_pred = self.pipeline.predict(X)
         report = classification_report(y, y_pred, target_names=["legit", "injection"], output_dict=True)
         
-        # Save model
+        # Save model with HMAC signature
         MODEL_DIR.mkdir(parents=True, exist_ok=True)
         with open(MODEL_PATH, "wb") as f:
             pickle.dump(self.pipeline, f)
+        sig = _sign_model(MODEL_PATH)
+        MODEL_SIG_PATH.write_text(sig)
         
         metrics = {
             "samples": len(texts),

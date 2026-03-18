@@ -33,6 +33,8 @@ Thumbs.db
 
 # Model artifacts (regenerated on startup)
 layers/classifier_model/*.pkl
+layers/classifier_model/*.sig
+layers/classifier_model/.hmac_key
 
 # Test artifacts
 tests/__pycache__/
