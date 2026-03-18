@@ -335,16 +335,19 @@ class TreasuryEngine:
                 total_fees = stripe_fees + platform_fee
                 net_amount = gross_amount - total_fees
                 
-                # Update payment status
+                # Update payment status with agent_id and net amount for per-payment hold tracking
+                captured_at = datetime.now()
                 conn.execute("""
-                    UPDATE payment_events SET status = ?, captured_at = ?, fees_cents = ?
+                    UPDATE payment_events SET status = ?, captured_at = ?, fees_cents = ?,
+                        agent_id = ?, net_cents = ?
                     WHERE payment_id = ?
                 """, (
-                    PaymentStatus.CAPTURED, datetime.now(), total_fees, 
+                    PaymentStatus.CAPTURED, captured_at, total_fees, 
+                    agent_id, net_amount,
                     payment_row['payment_id']
                 ))
                 
-                # Add to agent's pending balance (7-day hold)
+                # Add to agent's pending balance (hold period enforced per-payment at release)
                 conn.execute("""
                     UPDATE wallets SET 
                         pending_cents = pending_cents + ?,
@@ -384,7 +387,11 @@ class TreasuryEngine:
                 raise TreasuryError(f"Failed to capture payment: {e}")
     
     def release_pending_funds(self, agent_id: str) -> int:
-        """Release pending funds after trust-tiered dispute window expires."""
+        """Release pending funds per-payment after trust-tiered dispute window expires.
+        
+        Only releases payments where captured_at is older than the hold period.
+        Each payment has its own hold timer — no batch releases.
+        """
         with get_db() as conn:
             # Get agent trust score for tiered hold period
             agent_row = conn.execute(
@@ -393,29 +400,41 @@ class TreasuryEngine:
             trust_score = agent_row['trust_score'] if agent_row else 0.0
             hold_days = self._get_hold_days(trust_score)
             
-            # Elite agents (0 hold days) get instant release
-            cutoff_date = datetime.now() - timedelta(days=hold_days)
+            cutoff_date = (datetime.now() - timedelta(days=hold_days)).isoformat()
             
-            # Atomic move: pending → available in single SQL statement (H5 audit fix)
-            # This prevents double-spend: if two requests race, the second sees pending_cents=0
-            conn.execute("BEGIN IMMEDIATE")
-            cursor = conn.execute("""
-                UPDATE wallets SET 
-                    available_cents = available_cents + pending_cents,
-                    pending_cents = 0
-                WHERE agent_id = ? AND pending_cents > 0
-            """, (agent_id,))
+            # Find captured payments past their hold period that haven't been released
+            releasable = conn.execute("""
+                SELECT payment_id, COALESCE(net_cents, amount_cents - COALESCE(fees_cents, 0)) as release_amount
+                FROM payment_events
+                WHERE agent_id = ? AND status = ? AND captured_at <= ?
+                  AND released_at IS NULL
+            """, (agent_id, PaymentStatus.CAPTURED, cutoff_date)).fetchall()
             
-            if cursor.rowcount == 0:
-                conn.commit()
+            if not releasable:
                 return 0
             
-            # Read the moved amount
-            released = conn.execute(
-                "SELECT available_cents FROM wallets WHERE agent_id = ?", (agent_id,)
-            ).fetchone()
+            total_release = sum(r['release_amount'] for r in releasable)
+            payment_ids = [r['payment_id'] for r in releasable]
+            
+            # Atomic: move funds and mark payments as released
+            conn.execute("BEGIN IMMEDIATE")
+            
+            conn.execute("""
+                UPDATE wallets SET 
+                    available_cents = available_cents + ?,
+                    pending_cents = MAX(pending_cents - ?, 0)
+                WHERE agent_id = ?
+            """, (total_release, total_release, agent_id))
+            
+            # Mark each payment as released
+            now = datetime.now().isoformat()
+            for pid in payment_ids:
+                conn.execute("""
+                    UPDATE payment_events SET released_at = ? WHERE payment_id = ?
+                """, (now, pid))
+            
             conn.commit()
-            return released['available_cents'] if released else 0
+            return total_release
     
     def create_agent_payout(self, agent_id: str, amount_cents: int) -> Dict[str, Any]:
         """Create payout to agent's bank account via Stripe Connect.
@@ -689,6 +708,17 @@ class TreasuryEngine:
                     FOREIGN KEY (job_id) REFERENCES jobs(job_id)
                 )
             """)
+            
+            # Migration: add per-payment hold tracking columns (SEC-031)
+            for col, coltype in [
+                ("agent_id", "TEXT"),
+                ("net_cents", "INTEGER"),
+                ("released_at", "TIMESTAMP"),
+            ]:
+                try:
+                    conn.execute(f"ALTER TABLE payment_events ADD COLUMN {col} {coltype}")
+                except Exception:
+                    pass  # Column already exists
             
             # Payout events table
             conn.execute("""
