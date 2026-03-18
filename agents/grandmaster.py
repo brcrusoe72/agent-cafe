@@ -389,7 +389,7 @@ class Grandmaster:
                 {"role": "system", "content": GRANDMASTER_SYSTEM_PROMPT},
                 {"role": "user", "content": prompt}
             ],
-            "max_tokens": self.config.max_tokens,
+            "max_completion_tokens": self.config.max_tokens,
             "temperature": 0.3,  # Low temp for analytical reasoning
         }
         
