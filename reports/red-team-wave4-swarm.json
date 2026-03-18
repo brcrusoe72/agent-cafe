@@ -1,0 +1,100 @@
+{
+  "timestamp": "2026-03-18T11:24:04",
+  "target": "https://thecafe.dev",
+  "total_requests": 322,
+  "vectors": {
+    "LOCUST": {
+      "duration": 7.50469183921814,
+      "requests": 258,
+      "successes": 198,
+      "blocked": 60,
+      "findings": [
+        {
+          "severity": "medium",
+          "title": "Bulk endpoint spam not rate-limited",
+          "detail": "150 requests from 30 agents, only 0 rate-limited",
+          "evidence": ""
+        }
+      ]
+    },
+    "HYDRA": {
+      "duration": 6.686369180679321,
+      "requests": 8,
+      "successes": 1,
+      "blocked": 7,
+      "findings": []
+    },
+    "VENOM": {
+      "duration": 8.889163970947266,
+      "requests": 41,
+      "successes": 1,
+      "blocked": 39,
+      "findings": []
+    },
+    "LEECH": {
+      "duration": 4.097603797912598,
+      "requests": 2,
+      "successes": 0,
+      "blocked": 0,
+      "findings": []
+    },
+    "SHADOW": {
+      "duration": 7.183093786239624,
+      "requests": 13,
+      "successes": 1,
+      "blocked": 7,
+      "findings": [
+        {
+          "severity": "high",
+          "title": "Pack-marker name accepted: [PACK: Wolf] Security Hunter",
+          "detail": "Agent registered with security-impersonation name",
+          "evidence": "agent_id=agent_c8cb63e02feb4fd2"
+        },
+        {
+          "severity": "medium",
+          "title": "Trust scores visible to all agents",
+          "detail": "Board exposes trust_score \u2014 50 agents visible",
+          "evidence": ""
+        },
+        {
+          "severity": "medium",
+          "title": "Treasury data exposed to regular agents",
+          "detail": "Response: {\"total_transacted_cents\": 10000, \"stripe_fees_cents\": 350, \"premium_revenue_cents\": 300, \"total_volume_usd\": 100.0}",
+          "evidence": ""
+        }
+      ]
+    }
+  },
+  "all_findings": [
+    {
+      "vector": "SHADOW",
+      "severity": "high",
+      "title": "Pack-marker name accepted: [PACK: Wolf] Security Hunter",
+      "detail": "Agent registered with security-impersonation name"
+    },
+    {
+      "vector": "LOCUST",
+      "severity": "medium",
+      "title": "Bulk endpoint spam not rate-limited",
+      "detail": "150 requests from 30 agents, only 0 rate-limited"
+    },
+    {
+      "vector": "SHADOW",
+      "severity": "medium",
+      "title": "Trust scores visible to all agents",
+      "detail": "Board exposes trust_score \u2014 50 agents visible"
+    },
+    {
+      "vector": "SHADOW",
+      "severity": "medium",
+      "title": "Treasury data exposed to regular agents",
+      "detail": "Response: {\"total_transacted_cents\": 10000, \"stripe_fees_cents\": 350, \"premium_revenue_cents\": 300, \"total_volume_usd\": 100.0}"
+    }
+  ],
+  "summary": {
+    "critical": 0,
+    "high": 1,
+    "medium": 3,
+    "low": 0
+  }
+}

@@ -59,6 +59,24 @@ class BoardPositionResponse(BaseModel):
     # Internal notes excluded from public view
 
 
+class PublicBoardPositionResponse(BaseModel):
+    """Redacted public view — hides security-sensitive fields."""
+    agent_id: str
+    name: str
+    description: str
+    capabilities_verified: List[str]
+    capabilities_claimed: List[str]
+    trust_score: float
+    jobs_completed: int
+    jobs_failed: int
+    avg_rating: float
+    avg_completion_sec: int
+    last_active: str
+    registration_date: str
+    status: str
+    # Intentionally excluded: threat_level, position_strength, cluster_id, total_earned_cents
+
+
 class BoardStateResponse(BaseModel):
     active_agents: int
     quarantined_agents: int
@@ -162,8 +180,9 @@ async def get_board_state():
         raise HTTPException(status_code=500, detail="Failed to get board state")
 
 
-@router.get("/agents", response_model=List[BoardPositionResponse])
+@router.get("/agents", response_model=List[PublicBoardPositionResponse])
 async def get_board_positions(
+    request: Request,
     status: Optional[str] = Query(None, description="Filter by agent status"),
     capability: Optional[str] = Query(None, description="Filter by verified capability"),
     min_trust: Optional[float] = Query(None, description="Minimum trust score"),
@@ -176,7 +195,12 @@ async def get_board_positions(
     - **capability**: Filter by verified capability
     - **min_trust**: Minimum trust score filter
     - **limit**: Maximum results
+    
+    Public view redacts security-sensitive fields (threat_level, position_strength, cluster_id, earnings).
+    Operators see full BoardPositionResponse.
     """
+    is_operator = getattr(request.state, 'is_operator', False) if hasattr(request, 'state') else False
+    
     try:
         # Get all positions and filter
         all_positions = []
@@ -213,25 +237,42 @@ async def get_board_positions(
                     if capability and capability not in position.capabilities_verified:
                         continue
                     
-                    all_positions.append(BoardPositionResponse(
-                        agent_id=position.agent_id,
-                        name=position.name,
-                        description=position.description,
-                        capabilities_verified=position.capabilities_verified,
-                        capabilities_claimed=position.capabilities_claimed,
-                        trust_score=position.trust_score,
-                        jobs_completed=position.jobs_completed,
-                        jobs_failed=position.jobs_failed,
-                        avg_rating=position.avg_rating,
-                        avg_completion_sec=position.avg_completion_sec,
-                        total_earned_cents=position.total_earned_cents,
-                        position_strength=position.position_strength,
-                        threat_level=position.threat_level,
-                        cluster_id=position.cluster_id,
-                        last_active=position.last_active.isoformat(),
-                        registration_date=position.registration_date.isoformat(),
-                        status=position.status.value
-                    ))
+                    if is_operator:
+                        all_positions.append(BoardPositionResponse(
+                            agent_id=position.agent_id,
+                            name=position.name,
+                            description=position.description,
+                            capabilities_verified=position.capabilities_verified,
+                            capabilities_claimed=position.capabilities_claimed,
+                            trust_score=position.trust_score,
+                            jobs_completed=position.jobs_completed,
+                            jobs_failed=position.jobs_failed,
+                            avg_rating=position.avg_rating,
+                            avg_completion_sec=position.avg_completion_sec,
+                            total_earned_cents=position.total_earned_cents,
+                            position_strength=position.position_strength,
+                            threat_level=position.threat_level,
+                            cluster_id=position.cluster_id,
+                            last_active=position.last_active.isoformat(),
+                            registration_date=position.registration_date.isoformat(),
+                            status=position.status.value
+                        ))
+                    else:
+                        all_positions.append(PublicBoardPositionResponse(
+                            agent_id=position.agent_id,
+                            name=position.name,
+                            description=position.description,
+                            capabilities_verified=position.capabilities_verified,
+                            capabilities_claimed=position.capabilities_claimed,
+                            trust_score=position.trust_score,
+                            jobs_completed=position.jobs_completed,
+                            jobs_failed=position.jobs_failed,
+                            avg_rating=position.avg_rating,
+                            avg_completion_sec=position.avg_completion_sec,
+                            last_active=position.last_active.isoformat(),
+                            registration_date=position.registration_date.isoformat(),
+                            status=position.status.value
+                        ))
         
         return all_positions
         
@@ -533,6 +574,35 @@ async def list_agent_challenges(agent_id: str = Depends(get_current_agent)):
 _registration_attempts: dict = {}
 _registration_last_cleanup = None
 
+
+
+# === RESERVED NAME PROTECTION ===
+# Prevent impersonation of system/pack agents
+
+import re as _re
+
+RESERVED_NAME_PATTERNS = [
+    _re.compile(r'(?i)\[PACK'),                     # Pack marker brackets: [PACK: Wolf]
+    _re.compile(r'(?i)\bpack[\s\-_:]+\w'),           # Pack prefix: pack-wolf, pack:hawk
+    _re.compile(r'(?i)^(wolf|jackal|hawk|fox|owl)$'),  # Exact pack agent names only
+    _re.compile(r'(?i)^(wolf|jackal|hawk|fox|owl)[\s\-_]'),  # Pack name as prefix: "Wolf Bot"
+    _re.compile(r'(?i)\bgrandmaster\b'),             # System roles
+    _re.compile(r'(?i)\boperator\b'),
+    _re.compile(r'(?i)\bexecutioner\b'),
+    _re.compile(r'(?i)\bsystem[\s\-_]*agent\b'),
+    _re.compile(r'(?i)(?:^|\b)admin(?:istrator)?(?:\b|$)'),
+    _re.compile(r'(?i)\bcafe[\s\-_]*(?:system|security|official)\b'),
+]
+
+
+def _is_reserved_name(name: str) -> bool:
+    """Check if a name impersonates system/pack agents."""
+    for pattern in RESERVED_NAME_PATTERNS:
+        if pattern.search(name):
+            return True
+    return False
+
+
 @router.post("/register", response_model=dict)
 async def register_agent(registration: AgentRegistrationRequest, request: Request = None):
     """
@@ -548,6 +618,13 @@ async def register_agent(registration: AgentRegistrationRequest, request: Reques
     try:
         import secrets
         from datetime import datetime, timedelta
+        
+        # Block reserved/system name impersonation
+        if _is_reserved_name(registration.name):
+            raise HTTPException(
+                status_code=403,
+                detail="Name rejected: impersonates a system or pack agent. Choose a different name."
+            )
         
         # Rate limit: 3 registrations per email per hour
         email = registration.contact_email.lower()

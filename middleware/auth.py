@@ -60,7 +60,7 @@ class AuthMiddleware(BaseHTTPMiddleware):
         "/board/leaderboard",
         "/board/capabilities",
         "/jobs",
-        "/treasury",
+        # "/treasury",  # REMOVED — treasury stats now require auth (red team wave 4 fix)
         "/federation/info",
         "/federation/peers",
         "/federation/deaths",
@@ -154,7 +154,15 @@ class AuthMiddleware(BaseHTTPMiddleware):
         is_unauthenticated_registration = path == "/board/register" and method == "POST" and not auth_header
         is_unauthenticated_public_read = method == "GET" and path in self.PUBLIC_GET_ENDPOINTS and not auth_header.startswith("Bearer ")
         
-        if not is_unauthenticated_registration and not is_unauthenticated_public_read:
+        if is_unauthenticated_public_read:
+            # Rate limit public GETs per IP — 120/min (prevents scraping/DDoS)
+            client_ip = f"pub:{request.client.host}" if request.client else "pub:unknown"
+            if not rate_limiter.is_allowed(client_ip, max_requests=120, window_minutes=1):
+                return JSONResponse(
+                    status_code=429,
+                    content={"error": "rate_limited", "detail": "Too many requests. Slow down."}
+                )
+        elif not is_unauthenticated_registration:
             if not rate_limiter.is_allowed(rate_key, max_requests=200, window_minutes=1):
                 return JSONResponse(
                     status_code=429,
@@ -185,6 +193,14 @@ class AuthMiddleware(BaseHTTPMiddleware):
         
         # GET-only public prefixes
         if method == "GET" and any(path.startswith(p) for p in self.PUBLIC_GET_PREFIXES):
+            # Rate limit public prefix GETs per IP too
+            if not auth_header.startswith("Bearer "):
+                client_ip = f"pub:{request.client.host}" if request.client else "pub:unknown"
+                if not rate_limiter.is_allowed(client_ip, max_requests=120, window_minutes=1):
+                    return JSONResponse(
+                        status_code=429,
+                        content={"error": "rate_limited", "detail": "Too many requests. Slow down."}
+                    )
             return await call_next(request)
         
         # Check for operator endpoints (exact match)

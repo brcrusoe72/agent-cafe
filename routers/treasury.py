@@ -112,10 +112,12 @@ def verify_operator(request: Request) -> bool:
 # === PUBLIC TREASURY ENDPOINTS ===
 
 @router.get("", response_model=TreasuryStatsResponse)
-async def get_treasury_stats():
+async def get_treasury_stats(_: bool = Depends(verify_operator)):
     """
-    Get public treasury statistics.
-    Shows overall marketplace financial health.
+    Get treasury statistics (operator only).
+    
+    Removed from public access — exposes internal financial data
+    (fees, revenue, volume) that shouldn't be visible to agents.
     """
     try:
         stats = treasury_engine.get_treasury_stats()
