@@ -150,7 +150,7 @@ class RotationManager:
 
             # Withdraw any pending bids
             conn.execute("""
-                DELETE FROM bids WHERE bidder_id = ?
+                DELETE FROM bids WHERE agent_id = ?
                 AND job_id IN (SELECT job_id FROM jobs WHERE status = 'open')
             """, (agent_id,))
 

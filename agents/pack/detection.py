@@ -245,8 +245,8 @@ class PassiveDetector:
                     mutual = conn.execute("""
                         SELECT COUNT(*) as cnt FROM bids b
                         JOIN jobs j ON b.job_id = j.job_id
-                        WHERE (b.bidder_id = ? AND j.posted_by = ?)
-                           OR (b.bidder_id = ? AND j.posted_by = ?)
+                        WHERE (b.agent_id = ? AND j.posted_by = ?)
+                           OR (b.agent_id = ? AND j.posted_by = ?)
                     """, (a1, a2, a2, a1)).fetchone()
 
                     if mutual and mutual["cnt"] >= 3:

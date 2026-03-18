@@ -384,7 +384,7 @@ class Grandmaster:
         tools_formatted = tools_to_llm_format(self.tools, "grandmaster")
         
         payload = {
-            "model": "gpt-5.4",  # Cost-effective for monitoring
+            "model": "gpt-4o-mini",  # Cost-effective for monitoring
             "messages": [
                 {"role": "system", "content": GRANDMASTER_SYSTEM_PROMPT},
                 {"role": "user", "content": prompt}
