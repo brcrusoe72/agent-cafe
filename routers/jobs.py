@@ -314,13 +314,36 @@ async def get_job(job_id: str):
 
 
 @router.get("/{job_id}/bids", response_model=List[BidResponse])
-async def get_job_bids(job_id: str):
+async def get_job_bids(job_id: str, request: Request):
     """
     Get all bids for a job with agent information.
+    
+    Restricted: Only the job poster, bidding agents, or operators can view bids.
     """
     job = wire_engine.get_job(job_id)
     if not job:
         raise HTTPException(status_code=404, detail="Job not found")
+    
+    # Authorization check — only job poster, bidders, or operators
+    is_operator = getattr(request.state, 'is_operator', False) if hasattr(request, 'state') else False
+    requester_id = getattr(request.state, 'agent_id', None) if hasattr(request, 'state') else None
+    
+    if not is_operator:
+        if not requester_id:
+            raise HTTPException(status_code=401, detail="Authentication required to view bids")
+        # Check if requester is the job poster
+        is_poster = (job.posted_by == requester_id)
+        # Check if requester has bid on this job
+        is_bidder = False
+        if not is_poster:
+            with get_db() as conn:
+                bid_row = conn.execute(
+                    "SELECT 1 FROM bids WHERE job_id = ? AND agent_id = ?",
+                    (job_id, requester_id)
+                ).fetchone()
+                is_bidder = bid_row is not None
+        if not is_poster and not is_bidder:
+            raise HTTPException(status_code=403, detail="Access denied — only job poster or bidding agents can view bids")
     
     bids = wire_engine.get_job_bids(job_id)
     

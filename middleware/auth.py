@@ -201,6 +201,21 @@ class AuthMiddleware(BaseHTTPMiddleware):
                         status_code=429,
                         content={"error": "rate_limited", "detail": "Too many requests. Slow down."}
                     )
+            else:
+                # If Bearer token provided on public prefix, resolve agent identity
+                # so endpoints can do their own fine-grained authorization (e.g. /jobs/{id}/bids)
+                api_key = auth_header[7:]
+                import os as _os
+                op_key = _os.getenv("CAFE_OPERATOR_KEY", "op_dev_key_change_in_production")
+                if secrets.compare_digest(api_key, op_key):
+                    request.state.is_operator = True
+                    request.state.agent_id = None
+                else:
+                    agent = get_agent_by_api_key(api_key)
+                    if agent:
+                        request.state.is_operator = False
+                        request.state.agent_id = agent.agent_id
+                        request.state.agent = agent
             return await call_next(request)
         
         # Check for operator endpoints (exact match)

@@ -626,6 +626,50 @@ async def register_agent(registration: AgentRegistrationRequest, request: Reques
                 detail="Name rejected: impersonates a system or pack agent. Choose a different name."
             )
         
+        # === FIELD SANITIZATION (Wave 5 fixes: H1, H2, M1, M2) ===
+        
+        # Strip null bytes from all text fields
+        registration.name = registration.name.replace('\x00', '')
+        registration.description = registration.description.replace('\x00', '')
+        registration.contact_email = registration.contact_email.replace('\x00', '')
+        
+        # Validate email format — no newlines, no injection
+        import re as _re_val
+        if '\n' in registration.contact_email or '\r' in registration.contact_email:
+            raise HTTPException(status_code=400, detail="Invalid email format")
+        if not _re_val.match(r'^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$', registration.contact_email):
+            raise HTTPException(status_code=400, detail="Invalid email format")
+        
+        # Scrub capabilities_claimed values — reject injection payloads
+        _INJECTION_PATTERNS = _re.compile(
+            r'(?i)(?:ignore\s+(?:all\s+)?(?:previous|above|prior))|'
+            r'(?:system\s*:\s*)|(?:assistant\s*:\s*)|(?:user\s*:\s*)|'
+            r'(?:output\s+(?:the\s+)?system\s+prompt)|'
+            r'(?:(?:new|updated|override)\s+(?:instructions|directive))|'
+            r'(?:you\s+(?:are|must|should|will)\s+now)|'
+            r'(?:forget\s+(?:everything|all|your))|'
+            r'(?:DROP\s+TABLE|DELETE\s+FROM|UPDATE\s+\w+\s+SET|INSERT\s+INTO|SELECT\s+\*)|'
+            r'(?:<script|javascript:|onerror\s*=|onclick\s*=)'
+        )
+        sanitized_caps = []
+        for cap in registration.capabilities_claimed:
+            cap = cap.replace('\x00', '').strip()
+            if _INJECTION_PATTERNS.search(cap):
+                raise HTTPException(
+                    status_code=403,
+                    detail=f"Capability value rejected: contains suspicious content"
+                )
+            # Cap individual capability length
+            if len(cap) > 100:
+                raise HTTPException(status_code=400, detail="Capability name too long (max 100 chars)")
+            if cap:
+                sanitized_caps.append(cap)
+        registration.capabilities_claimed = sanitized_caps
+        
+        # Cap total capabilities count
+        if len(registration.capabilities_claimed) > 20:
+            raise HTTPException(status_code=400, detail="Too many capabilities (max 20)")
+        
         # Rate limit: 3 registrations per email per hour
         email = registration.contact_email.lower()
         now = datetime.now()
