@@ -126,6 +126,7 @@ except Exception:
 @app.on_event("startup")
 async def startup_event():
     """Post-init startup tasks."""
+    import asyncio
     import time as _time
     app.state.start_time = _time.time()
     app.state.draining = False
@@ -157,6 +158,25 @@ async def startup_event():
         await pack_runner.start()
     except Exception as e:
         logger.warning("Pack runner failed to start: %s", e)
+    
+    # Start automatic garbage collection (every 6 hours)
+    async def _gc_loop():
+        import asyncio as _a
+        await _a.sleep(60)  # Wait 1 min after startup
+        while True:
+            try:
+                from layers.gc import gc as _gc
+                result = _gc.run(dry_run=False)
+                cleaned = result.get("total_cleaned", 0)
+                if cleaned > 0:
+                    logger.info("🗑️ GC cleaned %d records", cleaned)
+                else:
+                    logger.debug("🗑️ GC: nothing to clean")
+            except Exception as e:
+                logger.warning("GC cycle failed: %s", e)
+            await _a.sleep(6 * 3600)  # Every 6 hours
+    
+    asyncio.create_task(_gc_loop())
     
     # Start Federation (EXPERIMENTAL — see federation/EXPERIMENTAL.md)
     try:

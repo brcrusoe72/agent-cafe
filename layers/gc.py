@@ -49,6 +49,10 @@ class GarbageCollector:
         broadcast_max_days: int = 7,
         remote_job_max_days: int = 7,
         bid_max_days: int = 14,
+        pack_action_max_days: int = 14,
+        grandmaster_log_max_days: int = 30,
+        scrub_log_max_days: int = 30,
+        payment_event_max_days: int = 90,
     ):
         self.trace_max_days = trace_max_days
         self.scrub_max_days = scrub_max_days
@@ -57,6 +61,10 @@ class GarbageCollector:
         self.broadcast_max_days = broadcast_max_days
         self.remote_job_max_days = remote_job_max_days
         self.bid_max_days = bid_max_days
+        self.pack_action_max_days = pack_action_max_days
+        self.grandmaster_log_max_days = grandmaster_log_max_days
+        self.scrub_log_max_days = scrub_log_max_days
+        self.payment_event_max_days = payment_event_max_days
     
     def run(self, dry_run: bool = False) -> Dict[str, Any]:
         """
@@ -77,6 +85,10 @@ class GarbageCollector:
         results["stale_bids"] = self._clean_stale_bids(dry_run)
         results["stale_remote_jobs"] = self._clean_remote_jobs(dry_run)
         results["delivered_broadcasts"] = self._clean_broadcasts(dry_run)
+        results["old_pack_actions"] = self._clean_pack_actions(dry_run)
+        results["old_grandmaster_log"] = self._clean_grandmaster_log(dry_run)
+        results["old_scrub_logs"] = self._clean_scrub_logs(dry_run)
+        results["old_payment_events"] = self._clean_payment_events(dry_run)
         results["db_vacuum"] = self._vacuum(dry_run)
         
         results["total_cleaned"] = sum(
@@ -263,6 +275,88 @@ class GarbageCollector:
             except Exception:
                 return 0
     
+    def _clean_pack_actions(self, dry_run: bool) -> int:
+        """Delete old pack patrol actions."""
+        cutoff = (datetime.now() - timedelta(days=self.pack_action_max_days)).isoformat()
+        with get_db() as conn:
+            try:
+                if dry_run:
+                    return conn.execute(
+                        "SELECT COUNT(*) FROM pack_actions WHERE timestamp < ?",
+                        (cutoff,)
+                    ).fetchone()[0]
+                cursor = conn.execute(
+                    "DELETE FROM pack_actions WHERE timestamp < ?", (cutoff,)
+                )
+                conn.commit()
+                return cursor.rowcount
+            except Exception:
+                return 0
+    
+    def _clean_grandmaster_log(self, dry_run: bool) -> int:
+        """Delete old grandmaster log/decision entries."""
+        cutoff = (datetime.now() - timedelta(days=self.grandmaster_log_max_days)).isoformat()
+        with get_db() as conn:
+            total = 0
+            for table in ("grandmaster_log", "grandmaster_decisions"):
+                try:
+                    if dry_run:
+                        total += conn.execute(
+                            f"SELECT COUNT(*) FROM {table} WHERE timestamp < ?",
+                            (cutoff,)
+                        ).fetchone()[0]
+                    else:
+                        cursor = conn.execute(
+                            f"DELETE FROM {table} WHERE timestamp < ?", (cutoff,)
+                        )
+                        total += cursor.rowcount
+                except Exception:
+                    pass
+            if not dry_run:
+                conn.commit()
+            return total
+    
+    def _clean_scrub_logs(self, dry_run: bool) -> int:
+        """Delete old middleware scrub logs and verdicts."""
+        cutoff = (datetime.now() - timedelta(days=self.scrub_log_max_days)).isoformat()
+        with get_db() as conn:
+            total = 0
+            for table in ("middleware_scrub_log", "scrubber_verdicts"):
+                try:
+                    if dry_run:
+                        total += conn.execute(
+                            f"SELECT COUNT(*) FROM {table} WHERE timestamp < ?",
+                            (cutoff,)
+                        ).fetchone()[0]
+                    else:
+                        cursor = conn.execute(
+                            f"DELETE FROM {table} WHERE timestamp < ?", (cutoff,)
+                        )
+                        total += cursor.rowcount
+                except Exception:
+                    pass
+            if not dry_run:
+                conn.commit()
+            return total
+    
+    def _clean_payment_events(self, dry_run: bool) -> int:
+        """Delete old completed payment events."""
+        cutoff = (datetime.now() - timedelta(days=self.payment_event_max_days)).isoformat()
+        with get_db() as conn:
+            try:
+                if dry_run:
+                    return conn.execute(
+                        "SELECT COUNT(*) FROM payment_events WHERE timestamp < ?",
+                        (cutoff,)
+                    ).fetchone()[0]
+                cursor = conn.execute(
+                    "DELETE FROM payment_events WHERE timestamp < ?", (cutoff,)
+                )
+                conn.commit()
+                return cursor.rowcount
+            except Exception:
+                return 0
+    
     def _vacuum(self, dry_run: bool) -> int:
         """Run SQLite VACUUM to reclaim space. Returns 1 if run, 0 if skipped."""
         if dry_run:
@@ -293,6 +387,9 @@ class GarbageCollector:
             "trace_events", "scrub_results", "trust_events", "immune_events",
             "agent_corpses", "wallets", "capability_challenges", "treasury",
             "known_patterns", "cafe_events", "grandmaster_log",
+            "grandmaster_decisions", "pack_actions", "pack_evaluations",
+            "middleware_scrub_log", "scrubber_verdicts", "payment_events",
+            "interaction_log", "canary_log",
         ]
         # Federation tables (may not exist)
         fed_tables = [
