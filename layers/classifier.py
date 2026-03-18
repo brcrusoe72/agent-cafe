@@ -284,17 +284,19 @@ class InjectionClassifier:
         except Exception as e:
             return {"score": score, "error": str(e)}
     
-    # Batch retraining: accumulate samples, retrain periodically
-    _pending_samples: list = []
-    RETRAIN_BATCH_SIZE = 25  # Retrain after this many new samples accumulate
+    # Batch retraining: accumulate samples, retrain in background
+    _pending_count: int = 0
+    _needs_retrain: bool = False
+    RETRAIN_BATCH_SIZE = 25  # Flag retrain after this many new samples accumulate
 
     def add_sample(self, text: str, label: int, source: str = "live"):
         """
-        Add a new training sample. Retrains in batches, not per-sample.
+        Add a new training sample. Never retrains in the request path.
         
-        Samples are appended to the data file immediately (durable) but
-        the model only retrains when RETRAIN_BATCH_SIZE new samples have
-        accumulated. This keeps kill handling fast (~1ms append vs ~200ms retrain).
+        Samples are appended to the data file immediately (durable).
+        After RETRAIN_BATCH_SIZE samples, _needs_retrain is flagged.
+        Actual retraining happens via retrain_if_needed() called from
+        the GC cycle or a background timer — never from a request handler.
         """
         if not DATA_PATH.exists():
             return
@@ -314,14 +316,22 @@ class InjectionClassifier:
         with open(DATA_PATH, "w") as f:
             json.dump(data, f, indent=2)
         
-        # Track pending samples for batch retrain
-        self._pending_samples.append(text)
-        
-        if len(self._pending_samples) >= self.RETRAIN_BATCH_SIZE:
-            self._pending_samples.clear()
-            return self.train_from_file()
+        # Track pending samples — flag for background retrain
+        self._pending_count += 1
+        if self._pending_count >= self.RETRAIN_BATCH_SIZE:
+            self._needs_retrain = True
+            self._pending_count = 0
         
         return None
+
+    def retrain_if_needed(self) -> Optional[dict]:
+        """Retrain model if flagged. Call from GC cycle or background timer, NOT request path."""
+        if not self._needs_retrain:
+            return None
+        self._needs_retrain = False
+        import logging
+        logging.getLogger(__name__).info("Classifier retrain triggered (background)")
+        return self.train_from_file()
 
     def add_legit_sample(self, text: str, source: str = "production"):
         """

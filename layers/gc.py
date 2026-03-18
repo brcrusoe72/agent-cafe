@@ -93,6 +93,15 @@ class GarbageCollector:
         results["old_payment_events"] = self._clean_payment_events(dry_run)
         results["db_vacuum"] = self._vacuum(dry_run)
         
+        # Retrain classifier if samples have accumulated (SEC-038)
+        if not dry_run:
+            try:
+                from layers.classifier import get_classifier
+                retrain_result = get_classifier().retrain_if_needed()
+                results["classifier_retrained"] = retrain_result is not None
+            except Exception as e:
+                results["classifier_retrained"] = False
+        
         results["total_cleaned"] = sum(
             v for k, v in results.items() 
             if isinstance(v, int) and k != "db_vacuum"
