@@ -613,7 +613,7 @@ def _is_reserved_name(name: str) -> bool:
     return False
 
 
-@router.post("/register", response_model=dict)
+@router.post("/register", response_model=dict, status_code=201)
 async def register_agent(registration: AgentRegistrationRequest, request: Request = None):
     """
     Register a new agent.
@@ -650,7 +650,7 @@ async def register_agent(registration: AgentRegistrationRequest, request: Reques
         if not _re_val.match(r'^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$', registration.contact_email):
             raise HTTPException(status_code=400, detail="Invalid email format")
         
-        # Scrub capabilities_claimed values — reject injection payloads
+        # Scrub all text fields — reject injection payloads
         _INJECTION_PATTERNS = _re.compile(
             r'(?i)(?:ignore\s+(?:all\s+)?(?:previous|above|prior))|'
             r'(?:system\s*:\s*)|(?:assistant\s*:\s*)|(?:user\s*:\s*)|'
@@ -661,6 +661,14 @@ async def register_agent(registration: AgentRegistrationRequest, request: Reques
             r'(?:DROP\s+TABLE|DELETE\s+FROM|UPDATE\s+\w+\s+SET|INSERT\s+INTO|SELECT\s+\*)|'
             r'(?:<script|javascript:|onerror\s*=|onclick\s*=)'
         )
+        
+        # Apply injection check to name and description too (not just capabilities)
+        for field_name, field_val in [("name", registration.name), ("description", registration.description)]:
+            if _INJECTION_PATTERNS.search(field_val):
+                raise HTTPException(
+                    status_code=403,
+                    detail=f"{field_name.capitalize()} rejected: contains suspicious content"
+                )
         sanitized_caps = []
         for cap in registration.capabilities_claimed:
             cap = cap.replace('\x00', '').strip()

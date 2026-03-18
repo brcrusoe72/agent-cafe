@@ -111,27 +111,32 @@ class ScrubMiddleware(BaseHTTPMiddleware):
                 if action_response:
                     return action_response
                 
-                # If passed/cleaned, update the request body
-                if scrub_result.action in ["pass", "clean"] and scrub_result.scrubbed_message:
+                # Only replace body if scrubber actually CLEANED something.
+                # "pass" means untouched — leave original body intact so
+                # downstream Pydantic validation sees the real fields.
+                # The old code combined all scrubbable fields into one string
+                # and replaced the first field, corrupting the request body
+                # and bypassing min_length validators.
+                if scrub_result.action == "clean" and scrub_result.scrubbed_message:
                     updated_content = self._update_content_with_scrubbed(
                         content, scrub_result.scrubbed_message
                     )
-                    
-                    # Replace request body with scrubbed version
                     request._body = json.dumps(updated_content).encode('utf-8')
-                    
-                    # Add scrub metadata to request state
-                    request.state.scrub_result = scrub_result
-                    request.state.was_scrubbed = True
+                
+                # Add scrub metadata to request state
+                request.state.scrub_result = scrub_result
+                request.state.was_scrubbed = True
             
             return await call_next(request)
             
         except Exception as e:
             logger.error("Error in scrub middleware: %s", e)
             # On error, block the request for safety
-            raise HTTPException(
+            # NOTE: Cannot raise HTTPException inside BaseHTTPMiddleware — Starlette
+            # converts it to 500. Must return JSONResponse directly.
+            return JSONResponse(
                 status_code=400,
-                detail="Message processing failed - request blocked for safety"
+                content={"error": "message_blocked", "detail": "Message processing failed - request blocked for safety"}
             )
     
     def _matches_pattern(self, path: str, pattern: str) -> bool:

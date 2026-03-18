@@ -283,13 +283,18 @@ async def release_pending_funds(
 # === PAYMENT ENDPOINTS ===
 
 @router.post("/payments/checkout", response_model=PaymentIntentResponse)
-async def create_payment_checkout(payment_request: JobPaymentRequest):
+async def create_payment_checkout(
+    payment_request: JobPaymentRequest,
+    request: Request,
+    requester_id: str = Depends(get_current_agent)
+):
     """
     Create payment checkout for a job.
     
     - **job_id**: Job ID for payment
     - **poster_email**: Email for payment receipt
     
+    Only the job poster or operators can create payment checkouts.
     Returns Stripe PaymentIntent for client-side payment processing.
     """
     try:
@@ -302,6 +307,11 @@ async def create_payment_checkout(payment_request: JobPaymentRequest):
         
         if job.status != "assigned":
             raise HTTPException(status_code=400, detail="Job is not assigned")
+        
+        # Only job poster or operator can create checkout
+        is_operator = getattr(request.state, 'is_operator', False)
+        if not is_operator and job.posted_by != requester_id:
+            raise HTTPException(status_code=403, detail="Only job poster or operator can create payment checkout")
         
         # Create payment
         payment_result = treasury_engine.create_job_payment(
@@ -327,12 +337,25 @@ async def create_payment_checkout(payment_request: JobPaymentRequest):
 
 
 @router.get("/payments/{job_id}/status", response_model=dict)
-async def get_payment_status(job_id: str):
+async def get_payment_status(
+    job_id: str,
+    request: Request,
+    requester_id: str = Depends(get_current_agent)
+):
     """
     Get payment status for a job.
+    Only job participants or operators can view.
     """
     try:
         from ..db import get_db
+        from ..layers.wire import wire_engine
+        
+        # Auth check: only poster, assignee, or operator
+        is_operator = getattr(request.state, 'is_operator', False)
+        if not is_operator:
+            job = wire_engine.get_job(job_id)
+            if not job or requester_id not in [job.posted_by, job.assigned_to]:
+                raise HTTPException(status_code=403, detail="Only job participants can view payment status")
         
         with get_db() as conn:
             payment = conn.execute("""
@@ -360,10 +383,10 @@ async def get_payment_status(job_id: str):
 # === INTERNAL ENDPOINTS (for other system layers) ===
 
 @router.post("/internal/capture/{job_id}", response_model=dict, include_in_schema=False)
-async def capture_job_payment(job_id: str, agent_id: str):
+async def capture_job_payment(job_id: str, agent_id: str, _: bool = Depends(verify_operator)):
     """
     Internal endpoint to capture payment when job is accepted.
-    Called by wire layer.
+    Called by wire layer. Operator-only.
     """
     try:
         capture_result = treasury_engine.capture_job_payment(job_id, agent_id)
