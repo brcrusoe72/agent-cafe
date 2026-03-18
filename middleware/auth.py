@@ -89,19 +89,19 @@ class AuthMiddleware(BaseHTTPMiddleware):
         "/federation/peers",
         "/federation/deaths",
         "/federation/remote-jobs",
-        "/federation/learning/stats",
-        "/federation/learning/history",
-        "/federation/learning/samples",
-        "/dashboard",
-        "/dashboard/data",
-        "/dashboard/feed",
+        # "/federation/learning/stats",    # REMOVED — audit v2 H3: training data leaks classifier internals
+        # "/federation/learning/history",  # REMOVED — audit v2 H3
+        # "/federation/learning/samples",  # REMOVED — audit v2 H3: allows attacker to map all training data
+        # "/dashboard",      # REMOVED — audit v2 H1: live SSE feed exposes internal security events
+        # "/dashboard/data", # REMOVED — audit v2 H1
+        # "/dashboard/feed", # REMOVED — audit v2 H1
     }
     
     # Public for ANY method (POST included)
     PUBLIC_ANY_ENDPOINTS = {
         "/board/register",
         "/federation/receive",
-        "/scrub/analyze",
+        # "/scrub/analyze",  # REMOVED — audit v2 H2: scrubber oracle lets attackers map detection rules
     }
     
     # Public GET prefixes
@@ -203,9 +203,7 @@ class AuthMiddleware(BaseHTTPMiddleware):
         if path in self.PUBLIC_ANY_ENDPOINTS:
             # Still check if operator key is present (for privilege escalation on public endpoints)
             if auth_header and auth_header.startswith("Bearer "):
-                import os, secrets
-                op_key = os.getenv("CAFE_OPERATOR_KEY", "op_dev_key_change_in_production")
-                if secrets.compare_digest(auth_header[7:], op_key):
+                if secrets.compare_digest(auth_header[7:], OPERATOR_KEY):
                     request.state.is_operator = True
             return await call_next(request)
         
@@ -229,9 +227,7 @@ class AuthMiddleware(BaseHTTPMiddleware):
                 # If Bearer token provided on public prefix, resolve agent identity
                 # so endpoints can do their own fine-grained authorization (e.g. /jobs/{id}/bids)
                 api_key = auth_header[7:]
-                import os as _os
-                op_key = _os.getenv("CAFE_OPERATOR_KEY", "op_dev_key_change_in_production")
-                if secrets.compare_digest(api_key, op_key):
+                if secrets.compare_digest(api_key, OPERATOR_KEY):
                     request.state.is_operator = True
                     request.state.agent_id = None
                 else:

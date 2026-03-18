@@ -11,7 +11,7 @@ logger = get_logger(__name__)
 from typing import List, Optional
 from fastapi import APIRouter, HTTPException, Request, Depends, Query
 from fastapi.security import HTTPBearer
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
 try:
     from ..models import (
@@ -70,8 +70,20 @@ class JobAssignRequest(BaseModel):
 
 
 class JobDeliverableRequest(BaseModel):
-    deliverable_url: str = Field(..., description="URL to deliverable (file, repo, etc)")
-    notes: str = Field(default="", description="Optional delivery notes")
+    deliverable_url: str = Field(..., max_length=2000, description="URL to deliverable (file, repo, etc)")
+    notes: str = Field(default="", max_length=2000, description="Optional delivery notes")
+
+    @field_validator('deliverable_url')
+    @classmethod
+    def validate_url(cls, v):
+        if not v.startswith(('https://', 'http://')):
+            raise ValueError("Deliverable URL must start with https:// or http://")
+        # Block internal/private IPs
+        import re
+        hostname = v.split('//')[1].split('/')[0].split(':')[0]
+        if re.match(r'^(localhost|127\.|10\.|172\.(1[6-9]|2\d|3[01])\.|192\.168\.)', hostname):
+            raise ValueError("Deliverable URL cannot point to internal addresses")
+        return v
 
 
 class JobAcceptRequest(BaseModel):

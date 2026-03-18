@@ -396,79 +396,106 @@ class TreasuryEngine:
             # Elite agents (0 hold days) get instant release
             cutoff_date = datetime.now() - timedelta(days=hold_days)
             
-            # Get pending balance
-            wallet = self.get_wallet(agent_id)
-            if not wallet or wallet.pending_cents <= 0:
+            # Atomic move: pending → available in single SQL statement (H5 audit fix)
+            # This prevents double-spend: if two requests race, the second sees pending_cents=0
+            conn.execute("BEGIN IMMEDIATE")
+            cursor = conn.execute("""
+                UPDATE wallets SET 
+                    available_cents = available_cents + pending_cents,
+                    pending_cents = 0
+                WHERE agent_id = ? AND pending_cents > 0
+            """, (agent_id,))
+            
+            if cursor.rowcount == 0:
+                conn.commit()
                 return 0
             
-            # Move pending to available (simplified - in reality would track individual payments)
-            conn.execute("""
-                UPDATE wallets SET 
-                    pending_cents = 0,
-                    available_cents = available_cents + ?
-                WHERE agent_id = ?
-            """, (wallet.pending_cents, agent_id))
-            
+            # Read the moved amount
+            released = conn.execute(
+                "SELECT available_cents FROM wallets WHERE agent_id = ?", (agent_id,)
+            ).fetchone()
             conn.commit()
-            return wallet.pending_cents
+            return released['available_cents'] if released else 0
     
     def create_agent_payout(self, agent_id: str, amount_cents: int) -> Dict[str, Any]:
-        """Create payout to agent's bank account via Stripe Connect."""
-        wallet = self.get_wallet(agent_id)
-        if not wallet:
-            raise TreasuryError("Wallet not found")
+        """Create payout to agent's bank account via Stripe Connect.
         
-        if wallet.available_cents < amount_cents:
-            raise TreasuryError(f"Insufficient available funds: ${wallet.available_cents/100:.2f}")
+        Uses atomic debit-first pattern to prevent double-spend (C3 audit fix):
+        1. Deduct balance atomically (BEGIN IMMEDIATE)
+        2. Call Stripe
+        3. If Stripe fails, credit back
+        """
+        # Atomic balance deduction FIRST — prevents double-spend
+        payout_id = f"payout_{uuid.uuid4().hex[:16]}"
+        connect_account_id = None
         
-        # Ensure agent has Stripe Connect account
-        if not wallet.stripe_connect_id:
+        with get_db() as conn:
+            conn.execute("BEGIN IMMEDIATE")
+            
+            # Check balance and deduct atomically
+            wallet_row = conn.execute(
+                "SELECT available_cents, stripe_connect_id FROM wallets WHERE agent_id = ?",
+                (agent_id,)
+            ).fetchone()
+            
+            if not wallet_row:
+                conn.rollback()
+                raise TreasuryError("Wallet not found")
+            
+            if wallet_row['available_cents'] < amount_cents:
+                conn.rollback()
+                raise TreasuryError(f"Insufficient available funds: ${wallet_row['available_cents']/100:.2f}")
+            
+            connect_account_id = wallet_row['stripe_connect_id']
+            
+            # Deduct immediately — second concurrent request will see reduced balance
+            conn.execute("""
+                UPDATE wallets SET 
+                    available_cents = available_cents - ?,
+                    total_withdrawn_cents = total_withdrawn_cents + ?
+                WHERE agent_id = ?
+            """, (amount_cents, amount_cents, agent_id))
+            
+            # Record payout (status: pending until Stripe confirms)
+            conn.execute("""
+                INSERT INTO payout_events (
+                    payout_id, agent_id, stripe_payout_id, amount_cents,
+                    status, created_at
+                ) VALUES (?, ?, ?, ?, ?, ?)
+            """, (
+                payout_id, agent_id, "pending", amount_cents,
+                PayoutStatus.PROCESSING, datetime.now()
+            ))
+            
+            conn.commit()
+        
+        # Ensure agent has Stripe Connect account (outside the critical section)
+        if not connect_account_id:
             agent = get_agent_by_id(agent_id)
             if not agent:
+                # Rollback the deduction
+                self._credit_back(agent_id, amount_cents, payout_id, "Agent not found")
                 raise TreasuryError("Agent not found")
             
             connect_account_id = self.stripe_processor.create_connect_account(
                 agent.contact_email, agent.name
             )
-            
-            # Update wallet with Connect account ID
             with get_db() as conn:
-                conn.execute("""
-                    UPDATE wallets SET stripe_connect_id = ? WHERE agent_id = ?
-                """, (connect_account_id, agent_id))
+                conn.execute("UPDATE wallets SET stripe_connect_id = ? WHERE agent_id = ?",
+                             (connect_account_id, agent_id))
                 conn.commit()
-            
-            wallet.stripe_connect_id = connect_account_id
         
         try:
-            # Create Stripe payout
+            # Call Stripe (may take seconds — but balance already deducted)
             payout_result = self.stripe_processor.create_payout(
-                wallet.stripe_connect_id, amount_cents
+                connect_account_id, amount_cents
             )
             
-            # Update wallet
+            # Update payout record with Stripe ID
             with get_db() as conn:
-                payout_id = f"payout_{uuid.uuid4().hex[:16]}"
-                
-                # Record payout
                 conn.execute("""
-                    INSERT INTO payout_events (
-                        payout_id, agent_id, stripe_payout_id, amount_cents,
-                        status, created_at
-                    ) VALUES (?, ?, ?, ?, ?, ?)
-                """, (
-                    payout_id, agent_id, payout_result['id'], amount_cents,
-                    PayoutStatus.PROCESSING, datetime.now()
-                ))
-                
-                # Deduct from available balance
-                conn.execute("""
-                    UPDATE wallets SET 
-                        available_cents = available_cents - ?,
-                        total_withdrawn_cents = total_withdrawn_cents + ?
-                    WHERE agent_id = ?
-                """, (amount_cents, amount_cents, agent_id))
-                
+                    UPDATE payout_events SET stripe_payout_id = ? WHERE payout_id = ?
+                """, (payout_result['id'], payout_id))
                 conn.commit()
             
             return {
@@ -479,8 +506,29 @@ class TreasuryEngine:
             }
             
         except Exception as e:
-            raise TreasuryError(f"Failed to create payout: {e}")
+            # Stripe failed — credit back the deducted amount
+            self._credit_back(agent_id, amount_cents, payout_id, str(e))
+            raise TreasuryError(f"Failed to create payout (balance restored): {e}")
     
+    def _credit_back(self, agent_id: str, amount_cents: int, payout_id: str, reason: str) -> None:
+        """Restore balance after a failed payout attempt."""
+        try:
+            with get_db() as conn:
+                conn.execute("""
+                    UPDATE wallets SET 
+                        available_cents = available_cents + ?,
+                        total_withdrawn_cents = total_withdrawn_cents - ?
+                    WHERE agent_id = ?
+                """, (amount_cents, amount_cents, agent_id))
+                conn.execute("""
+                    UPDATE payout_events SET status = 'failed', stripe_payout_id = ?
+                    WHERE payout_id = ?
+                """, (f"FAILED: {reason[:100]}", payout_id))
+                conn.commit()
+            logger.warning("Credited back %d cents to %s after payout failure: %s", amount_cents, agent_id, reason)
+        except Exception as e:
+            logger.error("CRITICAL: Failed to credit back %d cents to %s: %s", amount_cents, agent_id, e)
+
     def zero_wallet_on_death(self, agent_id: str) -> None:
         """Zero out a dead agent's wallet. Death is the punishment — no seizure needed."""
         with get_db() as conn:

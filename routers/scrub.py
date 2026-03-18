@@ -116,7 +116,8 @@ async def analyze_message(req: AnalyzeRequest, request: Request):
 
     # Rate limit unauthenticated users
     if not is_authenticated:
-        client_ip = request.client.host if request.client else "unknown"
+        from middleware.auth import get_real_ip
+        client_ip = get_real_ip(request)
         if not scrub_daily_limiter.is_allowed(f"scrub:{client_ip}", max_per_day=100):
             raise HTTPException(
                 status_code=429,

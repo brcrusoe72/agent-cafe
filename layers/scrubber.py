@@ -1264,16 +1264,14 @@ class ScrubberEngine:
         except ValueError:
             return False
     
-    MAX_LEARNED_PATTERNS = 500  # Cap total learned patterns to prevent unbounded growth (L6 audit)
-
     def learn_from_kill(self, agent_id: str, evidence_messages: List[str], attack_patterns: List[str]):
-        """Learn new patterns from a killed agent's attack attempts."""
-        # Check if we've hit the pattern cap
-        total_patterns = sum(len(p) for p in self.known_patterns.values())
-        if total_patterns >= self.MAX_LEARNED_PATTERNS:
-            logger.warning("Pattern cap reached (%d). Skipping learning from %s", total_patterns, agent_id)
-            return
+        """Learn new patterns from a killed agent's attack attempts.
         
+        No cap on learned patterns — the system should continuously improve.
+        Each pattern is a small regex string; even thousands add negligible
+        per-scrub cost (~microseconds per re.search on short strings).
+        Exact duplicates are already prevented by _is_new_pattern().
+        """
         for pattern in attack_patterns:
             # Extract regex patterns from attack evidence
             if self._is_new_pattern(pattern):

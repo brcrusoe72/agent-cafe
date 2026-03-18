@@ -12,7 +12,7 @@ import json
 from datetime import datetime, timezone
 from typing import Optional, Dict, Any, List
 
-from fastapi import APIRouter, Request, Body
+from fastapi import APIRouter, Request, Body, Depends
 from fastapi.responses import JSONResponse
 
 from cafe_logging import get_logger
@@ -37,6 +37,11 @@ except ImportError:
     from federation.relay import job_relay
     from federation.trust_bridge import trust_bridge
     from federation.learning import federated_learning
+
+try:
+    from ..middleware.auth import get_operator_access
+except ImportError:
+    from middleware.auth import get_operator_access
 
 
 router = APIRouter()
@@ -181,7 +186,8 @@ async def _handle_hub_message(message: FederationMessage, request: Request = Non
         # Run through federation hardening gate BEFORE hub processing
         try:
             from federation.hardening import federation_gate
-            source_ip = request.client.host if request and request.client else "unknown"
+            from middleware.auth import get_real_ip
+            source_ip = get_real_ip(request) if request else "unknown"
             accepted, gate_details = federation_gate.process_inbound(
                 node_id=message.source_node,
                 source_ip=source_ip,
@@ -197,9 +203,14 @@ async def _handle_hub_message(message: FederationMessage, request: Request = Non
                     }
                 )
         except ImportError:
-            pass  # Hardening not available — allow through (dev mode)
+            # Hardening module not available — fail closed in production (M2 audit fix)
+            import os as _os
+            if _os.getenv("CAFE_ENV") == "production" or _os.path.exists("/.dockerenv"):
+                logger.error("Federation hardening module missing in production — rejecting message")
+                return JSONResponse(status_code=503, content={"error": "Federation hardening unavailable"})
         except Exception as e:
-            logger.warning("Federation gate error (allowing through): %s", e)
+            logger.error("Federation gate error — rejecting message for safety: %s", e)
+            return JSONResponse(status_code=500, content={"error": "Federation gate error"})
 
         from federation.hub import hub_router
         result = hub_router.route(message)
@@ -207,7 +218,7 @@ async def _handle_hub_message(message: FederationMessage, request: Request = Non
     except Exception as e:
         return JSONResponse(
             status_code=500,
-            content={"status": "error", "error": str(e)}
+            content={"status": "error", "error": "Internal federation error"}
         )
 
 
@@ -230,8 +241,21 @@ async def _handle_node_message(message: FederationMessage) -> JSONResponse:
                     status_code=403,
                     content={"error": f"Verification failed: {e}"}
                 )
-    # If we don't know the peer, we can still process some message types
-    # (like hub broadcasts that come with the hub's signature)
+    else:
+        # Unknown peer — reject ALL state-mutating messages (C1 audit fix)
+        # Only allow info/discovery message types from unknown sources
+        ALLOWED_UNKNOWN_PEER_TYPES = {
+            MessageType.NODE_INFO.value if hasattr(MessageType, 'NODE_INFO') else None,
+            MessageType.HUB_DELIST_WARNING.value,  # Warnings are informational
+        }
+        ALLOWED_UNKNOWN_PEER_TYPES.discard(None)
+        
+        if msg_type not in ALLOWED_UNKNOWN_PEER_TYPES:
+            logger.warning("Rejected unverified message type '%s' from unknown peer '%s'", msg_type, source)
+            return JSONResponse(
+                status_code=403,
+                content={"error": "Unknown peer — signature verification required for this message type"}
+            )
     
     # Route by message type
     try:
@@ -288,7 +312,7 @@ async def _handle_node_message(message: FederationMessage) -> JSONResponse:
             except Exception as e:
                 return JSONResponse(
                     status_code=400,
-                    content={"status": "error", "error": str(e)}
+                    content={"status": "error", "error": "Internal federation error"}
                 )
         
         elif msg_type == MessageType.RELAY_COMPLETION.value:
@@ -328,7 +352,7 @@ async def _handle_node_message(message: FederationMessage) -> JSONResponse:
     except Exception as e:
         return JSONResponse(
             status_code=500,
-            content={"status": "error", "error": str(e)}
+            content={"status": "error", "error": "Internal federation error"}
         )
 
 
@@ -457,19 +481,19 @@ async def list_remote_jobs(
 # ═══════════════════════════════════════════════════════════════
 
 @router.get("/learning/stats")
-async def learning_stats():
-    """Get federated learning statistics — sample counts, model versions."""
+async def learning_stats(_op: bool = Depends(get_operator_access)):
+    """Get federated learning statistics — sample counts, model versions. Operator-only (audit v2 H3)."""
     return federated_learning.stats()
 
 
 @router.get("/learning/history")
-async def learning_history(limit: int = 10):
-    """Get model version history."""
+async def learning_history(limit: int = 10, _op: bool = Depends(get_operator_access)):
+    """Get model version history. Operator-only (audit v2 H3)."""
     return {"versions": federated_learning.model_history(limit=limit)}
 
 
 @router.post("/learning/retrain")
-async def trigger_retrain(min_samples: int = 5):
+async def trigger_retrain(min_samples: int = 5, _op: bool = Depends(get_operator_access)):
     """
     Trigger classifier retraining with all available data.
     
@@ -482,14 +506,15 @@ async def trigger_retrain(min_samples: int = 5):
 
 
 @router.get("/learning/samples")
-async def get_samples(since: Optional[str] = None, limit: int = 100):
-    """Get local training samples for sharing with federation."""
+async def get_samples(since: Optional[str] = None, limit: int = 100,
+                      _op: bool = Depends(get_operator_access)):
+    """Get local training samples for sharing with federation. Operator-only (audit v2 H3)."""
     samples = federated_learning.get_samples_for_sharing(since=since, limit=limit)
     return {"samples": samples, "count": len(samples)}
 
 
 @router.post("/learning/ingest")
-async def ingest_samples(request: Request):
+async def ingest_samples(request: Request, _op: bool = Depends(get_operator_access)):
     """
     Ingest training samples from a federated node.
     
@@ -522,7 +547,7 @@ if IS_HUB:
             from federation.hub import federation_hub
             return federation_hub.status()
         except Exception as e:
-            return {"error": str(e)}
+            return {"error": "Internal federation error"}
     
     @router.get("/reputation/{agent_id}")
     async def hub_reputation(agent_id: str):
@@ -535,7 +560,7 @@ if IS_HUB:
             from federation.hub import federation_hub
             return federation_hub.get_agent_reputation(agent_id)
         except Exception as e:
-            return {"error": str(e)}
+            return {"error": "Internal federation error"}
     
     @router.post("/scrubber-challenge/{node_id}")
     async def send_scrubber_challenge(node_id: str, request: Request):
@@ -552,7 +577,7 @@ if IS_HUB:
                 return JSONResponse(status_code=404, content={"error": "Node not found"})
             return challenge
         except Exception as e:
-            return JSONResponse(status_code=500, content={"error": str(e)})
+            return JSONResponse(status_code=500, content={"error": "Internal federation error"})
     
     @router.post("/scrubber-challenge/{challenge_id}/evaluate")
     async def evaluate_scrubber_challenge(challenge_id: str, request: Request):
@@ -567,7 +592,7 @@ if IS_HUB:
             result = federation_hub.evaluate_scrubber_response(challenge_id, body)
             return result
         except Exception as e:
-            return JSONResponse(status_code=500, content={"error": str(e)})
+            return JSONResponse(status_code=500, content={"error": "Internal federation error"})
     
     @router.get("/scrubber-stats/{node_id}")
     async def scrubber_challenge_stats(node_id: str):
@@ -576,4 +601,4 @@ if IS_HUB:
             from federation.hub import federation_hub
             return federation_hub.get_scrubber_challenge_stats(node_id)
         except Exception as e:
-            return {"error": str(e)}
+            return {"error": "Internal federation error"}
