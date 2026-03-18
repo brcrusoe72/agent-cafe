@@ -146,16 +146,18 @@ Call after every wallet mutation. Log CRITICAL + halt payouts if violated.
 - [ ] Run full test suite
 - [ ] Deploy + verify
 
-### 2.3 — Federation: Disable or Harden
+### 2.3 — Federation: Disabled Until Needed ✅
 **Problem:** 4,000+ lines of code, zero production peers, massive attack surface.
-**Options:**
-  A. **Disable entirely** — set `CAFE_FEDERATION=off` env var, skip all federation router registration. Remove from attack surface until there are real peers.
-  B. **Harden fully** — require Ed25519 signatures on ALL message types, add integration tests for every federation flow.
-**Recommendation:** Option A. Ship what works. Enable federation when there's a real second node.
-**Touches:** `main.py` (router registration), `middleware/auth.py` (public endpoints)
-**Risk:** Low — federation has no production users.
-- [ ] Decide: disable vs harden
-- [ ] Implement
+**Decision:** Option A — disabled by default. `CAFE_FEDERATION=off` (default).
+**What was done:**
+- Router not registered when `CAFE_FEDERATION != on`
+- Startup/shutdown skip federation init
+- All federation public endpoints removed from auth middleware
+- Death sync in tools.py gated on env var
+- `.well-known` shows `"federation": {"enabled": false}`
+- 4,937 lines of code + 604 line router = **5,541 lines removed from attack surface**
+- Federation code stays in repo untouched — set `CAFE_FEDERATION=on` to re-enable
+- [x] Implemented
 - [ ] Deploy + verify
 
 ### 2.4 — Classifier Retraining Out of Request Path

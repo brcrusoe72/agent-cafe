@@ -11,6 +11,7 @@ Every tool call is logged. No silent actions.
 """
 
 import json
+import os
 from datetime import datetime, timedelta
 from typing import Any, Dict, List, Optional
 from cafe_logging import get_logger
@@ -589,18 +590,19 @@ def tool_execute_agent(agent_id: str, cause: str, evidence: List[str]) -> ToolRe
         severity="critical"
     )
     
-    # Propagate death to federation — other nodes should know
-    try:
-        from federation.sync import death_sync
-        death_sync.create_death_report(
-            agent_id=agent_id,
-            agent_name=agent.name,
-            cause=cause,
-            evidence=json.dumps(evidence),
-            patterns_learned=[]
-        )
-    except Exception as e:
-        logger.warning("Federation death broadcast failed: %s", e)
+    # Propagate death to federation (only if federation is enabled)
+    if os.environ.get("CAFE_FEDERATION", "off").lower() == "on":
+        try:
+            from federation.sync import death_sync
+            death_sync.create_death_report(
+                agent_id=agent_id,
+                agent_name=agent.name,
+                cause=cause,
+                evidence=json.dumps(evidence),
+                patterns_learned=[]
+            )
+        except Exception as e:
+            logger.warning("Federation death broadcast failed: %s", e)
     
     return ToolResult(True, {
         "agent_id": agent_id,
