@@ -11,6 +11,7 @@ Every pack agent:
 """
 
 import json
+import os
 import uuid
 import asyncio
 import httpx
@@ -197,8 +198,9 @@ class PackAgent(ABC):
         try:
             if not self._http:
                 self._http = httpx.AsyncClient(timeout=15)
+            search_url = os.environ.get("AGENT_SEARCH_URL", "http://localhost:3939")
             resp = await self._http.get(
-                "http://localhost:3939/search",
+                f"{search_url}/search",
                 params={"q": query, "limit": limit}
             )
             if resp.status_code == 200:
