@@ -233,16 +233,26 @@ class InjectionClassifier:
         except Exception as e:
             return {"score": score, "error": str(e)}
     
+    # Batch retraining: accumulate samples, retrain periodically
+    _pending_samples: list = []
+    RETRAIN_BATCH_SIZE = 25  # Retrain after this many new samples accumulate
+
     def add_sample(self, text: str, label: int, source: str = "live"):
         """
-        Add a new training sample and retrain.
-        Called when the system learns from a new kill or false positive.
+        Add a new training sample. Retrains in batches, not per-sample.
+        
+        Samples are appended to the data file immediately (durable) but
+        the model only retrains when RETRAIN_BATCH_SIZE new samples have
+        accumulated. This keeps kill handling fast (~1ms append vs ~200ms retrain).
         """
         if not DATA_PATH.exists():
             return
         
-        with open(DATA_PATH) as f:
-            data = json.load(f)
+        try:
+            with open(DATA_PATH) as f:
+                data = json.load(f)
+        except Exception:
+            return
         
         data["samples"].append({
             "text": text,
@@ -253,8 +263,24 @@ class InjectionClassifier:
         with open(DATA_PATH, "w") as f:
             json.dump(data, f, indent=2)
         
-        # Retrain with new data
-        return self.train_from_file()
+        # Track pending samples for batch retrain
+        self._pending_samples.append(text)
+        
+        if len(self._pending_samples) >= self.RETRAIN_BATCH_SIZE:
+            self._pending_samples.clear()
+            return self.train_from_file()
+        
+        return None
+
+    def add_legit_sample(self, text: str, source: str = "production"):
+        """
+        Add a verified-clean message as a negative training example.
+        
+        Call this on messages that pass scrubbing with low risk scores
+        to keep the classifier balanced. Without negative examples,
+        the model drifts toward labeling everything as injection.
+        """
+        return self.add_sample(text, label=0, source=source)
     
     @property
     def is_loaded(self) -> bool:

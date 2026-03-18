@@ -493,6 +493,19 @@ class ScrubberEngine:
         if action in ["pass", "clean"]:
             content_hash = self._hash_content(final_message)
             signature = self._sign_content(final_message, content_hash)
+            
+            # Feed clean messages to classifier as negative examples (keeps model balanced)
+            # Only sample ~5% of clean messages to avoid flooding training data
+            if risk_score < 0.1 and len(final_message) > 20:
+                import random
+                if random.random() < 0.05:
+                    try:
+                        from layers.classifier import get_classifier
+                        clf = get_classifier()
+                        if clf.is_loaded:
+                            clf.add_legit_sample(final_message, source=f"scrub_clean:{message_type}")
+                    except Exception:
+                        pass
         else:
             content_hash = ""
             signature = ""
