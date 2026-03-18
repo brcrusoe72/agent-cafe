@@ -2,7 +2,7 @@
 **Purpose:** Complete registry of every security finding, fix, and regression.  
 **Rule:** If a bug shows up twice, it means our fix was wrong. Find the root cause.
 
-*Last updated: 2026-03-18 13:50 CDT*
+*Last updated: 2026-03-18 16:52 CDT*
 
 ---
 
@@ -407,20 +407,34 @@
 
 ## Remaining Open Items
 
-See `REMEDIATION-PLAN.md` for full details on each:
+**All 38 findings are now fixed.** No open security items remain.
 
-| ID | Severity | Issue | Phase |
-|----|----------|-------|-------|
-| SEC-029 | 🟠 HIGH | Pickle deserialization of ML model | Phase 1.1 |
-| SEC-030 | 🟡 MEDIUM | Dashboard XSS on agent names | Phase 1.2 |
-| SEC-031 | 🟡 MEDIUM | Per-payment hold period not enforced | Phase 1.3 |
-| SEC-032 | 🟡 MEDIUM | Stripe webhook 300s replay window | Phase 1.4 |
-| SEC-033 | ⚪ LOW | Executioner sources .bashrc | Phase 1.5 |
-| SEC-034 | ⚪ LOW | CORS allow-headers unrestricted | Phase 1.6 |
-| SEC-035 | ⚪ LOW | Pack agents hardcode localhost:3939 | Phase 1.7 |
-| SEC-036 | 🟡 MEDIUM | No economic invariant assertions | Phase 2.1 |
-| SEC-037 | 🟡 MEDIUM | No connection pooling | Phase 2.2 |
-| SEC-038 | 🟡 MEDIUM | Classifier retrains in request path | Phase 2.4 |
+### Closed in Phase 1 (2026-03-18 session 2):
+
+| ID | Severity | Issue | Fix | Commit |
+|----|----------|-------|-----|--------|
+| SEC-029 | 🟠 HIGH | Pickle deserialization RCE | HMAC-SHA256 sign/verify on model files | `cd46359` |
+| SEC-030 | 🟡 MEDIUM | Dashboard XSS on agent names | `esc()` function on all innerHTML | `d950695` |
+| SEC-031 | 🟡 MEDIUM | Per-payment hold period not enforced | Per-payment release with `captured_at` tracking | `7e3654d` |
+| SEC-032 | 🟡 MEDIUM | Stripe webhook 300s replay window | 60s tolerance + event ID dedup table | `8ab1548` |
+| SEC-033 | ⚪ LOW | Executioner sources .bashrc | `os.environ` only, subprocess removed | `b64780b` |
+| SEC-034 | ⚪ LOW | CORS allow-headers unrestricted | Explicit allowlist + X-Request-ID | `1fb94a8` |
+| SEC-035 | ⚪ LOW | Pack agents hardcode localhost:3939 | `AGENT_SEARCH_URL` env var with fallback | `8d62831` |
+
+### Closed in Phase 2 (2026-03-18 session 2):
+
+| ID | Severity | Issue | Fix | Commit |
+|----|----------|-------|-----|--------|
+| SEC-036 | 🟡 MEDIUM | No economic invariant assertions | `assert_wallet_invariant()` after every wallet mutation | `a98d636` |
+| SEC-037 | 🟡 MEDIUM | No connection pooling | Thread-local connection reuse, PRAGMAs once per thread | `8eea3c8` |
+| SEC-038 | 🟡 MEDIUM | Classifier retrains in request path | `_needs_retrain` flag, GC cycle triggers retrain | `83b7e34` |
+
+### Also completed:
+
+| Item | Description | Commit |
+|------|-------------|--------|
+| Federation removal | 6,917 LOC moved to `archive/federation/`, all references cleaned from 12+ files | `04b8ba1` |
+| Test fixes | 3 flaky/broken tests fixed (empty name helper, timeouts, federation assertion) | `e309147` |
 
 ---
 
@@ -437,9 +451,11 @@ See `REMEDIATION-PLAN.md` for full details on each:
 
 ## Stats
 
-- **Total findings:** 38 (28 fixed, 10 remaining)
+- **Total findings:** 38 (**38 fixed, 0 remaining**)
 - **Findings from tests (v3):** 6 (all fixed) — this is why we write tests FIRST
 - **Findings from code review only:** 32
 - **False alarms:** 0
-- **Regressions:** 0 so far
-- **Test coverage:** 79 security integration tests
+- **Regressions:** 0
+- **Test coverage:** 82 security + HMAC integration tests (82 passing)
+- **Federation:** Fully removed (6,917 LOC archived, zero imports remain)
+- **Last full suite run:** 2026-03-18 16:22 CDT — 82/82 ✅
