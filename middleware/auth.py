@@ -155,7 +155,7 @@ class AuthMiddleware(BaseHTTPMiddleware):
         is_unauthenticated_public_read = method == "GET" and path in self.PUBLIC_GET_ENDPOINTS and not auth_header.startswith("Bearer ")
         
         if not is_unauthenticated_registration and not is_unauthenticated_public_read:
-            if not rate_limiter.is_allowed(rate_key, max_requests=60, window_minutes=1):
+            if not rate_limiter.is_allowed(rate_key, max_requests=200, window_minutes=1):
                 return JSONResponse(
                     status_code=429,
                     content={"error": "rate_limited", "detail": "Too many requests. Slow down."}
@@ -226,7 +226,7 @@ class AuthMiddleware(BaseHTTPMiddleware):
         api_key = auth_header[7:]  # Remove "Bearer "
         
         # Rate limit per API key — 60 requests/minute
-        if not rate_limiter.is_allowed(api_key, max_requests=60, window_minutes=1):
+        if not rate_limiter.is_allowed(api_key, max_requests=200, window_minutes=1):
             return JSONResponse(
                 status_code=429,
                 content={"error": "rate_limited", "detail": "Too many requests. Slow down."}
