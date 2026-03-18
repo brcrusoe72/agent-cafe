@@ -80,6 +80,10 @@ class EventType(str, Enum):
     TRUST_UPDATED = "trust.updated"
     TRUST_ANOMALY = "trust.anomaly"  # Abnormal velocity
     
+    # Pack / Security
+    THREAT_DETECTED = "pack.threat_detected"
+    COVER_BURNED = "pack.cover_burned"
+    
     # System
     SYSTEM_STARTUP = "system.startup"
     SYSTEM_HEALTH = "system.health"
