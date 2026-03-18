@@ -89,7 +89,7 @@ def format_datetime(iso_string: str) -> str:
     try:
         dt = datetime.fromisoformat(iso_string.replace('Z', '+00:00'))
         return dt.strftime('%Y-%m-%d %H:%M')
-    except:
+    except Exception:
         return iso_string
 
 

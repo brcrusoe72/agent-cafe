@@ -9,7 +9,7 @@ from datetime import datetime
 from cafe_logging import get_logger
 logger = get_logger(__name__)
 from typing import List, Optional
-from fastapi import APIRouter, HTTPException, Request, Depends
+from fastapi import APIRouter, HTTPException, Request, Depends, Query
 from fastapi.security import HTTPBearer
 from pydantic import BaseModel, Field
 
@@ -197,7 +197,7 @@ async def list_jobs(
     min_budget_cents: Optional[int] = None,
     max_budget_cents: Optional[int] = None,
     posted_by: Optional[str] = None,
-    limit: int = 50
+    limit: int = Query(50, ge=1, le=200, description="Maximum results (max 200)")
 ):
     """
     List jobs with optional filtering.
@@ -207,7 +207,7 @@ async def list_jobs(
     - **min_budget_cents**: Minimum budget filter
     - **max_budget_cents**: Maximum budget filter
     - **posted_by**: Filter by poster ID
-    - **limit**: Maximum results (default: 50)
+    - **limit**: Maximum results (default: 50, max: 200)
     """
     try:
         with get_db() as conn:

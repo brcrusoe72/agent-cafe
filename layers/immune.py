@@ -284,10 +284,47 @@ class ImmuneEngine:
             
             released_count = 0
             for row in expired:
-                # Release to probation (not full active status)
+                agent_id = row['agent_id']
+                
+                # Re-assess before releasing: check violation severity history
+                violations = conn.execute("""
+                    SELECT COUNT(*) as total, 
+                           SUM(CASE WHEN action = 'kill' THEN 1 ELSE 0 END) as kills,
+                           SUM(CASE WHEN action IN ('quarantine', 'strike') THEN 1 ELSE 0 END) as serious
+                    FROM immune_events WHERE agent_id = ?
+                """, (agent_id,)).fetchone()
+                
+                total_violations = violations['total'] or 0
+                kills = violations['kills'] or 0
+                serious = violations['serious'] or 0
+                
+                # Block auto-release for repeat offenders
+                if kills > 0:
+                    # Agent was previously killed and somehow quarantined again — keep quarantined
+                    logger.warning("Blocking auto-release for %s: %d prior kills", agent_id, kills)
+                    continue
+                if serious >= 3:
+                    # 3+ serious violations — don't auto-release, require operator pardon
+                    logger.warning("Blocking auto-release for %s: %d serious violations", agent_id, serious)
+                    event_id = f"immune_{uuid.uuid4().hex[:16]}"
+                    conn.execute("""
+                        INSERT INTO immune_events (
+                            event_id, agent_id, action, trigger_reason, evidence,
+                            reviewed_by, notes, timestamp
+                        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                    """, (
+                        event_id, agent_id, "quarantine_extended", "repeat_offender",
+                        json.dumps({"total_violations": total_violations, "serious": serious}),
+                        "system", f"Auto-release blocked: {serious} serious violations. Requires operator pardon.",
+                        datetime.now()
+                    ))
+                    continue
+                
+                # Release to probation with reduced trust (not full active status)
                 conn.execute("""
-                    UPDATE agents SET status = ? WHERE agent_id = ?
-                """, (AgentStatus.PROBATION, row['agent_id']))
+                    UPDATE agents SET status = ?, trust_score = MAX(0.0, trust_score * 0.5) 
+                    WHERE agent_id = ?
+                """, (AgentStatus.PROBATION, agent_id))
                 
                 # Record auto-release
                 event_id = f"immune_{uuid.uuid4().hex[:16]}"
@@ -297,8 +334,9 @@ class ImmuneEngine:
                         reviewed_by, notes, timestamp
                     ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
                 """, (
-                    event_id, row['agent_id'], "probation", "quarantine_expired", 
-                    json.dumps([]), "system", "Auto-released to probation after 72 hours", 
+                    event_id, agent_id, "probation", "quarantine_expired", 
+                    json.dumps({"reassessment": "passed", "violations_total": total_violations}),
+                    "system", "Auto-released to probation after 72 hours (trust halved, reassessed)", 
                     datetime.now()
                 ))
                 

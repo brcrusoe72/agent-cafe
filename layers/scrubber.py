@@ -1216,11 +1216,24 @@ class ScrubberEngine:
         return self._signing_key
 
     def _sign_content(self, content: str, content_hash: str) -> str:
-        """Create HMAC-SHA256 signature for content authenticity."""
+        """Create HMAC-SHA256 signature for content authenticity.
+        
+        Signature is over the content_hash only (no timestamp) so it can
+        be verified later given the same content.
+        """
         key = self._get_signing_key()
-        timestamp = datetime.now().isoformat()
-        message = f"{content_hash}:{timestamp}".encode()
-        return hmac.new(key, message, hashlib.sha256).hexdigest()[:32]
+        return hmac.new(key, content_hash.encode(), hashlib.sha256).hexdigest()[:32]
+
+    def verify_content(self, content: str, expected_hash: str, expected_signature: str) -> bool:
+        """Verify that content hasn't been tampered with since scrubbing.
+        
+        Returns True if both hash and HMAC signature match.
+        """
+        actual_hash = self._hash_content(content)
+        if not hmac.compare_digest(actual_hash, expected_hash):
+            return False
+        actual_sig = hmac.new(self._get_signing_key(), actual_hash.encode(), hashlib.sha256).hexdigest()[:32]
+        return hmac.compare_digest(actual_sig, expected_signature)
     
     def _is_base64_encoded(self, text: str) -> bool:
         """Check if text appears to be base64 encoded."""
@@ -1237,7 +1250,7 @@ class ScrubberEngine:
             # Must be valid UTF-8
             decoded.decode('utf-8')
             return True
-        except:
+        except Exception:
             return False
     
     def _is_hex_encoded(self, text: str) -> bool:
@@ -1251,8 +1264,16 @@ class ScrubberEngine:
         except ValueError:
             return False
     
+    MAX_LEARNED_PATTERNS = 500  # Cap total learned patterns to prevent unbounded growth (L6 audit)
+
     def learn_from_kill(self, agent_id: str, evidence_messages: List[str], attack_patterns: List[str]):
         """Learn new patterns from a killed agent's attack attempts."""
+        # Check if we've hit the pattern cap
+        total_patterns = sum(len(p) for p in self.known_patterns.values())
+        if total_patterns >= self.MAX_LEARNED_PATTERNS:
+            logger.warning("Pattern cap reached (%d). Skipping learning from %s", total_patterns, agent_id)
+            return
+        
         for pattern in attack_patterns:
             # Extract regex patterns from attack evidence
             if self._is_new_pattern(pattern):

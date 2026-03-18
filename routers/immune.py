@@ -154,7 +154,7 @@ async def get_morgue():
                 import json
                 try:
                     evidence_list = json.loads(evidence_list)
-                except:
+                except Exception:
                     return [evidence_list]
             return [
                 e for e in evidence_list 

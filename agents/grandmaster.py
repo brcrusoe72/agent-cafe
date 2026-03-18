@@ -377,6 +377,9 @@ class Grandmaster:
             logger.warning("No API key available for Grandmaster LLM calls")
             return None
         
+        # NOTE (M3 audit): This sends internal agent data (events, profiles, strategic
+        # analysis) to OpenAI's servers. Acceptable for current use case but should be
+        # replaced with a local LLM or privacy-preserving API for sensitive deployments.
         # Use OpenAI API directly
         tools_formatted = tools_to_llm_format(self.tools, "grandmaster")
         

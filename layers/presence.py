@@ -45,8 +45,15 @@ class PresenceEngine:
         self.CAPABILITY_FACTOR = 0.20
     
     def compute_board_position(self, agent_id: str) -> Optional[BoardPosition]:
-        """Compute current board position for an agent."""
+        """Compute current board position for an agent.
+        
+        Uses BEGIN IMMEDIATE to prevent concurrent trust score writes from
+        producing stale reads (M1 audit fix).
+        """
         with get_db() as conn:
+            # BEGIN IMMEDIATE acquires a write lock upfront, preventing concurrent
+            # read-compute-write races on trust_score
+            conn.execute("BEGIN IMMEDIATE")
             # Get agent basic data
             agent_row = conn.execute("""
                 SELECT * FROM agents WHERE agent_id = ?

@@ -8,7 +8,7 @@ from datetime import datetime
 from pathlib import Path
 
 from cafe_logging import get_logger
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 
 logger = get_logger("main")
 from fastapi.middleware.cors import CORSMiddleware
@@ -121,6 +121,21 @@ try:
     app.add_middleware(RequestIDMiddleware)
 except Exception:
     pass
+
+
+# L5 audit fix: include request_id in error responses for debugging correlation
+@app.exception_handler(HTTPException)
+async def http_exception_with_request_id(request: Request, exc: HTTPException):
+    """Add X-Request-ID to all error responses for production debugging."""
+    request_id = getattr(request.state, 'request_id', None)
+    body = {"detail": exc.detail}
+    if request_id:
+        body["request_id"] = request_id
+    return JSONResponse(
+        status_code=exc.status_code,
+        content=body,
+        headers={"X-Request-ID": request_id} if request_id else {}
+    )
 
 
 @app.on_event("startup")
@@ -318,10 +333,10 @@ async def well_known():
                     caps = _json.loads(row['required_capabilities']) if isinstance(row['required_capabilities'], str) else row['required_capabilities']
                     for c in caps:
                         cap_counts[c] = cap_counts.get(c, 0) + 1
-                except:
+                except Exception:
                     pass
             top_caps = sorted(cap_counts.items(), key=lambda x: -x[1])[:10]
-    except:
+    except Exception:
         agent_count = open_jobs = completed_jobs = 0
         top_caps = []
     
@@ -388,16 +403,13 @@ async def well_known():
             "stripe_fee": "2.9% + 30¢ passthrough",
         },
         
-        # Security policy
+        # Security policy (public-safe summary — exact thresholds not disclosed)
         "security": {
             "all_messages_scrubbed": True,
             "prompt_injection_policy": "instant_death",
             "trust_scoring": "recency_weighted",
             "grandmaster_oversight": True,
-            "rate_limits": {
-                "requests_per_minute": 60,
-                "registrations_per_ip_per_hour": 5,
-            },
+            "rate_limited": True,
         },
         
         # Registration schema
@@ -515,7 +527,26 @@ async def health_check():
     except Exception:
         pass
     
-    # 7. Draining status
+    # 7. Grandmaster + Pack Runner status (L7 audit fix)
+    try:
+        from agents.grandmaster import grandmaster
+        gm_running = grandmaster._task is not None and not grandmaster._task.done()
+        checks["grandmaster"] = {"status": "ok" if gm_running else "stopped", "running": gm_running}
+        if not gm_running and overall == "ok":
+            overall = "degraded"
+    except Exception:
+        checks["grandmaster"] = {"status": "unknown"}
+    
+    try:
+        from agents.pack.runner import pack_runner
+        pr_running = len(pack_runner._tasks) > 0 and any(not t.done() for t in pack_runner._tasks)
+        checks["pack_runner"] = {"status": "ok" if pr_running else "stopped", "running": pr_running}
+        if not pr_running and overall == "ok":
+            overall = "degraded"
+    except Exception:
+        checks["pack_runner"] = {"status": "unknown"}
+    
+    # 8. Draining status
     checks["draining"] = getattr(app.state, 'draining', False)
     
     status_code = 200 if overall in ("ok", "degraded") else 503
@@ -558,10 +589,10 @@ async def root():
                     caps = json.loads(row['required_capabilities']) if isinstance(row['required_capabilities'], str) else row['required_capabilities']
                     for c in caps:
                         cap_counts[c] = cap_counts.get(c, 0) + 1
-                except:
+                except Exception:
                     pass
             top_caps = sorted(cap_counts.items(), key=lambda x: -x[1])[:5]
-    except:
+    except Exception:
         agent_count, open_jobs, top_caps = 0, 0, []
     
     return {

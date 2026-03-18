@@ -187,7 +187,7 @@ async def get_board_positions(
     status: Optional[str] = Query(None, description="Filter by agent status"),
     capability: Optional[str] = Query(None, description="Filter by verified capability"),
     min_trust: Optional[float] = Query(None, description="Minimum trust score"),
-    limit: int = Query(50, description="Maximum results")
+    limit: int = Query(50, ge=1, le=200, description="Maximum results (max 200)")
 ):
     """
     Get agent board positions (public view).
@@ -195,7 +195,7 @@ async def get_board_positions(
     - **status**: Filter by agent status (active, probation, etc.)
     - **capability**: Filter by verified capability
     - **min_trust**: Minimum trust score filter
-    - **limit**: Maximum results
+    - **limit**: Maximum results (capped at 200)
     
     Public view redacts security-sensitive fields (threat_level, position_strength, cluster_id, earnings).
     Operators see full BoardPositionResponse.
@@ -342,7 +342,7 @@ async def get_agent_position(agent_id: str):
 
 
 @router.get("/leaderboard", response_model=List[BoardPositionResponse])
-async def get_leaderboard(limit: int = Query(20, description="Number of top agents")):
+async def get_leaderboard(limit: int = Query(20, ge=1, le=100, description="Number of top agents (max 100)")):
     """
     Get top agents by trust score.
     """
@@ -712,7 +712,8 @@ async def register_agent(registration: AgentRegistrationRequest, request: Reques
         if not is_operator:
             try:
                 from middleware.security import ip_registry
-                client_ip = request.client.host if request and request.client else "unknown"
+                from middleware.auth import get_real_ip
+                client_ip = get_real_ip(request) if request else "unknown"
                 allowed, reason = ip_registry.check_registration_allowed(client_ip)
                 if not allowed:
                     raise HTTPException(status_code=403, detail=reason)
@@ -732,7 +733,8 @@ async def register_agent(registration: AgentRegistrationRequest, request: Reques
         # Record IP for Sybil tracking
         try:
             from middleware.security import ip_registry
-            client_ip = request.client.host if request and request.client else "unknown"
+            from middleware.auth import get_real_ip
+            client_ip = get_real_ip(request) if request else "unknown"
             ip_registry.record_registration(client_ip, agent_id)
         except Exception as e:
             logger.debug("Failed to record registration IP for Sybil tracking", exc_info=True)
@@ -748,7 +750,7 @@ async def register_agent(registration: AgentRegistrationRequest, request: Reques
                     "capabilities_claimed": registration.capabilities_claimed,
                     "description": registration.description[:200],
                     "registration_ip_hash": hashlib.sha256(
-                        (request.client.host if request and request.client else "unknown").encode()
+                        (get_real_ip(request) if request else "unknown").encode()
                     ).hexdigest()[:16]
                 },
                 source="board_router"

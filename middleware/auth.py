@@ -16,6 +16,30 @@ from fastapi.responses import JSONResponse
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from starlette.middleware.base import BaseHTTPMiddleware
 
+
+def get_real_ip(request: Request) -> str:
+    """Extract real client IP, respecting reverse proxy headers.
+    
+    Priority: CF-Connecting-IP (Cloudflare) > X-Real-IP (Caddy/nginx) > 
+    X-Forwarded-For (first IP) > request.client.host
+    """
+    # Cloudflare sets this to the actual client IP
+    cf_ip = request.headers.get("CF-Connecting-IP")
+    if cf_ip:
+        return cf_ip.strip()
+    
+    # Caddy/nginx typically set this
+    real_ip = request.headers.get("X-Real-IP")
+    if real_ip:
+        return real_ip.strip()
+    
+    # X-Forwarded-For: client, proxy1, proxy2 — first is the client
+    xff = request.headers.get("X-Forwarded-For")
+    if xff:
+        return xff.split(",")[0].strip()
+    
+    return request.client.host if request.client else "unknown"
+
 try:
     from ..db import get_agent_by_api_key
     from ..models import AgentStatus
@@ -147,7 +171,7 @@ class AuthMiddleware(BaseHTTPMiddleware):
         if auth_header.startswith("Bearer "):
             rate_key = auth_header[7:]
         else:
-            rate_key = f"ip:{request.client.host}" if request.client else "ip:unknown"
+            rate_key = f"ip:{get_real_ip(request)}"
         
         # Registration (unauthenticated) has its own rate limits (security.py)
         # Skip general limiter only for unauthenticated registrations
@@ -156,7 +180,7 @@ class AuthMiddleware(BaseHTTPMiddleware):
         
         if is_unauthenticated_public_read:
             # Rate limit public GETs per IP — 120/min (prevents scraping/DDoS)
-            client_ip = f"pub:{request.client.host}" if request.client else "pub:unknown"
+            client_ip = f"pub:{get_real_ip(request)}"
             if not rate_limiter.is_allowed(client_ip, max_requests=120, window_minutes=1):
                 return JSONResponse(
                     status_code=429,
@@ -195,7 +219,7 @@ class AuthMiddleware(BaseHTTPMiddleware):
         if method == "GET" and any(path.startswith(p) for p in self.PUBLIC_GET_PREFIXES):
             # Rate limit public prefix GETs per IP too
             if not auth_header.startswith("Bearer "):
-                client_ip = f"pub:{request.client.host}" if request.client else "pub:unknown"
+                client_ip = f"pub:{get_real_ip(request)}"
                 if not rate_limiter.is_allowed(client_ip, max_requests=120, window_minutes=1):
                     return JSONResponse(
                         status_code=429,

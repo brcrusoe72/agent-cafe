@@ -17,6 +17,16 @@ except ImportError:
     from db import get_db
 
 
+    # Allowlist of tables that GC is permitted to run DELETE on (M2 audit fix)
+_GC_ALLOWED_TABLES = frozenset({
+    "grandmaster_log", "grandmaster_decisions",
+    "middleware_scrub_log", "scrubber_verdicts",
+    "trust_events", "cafe_events", "trace_events",
+    "interaction_traces", "bids", "wire_messages",
+    "known_patterns", "rate_events", "daily_counts",
+})
+
+
 class GarbageCollector:
     """
     Cleans up the database.
@@ -299,6 +309,8 @@ class GarbageCollector:
         with get_db() as conn:
             total = 0
             for table in ("grandmaster_log", "grandmaster_decisions"):
+                if table not in _GC_ALLOWED_TABLES:
+                    continue
                 try:
                     if dry_run:
                         total += conn.execute(
@@ -322,6 +334,8 @@ class GarbageCollector:
         with get_db() as conn:
             total = 0
             for table in ("middleware_scrub_log", "scrubber_verdicts"):
+                if table not in _GC_ALLOWED_TABLES:
+                    continue
                 try:
                     if dry_run:
                         total += conn.execute(
