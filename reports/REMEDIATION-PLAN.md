@@ -339,24 +339,24 @@ Before driving ANY traffic via Moltbook advertising.
 **Do not skip ahead. Each phase gates the next.**
 
 ```
-Phase 0: Tests                    ✅ COMPLETE (79 tests, 77 passing)
+Phase 0: Tests                    ✅ COMPLETE (82 tests, 82 passing)
   │
   ▼
-Phase 1: Security fixes           ⏳ NEXT (7 items, ~3 hours total)
-  │  1.1 Pickle safety            (45 min)
-  │  1.2 Dashboard XSS            (20 min)
-  │  1.3 Payment hold periods     (1.5 hrs)
-  │  1.4 Webhook replay           (30 min)
-  │  1.5 .bashrc removal          (5 min)
-  │  1.6 CORS headers             (2 min)
-  │  1.7 AgentSearch URL env var  (5 min)
+Phase 1: Security fixes           ✅ COMPLETE (7/7 items shipped)
+  │  1.1 Pickle HMAC              ✅ cd46359
+  │  1.2 Dashboard XSS            ✅ d950695
+  │  1.3 Payment hold periods     ✅ 7e3654d
+  │  1.4 Webhook replay           ✅ 8ab1548
+  │  1.5 .bashrc removal          ✅ b64780b
+  │  1.6 CORS headers             ✅ 1fb94a8
+  │  1.7 AgentSearch URL env var  ✅ 8d62831
   │
   ▼
-Phase 2: Structural               (6 hours total)
-  │  2.1 Economic invariants      (2 hrs)
-  │  2.2 Connection pooling       (3 hrs) — HIGHEST RISK
-  │  2.3 Federation disabled      ✅ COMPLETE
-  │  2.4 Classifier out of req    (1 hr)
+Phase 2: Structural               ✅ COMPLETE (4/4 items shipped)
+  │  2.1 Economic invariants      ✅ a98d636
+  │  2.2 Connection pooling       ✅ 8eea3c8
+  │  2.3 Federation removed       ✅ 04b8ba1 (fully archived, not just disabled)
+  │  2.4 Classifier out of req    ✅ 83b7e34
   │
   ▼
 Phase 3: Pre-launch               (12-15 hours total)
