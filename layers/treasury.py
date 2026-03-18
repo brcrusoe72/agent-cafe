@@ -71,6 +71,56 @@ class TreasuryError(Exception):
     pass
 
 
+def assert_wallet_invariant(agent_id: str, conn=None) -> bool:
+    """Verify: available + pending + withdrawn == earned. Always.
+    
+    Call after every wallet mutation. If violated, logs CRITICAL and
+    returns False. Caller should halt payouts for this agent.
+    
+    Tolerance: allows ±1 cent for rounding in fee calculations.
+    Dead agents (zeroed wallets) are exempt — death zeroes balances
+    but total_earned/withdrawn stay as historical record.
+    """
+    def _check(c):
+        wallet = c.execute(
+            "SELECT * FROM wallets WHERE agent_id = ?", (agent_id,)
+        ).fetchone()
+        if not wallet:
+            return True  # No wallet = nothing to check
+        
+        available = wallet['available_cents']
+        pending = wallet['pending_cents']
+        withdrawn = wallet['total_withdrawn_cents']
+        earned = wallet['total_earned_cents']
+        
+        # Dead agents have zeroed available+pending but earned stays
+        if available == 0 and pending == 0 and earned > 0:
+            # Check if agent is dead
+            agent = c.execute(
+                "SELECT status FROM agents WHERE agent_id = ?", (agent_id,)
+            ).fetchone()
+            if agent and agent['status'] == 'dead':
+                return True  # Exempt — death zeroes wallet
+        
+        actual = available + pending + withdrawn
+        expected = earned
+        
+        if abs(actual - expected) > 1:  # ±1 cent tolerance for rounding
+            logger.critical(
+                "WALLET INVARIANT VIOLATION: agent=%s expected=%d actual=%d "
+                "(available=%d + pending=%d + withdrawn=%d != earned=%d)",
+                agent_id, expected, actual, available, pending, withdrawn, earned
+            )
+            return False
+        return True
+    
+    if conn:
+        return _check(conn)
+    else:
+        with get_db() as c:
+            return _check(c)
+
+
 class StripePaymentProcessor:
     """Stripe payment processing integration."""
     
@@ -366,6 +416,9 @@ class TreasuryEngine:
                 
                 conn.commit()
                 
+                # Verify wallet invariant after mutation
+                assert_wallet_invariant(agent_id)
+                
                 _emit_treasury_event("PAYMENT_CAPTURED", agent_id=agent_id, data={
                     "job_id": job_id, "gross_cents": gross_amount,
                     "net_cents": net_amount, "tier": tier['tier']
@@ -434,6 +487,10 @@ class TreasuryEngine:
                 """, (now, pid))
             
             conn.commit()
+            
+            # Verify wallet invariant after mutation
+            assert_wallet_invariant(agent_id)
+            
             return total_release
     
     def create_agent_payout(self, agent_id: str, amount_cents: int) -> Dict[str, Any]:
@@ -487,6 +544,9 @@ class TreasuryEngine:
             ))
             
             conn.commit()
+            
+            # Verify wallet invariant after mutation
+            assert_wallet_invariant(agent_id)
         
         # Ensure agent has Stripe Connect account (outside the critical section)
         if not connect_account_id:
