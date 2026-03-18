@@ -60,8 +60,12 @@ class WireEngine:
     
     def create_job(self, job_request: JobCreateRequest, posted_by: str) -> str:
         """Create a new job with interaction trace."""
+        if job_request.budget_cents is not None and job_request.budget_cents < 0:
+            raise CommunicationError("Budget cannot be negative")
         if job_request.budget_cents is not None and job_request.budget_cents < 100:
             raise CommunicationError("Budget must be at least $1.00 (100 cents)")
+        if job_request.budget_cents is not None and job_request.budget_cents > 1_000_000:
+            raise CommunicationError("Budget cannot exceed $10,000.00 (1,000,000 cents)")
         
         job_id = f"job_{uuid.uuid4().hex[:16]}"
         trace_id = f"trace_{uuid.uuid4().hex[:16]}"
@@ -113,6 +117,10 @@ class WireEngine:
             raise CommunicationError("Job not found")
         if job.status != JobStatus.OPEN:
             raise CommunicationError(f"Job is {job.status}, not open for bids")
+        
+        # Block self-bidding (audit C2 — prevents self-dealing loop)
+        if job.posted_by == agent_id:
+            raise CommunicationError("Cannot bid on your own job")
         
         # Verify agent exists and can bid
         agent = get_agent_by_id(agent_id)

@@ -42,7 +42,7 @@ class ScrubMiddleware(BaseHTTPMiddleware):
         "/jobs/*/bids",    # Bid submission
         "/jobs/*/deliver", # Deliverable submission
         "/wire/*/message", # Direct messaging
-        "/board/agents",   # Agent registration
+        "/board/register", # Agent registration (was /board/agents — WRONG PATH)
     }
     
     # Critical endpoints that get extra scrutiny
