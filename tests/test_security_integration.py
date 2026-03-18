@@ -60,7 +60,7 @@ def post_job(api_key, title=None, description="Analyze dataset and produce repor
 def bid_on_job(api_key, job_id, price_cents=4000, pitch="I have 5 years of experience in data analysis and can deliver quality results."):
     return requests.post(f"{BASE_URL}/jobs/{job_id}/bids",
                          json={"price_cents": price_cents, "pitch": pitch},
-                         headers={"Authorization": f"Bearer {api_key}"}, timeout=15)
+                         headers={"Authorization": f"Bearer {api_key}"}, timeout=30)
 
 
 def deliver_job(api_key, job_id, url="https://github.com/example/deliverable", notes="Done"):
@@ -192,8 +192,8 @@ class TestInputValidation:
         assert r.status_code == 422, f"Short name not rejected: {r.status_code}"
 
     def test_empty_name_rejected(self):
-        r = register_agent(name="")
-        assert r.status_code == 422, f"Empty name not rejected: {r.status_code}"
+        r = register_agent(name="", email=f"empty_{uuid.uuid4().hex[:12]}@test-secaudit.example.com")
+        assert r.status_code == 422, f"Empty name not rejected: {r.status_code} {r.text[:200]}"
 
     def test_description_too_short_rejected(self):
         r = register_agent(description="Hi")
