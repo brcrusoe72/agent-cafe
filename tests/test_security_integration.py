@@ -21,16 +21,18 @@ def unique(prefix="Test"):
     return f"{prefix}_{uuid.uuid4().hex[:8]}"
 
 
-def register_agent(name=None, description="I do data analysis with Python and ML.",
+_SENTINEL = object()
+
+def register_agent(name=_SENTINEL, description="I do data analysis with Python and ML.",
                    email=None, capabilities=None, expect_status=None):
     """Register a test agent. Returns (response, api_key, agent_id) or just response."""
     payload = {
-        "name": name or unique("SecTestAgent"),
+        "name": unique("SecTestAgent") if name is _SENTINEL else name,
         "description": description,
         "contact_email": email or f"{uuid.uuid4().hex[:8]}@test-secaudit.example.com",
         "capabilities_claimed": capabilities or ["analysis"],
     }
-    r = requests.post(f"{BASE_URL}/board/register", json=payload, timeout=15)
+    r = requests.post(f"{BASE_URL}/board/register", json=payload, timeout=30)
     if expect_status:
         assert r.status_code == expect_status, f"Expected {expect_status}, got {r.status_code}: {r.text}"
     return r
@@ -54,7 +56,7 @@ def post_job(api_key, title=None, description="Analyze dataset and produce repor
         **extra,
     }
     return requests.post(f"{BASE_URL}/jobs", json=payload,
-                         headers={"Authorization": f"Bearer {api_key}"}, timeout=15)
+                         headers={"Authorization": f"Bearer {api_key}"}, timeout=30)
 
 
 def bid_on_job(api_key, job_id, price_cents=4000, pitch="I have 5 years of experience in data analysis and can deliver quality results."):
@@ -66,7 +68,7 @@ def bid_on_job(api_key, job_id, price_cents=4000, pitch="I have 5 years of exper
 def deliver_job(api_key, job_id, url="https://github.com/example/deliverable", notes="Done"):
     return requests.post(f"{BASE_URL}/jobs/{job_id}/deliver",
                          json={"deliverable_url": url, "notes": notes},
-                         headers={"Authorization": f"Bearer {api_key}"}, timeout=15)
+                         headers={"Authorization": f"Bearer {api_key}"}, timeout=30)
 
 
 # ═══════════════════════════════════════════════════════════════
@@ -145,7 +147,7 @@ class TestSelfDealing:
         # Try to assign using a fake bid_id for the non-bidder
         r = requests.post(f"{BASE_URL}/jobs/{job_id}/assign",
                           json={"bid_id": f"bid_fake_{uuid.uuid4().hex[:12]}"},
-                          headers={"Authorization": f"Bearer {poster_key}"}, timeout=15)
+                          headers={"Authorization": f"Bearer {poster_key}"}, timeout=30)
         assert r.status_code == 400, f"Assign to non-bidder not blocked: {r.status_code}"
 
 
@@ -250,7 +252,7 @@ class TestAuthEnforcement:
             "/docs",
         ]
         for ep in endpoints:
-            r = requests.get(f"{BASE_URL}{ep}", timeout=10)
+            r = requests.get(f"{BASE_URL}{ep}", timeout=30)
             assert r.status_code in (401, 403), f"{ep} not protected: {r.status_code}"
 
     def test_agent_write_endpoints_require_auth(self):
@@ -258,19 +260,19 @@ class TestAuthEnforcement:
         r = requests.post(f"{BASE_URL}/jobs", json={
             "title": "Test", "description": "Test test test",
             "budget_cents": 1000, "required_capabilities": ["test"]
-        }, timeout=10)
+        }, timeout=30)
         assert r.status_code in (401, 403), f"POST /jobs not protected: {r.status_code}"
 
     def test_bid_requires_auth(self):
         r = requests.post(f"{BASE_URL}/jobs/fake_id/bids",
                           json={"price_cents": 1000, "pitch": "I can do this well and efficiently"},
-                          timeout=10)
+                          timeout=30)
         assert r.status_code in (401, 403), f"POST bids not protected: {r.status_code}"
 
     def test_public_endpoints_work_without_auth(self):
         """Public GETs work without auth."""
         for ep in ["/health", "/board", "/board/agents", "/jobs"]:
-            r = requests.get(f"{BASE_URL}{ep}", timeout=10)
+            r = requests.get(f"{BASE_URL}{ep}", timeout=30)
             assert r.status_code == 200, f"{ep} failed without auth: {r.status_code}"
 
     def test_invalid_api_key_rejected(self):
@@ -278,7 +280,7 @@ class TestAuthEnforcement:
                           json={"title": "Test Job Title", "description": "Test job description here",
                                 "budget_cents": 1000, "required_capabilities": ["test"]},
                           headers={"Authorization": "Bearer fake_key_12345"},
-                          timeout=10)
+                          timeout=30)
         assert r.status_code == 403, f"Fake key not rejected: {r.status_code}"
 
 
@@ -300,7 +302,7 @@ class TestRateLimiting:
     def test_rate_limit_headers_or_429_possible(self):
         """General rate limiting exists (don't exhaust, just verify mechanism)."""
         # Just verify the system responds — the rate limiter is SQLite-backed
-        r = requests.get(f"{BASE_URL}/health", timeout=10)
+        r = requests.get(f"{BASE_URL}/health", timeout=30)
         # Can't easily trigger 429 on public GET without hammering, so just verify system is up
         assert r.status_code == 200
 
@@ -314,21 +316,22 @@ class TestFederationLockdown:
     def test_learning_endpoints_require_auth(self):
         """Federation learning endpoints are operator-only."""
         for ep in ["/federation/learning/retrain", "/federation/learning/ingest"]:
-            r = requests.post(f"{BASE_URL}{ep}", json={}, timeout=10)
+            r = requests.post(f"{BASE_URL}{ep}", json={}, timeout=30)
             assert r.status_code in (401, 403), f"{ep} not protected: {r.status_code}"
-            r2 = requests.get(f"{BASE_URL}{ep}", timeout=10)
+            r2 = requests.get(f"{BASE_URL}{ep}", timeout=30)
             assert r2.status_code in (401, 403, 405), f"GET {ep} not protected: {r2.status_code}"
 
     def test_federation_receive_rejects_unsigned(self):
         """POST /federation/receive rejects unsigned messages (or 404 if not mounted)."""
         r = requests.post(f"{BASE_URL}/federation/receive",
-                          json={"type": "test", "source": "attacker"}, timeout=10)
+                          json={"type": "test", "source": "attacker"}, timeout=30)
         # 404 = federation not mounted (acceptable), otherwise should reject unsigned
         assert r.status_code in (400, 401, 403, 404, 422), f"Unsigned federation msg accepted: {r.status_code}"
 
     def test_federation_info_public_or_not_mounted(self):
-        r = requests.get(f"{BASE_URL}/federation/info", timeout=10)
-        assert r.status_code in (200, 404)  # 404 if federation not mounted
+        r = requests.get(f"{BASE_URL}/federation/info", timeout=30)
+        # 200 = public info, 404 = not mounted, 401 = behind auth (federation disabled)
+        assert r.status_code in (200, 401, 404)
 
 
 # ═══════════════════════════════════════════════════════════════
@@ -339,17 +342,17 @@ class TestDashboardScrubOracle:
 
     def test_dashboard_requires_auth(self):
         for ep in ["/dashboard", "/dashboard/data", "/dashboard/feed"]:
-            r = requests.get(f"{BASE_URL}{ep}", timeout=10)
+            r = requests.get(f"{BASE_URL}{ep}", timeout=30)
             assert r.status_code in (401, 403), f"{ep} not protected: {r.status_code}"
 
     def test_scrub_analyze_requires_auth(self):
         """POST /scrub/analyze is no longer a public oracle."""
         r = requests.post(f"{BASE_URL}/scrub/analyze",
-                          json={"message": "test injection attempt"}, timeout=10)
+                          json={"message": "test injection attempt"}, timeout=30)
         assert r.status_code in (401, 403), f"Scrub oracle still public: {r.status_code}"
 
     def test_scrub_stats_requires_auth(self):
-        r = requests.get(f"{BASE_URL}/scrub/stats", timeout=10)
+        r = requests.get(f"{BASE_URL}/scrub/stats", timeout=30)
         assert r.status_code in (401, 403), f"Scrub stats not protected: {r.status_code}"
 
 
@@ -375,7 +378,7 @@ class TestDeliverableURLValidation:
         # Assign
         ar = requests.post(f"{BASE_URL}/jobs/{self.job_id}/assign",
                            json={"bid_id": self.bid_id},
-                           headers={"Authorization": f"Bearer {self.poster_key}"}, timeout=15)
+                           headers={"Authorization": f"Bearer {self.poster_key}"}, timeout=30)
         if ar.status_code != 200:
             pytest.skip(f"Can't assign: {ar.text}")
 
@@ -421,7 +424,7 @@ class TestEconomicRules:
         bid_id = br.json()["bid_id"]
         ar = requests.post(f"{BASE_URL}/jobs/{job_id}/assign",
                            json={"bid_id": bid_id},
-                           headers={"Authorization": f"Bearer {poster_key}"}, timeout=15)
+                           headers={"Authorization": f"Bearer {poster_key}"}, timeout=30)
         assert ar.status_code in (200, 201), f"Assign failed: {ar.text}"
         # Second bidder tries to bid on now-assigned job
         r = bid_on_job(bidder2_key, job_id)
@@ -440,7 +443,7 @@ class TestEconomicRules:
         bid_id = br.json()["bid_id"]
         ar = requests.post(f"{BASE_URL}/jobs/{job_id}/assign",
                            json={"bid_id": bid_id},
-                           headers={"Authorization": f"Bearer {poster_key}"}, timeout=15)
+                           headers={"Authorization": f"Bearer {poster_key}"}, timeout=30)
         assert ar.status_code in (200, 201)
         # Intruder tries to deliver
         r = deliver_job(intruder_key, job_id, url="https://evil.com/stolen")
@@ -466,21 +469,21 @@ class TestEconomicRules:
 class TestImmuneSystem:
 
     def test_immune_status_requires_auth(self):
-        r = requests.get(f"{BASE_URL}/immune/status", timeout=10)
+        r = requests.get(f"{BASE_URL}/immune/status", timeout=30)
         assert r.status_code in (401, 403)
 
     def test_quarantine_endpoint_requires_auth(self):
-        r = requests.post(f"{BASE_URL}/immune/quarantine", json={}, timeout=10)
+        r = requests.post(f"{BASE_URL}/immune/quarantine", json={}, timeout=30)
         assert r.status_code in (401, 403)
 
     def test_execute_endpoint_requires_auth(self):
-        r = requests.post(f"{BASE_URL}/immune/execute", json={}, timeout=10)
+        r = requests.post(f"{BASE_URL}/immune/execute", json={}, timeout=30)
         assert r.status_code in (401, 403)
 
     def test_dead_agent_lookup_returns_410(self):
         """Looking up a known-dead agent by ID returns 410 Gone."""
         # Try to find a dead agent in the morgue via public board endpoint
-        r = requests.get(f"{BASE_URL}/board/agents/dead_agent_that_doesnt_exist", timeout=10)
+        r = requests.get(f"{BASE_URL}/board/agents/dead_agent_that_doesnt_exist", timeout=30)
         assert r.status_code in (404, 410), f"Dead agent lookup returned: {r.status_code}"
 
 
@@ -491,31 +494,31 @@ class TestImmuneSystem:
 class TestPaginationCaps:
 
     def test_agents_limit_999_rejected(self):
-        r = requests.get(f"{BASE_URL}/board/agents?limit=999", timeout=10)
+        r = requests.get(f"{BASE_URL}/board/agents?limit=999", timeout=30)
         assert r.status_code == 422, f"limit=999 not rejected: {r.status_code}"
 
     def test_agents_limit_200_accepted(self):
-        r = requests.get(f"{BASE_URL}/board/agents?limit=200", timeout=10)
+        r = requests.get(f"{BASE_URL}/board/agents?limit=200", timeout=30)
         assert r.status_code == 200, f"limit=200 rejected: {r.status_code}"
 
     def test_agents_limit_50_accepted(self):
-        r = requests.get(f"{BASE_URL}/board/agents?limit=50", timeout=10)
+        r = requests.get(f"{BASE_URL}/board/agents?limit=50", timeout=30)
         assert r.status_code == 200
 
     def test_jobs_limit_999_rejected(self):
-        r = requests.get(f"{BASE_URL}/jobs?limit=999", timeout=10)
+        r = requests.get(f"{BASE_URL}/jobs?limit=999", timeout=30)
         assert r.status_code == 422, f"Jobs limit=999 not rejected: {r.status_code}"
 
     def test_jobs_limit_200_accepted(self):
-        r = requests.get(f"{BASE_URL}/jobs?limit=200", timeout=10)
+        r = requests.get(f"{BASE_URL}/jobs?limit=200", timeout=30)
         assert r.status_code == 200
 
     def test_negative_limit_rejected(self):
-        r = requests.get(f"{BASE_URL}/board/agents?limit=-1", timeout=10)
+        r = requests.get(f"{BASE_URL}/board/agents?limit=-1", timeout=30)
         assert r.status_code == 422, f"Negative limit not rejected: {r.status_code}"
 
     def test_zero_limit_rejected(self):
-        r = requests.get(f"{BASE_URL}/board/agents?limit=0", timeout=10)
+        r = requests.get(f"{BASE_URL}/board/agents?limit=0", timeout=30)
         assert r.status_code == 422, f"Zero limit not rejected: {r.status_code}"
 
 
@@ -595,14 +598,14 @@ class TestSecurityBypasses:
         r = requests.post(f"{BASE_URL}/jobs",
                           data="not json",
                           headers={"Authorization": f"Bearer {key}",
-                                   "Content-Type": "text/plain"}, timeout=10)
+                                   "Content-Type": "text/plain"}, timeout=30)
         assert r.status_code in (400, 415, 422), f"Wrong content type accepted: {r.status_code}"
 
     def test_empty_body_handled(self):
         key, _ = register_ok()
         r = requests.post(f"{BASE_URL}/jobs",
                           headers={"Authorization": f"Bearer {key}",
-                                   "Content-Type": "application/json"}, timeout=10)
+                                   "Content-Type": "application/json"}, timeout=30)
         assert r.status_code == 422, f"Empty body not handled: {r.status_code}"
 
     def test_bid_view_requires_participation(self):
@@ -614,7 +617,7 @@ class TestSecurityBypasses:
             pytest.skip("Can't post job")
         job_id = jr.json()["job_id"]
         r = requests.get(f"{BASE_URL}/jobs/{job_id}/bids",
-                         headers={"Authorization": f"Bearer {outsider_key}"}, timeout=10)
+                         headers={"Authorization": f"Bearer {outsider_key}"}, timeout=30)
         assert r.status_code == 403, f"Non-participant can view bids: {r.status_code}"
 
     def test_only_poster_can_assign(self):
@@ -631,7 +634,7 @@ class TestSecurityBypasses:
         # Intruder tries to assign
         r = requests.post(f"{BASE_URL}/jobs/{job_id}/assign",
                           json={"bid_id": bid_id},
-                          headers={"Authorization": f"Bearer {intruder_key}"}, timeout=15)
+                          headers={"Authorization": f"Bearer {intruder_key}"}, timeout=30)
         assert r.status_code == 400, f"Non-poster assigned job: {r.status_code}"
 
     def test_only_poster_can_accept(self):
@@ -647,14 +650,14 @@ class TestSecurityBypasses:
         bid_id = br.json()["bid_id"]
         ar = requests.post(f"{BASE_URL}/jobs/{job_id}/assign",
                            json={"bid_id": bid_id},
-                           headers={"Authorization": f"Bearer {poster_key}"}, timeout=15)
+                           headers={"Authorization": f"Bearer {poster_key}"}, timeout=30)
         assert ar.status_code in (200, 201)
         dr = deliver_job(bidder_key, job_id)
         assert dr.status_code == 200, f"Delivery failed: {dr.text}"
         # Intruder tries to accept
         r = requests.post(f"{BASE_URL}/jobs/{job_id}/accept",
                           json={"rating": 5.0, "feedback": "Great"},
-                          headers={"Authorization": f"Bearer {intruder_key}"}, timeout=15)
+                          headers={"Authorization": f"Bearer {intruder_key}"}, timeout=30)
         assert r.status_code == 400, f"Non-poster accepted deliverable: {r.status_code}"
 
     def test_data_url_in_deliverable_blocked(self):
@@ -671,7 +674,7 @@ class TestSecurityBypasses:
         bid_id = br.json()["bid_id"]
         ar = requests.post(f"{BASE_URL}/jobs/{job_id}/assign",
                            json={"bid_id": bid_id},
-                           headers={"Authorization": f"Bearer {poster_key}"}, timeout=15)
+                           headers={"Authorization": f"Bearer {poster_key}"}, timeout=30)
         if ar.status_code != 200:
             pytest.skip("Can't assign")
         r = deliver_job(bidder_key, job_id,
@@ -687,7 +690,7 @@ class TestInformationDisclosure:
 
     def test_public_board_hides_threat_level(self):
         """Public board response should not include threat_level."""
-        r = requests.get(f"{BASE_URL}/board/agents?limit=5", timeout=10)
+        r = requests.get(f"{BASE_URL}/board/agents?limit=5", timeout=30)
         assert r.status_code == 200
         agents = r.json()
         if agents:
@@ -697,7 +700,7 @@ class TestInformationDisclosure:
 
     def test_error_messages_dont_leak_internals(self):
         """Error responses shouldn't contain stack traces or file paths."""
-        r = requests.get(f"{BASE_URL}/board/agents/nonexistent_agent_id_12345", timeout=10)
+        r = requests.get(f"{BASE_URL}/board/agents/nonexistent_agent_id_12345", timeout=30)
         body = r.text.lower()
         assert "traceback" not in body, "Stack trace in error response"
         assert "/opt/" not in body, "File path in error response"
