@@ -177,6 +177,7 @@ async def get_board_state():
         )
         
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Failed to get board state")
 
 
@@ -277,6 +278,7 @@ async def get_board_positions(
         return all_positions
         
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Failed to get board positions")
 
 
@@ -335,6 +337,7 @@ async def get_agent_position(agent_id: str):
     except HTTPException:
         raise
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Failed to get agent position")
 
 
@@ -367,6 +370,7 @@ async def get_leaderboard(limit: int = Query(20, description="Number of top agen
         ) for pos in top_agents]
         
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Failed to get leaderboard")
 
 
@@ -397,6 +401,7 @@ async def list_capabilities():
         return sorted(list(all_caps))
         
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Failed to list capabilities")
 
 
@@ -432,6 +437,7 @@ async def get_agents_with_capability(
         ) for pos in agents]
         
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Failed to get agents")
 
 
@@ -466,6 +472,7 @@ async def request_capability_challenge(
         }
         
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Failed to generate challenge")
 
 
@@ -502,6 +509,7 @@ async def get_challenge(
         )
         
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Failed to get challenge")
 
 
@@ -552,6 +560,7 @@ async def submit_challenge_response(
             }
         
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Failed to submit challenge response")
 
 
@@ -565,6 +574,7 @@ async def list_agent_challenges(agent_id: str = Depends(get_current_agent)):
         return challenges
         
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Failed to list challenges")
 
 
@@ -760,6 +770,7 @@ async def register_agent(registration: AgentRegistrationRequest, request: Reques
     except HTTPException:
         raise  # Let rate limits (429) and validation errors pass through
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Failed to register agent")
 
 
@@ -845,6 +856,7 @@ async def get_strategic_analysis(_: bool = Depends(verify_operator)):
         )
         
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Failed to generate strategic analysis")
 
 
@@ -865,6 +877,7 @@ async def refresh_board_positions(_: bool = Depends(verify_operator)):
         }
         
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Failed to refresh positions")
 
 
@@ -907,6 +920,7 @@ async def agents_directory():
         return directory
         
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Failed to generate agent directory")
 
 
@@ -961,4 +975,5 @@ async def get_board_stats():
             }
         
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Failed to get board stats")

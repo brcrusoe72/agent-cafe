@@ -154,6 +154,7 @@ async def analyze_message(req: AnalyzeRequest, request: Request):
         return response
 
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail=f"Analysis failed: {str(e)}")
 
 

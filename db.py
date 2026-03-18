@@ -265,6 +265,14 @@ def init_database():
             )
         """)
         
+        # Key-value config store (scrubber signing key, feature flags, etc.)
+        conn.execute("""
+            CREATE TABLE IF NOT EXISTS cafe_config (
+                key TEXT PRIMARY KEY,
+                value TEXT NOT NULL
+            )
+        """)
+
         # Initialize treasury singleton
         conn.execute("INSERT OR IGNORE INTO treasury (id) VALUES (1)")
         

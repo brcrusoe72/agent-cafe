@@ -154,4 +154,5 @@ async def live_feed(
             
             return {"events": events, "count": len(events)}
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail=str(e))

@@ -459,8 +459,15 @@ def _get_rate_db():
 class RateLimiter:
     """SQLite-backed rate limiter. Survives restarts."""
     
-    def is_allowed(self, api_key: str, max_requests: int = 100, window_minutes: int = 60) -> bool:
-        """Check if request is within rate limit."""
+    def is_allowed(self, api_key: str, max_requests: int = 100, window_minutes: int = 60,
+                    fail_closed: bool = False) -> bool:
+        """Check if request is within rate limit.
+        
+        Args:
+            fail_closed: If True, block on DB errors (use for security-critical paths like
+                         registration, operator endpoints). Default False = fail open for
+                         public GETs to avoid blocking legitimate traffic on transient errors.
+        """
         import time
         now = time.time()
         cutoff = now - (window_minutes * 60)
@@ -485,8 +492,11 @@ class RateLimiter:
             conn.close()
             return True
         except Exception as e:
+            if fail_closed:
+                logger.warning("Rate limiter DB error on security-critical path, failing CLOSED", exc_info=True)
+                return False  # Block on error for security-critical paths
             logger.debug("Rate limiter DB error, failing open", exc_info=True)
-            return True  # Fail open on DB errors — don't block legit requests
+            return True  # Fail open for public reads
 
 
     def cleanup(self):
@@ -504,7 +514,12 @@ class RateLimiter:
 class DailyRateLimiter:
     """SQLite-backed daily rate limiter. Survives restarts."""
 
-    def is_allowed(self, key: str, max_per_day: int) -> bool:
+    def is_allowed(self, key: str, max_per_day: int, fail_closed: bool = True) -> bool:
+        """Check daily rate limit.
+        
+        Args:
+            fail_closed: Default True for daily limits (used on registration, security paths).
+        """
         from datetime import date
         today = date.today().isoformat()
         
@@ -531,8 +546,11 @@ class DailyRateLimiter:
             conn.close()
             return True
         except Exception as e:
+            if fail_closed:
+                logger.warning("Daily rate limiter DB error, failing CLOSED", exc_info=True)
+                return False
             logger.debug("Daily rate limiter DB error, failing open", exc_info=True)
-            return True  # Fail open
+            return True
 
 
 # Global rate limiter instances

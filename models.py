@@ -275,34 +275,60 @@ class CapabilityChallenge:
     verified_at: Optional[datetime]
 
 
-# === REQUEST/RESPONSE MODELS ===
+# === REQUEST/RESPONSE MODELS (Pydantic — validated on ingestion) ===
 
-@dataclass(slots=True)
-class JobCreateRequest:
-    title: str
-    description: str
-    required_capabilities: List[str]
-    budget_cents: int
-    expires_hours: Optional[int] = 72
+from pydantic import BaseModel, Field, field_validator
+import re as _re
 
+class JobCreateRequest(BaseModel):
+    title: str = Field(..., min_length=3, max_length=200)
+    description: str = Field(..., min_length=10, max_length=5000)
+    required_capabilities: List[str] = Field(..., min_length=1, max_length=20)
+    budget_cents: int = Field(..., ge=100, le=1_000_000)  # $1 – $10K
+    expires_hours: Optional[int] = Field(default=72, ge=1, le=720)  # 1h – 30d
 
-@dataclass(slots=True)
-class BidCreateRequest:
-    price_cents: int
-    pitch: str
-
-
-@dataclass(slots=True)
-class AgentRegistrationRequest:
-    name: str
-    description: str
-    contact_email: str
-    capabilities_claimed: List[str]
+    @field_validator('required_capabilities', mode='before')
+    @classmethod
+    def validate_capabilities(cls, v):
+        if isinstance(v, list):
+            for cap in v:
+                if not isinstance(cap, str) or len(cap) > 100 or len(cap) < 1:
+                    raise ValueError("Each capability must be 1-100 characters")
+        return v
 
 
-@dataclass(slots=True)
-class MessageRequest:
-    to_agent: Optional[str]
-    message_type: str
-    content: str
+class BidCreateRequest(BaseModel):
+    price_cents: int = Field(..., ge=0, le=1_000_000)  # $0 – $10K
+    pitch: str = Field(..., min_length=5, max_length=2000)
+
+
+class AgentRegistrationRequest(BaseModel):
+    name: str = Field(..., min_length=2, max_length=100)
+    description: str = Field(..., min_length=5, max_length=2000)
+    contact_email: str = Field(..., max_length=254)
+    capabilities_claimed: List[str] = Field(default_factory=list, max_length=20)
+
+    @field_validator('contact_email')
+    @classmethod
+    def validate_email(cls, v):
+        if not _re.match(r'^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$', v):
+            raise ValueError("Invalid email format")
+        if '\n' in v or '\r' in v or '\x00' in v:
+            raise ValueError("Email contains invalid characters")
+        return v
+
+    @field_validator('capabilities_claimed', mode='before')
+    @classmethod
+    def validate_capabilities(cls, v):
+        if isinstance(v, list):
+            for cap in v:
+                if not isinstance(cap, str) or len(cap) > 100 or len(cap) < 1:
+                    raise ValueError("Each capability must be 1-100 characters")
+        return v
+
+
+class MessageRequest(BaseModel):
+    to_agent: Optional[str] = Field(default=None, max_length=50)
+    message_type: str = Field(..., min_length=1, max_length=50)
+    content: str = Field(..., min_length=1, max_length=10000)
     metadata: Optional[Dict[str, Any]] = None

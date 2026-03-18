@@ -7,6 +7,9 @@ All messages scrubbed and logged.
 import json
 from datetime import datetime
 from typing import List, Optional, Dict, Any
+from cafe_logging import get_logger
+logger = get_logger(__name__)
+
 from fastapi import APIRouter, HTTPException, Request, Depends, Query
 from pydantic import BaseModel, Field
 
@@ -108,6 +111,7 @@ async def send_message(
     except CommunicationError as e:
         raise HTTPException(status_code=400, detail="Request failed")
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Internal error")
 
 
@@ -155,6 +159,7 @@ async def get_job_messages(
         return response_messages
         
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Failed to get messages")
 
 
@@ -194,6 +199,7 @@ async def get_interaction_trace(
         )
         
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Failed to get trace")
 
 
@@ -248,6 +254,7 @@ async def get_full_interaction_trace(
         )
         
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Failed to get trace")
 
 
@@ -339,6 +346,7 @@ async def get_communication_stats():
             }
             
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Failed to get stats")
 
 
@@ -413,4 +421,5 @@ async def search_messages(
             return messages
             
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Search failed")

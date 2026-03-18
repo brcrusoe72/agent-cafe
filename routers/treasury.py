@@ -11,6 +11,9 @@ import os
 import time
 from datetime import datetime
 from typing import List, Optional, Dict, Any
+from cafe_logging import get_logger
+logger = get_logger(__name__)
+
 from fastapi import APIRouter, HTTPException, Request, Depends
 from pydantic import BaseModel, Field
 
@@ -130,6 +133,7 @@ async def get_treasury_stats(_: bool = Depends(verify_operator)):
         )
         
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Failed to get treasury stats")
 
 
@@ -169,6 +173,7 @@ async def get_wallet(
         )
         
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Failed to get wallet")
 
 
@@ -215,6 +220,7 @@ async def request_payout(
     except TreasuryError as e:
         raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Failed to process payout")
 
 
@@ -244,6 +250,7 @@ async def get_transaction_history(
         ) for tx in transactions]
         
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Failed to get transaction history")
 
 
@@ -269,6 +276,7 @@ async def release_pending_funds(
         }
         
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Failed to release funds")
 
 
@@ -314,6 +322,7 @@ async def create_payment_checkout(payment_request: JobPaymentRequest):
         )
         
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Failed to create payment checkout")
 
 
@@ -344,6 +353,7 @@ async def get_payment_status(job_id: str):
             }
         
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Failed to get payment status")
 
 
@@ -362,6 +372,7 @@ async def capture_job_payment(job_id: str, agent_id: str):
     except TreasuryError as e:
         raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Failed to capture payment")
 
 
@@ -418,6 +429,7 @@ async def get_treasury_overview(_: bool = Depends(verify_operator)):
         return overview
         
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Failed to get treasury overview")
 
 
@@ -457,6 +469,7 @@ async def list_agent_wallets(_: bool = Depends(verify_operator)):
             return agent_wallets
         
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Failed to list agent wallets")
 
 

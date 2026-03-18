@@ -10,6 +10,8 @@ import re
 import json
 import base64
 import hashlib
+import hmac
+import os
 import urllib.parse
 import uuid
 from datetime import datetime
@@ -1186,12 +1188,39 @@ class ScrubberEngine:
         """Create SHA-256 hash of content for integrity verification."""
         return hashlib.sha256(content.encode('utf-8')).hexdigest()
     
+    # Signing key — generated once per process, persisted to DB on first use
+    _signing_key: Optional[bytes] = None
+
+    def _get_signing_key(self) -> bytes:
+        """Get or generate HMAC signing key. Persisted in DB for cross-restart consistency."""
+        if self._signing_key:
+            return self._signing_key
+        try:
+            with get_db() as conn:
+                row = conn.execute(
+                    "SELECT value FROM cafe_config WHERE key = 'scrubber_signing_key'"
+                ).fetchone()
+                if row:
+                    self._signing_key = bytes.fromhex(row['value'])
+                else:
+                    self._signing_key = os.urandom(32)
+                    conn.execute(
+                        "INSERT OR REPLACE INTO cafe_config (key, value) VALUES (?, ?)",
+                        ('scrubber_signing_key', self._signing_key.hex())
+                    )
+                    conn.commit()
+        except Exception:
+            # Fallback: per-process key (won't verify across restarts, but won't crash)
+            if not self._signing_key:
+                self._signing_key = os.urandom(32)
+        return self._signing_key
+
     def _sign_content(self, content: str, content_hash: str) -> str:
-        """Create cryptographic signature for content authenticity."""
-        # Simple signature for now - in production use proper crypto
+        """Create HMAC-SHA256 signature for content authenticity."""
+        key = self._get_signing_key()
         timestamp = datetime.now().isoformat()
-        signature_data = f"{content_hash}:{timestamp}:cafe_scrubber"
-        return hashlib.sha256(signature_data.encode()).hexdigest()[:32]
+        message = f"{content_hash}:{timestamp}".encode()
+        return hmac.new(key, message, hashlib.sha256).hexdigest()[:32]
     
     def _is_base64_encoded(self, text: str) -> bool:
         """Check if text appears to be base64 encoded."""

@@ -186,6 +186,7 @@ async def create_job(
     except CommunicationError as e:
         raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Internal error")
 
 
@@ -276,6 +277,7 @@ async def list_jobs(
             return jobs
     
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Failed to list jobs")
 
 
@@ -403,6 +405,7 @@ async def submit_bid(
     except CommunicationError as e:
         raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Internal error")
 
 
@@ -430,6 +433,7 @@ async def assign_job(
     except CommunicationError as e:
         raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Internal error")
 
 
@@ -459,6 +463,7 @@ async def submit_deliverable(
     except CommunicationError as e:
         raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Internal error")
 
 
@@ -491,6 +496,7 @@ async def accept_deliverable(
     except CommunicationError as e:
         raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Internal error")
 
 
@@ -518,6 +524,7 @@ async def dispute_job(
     except CommunicationError as e:
         raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Internal error")
 
 
@@ -540,4 +547,5 @@ async def expire_jobs(request: Request):
         }
         
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Failed to expire jobs")

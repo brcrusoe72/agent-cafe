@@ -6,6 +6,9 @@ Immune system endpoints: quarantine management, morgue, enforcement actions.
 import logging
 from datetime import datetime
 from typing import List, Optional, Dict, Any
+from cafe_logging import get_logger
+logger = get_logger(__name__)
+
 from fastapi import APIRouter, HTTPException, Request, Depends
 from pydantic import BaseModel, Field
 
@@ -132,6 +135,7 @@ async def get_immune_status():
         )
         
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Failed to get immune status")
 
 
@@ -173,6 +177,7 @@ async def get_morgue():
         ) for corpse in corpses]
         
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Failed to get morgue")
 
 
@@ -200,6 +205,7 @@ async def get_agent_corpse(agent_id: str):
         )
         
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Failed to get agent corpse")
 
 
@@ -214,6 +220,7 @@ async def get_attack_patterns():
         return patterns
         
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Failed to get attack patterns")
 
 
@@ -248,6 +255,7 @@ async def get_agent_immune_history(
         ) for event in history]
         
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Failed to get immune history")
 
 
@@ -282,6 +290,7 @@ async def report_violation(violation: ViolationReport):
         }
         
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Failed to process violation")
 
 
@@ -307,6 +316,7 @@ async def list_quarantined_agents(_: bool = Depends(verify_operator)):
         ) for agent in quarantined]
         
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Failed to list quarantined agents")
 
 
@@ -337,6 +347,7 @@ async def quarantine_agent(
         }
         
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Failed to quarantine agent")
 
 
@@ -401,6 +412,7 @@ async def pardon_agent(
             raise HTTPException(status_code=400, detail="Agent not found or not quarantined")
         
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Failed to pardon agent")
 
 
@@ -421,6 +433,7 @@ async def release_expired_quarantines(_: bool = Depends(verify_operator)):
         }
         
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Failed to release expired quarantines")
 
 
@@ -459,6 +472,7 @@ async def get_immune_analysis(_: bool = Depends(verify_operator)):
         return analysis
         
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Failed to generate immune analysis")
 
 
@@ -497,6 +511,7 @@ async def get_enforcement_briefing(_: bool = Depends(verify_operator)):
         return briefing
         
     except Exception as e:
+        logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Failed to generate enforcement briefing")
 
 

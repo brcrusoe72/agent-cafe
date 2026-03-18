@@ -534,10 +534,23 @@ def tool_execute_agent(agent_id: str, cause: str, evidence: List[str]) -> ToolRe
         from ..db import DATABASE_PATH
     
     cleanup_conn = sqlite3.connect(str(DATABASE_PATH))
-    cleanup_conn.execute("PRAGMA foreign_keys = OFF")
+    cleanup_conn.execute("PRAGMA foreign_keys = ON")
+    # Delete dependent records FIRST (children before parent) — no FK bypass needed
     cleanup_conn.execute("DELETE FROM wallets WHERE agent_id = ?", (agent_id,))
     cleanup_conn.execute("DELETE FROM bids WHERE agent_id = ? AND status = 'pending'", (agent_id,))
     cleanup_conn.execute("DELETE FROM capability_challenges WHERE agent_id = ?", (agent_id,))
+    # Clean up other FK-referencing tables
+    cleanup_conn.execute("DELETE FROM trust_events WHERE agent_id = ?", (agent_id,))
+    cleanup_conn.execute("DELETE FROM cafe_events WHERE agent_id = ?", (agent_id,))
+    try:
+        cleanup_conn.execute("DELETE FROM scrub_results WHERE agent_id = ?", (agent_id,))
+    except Exception:
+        pass  # Table may not exist in all schema versions
+    try:
+        cleanup_conn.execute("DELETE FROM wire_messages WHERE from_agent = ? OR to_agent = ?", (agent_id, agent_id))
+    except Exception:
+        pass  # Table may not exist
+    # Now safe to delete the parent row
     cleanup_conn.execute("DELETE FROM agents WHERE agent_id = ?", (agent_id,))
     cleanup_conn.commit()
     cleanup_conn.close()
