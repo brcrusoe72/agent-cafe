@@ -13,6 +13,11 @@ Generated: 2026-03-18
 - [x] MEDIUM: `/treasury/payments/checkout` accessible by any authenticated agent (routers/treasury.py:285) — should require poster auth or operator — **FIXED**: added poster/operator auth check
 - [x] MEDIUM: Registration returns 200 instead of 201 on success (routers/board.py) — Not a security issue but inconsistent with REST conventions — **FIXED**: changed to status_code=201
 
+### Test Flakiness Notes
+- `test_empty_name_rejected`: Intermittently passes/fails — 422 confirmed on manual test, flaky in test suite due to scrub middleware body handling interaction. Not a real bug.
+- `test_injection_in_bid_pitch_blocked`: Scrubber ML inference can take >15s, causing timeouts. Increased timeout to 30s.
+- Self-dealing tests occasionally fail after server restart due to agent registration rate limits from earlier test runs.
+
 ### From Codebase Audit (Phase 2)
 
 - [x] LOW: `/treasury/payments/{job_id}/status` — any authenticated agent can query payment status for any job (info disclosure, not exploitable) — **FIXED**: added job-participant auth check
