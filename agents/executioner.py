@@ -17,7 +17,6 @@ Separation of powers.
 import json
 import asyncio
 import os
-import subprocess
 from cafe_logging import get_logger
 
 logger = get_logger("agents.executioner")
@@ -231,16 +230,6 @@ class Executioner:
         import urllib.request
         
         api_key = os.environ.get("OPENAI_API_KEY", "")
-        if not api_key:
-            try:
-                result = subprocess.run(
-                    ["bash", "-c", "source ~/.bashrc && echo $OPENAI_API_KEY"],
-                    capture_output=True, text=True, timeout=5
-                )
-                api_key = result.stdout.strip()
-            except Exception as e:
-                logger.debug("Failed to read OPENAI_API_KEY from bashrc: %s", e)
-        
         if not api_key:
             return None
         
