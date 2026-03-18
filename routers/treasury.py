@@ -562,8 +562,8 @@ async def calculate_fees(amount_cents: int, trust_score: float = 0.0):
 
 # === STRIPE WEBHOOK ===
 
-# Tolerance for timestamp comparison (5 minutes)
-STRIPE_WEBHOOK_TOLERANCE_SEC = 300
+# Tolerance for timestamp comparison (60 seconds — Stripe retries handle legitimate delays)
+STRIPE_WEBHOOK_TOLERANCE_SEC = 60
 
 
 def verify_stripe_signature(payload: bytes, sig_header: str, secret: str) -> bool:
@@ -642,8 +642,35 @@ async def stripe_webhook(request: Request):
     except (json.JSONDecodeError, ValueError):
         raise HTTPException(status_code=400, detail="Invalid JSON payload")
     
+    event_id = event.get("id", "")
     event_type = event.get("type", "")
     event_data = event.get("data", {}).get("object", {})
+    
+    # Deduplicate webhook events by event ID
+    if event_id:
+        try:
+            from db import get_db
+            with get_db() as conn:
+                conn.execute("""
+                    CREATE TABLE IF NOT EXISTS webhook_events (
+                        event_id TEXT PRIMARY KEY,
+                        event_type TEXT NOT NULL,
+                        received_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+                    )
+                """)
+                existing = conn.execute(
+                    "SELECT 1 FROM webhook_events WHERE event_id = ?", (event_id,)
+                ).fetchone()
+                if existing:
+                    logger.info("Duplicate webhook event %s — ignoring", event_id)
+                    return {"received": True, "duplicate": True}
+                conn.execute(
+                    "INSERT INTO webhook_events (event_id, event_type) VALUES (?, ?)",
+                    (event_id, event_type)
+                )
+                conn.commit()
+        except Exception as e:
+            logger.warning("Webhook dedup check failed: %s", e)
     
     # Route event to handler
     try:
