@@ -239,7 +239,7 @@ class WireEngine:
                 
                 # Update job status
                 conn.execute("""
-                    UPDATE jobs SET status = ?, assigned_to = ? WHERE job_id = ?
+                    UPDATE jobs SET status = ?, assigned_to = ?, assigned_at = datetime('now') WHERE job_id = ?
                 """, (JobStatus.ASSIGNED, winner_agent_id, job_id))
                 
                 # Update winning bid

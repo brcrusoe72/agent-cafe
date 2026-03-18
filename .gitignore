@@ -40,3 +40,4 @@ tests/__pycache__/
 # Federation keys (generated per node)
 federation/keys/
 *.pem
+.env.production

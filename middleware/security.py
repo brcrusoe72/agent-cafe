@@ -313,7 +313,7 @@ class SelfDealingDetector:
     
     @classmethod
     def check_job_for_gaming(cls, poster_id: str, worker_id: str, 
-                              budget_cents: int, posted_at: datetime) -> dict:
+                              budget_cents: int, posted_at: datetime, assigned_at: datetime = None) -> dict:
         """
         Check a job completion for trust-gaming signals.
         Returns dict with risk assessment.
@@ -329,7 +329,10 @@ class SelfDealingDetector:
             })
         
         # Signal 2: Speed completion
-        elapsed = datetime.now() - posted_at
+        # PATCH 11.6: Use assigned_at for speed-run detection (not posted_at)
+        # A job posted 3 days ago but assigned 2 min ago is NOT a speed-run
+        reference_time = assigned_at if assigned_at else posted_at
+        elapsed = datetime.now() - reference_time
         if elapsed < timedelta(minutes=cls.MIN_JOB_LIFECYCLE_MINUTES):
             signals.append({
                 "signal": "speed_completion",

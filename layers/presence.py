@@ -325,7 +325,7 @@ class PresenceEngine:
         # Average completion time
         completion_times = conn.execute("""
             SELECT AVG(
-                (julianday(completed_at) - julianday(posted_at)) * 24 * 3600
+                (julianday(completed_at) - julianday(COALESCE(assigned_at, posted_at))) * 24 * 3600
             ) as avg_completion_sec
             FROM jobs 
             WHERE assigned_to = ? AND status = 'completed' 
@@ -411,7 +411,7 @@ class PresenceEngine:
         # Look at time between job assignment and first message
         response_times = conn.execute("""
             SELECT AVG(
-                (julianday(wm.timestamp) - julianday(j.posted_at)) * 24 * 3600
+                (julianday(wm.timestamp) - julianday(COALESCE(j.assigned_at, j.posted_at))) * 24 * 3600
             ) as avg_response_sec
             FROM wire_messages wm
             JOIN jobs j ON wm.job_id = j.job_id
@@ -467,7 +467,7 @@ class PresenceEngine:
         # Standard deviation of delivery times
         delivery_data = conn.execute("""
             SELECT 
-                (julianday(completed_at) - julianday(posted_at)) * 24 as completion_hours
+                (julianday(completed_at) - julianday(COALESCE(assigned_at, posted_at))) * 24 as completion_hours
             FROM jobs 
             WHERE assigned_to = ? AND status = 'completed' AND completed_at IS NOT NULL
         """, (agent_id,)).fetchall()
