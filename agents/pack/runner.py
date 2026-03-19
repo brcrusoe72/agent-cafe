@@ -59,6 +59,7 @@ class PackRunner:
     - Routes events from the bus to the right agents
     - Runs patrol loops on schedule
     - Handles undercover rotation when covers are burned
+    - Responds to DEFCON level changes (patrol → hunt → attack)
     - Logs all activity
     """
 
@@ -70,6 +71,34 @@ class PackRunner:
         self._undercover_enabled = undercover_enabled
         self._running = False
         self._tasks: List[asyncio.Task] = []
+        self._patrol_mode = "patrol"                    # patrol | hunt | attack
+        
+        # Wire into DEFCON system
+        try:
+            from agents.defcon import defcon
+            self._defcon = defcon
+            defcon.on_level_change(self._on_defcon_change)
+            logger.info("Pack Runner wired to DEFCON system")
+        except ImportError:
+            self._defcon = None
+
+    def _on_defcon_change(self, old_level, new_level, profile):
+        """React to DEFCON level changes — shift patrol mode."""
+        old_mode = self._patrol_mode
+        self._patrol_mode = profile.patrol_mode
+        self.patrol_interval = profile.patrol_interval_seconds
+        
+        if old_mode != self._patrol_mode:
+            logger.warning(
+                "🐺 Pack mode: %s → %s | interval: %ds | aggression: %.0f%%",
+                old_mode.upper(), self._patrol_mode.upper(),
+                self.patrol_interval, profile.pack_aggression * 100,
+            )
+            
+            if self._patrol_mode == "attack":
+                logger.warning("⚔️ PACK ATTACK MODE ENGAGED — hunting all active threats")
+            elif self._patrol_mode == "hunt":
+                logger.warning("🔍 PACK HUNT MODE — actively seeking suspicious agents")
 
     async def start(self) -> None:
         """Initialize and start all pack agents (overt + undercover)."""
@@ -201,13 +230,18 @@ class PackRunner:
                 logger.error("UC %s failed on event: %s", agent.codename, e)
 
     async def _patrol_loop(self) -> None:
-        """Run periodic patrols for overt agents."""
+        """Run periodic patrols for overt agents. Mode-aware via DEFCON."""
         logger.info("Pack patrol loop started (interval: %ds)", self.patrol_interval)
         await asyncio.sleep(10)
 
         while self._running:
             try:
-                logger.info("🐺 Overt patrol sweep...")
+                mode = self._patrol_mode
+                mode_icon = {"patrol": "🐺", "hunt": "🔍", "attack": "⚔️"}.get(mode, "🐺")
+                logger.info("%s %s sweep (DEFCON %s)...",
+                            mode_icon, mode.upper(),
+                            self._defcon.level_name if self._defcon else "?")
+                
                 total_actions = 0
 
                 for agent in self.agents:
@@ -215,13 +249,23 @@ class PackRunner:
                         actions = await agent.patrol()
                         total_actions += len(actions)
                         if actions:
-                            logger.info("  %s patrol: %d actions",
-                                        agent.role.value, len(actions))
+                            logger.info("  %s %s: %d actions",
+                                        agent.role.value, mode, len(actions))
                     except Exception as e:
-                        logger.error("  %s patrol failed: %s",
-                                     agent.role.value, e, exc_info=True)
+                        logger.error("  %s %s failed: %s",
+                                     agent.role.value, mode, e, exc_info=True)
 
-                logger.info("🐺 Overt patrol done: %d actions", total_actions)
+                # In hunt/attack mode, also run aggressive scans
+                if mode in ("hunt", "attack"):
+                    attack_actions = await self._aggressive_scan(mode)
+                    total_actions += attack_actions
+
+                logger.info("%s %s done: %d actions", mode_icon, mode.upper(), total_actions)
+                
+                # DEFCON tick — check for de-escalation
+                if self._defcon:
+                    self._defcon.tick()
+                
                 await asyncio.sleep(self.patrol_interval)
 
             except asyncio.CancelledError:
@@ -320,6 +364,88 @@ class PackRunner:
             except Exception as e:
                 logger.error("Scale loop error: %s", e, exc_info=True)
                 await asyncio.sleep(3600)
+
+    async def _aggressive_scan(self, mode: str) -> int:
+        """Hunt/Attack mode: actively scan for and neutralize threats."""
+        actions = 0
+        try:
+            from db import get_db
+            from layers.immune import ImmuneEngine, ViolationType
+            from middleware.security import ip_registry
+            
+            immune = ImmuneEngine()
+            profile = self._defcon.profile if self._defcon else None
+            
+            with get_db() as conn:
+                # 1. Find agents with low trust + recent activity (suspicious)
+                suspicious = conn.execute("""
+                    SELECT agent_id, name, trust_score, threat_level 
+                    FROM agents 
+                    WHERE status = 'active' 
+                      AND trust_score < 0.3 
+                      AND threat_level > 0.5
+                    ORDER BY threat_level DESC
+                    LIMIT 10
+                """).fetchall()
+                
+                for row in suspicious:
+                    aid = row["agent_id"]
+                    
+                    # Skip pack agents
+                    if row["name"] and row["name"].startswith("Pack-"):
+                        continue
+                    
+                    if mode == "attack" and profile and profile.auto_quarantine:
+                        # Attack mode: quarantine suspicious agents immediately
+                        try:
+                            immune.quarantine_agent(
+                                aid,
+                                reason=f"DEFCON {self._defcon.level_name}: auto-quarantine (trust={row['trust_score']:.2f}, threat={row['threat_level']:.2f})",
+                                evidence=[f"Auto-quarantine during DEFCON {self._defcon.level_name}"],
+                                operator="pack_runner"
+                            )
+                            logger.warning("⚔️ Auto-quarantined %s (%s) — trust=%.2f threat=%.2f",
+                                          aid, row["name"], row["trust_score"], row["threat_level"])
+                            actions += 1
+                        except Exception as e:
+                            logger.debug("Auto-quarantine failed for %s: %s", aid, e)
+                    elif mode == "hunt":
+                        # Hunt mode: flag for review
+                        logger.info("🔍 Flagged suspicious: %s (%s) — trust=%.2f threat=%.2f",
+                                   aid, row["name"], row["trust_score"], row["threat_level"])
+                        actions += 1
+                
+                # 2. Find agents from IPs with dead agents (possible Sybil respawns)
+                active_agents = conn.execute("""
+                    SELECT agent_id, name FROM agents WHERE status = 'active'
+                """).fetchall()
+                
+                for row in active_agents:
+                    if row["name"] and row["name"].startswith("Pack-"):
+                        continue
+                    agent_ip = ip_registry.get_ip_for_agent(row["agent_id"])
+                    if agent_ip and agent_ip in ip_registry.death_ips:
+                        dead_from_ip = len(ip_registry.death_ips[agent_ip])
+                        if dead_from_ip >= 3:  # 3+ kills from same IP = likely hostile
+                            if mode == "attack" and profile and profile.auto_kill:
+                                try:
+                                    immune.kill_agent(
+                                        row["agent_id"],
+                                        cause_of_death=f"DEFCON {self._defcon.level_name}: Sybil IP ({dead_from_ip} kills from same IP)",
+                                        evidence=[f"IP has {dead_from_ip} dead agents", f"Auto-kill during DEFCON {self._defcon.level_name}"],
+                                        operator="pack_runner"
+                                    )
+                                    logger.warning("💀 Auto-killed Sybil respawn %s (%s) — %d kills from same IP",
+                                                  row["agent_id"], row["name"], dead_from_ip)
+                                    actions += 1
+                                except Exception as e:
+                                    logger.debug("Auto-kill failed: %s", e)
+        except Exception as e:
+            logger.error("Aggressive scan error: %s", e, exc_info=True)
+        
+        if actions:
+            logger.warning("⚔️ Aggressive scan: %d actions taken", actions)
+        return actions
 
     # ── Manual Triggers ──
 

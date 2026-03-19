@@ -142,6 +142,15 @@ class Grandmaster:
         self._events_processed = 0
         self._last_reasoning: Optional[str] = None
         self._started_at: Optional[datetime] = None
+        
+        # Wire into DEFCON system
+        try:
+            from agents.defcon import defcon
+            self._defcon = defcon
+            defcon.on_level_change(self._on_defcon_change)
+            logger.info("Grandmaster wired to DEFCON system")
+        except ImportError:
+            self._defcon = None
     
     async def start(self):
         """Start the Grandmaster's watch."""
@@ -182,6 +191,30 @@ class Grandmaster:
                 pass
         logger.info("Grandmaster stepping away from the board")
     
+    def _on_defcon_change(self, old_level, new_level, profile):
+        """React to DEFCON level changes."""
+        logger.warning(
+            "🚨 Grandmaster: DEFCON %s → %s | model: %s → %s | batch: %.0fs → %.0fs",
+            old_level, new_level,
+            self.config.model, profile.grandmaster_model,
+            self.config.batch_interval_seconds, profile.batch_interval_seconds,
+        )
+        # Update config dynamically
+        self.config.model = profile.grandmaster_model
+        self.config.batch_interval_seconds = profile.batch_interval_seconds
+
+    def _effective_batch_interval(self) -> float:
+        """Get current batch interval, respecting DEFCON override."""
+        if self._defcon:
+            return self._defcon.profile.batch_interval_seconds
+        return self.config.batch_interval_seconds
+
+    def _effective_model(self) -> str:
+        """Get current model, respecting DEFCON override."""
+        if self._defcon:
+            return self._defcon.profile.grandmaster_model
+        return self.config.model
+
     async def _run_loop(self):
         """Main event processing loop."""
         last_flush = datetime.now()
@@ -200,9 +233,10 @@ class Grandmaster:
                         last_flush = datetime.now()
                         continue
                 
-                # Time-based flush
+                # Time-based flush — use DEFCON-aware interval
+                batch_interval = self._effective_batch_interval()
                 elapsed = (datetime.now() - last_flush).total_seconds()
-                if self._event_buffer and elapsed >= self.config.batch_interval_seconds:
+                if self._event_buffer and elapsed >= batch_interval:
                     await self._flush_buffer(reason="timer")
                     last_flush = datetime.now()
                 
@@ -243,13 +277,20 @@ class Grandmaster:
             logger.debug("Grandmaster skipped %d trivial events (saved LLM call)", len(events))
             return
         
-        # Escalate model for critical events, use nano for routine
+        # Model selection: DEFCON-aware with per-event critical override
+        base_model = self._effective_model()
         has_critical = any(getattr(e, 'severity', '') == 'critical' for e in events)
         if has_critical and reason == "critical_event":
+            # Use whichever is more powerful: DEFCON model or critical_model
             use_model = self.config.critical_model
-            logger.info("Grandmaster escalating to %s for critical event", use_model)
+            logger.info("Grandmaster using critical model %s (DEFCON base: %s)", use_model, base_model)
         else:
-            use_model = self.config.model
+            use_model = base_model
+        
+        # Log DEFCON context
+        if self._defcon and self._defcon.level < 5:
+            logger.info("Grandmaster reasoning at DEFCON %s %s (model: %s)",
+                        self._defcon.level_name, self._defcon.icon, use_model)
         
         # Build the prompt
         prompt = self._build_prompt(events, reason)

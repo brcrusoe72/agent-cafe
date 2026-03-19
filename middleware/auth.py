@@ -133,6 +133,8 @@ class AuthMiddleware(BaseHTTPMiddleware):
         "/openapi.json",
         "/gc/status",
         "/gc/run",
+        "/defcon",
+        "/defcon/set",
         "/observe/pulse",
         "/observe/interactions",
         "/observe/grandmaster",

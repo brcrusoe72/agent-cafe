@@ -912,7 +912,25 @@ def main():
     print("🏥 PHASE 5: POST-BATTLE ASSESSMENT")
     print("=" * 70)
     
-    time.sleep(2)  # Let pack patrols process
+    time.sleep(3)  # Let pack patrols process
+    
+    # Check DEFCON level
+    try:
+        r = requests.get(f"{base}/defcon", headers=op_headers, timeout=TIMEOUT)
+        if r.ok:
+            dc = r.json()
+            print(f"\n  🚨 DEFCON: {dc.get('level_name', '?')} {dc.get('icon', '')} (level {dc.get('level', '?')})")
+            profile = dc.get("profile", {})
+            print(f"     Model: {profile.get('grandmaster_model', '?')}")
+            print(f"     Patrol: {profile.get('patrol_mode', '?')} (aggression {profile.get('pack_aggression', 0)*100:.0f}%)")
+            print(f"     Violations: {dc.get('violations', {}).get('last_5min', 0)} in 5min")
+            if dc.get("history"):
+                print(f"     Level changes: {len(dc['history'])}")
+                for h_entry in dc["history"][-3:]:
+                    print(f"       {h_entry.get('from', '?')} → {h_entry.get('to', '?')}: {h_entry.get('reason', '')[:80]}")
+    except Exception as e:
+        print(f"  ⚠️ DEFCON check failed: {e}")
+    
     checks = verify_system_state()
 
     # Post-battle immune stats

@@ -536,7 +536,19 @@ async def _deep_health_check():
     except Exception:
         checks["pack_runner"] = {"status": "unknown"}
     
-    # 8. Draining status
+    # 8. DEFCON level
+    try:
+        from agents.defcon import defcon as _defcon
+        checks["defcon"] = {
+            "level": int(_defcon.level),
+            "name": _defcon.level_name,
+            "icon": _defcon.icon,
+            "patrol_mode": _defcon.profile.patrol_mode,
+        }
+    except Exception:
+        checks["defcon"] = {"status": "unknown"}
+    
+    # 9. Draining status
     checks["draining"] = getattr(app.state, 'draining', False)
     
     status_code = 200 if overall in ("ok", "degraded") else 503
@@ -628,6 +640,32 @@ async def internal_error_handler(request, exc):
             "suggestion": "Check logs and try again"
         }
     )
+
+
+# === DEFCON System ===
+
+@app.get("/defcon")
+async def defcon_status():
+    """Get current DEFCON threat level and status."""
+    try:
+        from agents.defcon import defcon
+        return defcon.get_status()
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.post("/defcon/set")
+async def defcon_set(level: int):
+    """Operator override: manually set DEFCON level (1-5)."""
+    try:
+        from agents.defcon import defcon, ThreatLevel
+        if level < 1 or level > 5:
+            from fastapi import HTTPException
+            raise HTTPException(status_code=400, detail="Level must be 1-5")
+        defcon.force_level(ThreatLevel(level), reason="operator manual override")
+        return defcon.get_status()
+    except Exception as e:
+        return {"error": str(e)}
 
 
 # === Grandmaster & Event Bus endpoints ===

@@ -71,10 +71,25 @@ class ImmuneEngine:
         
         # Learning system
         self.scrubber = ScrubberEngine()
+        
+        # DEFCON integration
+        try:
+            from agents.defcon import defcon
+            self._defcon = defcon
+        except ImportError:
+            self._defcon = None
     
     def process_violation(self, agent_id: str, violation_type: ViolationType, 
                          evidence: List[str], trigger_context: Dict[str, Any] = None) -> ImmuneEvent:
         """Process a violation and determine appropriate response."""
+        # Record violation in DEFCON system
+        if self._defcon:
+            severity = "critical" if violation_type in self.INSTANT_DEATH else \
+                       "high" if violation_type in self.INSTANT_QUARANTINE else "medium"
+            self._defcon.record_violation(
+                severity=severity,
+                detail=f"{violation_type.value} by {agent_id}: {evidence[0][:100] if evidence else 'no detail'}"
+            )
         
         # Get current agent status
         agent = get_agent_by_id(agent_id)
