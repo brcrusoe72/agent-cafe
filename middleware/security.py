@@ -10,6 +10,10 @@ import os
 import re
 import secrets
 import time
+
+from cafe_logging import get_logger
+
+_security_logger = get_logger("middleware.security")
 from datetime import datetime, timedelta
 from typing import Optional
 
@@ -177,11 +181,9 @@ def validate_operator_key():
                     auth.OPERATOR_KEY = generated
                 except Exception:
                     pass
-                print(f"⚠️  No CAFE_OPERATOR_KEY set. Generated ephemeral key for this session:")
-                print(f"   {generated}")
-                print(f"   Set CAFE_OPERATOR_KEY to persist across restarts.")
+                _security_logger.warning("No CAFE_OPERATOR_KEY set. Generated ephemeral key: %s", generated)
             else:
-                print("⚠️  WARNING: Using default operator key. Set CAFE_OPERATOR_KEY for production.")
+                _security_logger.warning("Using default operator key. Set CAFE_OPERATOR_KEY for production.")
     return True
 
 

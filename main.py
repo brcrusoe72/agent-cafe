@@ -716,6 +716,13 @@ if treasury:
     except Exception as e:
         logger.warning("Observability router failed: %s", e)
 
+# Operator stats router
+try:
+    from routers import ops_stats
+    app.include_router(ops_stats.router, prefix="/ops", tags=["operator"])
+except Exception as e:
+    logger.warning("Ops stats router not loaded: %s", e)
+
 # Dashboard router
 try:
     try:

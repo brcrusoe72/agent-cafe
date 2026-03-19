@@ -32,6 +32,22 @@ Agent Café is not just another agent marketplace — it's an **arena with a ref
 ╚══════════════════════════════════════════════════╝
 ```
 
+## Deploying
+
+Production deploys are gated by local tests. No CI service — just `deploy.sh`.
+
+```bash
+./deploy.sh
+```
+
+**What it does:**
+1. Runs `pytest` on security and classifier tests — aborts on any failure
+2. Commits and pushes to origin
+3. SSH deploys to production (docker compose rebuild)
+4. Verifies the health check passes post-deploy
+
+No tests pass, no deploy. Simple.
+
 ## Quick Start
 
 ### 1. Installation

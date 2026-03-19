@@ -234,7 +234,7 @@ class Executioner:
             return None
         
         payload = {
-            "model": "gpt-4o-mini",
+            "model": "gpt-5.4-nano",
             "messages": [
                 {"role": "system", "content": EXECUTIONER_SYSTEM_PROMPT},
                 {"role": "user", "content": prompt}

@@ -104,7 +104,7 @@ what deserves deeper investigation.
 class GrandmasterConfig:
     """Configuration for the Grandmaster's behavior."""
     # Batch timing
-    batch_interval_seconds: float = 30.0      # Process routine events every 30s
+    batch_interval_seconds: float = 300.0     # Process routine events every 5 min (save $$$)
     critical_flush: bool = True               # Flush immediately on critical events
     max_batch_size: int = 25                  # Max events per LLM call
     
@@ -113,7 +113,8 @@ class GrandmasterConfig:
     max_context_events: int = 50              # Max events in a single prompt
     
     # LLM settings
-    model: str = "openai/gpt-5.4"  # Default model
+    model: str = "openai/gpt-5.4-nano"  # Cost-effective default; escalate to gpt-5.4 for critical only
+    critical_model: str = "openai/gpt-5.4"  # Flagship for critical events only
     max_tokens: int = 4096
     
     # Operational
@@ -216,13 +217,15 @@ class Grandmaster:
                 logger.error("Grandmaster error: %s", e)
                 await asyncio.sleep(5)  # Back off on errors
     
+    # Event types that don't need LLM analysis (just mark processed and move on)
+    TRIVIAL_EVENTS = {"heartbeat", "health_check", "system_startup", "metrics_snapshot"}
+    
     async def _flush_buffer(self, reason: str = "timer"):
         """Send buffered events to the LLM for analysis."""
         if not self._event_buffer:
             return
         
         if not self.config.enabled:
-            # Still mark as processed even when disabled
             for event in self._event_buffer:
                 event_bus.mark_processed(event.event_id, "grandmaster_disabled")
             self._event_buffer.clear()
@@ -232,12 +235,28 @@ class Grandmaster:
         events = self._event_buffer[:self.config.max_context_events]
         self._event_buffer = self._event_buffer[self.config.max_context_events:]
         
+        # Skip LLM call if ALL events are trivial (heartbeats, health checks, etc.)
+        non_trivial = [e for e in events if getattr(e, 'event_type', getattr(e, 'type', '')).lower().replace('.', '_') not in self.TRIVIAL_EVENTS]
+        if not non_trivial:
+            for event in events:
+                event_bus.mark_processed(event.event_id, "trivial_skip")
+            logger.debug("Grandmaster skipped %d trivial events (saved LLM call)", len(events))
+            return
+        
+        # Escalate model for critical events, use nano for routine
+        has_critical = any(getattr(e, 'severity', '') == 'critical' for e in events)
+        if has_critical and reason == "critical_event":
+            use_model = self.config.critical_model
+            logger.info("Grandmaster escalating to %s for critical event", use_model)
+        else:
+            use_model = self.config.model
+        
         # Build the prompt
         prompt = self._build_prompt(events, reason)
         
         # Call LLM
         try:
-            response = await self._call_llm(prompt)
+            response = await self._call_llm(prompt, model_override=use_model)
             if response:
                 await self._process_response(response, events)
                 self._events_processed += len(events)
@@ -308,11 +327,13 @@ class Grandmaster:
         except Exception:
             return []
     
-    async def _call_llm(self, prompt: str) -> Optional[str]:
+    async def _call_llm(self, prompt: str, model_override: str = None) -> Optional[str]:
         """
         Call the LLM via openclaw agent CLI.
         Returns the raw response text.
         """
+        use_model = model_override or self.config.model
+        
         # Build the full message with system prompt + user events
         message = f"{GRANDMASTER_SYSTEM_PROMPT}\n\n{prompt}"
         
@@ -321,7 +342,7 @@ class Grandmaster:
         try:
             proc = await asyncio.create_subprocess_exec(
                 "openclaw", "agent",
-                "--model", self.config.model,
+                "--model", use_model,
                 "--max-tokens", str(self.config.max_tokens),
                 "--system", GRANDMASTER_SYSTEM_PROMPT,
                 "--no-tools",  # Tools handled via our own registry
