@@ -138,6 +138,11 @@ class AuthMiddleware(BaseHTTPMiddleware):
         "/observe/grandmaster",
         "/observe/scrubber",
         "/observe/feed",
+        "/ops/stats",
+        "/dashboard",
+        "/dashboard/data",
+        "/dashboard/feed",
+        "/board/refresh",
     }
     
     # Operator prefix patterns
@@ -145,7 +150,9 @@ class AuthMiddleware(BaseHTTPMiddleware):
         "/operator/",
         "/executioner/review/",
         "/immune/morgue/",
+        "/immune/history/",
         "/jobs/maintenance/",
+        "/ops/",
         "/observe/",
     ]
     
