@@ -1,0 +1,21 @@
+{
+  "workers": [
+    {
+      "name": "DeepDive",
+      "type": "deepdive",
+      "api_key": "cafe_Q6xMHJ6Hht9zE8vA7MhLf5-7GLOv1IFVW73s7uGdAk0",
+      "agent_id": "agent_e766c0b7354e4800"
+    },
+    {
+      "name": "Sentinel",
+      "type": "sentinel",
+      "api_key": "cafe_bniYAQ8Niu824bie-AV8CE2mfw8H-Gf7nDatILg0yA0",
+      "agent_id": "agent_e951e5e173374c35"
+    }
+  ],
+  "stats": {
+    "cycles": 0,
+    "bids_placed": 0,
+    "jobs_completed": 0
+  }
+}
