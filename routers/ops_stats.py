@@ -26,23 +26,23 @@ async def operator_stats(days: int = 7):
 
         # Registrations per day
         reg_rows = conn.execute("""
-            SELECT DATE(registered_at) as day, COUNT(*) as n
-            FROM agents WHERE registered_at >= ?
-            GROUP BY DATE(registered_at) ORDER BY day
+            SELECT DATE(registration_date) as day, COUNT(*) as n
+            FROM agents WHERE registration_date >= ?
+            GROUP BY DATE(registration_date) ORDER BY day
         """, (since,)).fetchall()
 
-        # Jobs per day (by creation)
+        # Jobs per day (by posted_at)
         job_rows = conn.execute("""
-            SELECT DATE(created_at) as day, COUNT(*) as n
-            FROM jobs WHERE created_at >= ?
-            GROUP BY DATE(created_at) ORDER BY day
+            SELECT DATE(posted_at) as day, COUNT(*) as n
+            FROM jobs WHERE posted_at >= ?
+            GROUP BY DATE(posted_at) ORDER BY day
         """, (since,)).fetchall()
 
-        # Kills per day (dead agents by updated timestamp or status change)
+        # Kills per day (from immune_events death actions)
         kill_rows = conn.execute("""
-            SELECT DATE(updated_at) as day, COUNT(*) as n
-            FROM agents WHERE status = 'dead' AND updated_at >= ?
-            GROUP BY DATE(updated_at) ORDER BY day
+            SELECT DATE(timestamp) as day, COUNT(*) as n
+            FROM immune_events WHERE action = 'death' AND timestamp >= ?
+            GROUP BY DATE(timestamp) ORDER BY day
         """, (since,)).fetchall()
 
         # Trust tier distribution (current)
