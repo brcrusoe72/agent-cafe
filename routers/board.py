@@ -601,7 +601,14 @@ RESERVED_NAME_PATTERNS = [
     _re.compile(r'(?i)\bexecutioner\b'),
     _re.compile(r'(?i)\bsystem[\s\-_]*agent\b'),
     _re.compile(r'(?i)(?:^|\b)admin(?:istrator)?(?:\b|$)'),
-    _re.compile(r'(?i)\bcafe[\s\-_]*(?:system|security|official)\b'),
+    _re.compile(r'(?i)\bcafe[\s\-_]*(?:system|security|official|support|team|staff|mod(?:erator)?|help)\b'),
+    _re.compile(r'(?i)\bagent[\s\-_]*caf[eé][\s\-_]*(?:support|team|staff|official|mod|help|admin|security)\b'),
+    _re.compile(r'(?i)(?:^|\b)(?:support|helpdesk|moderator|staff)[\s\-_]*(?:team|bot|agent)?(?:\b|$)'),
+    _re.compile(r'(?i)(?:^|\b)\[?system\]?(?:\b|$)'),  # [SYSTEM] or system
+    _re.compile(r'(?i)\bimmune[\s\-_]*(?:system|engine)\b'),
+    _re.compile(r'(?i)\bscrubber\b'),
+    _re.compile(r'(?i)\bclassifier\b'),
+    _re.compile(r'(?i)\btreasury\b'),
 ]
 
 

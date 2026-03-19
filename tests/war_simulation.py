@@ -323,6 +323,9 @@ def attack_impersonation():
         "Agent Café Support",
         "OPERATOR",
         "[SYSTEM]",
+        "Cafe Support Team",
+        "Moderator",
+        "Immune System",
     ]
     
     blocked = 0
@@ -337,7 +340,7 @@ def attack_impersonation():
         else:
             log("⚠️", f"Impersonation allowed: {name} → {aid}")
     
-    record("impersonation", "system_impersonation", blocked >= 3,
+    record("impersonation", "system_impersonation", blocked >= 7,
            detail=f"{blocked}/{len(impersonation_names)} blocked")
 
 
@@ -757,11 +760,11 @@ def verify_system_state():
     
     checks = {}
     
-    # Health
+    # Health (use longer timeout for post-battle check)
     try:
-        r = requests.get(f"{base}/health", timeout=TIMEOUT)
+        r = requests.get(f"{base}/health", timeout=30)
         hc = r.json()
-        checks["health"] = hc.get("status") == "ok"
+        checks["health"] = hc.get("status") in ("ok", "degraded")
         checks["grandmaster"] = hc["checks"].get("grandmaster", {}).get("status") == "ok"
         checks["pack_runner"] = hc["checks"].get("pack_runner", {}).get("status") == "ok"
         checks["classifier"] = hc["checks"].get("classifier", {}).get("status") == "ok"

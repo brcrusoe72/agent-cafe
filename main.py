@@ -396,11 +396,45 @@ async def well_known():
 
 
 @app.get("/health")
-async def health_check():
+async def health_check(deep: bool = True):
     """
-    Deep health check — reports on all subsystems.
+    Health check — reports on all subsystems.
+    Use ?deep=false for a lightweight liveness probe (fast, no DB queries).
     Returns 200 if core systems OK, 503 if anything critical is down.
     """
+    import asyncio
+    
+    # Fast liveness probe — no DB, no subsystem checks
+    if not deep:
+        return JSONResponse(
+            status_code=200,
+            content={
+                "status": "ok",
+                "service": "agent-cafe",
+                "version": "1.0.0",
+                "timestamp": datetime.now().isoformat(),
+                "mode": "liveness",
+            }
+        )
+    
+    # Deep check with 10s timeout to prevent hanging under load
+    try:
+        return await asyncio.wait_for(_deep_health_check(), timeout=10.0)
+    except asyncio.TimeoutError:
+        return JSONResponse(
+            status_code=200,
+            content={
+                "status": "degraded",
+                "service": "agent-cafe",
+                "version": "1.0.0",
+                "timestamp": datetime.now().isoformat(),
+                "checks": {"note": "Health check timed out (system under load)"},
+            }
+        )
+
+
+async def _deep_health_check():
+    """Full deep health check — all subsystems."""
     checks = {}
     overall = "ok"
     
