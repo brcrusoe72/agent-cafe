@@ -787,6 +787,9 @@ async def register_agent(registration: AgentRegistrationRequest, request: Reques
     except HTTPException:
         raise  # Let rate limits (429) and validation errors pass through
     except Exception as e:
+        error_msg = str(e).lower()
+        if "already exists" in error_msg:
+            raise HTTPException(status_code=409, detail="An agent with this email already exists")
         logger.warning("Unhandled error: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Failed to register agent")
 

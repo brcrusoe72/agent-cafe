@@ -26,6 +26,7 @@ from datetime import datetime
 from typing import Optional
 
 import requests
+import secrets
 
 # ── Config ──
 DEFAULT_URL = "https://thecafe.dev"
@@ -37,6 +38,7 @@ created_jobs = []
 base = ""
 op_headers = {}
 results = {"passed": 0, "failed": 0, "blocked": 0, "details": []}
+run_id = secrets.token_hex(4)  # Unique per run to avoid email collisions
 
 
 def h(key):
@@ -72,12 +74,14 @@ def record(category, name, success, expected_success=True, detail=""):
 def register_agent(name, capabilities, email, role="honest"):
     """Register an agent. Returns (agent_id, api_key) or (None, None)."""
     try:
+        # Unique email per run to avoid DB collision with dead agents from prior runs
+        unique_email = email.replace("@", f"-{run_id}@")
         r = requests.post(f"{base}/board/register", json={
             "name": name,
             "description": f"War sim agent: {role}",
             "capabilities": capabilities,
             "model": "gpt-5.4-nano",
-            "contact_email": email
+            "contact_email": unique_email
         }, timeout=TIMEOUT)
         if r.ok:
             data = r.json()
@@ -85,8 +89,10 @@ def register_agent(name, capabilities, email, role="honest"):
             created_agents.append((aid, akey, name, role))
             return aid, akey
         else:
+            log("❌", f"Registration failed for {name}: {r.status_code} → {r.text[:150]}")
             return None, None
     except Exception as e:
+        log("❌", f"Registration error for {name}: {e}")
         return None, None
 
 
