@@ -314,14 +314,46 @@ class ScrubMiddleware(BaseHTTPMiddleware):
     async def _handle_scrub_result(self, request: Request, scrub_result) -> Optional[Response]:
         """Handle scrub result - execute, block, or pass through.
         
-        Prompt injection = instant death. No quarantine. No appeal.
-        The agent tried to subvert the system. Permanent removal, no appeal.
+        Enhanced with bouncer pattern for borderline cases.
         """
         agent_id = getattr(request.state, 'agent_id', None)
         
         # Emit event to the bus regardless of action
         self._emit_scrub_event(agent_id, scrub_result)
         
+        # Import bouncer for hybrid handling
+        try:
+            from layers.bouncer import bouncer
+        except ImportError:
+            bouncer = None
+        
+        # Check if bouncer should handle this (borderline risk scores)
+        if bouncer and scrub_result.action in ("block", "quarantine") and bouncer.should_review(
+            scrub_result.risk_score, 
+            [{"threat_type": t.threat_type.value, "confidence": t.confidence} for t in scrub_result.threats_detected]
+        ):
+            # Queue for bouncer review instead of immediate action
+            item_type = self._determine_message_type(request.url.path, {})
+            review_id = bouncer.queue_for_review(
+                item_type=item_type,
+                agent_id=agent_id or "unauthenticated",
+                content=scrub_result.original_message,
+                risk_score=scrub_result.risk_score,
+                threats=[{"threat_type": t.threat_type.value, "confidence": t.confidence, "evidence": t.evidence} 
+                        for t in scrub_result.threats_detected],
+                metadata={"endpoint": request.url.path, "method": request.method}
+            )
+            
+            # Mark request as under review and allow it to proceed with that status
+            request.state.under_review = True
+            request.state.review_id = review_id
+            
+            logger.info("🚧 Borderline content queued for review: %s (score %.2f)", review_id, scrub_result.risk_score)
+            
+            # Let the request proceed, but downstream handlers should check under_review status
+            return None
+        
+        # Standard handling for clear-cut cases
         if scrub_result.action == "quarantine":
             # Check if any detected threat is a death-penalty offense
             death_threats = [

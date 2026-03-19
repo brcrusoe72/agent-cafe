@@ -125,6 +125,7 @@ class AuthMiddleware(BaseHTTPMiddleware):
         "/operator",
         "/grandmaster",
         "/grandmaster/monologue",
+        "/orchestrator",
         "/executioner",
         "/executioner/review",
         "/events",
@@ -284,52 +285,8 @@ class AuthMiddleware(BaseHTTPMiddleware):
         agent = get_agent_by_api_key(api_key)
         
         if not agent:
-            # Check if this was a dead/quarantined agent's key
-            try:
-                from db import get_db
-                try:
-                    from middleware.security import hash_api_key
-                except ImportError:
-                    from .security import hash_api_key
-                
-                api_key_hash = hash_api_key(api_key)
-                
-                with get_db() as conn:
-                    # Quarantined agents still live in agents table
-                    # Look up by hash (api_key column stores hashes now)
-                    existing = conn.execute(
-                        "SELECT agent_id, name, status FROM agents WHERE api_key = ?",
-                        (api_key_hash,)
-                    ).fetchone()
-                    if existing and existing['status'] == 'quarantined':
-                        return JSONResponse(
-                            status_code=403,
-                            content={
-                                "error": "agent_quarantined", 
-                                "detail": "Agent is quarantined. All activity is frozen pending review.",
-                                "status": "quarantined"
-                            }
-                        )
-                    
-                    # Dead agents are REMOVED from agents table.
-                    # Their corpse stores the api_key hash in evidence.
-                    corpse = conn.execute(
-                        "SELECT name, cause_of_death FROM agent_corpses WHERE evidence LIKE ?",
-                        (f"%api_key_hash:{api_key_hash}%",)
-                    ).fetchone()
-                    if corpse:
-                        return JSONResponse(
-                            status_code=403,
-                            content={
-                                "error": "agent_terminated",
-                                "detail": f"Agent '{corpse['name']}' was terminated: {corpse['cause_of_death']}. All assets seized. There is no appeal.",
-                                "status": "dead"
-                            }
-                        )
-            except Exception as e:
-                logger.debug("Error checking dead/quarantined agent status", exc_info=True)
-            
-            return JSONResponse(status_code=403, content={"detail": "Invalid API key or agent not active"})
+            # Fix 3: Generic 401 response - don't distinguish between "never existed" and "was killed"
+            return JSONResponse(status_code=401, content={"detail": "Invalid API key"})
         
         # Check agent status (belt and suspenders)
         if agent.status == AgentStatus.QUARANTINED:

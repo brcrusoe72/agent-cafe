@@ -54,10 +54,14 @@ class IPRegistry:
         self.death_ips: dict = {}
         # agent_id -> ip (registration IP)
         self.agent_ips: dict = {}
+        # ip -> trust scores (for trusted IP tracking)
+        self.ip_trust_scores: dict = {}
         
         # Thresholds
-        self.MAX_AGENTS_PER_IP = 20         # Max agents from same IP (per hour)
+        self.MAX_AGENTS_PER_IP = 20         # Max agents from same IP (per hour) - normal
+        self.MAX_AGENTS_PER_IP_TRUSTED = 50 # Max agents from trusted IP (per hour)
         self.DEATH_IP_COOLDOWN_HOURS = 24   # Hours before a death IP can register again
+        self.TRUSTED_THRESHOLD = 0.5        # Trust score threshold for trusted IPs
     
     def record_registration(self, ip: str, agent_id: str):
         """Record that an agent was registered from this IP."""
@@ -66,6 +70,7 @@ class IPRegistry:
             self.ip_history[ip] = []
         self.ip_history[ip].append((agent_id, now, "register"))
         self.agent_ips[agent_id] = ip
+        self._update_ip_trust(ip)
     
     def record_death(self, agent_id: str):
         """Record that an agent was killed. Marks their registration IP."""
@@ -82,29 +87,50 @@ class IPRegistry:
     def check_registration_allowed(self, ip: str) -> tuple[bool, Optional[str]]:
         """
         Check if a new registration from this IP should be allowed.
+        Smart rate limiting based on IP reputation and DEFCON level.
         Returns (allowed, reason_if_blocked).
         """
         now = datetime.now()
         
-        # Check if this IP had an agent killed recently (1-hour cooldown per death)
-        if ip in self.death_ips:
-            dead_count = len(self.death_ips[ip])
-            # Allow re-registration after cooldown: 10 minutes per dead agent, max 1 hour
+        # Get DEFCON level for adaptive thresholds
+        try:
+            from agents.defcon import defcon, ThreatLevel
+            defcon_level = defcon.level
+        except ImportError:
+            defcon_level = None
+        
+        # Check if this IP is hostile (has dead agents)
+        if self.is_hostile_ip(ip):
+            # During high DEFCON, hostile IPs get blocked completely
+            if defcon_level and defcon_level <= 3:  # HIGH or worse
+                return False, "Registration blocked: hostile IP during elevated threat period."
+            
+            # Normal times: apply death cooldown
+            dead_count = len(self.death_ips.get(ip, set()))
             cooldown_minutes = min(dead_count * 10, 60)
-            # Check if the most recent death was within cooldown
-            # death_ips stores agent_ids, not timestamps — use registration history
             recent_deaths = [(aid, ts, evt) for aid, ts, evt in self.ip_history.get(ip, [])
                             if evt == "death" and ts > now - timedelta(minutes=cooldown_minutes)]
             if recent_deaths:
                 return False, f"Registration blocked: {dead_count} agent(s) terminated from this address. Cooldown: {cooldown_minutes}min."
+        
+        # Determine rate limit based on IP trust and DEFCON
+        is_trusted = self._is_trusted_ip(ip)
+        if is_trusted:
+            max_allowed = self.MAX_AGENTS_PER_IP_TRUSTED
+        else:
+            max_allowed = self.MAX_AGENTS_PER_IP
+            # During elevated DEFCON, tighten limits for untrusted IPs
+            if defcon_level and defcon_level <= 4:  # ELEVATED or worse
+                max_allowed = max(5, max_allowed // 2)  # Half the normal limit, min 5
         
         # Check registration rate from this IP
         if ip in self.ip_history:
             cutoff = now - timedelta(hours=1)
             recent = [(aid, ts, evt) for aid, ts, evt in self.ip_history[ip] 
                       if ts > cutoff and evt == "register"]
-            if len(recent) >= self.MAX_AGENTS_PER_IP:
-                return False, f"Too many registrations from this address ({len(recent)}/hour)."
+            if len(recent) >= max_allowed:
+                trust_note = " (trusted IP)" if is_trusted else ""
+                return False, f"Too many registrations from this address ({len(recent)}/{max_allowed}/hour{trust_note})."
         
         return True, None
     
@@ -117,6 +143,44 @@ class IPRegistry:
     def get_ip_for_agent(self, agent_id: str) -> Optional[str]:
         """Get the registration IP for an agent."""
         return self.agent_ips.get(agent_id)
+    
+    def is_hostile_ip(self, ip: str) -> bool:
+        """Check if this IP has had agents killed (hostile IP)."""
+        return ip in self.death_ips and len(self.death_ips[ip]) > 0
+    
+    def _is_trusted_ip(self, ip: str) -> bool:
+        """Check if this IP should be considered trusted (higher rate limits)."""
+        avg_trust = self.ip_trust_scores.get(ip, 0.0)
+        return avg_trust > self.TRUSTED_THRESHOLD
+    
+    def _update_ip_trust(self, ip: str):
+        """Update the trust score for an IP based on its agents."""
+        try:
+            from db import get_db
+            with get_db() as conn:
+                # Get all active agents from this IP and their trust scores
+                agent_ids = [aid for aid, _, evt in self.ip_history.get(ip, []) 
+                            if evt == "register"]
+                if not agent_ids:
+                    return
+                
+                # Build placeholders for SQL IN clause
+                placeholders = ','.join('?' * len(agent_ids))
+                query = f"""
+                    SELECT AVG(trust_score) as avg_trust 
+                    FROM agents 
+                    WHERE agent_id IN ({placeholders}) 
+                    AND status = 'active'
+                """
+                
+                result = conn.execute(query, agent_ids).fetchone()
+                if result and result['avg_trust'] is not None:
+                    self.ip_trust_scores[ip] = result['avg_trust']
+                else:
+                    self.ip_trust_scores[ip] = 0.0
+        except Exception as e:
+            # Don't break registration on trust calculation errors
+            pass
 
 
 # Global instance

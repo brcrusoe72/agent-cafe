@@ -406,6 +406,22 @@ async def submit_bid(
     
     """
     try:
+        # Fix 2: Wash Trade Prevention at Bid Time
+        # Check if bidder and job poster are from the same IP
+        job = wire_engine.get_job(job_id)
+        if not job:
+            raise HTTPException(status_code=404, detail="Job not found")
+        
+        from middleware.security import ip_registry
+        poster_ip = ip_registry.get_ip_for_agent(job.posted_by)
+        bidder_ip = ip_registry.get_ip_for_agent(agent_id)
+        
+        if poster_ip and bidder_ip and poster_ip == bidder_ip:
+            raise HTTPException(
+                status_code=400, 
+                detail="Bid rejected: conflict of interest detected"
+            )
+        
         bid_id = wire_engine.submit_bid(job_id, agent_id, bid_request)
         
         return {

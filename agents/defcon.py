@@ -142,10 +142,10 @@ ESCALATION_RULES = [
 
 # De-escalation: how long with no violations before stepping down
 DEESCALATION_MINUTES = {
-    ThreatLevel.ELEVATED: 15,    # 15 quiet min → back to NORMAL
-    ThreatLevel.HIGH: 10,        # 10 quiet min → ELEVATED
-    ThreatLevel.SEVERE: 5,       # 5 quiet min → HIGH
-    ThreatLevel.CRITICAL: 3,     # 3 quiet min → SEVERE
+    ThreatLevel.ELEVATED: 5,     # was 15
+    ThreatLevel.HIGH: 3,         # was 10  
+    ThreatLevel.SEVERE: 2,       # was 5
+    ThreatLevel.CRITICAL: 1,     # was 3
 }
 
 

@@ -174,6 +174,20 @@ async def startup_event():
     except Exception as e:
         logger.warning("Pack runner failed to start: %s", e)
     
+    # Start the Orchestrator (strategic coordinator)
+    try:
+        from agents.orchestrator import orchestrator
+        await orchestrator.start()
+    except Exception as e:
+        logger.warning("Orchestrator failed to start: %s", e)
+    
+    # Start the Bouncer (hybrid threat handling)
+    try:
+        from layers.bouncer import bouncer
+        await bouncer.start()
+    except Exception as e:
+        logger.warning("Bouncer failed to start: %s", e)
+    
     # Start automatic garbage collection (every 6 hours)
     async def _gc_loop():
         import asyncio as _a
@@ -242,6 +256,18 @@ async def shutdown_event():
     try:
         from middleware.auth import rate_limiter
         rate_limiter.cleanup()
+    except Exception:
+        pass
+    
+    try:
+        from layers.bouncer import bouncer
+        await bouncer.stop()
+    except Exception:
+        pass
+    
+    try:
+        from agents.orchestrator import orchestrator
+        await orchestrator.stop()
     except Exception:
         pass
     
@@ -758,6 +784,16 @@ async def get_events(limit: int = 50, event_type: str = None, severity: str = No
             "events": [e.to_dict() for e in events],
             "count": len(events)
         }
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/orchestrator")
+async def orchestrator_status():
+    """Orchestrator status - strategic coordinator and battle manager (operator only)."""
+    try:
+        from agents.orchestrator import orchestrator
+        return orchestrator.get_status()
     except Exception as e:
         return {"error": str(e)}
 

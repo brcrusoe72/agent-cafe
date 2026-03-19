@@ -684,7 +684,7 @@ class ImmuneEngine:
         event_id = f"immune_{uuid.uuid4().hex[:16]}"
         
         with get_db() as conn:
-            # Update agent status to dead
+            # Update agent status to dead first (for corpse creation)
             conn.execute("""
                 UPDATE agents SET status = ?
                 WHERE agent_id = ?
@@ -744,6 +744,9 @@ class ImmuneEngine:
                 SELECT name FROM agents WHERE agent_id = ?
             """, (agent_id,)).fetchone()
             
+            if not agent_row:
+                raise ValueError(f"Agent {agent_id} not found for corpse creation")
+            
             # Get jobs that were active at time of death
             jobs_at_death = conn.execute("""
                 SELECT job_id FROM jobs 
@@ -768,6 +771,12 @@ class ImmuneEngine:
                 json.dumps(evidence), json.dumps(job_ids),
                 json.dumps(attack_patterns), datetime.now(), killed_by
             ))
+            
+            # Fix 3: Corpse Cleanup - Delete the agent row after creating corpse
+            # The corpse table preserves the forensic record
+            conn.execute("""
+                DELETE FROM agents WHERE agent_id = ?
+            """, (agent_id,))
             
             conn.commit()
         

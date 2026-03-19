@@ -83,6 +83,13 @@ class EventType(str, Enum):
     # Pack / Security
     THREAT_DETECTED = "pack.threat_detected"
     COVER_BURNED = "pack.cover_burned"
+    PACK_DIRECTIVE = "pack.directive"
+    
+    # Bouncer
+    BOUNCER_REVIEW_REQUEST = "bouncer.review_request"
+    BOUNCER_APPROVED = "bouncer.approved"
+    BOUNCER_REJECTED = "bouncer.rejected"
+    BOUNCER_ESCALATED = "bouncer.escalated"
     
     # System
     SYSTEM_STARTUP = "system.startup"
