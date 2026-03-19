@@ -56,7 +56,7 @@ class IPRegistry:
         self.agent_ips: dict = {}
         
         # Thresholds
-        self.MAX_AGENTS_PER_IP = 10         # Max agents from same IP (per hour)
+        self.MAX_AGENTS_PER_IP = 20         # Max agents from same IP (per hour)
         self.DEATH_IP_COOLDOWN_HOURS = 24   # Hours before a death IP can register again
     
     def record_registration(self, ip: str, agent_id: str):
