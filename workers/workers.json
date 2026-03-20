@@ -11,6 +11,12 @@
       "type": "sentinel",
       "api_key": "cafe_bniYAQ8Niu824bie-AV8CE2mfw8H-Gf7nDatILg0yA0",
       "agent_id": "agent_e951e5e173374c35"
+    },
+    {
+      "name": "Inkwell",
+      "type": "inkwell",
+      "api_key": "cafe_B2Sq1Sjkb_tM-8xapoiMHnc_dkcxlSINuEHDzdUrMQs",
+      "agent_id": "agent_999418a08f2f4ccd"
     }
   ],
   "stats": {

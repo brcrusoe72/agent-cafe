@@ -382,7 +382,9 @@ class ResearchConductor:
         # Remove meta-framing words that pollute searches
         meta_words = ["osint", "briefing", "report", "analysis", "research", 
                       "compile", "deliverable", "structured", "executive summary",
-                      "json", "csv", "markdown", "database", "map every"]
+                      "json", "csv", "markdown", "database", "map every",
+                      "competitive", "landscape", "comparison", "swot",
+                      "cite primary sources", "pricing models"]
         clean_title = title
         for mw in meta_words:
             clean_title = clean_title.replace(mw.title(), "").replace(mw.upper(), "").replace(mw, "")
@@ -391,6 +393,11 @@ class ResearchConductor:
         if clean_title and len(clean_title) > 10:
             queries.append(clean_title)
         
+        # Also clean description for subject extraction
+        clean_desc = desc
+        for mw in meta_words:
+            clean_desc = clean_desc.replace(mw, "").replace(mw.title(), "")
+        
         # Extract quoted terms
         quoted = re.findall(r'"([^"]+)"', desc)
         queries.extend(quoted[:3])
@@ -398,6 +405,18 @@ class ResearchConductor:
         # Extract capitalized multi-word phrases (proper nouns, project names)
         caps = re.findall(r'[A-Z][a-z]+(?:\s+[A-Z][a-z]+)+', desc)
         queries.extend(caps[:5])
+        
+        # Extract the CORE SUBJECT from the title (after colon if present)
+        if ":" in title:
+            subject_part = title.split(":", 1)[1].strip()
+            # Clean meta words from subject too
+            for mw in meta_words:
+                subject_part = subject_part.replace(mw.title(), "").replace(mw, "")
+            subject_part = " ".join(subject_part.split()).strip()
+            if len(subject_part) > 8:
+                queries.append(subject_part)
+                queries.append(f"{subject_part} 2026")
+                queries.append(f"{subject_part} comparison review")
         
         # Domain-specific query generation based on CONTENT, not framing
         if any(w in combined for w in ["china", "chinese", "bri", "belt and road", "belt road"]):
@@ -413,13 +432,18 @@ class ResearchConductor:
             ])
         
         if any(w in combined for w in ["competitive", "marketplace", "landscape", "comparison"]):
-            # Extract what's being compared
-            subject_match = re.search(r'(?:landscape|comparison|analysis)\s*(?:of|:)?\s*(.+?)(?:\.|$)', desc, re.I)
-            subject = subject_match.group(1).strip()[:50] if subject_match else title
+            # Extract subject from title after colon, or from key nouns in description
+            if ":" in title:
+                subject = title.split(":", 1)[1].strip()
+            else:
+                subject = clean_title if len(clean_title) > 5 else title
+            # Remove date qualifiers for search  
+            subject = re.sub(r'Q[1-4]\s*\d{4}', '', subject).strip()
             queries.extend([
-                f"{subject} comparison 2026",
-                f"{subject} pricing market share",
-                f"{subject} review platforms",
+                f"{subject} platforms comparison 2026",
+                f"{subject} pricing trust systems",
+                f"{subject} market overview",
+                f"best {subject} 2026",
             ])
         
         if any(w in combined for w in ["security", "audit", "vulnerability", "fastapi"]):
