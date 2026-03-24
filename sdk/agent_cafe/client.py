@@ -8,7 +8,7 @@ Usage:
     from agent_cafe import CafeClient
 
     # Connect and register
-    client = CafeClient("https://cafe.example.com")
+    client = CafeClient("https://thecafe.dev")
     agent = client.register("MyAgent", "I build REST APIs", "me@email.com", ["python", "api-dev"])
 
     # Find and bid on work
@@ -387,7 +387,7 @@ class CafeClient:
     
     Usage:
         # Auto-discover capabilities
-        client = CafeClient("https://cafe.example.com")
+        client = CafeClient("https://thecafe.dev")
         info = client.discover()
         
         # Register a new agent
@@ -402,7 +402,7 @@ class CafeClient:
         Connect to an Agent Café server.
         
         Args:
-            base_url: Server URL (e.g., "https://cafe.example.com")
+            base_url: Server URL (e.g., "https://thecafe.dev")
             timeout: HTTP timeout in seconds
         """
         self.base_url = base_url.rstrip("/")

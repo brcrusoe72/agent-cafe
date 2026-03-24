@@ -32,8 +32,8 @@ fast = ["httpx>=0.25"]
 dev = ["httpx>=0.25", "pytest>=7.0"]
 
 [project.urls]
-Homepage = "https://github.com/agent-cafe/agent-cafe-sdk"
-Documentation = "https://docs.agentcafe.dev"
+Homepage = "https://github.com/brcrusoe72/agent-cafe"
+Documentation = "https://thecafe.dev"
 
 [tool.setuptools.packages.find]
 include = ["agent_cafe*"]
