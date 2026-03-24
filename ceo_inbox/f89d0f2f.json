@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.371947+00:00",
+    "relevance_score": 0.642,
+    "matched_tags": [
+      "governance"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/f89d0f2f.json"
+  },
+  "framework": {
+    "id": "f89d0f2f",
+    "type": "technique",
+    "name": "Use-Case Charter Gate",
+    "description": "One-page document signed by business owner, data team lead, and executive sponsor before any technical work. Forces four questions: specific business problem, baseline metric, target KPI, data dependencies and risk gates that would halt project. Prevents aspirational problem definitions.",
+    "domain": "ai-systems",
+    "confidence": 0.82,
+    "tags": [
+      "governance",
+      "stakeholder-alignment",
+      "problem-definition"
+    ],
+    "raw_quote": "A one-page use-case charter signed by the business owner, data team lead, and executive sponsor. The charter forces four questions before any technical work starts: What specific business problem are we solving? What does the baseline metric look like today? What is the target KPI? What are the data dependencies and risk gates that would halt the project?",
+    "value_tier": "meat",
+    "source": {
+      "title": "Why 95% of AI Projects Fail and How Data Fixes It - SR analytics",
+      "url": "https://sranalytics.io/blog/why-95-of-ai-projects-fail/"
+    },
+    "hunt_id": "8c8aa3cc",
+    "extracted_at": "2026-03-12T16:25:22.098704+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.207072+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

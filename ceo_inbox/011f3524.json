@@ -1,0 +1,39 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.221492+00:00",
+    "relevance_score": 0.632,
+    "matched_tags": [
+      "agent-commerce",
+      "authorization",
+      "open-standard"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/011f3524.json"
+  },
+  "framework": {
+    "id": "011f3524",
+    "type": "framework",
+    "name": "Agent Payments Protocol (AP2) Authorization Framework",
+    "description": "Google's open protocol using cryptographically-signed 'Mandates' as tamper-proof digital contracts that establish authorization boundaries for AI agents. Distinguishes between Intent Mandates (user's request with constraints like price limits, timing) and Cart Mandates (final approved transaction). Creates non-repudiable audit trail from intent \u2192 cart \u2192 payment to prove authorization, authenticity, and establish accountability.",
+    "domain": "ai-systems",
+    "confidence": 0.95,
+    "tags": [
+      "authorization",
+      "spending-limits",
+      "cryptographic-audit",
+      "open-standard",
+      "agent-commerce"
+    ],
+    "raw_quote": "Mandates are tamper-proof, cryptographically-signed digital contracts that serve as verifiable proof of a user's instructions... For delegated tasks, you sign a detailed Intent Mandate upfront specifying price limits, timing, and other conditions. It serves as verifiable, pre-authorized proof that can allow the agent to automatically generate a Cart Mandate on your behalf once your precise conditions are met.",
+    "source": {
+      "title": "",
+      "url": "https://cybersecurityasia.net/google-pioneers-agent-payments-protocol/"
+    },
+    "hunt_id": "4f110637",
+    "extracted_at": "2026-03-06T14:28:17.937471+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.179489+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

@@ -1,0 +1,35 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.352769+00:00",
+    "relevance_score": 0.575,
+    "matched_tags": [
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/d09dab99.json"
+  },
+  "framework": {
+    "id": "d09dab99",
+    "type": "claim",
+    "name": "OAuth Convergence Was Inevitable Not Planned",
+    "description": "The industry's adoption of OAuth for AI agents wasn't coordinated but emerged naturally as developers hit the same walls with API keys and custom tokens. OAuth's delegated access model (client acting on behalf of resource owner) mapped perfectly to agent-user relationships despite being designed for browser-based human authentication.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "oauth",
+      "industry-evolution",
+      "unplanned-convergence"
+    ],
+    "raw_quote": "The convergence on OAuth wasn't planned, but it was, in fact, inevitable.",
+    "source": {
+      "title": "AI agent authentication methods - Stytch",
+      "url": "https://stytch.com/blog/ai-agent-authentication-methods/"
+    },
+    "hunt_id": "4f110637",
+    "extracted_at": "2026-03-06T14:20:59.867193+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.205007+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

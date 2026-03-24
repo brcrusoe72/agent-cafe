@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.230265+00:00",
+    "relevance_score": 0.64,
+    "matched_tags": [
+      "tokenization",
+      "agent-commerce"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/0d2cd6ab.json"
+  },
+  "framework": {
+    "id": "0d2cd6ab",
+    "type": "technique",
+    "name": "Tokenized Digital Credentials for Agent Payments",
+    "description": "Using tokenization (replacing sensitive payment data with unique tokens) to secure AI agent transactions. This allows agents to make purchases without exposing actual card numbers, combined with real-time transaction controls.",
+    "domain": "ai-systems",
+    "confidence": 0.8,
+    "tags": [
+      "payment-security",
+      "tokenization",
+      "agent-commerce",
+      "visa"
+    ],
+    "raw_quote": "Tokenized digital credentials and real-time transaction controls ensure secure payments",
+    "source": {
+      "title": "watch?v=OEzhJIlF-zo",
+      "url": "https://www.youtube.com/watch?v=OEzhJIlF-zo"
+    },
+    "hunt_id": "7d3db790",
+    "extracted_at": "2026-03-03T19:04:16.006950+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.212381+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "payment_infrastructure"
+}

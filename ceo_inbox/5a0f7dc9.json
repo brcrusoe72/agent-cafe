@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.279879+00:00",
+    "relevance_score": 0.645,
+    "matched_tags": [
+      "authorization",
+      "trust"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/5a0f7dc9.json"
+  },
+  "framework": {
+    "id": "5a0f7dc9",
+    "type": "framework",
+    "name": "Three Pillars of Agentic Commerce Trust",
+    "description": "Framework identifying three critical trust requirements: identity and authorization (did you approve this?), duty of loyalty (is the agent working for you?), and reliability/measurement (how do we evaluate agent performance?).",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "trust",
+      "evaluation",
+      "authorization",
+      "loyalty"
+    ],
+    "raw_quote": "So one of the three pillars is identity and authorization. Did you really approve this purchase? Duty of loyalty. Um, is the agent working for you in your best interest? And reliability and measurement or evals",
+    "source": {
+      "title": "The Race to Standardize Agentic Commerce",
+      "url": "https://www.youtube.com/watch?v=LtFCXOOGPrw"
+    },
+    "hunt_id": "dbee9bd2",
+    "extracted_at": "2026-03-03T18:11:22.068721+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.198544+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

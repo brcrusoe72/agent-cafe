@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.365201+00:00",
+    "relevance_score": 0.7,
+    "matched_tags": [
+      "multi-agent"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/e84958ad.json"
+  },
+  "framework": {
+    "id": "e84958ad",
+    "type": "claim",
+    "name": "Mutual Authentication as Multi-Agent Prerequisite",
+    "description": "Frames agent-to-agent communication as requiring mutual authentication beyond channel security \u2014 agents must verify they represent who they claim. This is the hop-2 problem restated as identity verification rather than authorization delegation.",
+    "domain": "ai-systems",
+    "confidence": 0.7,
+    "tags": [
+      "multi-agent",
+      "mutual-auth",
+      "identity"
+    ],
+    "raw_quote": "Securing communication channels is not enough; agents must also verify that they authentically represent the users or organizations they claim to represent.",
+    "value_tier": "bone",
+    "source": {
+      "title": "Authenticated Delegation and Authorized AI Agents - arXiv",
+      "url": "https://arxiv.org/html/2501.09674v1"
+    },
+    "hunt_id": "5213bf37",
+    "extracted_at": "2026-03-18T14:22:35.965685+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.206426+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.626817+00:00",
+    "relevance_score": 0.435,
+    "matched_tags": [
+      "cryptography"
+    ],
+    "domain_match": false,
+    "source_path": "technology/4639217e.json"
+  },
+  "framework": {
+    "id": "4639217e",
+    "type": "framework",
+    "name": "Verifiable Intent Technical Architecture",
+    "description": "Cryptographic proof linking three elements: cardholder identity, specific instructions, and agent-merchant interaction into a single privacy-preserving record. Uses Selective Disclosure to share minimum necessary data only at point of need. Built on FIDO Alliance, EMVCo, IETF, and W3C specs \u2014 no proprietary infrastructure required.",
+    "domain": "technology",
+    "confidence": 0.85,
+    "tags": [
+      "agentic-commerce",
+      "cryptography",
+      "payments",
+      "standards"
+    ],
+    "raw_quote": "At its technical core, Verifiable Intent links three elements into a single, privacy-preserving record: the identity of the cardholder authorizing the AI agent, the consumer's specific instructions, and the interaction between the agent and the merchant that results in a purchase.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Mastercard and Google's new trust layer could reshape how AI buys for you",
+      "url": "https://ppc.land/mastercard-and-googles-new-trust-layer-could-reshape-how-ai-buys-for-you/"
+    },
+    "hunt_id": "7e7c0a23",
+    "extracted_at": "2026-03-14T14:20:13.454198+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.208673+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

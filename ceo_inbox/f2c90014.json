@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.439672+00:00",
+    "relevance_score": 0.72,
+    "matched_tags": [
+      "fraud-detection"
+    ],
+    "domain_match": false,
+    "source_path": "finance/f2c90014.json"
+  },
+  "framework": {
+    "id": "f2c90014",
+    "type": "claim",
+    "name": "Existing Payment Systems Designed for Humans, Not Bots",
+    "description": "Today's financial infrastructure and fraud detection systems were explicitly designed for human actors and actively try to distinguish automated systems from genuine users. This creates a fundamental tension when attempting to enable legitimate autonomous agent payments \u2014 the systems need retraining to differentiate 'good bots' from malicious ones.",
+    "domain": "finance",
+    "confidence": 0.9,
+    "tags": [
+      "infrastructure-gap",
+      "fraud-detection",
+      "legacy-systems",
+      "design-assumptions"
+    ],
+    "raw_quote": "In fact, dozens of startups and projects are now exploring 'agentic payments,' recognizing that today's financial systems were 'explicitly designed for humans, not bots,' and need adaptation to support autonomous agents.",
+    "source": {
+      "title": "Enabling Autonomous AI Agents to Make Payments - LinkedIn",
+      "url": "https://www.linkedin.com/pulse/enabling-autonomous-ai-agents-make-payments-challenges-david-paluy-xmq4c"
+    },
+    "hunt_id": "c5cfd231",
+    "extracted_at": "2026-03-06T14:21:31.647183+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.192709+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "marketplace_design"
+}

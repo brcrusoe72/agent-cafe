@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.603734+00:00",
+    "relevance_score": 0.65,
+    "matched_tags": [
+      "governance"
+    ],
+    "domain_match": false,
+    "source_path": "strategy|ai-systems/f84e1f1f.json"
+  },
+  "framework": {
+    "id": "f84e1f1f",
+    "type": "framework",
+    "name": "Five-Stage AI Transformation Framework",
+    "description": "Evidence-based framework for scaling AI beyond pilots: (1) Diagnose and Align - precise problem framing with cross-functional stakeholder alignment; (2) Governance and Accountability - data ownership, quality standards, and KPI-tied oversight; (3) Redesign for Scalability - workflow reconfiguration, incentive realignment, shared data platforms; (4) Data Literacy and Reuse - standardized approaches across functions; (5) Start Small, Iterate, Scale - pilots as 'minimum viable transformations' with explicit learning objectives.",
+    "domain": "strategy|ai-systems",
+    "confidence": 0.9,
+    "tags": [
+      "implementation-framework",
+      "organizational-design",
+      "governance",
+      "change-management",
+      "scaling-methodology"
+    ],
+    "raw_quote": "The five stages are not rigid steps to be checked off in sequence, but interconnected elements that reinforce one another. A strong diagnosis without governance results in stalled adoption; governance without redesign becomes bureaucracy; iteration without reuse wastes resources.",
+    "source": {
+      "title": "",
+      "url": "https://cmr.berkeley.edu/2025/11/bridging-the-gaps-in-ai-transformation-an-evidence-based-framework-for-scalable-adoption/"
+    },
+    "hunt_id": "bb70a202",
+    "extracted_at": "2026-03-05T22:28:11.461964+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.187410+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

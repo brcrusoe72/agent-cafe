@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.536321+00:00",
+    "relevance_score": 0.58,
+    "matched_tags": [
+      "pricing"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/5bec8406.json"
+  },
+  "framework": {
+    "id": "5bec8406",
+    "type": "claim",
+    "name": "Relevance Premium Over Seniority Premium",
+    "description": "Current, hard-to-find expertise on specific topic (e.g., OTT streaming implementation) commands higher rates than generic senior experience. Client example: would pay $800/hour for current VP at target company over $300/hour for retired C-suite with outdated tangential experience.",
+    "domain": "strategy",
+    "confidence": 0.9,
+    "tags": [
+      "pricing",
+      "expertise",
+      "specialization",
+      "expert-networks"
+    ],
+    "raw_quote": "If the consulting topic is on a company or topic where you have deep, current and hard-to-find expertise, this trumps everything. If we can present you to clients as a top expert with specialized knowledge, they will gladly pay rates much higher than your current seniority would indicate.",
+    "value_tier": "organ",
+    "source": {
+      "title": "Setting Your Expert Network Consulting Rate \u2022 Expert Opportunities",
+      "url": "https://expertopportunities.com/expert-network-hourly-rates/"
+    },
+    "hunt_id": "b38ad25e",
+    "extracted_at": "2026-03-07T16:15:35.161708+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.208864+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

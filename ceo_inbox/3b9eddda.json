@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.408920+00:00",
+    "relevance_score": 0.63,
+    "matched_tags": [
+      "liability"
+    ],
+    "domain_match": false,
+    "source_path": "finance/3b9eddda.json"
+  },
+  "framework": {
+    "id": "3b9eddda",
+    "type": "claim",
+    "name": "Fraud Liability Trichotomy",
+    "description": "Verifiable Intent enables issuers to distinguish three categories: (1) fraudulent/unauthorized agent, (2) legitimate transaction consumer regrets, (3) agent error \u2014 authorized but incorrectly executed. This is the liability classification framework that partially addresses the EFTA gap.",
+    "domain": "finance",
+    "confidence": 0.7,
+    "tags": [
+      "liability",
+      "dispute-resolution",
+      "fraud"
+    ],
+    "raw_quote": "Issuers using Verifiable Intent can distinguish between: A fraudulent transaction... A legitimate transaction the consumer now regrets. An agent error: the transaction was authorized but executed incorrectly.",
+    "value_tier": "meat",
+    "source": {
+      "title": "What Is Mastercard Verifiable Intent? Agentic Commerce Trust Layer ...",
+      "url": "https://agenticplug.ai/blog/mastercard-verifiable-intent-for-agentic-commerce"
+    },
+    "hunt_id": "7e7c0a23",
+    "extracted_at": "2026-03-14T14:16:58.725668+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.196181+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

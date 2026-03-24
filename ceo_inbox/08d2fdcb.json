@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.609431+00:00",
+    "relevance_score": 0.725,
+    "matched_tags": [
+      "agent-identity",
+      "trust"
+    ],
+    "domain_match": false,
+    "source_path": "technology/08d2fdcb.json"
+  },
+  "framework": {
+    "id": "08d2fdcb",
+    "type": "claim",
+    "name": "Visa TAP \u2014 10+ Partners but Thin on Details",
+    "description": "Visa TAP described as 'open framework to distinguish legitimate AI agents from malicious bots, with 10+ partners including Akamai.' Visa Intelligent Commerce has 100+ partners building, 30+ in sandbox, 20+ agents integrating. Completed 'hundreds' of transactions in Dec 2025. Predicts millions by holiday 2026. Still no technical architecture detail.",
+    "domain": "technology",
+    "confidence": 0.6,
+    "tags": [
+      "visa",
+      "agent-identity",
+      "trust"
+    ],
+    "raw_quote": "Visa completed hundreds of secure, agent-initiated transactions in December 2025 and predicts millions of agent-completed purchases by holiday 2026.",
+    "value_tier": "meat",
+    "source": {
+      "title": "The Agentic Commerce Landscape: Who's Building What in 2026",
+      "url": "https://rye.com/blog/agentic-commerce-startups"
+    },
+    "hunt_id": "4433457e",
+    "extracted_at": "2026-03-18T14:30:39.464482+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.193252+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

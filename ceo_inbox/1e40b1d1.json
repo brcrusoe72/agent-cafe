@@ -1,0 +1,39 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.403495+00:00",
+    "relevance_score": 0.55,
+    "matched_tags": [
+      "authorization",
+      "stripe"
+    ],
+    "domain_match": false,
+    "source_path": "finance/1e40b1d1.json"
+  },
+  "framework": {
+    "id": "1e40b1d1",
+    "type": "framework",
+    "name": "Hierarchical Authorization Boundaries (Card vs Cardholder)",
+    "description": "Stripe implements a two-tier authorization model where spending controls cascade from cardholder level (applies to all their cards) to individual card level, with the most restrictive control winning in overlaps. Controls include category filtering (allowed/blocked lists), geographic restrictions, merchant ID blocking, and time-interval spending limits that aggregate spending with ~30 second delay.",
+    "domain": "finance",
+    "confidence": 0.95,
+    "tags": [
+      "spending-controls",
+      "authorization",
+      "stripe",
+      "card-issuing",
+      "multi-tier-limits"
+    ],
+    "raw_quote": "If a cardholder has overlapping spending limits (for example, 100 USD per authorization and 50 USD per authorization for their card), the most restrictive spending control applies.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Issuing spending controls | Stripe Documentation",
+      "url": "https://docs.stripe.com/issuing/controls/spending-controls"
+    },
+    "hunt_id": "b977a620",
+    "extracted_at": "2026-03-07T14:45:43.641156+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.181046+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.636900+00:00",
+    "relevance_score": 0.43,
+    "matched_tags": [
+      "standardization"
+    ],
+    "domain_match": false,
+    "source_path": "technology/66b85835.json"
+  },
+  "framework": {
+    "id": "66b85835",
+    "type": "claim",
+    "name": "IETF draft referenced as upcoming standard",
+    "description": "Article references 'The IETF draft' and 'OAuth 2.0 draft on agent delegation' as the emerging standard, confirming the IETF work is being treated as canonical by implementers. Scalekit positions their implementation as independent of the draft but compatible.",
+    "domain": "technology",
+    "confidence": 0.8,
+    "tags": [
+      "ietf",
+      "standardization",
+      "social-contagion"
+    ],
+    "raw_quote": "For those who want to explore the emerging standard in detail, the OAuth 2.0 draft on agent delegation outlines one possible approach.",
+    "value_tier": "bone",
+    "source": {
+      "title": "Understanding \"On-Behalf-Of\" in AI agent authentication - Scalekit",
+      "url": "https://www.scalekit.com/blog/delegated-agent-access"
+    },
+    "hunt_id": "1421f7a8",
+    "extracted_at": "2026-03-18T14:11:08.476695+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.189459+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "marketplace_design"
+}

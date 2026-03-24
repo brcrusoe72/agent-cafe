@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.663102+00:00",
+    "relevance_score": 0.785,
+    "matched_tags": [
+      "agent-identity"
+    ],
+    "domain_match": false,
+    "source_path": "technology/c3bbf9bd.json"
+  },
+  "framework": {
+    "id": "c3bbf9bd",
+    "type": "framework",
+    "name": "Public Key Infrastructure with Centralized Key Store",
+    "description": "Visa's architecture relies on merchants or site protection providers retrieving agent public keys from a centralized Key Store using keyId identifiers embedded in signature metadata. The keyId field (e.g., 'poqkLGiymh_W0uP6PZFw-dvez3QJT5SolqXBCW38r0U') serves as lookup key for public key retrieval, enabling signature verification without pre-shared keys or bilateral agreements.",
+    "domain": "technology",
+    "confidence": 0.85,
+    "tags": [
+      "key-management",
+      "pki",
+      "visa",
+      "agent-identity",
+      "public-key-cryptography"
+    ],
+    "raw_quote": "The identity of the public key that will be used to verify the signature. The Merchant may have cached the public key for the keyid... Key Store will be the location on the web where Merchants or Site Protection Providers can retrieve the public keys needed to verify the signatures.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Specifications - Trusted Agent Protocol - developer.visa.com",
+      "url": "https://developer.visa.com/capabilities/trusted-agent-protocol/trusted-agent-protocol-specifications"
+    },
+    "hunt_id": "fd72fd5b",
+    "extracted_at": "2026-03-09T13:44:50.915217+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.204177+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

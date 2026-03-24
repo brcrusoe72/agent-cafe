@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.670273+00:00",
+    "relevance_score": 0.54,
+    "matched_tags": [
+      "cryptography",
+      "security"
+    ],
+    "domain_match": false,
+    "source_path": "technology/d7f3ced3.json"
+  },
+  "framework": {
+    "id": "d7f3ced3",
+    "type": "technique",
+    "name": "Merchant-Specific Signature Generation",
+    "description": "Agents generate unique cryptographic signatures for each merchant interaction, incorporating merchant ID, timestamp, and purpose. This prevents signature reuse across merchants or replay attacks, while allowing merchants to verify agent authenticity without real-time calls to Visa.",
+    "domain": "technology",
+    "confidence": 0.85,
+    "tags": [
+      "cryptography",
+      "security",
+      "anti-replay",
+      "distributed-verification"
+    ],
+    "raw_quote": "signatures that are specific to the merchant and purpose, and are time bound, cannot be replayed or relayed",
+    "source": {
+      "title": "Trusted Agent Protocol - Visa Developer",
+      "url": "https://developer.visa.com/capabilities/trusted-agent-protocol"
+    },
+    "hunt_id": "0a8db7c7",
+    "extracted_at": "2026-03-05T15:08:46.512960+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.205403+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.268289+00:00",
+    "relevance_score": 0.585,
+    "matched_tags": [
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/43bf7699.json"
+  },
+  "framework": {
+    "id": "43bf7699",
+    "type": "claim",
+    "name": "OAuth Has No Delegation Chain Concept",
+    "description": "Microsoft's Alex Simons confirms agents need 'their own defined set of privileges \u2014 not just proxy a user's rights.' OAuth treats tokens as impersonation rather than delegated authority, with no mechanism for distinguishing whether an agent acts for a user, itself, or through a chain of agents.",
+    "domain": "ai-systems",
+    "confidence": 0.95,
+    "tags": [
+      "OAuth",
+      "Microsoft",
+      "delegation-gap"
+    ],
+    "raw_quote": "agents need 'their own defined set of privileges - not just proxy a user's rights'. Actions must be traceable, distinguishing if an agent is acting for a user, itself, or through a chain of agents.",
+    "value_tier": "bone",
+    "source": {
+      "title": "Authorising Autonomous Agents at Scale",
+      "url": "https://blog.identity.foundation/building-ai-trust-at-scale-4/"
+    },
+    "hunt_id": "d39fbdac",
+    "extracted_at": "2026-03-14T14:30:07.075024+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.196624+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.435325+00:00",
+    "relevance_score": 0.65,
+    "matched_tags": [
+      "liability"
+    ],
+    "domain_match": false,
+    "source_path": "finance/cfec7b60.json"
+  },
+  "framework": {
+    "id": "cfec7b60",
+    "type": "framework",
+    "name": "EFTA Liability Gap for Agent Transactions",
+    "description": "When consumers give payment credentials to an agent that initiates unintended transactions, the consumer\u2014not the bank\u2014bears liability under EFTA's existing framework. The 'access device given to another person' exception means agent mistakes are the consumer's problem.",
+    "domain": "finance",
+    "confidence": 0.9,
+    "tags": [
+      "liability",
+      "EFTA",
+      "consumer-protection",
+      "agent-payments"
+    ],
+    "raw_quote": "When a consumer gives an access device, such as a payment card or payment credentials, to another person and that person initiates transactions the consumer did not intend for that person to initiate, the consumer may be liable for those transactions\u2014not the financial institution that issued the card or credential.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Agentic AI Payments: Navigating Consumer Protection, Innovation, ...",
+      "url": "https://consumerbankers.com/wp-content/uploads/2026/01/CBA-Agentic-Symposium-White-Paper-2026-01v2.pdf"
+    },
+    "hunt_id": "e7408160",
+    "extracted_at": "2026-03-14T14:05:41.086785+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.204942+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

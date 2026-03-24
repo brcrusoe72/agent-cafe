@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.382399+00:00",
+    "relevance_score": 0.43,
+    "matched_tags": [
+      "standardization"
+    ],
+    "domain_match": false,
+    "source_path": "compliance|documentation/321e6cb8.json"
+  },
+  "framework": {
+    "id": "321e6cb8",
+    "type": "technique",
+    "name": "Plan of Action Manual as Audit Accelerator",
+    "description": "A structured 8-section manual that pre-organizes food safety documentation to align with audit checklist questions, explicitly designed to reduce audit time and cost. Replaces narrative-form plans that require auditors to 'read locate and score' information. The implication is that audit cost is a significant barrier, and this template reduces it.",
+    "domain": "compliance|documentation",
+    "confidence": 0.8,
+    "tags": [
+      "documentation-templates",
+      "audit-preparation",
+      "cost-reduction",
+      "standardization"
+    ],
+    "raw_quote": "earlier plans were written in a narrative form... auditors read locate and score the information that conforms to the audit verification checklist... you're being charged for this additional time. the plan of action templates sort with the audit checklist questions a well-written plan of action saves time and saves",
+    "source": {
+      "title": "watch?v=TaCEZLmf0Zg",
+      "url": "https://www.youtube.com/watch?v=TaCEZLmf0Zg"
+    },
+    "hunt_id": "571e707b",
+    "extracted_at": "2026-03-03T20:39:27.553700+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.181485+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

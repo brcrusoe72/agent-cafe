@@ -1,0 +1,33 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.683850+00:00",
+    "relevance_score": 0.285,
+    "matched_tags": [],
+    "domain_match": true,
+    "source_path": "trust-mechanisms/99487921.json"
+  },
+  "framework": {
+    "id": "99487921",
+    "type": "technique",
+    "name": "Social Graph Verification",
+    "description": "Using existing social network connections (e.g., Facebook mutual friends) to create transitive trust. Airbnb allowed filtering listings by hosts who share mutual friends, converting 'stranger' into 'friend-of-friend' and dramatically increasing trust.",
+    "domain": "trust-mechanisms",
+    "confidence": 0.85,
+    "tags": [
+      "social-proof",
+      "network-effects",
+      "identity-verification"
+    ],
+    "raw_quote": "airbnb introduced social connections by using data from facebook... i might travel to paris and note that a friend of a friend has a flat there",
+    "source": {
+      "title": "watch?v=W5q02P8GNzs",
+      "url": "https://www.youtube.com/watch?v=W5q02P8GNzs"
+    },
+    "hunt_id": "c9aa917a",
+    "extracted_at": "2026-03-04T21:50:31.447801+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.201644+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

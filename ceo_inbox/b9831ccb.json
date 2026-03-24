@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.431109+00:00",
+    "relevance_score": 0.5,
+    "matched_tags": [
+      "interoperability"
+    ],
+    "domain_match": false,
+    "source_path": "finance/b9831ccb.json"
+  },
+  "framework": {
+    "id": "b9831ccb",
+    "type": "framework",
+    "name": "Verifiable Intent as Cross-Protocol Interop Layer",
+    "description": "Mastercard positioned Verifiable Intent to be interoperable across Google's Agent Payments Protocol, Universal Commerce Protocol, and third-party protocols. It's open-sourced \u2014 meaning it's a standards play, not a product play.",
+    "domain": "finance",
+    "confidence": 0.8,
+    "tags": [
+      "interoperability",
+      "open-source",
+      "standards"
+    ],
+    "raw_quote": "Mastercard has deliberately positioned Verifiable Intent to be interoperable across all of them.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Nasdaq's tokenization play isn't about 24/7 trading. It's ... - Linas's Newsletter",
+      "url": "https://linas.substack.com/p/fintechpulse1054"
+    },
+    "hunt_id": "7e7c0a23",
+    "extracted_at": "2026-03-14T14:18:04.651906+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.191309+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "marketplace_design"
+}

@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.614339+00:00",
+    "relevance_score": 0.62,
+    "matched_tags": [
+      "security",
+      "authentication"
+    ],
+    "domain_match": false,
+    "source_path": "technology/187bb4d7.json"
+  },
+  "framework": {
+    "id": "187bb4d7",
+    "type": "technique",
+    "name": "Network Tokenization",
+    "description": "Replacing static card numbers with programmable tokens that contain transaction rules (merchant restrictions, amount limits, time constraints). Tokens validate transaction 'DNA' without human authentication. This is Visa/Mastercard's actual technical approach to enabling autonomous payments.",
+    "domain": "technology",
+    "confidence": 0.95,
+    "tags": [
+      "payment-rails",
+      "security",
+      "programmable-money",
+      "authentication"
+    ],
+    "raw_quote": "These aren't just numbers. They are pieces of code, with rules. A token can be programmed to work only at your grocery store, only for amounts under $20, and only on Tuesdays.",
+    "source": {
+      "title": "watch?v=ttEDD8fMwWI",
+      "url": "https://www.youtube.com/watch?v=ttEDD8fMwWI"
+    },
+    "hunt_id": "7d3db790",
+    "extracted_at": "2026-03-03T19:03:20.339837+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.212896+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "payment_infrastructure"
+}

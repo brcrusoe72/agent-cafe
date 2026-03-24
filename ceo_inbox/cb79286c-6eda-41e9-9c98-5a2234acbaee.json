@@ -1,0 +1,41 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.350148+00:00",
+    "relevance_score": 0.71,
+    "matched_tags": [
+      "platform-strategy"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/cb79286c-6eda-41e9-9c98-5a2234acbaee.json"
+  },
+  "framework": {
+    "type": "CONTRARIAN",
+    "name": "Platform Memory as Lock-in Strategy",
+    "description": "AI platforms deliberately design memory systems to create vendor lock-in rather than user benefit, trapping context within individual tools and preventing cross-platform knowledge transfer.",
+    "domain": "ai-systems",
+    "confidence": 0.8,
+    "tags": [
+      "vendor-lockin",
+      "platform-strategy",
+      "knowledge-ownership"
+    ],
+    "implications": [
+      "Avoid building critical knowledge exclusively in platform-locked systems",
+      "Demand data portability when choosing AI tools",
+      "Build independent knowledge systems to maintain tool flexibility"
+    ],
+    "raw_quote": "Memory is supposed to be a lock in on chat GPT, ditto on other systems. So you've spent a long time building up history with a tool and now if you want to try the latest other model... you lose all of that context, not because the new model is worse, but because your context is trapped in the old one",
+    "id": "cb79286c-6eda-41e9-9c98-5a2234acbaee",
+    "source": {
+      "title": "You Don't Need SaaS. The $0.10 System That Replaced My AI Workflow (45 Min No-Code Build)",
+      "url": "https://www.youtube.com/watch?v=2JiMmye2ezg",
+      "author": "AI News & Strategy Daily | Nate B Jones",
+      "date": "20260302"
+    },
+    "extracted_at": "2026-03-03T10:08:38.841089"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.191671+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "marketplace_design"
+}

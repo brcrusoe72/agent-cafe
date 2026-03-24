@@ -1,0 +1,39 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.643713+00:00",
+    "relevance_score": 0.533,
+    "matched_tags": [
+      "interoperability",
+      "ap2",
+      "mcp"
+    ],
+    "domain_match": false,
+    "source_path": "technology/79ed8cfa.json"
+  },
+  "framework": {
+    "id": "79ed8cfa",
+    "type": "claim",
+    "name": "AP2 extends A2A, not competes with it",
+    "description": "AP2 is explicitly an extension layer on top of A2A (agent communication) and MCP (tool access). It adds payment mandates to existing agent conversations rather than replacing them. This positions it as complementary infrastructure, not a competing standard.",
+    "domain": "technology",
+    "confidence": 0.9,
+    "tags": [
+      "ap2",
+      "a2a",
+      "mcp",
+      "interoperability"
+    ],
+    "raw_quote": "AP2 extends A2A so those conversations include structured payment mandates",
+    "value_tier": "bone",
+    "source": {
+      "title": "Agent Payments Protocol (AP2)",
+      "url": "https://agentpaymentsprotocol.info/"
+    },
+    "hunt_id": "4433457e",
+    "extracted_at": "2026-03-18T14:31:10.751899+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.218576+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

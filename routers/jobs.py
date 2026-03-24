@@ -78,11 +78,49 @@ class JobDeliverableRequest(BaseModel):
     def validate_url(cls, v):
         if not v.startswith(('https://', 'http://')):
             raise ValueError("Deliverable URL must start with https:// or http://")
-        # Block internal/private IPs
+        # Block internal/private IPs, cloud metadata, IPv6 loopback
         import re
-        hostname = v.split('//')[1].split('/')[0].split(':')[0]
-        if re.match(r'^(localhost|127\.|10\.|172\.(1[6-9]|2\d|3[01])\.|192\.168\.)', hostname):
-            raise ValueError("Deliverable URL cannot point to internal addresses")
+        # Extract hostname, handling IPv6 bracket notation
+        after_scheme = v.split('//')[1].split('/')[0].split('?')[0]
+        # Strip port
+        if after_scheme.startswith('['):
+            # IPv6: [::1]:8080
+            hostname = after_scheme.split(']')[0] + ']'
+        else:
+            hostname = after_scheme.split(':')[0]
+        
+        hostname_lower = hostname.lower().strip('[]')
+        
+        # Block private/internal ranges
+        BLOCKED_PATTERNS = [
+            r'^localhost$',
+            r'^127\.',                              # IPv4 loopback
+            r'^10\.',                               # RFC1918
+            r'^172\.(1[6-9]|2\d|3[01])\.',          # RFC1918
+            r'^192\.168\.',                          # RFC1918
+            r'^169\.254\.',                          # Link-local / cloud metadata (AWS, GCP, Azure)
+            r'^0\.',                                 # Current network
+            r'^100\.(6[4-9]|[7-9]\d|1[01]\d|12[0-7])\.', # CGN (RFC6598)
+        ]
+        # IPv6 blocked
+        BLOCKED_HOSTS = {
+            '::1', '::',  '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:0',
+            'fd00', 'fe80',  # ULA and link-local prefixes
+        }
+        
+        for pattern in BLOCKED_PATTERNS:
+            if re.match(pattern, hostname_lower):
+                raise ValueError("Deliverable URL cannot point to internal/private addresses")
+        
+        # Check IPv6 
+        if hostname_lower in BLOCKED_HOSTS or any(hostname_lower.startswith(p) for p in ('fd', 'fe80:', '::ffff:127.', '::ffff:10.', '::ffff:169.254.')):
+            raise ValueError("Deliverable URL cannot point to internal/private addresses")
+        
+        # Block cloud metadata endpoints by hostname
+        BLOCKED_DOMAINS = {'metadata.google.internal', 'metadata.google.com'}
+        if hostname_lower in BLOCKED_DOMAINS:
+            raise ValueError("Deliverable URL cannot point to cloud metadata endpoints")
+        
         return v
 
 

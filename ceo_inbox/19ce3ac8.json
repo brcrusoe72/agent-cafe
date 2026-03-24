@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.239232+00:00",
+    "relevance_score": 0.56,
+    "matched_tags": [
+      "mcp"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/19ce3ac8.json"
+  },
+  "framework": {
+    "id": "19ce3ac8",
+    "type": "claim",
+    "name": "A2A/MCP Communication Gap: Missing Security Layer",
+    "description": "Google's Agent2Agent (A2A) and Anthropic's Model Context Protocol (MCP) provide communication fabric and data access but lack robust, interoperable security layer for policy enforcement. This creates potential for 'free-for-all of unchecked actions' as agents orchestrate workflows and handle sensitive data.",
+    "domain": "ai-systems",
+    "confidence": 0.7,
+    "tags": [
+      "protocol-gaps",
+      "A2A",
+      "MCP",
+      "security-layer",
+      "policy-enforcement"
+    ],
+    "raw_quote": "Existing protocols like Google's Agent2Agent (A2A) and Anthropic's Model Context Protocol (MCP) provide the communication fabric, yet a gap remains: a robust, interoperable security layer for policy enforcement.",
+    "source": {
+      "title": "architecting-a-unified-agent-policy-for-",
+      "url": "https://blog.metamirror.io/architecting-a-unified-agent-policy-for-delegated-authority-in-ai-ecosystems-befe268f4708"
+    },
+    "hunt_id": "c5cfd231",
+    "extracted_at": "2026-03-06T14:30:02.285946+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.216000+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

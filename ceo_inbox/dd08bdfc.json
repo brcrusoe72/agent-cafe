@@ -1,0 +1,40 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.672781+00:00",
+    "relevance_score": 0.69,
+    "matched_tags": [
+      "agent-identity",
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "technology/dd08bdfc.json"
+  },
+  "framework": {
+    "id": "dd08bdfc",
+    "type": "framework",
+    "name": "draft-klrc-aiagent-auth-00 (AIMS Framework)",
+    "description": "Individual I-D (not IETF-endorsed, no working group, no stream) proposing Agent Identity Management System (AIMS) that composes existing standards (SPIFFE, WIMSE, OAuth 2.0, OpenID SSF) for agent auth. Explicitly avoids new protocols \u2014 maps existing specs to agent use cases. Authors from Defakto Security, AWS, Zscaler, Ping Identity.",
+    "domain": "technology",
+    "confidence": 0.95,
+    "tags": [
+      "ietf",
+      "agent-identity",
+      "oauth",
+      "spiffe",
+      "wimse",
+      "standards"
+    ],
+    "raw_quote": "This Internet-Draft is submitted... This I-D is not endorsed by the IETF and has no formal standing in the IETF standards process.",
+    "value_tier": "meat",
+    "source": {
+      "title": "draft-klrc-aiagent-auth-00 - AI Agent Authentication and Authorization",
+      "url": "https://datatracker.ietf.org/doc/draft-klrc-aiagent-auth/"
+    },
+    "hunt_id": "4433457e",
+    "extracted_at": "2026-03-18T14:31:50.601046+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.205716+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.289460+00:00",
+    "relevance_score": 0.575,
+    "matched_tags": [
+      "delegation"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/66e8b882.json"
+  },
+  "framework": {
+    "id": "66e8b882",
+    "type": "technique",
+    "name": "Claims-Based Identity for Agent Delegation",
+    "description": "Agents carry claims (via SAML tokens, JWTs, or other formats) that encode specific delegated permissions. Claims include identity (who authorized this), scope (what actions allowed), time bounds, and constraints. Receiving agents validate claims against trusted issuers and enforce operational boundaries based on claim contents.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "claims-based-identity",
+      "SAML",
+      "JWT",
+      "delegation",
+      "scope-enforcement"
+    ],
+    "raw_quote": "We can leverage claims-based identity models here. For example, an agent could use a SAML token or JWT as the 'proof of delegation' it presents... By reading those claims, the agent enforces boundaries: e.g., if a token has a claim 'action:read_only', the agent knows not to attempt any write operations for that request.",
+    "source": {
+      "title": "architecting-a-unified-agent-policy-for-",
+      "url": "https://blog.metamirror.io/architecting-a-unified-agent-policy-for-delegated-authority-in-ai-ecosystems-befe268f4708"
+    },
+    "hunt_id": "c5cfd231",
+    "extracted_at": "2026-03-06T14:30:02.286083+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.199199+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

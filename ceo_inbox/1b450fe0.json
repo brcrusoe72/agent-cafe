@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.403105+00:00",
+    "relevance_score": 0.575,
+    "matched_tags": [
+      "authorization"
+    ],
+    "domain_match": false,
+    "source_path": "finance/1b450fe0.json"
+  },
+  "framework": {
+    "id": "1b450fe0",
+    "type": "framework",
+    "name": "Authorization Lifecycle State Machine",
+    "description": "Stripe uses four discrete authorization states (pending, closed, expired, reversed) with explicit transitions. 'Reversed' status indicates merchant-initiated cancellation, distinct from system expiration or capture completion.",
+    "domain": "finance",
+    "confidence": 0.85,
+    "tags": [
+      "state-management",
+      "authorization",
+      "revocation-mechanisms"
+    ],
+    "raw_quote": "status enum: closed (declined or captured), expired (without capture), pending (awaiting approval/capture), reversed (by merchant)",
+    "value_tier": "meat",
+    "source": {
+      "title": "Authorizations | Stripe API Reference",
+      "url": "https://docs.stripe.com/api/issuing/authorizations"
+    },
+    "hunt_id": "bd6202e2",
+    "extracted_at": "2026-03-07T14:41:37.098668+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.180776+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

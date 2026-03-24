@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.323020+00:00",
+    "relevance_score": 0.71,
+    "matched_tags": [
+      "agent-architecture"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/9f77c97a.json"
+  },
+  "framework": {
+    "id": "9f77c97a",
+    "type": "framework",
+    "name": "Capability-Context Separation Principle",
+    "description": "Distinguishes capability envelope (model + tools + permissions, changes rarely, requires re-auth) from runtime context (conversation, user input, changes per-interaction, requires auditability). Argues existing frameworks conflate these \u2014 a tool addition and a user message are treated identically. This is the theoretical justification for why pure OAuth composition is insufficient.",
+    "domain": "ai-systems",
+    "confidence": 0.8,
+    "tags": [
+      "agent-architecture",
+      "security-model",
+      "capability-binding"
+    ],
+    "raw_quote": "Existing frameworks authenticate who an agent is and authorize what it may access, but none detect when the agent's capabilities have changed. This gap enables a class of attacks we term silent capability escalation.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Cryptographic Binding and Reproducibility Verification for AI Agent ...",
+      "url": "https://arxiv.org/html/2603.14332v1"
+    },
+    "hunt_id": "1421f7a8",
+    "extracted_at": "2026-03-18T14:10:34.621890+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.185194+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

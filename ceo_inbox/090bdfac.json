@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.227179+00:00",
+    "relevance_score": 0.69,
+    "matched_tags": [
+      "multi-agent"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/090bdfac.json"
+  },
+  "framework": {
+    "id": "090bdfac",
+    "type": "case_study",
+    "name": "Travel Planning Multi-Agent System",
+    "description": "Hypothetical example of A2A usage: personal assistant AI delegates to specialized travel agent AI for flight booking, which coordinates with hotel booking AI. Each agent uses MCP for tool access (flight/hotel APIs) while A2A manages inter-agent communication and task handoffs.",
+    "domain": "ai-systems",
+    "confidence": 0.6,
+    "tags": [
+      "multi-agent",
+      "travel",
+      "task-delegation",
+      "use-case"
+    ],
+    "raw_quote": "If you're planning a trip, your personal assistant AI might use A2A to hand off flight booking to a specialized travel agent AI, which then coordinates with a hotel booking AI.",
+    "source": {
+      "title": "watch?v=bP44vYoMvD4",
+      "url": "https://www.youtube.com/watch?v=bP44vYoMvD4"
+    },
+    "hunt_id": "e8165180",
+    "extracted_at": "2026-03-05T16:20:51.431625+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.215710+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

@@ -1,0 +1,34 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.499326+00:00",
+    "relevance_score": 0.29,
+    "matched_tags": [],
+    "domain_match": true,
+    "source_path": "sales-psychology/c0e513ac.json"
+  },
+  "framework": {
+    "id": "c0e513ac",
+    "type": "technique",
+    "name": "Forced Choice Upselling",
+    "description": "Steakhouse technique where server asks 'red or white?' instead of 'what can I get you to drink?' \u2014 creates false binary that presumes wine purchase, increasing attachment rate.",
+    "domain": "sales-psychology",
+    "confidence": 0.9,
+    "tags": [
+      "upselling",
+      "choice-architecture",
+      "behavioral-design",
+      "WRONG_DOMAIN"
+    ],
+    "raw_quote": "when the server comes up to your table they usually don't say what can I get you to drink they say red or white which again creates a forced choice to order wine",
+    "source": {
+      "title": "watch?v=OAGDylaxR0c",
+      "url": "https://www.youtube.com/watch?v=OAGDylaxR0c"
+    },
+    "hunt_id": "571e707b",
+    "extracted_at": "2026-03-03T20:09:40.316701+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.203959+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

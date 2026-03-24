@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.672958+00:00",
+    "relevance_score": 0.65,
+    "matched_tags": [
+      "security"
+    ],
+    "domain_match": false,
+    "source_path": "technology/dd5642d9.json"
+  },
+  "framework": {
+    "id": "dd5642d9",
+    "type": "technique",
+    "name": "VIC X-Pay + MLE Security Stack",
+    "description": "Visa uses HMAC-SHA256 X-Pay tokens for API auth plus JWE Message Level Encryption for payload security. This is traditional API security, not a novel agent-auth paradigm \u2014 contrast with Mastercard's cryptographic intent signing.",
+    "domain": "technology",
+    "confidence": 0.9,
+    "tags": [
+      "security",
+      "hmac",
+      "jwe",
+      "encryption"
+    ],
+    "raw_quote": "X-Pay token authentication (HMAC-SHA256)... VicApiClient: VIC APIs with automatic MLE encryption/decryption",
+    "value_tier": "bone",
+    "source": {
+      "title": "Visa Intelligent Commerce (VIC) - Integration Starter Kit",
+      "url": "https://github.com/visa/mcp/"
+    },
+    "hunt_id": "da550186",
+    "extracted_at": "2026-03-15T12:07:17.156369+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.186316+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

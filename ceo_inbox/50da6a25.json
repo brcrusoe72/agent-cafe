@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.274733+00:00",
+    "relevance_score": 0.58,
+    "matched_tags": [
+      "delegation",
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/50da6a25.json"
+  },
+  "framework": {
+    "id": "50da6a25",
+    "type": "claim",
+    "name": "OAuth Breaks at Multi-Hop Delegation",
+    "description": "Okta explicitly admits traditional OAuth tokens can't be restricted after issuance without recontacting the auth server, which breaks in decentralized agent systems. This is a major IdP vendor acknowledging the composition approach has a structural gap \u2014 even as they sell the composition approach.",
+    "domain": "ai-systems",
+    "confidence": 0.9,
+    "tags": [
+      "oauth",
+      "delegation",
+      "limitation",
+      "scope-attenuation"
+    ],
+    "raw_quote": "Traditional OAuth tokens can't be restricted after issuance without recontacting the auth server, which breaks in decentralized systems. Secure delegation needs token formats that support offline attenuation.",
+    "value_tier": "organ",
+    "source": {
+      "title": "Control the Chain, Secure the System: Fixing AI Agent Delegation",
+      "url": "https://www.okta.com/blog/ai/agent-security-delegation-chain/"
+    },
+    "hunt_id": "1421f7a8",
+    "extracted_at": "2026-03-18T14:09:06.828692+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.197360+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.372675+00:00",
+    "relevance_score": 0.645,
+    "matched_tags": [
+      "governance"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/fa23561f.json"
+  },
+  "framework": {
+    "id": "fa23561f",
+    "type": "framework",
+    "name": "Gartner AI-Ready Data Framework",
+    "description": "Five-step operational definition: align data to use cases, establish asset-level governance, active metadata management, reliable pipelines with SLAs, continuous quality assurance. Predicts 60% abandonment rate through 2026 for projects lacking this.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "data-readiness",
+      "governance",
+      "quality"
+    ],
+    "raw_quote": "AI-ready data is data aligned to specific use cases, actively governed at the asset level, supported by automated pipelines with quality gates, managed through live metadata, and continuously quality-assured.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Why 95% of AI Projects Fail and How Data Fixes It - SR analytics",
+      "url": "https://sranalytics.io/blog/why-95-of-ai-projects-fail/"
+    },
+    "hunt_id": "898b4fa2",
+    "extracted_at": "2026-03-12T16:19:27.879227+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.187475+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

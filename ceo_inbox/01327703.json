@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.391888+00:00",
+    "relevance_score": 0.425,
+    "matched_tags": [
+      "economics"
+    ],
+    "domain_match": false,
+    "source_path": "finance/01327703.json"
+  },
+  "framework": {
+    "id": "01327703",
+    "type": "claim",
+    "name": "Cost Inversion at Scale for Agent Systems",
+    "description": "No-code agent platforms have lower initial costs but higher costs at scale due to usage-based pricing, while code-based approaches have higher upfront costs (engineering salaries) but become cheaper at scale.",
+    "domain": "finance",
+    "confidence": 0.75,
+    "tags": [
+      "pricing-models",
+      "scaling",
+      "economics",
+      "cost-optimization"
+    ],
+    "raw_quote": "Cost is usually low when you are using no code tools initially but when you start using that system at scale your cost will go high... if you're using coding frameworks the initial cost is higher... but at scale overall it is going to be your cheaper option.",
+    "source": {
+      "title": "watch?v=9-6LtfjYmpg",
+      "url": "https://www.youtube.com/watch?v=9-6LtfjYmpg"
+    },
+    "hunt_id": "207545cd",
+    "extracted_at": "2026-03-05T17:24:33.522654+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.207533+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

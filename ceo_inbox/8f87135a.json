@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.557856+00:00",
+    "relevance_score": 0.44,
+    "matched_tags": [
+      "economics"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/8f87135a.json"
+  },
+  "framework": {
+    "id": "8f87135a",
+    "type": "framework",
+    "name": "Expert Network Business Model as COGS Optimization",
+    "description": "Expert networks are 'highly profitable' and treat consultants as 'cost of goods sold.' Their incentive is selecting most profitable consultants (highest client markup, not highest consultant value). Higher consultant rates trigger higher client markups, potentially reducing selection odds despite better expertise.",
+    "domain": "strategy",
+    "confidence": 0.9,
+    "tags": [
+      "business-models",
+      "expert-networks",
+      "incentives",
+      "economics"
+    ],
+    "raw_quote": "Expert networks are a highly profitable business, and you are their cost of goods sold... it is always in an expert network's interest to have their client schedule the most profitable consultants. Yes, that means even if you are a great fit for the project, your consulting rate may exclude you from being shown to the client.",
+    "value_tier": "organ",
+    "source": {
+      "title": "Setting Your Expert Network Consulting Rate \u2022 Expert Opportunities",
+      "url": "https://expertopportunities.com/expert-network-hourly-rates/"
+    },
+    "hunt_id": "b38ad25e",
+    "extracted_at": "2026-03-07T16:15:35.162178+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.209905+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

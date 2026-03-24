@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.361359+00:00",
+    "relevance_score": 0.71,
+    "matched_tags": [
+      "multi-agent"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/e236cc60.json"
+  },
+  "framework": {
+    "id": "e236cc60",
+    "type": "case_study",
+    "name": "Coordinated Multi-Agent Budget-Constrained Booking",
+    "description": "Example of agent coordinating across multiple merchants (airline, hotel) with total budget constraint. Agent interacts with multiple other agents and booking platforms, finds combination within $700 budget, executes both bookings simultaneously with cryptographic signatures. Demonstrates cross-platform authorization with spending limits.",
+    "domain": "ai-systems",
+    "confidence": 0.8,
+    "tags": [
+      "multi-agent",
+      "budget-constraints",
+      "orchestration",
+      "travel"
+    ],
+    "raw_quote": "A user tells their agent: 'Book me a round-trip flight and a hotel in Palm Springs for the first weekend of November, with a total budget of USD $700.' The agent can then interact with both airline and hotel agents... and once it finds a combination that fits the budget, it can execute both cryptographically-signed bookings simultaneously.",
+    "source": {
+      "title": "",
+      "url": "https://cybersecurityasia.net/google-pioneers-agent-payments-protocol/"
+    },
+    "hunt_id": "4f110637",
+    "extracted_at": "2026-03-06T14:28:17.938818+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.220516+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

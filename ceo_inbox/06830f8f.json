@@ -1,0 +1,35 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.608389+00:00",
+    "relevance_score": 0.585,
+    "matched_tags": [
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "technology/06830f8f.json"
+  },
+  "framework": {
+    "id": "06830f8f",
+    "type": "technique",
+    "name": "OAuth 2.0 Protected Credential Issuance",
+    "description": "Uses OAuth 2.0 Access Tokens to protect credential issuance endpoints, allowing existing OAuth infrastructure to extend into verifiable credentials. Means financial OAuth deployments could add agent authorization credential issuance without new auth infrastructure.",
+    "domain": "technology",
+    "confidence": 0.95,
+    "tags": [
+      "oauth",
+      "backwards-compatible",
+      "financial-infrastructure"
+    ],
+    "raw_quote": "Access to this API is authorized using OAuth 2.0, i.e., the Wallet uses OAuth 2.0 to obtain authorization to receive Verifiable Credentials. This way the issuance process can benefit from the proven security, simplicity, and flexibility of OAuth 2.0 and existing OAuth 2.0 deployments",
+    "source": {
+      "title": "openid-4-verifiable-credential-issuance-",
+      "url": "https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html"
+    },
+    "hunt_id": "4f110637",
+    "extracted_at": "2026-03-06T14:26:52.772669+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.193186+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

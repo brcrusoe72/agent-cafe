@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.574531+00:00",
+    "relevance_score": 0.575,
+    "matched_tags": [
+      "pricing"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/bbb4a4dd.json"
+  },
+  "framework": {
+    "id": "bbb4a4dd",
+    "type": "technique",
+    "name": "20% Close Rate Pricing Discovery",
+    "description": "Keep increasing prices until only ~20% of prospects say yes. This is the optimal price point \u2014 high enough to be profitable, low enough to maintain deal flow. Acts as market-based pricing calibration mechanism.",
+    "domain": "strategy",
+    "confidence": 0.85,
+    "tags": [
+      "pricing",
+      "sales",
+      "discovery",
+      "optimization"
+    ],
+    "raw_quote": "my one recommendation is keep upping your price until you hit a point where only about 20% of people are saying yes to your projects and you should be making a really good amount of money at that point.",
+    "source": {
+      "title": "$50/Hour to $10K Agents: AI Voice Agency Pricing Masterclass",
+      "url": "https://www.youtube.com/watch?v=JxusnOQ77Gc"
+    },
+    "hunt_id": "1295ff45",
+    "extracted_at": "2026-03-05T20:56:57.686422+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.210579+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.353525+00:00",
+    "relevance_score": 0.645,
+    "matched_tags": [
+      "governance"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/d2973f64.json"
+  },
+  "framework": {
+    "id": "d2973f64",
+    "type": "framework",
+    "name": "RAND Five Anti-Patterns of AI Failure",
+    "description": "RAND interviewed 65 experienced data scientists/engineers and identified 5 root causes: (1) misunderstood problem definition, (2) insufficient training data, (3) technology-first vs problem-first thinking, (4) inadequate infrastructure for data governance and model deployment, (5) applying AI to problems too difficult for AI. Notably, #1 (miscommunication) is the MOST common cause \u2014 not technical failure.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "failure-modes",
+      "organizational",
+      "mlops",
+      "governance"
+    ],
+    "raw_quote": "Misunderstandings and miscommunications about the intent and purpose of the project are the most common reasons for AI project failure.",
+    "value_tier": "meat",
+    "source": {
+      "title": "The Root Causes of Failure for Artificial Intelligence Projects and How They ...",
+      "url": "https://www.rand.org/pubs/research_reports/RRA2680-1.html"
+    },
+    "hunt_id": "e234ddc0",
+    "extracted_at": "2026-03-17T13:39:43.359863+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.186114+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

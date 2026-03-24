@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.424090+00:00",
+    "relevance_score": 0.585,
+    "matched_tags": [
+      "authorization"
+    ],
+    "domain_match": false,
+    "source_path": "finance/8fbe24ed.json"
+  },
+  "framework": {
+    "id": "8fbe24ed",
+    "type": "framework",
+    "name": "Stripe Issuing Authorization Controls",
+    "description": "Stripe's existing card issuing infrastructure provides per-card spending limits with merchant category restrictions, time-interval boundaries (daily), and real-time approve/decline endpoints. Authorization objects track request history with cryptographic verification data (CVC, expiry, address checks).",
+    "domain": "finance",
+    "confidence": 0.95,
+    "tags": [
+      "payment-infrastructure",
+      "spending-controls",
+      "authorization",
+      "card-issuing"
+    ],
+    "raw_quote": "spending_controls: { allowed_categories: null, blocked_categories: null, spending_limits: [{ amount: 50000, categories: [], interval: 'daily' }], spending_limits_currency: 'usd' }",
+    "value_tier": "bone",
+    "source": {
+      "title": "Authorizations | Stripe API Reference",
+      "url": "https://docs.stripe.com/api/issuing/authorizations"
+    },
+    "hunt_id": "bd6202e2",
+    "extracted_at": "2026-03-07T14:41:37.098413+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.184356+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

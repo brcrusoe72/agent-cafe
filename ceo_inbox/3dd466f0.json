@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.527387+00:00",
+    "relevance_score": 0.585,
+    "matched_tags": [
+      "pricing"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/3dd466f0.json"
+  },
+  "framework": {
+    "id": "3dd466f0",
+    "type": "claim",
+    "name": "Pricing as Product Framing",
+    "description": "Price isn't just exchange rate \u2014 it impacts close rates, client quality, sales cycle, hiring capacity, product quality, and respect level. Pricing IS positioning. Same build at different price points attracts different buyers and sets different expectations.",
+    "domain": "strategy",
+    "confidence": 0.95,
+    "tags": [
+      "pricing",
+      "positioning",
+      "perception",
+      "sales-psychology"
+    ],
+    "raw_quote": "pricing is so important because... It impacts your close rates. It impacts the quality of clients you actually attract. Your sales cycle length and complexity, your hiring capacity, your talent quality, the quality of your actual product that you can afford to provide, how much people respect you.",
+    "source": {
+      "title": "$50/Hour to $10K Agents: AI Voice Agency Pricing Masterclass",
+      "url": "https://www.youtube.com/watch?v=JxusnOQ77Gc"
+    },
+    "hunt_id": "1295ff45",
+    "extracted_at": "2026-03-05T20:56:57.686767+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.208608+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

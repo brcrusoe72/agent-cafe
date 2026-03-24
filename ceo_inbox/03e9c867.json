@@ -1,0 +1,39 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.392656+00:00",
+    "relevance_score": 0.593,
+    "matched_tags": [
+      "trust",
+      "authentication",
+      "ap2"
+    ],
+    "domain_match": false,
+    "source_path": "finance/03e9c867.json"
+  },
+  "framework": {
+    "id": "03e9c867",
+    "type": "contrarian",
+    "name": "AP2 reframes agent payments as authentication problem, not rails problem",
+    "description": "AP2's core insight is that the hard problem isn't moving money \u2014 existing rails work fine. The hard problem is proving an agent has authority to spend. This reframes the entire competitive landscape: processors don't need new payment rails, they need new trust/auth layers. Visa TAP and AP2 are both solving for trust, not settlement.",
+    "domain": "finance",
+    "confidence": 0.8,
+    "tags": [
+      "ap2",
+      "visa-tap",
+      "authentication",
+      "trust"
+    ],
+    "raw_quote": "today's payment systems generally assume a human is directly clicking 'buy' on a trusted surface, the rise of autonomous agents and their ability to initiate a payment breaks this fundamental assumption",
+    "value_tier": "organ",
+    "source": {
+      "title": "Announcing Agent Payments Protocol (AP2) | Google Cloud Blog",
+      "url": "https://cloud.google.com/blog/products/ai-machine-learning/announcing-agents-to-payments-ap2-protocol"
+    },
+    "hunt_id": "e7408160",
+    "extracted_at": "2026-03-14T14:03:05.457564+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.193051+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

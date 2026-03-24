@@ -1,0 +1,39 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.606518+00:00",
+    "relevance_score": 0.562,
+    "matched_tags": [
+      "delegation",
+      "authorization",
+      "open-standard"
+    ],
+    "domain_match": false,
+    "source_path": "technology/00518b87.json"
+  },
+  "framework": {
+    "id": "00518b87",
+    "type": "framework",
+    "name": "OAuth 2.0 Scope-Based Authorization Model",
+    "description": "OAuth 2.0 defines authorization through 'scopes' \u2014 granular permissions that clients request and resource servers enforce. Scopes are text strings (e.g., 'read:email', 'write:posts') that define what actions are permitted. This is enforced via access tokens that carry scope metadata.",
+    "domain": "technology",
+    "confidence": 0.95,
+    "tags": [
+      "authorization",
+      "delegation",
+      "scopes",
+      "tokens",
+      "open-standard"
+    ],
+    "raw_quote": "OAuth 2.0 is the industry-standard protocol for authorization. OAuth 2.0 focuses on client developer simplicity while providing specific authorization flows for web applications, desktop applications, mobile phones, and living room devices.",
+    "source": {
+      "title": "OAuth 2.0 \u2014 OAuth",
+      "url": "https://oauth.net/2/"
+    },
+    "hunt_id": "c5cfd231",
+    "extracted_at": "2026-03-06T14:24:59.957907+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.179344+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

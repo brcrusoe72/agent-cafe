@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.614873+00:00",
+    "relevance_score": 0.645,
+    "matched_tags": [
+      "liability"
+    ],
+    "domain_match": false,
+    "source_path": "technology/19ba72d6.json"
+  },
+  "framework": {
+    "id": "19ba72d6",
+    "type": "technique",
+    "name": "Semantic Audit Trail",
+    "description": "Chains original natural-language prompt \u2192 agent's structured interpretation \u2192 user acknowledgment \u2192 executed action. Solves the 'I didn't say that' dispute problem by embedding prompt provenance as a JWT-VC inside the authorization token itself.",
+    "domain": "technology",
+    "confidence": 0.85,
+    "tags": [
+      "audit",
+      "provenance",
+      "liability"
+    ],
+    "raw_quote": "Records what the user originally said to prevent disputes such as: 'I didn't say I wanted to buy anything!'",
+    "value_tier": "meat",
+    "source": {
+      "title": "Agent Operation Authorization - IETF",
+      "url": "https://www.ietf.org/archive/id/draft-liu-agent-operation-authorization-00.html"
+    },
+    "hunt_id": "eeb6b019",
+    "extracted_at": "2026-03-15T12:15:28.800278+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.180694+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

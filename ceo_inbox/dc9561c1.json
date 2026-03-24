@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.356967+00:00",
+    "relevance_score": 0.565,
+    "matched_tags": [
+      "authentication"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/dc9561c1.json"
+  },
+  "framework": {
+    "id": "dc9561c1",
+    "type": "framework",
+    "name": "Know-Your-Agent (KYA) Protocol Extension",
+    "description": "Extending Know-Your-Customer identity verification to autonomous agents. Instead of verifying human identity alone, financial systems would verify an agent's identity/authorization as an intermediary acting for a user. This requires new authentication methods or digital certificates for agents to prove 'this transaction was initiated by my authorized AI agent' and not a fraudster.",
+    "domain": "ai-systems",
+    "confidence": 0.75,
+    "tags": [
+      "identity",
+      "authentication",
+      "kyc",
+      "agent-authorization",
+      "financial-regulation"
+    ],
+    "raw_quote": "Some experts suggest extending the concept of Know-Your-Customer to 'Know-Your-Agent' \u2013 verifying an agent's identity/authorization as an intermediary acting for a user.",
+    "source": {
+      "title": "Enabling Autonomous AI Agents to Make Payments - LinkedIn",
+      "url": "https://www.linkedin.com/pulse/enabling-autonomous-ai-agents-make-payments-challenges-david-paluy-xmq4c"
+    },
+    "hunt_id": "c5cfd231",
+    "extracted_at": "2026-03-06T14:21:31.646548+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.205648+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

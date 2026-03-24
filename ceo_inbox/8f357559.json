@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.557193+00:00",
+    "relevance_score": 0.58,
+    "matched_tags": [
+      "pricing"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/8f357559.json"
+  },
+  "framework": {
+    "id": "8f357559",
+    "type": "framework",
+    "name": "Variable vs Category Pricing Models in Expert Networks",
+    "description": "Expert networks use two billing structures: Variable Pricing (your rate determines client cost on sliding scale) and Category Pricing (your rate falls into predefined ranges with fixed client costs). In Category Pricing, pricing at $199 vs $200 can determine which tier you're in, dramatically affecting selection odds.",
+    "domain": "strategy",
+    "confidence": 0.9,
+    "tags": [
+      "pricing",
+      "expert-networks",
+      "monetization",
+      "consulting"
+    ],
+    "raw_quote": "In Category Pricing, your consulting hourly rate will fall within a range pre-determined by the client, and the client has already agreed upon the same charge per category. In this scenario, it is crucial you price your rate within the lower category ($199 instead of $200) to increase your profile competitiveness.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Setting Your Expert Network Consulting Rate \u2022 Expert Opportunities",
+      "url": "https://expertopportunities.com/expert-network-hourly-rates/"
+    },
+    "hunt_id": "b38ad25e",
+    "extracted_at": "2026-03-07T16:15:35.160926+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.209764+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.399280+00:00",
+    "relevance_score": 0.51,
+    "matched_tags": [
+      "stripe"
+    ],
+    "domain_match": false,
+    "source_path": "finance/1026c0d8.json"
+  },
+  "framework": {
+    "id": "1026c0d8",
+    "type": "framework",
+    "name": "Temporal Authorization Windows",
+    "description": "Time-based spending limits support per_authorization, daily, weekly, monthly, yearly, and all_time intervals with UTC midnight boundaries for date-based periods. Enables agent budget cycling but lacks sub-daily time-of-day restrictions.",
+    "domain": "finance",
+    "confidence": 0.9,
+    "tags": [
+      "temporal-controls",
+      "stripe",
+      "spending-intervals",
+      "budgets"
+    ],
+    "raw_quote": "interval enum: Time interval that the amount applies to... All date-based intervals start at midnight UTC.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Issuing spending controls | Stripe Documentation",
+      "url": "https://docs.stripe.com/issuing/controls/spending-controls"
+    },
+    "hunt_id": "b977a620",
+    "extracted_at": "2026-03-07T14:45:43.641903+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.212561+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "payment_infrastructure"
+}

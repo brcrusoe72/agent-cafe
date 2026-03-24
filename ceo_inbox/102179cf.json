@@ -1,0 +1,35 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.232991+00:00",
+    "relevance_score": 0.705,
+    "matched_tags": [
+      "agent-architecture"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/102179cf.json"
+  },
+  "framework": {
+    "id": "102179cf",
+    "type": "framework",
+    "name": "Static Protocols vs Dynamic Agents Tradeoff",
+    "description": "Identifies fundamental tension between rigid permission structures (good for simple tasks) and adaptive agent behavior (needed for complex workflows). Argues that as agents become more autonomous, static interface schemas reduce both attack surface AND operational capability.",
+    "domain": "ai-systems",
+    "confidence": 0.75,
+    "tags": [
+      "agent-architecture",
+      "security-flexibility-tradeoff",
+      "system-design"
+    ],
+    "raw_quote": "Static interface schemas and rigid permission structures begin to break down. They reduce the surface area for attack but also reduce the agent's ability to reason through complex workflows.",
+    "source": {
+      "title": "understanding-mcp-limitations-beyond-the",
+      "url": "https://www.f5.com/company/blog/understanding-mcp-limitations-beyond-the-protocol"
+    },
+    "hunt_id": "e8165180",
+    "extracted_at": "2026-03-05T16:16:05.395599+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.180185+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.404715+00:00",
+    "relevance_score": 0.57,
+    "matched_tags": [
+      "delegation"
+    ],
+    "domain_match": false,
+    "source_path": "finance/21f3d2a9.json"
+  },
+  "framework": {
+    "id": "21f3d2a9",
+    "type": "framework",
+    "name": "Offline Root / Online Delegate Architecture",
+    "description": "The 'offline root, online delegates' pattern is a live production architecture where a hardware-secured master key never transacts directly \u2014 it only authorizes short-lived derivative keys with constrained scopes. This is bearer-credential delegation: the session key IS the portable spending authority, no callback required.",
+    "domain": "finance",
+    "confidence": 0.8,
+    "tags": [
+      "key-hierarchy",
+      "delegation",
+      "bearer-credentials"
+    ],
+    "raw_quote": "Keep the master seed in x402 and authorize time-bound session keys for bots and microservices. Rotate keys on schedule, and revoke on incident.",
+    "value_tier": "meat",
+    "source": {
+      "title": "x402 in Action: Real Use Cases for Developers and AI Startups",
+      "url": "https://onekey.so/blog/ecosystem/x402-in-action-real-use-cases-for-developers-and-ai-startups/"
+    },
+    "hunt_id": "eeb6b019",
+    "extracted_at": "2026-03-15T12:16:50.347228+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.194474+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

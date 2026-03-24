@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.422301+00:00",
+    "relevance_score": 0.72,
+    "matched_tags": [
+      "platform-strategy"
+    ],
+    "domain_match": false,
+    "source_path": "finance/88c32f30.json"
+  },
+  "framework": {
+    "id": "88c32f30",
+    "type": "framework",
+    "name": "Embedded Finance Super-App Strategy",
+    "description": "PayPal demonstrates a comprehensive financial ecosystem that embeds banking, payments, credit, savings, and investment services within a single platform. This represents the evolution from payment processor to full financial infrastructure provider.",
+    "domain": "finance",
+    "confidence": 0.9,
+    "tags": [
+      "fintech",
+      "embedded-finance",
+      "platform-strategy",
+      "financial-services"
+    ],
+    "raw_quote": "Pay, send, and save smarter... Get 3.50% APY with your PayPal Savings account... Crypto the easy way",
+    "source": {
+      "title": "",
+      "url": "https://www.paypal.com/"
+    },
+    "hunt_id": "1486004a",
+    "extracted_at": "2026-03-03T17:39:44.626172+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.190360+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "marketplace_design"
+}

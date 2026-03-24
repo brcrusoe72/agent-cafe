@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.363195+00:00",
+    "relevance_score": 0.7,
+    "matched_tags": [
+      "trust"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/e52141e8.json"
+  },
+  "framework": {
+    "id": "e52141e8",
+    "type": "technique",
+    "name": "Verifiability as Trust Proxy",
+    "description": "Tasks with high verifiability allow 'trustless' delegation (automated checking). Low-verifiability tasks require high-trust delegatees. This creates a natural constraint on delegation depth \u2014 you can only delegate deep on verifiable tasks.",
+    "domain": "ai-systems",
+    "confidence": 0.7,
+    "tags": [
+      "verifiability",
+      "trust",
+      "delegation-depth"
+    ],
+    "raw_quote": "Tasks with high verifiability (e.g., formal code verification, mathematical proofs) allow for 'trustless' delegation or automated checking",
+    "value_tier": "meat",
+    "source": {
+      "title": "Intelligent AI Delegation",
+      "url": "https://arxiv.org/html/2602.11865v1"
+    },
+    "hunt_id": "d39fbdac",
+    "extracted_at": "2026-03-14T14:28:05.841093+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.206112+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

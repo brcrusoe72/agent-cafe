@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.277656+00:00",
+    "relevance_score": 0.56,
+    "matched_tags": [
+      "authorization"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/5613fa25.json"
+  },
+  "framework": {
+    "id": "5613fa25",
+    "type": "framework",
+    "name": "Controlled Autonomy Model",
+    "description": "A design pattern where AI agents are granted bounded permissions to execute transactions within predefined limits (spending caps, transaction types, approved merchants) while the bank retains custody of funds and final authority. Automation replaces manual approvals, but within a sandbox of hard constraints.",
+    "domain": "ai-systems",
+    "confidence": 0.7,
+    "tags": [
+      "authorization",
+      "permissions",
+      "bounded-autonomy",
+      "banking"
+    ],
+    "raw_quote": "Digital payment permissions were issued to agents defining exactly what actions they could perform. Spending limits, transaction types, and conditions were set as hard boundaries. Funds remained under full bank custody within a private transaction sandbox.",
+    "source": {
+      "title": "How to Integrate Agentic Commerce into Payment Systems",
+      "url": "https://www.youtube.com/watch?v=1lxwuTF-t4E"
+    },
+    "hunt_id": "7d3db790",
+    "extracted_at": "2026-03-03T18:49:30.815952+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.182397+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

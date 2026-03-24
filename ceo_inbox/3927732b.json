@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.261971+00:00",
+    "relevance_score": 0.655,
+    "matched_tags": [
+      "security"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/3927732b.json"
+  },
+  "framework": {
+    "id": "3927732b",
+    "type": "claim",
+    "name": "Prompt-Based Limitations Are Insufficient",
+    "description": "The paper argues that relying on prompts to constrain agent behavior is inadequate due to failure modes like prompt injection, jailbreaks, and inherent model unreliability. Instead, technical enforcement at the protocol level is necessary.",
+    "domain": "ai-systems",
+    "confidence": 0.95,
+    "tags": [
+      "prompt-injection",
+      "security",
+      "jailbreaking",
+      "technical-enforcement"
+    ],
+    "raw_quote": "A user can provide a strong prompt to an agent to limit its actions, but this comes with a variety of failure modes. Access to tools or websites can be blocked, but this is limited in the granularity of control... this introduces a variety of security concerns and relies upon the underlying reliability of the AI system to not take unexpected actions or be vulnerable to attacks or jailbreaks.",
+    "source": {
+      "title": "2501.09674v1",
+      "url": "https://arxiv.org/html/2501.09674v1"
+    },
+    "hunt_id": "c5cfd231",
+    "extracted_at": "2026-03-06T14:28:18.509214+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.181704+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

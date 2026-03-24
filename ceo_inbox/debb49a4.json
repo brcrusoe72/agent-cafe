@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.673581+00:00",
+    "relevance_score": 0.79,
+    "matched_tags": [
+      "agent-commerce"
+    ],
+    "domain_match": false,
+    "source_path": "technology/debb49a4.json"
+  },
+  "framework": {
+    "id": "debb49a4",
+    "type": "claim",
+    "name": "Adyen publicly endorsing Verifiable Intent as foundational",
+    "description": "Adyen CTO Tom Adams gave a public endorsement of Verifiable Intent, positioning it as foundational for agent-initiated transactions. This is Adyen's first concrete public stance on agent commerce architecture \u2014 they're backing Mastercard's open standard rather than building proprietary.",
+    "domain": "technology",
+    "confidence": 0.9,
+    "tags": [
+      "adyen",
+      "agent-commerce",
+      "partnerships"
+    ],
+    "raw_quote": "As consumers increasingly transact through AI agents, having a verifiable, privacy-preserving way to confirm customer intent becomes foundational. Approaches like Verifiable Intent can help merchants anchor agent-initiated transactions in explicit authorization.",
+    "value_tier": "meat",
+    "source": {
+      "title": "How Verifiable Intent builds trust in agentic AI commerce - Mastercard",
+      "url": "https://www.mastercard.com/us/en/news-and-trends/stories/2026/verifiable-intent.html"
+    },
+    "hunt_id": "e7408160",
+    "extracted_at": "2026-03-14T14:04:16.617830+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.211409+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.596393+00:00",
+    "relevance_score": 0.635,
+    "matched_tags": [
+      "governance"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/f177643b.json"
+  },
+  "framework": {
+    "id": "f177643b",
+    "type": "claim",
+    "name": "Accountability Proportional to Impact Principle",
+    "description": "The more AI application influences people's behavior and livelihoods, the more care is needed. Oversight, accountability, and enforcement mechanisms required for ethical outcomes, but proportional to stakes.",
+    "domain": "strategy",
+    "confidence": 0.75,
+    "tags": [
+      "accountability",
+      "governance",
+      "ethics",
+      "risk-management"
+    ],
+    "raw_quote": "The more the AI application could influence people's behavior and livelihoods, the more care is needed.",
+    "value_tier": "bone",
+    "source": {
+      "title": "FIVE AI FAILS (AND HOW WE CAN LEARN FROM THEM) - MITRE.org",
+      "url": "https://www.mitre.org/sites/default/files/2025-03/pr-21-2414-five-ai-fails.pdf"
+    },
+    "hunt_id": "8c8aa3cc",
+    "extracted_at": "2026-03-12T16:26:20.276928+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.187213+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

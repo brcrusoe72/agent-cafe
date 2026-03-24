@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.657870+00:00",
+    "relevance_score": 0.72,
+    "matched_tags": [
+      "trust"
+    ],
+    "domain_match": false,
+    "source_path": "technology/ad69742c.json"
+  },
+  "framework": {
+    "id": "ad69742c",
+    "type": "framework",
+    "name": "API as Contract",
+    "description": "An API represents a stable agreement between service providers and developers. Stability and predictable evolution increase developer confidence and API adoption. This contractual model assumes static, predetermined interfaces.",
+    "domain": "technology",
+    "confidence": 0.9,
+    "tags": [
+      "contracts",
+      "stability",
+      "trust",
+      "developer-experience"
+    ],
+    "raw_quote": "An API is often compared to a contract. It represents an agreement between parties: a service provider who offers the API and the software developers who rely upon it.",
+    "source": {
+      "title": "API",
+      "url": "https://en.wikipedia.org/wiki/API"
+    },
+    "hunt_id": "207545cd",
+    "extracted_at": "2026-03-05T17:29:11.326131+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.202722+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

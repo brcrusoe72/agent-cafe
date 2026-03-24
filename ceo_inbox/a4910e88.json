@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.325921+00:00",
+    "relevance_score": 0.725,
+    "matched_tags": [
+      "agent-architecture"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/a4910e88.json"
+  },
+  "framework": {
+    "id": "a4910e88",
+    "type": "framework",
+    "name": "Agent Evaluation Taxonomy",
+    "description": "A structured approach to evaluating AI agents using three types of graders (code-based, model-based, human) applied to two outputs (transcript and outcome). Includes concepts of tasks, trials, graders, transcripts, outcomes, evaluation harnesses, and agent harnesses. Distinguishes between capability evals (measuring potential) and regression evals (preventing backsliding).",
+    "domain": "ai-systems",
+    "confidence": 0.95,
+    "tags": [
+      "evaluation",
+      "testing",
+      "agent-architecture",
+      "quality-assurance",
+      "grading-systems"
+    ],
+    "raw_quote": "An evaluation ('eval') is a test for an AI system: give an AI an input, then apply grading logic to its output to measure success... Agent evaluations are even more complex. Agents use tools across many turns, modifying state in the environment and adapting as they go.",
+    "source": {
+      "title": "demystifying-evals-for-ai-agents",
+      "url": "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents"
+    },
+    "hunt_id": "c9aa917a",
+    "extracted_at": "2026-03-04T21:04:26.049046+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.219416+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

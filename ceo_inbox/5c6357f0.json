@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.280766+00:00",
+    "relevance_score": 0.645,
+    "matched_tags": [
+      "governance"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/5c6357f0.json"
+  },
+  "framework": {
+    "id": "5c6357f0",
+    "type": "claim",
+    "name": "Data Readiness ROI Impact",
+    "description": "Organizations with AI-ready data report 26% improvement in business outcomes. Those without see over 60% of AI projects abandoned. 74% of companies struggle to scale AI value due to inadequate data foundations, with 62% citing data governance as the greatest impediment.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "data-readiness",
+      "roi-impact",
+      "governance"
+    ],
+    "raw_quote": "Organizations with AI-ready data report 26% improvement in business outcomes. Those without see over 60% of AI projects abandoned. Research shows 74% of companies struggle to scale AI value due to inadequate data foundations, and 62% cite data governance as the greatest impediment.",
+    "value_tier": "meat",
+    "source": {
+      "title": "The four AI failure modes keeping marketing teams stuck - WRITER",
+      "url": "https://writer.com/blog/four-ai-failure-modes/"
+    },
+    "hunt_id": "e1731343",
+    "extracted_at": "2026-03-10T14:08:18.541597+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.182668+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.426748+00:00",
+    "relevance_score": 0.51,
+    "matched_tags": [
+      "interoperability"
+    ],
+    "domain_match": false,
+    "source_path": "finance/a1659b9b.json"
+  },
+  "framework": {
+    "id": "a1659b9b",
+    "type": "claim",
+    "name": "Payment-Method Agnosticism",
+    "description": "AP2 explicitly designed to support 'different payment types\u2013from credit and debit cards to stablecoins and real-time bank transfers' with A2A x402 extension for crypto payments. Positions as universal protocol layer above payment rails rather than tied to specific networks.",
+    "domain": "finance",
+    "confidence": 0.9,
+    "tags": [
+      "interoperability",
+      "payment-rails",
+      "cryptocurrency",
+      "protocol-design"
+    ],
+    "raw_quote": "AP2 is designed as a universal protocol, providing security and trust for a variety of payments like stablecoins and cryptocurrencies.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Announcing Agent Payments Protocol (AP2) | Google Cloud Blog",
+      "url": "https://cloud.google.com/blog/products/ai-machine-learning/announcing-agents-to-payments-ap2-protocol"
+    },
+    "hunt_id": "b977a620",
+    "extracted_at": "2026-03-07T14:42:04.608181+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.219279+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

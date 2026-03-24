@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.656939+00:00",
+    "relevance_score": 0.547,
+    "matched_tags": [
+      "cryptography",
+      "authentication",
+      "verifiable-credentials"
+    ],
+    "domain_match": false,
+    "source_path": "technology/aa40fa63.json"
+  },
+  "framework": {
+    "id": "aa40fa63",
+    "type": "technique",
+    "name": "Verifiable Credentials for Agent Authorization",
+    "description": "Uses FIDO Alliance verifiable credentials (VCs) to cryptographically sign Mandates, creating tamper-proof proof of user authorization. VCs provide the authentication layer (proving user identity), Mandates provide the authorization layer (proving what agent can do). Partnership with FIDO Alliance on capturing consumer intent in agentic context.",
+    "domain": "technology",
+    "confidence": 0.8,
+    "tags": [
+      "verifiable-credentials",
+      "cryptography",
+      "authentication",
+      "FIDO"
+    ],
+    "raw_quote": "Mandates are signed by verifiable credentials (VCs) and act as the foundational evidence for every transaction... we're advancing verifiable credentials to capture and secure consumers' intent in this dynamic new context [via FIDO Alliance work]",
+    "source": {
+      "title": "",
+      "url": "https://cybersecurityasia.net/google-pioneers-agent-payments-protocol/"
+    },
+    "hunt_id": "4f110637",
+    "extracted_at": "2026-03-06T14:28:17.938339+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.202530+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

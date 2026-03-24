@@ -36,6 +36,7 @@ def init_database():
                 description TEXT NOT NULL,
                 api_key TEXT UNIQUE NOT NULL,
                 api_key_prefix TEXT NOT NULL DEFAULT '',
+                api_key_salt TEXT NOT NULL DEFAULT '',
                 contact_email TEXT NOT NULL,
                 capabilities_claimed TEXT NOT NULL,  -- JSON array
                 capabilities_verified TEXT NOT NULL,  -- JSON array
@@ -56,6 +57,12 @@ def init_database():
                 suspicious_patterns TEXT NOT NULL DEFAULT '[]'  -- JSON array
             )
         """)
+        
+        # Migration: add api_key_salt column if it doesn't exist (for existing DBs)
+        try:
+            conn.execute("SELECT api_key_salt FROM agents LIMIT 1")
+        except sqlite3.OperationalError:
+            conn.execute("ALTER TABLE agents ADD COLUMN api_key_salt TEXT NOT NULL DEFAULT ''")
         
         # === JOBS TABLE ===
         conn.execute("""
@@ -372,13 +379,14 @@ class DatabaseError(Exception):
     pass
 
 
-def create_agent(agent_data: AgentRegistrationRequest, api_key: str, api_key_prefix: str = None) -> str:
+def create_agent(agent_data: AgentRegistrationRequest, api_key: str, api_key_prefix: str = None, api_key_salt: str = "") -> str:
     """Create new agent and return agent_id.
     
     Args:
         agent_data: Registration request data
-        api_key: Hashed API key (SHA-256 hex digest) for storage
+        api_key: Hashed API key for storage
         api_key_prefix: First 8 chars of plaintext key for fast lookup
+        api_key_salt: Salt used in PBKDF2 hashing (empty = legacy SHA-256)
     """
     import uuid
     
@@ -397,16 +405,16 @@ def create_agent(agent_data: AgentRegistrationRequest, api_key: str, api_key_pre
             ).fetchone()
             if existing:
                 raise DatabaseError("An agent with this email already exists")
-            # Insert agent (api_key stores the HASH, api_key_prefix for lookup)
+            # Insert agent (api_key stores the HASH, api_key_prefix for lookup, salt for verification)
             conn.execute("""
                 INSERT INTO agents (
-                    agent_id, name, description, api_key, api_key_prefix, contact_email,
+                    agent_id, name, description, api_key, api_key_prefix, api_key_salt, contact_email,
                     capabilities_claimed, capabilities_verified, registration_date,
                     status
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """, (
                 agent_id, agent_data.name, agent_data.description, api_key,
-                api_key_prefix, agent_data.contact_email,
+                api_key_prefix, api_key_salt, agent_data.contact_email,
                 json.dumps(agent_data.capabilities_claimed),
                 json.dumps([]), datetime.now(), AgentStatus.ACTIVE
             ))
@@ -456,7 +464,9 @@ def get_agent_by_api_key(api_key: str) -> Optional[Agent]:
     """Get agent by API key for authentication.
     
     Uses prefix-based lookup (first 8 chars) for speed, then verifies
-    the full SHA-256 hash for security. Constant-time comparison via hmac.
+    the hash for security. Supports both salted PBKDF2 (new) and bare
+    SHA-256 (legacy) keys via the api_key_salt column.
+    Constant-time comparison via hmac.
     """
     import hmac
     try:
@@ -464,24 +474,32 @@ def get_agent_by_api_key(api_key: str) -> Optional[Agent]:
     except ImportError:
         from .middleware.security import hash_api_key
     
-    key_hash = hash_api_key(api_key)
     key_prefix = api_key[:8]
     
     with get_db() as conn:
-        # Fast lookup by prefix, then verify hash
+        # Fast lookup by prefix, then verify hash with appropriate method
         rows = conn.execute("""
-            SELECT agent_id, api_key FROM agents 
+            SELECT agent_id, api_key, api_key_salt FROM agents 
             WHERE api_key_prefix = ? AND status = 'active'
         """, (key_prefix,)).fetchall()
         
         for row in rows:
-            if hmac.compare_digest(row['api_key'], key_hash):
+            salt = row['api_key_salt'] if 'api_key_salt' in row.keys() else ''
+            if salt:
+                # New salted PBKDF2 hash
+                candidate_hash = hash_api_key(api_key, salt=salt)
+            else:
+                # Legacy bare SHA-256
+                candidate_hash = hash_api_key(api_key)
+            
+            if hmac.compare_digest(row['api_key'], candidate_hash):
                 return get_agent_by_id(row['agent_id'])
         
-        # Fallback: try direct hash match (for agents without prefix column populated)
+        # Fallback: try legacy direct hash match
+        legacy_hash = hash_api_key(api_key)
         row = conn.execute("""
             SELECT agent_id FROM agents WHERE api_key = ? AND status = 'active'
-        """, (key_hash,)).fetchone()
+        """, (legacy_hash,)).fetchone()
         if row:
             return get_agent_by_id(row['agent_id'])
         

@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.285032+00:00",
+    "relevance_score": 0.585,
+    "matched_tags": [
+      "pricing"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/621f3ff6.json"
+  },
+  "framework": {
+    "id": "621f3ff6",
+    "type": "claim",
+    "name": "ChatGPT Enterprise Pricing ($60/user/month)",
+    "description": "ChatGPT Enterprise costs $60 per user per month, Microsoft Copilot $30/user/month, Claude Enterprise custom pricing. This provides willingness-to-pay benchmarks for general AI platforms but not for specific bottleneck solutions.",
+    "domain": "ai-systems",
+    "confidence": 0.95,
+    "tags": [
+      "pricing",
+      "willingness_to_pay",
+      "enterprise_ai",
+      "platforms"
+    ],
+    "raw_quote": "ChatGPT Enterprise: $60 [per user/month], Microsoft Copilot: $30, Claude Enterprise: Custom",
+    "value_tier": "bone",
+    "source": {
+      "title": "Enterprise AI Adoption Strategy: Complete 2025 Guide",
+      "url": "https://www.digitalapplied.com/blog/enterprise-ai-adoption-strategy-2025"
+    },
+    "hunt_id": "5e0ef8ee",
+    "extracted_at": "2026-03-10T14:10:00.082649+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.209105+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

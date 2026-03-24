@@ -1,0 +1,35 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.614089+00:00",
+    "relevance_score": 0.57,
+    "matched_tags": [
+      "delegation"
+    ],
+    "domain_match": false,
+    "source_path": "technology/186bbbfa.json"
+  },
+  "framework": {
+    "id": "186bbbfa",
+    "type": "framework",
+    "name": "Agentic Commerce Evolution Timeline",
+    "description": "Commerce automation evolved through stages: basic e-commerce (manual search) \u2192 recommendation engines \u2192 AI co-pilots \u2192 agentic commerce (full delegation). Each step reduced human involvement until the system takes responsibility for outcomes.",
+    "domain": "technology",
+    "confidence": 0.8,
+    "tags": [
+      "evolution",
+      "automation-stages",
+      "delegation"
+    ],
+    "raw_quote": "we all started with basic e-commerce, right? You had to search for everything yourself. Then came the recommendation engines... More recently, we've had AI co-pilots... Agentic commerce is that final leap where the system itself takes responsibility for the whole outcome.",
+    "source": {
+      "title": "What Is Agentic Commerce?",
+      "url": "https://www.youtube.com/watch?v=HHWRhtzvsOU"
+    },
+    "hunt_id": "dbee9bd2",
+    "extracted_at": "2026-03-03T18:12:05.517839+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.194156+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

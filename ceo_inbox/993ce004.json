@@ -1,0 +1,41 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.651595+00:00",
+    "relevance_score": 0.62,
+    "matched_tags": [
+      "verifiable-credentials",
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "technology/993ce004.json"
+  },
+  "framework": {
+    "id": "993ce004",
+    "type": "framework",
+    "name": "IETF Agent Operation Authorization (draft-liu-agent-operation-authorization-00)",
+    "description": "Alibaba-authored IETF draft (Nov 2025, Standards Track, OAuth WG) defining a two-phase JWT-based framework for delegating human authorization to AI agents. Phase 1: agent constructs a structured operation proposal from natural language, wraps the user prompt in a W3C Verifiable Credential (JWT-VC), and submits via OAuth 2.0 PAR (RFC 9126). Phase 2: after user consent, the AS issues an Agent Operation Authorization Token (JWT access token) with fine-grained operations, constraints, CEL-based conditions, and a semantic audit trail.",
+    "domain": "technology",
+    "confidence": 0.95,
+    "tags": [
+      "ietf",
+      "oauth",
+      "agent-authorization",
+      "jwt",
+      "verifiable-credentials",
+      "alibaba",
+      "standards-track"
+    ],
+    "raw_quote": "This document specifies the Agent Operation Authorization framework \u2014 a structured mechanism that enables verifiable delegation of actions from human principals to autonomous AI agents with fine-grained agent operation authorization.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Agent Operation Authorization - IETF",
+      "url": "https://www.ietf.org/archive/id/draft-liu-agent-operation-authorization-00.html"
+    },
+    "hunt_id": "f911b3bb",
+    "extracted_at": "2026-03-18T13:58:37.104656+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.201571+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

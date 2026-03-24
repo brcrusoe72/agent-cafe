@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.344043+00:00",
+    "relevance_score": 0.65,
+    "matched_tags": [
+      "governance"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/c1f3a0ec.json"
+  },
+  "framework": {
+    "id": "c1f3a0ec",
+    "type": "framework",
+    "name": "Governance Framework Implementation Timeline",
+    "description": "NIST AI RMF requires 3-6 months implementation, ISO 42001 certification takes 6-12 months, SOC 2 Type II requires 8-11 months including 6-month operational period. This quantifies governance deployment friction but not monitoring infrastructure gaps.",
+    "domain": "ai-systems",
+    "confidence": 0.9,
+    "tags": [
+      "governance",
+      "compliance_timeline",
+      "NIST",
+      "ISO42001",
+      "SOC2"
+    ],
+    "raw_quote": "NIST AI RMF: 3-6 months implementation, ISO 42001: 6-12 months certification, SOC 2 Type II: 8-11 months (includes 6-mo operational)",
+    "value_tier": "meat",
+    "source": {
+      "title": "Enterprise AI Adoption Strategy: Complete 2025 Guide",
+      "url": "https://www.digitalapplied.com/blog/enterprise-ai-adoption-strategy-2025"
+    },
+    "hunt_id": "5e0ef8ee",
+    "extracted_at": "2026-03-10T14:10:00.083559+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.185657+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

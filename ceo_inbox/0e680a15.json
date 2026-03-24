@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.611263+00:00",
+    "relevance_score": 0.505,
+    "matched_tags": [
+      "stripe",
+      "ap2"
+    ],
+    "domain_match": false,
+    "source_path": "technology/0e680a15.json"
+  },
+  "framework": {
+    "id": "0e680a15",
+    "type": "claim",
+    "name": "Square/Block absent from AP2 coalition",
+    "description": "Square/Block is notably absent from the 60+ organization list. Stripe is also absent. Both major processors are not participating in Google's AP2, suggesting either competing approaches or deliberate non-engagement with agent payment protocols.",
+    "domain": "technology",
+    "confidence": 0.85,
+    "tags": [
+      "square",
+      "stripe",
+      "ap2",
+      "absence"
+    ],
+    "raw_quote": null,
+    "value_tier": "organ",
+    "source": {
+      "title": "Announcing Agent Payments Protocol (AP2) | Google Cloud Blog",
+      "url": "https://cloud.google.com/blog/products/ai-machine-learning/announcing-agents-to-payments-ap2-protocol"
+    },
+    "hunt_id": "e7408160",
+    "extracted_at": "2026-03-14T14:03:05.456399+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.212444+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "payment_infrastructure"
+}

@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.414246+00:00",
+    "relevance_score": 0.5,
+    "matched_tags": [
+      "tokenization"
+    ],
+    "domain_match": false,
+    "source_path": "finance/50dbed0c.json"
+  },
+  "framework": {
+    "id": "50dbed0c",
+    "type": "case_study",
+    "name": "tZero - Regulated Security Token Platform",
+    "description": "Overstock subsidiary tZero built a regulated trading platform for tokenized securities and physical assets, bridging traditional securities compliance with blockchain efficiency. Demonstrates hybrid approach to liquidity, compliance and transparency.",
+    "domain": "finance",
+    "confidence": 0.8,
+    "tags": [
+      "securities",
+      "compliance",
+      "tokenization",
+      "trading-platform",
+      "regulation"
+    ],
+    "raw_quote": "A contrasting approach has been adopted by Overstock subsidiary tZero, which has mainly focused on tokenized offerings from the perspective of a regulated trading platform and tokenizing physical assets and securities. The tZero approach is a hybrid between customary and blockchain offerings that seek the advantages of liquidity, compliance and efficiency.",
+    "source": {
+      "title": "choosing-the-right-token-model-utility-s",
+      "url": "https://vocal.media/geeks/choosing-the-right-token-model-utility-security-or-governance"
+    },
+    "hunt_id": "c9aa917a",
+    "extracted_at": "2026-03-04T23:41:37.535932+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.189258+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "marketplace_design"
+}

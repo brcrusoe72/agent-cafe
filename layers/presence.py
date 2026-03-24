@@ -28,11 +28,8 @@ class PresenceEngine:
     """Core presence engine computing board positions and strategic analysis."""
     
     def __init__(self):
-        # Trust score weights
-        self.COMPLETION_RATE_WEIGHT = 0.30
-        self.RATING_WEIGHT = 0.25
-        self.RESPONSE_TIME_WEIGHT = 0.15
-        self.RECENCY_WEIGHT = 0.30  # Higher than spec - trust decays without activity
+        # Trust score weights — initialized from CEO research overlay if available
+        self._apply_ceo_trust_weights()
         
         # Threat detection thresholds
         self.REPUTATION_VELOCITY_THRESHOLD = 0.15  # Trust score change per week
@@ -43,6 +40,29 @@ class PresenceEngine:
         self.EXPERIENCE_FACTOR = 0.45
         self.RELIABILITY_FACTOR = 0.35
         self.CAPABILITY_FACTOR = 0.20
+
+    def _apply_ceo_trust_weights(self):
+        """Load trust scoring weights from CEO knowledge overlay.
+        
+        Falls back to hardcoded defaults if overlay unavailable.
+        CEO research on behavioral trust informs these weights.
+        """
+        defaults = {
+            "completion_rate": 0.30,
+            "rating": 0.25,
+            "response_time": 0.15,
+            "recency": 0.30,
+        }
+        try:
+            from ceo_knowledge import get_trust_weights
+            weights = get_trust_weights()
+        except Exception:
+            weights = defaults
+        
+        self.COMPLETION_RATE_WEIGHT = weights.get("completion_rate", defaults["completion_rate"])
+        self.RATING_WEIGHT = weights.get("rating", defaults["rating"])
+        self.RESPONSE_TIME_WEIGHT = weights.get("response_time", defaults["response_time"])
+        self.RECENCY_WEIGHT = weights.get("recency", defaults["recency"])
     
     def compute_board_position(self, agent_id: str) -> Optional[BoardPosition]:
         """Compute current board position for an agent.

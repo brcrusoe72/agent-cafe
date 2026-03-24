@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.324613+00:00",
+    "relevance_score": 0.685,
+    "matched_tags": [
+      "agent-identity",
+      "authentication"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/a37b7317.json"
+  },
+  "framework": {
+    "id": "a37b7317",
+    "type": "framework",
+    "name": "Trusted Agent Protocol (TAP)",
+    "description": "A signature-based authentication protocol that allows AI agents to identify themselves to merchants as trusted commerce entities. Uses time-bound, non-replayable signatures to prove agent legitimacy and intent. Positions Visa as a certificate authority for AI agent identity in commerce contexts.",
+    "domain": "ai-systems",
+    "confidence": 0.9,
+    "tags": [
+      "authentication",
+      "protocol",
+      "agent-identity",
+      "signatures",
+      "trust-authority"
+    ],
+    "raw_quote": "New specifications include details related to signatures that are specific to the merchant and purpose, and are time bound, cannot be replayed or relayed.",
+    "source": {
+      "title": "Trusted Agent Protocol",
+      "url": "https://developer.visa.com/capabilities/trusted-agent-protocol/overview"
+    },
+    "hunt_id": "240ef939",
+    "extracted_at": "2026-03-05T14:55:31.281573+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.202123+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

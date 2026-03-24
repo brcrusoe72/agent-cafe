@@ -1,0 +1,39 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.316841+00:00",
+    "relevance_score": 0.597,
+    "matched_tags": [
+      "tokenization",
+      "authentication",
+      "agent-commerce"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/94d97c76.json"
+  },
+  "framework": {
+    "id": "94d97c76",
+    "type": "framework",
+    "name": "Visa Intelligent Commerce Agent Payment Framework",
+    "description": "An infrastructure layer enabling AI agents to execute secure, personalized transactions on behalf of users through agent-specific tokenization, consent-based personalization, device-based authentication, and consumer-controlled transaction policies. Positions Visa as middleware between agents and merchants rather than just payment rails.",
+    "domain": "ai-systems",
+    "confidence": 0.6,
+    "tags": [
+      "agent-commerce",
+      "payment-infrastructure",
+      "tokenization",
+      "authentication",
+      "middleware"
+    ],
+    "raw_quote": "Visa Intelligent Commerce is a suite of APIs and tools that let AI agents: Obtain agent-specific payment tokens tied to user credentials, Use personalization signals with user consent to tailor recommendations, Authenticate purchases using strong, device-based keys, Enforce consumer-controlled transaction policies, Track payment events and handle disputes programmatically",
+    "source": {
+      "title": "How Visa Enables AI Agents to Shop and Pay - Soniclinker - Create Agent Optimized Websites",
+      "url": "https://www.soniclinker.com/blog/visa-intelligent-commerce-ai-agents"
+    },
+    "hunt_id": "240ef939",
+    "extracted_at": "2026-03-05T14:54:15.143711+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.210033+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

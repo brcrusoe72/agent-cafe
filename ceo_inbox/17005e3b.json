@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.613793+00:00",
+    "relevance_score": 0.78,
+    "matched_tags": [
+      "agent-identity"
+    ],
+    "domain_match": false,
+    "source_path": "technology/17005e3b.json"
+  },
+  "framework": {
+    "id": "17005e3b",
+    "type": "technique",
+    "name": "Dual-actor token (composite identity)",
+    "description": "Agents need tokens encoding BOTH the user's entitlements AND the agent's service account \u2014 effective scope is the intersection. OAuth has no native construct for two distinct actors in one token. This is the 'constrained envelope' problem restated as an identity problem.",
+    "domain": "technology",
+    "confidence": 0.8,
+    "tags": [
+      "least-privilege",
+      "intersection-scope",
+      "agent-identity"
+    ],
+    "raw_quote": "its scope is the intersection of the developer's entitlements and the agent's service entitlements. The base OAuth 2.0/2.1 specifications provide no construct for representing two distinct actors within a single token",
+    "value_tier": "bone",
+    "source": {
+      "title": "OAuth Is Not Enough",
+      "url": "https://d197for5662m48.cloudfront.net/documents/publicationstatus/262756/preprint_pdf/21aad33dd971984a510d5f79277b7be8.pdf"
+    },
+    "hunt_id": "67bf6ff4",
+    "extracted_at": "2026-03-15T12:30:47.068913+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.194091+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

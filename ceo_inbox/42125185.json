@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.626199+00:00",
+    "relevance_score": 0.68,
+    "matched_tags": [
+      "oauth",
+      "agent-identity"
+    ],
+    "domain_match": false,
+    "source_path": "technology/42125185.json"
+  },
+  "framework": {
+    "id": "42125185",
+    "type": "framework",
+    "name": "Agent Identity = OAuth 2.0 + Spending Limits + Consent Verification",
+    "description": "UCP's agent identity model is traditional OAuth 2.0 user authorization with spending limits enforced at the payment processing layer. This is RBAC with rate limits \u2014 exactly the centralized registry model, not cryptographic delegation.",
+    "domain": "technology",
+    "confidence": 0.85,
+    "tags": [
+      "agent-identity",
+      "OAuth",
+      "RBAC",
+      "spending-limits"
+    ],
+    "raw_quote": "OAuth 2.0 tokens on user authorization, spending limits in your payment processing, integration with AP2's consent verification.",
+    "value_tier": "bone",
+    "source": {
+      "title": "Google's Universal Commerce Protocol: What It Means for Payment ...",
+      "url": "https://juspay.io/blog/google-s-universal-commerce-protocol-what-it-means-for-payment-orchestration"
+    },
+    "hunt_id": "eeb6b019",
+    "extracted_at": "2026-03-15T12:20:10.218042+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.196560+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

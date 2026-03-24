@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.463910+00:00",
+    "relevance_score": 0.68,
+    "matched_tags": [
+      "multi-agent"
+    ],
+    "domain_match": false,
+    "source_path": "manufacturing/6f9e988f.json"
+  },
+  "framework": {
+    "id": "6f9e988f",
+    "type": "case_study",
+    "name": "Accenture Industry X - Manufacturing AI",
+    "description": "Accenture validated 9 manufacturing use cases including operations twins and technical doc automation, achieving 40-50% effort reduction. Key architectural choices: multi-agent architectures, human-in-the-loop workflows, domain-specific data. This is relevant to Bri's manufacturing background but it's a vendor case study, not independently verified.",
+    "domain": "manufacturing",
+    "confidence": 0.5,
+    "tags": [
+      "manufacturing",
+      "multi-agent",
+      "human-in-loop",
+      "digital-twin"
+    ],
+    "raw_quote": "Accenture's Industry X division implemented generative AI across manufacturing, validating nine use cases including operations twins and technical documentation automation, achieving 40-50% effort reduction",
+    "value_tier": "meat",
+    "source": {
+      "title": "LLMOps in Production: 457 Case Studies of What Actually Works - ZenML Blog",
+      "url": "https://www.zenml.io/blog/llmops-in-production-457-case-studies-of-what-actually-works"
+    },
+    "hunt_id": "e234ddc0",
+    "extracted_at": "2026-03-17T13:42:46.019362+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.218289+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.521776+00:00",
+    "relevance_score": 0.505,
+    "matched_tags": [
+      "interoperability"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/32016101.json"
+  },
+  "framework": {
+    "id": "32016101",
+    "type": "claim",
+    "name": "OpenID as Open Standard Positioning",
+    "description": "OpenID Foundation publishing this as open specification (vs proprietary). The fact that it extends OAuth 2.0 and defines Credential Format Profiles means it's explicitly designed as infrastructure layer, not application layer. Financial players adopting this would be choosing open standard over proprietary agent auth.",
+    "domain": "strategy",
+    "confidence": 0.85,
+    "tags": [
+      "open-standards",
+      "openid",
+      "interoperability",
+      "positioning"
+    ],
+    "raw_quote": "This specification is Credential Format agnostic and allows implementers to leverage specific capabilities of Credential Formats of their choice... Other specifications or deployments can define their own Credential Format Profiles using the above-mentioned extension points.",
+    "source": {
+      "title": "openid-4-verifiable-credential-issuance-",
+      "url": "https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html"
+    },
+    "hunt_id": "4f110637",
+    "extracted_at": "2026-03-06T14:26:52.773271+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.188898+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "marketplace_design"
+}

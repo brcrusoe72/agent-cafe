@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.520239+00:00",
+    "relevance_score": 0.575,
+    "matched_tags": [
+      "pricing"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/2d41658a.json"
+  },
+  "framework": {
+    "id": "2d41658a",
+    "type": "technique",
+    "name": "Rate Range Strategy with Project-Specific Adjustment",
+    "description": "Most successful consultants establish rate range (e.g., $150-400/hour) rather than fixed rate, then adjust within range based on project competitiveness, client budget signals, and whether it's repeat project across networks. Flexibility beats rate optimization for total earnings.",
+    "domain": "strategy",
+    "confidence": 0.85,
+    "tags": [
+      "pricing",
+      "flexibility",
+      "expert-networks",
+      "optimization"
+    ],
+    "raw_quote": "The most successful consultants are willing to change their rate to increase their chances of client selection... I would recommend coming up with a consulting rate range, for example $150 \u2013 $400/hour, and be willing to take projects that fall within that range.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Setting Your Expert Network Consulting Rate \u2022 Expert Opportunities",
+      "url": "https://expertopportunities.com/expert-network-hourly-rates/"
+    },
+    "hunt_id": "b38ad25e",
+    "extracted_at": "2026-03-07T16:15:35.162349+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.208314+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

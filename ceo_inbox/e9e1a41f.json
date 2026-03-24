@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.591082+00:00",
+    "relevance_score": 0.565,
+    "matched_tags": [
+      "pricing"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/e9e1a41f.json"
+  },
+  "framework": {
+    "id": "e9e1a41f",
+    "type": "framework",
+    "name": "Seniority-Based Rate Tiers for Expert Networks",
+    "description": "Loose hierarchy exists: Individual Contributors/Associates start around $100-200/hour, mid-level roles $200-400/hour, senior executives $400-800/hour, C-suite $800-1500+/hour. However, deep specialized expertise on hard-to-find topics trumps seniority and can justify premium rates regardless of title.",
+    "domain": "strategy",
+    "confidence": 0.75,
+    "tags": [
+      "pricing",
+      "seniority",
+      "expert-networks",
+      "compensation"
+    ],
+    "raw_quote": "the more senior you are in your relevant position, the more valuable your experiences are. This is because with greater seniority comes decision making authority and deeper insights into topics.",
+    "value_tier": "bone",
+    "source": {
+      "title": "Setting Your Expert Network Consulting Rate \u2022 Expert Opportunities",
+      "url": "https://expertopportunities.com/expert-network-hourly-rates/"
+    },
+    "hunt_id": "b38ad25e",
+    "extracted_at": "2026-03-07T16:15:35.161557+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.211717+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

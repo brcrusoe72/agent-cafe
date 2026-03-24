@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.499251+00:00",
+    "relevance_score": 0.575,
+    "matched_tags": [
+      "pricing"
+    ],
+    "domain_match": false,
+    "source_path": "restaurant-strategy/ae81d72a.json"
+  },
+  "framework": {
+    "id": "ae81d72a",
+    "type": "technique",
+    "name": "Premium Pricing + 10X Dish Strategy",
+    "description": "Independent restaurants should avoid competing on price with chains (who have massive purchasing power), instead charge premium prices. Use 3X pricing on entrees and push 10X pricing dishes (price = 10\u00d7 food cost) like onion rings that have extreme margins.",
+    "domain": "restaurant-strategy",
+    "confidence": 0.85,
+    "tags": [
+      "pricing",
+      "competitive-positioning",
+      "margin-maximization",
+      "WRONG_DOMAIN"
+    ],
+    "raw_quote": "I recommend having a 3X pricing strategy on Entre and a few 10x pricing dishes that you can push hard as part of your experience",
+    "source": {
+      "title": "watch?v=OAGDylaxR0c",
+      "url": "https://www.youtube.com/watch?v=OAGDylaxR0c"
+    },
+    "hunt_id": "571e707b",
+    "extracted_at": "2026-03-03T20:09:40.316101+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.210357+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

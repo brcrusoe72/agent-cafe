@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.675373+00:00",
+    "relevance_score": 0.58,
+    "matched_tags": [
+      "authorization"
+    ],
+    "domain_match": false,
+    "source_path": "technology/e529268b.json"
+  },
+  "framework": {
+    "id": "e529268b",
+    "type": "framework",
+    "name": "Two-tier agent authorization model",
+    "description": "Mastercard distinguishes between agent-assisted (human-in-the-loop, consumer approves cart) and autonomous (agent acts independently). For assisted: Verifiable Intent confirms consumer was present. For autonomous: provides transparency so merchants can decide whether to request additional confirmation. This is a graduated trust model, not binary.",
+    "domain": "technology",
+    "confidence": 0.9,
+    "tags": [
+      "authorization",
+      "trust-tiers",
+      "autonomy"
+    ],
+    "raw_quote": "In agent-assisted, human-in-the-loop purchases, Verifiable Intent confirms the consumer was present... In more autonomous scenarios, Verifiable Intent provides transparency and agency that allows merchants to assess whether additional confirmation is needed.",
+    "value_tier": "meat",
+    "source": {
+      "title": "How Verifiable Intent builds trust in agentic AI commerce - Mastercard",
+      "url": "https://www.mastercard.com/us/en/news-and-trends/stories/2026/verifiable-intent.html"
+    },
+    "hunt_id": "e7408160",
+    "extracted_at": "2026-03-14T14:04:16.619577+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.206261+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

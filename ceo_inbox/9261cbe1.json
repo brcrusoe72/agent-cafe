@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.650371+00:00",
+    "relevance_score": 0.51,
+    "matched_tags": [
+      "ap2"
+    ],
+    "domain_match": false,
+    "source_path": "technology/9261cbe1.json"
+  },
+  "framework": {
+    "id": "9261cbe1",
+    "type": "claim",
+    "name": "AP2 Cryptographic Consent = Human-in-the-Loop by Design",
+    "description": "Google's Agent Payments Protocol (AP2) requires cryptographic proof that a human approved every transaction. This is Google explicitly choosing the per-transaction permission side of the split, not portable pre-auth. The biggest player in the room is betting on human-in-the-loop.",
+    "domain": "technology",
+    "confidence": 0.9,
+    "tags": [
+      "AP2",
+      "consent-verification",
+      "human-in-the-loop",
+      "google"
+    ],
+    "raw_quote": "Through Google's Agent Payments Protocol (AP2), every transaction includes proof that a human approved it. Regulators and merchants both want to know: did a real person authorize this purchase?",
+    "value_tier": "organ",
+    "source": {
+      "title": "Google's Universal Commerce Protocol: What It Means for Payment ...",
+      "url": "https://juspay.io/blog/google-s-universal-commerce-protocol-what-it-means-for-payment-orchestration"
+    },
+    "hunt_id": "eeb6b019",
+    "extracted_at": "2026-03-15T12:20:10.217689+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.201074+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

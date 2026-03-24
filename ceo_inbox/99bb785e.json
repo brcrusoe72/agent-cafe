@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.651773+00:00",
+    "relevance_score": 0.57,
+    "matched_tags": [
+      "authorization"
+    ],
+    "domain_match": false,
+    "source_path": "technology/99bb785e.json"
+  },
+  "framework": {
+    "id": "99bb785e",
+    "type": "framework",
+    "name": "Adyen Merchant-Owned Mandate Model",
+    "description": "Adyen frames agentic commerce as a control question: who owns the mandate, authorization records, and payment tokens. They advocate merchants retain ownership rather than ceding it to AI platforms (ChatGPT, Gemini). This is an architectural position \u2014 mandates and tokens stay merchant-side, not platform-side.",
+    "domain": "technology",
+    "confidence": 0.8,
+    "tags": [
+      "adyen",
+      "mandate-ownership",
+      "authorization",
+      "merchant-control"
+    ],
+    "raw_quote": "To retain ownership, businesses should maintain merchant-owned mandates, auditable authorization records, and control over payment tokens and lifecycle data.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Agentic commerce and control: Getting the balance right - Adyen",
+      "url": "https://www.adyen.com/knowledge-hub/agentic-commerce-control"
+    },
+    "hunt_id": "e7408160",
+    "extracted_at": "2026-03-14T14:03:27.431396+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.185051+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

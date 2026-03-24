@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.647631+00:00",
+    "relevance_score": 0.535,
+    "matched_tags": [
+      "cryptography",
+      "verifiable-credentials"
+    ],
+    "domain_match": false,
+    "source_path": "technology/886e7055.json"
+  },
+  "framework": {
+    "id": "886e7055",
+    "type": "claim",
+    "name": "Signed Payload Model (Not On-Chain)",
+    "description": "Verifiable Intent uses signed cryptographic records with selective disclosure \u2014 NOT blockchain/on-chain attestation. Protocol-agnostic design working across 'agentic protocols, devices, wallets, platforms, and other payment networks.' Will integrate W3C Verifiable Credentials for portable delegation proof over time.",
+    "domain": "technology",
+    "confidence": 0.8,
+    "tags": [
+      "cryptography",
+      "verifiable-credentials",
+      "W3C"
+    ],
+    "raw_quote": "Over time, Mastercard says Verifiable Intent will be strengthened through integration with Verifiable Credentials, a W3C standard that would make consumer authorization and delegation more explicit, portable, and cryptographically verifiable across systems.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Mastercard and Google's new trust layer could reshape how AI buys for you",
+      "url": "https://ppc.land/mastercard-and-googles-new-trust-layer-could-reshape-how-ai-buys-for-you/"
+    },
+    "hunt_id": "7e7c0a23",
+    "extracted_at": "2026-03-14T14:20:13.454441+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.200379+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

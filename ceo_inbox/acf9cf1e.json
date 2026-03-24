@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.657660+00:00",
+    "relevance_score": 0.54,
+    "matched_tags": [
+      "ap2",
+      "mcp"
+    ],
+    "domain_match": false,
+    "source_path": "technology/acf9cf1e.json"
+  },
+  "framework": {
+    "id": "acf9cf1e",
+    "type": "claim",
+    "name": "AP2 is REST/protocol-agnostic, not blockchain-based",
+    "description": "AP2 is a payment-agnostic open protocol extending A2A and MCP. It's not inherently blockchain-based but supports crypto via extensions (A2A x402 for stablecoins with Coinbase). Core architecture uses VCs and mandates over standard web protocols. Blockchain is an optional payment rail, not the protocol layer.",
+    "domain": "technology",
+    "confidence": 0.85,
+    "tags": [
+      "ap2",
+      "architecture",
+      "a2a",
+      "mcp"
+    ],
+    "raw_quote": "an open protocol developed with leading payments and technology companies... can be used as an extension of the Agent2Agent (A2A) protocol and Model Context Protocol (MCP)... a payment-agnostic framework",
+    "value_tier": "meat",
+    "source": {
+      "title": "Announcing Agent Payments Protocol (AP2) | Google Cloud Blog",
+      "url": "https://cloud.google.com/blog/products/ai-machine-learning/announcing-agents-to-payments-ap2-protocol"
+    },
+    "hunt_id": "e7408160",
+    "extracted_at": "2026-03-14T14:03:05.454884+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.219588+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

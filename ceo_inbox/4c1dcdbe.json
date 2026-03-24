@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.272245+00:00",
+    "relevance_score": 0.65,
+    "matched_tags": [
+      "liability"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/4c1dcdbe.json"
+  },
+  "framework": {
+    "id": "4c1dcdbe",
+    "type": "claim",
+    "name": "California AB 316 Forecloses 'AI Did It' Defense",
+    "description": "As of Jan 1 2026, California law precludes using an AI system's autonomous operation as a defense to liability. Deployer bears liability regardless of control claims. This implicitly means in a delegation chain, the human principal at the top cannot disclaim \u2014 but the statute doesn't address WHICH deployer in a multi-org chain.",
+    "domain": "ai-systems",
+    "confidence": 0.9,
+    "tags": [
+      "liability",
+      "california",
+      "regulation"
+    ],
+    "raw_quote": "AB 316, which took effect January 1, 2026, precludes defendants from using an AI system's autonomous operation as a defense to liability claims.",
+    "value_tier": "meat",
+    "source": {
+      "title": "When AI Agents Misbehave: Governance and Security for ... - Our Take",
+      "url": "https://ourtake.bakerbotts.com/post/102me2l/when-ai-agents-misbehave-governance-and-security-for-autonomous-ai"
+    },
+    "hunt_id": "d39fbdac",
+    "extracted_at": "2026-03-14T14:30:59.454365+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.196895+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

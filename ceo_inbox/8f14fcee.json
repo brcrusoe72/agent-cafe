@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.423489+00:00",
+    "relevance_score": 0.595,
+    "matched_tags": [
+      "delegation",
+      "liability"
+    ],
+    "domain_match": false,
+    "source_path": "finance/8f14fcee.json"
+  },
+  "framework": {
+    "id": "8f14fcee",
+    "type": "claim",
+    "name": "Credentials Provider as Liability Firewall",
+    "description": "The CP role separates the agent that shops from the entity that pays. The Shopping Agent never touches PCI data or PII. This architectural decision implicitly answers the delegation-depth liability question \u2014 the CP is the choke point. If Agent C overspends, the CP should have blocked it because it controls credential release, not the agents in the chain.",
+    "domain": "finance",
+    "confidence": 0.7,
+    "tags": [
+      "liability",
+      "credentials-provider",
+      "delegation"
+    ],
+    "raw_quote": "agents involved in the shopping process are prevented from accessing sensitive payment card industry (PCI) data or other personally identifiable information (PII), which is handled exclusively by the specialized entities",
+    "value_tier": "meat",
+    "source": {
+      "title": "AP2 specification - AP2 - Agent Payments Protocol Documentation",
+      "url": "https://ap2-protocol.org/specification/"
+    },
+    "hunt_id": "7e7c0a23",
+    "extracted_at": "2026-03-14T14:18:52.268977+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.200647+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.316024+00:00",
+    "relevance_score": 0.645,
+    "matched_tags": [
+      "governance"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/9283d1b0.json"
+  },
+  "framework": {
+    "id": "9283d1b0",
+    "type": "framework",
+    "name": "Compliance Framework Implementation Costs",
+    "description": "Production AI agents handling sensitive data need GDPR/HIPAA/SOC 2 compliance, adding $8K-$25K to development costs per framework. This quantifies governance infrastructure investment but not ongoing monitoring costs.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "compliance_cost",
+      "governance",
+      "GDPR",
+      "HIPAA",
+      "SOC2"
+    ],
+    "raw_quote": "Production AI agents handling sensitive data need GDPR/HIPAA/SOC 2 compliance, adding $8K-$25K to development costs per framework.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Enterprise AI Adoption Strategy: Complete 2025 Guide",
+      "url": "https://www.digitalapplied.com/blog/enterprise-ai-adoption-strategy-2025"
+    },
+    "hunt_id": "5e0ef8ee",
+    "extracted_at": "2026-03-10T14:10:00.082432+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.184759+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

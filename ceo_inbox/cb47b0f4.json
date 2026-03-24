@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.580622+00:00",
+    "relevance_score": 0.575,
+    "matched_tags": [
+      "pricing"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/cb47b0f4.json"
+  },
+  "framework": {
+    "id": "cb47b0f4",
+    "type": "technique",
+    "name": "Competitive Rate Discovery Through Associate Guidance",
+    "description": "Expert network associates will reveal competitive rate information if asked directly with 'I would really like to secure this consulting engagement, would you happen to know what rate would make me competitive for this project?' They know average rates, client budgets, and competitor pricing.",
+    "domain": "strategy",
+    "confidence": 0.85,
+    "tags": [
+      "negotiation",
+      "pricing",
+      "expert-networks",
+      "information-gathering"
+    ],
+    "raw_quote": "if you ask the expert network associate working to staff a project to provide guidance on your rate, they will often happily do so. They know the average consulting rate of the project, their client's budget, and who you are competing with for the consultation.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Setting Your Expert Network Consulting Rate \u2022 Expert Opportunities",
+      "url": "https://expertopportunities.com/expert-network-hourly-rates/"
+    },
+    "hunt_id": "b38ad25e",
+    "extracted_at": "2026-03-07T16:15:35.161185+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.211125+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

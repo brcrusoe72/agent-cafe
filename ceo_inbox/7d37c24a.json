@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.303955+00:00",
+    "relevance_score": 0.645,
+    "matched_tags": [
+      "tokenization",
+      "agent-identity"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/7d37c24a.json"
+  },
+  "framework": {
+    "id": "7d37c24a",
+    "type": "framework",
+    "name": "Agent-Specific Payment Token Architecture",
+    "description": "Visa's approach uses specialized payment tokens provisioned specifically for AI agents, distinct from standard user payment tokens. These tokens are managed through lifecycle APIs and tied to agent identities, enabling agent-authorized transactions while maintaining user control through authenticated payment instructions.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "tokenization",
+      "agent-identity",
+      "payment-primitives",
+      "financial-infrastructure"
+    ],
+    "raw_quote": "A new pass-through payment token, specific to agents, that is intended for use at Visa-accepting merchant locations.",
+    "source": {
+      "title": "visa-intelligent-commerce",
+      "url": "https://developer.visa.com/capabilities/visa-intelligent-commerce"
+    },
+    "hunt_id": "0a8db7c7",
+    "extracted_at": "2026-03-05T15:14:52.130694+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.190122+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "marketplace_design"
+}

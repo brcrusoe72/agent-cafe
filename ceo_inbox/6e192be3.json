@@ -1,0 +1,35 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.294203+00:00",
+    "relevance_score": 0.64,
+    "matched_tags": [
+      "governance"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/6e192be3.json"
+  },
+  "framework": {
+    "id": "6e192be3",
+    "type": "framework",
+    "name": "Baker Botts 5-Layer Governance Model",
+    "description": "Scope/Identity/Monitoring/Override/Accountability layered framework. Treats agent deployment like onboarding an employee with signing authority. Completely human\u2192agent; no layer addresses agent\u2192agent delegation or authority attenuation.",
+    "domain": "ai-systems",
+    "confidence": 0.8,
+    "tags": [
+      "governance",
+      "framework"
+    ],
+    "raw_quote": "Organizations deploying AI agents may wish to treat agent deployment with the same rigor as onboarding an employee with signing authority.",
+    "value_tier": "bone",
+    "source": {
+      "title": "When AI Agents Misbehave: Governance and Security for ... - Our Take",
+      "url": "https://ourtake.bakerbotts.com/post/102me2l/when-ai-agents-misbehave-governance-and-security-for-autonomous-ai"
+    },
+    "hunt_id": "d39fbdac",
+    "extracted_at": "2026-03-14T14:30:59.454772+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.183595+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

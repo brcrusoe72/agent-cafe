@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.233292+00:00",
+    "relevance_score": 0.57,
+    "matched_tags": [
+      "delegation",
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/10c2b9c6.json"
+  },
+  "framework": {
+    "id": "10c2b9c6",
+    "type": "framework",
+    "name": "On-Behalf-Of (OBO) Token Exchange for Chained Delegation",
+    "description": "OAuth extension for multi-layer delegation where an agent acting for a user needs to interact with backend services while maintaining the original user's identity and permissions. Critical for complex agent workflows that span multiple services. Note: Microsoft has proprietary implementation that differs from IETF RFC 8693 standard.",
+    "domain": "ai-systems",
+    "confidence": 0.8,
+    "tags": [
+      "oauth",
+      "delegation",
+      "multi-layer-auth",
+      "proprietary-vs-open"
+    ],
+    "raw_quote": "On-Behalf-Of (OBO) token exchange: The gold standard for chained delegation... Note: Microsoft's Azure AD has a proprietary OBO implementation that differs from the IETF RFC 8693 standard.",
+    "source": {
+      "title": "AI agent authentication methods - Stytch",
+      "url": "https://stytch.com/blog/ai-agent-authentication-methods/"
+    },
+    "hunt_id": "4f110637",
+    "extracted_at": "2026-03-06T14:20:59.866961+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.193641+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

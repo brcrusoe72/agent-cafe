@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.422547+00:00",
+    "relevance_score": 0.505,
+    "matched_tags": [
+      "tokenization"
+    ],
+    "domain_match": false,
+    "source_path": "finance/88d63cfc.json"
+  },
+  "framework": {
+    "id": "88d63cfc",
+    "type": "framework",
+    "name": "PayPal Agent Toolkit",
+    "description": "Developer package for building agentic workflows covering payments, shipment tracking, returns, and customer service. Free to developers with standard transaction fees. Provides AI-agnostic integrations (ChatGPT, Claude), event-driven architecture, and 'advanced tokenization' for payment security.",
+    "domain": "finance",
+    "confidence": 0.85,
+    "tags": [
+      "developer-tools",
+      "sdk",
+      "agent-infrastructure",
+      "tokenization"
+    ],
+    "raw_quote": "At the core of this ecosystem is the PayPal Agent Toolkit, a powerful package that enables developers to create sophisticated agentic workflows for automating payments, shipment tracking, returns processing, and customer service interactions.",
+    "value_tier": "bone",
+    "source": {
+      "title": "Accelerating Agentic Payments with PayPal",
+      "url": "https://developer.paypal.com/community/blog/accelerating-agentic-payments/"
+    },
+    "hunt_id": "b977a620",
+    "extracted_at": "2026-03-07T14:44:56.233551+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.190464+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "marketplace_design"
+}

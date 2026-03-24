@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.680447+00:00",
+    "relevance_score": 0.585,
+    "matched_tags": [
+      "authorization"
+    ],
+    "domain_match": false,
+    "source_path": "technology/f36da8d0.json"
+  },
+  "framework": {
+    "id": "f36da8d0",
+    "type": "claim",
+    "name": "Visa Human-in-the-Loop Confirmation (Not Autonomous)",
+    "description": "Visa's architecture explicitly requires human confirmation before payment \u2014 request_purchase_confirmation then confirm_purchase. This is NOT autonomous agent payment. It's agent-assisted with human gate, fundamentally different from Mastercard's Verifiable Intent which enables autonomous agent spending within pre-authorized bounds.",
+    "domain": "technology",
+    "confidence": 0.95,
+    "tags": [
+      "human-in-the-loop",
+      "visa",
+      "authorization"
+    ],
+    "raw_quote": "Before proceeding with payment, the agent requests human confirmation where the user sets clear parameters and permits the agent to spend on their behalf",
+    "value_tier": "organ",
+    "source": {
+      "title": "Introducing Visa Intelligent Commerce on AWS: Enabling agentic commerce with Amazon Bedrock AgentCore | Artificial Intelligence",
+      "url": "https://aws.amazon.com/blogs/machine-learning/introducing-visa-intelligent-commerce-on-aws-enabling-agentic-commerce-with-amazon-bedrock-agentcore/"
+    },
+    "hunt_id": "da550186",
+    "extracted_at": "2026-03-15T12:05:52.906463+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.187345+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

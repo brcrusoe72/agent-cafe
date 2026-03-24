@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.305038+00:00",
+    "relevance_score": 0.49,
+    "matched_tags": [
+      "interoperability"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/7e88c5ff.json"
+  },
+  "framework": {
+    "id": "7e88c5ff",
+    "type": "connection",
+    "name": "MCP as Agent Marketplace Infrastructure",
+    "description": "While MCP is designed for LLM-to-tool interaction, it could serve as foundational infrastructure for agent-to-agent marketplaces. Agents would need standardized ways to discover capabilities, understand interfaces, and interact - MCP provides the 'capabilities exposure' layer, though not discovery, pricing, or trust mechanisms.",
+    "domain": "ai-systems",
+    "confidence": 0.7,
+    "tags": [
+      "agent-marketplace",
+      "infrastructure",
+      "protocols",
+      "interoperability"
+    ],
+    "raw_quote": null,
+    "source": {
+      "title": "watch?v=tzrwxLNHtRY",
+      "url": "https://www.youtube.com/watch?v=tzrwxLNHtRY"
+    },
+    "hunt_id": "e8165180",
+    "extracted_at": "2026-03-05T16:13:54.175311+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.190206+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "marketplace_design"
+}

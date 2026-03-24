@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.293720+00:00",
+    "relevance_score": 0.712,
+    "matched_tags": [
+      "fraud-detection"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/6d77be54.json"
+  },
+  "framework": {
+    "id": "6d77be54",
+    "type": "technique",
+    "name": "Commerce Signals for Dispute Resolution",
+    "description": "Agents submit purchase outcomes back to Visa platform, creating a signal stream alongside user instructions. This data enables rapid dispute resolution by providing both intent (what user authorized) and outcome (what actually happened).",
+    "domain": "ai-systems",
+    "confidence": 0.82,
+    "tags": [
+      "dispute-resolution",
+      "audit-trail",
+      "reconciliation",
+      "fraud-detection"
+    ],
+    "raw_quote": "These signals, along with the user instructions can be used to resolve any disputes that may arise.",
+    "source": {
+      "title": "visa-intelligent-commerce",
+      "url": "https://developer.visa.com/capabilities/visa-intelligent-commerce"
+    },
+    "hunt_id": "0a8db7c7",
+    "extracted_at": "2026-03-05T15:14:52.139531+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.183442+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.622800+00:00",
+    "relevance_score": 0.512,
+    "matched_tags": [
+      "interoperability"
+    ],
+    "domain_match": false,
+    "source_path": "technology/38102ba8.json"
+  },
+  "framework": {
+    "id": "38102ba8",
+    "type": "framework",
+    "name": "Web Bot Auth as Open Standard Foundation",
+    "description": "Cloudflare's Web Bot Auth proposal serves as the shared open foundation that both Visa's Trusted Agent Protocol and Mastercard's Agent Pay build upon. All three networks (plus American Express) are positioning the core authentication layer as an open standard while keeping network-specific extensions (key directories, tag values) proprietary.",
+    "domain": "technology",
+    "confidence": 0.92,
+    "tags": [
+      "standards",
+      "open-source",
+      "interoperability",
+      "protocol-design"
+    ],
+    "raw_quote": "Both Trusted Agent Protocol and Agent Pay leverage Web Bot Auth as the agent authentication layer... American Express will also be leveraging Web Bot Auth as the foundation to their agentic commerce offering",
+    "value_tier": "organ",
+    "source": {
+      "title": "Securing agentic commerce: helping AI Agents transact with Visa and Mastercard",
+      "url": "https://blog.cloudflare.com/secure-agentic-commerce/"
+    },
+    "hunt_id": "fd72fd5b",
+    "extracted_at": "2026-03-09T13:47:14.025603+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.188971+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "marketplace_design"
+}

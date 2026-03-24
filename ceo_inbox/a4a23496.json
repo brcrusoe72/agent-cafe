@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.654334+00:00",
+    "relevance_score": 0.58,
+    "matched_tags": [
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "technology/a4a23496.json"
+  },
+  "framework": {
+    "id": "a4a23496",
+    "type": "claim",
+    "name": "OAuth Assumes Single Actor Per Request",
+    "description": "The article explicitly states that OAuth's single-subject model breaks when agents delegate to other agents. This confirms the gap but doesn't solve it \u2014 the OBO pattern still anchors everything to the original human user.",
+    "domain": "technology",
+    "confidence": 0.9,
+    "tags": [
+      "OAuth",
+      "limitation",
+      "gap-confirmation"
+    ],
+    "raw_quote": "Most identity systems assume there's only one actor per request. That model breaks as soon as you introduce agents",
+    "value_tier": "bone",
+    "source": {
+      "title": "Understanding \"On-Behalf-Of\" in AI agent authentication - Scalekit",
+      "url": "https://www.scalekit.com/blog/delegated-agent-access"
+    },
+    "hunt_id": "d39fbdac",
+    "extracted_at": "2026-03-14T14:32:03.713946+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.202330+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

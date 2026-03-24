@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.324881+00:00",
+    "relevance_score": 0.61,
+    "matched_tags": [
+      "governance"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/a39bc971.json"
+  },
+  "framework": {
+    "id": "a39bc971",
+    "type": "technique",
+    "name": "Microservice Lineage as Governance Proxy",
+    "description": "Ocado uses its existing microservice event architecture for ML model governance \u2014 tracing data lineage through service events rather than building dedicated ML governance tooling. Governance piggybacks on existing engineering culture rather than being purpose-built for AI.",
+    "domain": "ai-systems",
+    "confidence": 0.5,
+    "tags": [
+      "governance",
+      "lineage",
+      "microservices"
+    ],
+    "raw_quote": "because of the microservice culture at Ocado, events that occur can be traced back in terms of lineage",
+    "value_tier": "meat",
+    "source": {
+      "title": "How These 8 Companies Implement MLOps: In-Depth Guide",
+      "url": "https://neptune.ai/blog/how-these-8-companies-implement-mlops"
+    },
+    "hunt_id": "e234ddc0",
+    "extracted_at": "2026-03-17T13:40:40.147852+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.185328+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

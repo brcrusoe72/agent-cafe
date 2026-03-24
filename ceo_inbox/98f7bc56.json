@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.319127+00:00",
+    "relevance_score": 0.795,
+    "matched_tags": [
+      "agent-commerce"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/98f7bc56.json"
+  },
+  "framework": {
+    "id": "98f7bc56",
+    "type": "framework",
+    "name": "Visa TAP Registry-Based Verification Model",
+    "description": "Visa's Trusted Agent Protocol uses a public key registry architecture with RFC 9421 cryptographic signatures that are domain-bound, operation-specific, and timestamp-validated. Each agent request includes signature components (timestamp, session ID, key ID, algorithm) verified against a central Agent Registry, with CDN-level proxy interception preventing unsigned traffic from reaching merchant backends.",
+    "domain": "ai-systems",
+    "confidence": 0.95,
+    "tags": [
+      "payment-infrastructure",
+      "agent-commerce",
+      "cryptographic-verification",
+      "architectural-comparison"
+    ],
+    "raw_quote": "The agent presents a secure signature that includes timestamps, a unique session identifier, key identifier, and algorithm identifier, allowing you to verify that the signature is current and prevent relays or replays... Every request from a trusted agent is cryptographically locked to a merchant's specific website and the exact page with which the agent is interacting.",
+    "value_tier": "meat",
+    "source": {
+      "title": "GitHub - visa/trusted-agent-protocol: Establishing a universal standard of trust between AI agents and merchants for the next phase of agentic commerce. \u00b7 GitHub",
+      "url": "https://github.com/visa/trusted-agent-protocol"
+    },
+    "hunt_id": "bfe03aec",
+    "extracted_at": "2026-03-11T13:14:56.422111+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.201324+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

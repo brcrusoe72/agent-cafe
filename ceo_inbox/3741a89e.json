@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.622327+00:00",
+    "relevance_score": 0.58,
+    "matched_tags": [
+      "delegation",
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "technology/3741a89e.json"
+  },
+  "framework": {
+    "id": "3741a89e",
+    "type": "claim",
+    "name": "OAuth intent-execution split is the core vulnerability",
+    "description": "OAuth 2.0 assumes client = user intent proxy. In agentic settings, LLM reasoning creates a separation between intent generation and action execution that bearer tokens cannot distinguish. This is the exact 'constrained envelope' gap \u2014 current envelopes don't bind to intent, only to identity.",
+    "domain": "technology",
+    "confidence": 0.9,
+    "tags": [
+      "oauth",
+      "intent",
+      "delegation"
+    ],
+    "raw_quote": "existing API authorization standards do not provide any mechanism for cryptographically distinguishing between execution and intent and rightly so because they were never designed for this purpose",
+    "value_tier": "bone",
+    "source": {
+      "title": "Agentic JWT: A Secure Delegation Protocol for Autonomous AI Agents",
+      "url": "https://arxiv.org/pdf/2509.13597"
+    },
+    "hunt_id": "67bf6ff4",
+    "extracted_at": "2026-03-15T12:30:05.449040+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.195567+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.334420+00:00",
+    "relevance_score": 0.79,
+    "matched_tags": [
+      "marketplace-design"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/b3baf2f1.json"
+  },
+  "framework": {
+    "id": "b3baf2f1",
+    "type": "framework",
+    "name": "Trust Deficit in Agent Marketplaces",
+    "description": "Critical gap in agent-human transactions: no identity verification, irreversible crypto payments, anonymous task posters, no dispute resolution. Mirrors early internet marketplace problems but with added complexity of non-human actors.",
+    "domain": "ai-systems",
+    "confidence": 0.9,
+    "tags": [
+      "trust-infrastructure",
+      "marketplace-design",
+      "risk-management",
+      "identity-verification"
+    ],
+    "raw_quote": "The site's design places a lot of trust on both sides of the transaction, with very little protection in place for the human doing the work. Tasks are posted by bots or bot operators who may not be identifiable, payments are non-reversible once sent",
+    "source": {
+      "title": "Rent-a-Human wants AI Agents to hire you | Mashable",
+      "url": "https://mashable.com/article/rent-a-human-wants-ai-agents-to-hire-you"
+    },
+    "hunt_id": "d375d104",
+    "extracted_at": "2026-03-05T15:46:33.650716+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.203064+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

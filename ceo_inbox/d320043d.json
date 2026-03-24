@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.668893+00:00",
+    "relevance_score": 0.58,
+    "matched_tags": [
+      "delegation"
+    ],
+    "domain_match": false,
+    "source_path": "technology/d320043d.json"
+  },
+  "framework": {
+    "id": "d320043d",
+    "type": "claim",
+    "name": "VIC Single-Hop Only \u2014 No Delegation Chain",
+    "description": "The entire VIC architecture is human\u2192agent\u2192merchant. There is zero mention of agent-to-agent delegation, multi-hop auth chains, or sub-agent credential passing. The Passkey is user-held, the instruction is user-authenticated, and the agent executes. This confirms single-hop assumption.",
+    "domain": "technology",
+    "confidence": 0.9,
+    "tags": [
+      "delegation",
+      "single-hop",
+      "architecture-limitation"
+    ],
+    "raw_quote": "the agent will request whether the user agrees that the agent can make the purchase on the user's behalf",
+    "value_tier": "meat",
+    "source": {
+      "title": "Visa Intelligent Commerce (VIC) - Integration Starter Kit",
+      "url": "https://github.com/visa/mcp/"
+    },
+    "hunt_id": "da550186",
+    "extracted_at": "2026-03-15T12:07:17.156250+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.205272+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

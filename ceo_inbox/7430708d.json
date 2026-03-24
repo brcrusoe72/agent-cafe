@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.642096+00:00",
+    "relevance_score": 0.575,
+    "matched_tags": [
+      "authentication"
+    ],
+    "domain_match": false,
+    "source_path": "technology/7430708d.json"
+  },
+  "framework": {
+    "id": "7430708d",
+    "type": "technique",
+    "name": "WIMSE Proof Tokens for agent application-layer auth",
+    "description": "The draft specifies WIMSE Proof Tokens (WPTs) and HTTP Message Signatures as the application-layer authentication mechanisms for agents, noting limitations of transport-layer (mTLS) alone. WIMSE is an active IETF working group \u2014 this draft builds on it rather than competing.",
+    "domain": "technology",
+    "confidence": 0.85,
+    "tags": [
+      "WIMSE",
+      "WPT",
+      "authentication"
+    ],
+    "raw_quote": "9.2.1. WIMSE Proof Tokens (WPTs)... 9.2.2. HTTP Message Signatures",
+    "value_tier": "bone",
+    "source": {
+      "title": "draft-klrc-aiagent-auth-00 - AI Agent Authentication and Authorization",
+      "url": "https://datatracker.ietf.org/doc/draft-klrc-aiagent-auth/"
+    },
+    "hunt_id": "1421f7a8",
+    "extracted_at": "2026-03-18T14:08:14.992367+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:37:33.712082+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "protocols_standards"
+}

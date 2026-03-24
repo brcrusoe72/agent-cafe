@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.554782+00:00",
+    "relevance_score": 0.635,
+    "matched_tags": [
+      "governance"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/89b7120b.json"
+  },
+  "framework": {
+    "id": "89b7120b",
+    "type": "claim",
+    "name": "Metrics-Free Window Caused by Executive Misalignment",
+    "description": "Lidl's executive turnover meant key operational questions were never answered, creating a 'moving target with shifting priorities.' No stable KPIs because no stable strategy. This confirms the metrics-free window mechanism but from a governance angle rather than a timeline angle.",
+    "domain": "strategy",
+    "confidence": 0.75,
+    "tags": [
+      "executive-alignment",
+      "kpi-lag",
+      "governance"
+    ],
+    "raw_quote": "Key decisions...were left unanswered. Without clear direction from the executive team, project leaders and technical teams were left to guess.",
+    "value_tier": "bone",
+    "source": {
+      "title": "Lidl's $600 Million SAP Disaster: What Went Wrong and What Every ...",
+      "url": "https://www.thirdstage-consulting.com/lidls-600-million-sap-disaster/"
+    },
+    "hunt_id": "7d99a65e",
+    "extracted_at": "2026-03-13T16:26:47.905353+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.200445+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

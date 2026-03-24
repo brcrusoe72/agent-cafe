@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.321579+00:00",
+    "relevance_score": 0.48,
+    "matched_tags": [
+      "stripe"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/9e3b616a.json"
+  },
+  "framework": {
+    "id": "9e3b616a",
+    "type": "adjacent_discovery",
+    "name": "Agent-to-Merchant Infrastructure Layer",
+    "description": "Reference to infrastructure being built by OpenAI, Google, Stripe, and Shopify for 'agent-to-merchant' interactions in agentic commerce. Implies a new protocol or API layer specifically for AI agents to transact with merchants. Details not provided but suggests financial infrastructure players are actively building agent-specific systems.",
+    "domain": "ai-systems",
+    "confidence": 0.6,
+    "tags": [
+      "agentic-commerce",
+      "financial-infrastructure",
+      "stripe",
+      "shopify",
+      "openai"
+    ],
+    "raw_quote": "Major players including OpenAI, Google, Stripe, and Shopify are already building agent-to-merchant infrastructure.",
+    "source": {
+      "title": "AI Agent Authentication & Authorization - datadome.co",
+      "url": "https://datadome.co/agent-trust-management/authentication-and-authorization/"
+    },
+    "hunt_id": "4f110637",
+    "extracted_at": "2026-03-06T14:17:42.636415+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.210164+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

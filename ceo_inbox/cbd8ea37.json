@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.666141+00:00",
+    "relevance_score": 0.65,
+    "matched_tags": [
+      "multi-agent",
+      "delegation"
+    ],
+    "domain_match": false,
+    "source_path": "technology/cbd8ea37.json"
+  },
+  "framework": {
+    "id": "cbd8ea37",
+    "type": "framework",
+    "name": "Supervisor-Subagent Payment Delegation (Single-Hop Only)",
+    "description": "Visa's reference architecture uses supervisor\u2192subagent delegation where the cart manager agent handles payments, but authorization still flows back to the human. No evidence of multi-hop agent-to-agent auth chains. The delegation is orchestration-level, not cryptographic.",
+    "domain": "technology",
+    "confidence": 0.9,
+    "tags": [
+      "delegation",
+      "multi-agent",
+      "architecture"
+    ],
+    "raw_quote": "The supervisor acts as the central orchestrator... The cart manager handles shopping cart operations, payment processing, and purchase flow",
+    "value_tier": "meat",
+    "source": {
+      "title": "Introducing Visa Intelligent Commerce on AWS: Enabling agentic commerce with Amazon Bedrock AgentCore | Artificial Intelligence",
+      "url": "https://aws.amazon.com/blogs/machine-learning/introducing-visa-intelligent-commerce-on-aws-enabling-agentic-commerce-with-amazon-bedrock-agentcore/"
+    },
+    "hunt_id": "da550186",
+    "extracted_at": "2026-03-15T12:05:52.907536+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.204580+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

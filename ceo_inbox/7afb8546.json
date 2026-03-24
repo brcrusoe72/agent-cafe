@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.421249+00:00",
+    "relevance_score": 0.716,
+    "matched_tags": [
+      "fraud-detection"
+    ],
+    "domain_match": false,
+    "source_path": "finance/7afb8546.json"
+  },
+  "framework": {
+    "id": "7afb8546",
+    "type": "case_study",
+    "name": "PayPal AP2 Integration Architecture",
+    "description": "PayPal's implementation leverages existing components: wallet manages credentials/consent, Checkout mediates transaction context, Braintree/core systems route to issuers/networks. Fraud engines ingest mandate metadata (modality, linkage) into ML models trained on global transaction data. Operates across ~200 markets and multiple payment rails.",
+    "domain": "finance",
+    "confidence": 0.86,
+    "tags": [
+      "implementation",
+      "architecture",
+      "fraud-detection",
+      "global-scale"
+    ],
+    "raw_quote": "PayPal's architecture in many ways reflects the role boundaries that AP2 specifies. The PayPal wallet manages credentials and consent. Checkout mediates the transaction context, and Braintree and PayPal core systems route authorization and settlement... PayPal's fraud engines then could ingest mandate metadata such as modality and linkage",
+    "value_tier": "bone",
+    "source": {
+      "title": "Agent Payments Protocol: Building Verifiable Trust for Agentic ...",
+      "url": "https://developer.paypal.com/community/blog/PayPal-Agent-Payments-Protocol/"
+    },
+    "hunt_id": "b977a620",
+    "extracted_at": "2026-03-07T14:43:18.908256+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.199657+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

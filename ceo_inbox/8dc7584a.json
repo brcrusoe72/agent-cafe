@@ -1,0 +1,35 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.648976+00:00",
+    "relevance_score": 0.72,
+    "matched_tags": [
+      "platform-strategy"
+    ],
+    "domain_match": false,
+    "source_path": "technology/8dc7584a.json"
+  },
+  "framework": {
+    "id": "8dc7584a",
+    "type": "framework",
+    "name": "Bundling-Unbundling Cycle",
+    "description": "Technology markets go through cycles of unbundling (specialized point solutions proliferate) followed by rebundling (platforms consolidate tools). Currently entering a bundling phase after 10+ years of SaaS proliferation.",
+    "domain": "technology",
+    "confidence": 0.9,
+    "tags": [
+      "market-cycles",
+      "saas",
+      "platform-strategy"
+    ],
+    "raw_quote": "We had gone through 10 years plus of this proliferation of SAS, the unbundling. So I was like, huh, okay, there's going to be a bundling of go to market tooling.",
+    "source": {
+      "title": "watch?v=tlZuqzeYDiU",
+      "url": "https://www.youtube.com/watch?v=tlZuqzeYDiU"
+    },
+    "hunt_id": "69dfc43e",
+    "extracted_at": "2026-03-03T17:44:33.938244+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.190606+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "marketplace_design"
+}

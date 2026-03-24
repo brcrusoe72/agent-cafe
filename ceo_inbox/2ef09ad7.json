@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.255184+00:00",
+    "relevance_score": 0.58,
+    "matched_tags": [
+      "authorization"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/2ef09ad7.json"
+  },
+  "framework": {
+    "id": "2ef09ad7",
+    "type": "technique",
+    "name": "Payment Instruction Validation Pattern",
+    "description": "A three-stage validation mechanism: (1) User authenticates intent via Passkey, (2) Agent requests credentials matching that intent, (3) Visa validates credential requests against authenticated instructions before issuing payment credentials. Creates an auditable chain of authorization.",
+    "domain": "ai-systems",
+    "confidence": 0.9,
+    "tags": [
+      "authorization",
+      "validation",
+      "audit-trail",
+      "trust-minimization"
+    ],
+    "raw_quote": "The agent requests the user to authenticate the Payment Instruction using their Passkey... The Visa Intelligent Commerce platform will validate that these requests match the authenticated user instruction and set network level controls.",
+    "source": {
+      "title": "visa-intelligent-commerce",
+      "url": "https://developer.visa.com/capabilities/visa-intelligent-commerce"
+    },
+    "hunt_id": "0a8db7c7",
+    "extracted_at": "2026-03-05T15:14:52.131310+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.181330+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

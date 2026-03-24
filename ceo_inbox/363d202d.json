@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.622120+00:00",
+    "relevance_score": 0.445,
+    "matched_tags": [
+      "cryptography"
+    ],
+    "domain_match": false,
+    "source_path": "technology/363d202d.json"
+  },
+  "framework": {
+    "id": "363d202d",
+    "type": "technique",
+    "name": "RFC 9421 HTTP Message Signatures for Agent Authentication",
+    "description": "TAP implements RFC 9421 compliant HTTP message signatures where each agent request carries cryptographic proof binding the agent identity to the specific merchant domain, exact page URL, operation type (browsing/payment), and temporal validity. CDN proxies intercept and verify signatures before requests reach merchant infrastructure.",
+    "domain": "technology",
+    "confidence": 0.95,
+    "tags": [
+      "cryptography",
+      "http-signatures",
+      "cdn-security"
+    ],
+    "raw_quote": "TAP Agent generates RFC 9421 compliant signatures... CDN Proxy intercepts and verifies agent signatures... Every request from a trusted agent is cryptographically locked to a merchant's specific website and the exact page with which the agent is interacting.",
+    "value_tier": "meat",
+    "source": {
+      "title": "GitHub - visa/trusted-agent-protocol: Establishing a universal standard of trust between AI agents and merchants for the next phase of agentic commerce. \u00b7 GitHub",
+      "url": "https://github.com/visa/trusted-agent-protocol"
+    },
+    "hunt_id": "bfe03aec",
+    "extracted_at": "2026-03-11T13:14:56.423219+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.181567+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

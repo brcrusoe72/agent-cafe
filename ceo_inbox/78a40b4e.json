@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.643063+00:00",
+    "relevance_score": 0.58,
+    "matched_tags": [
+      "delegation",
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "technology/78a40b4e.json"
+  },
+  "framework": {
+    "id": "78a40b4e",
+    "type": "framework",
+    "name": "AIMS Component Architecture",
+    "description": "Six-component model: Agent Identifiers, Agent Credentials, Agent Attestation, Agent Credential Provisioning, Agent Authentication (transport + application layer via WIMSE Proof Tokens, HTTP Message Signatures), Agent Authorization (OAuth 2.0 delegation with Transaction Tokens for risk reduction). Includes human-in-the-loop, cross-domain access, and tool-to-service patterns.",
+    "domain": "technology",
+    "confidence": 0.9,
+    "tags": [
+      "identity-architecture",
+      "oauth",
+      "transaction-tokens",
+      "delegation"
+    ],
+    "raw_quote": "An Agent Identity Management System ensures that the right Agent has access to the right resources and tools at the right time for the right reason.",
+    "value_tier": "meat",
+    "source": {
+      "title": "draft-klrc-aiagent-auth-00 - AI Agent Authentication and Authorization",
+      "url": "https://datatracker.ietf.org/doc/draft-klrc-aiagent-auth/"
+    },
+    "hunt_id": "4433457e",
+    "extracted_at": "2026-03-18T14:31:50.601408+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.199458+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

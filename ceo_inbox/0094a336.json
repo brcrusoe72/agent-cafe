@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.607035+00:00",
+    "relevance_score": 0.57,
+    "matched_tags": [
+      "authentication"
+    ],
+    "domain_match": false,
+    "source_path": "technology/0094a336.json"
+  },
+  "framework": {
+    "id": "0094a336",
+    "type": "technique",
+    "name": "Pre-Configured System Integration",
+    "description": "Building agents with pre-baked knowledge of enterprise APIs, authentication protocols, and best practices for specific business systems. Reduces deployment friction by encoding expertise upfront.",
+    "domain": "technology",
+    "confidence": 0.8,
+    "tags": [
+      "API-integration",
+      "enterprise-systems",
+      "deployment",
+      "authentication"
+    ],
+    "raw_quote": "We already know the business systems that each and every one of you try to connect to. We have so much expertise with their APIs and their authentication.",
+    "source": {
+      "title": "AI Agent Marketplace: Instantly Deploy 100+ Enterprise-Ready Agents",
+      "url": "https://www.youtube.com/watch?v=AQtC5NmDPNw"
+    },
+    "hunt_id": "207545cd",
+    "extracted_at": "2026-03-05T17:15:37.915697+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.187702+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "marketplace_design"
+}

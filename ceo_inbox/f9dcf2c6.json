@@ -1,0 +1,40 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.681894+00:00",
+    "relevance_score": 0.655,
+    "matched_tags": [
+      "authentication",
+      "mcp",
+      "agent-commerce"
+    ],
+    "domain_match": false,
+    "source_path": "technology/f9dcf2c6.json"
+  },
+  "framework": {
+    "id": "f9dcf2c6",
+    "type": "framework",
+    "name": "Visa Intelligent Commerce (VIC) Architecture",
+    "description": "Visa's answer to Mastercard's Verifiable Intent is a full platform with agent-specific tokens, Passkey-based authentication (FIDO), and VisaNet-level transaction controls. Agents are onboarded to the platform, users provision cards with step-up verification, and a Passkey authenticates future payment instructions. Payment credentials are validated against authenticated user instructions before issuance.",
+    "domain": "technology",
+    "confidence": 0.95,
+    "tags": [
+      "payments",
+      "agent-commerce",
+      "authentication",
+      "visa",
+      "mcp"
+    ],
+    "raw_quote": "Agents enable users to create accounts and provide users the option to add their Visa cards that can be used by the agent to make purchases on their behalf. This provisioning will include step up verification of the cardholder as well as setting up a Passkey that will be used by the agent to authenticate future instructions.",
+    "value_tier": "organ",
+    "source": {
+      "title": "Visa Intelligent Commerce (VIC) - Integration Starter Kit",
+      "url": "https://github.com/visa/mcp/"
+    },
+    "hunt_id": "da550186",
+    "extracted_at": "2026-03-15T12:07:17.155588+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.212018+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

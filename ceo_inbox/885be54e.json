@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.647458+00:00",
+    "relevance_score": 0.43,
+    "matched_tags": [
+      "cryptography"
+    ],
+    "domain_match": false,
+    "source_path": "technology/885be54e.json"
+  },
+  "framework": {
+    "id": "885be54e",
+    "type": "claim",
+    "name": "Hardware-Backed Signing as Trust Anchor",
+    "description": "AP2 requires mandate signing via hardware secure enclaves (TPM, Android DPC), not software keys. This means the portable spending authority is bound to a physical device, not truly portable across agents/environments. The 'portability' is of the credential, not the signing capability.",
+    "domain": "technology",
+    "confidence": 0.8,
+    "tags": [
+      "cryptography",
+      "hardware-security",
+      "trust-anchors"
+    ],
+    "raw_quote": "Signatures use hardware keys (e.g., Android DPC); verification via public key chains",
+    "value_tier": "meat",
+    "source": {
+      "title": "Secure Use of the Agent Payments Protocol (AP2)",
+      "url": "https://cloudsecurityalliance.org/blog/2025/10/06/secure-use-of-the-agent-payments-protocol-ap2-a-framework-for-trustworthy-ai-driven-transactions"
+    },
+    "hunt_id": "eeb6b019",
+    "extracted_at": "2026-03-15T12:19:37.654817+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.200313+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.510882+00:00",
+    "relevance_score": 0.435,
+    "matched_tags": [
+      "economics"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/16de573d.json"
+  },
+  "framework": {
+    "id": "16de573d",
+    "type": "framework",
+    "name": "Toolless vs Tooled Pattern Economics",
+    "description": "PMMA patterns eliminate $50K-$500K+ aluminum tooling costs but have higher per-unit cost than wax. Economic crossover depends on production volume, design iteration frequency, and time-to-market value. Optimal for prototyping, small batches (<500 units), and programs with frequent design changes (motorsports, aerospace R&D).",
+    "domain": "strategy",
+    "confidence": 0.85,
+    "tags": [
+      "economics",
+      "roi",
+      "tooling-investment",
+      "production-volume"
+    ],
+    "raw_quote": "Wax patterns are cheaper per unit in high volumes\u2014but only after the expensive molds are made. PMMA patterns, on the other hand, are ideal for smaller runs or projects that require frequent design changes.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Why TITAL (and Howmet) turned to 3D printed investment casting | VoxelMatters - The heart of additive manufacturing",
+      "url": "https://www.voxelmatters.com/why-tital-and-howmet-turned-to-3d-printed-investment-casting/"
+    },
+    "hunt_id": "2cea866c",
+    "extracted_at": "2026-03-06T16:04:52.863534+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.207926+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

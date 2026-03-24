@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.254627+00:00",
+    "relevance_score": 0.615,
+    "matched_tags": [
+      "delegation",
+      "verifiable-credentials"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/2e4fb5dc.json"
+  },
+  "framework": {
+    "id": "2e4fb5dc",
+    "type": "technique",
+    "name": "Verifiable Delegation Credentials",
+    "description": "Digital credentials issued by users that include: AI system's unique identity and properties, delegated permissions with contextual scope restrictions, user metadata, and cryptographic signatures for verifiability. These enable third parties to verify authentic delegation and appropriate authority scope.",
+    "domain": "ai-systems",
+    "confidence": 0.9,
+    "tags": [
+      "cryptographic-signatures",
+      "verifiable-credentials",
+      "delegation"
+    ],
+    "raw_quote": "Users issue delegation credentials that include: the AI system's unique identity and properties, delegated permissions with contextual scope restrictions, user metadata, and cryptographic signatures for verifiability. These credentials enable secure, trustworthy interactions between AI agents and third-party services.",
+    "source": {
+      "title": "2501.09674v1",
+      "url": "https://arxiv.org/html/2501.09674v1"
+    },
+    "hunt_id": "c5cfd231",
+    "extracted_at": "2026-03-06T14:28:18.509038+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.195170+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

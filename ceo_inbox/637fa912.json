@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.286295+00:00",
+    "relevance_score": 0.575,
+    "matched_tags": [
+      "authorization"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/637fa912.json"
+  },
+  "framework": {
+    "id": "637fa912",
+    "type": "framework",
+    "name": "NIST NCCoE Agent Identity & Authorization",
+    "description": "NIST draft concept paper proposing AI agents be treated as identifiable entities within enterprise IAM systems, using OAuth/OIDC, SPIFFE/SPIRE, SCIM, and NGAC. Focuses on credential lifecycle, least privilege, audit trails, and accountability mapping back to human delegators.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "nist",
+      "identity",
+      "authorization",
+      "zero-trust",
+      "enterprise"
+    ],
+    "raw_quote": "AI agents should be treated as identifiable entities within enterprise identity systems rather than as anonymous automation running under shared credentials.",
+    "value_tier": "bone",
+    "source": {
+      "title": "NIST concept paper explores identity and authorization controls for ...",
+      "url": "https://www.biometricupdate.com/202603/nist-concept-paper-explores-identity-and-authorization-controls-for-ai-agents"
+    },
+    "hunt_id": "d39fbdac",
+    "extracted_at": "2026-03-14T14:29:20.252162+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.199070+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

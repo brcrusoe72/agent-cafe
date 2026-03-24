@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.411599+00:00",
+    "relevance_score": 0.52,
+    "matched_tags": [
+      "stripe"
+    ],
+    "domain_match": false,
+    "source_path": "finance/494f5f7a.json"
+  },
+  "framework": {
+    "id": "494f5f7a",
+    "type": "claim",
+    "name": "Stripe and PayPal at CBA Symposium Table",
+    "description": "Both Stripe and PayPal participated in the CBA's Fall 2025 Agentic Payments Symposium alongside Mastercard, Google, JPMorgan, Plaid, and Fiserv. Confirms active engagement but reveals no specific product timelines.",
+    "domain": "finance",
+    "confidence": 1.0,
+    "tags": [
+      "stripe",
+      "paypal",
+      "industry-engagement"
+    ],
+    "raw_quote": "Stripe, LLC... PayPal... Mastercard International Incorporated",
+    "value_tier": "bone",
+    "source": {
+      "title": "Agentic AI Payments: Navigating Consumer Protection, Innovation, ...",
+      "url": "https://consumerbankers.com/wp-content/uploads/2026/01/CBA-Agentic-Symposium-White-Paper-2026-01v2.pdf"
+    },
+    "hunt_id": "e7408160",
+    "extracted_at": "2026-03-14T14:05:41.087271+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.213728+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "payment_infrastructure"
+}

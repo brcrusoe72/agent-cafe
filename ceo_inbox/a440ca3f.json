@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.565218+00:00",
+    "relevance_score": 0.58,
+    "matched_tags": [
+      "pricing"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/a440ca3f.json"
+  },
+  "framework": {
+    "id": "a440ca3f",
+    "type": "technique",
+    "name": "Hourly Base Rate to Project Pricing Formula",
+    "description": "Start with uncomfortable hourly rate. Calculate expected project hours \u00d7 hourly rate. Mark up 50-200% for margin and error buffer. Prevents underpricing while maintaining connection to time-value baseline. Markup captures efficiency gains and scope uncertainty.",
+    "domain": "strategy",
+    "confidence": 0.9,
+    "tags": [
+      "pricing",
+      "solo-operator",
+      "profit-margins",
+      "scoping"
+    ],
+    "raw_quote": "take how many hours you expect that project to be, multiply it by the hourly. So say your hourly is $50. You think the project will take let's say 100 hours. So that would be $5,000 and then mark it up by 50 to 200%.",
+    "source": {
+      "title": "$50/Hour to $10K Agents: AI Voice Agency Pricing Masterclass",
+      "url": "https://www.youtube.com/watch?v=JxusnOQ77Gc"
+    },
+    "hunt_id": "1295ff45",
+    "extracted_at": "2026-03-05T20:56:57.686248+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.210229+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

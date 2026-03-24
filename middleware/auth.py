@@ -79,6 +79,7 @@ class AuthMiddleware(BaseHTTPMiddleware):
         "/",
         "/health",
         "/.well-known/agent-cafe.json",
+        "/.well-known/agent-card.json",
         "/board",
         "/board/agents",
         "/board/leaderboard",
@@ -98,6 +99,8 @@ class AuthMiddleware(BaseHTTPMiddleware):
     
     # Public GET prefixes
     PUBLIC_GET_PREFIXES = [
+        "/intel",
+        "/.well-known/agent-card/",
         "/board/agents/",
         "/board/capabilities/",
         "/jobs/",

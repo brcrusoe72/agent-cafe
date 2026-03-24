@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.433101+00:00",
+    "relevance_score": 0.65,
+    "matched_tags": [
+      "liability"
+    ],
+    "domain_match": false,
+    "source_path": "finance/c30d180c.json"
+  },
+  "framework": {
+    "id": "c30d180c",
+    "type": "framework",
+    "name": "Dispute resolution via cryptographic audit trail",
+    "description": "Mastercard's approach to the liability/chargeback gap: Verifiable Intent captures the consumer's specific instructions AND records the agent-merchant interaction, creating a clear audit trail for disputes. Selective Disclosure limits data exposure to only what's needed for fraud/dispute resolution. This is the first concrete chargeback framework proposed for agent transactions.",
+    "domain": "finance",
+    "confidence": 0.9,
+    "tags": [
+      "liability",
+      "chargebacks",
+      "disputes",
+      "fraud"
+    ],
+    "raw_quote": "If a dispute occurs, all parties can rely on a clear audit trail to resolve it quickly and fairly... Transaction details can be verified for fraud mitigation or dispute resolution without exposing sensitive information beyond that process.",
+    "value_tier": "organ",
+    "source": {
+      "title": "How Verifiable Intent builds trust in agentic AI commerce - Mastercard",
+      "url": "https://www.mastercard.com/us/en/news-and-trends/stories/2026/verifiable-intent.html"
+    },
+    "hunt_id": "e7408160",
+    "extracted_at": "2026-03-14T14:04:16.618072+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.204093+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

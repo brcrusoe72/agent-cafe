@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.458810+00:00",
+    "relevance_score": 0.57,
+    "matched_tags": [
+      "pricing"
+    ],
+    "domain_match": false,
+    "source_path": "manufacturing/599bcf55.json"
+  },
+  "framework": {
+    "id": "599bcf55",
+    "type": "claim",
+    "name": "Volume Discount Negotiation as Pricing Mechanism",
+    "description": "Co-packer pricing is relationship-based and volume-dependent rather than transparent or algorithmic. As volumes increase, brands must 'renegotiate' and 'request volume discounts', implying pricing is opaque and manually managed rather than systematically optimized.",
+    "domain": "manufacturing",
+    "confidence": 0.8,
+    "tags": [
+      "pricing",
+      "negotiation",
+      "volume-discounts",
+      "contract-management"
+    ],
+    "raw_quote": "as your food product takes off and your volume of orders increases it is possible to renegotiate your deal with the co-packer and request a volume discount which will lower the price per unit cost",
+    "source": {
+      "title": "watch?v=o7lG_HxAx7E",
+      "url": "https://www.youtube.com/watch?v=o7lG_HxAx7E"
+    },
+    "hunt_id": "571e707b",
+    "extracted_at": "2026-03-03T20:13:14.900086+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.208800+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

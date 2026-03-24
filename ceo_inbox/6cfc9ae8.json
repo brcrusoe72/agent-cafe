@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.639283+00:00",
+    "relevance_score": 0.65,
+    "matched_tags": [
+      "security"
+    ],
+    "domain_match": false,
+    "source_path": "technology/6cfc9ae8.json"
+  },
+  "framework": {
+    "id": "6cfc9ae8",
+    "type": "technique",
+    "name": "Nonce-Based Replay Attack Prevention",
+    "description": "Both protocols mandate a unique nonce field in each signature, cached by Cloudflare to detect reuse. This provides time-window replay protection in addition to created/expires timestamps, ensuring requests cannot be copied and resubmitted even within validity period.",
+    "domain": "technology",
+    "confidence": 0.9,
+    "tags": [
+      "security",
+      "replay-protection",
+      "nonce",
+      "stateful-validation"
+    ],
+    "raw_quote": "Agents must also include the nonce field, a unique sequence included in the signature, to provide protection against replay attacks... By checking if a nonce has been recently used, Cloudflare can reject reused or expired signatures",
+    "value_tier": "meat",
+    "source": {
+      "title": "Securing agentic commerce: helping AI Agents transact with Visa and Mastercard",
+      "url": "https://blog.cloudflare.com/secure-agentic-commerce/"
+    },
+    "hunt_id": "fd72fd5b",
+    "extracted_at": "2026-03-09T13:47:14.027718+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.183374+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

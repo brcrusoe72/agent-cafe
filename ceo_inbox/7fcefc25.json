@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.645614+00:00",
+    "relevance_score": 0.5,
+    "matched_tags": [
+      "tokenization"
+    ],
+    "domain_match": false,
+    "source_path": "technology/7fcefc25.json"
+  },
+  "framework": {
+    "id": "7fcefc25",
+    "type": "framework",
+    "name": "Visa Agentic Tokenization",
+    "description": "Visa has a specific 'agentic tokenization' capability distinct from standard card tokenization \u2014 purpose-built for agent-initiated payment flows. This is separate from their existing network tokenization and suggests agent-specific credential handling.",
+    "domain": "technology",
+    "confidence": 0.8,
+    "tags": [
+      "tokenization",
+      "visa",
+      "agentic-payments"
+    ],
+    "raw_quote": "Visa's suite of essential agentic commerce tools, including authentication, agentic tokenization, and user intent capture",
+    "value_tier": "meat",
+    "source": {
+      "title": "Introducing Visa Intelligent Commerce on AWS: Enabling agentic commerce with Amazon Bedrock AgentCore | Artificial Intelligence",
+      "url": "https://aws.amazon.com/blogs/machine-learning/introducing-visa-intelligent-commerce-on-aws-enabling-agentic-commerce-with-amazon-bedrock-agentcore/"
+    },
+    "hunt_id": "da550186",
+    "extracted_at": "2026-03-15T12:05:52.906184+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.214375+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "payment_infrastructure"
+}

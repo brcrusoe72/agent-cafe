@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.639051+00:00",
+    "relevance_score": 0.445,
+    "matched_tags": [
+      "standardization"
+    ],
+    "domain_match": false,
+    "source_path": "technology/6cf54318.json"
+  },
+  "framework": {
+    "id": "6cf54318",
+    "type": "technique",
+    "name": "RFC9421 HTTP Message Signatures for Agent Requests",
+    "description": "Uses IETF RFC9421 standard for HTTP message signatures rather than custom authentication. Agents sign request components, merchants validate signatures using published public keys. Standardized signature_base construction from request attributes enables cryptographic non-repudiation.",
+    "domain": "technology",
+    "confidence": 0.95,
+    "tags": [
+      "RFC9421",
+      "HTTP_signatures",
+      "standardization",
+      "cryptographic_verification"
+    ],
+    "raw_quote": "the technical processes for recognizing a Visa-approved agent, including the cryptographic standards (RFC9421), required message signature fields, and the process for validating an agent's intent",
+    "value_tier": "organ",
+    "source": {
+      "title": "Getting Started - Trusted Agent Protocol - developer.visa.com",
+      "url": "https://developer.visa.com/capabilities/trusted-agent-protocol/docs"
+    },
+    "hunt_id": "fd72fd5b",
+    "extracted_at": "2026-03-09T13:46:16.209557+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.189648+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "marketplace_design"
+}

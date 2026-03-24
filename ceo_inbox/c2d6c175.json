@@ -1,0 +1,40 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.432758+00:00",
+    "relevance_score": 0.542,
+    "matched_tags": [
+      "tokenization",
+      "authentication",
+      "authorization"
+    ],
+    "domain_match": false,
+    "source_path": "finance/c2d6c175.json"
+  },
+  "framework": {
+    "id": "c2d6c175",
+    "type": "framework",
+    "name": "PayPal Model Context Protocol (MCP) for Agent Authorization",
+    "description": "Standardized protocol enabling AI agents to communicate with financial services while maintaining 'clearly defined parameters and permissions.' Acts as authentication layer between AI models and PayPal APIs with tokenization replacing sensitive data. Supports event-driven architecture and multi-language SDKs (TypeScript, Python).",
+    "domain": "finance",
+    "confidence": 0.75,
+    "tags": [
+      "authorization",
+      "authentication",
+      "protocol",
+      "tokenization",
+      "agent-boundaries"
+    ],
+    "raw_quote": "The Model Context Protocol (MCP) serves as the secure foundation for these interactions, providing a standardized system that allows AI agents to communicate with PayPal's financial services while maintaining strict data protection standards. This protocol ensures that sensitive payment information remains secure and that AI agents operate within clearly defined parameters and permissions.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Accelerating Agentic Payments with PayPal",
+      "url": "https://developer.paypal.com/community/blog/accelerating-agentic-payments/"
+    },
+    "hunt_id": "b977a620",
+    "extracted_at": "2026-03-07T14:44:56.233321+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.220115+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

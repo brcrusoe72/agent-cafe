@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.413543+00:00",
+    "relevance_score": 0.64,
+    "matched_tags": [
+      "liability"
+    ],
+    "domain_match": false,
+    "source_path": "finance/4e4443bd.json"
+  },
+  "framework": {
+    "id": "4e4443bd",
+    "type": "framework",
+    "name": "AP2 Liability Framework via Mandate Chain",
+    "description": "AP2 addresses fraud/liability through cryptographic audit trails: Intent Mandate \u2192 Cart Mandate \u2192 Payment creates 'non-repudiable' evidence chain. For delegated purchases (human absent), the pre-signed Intent Mandate with explicit rules (price limits, timing, conditions) serves as the authorization record. Accountability question is answered by which mandate was signed and by whom.",
+    "domain": "finance",
+    "confidence": 0.8,
+    "tags": [
+      "liability",
+      "chargebacks",
+      "fraud",
+      "mandates"
+    ],
+    "raw_quote": "This complete sequence\u2014from intent, to cart, to payment\u2014creates a non-repudiable audit trail that answers the critical questions of authorization and authenticity, providing a clear foundation for accountability.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Announcing Agent Payments Protocol (AP2) | Google Cloud Blog",
+      "url": "https://cloud.google.com/blog/products/ai-machine-learning/announcing-agents-to-payments-ap2-protocol"
+    },
+    "hunt_id": "e7408160",
+    "extracted_at": "2026-03-14T14:03:05.455606+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.197090+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

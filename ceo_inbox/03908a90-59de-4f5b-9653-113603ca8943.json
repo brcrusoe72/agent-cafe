@@ -1,0 +1,42 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.223611+00:00",
+    "relevance_score": 0.56,
+    "matched_tags": [
+      "mcp"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/03908a90-59de-4f5b-9653-113603ca8943.json"
+  },
+  "framework": {
+    "type": "TECHNIQUE",
+    "name": "Open Brain Architecture",
+    "description": "A database-backed, AI-accessible knowledge system using MCP (Model Context Protocol) that allows any AI tool to access your context without vendor lock-in, costing $0.10-0.30 monthly.",
+    "domain": "ai-systems",
+    "confidence": 0.7,
+    "tags": [
+      "mcp",
+      "database",
+      "knowledge-management",
+      "cost-optimization"
+    ],
+    "implications": [
+      "Build vendor-neutral memory systems",
+      "Use MCP for AI tool interoperability",
+      "Expect extremely low costs for personal knowledge systems"
+    ],
+    "raw_quote": "A databasebacked AI accessible knowledge system that you own outright with no SAS middlemen that can break or repric or disappear. One brain that every AI you use, Claude, Chat, GPT, Cursor, whatever ships next month, can plug into via MCP",
+    "id": "03908a90-59de-4f5b-9653-113603ca8943",
+    "source": {
+      "title": "You Don't Need SaaS. The $0.10 System That Replaced My AI Workflow (45 Min No-Code Build)",
+      "url": "https://www.youtube.com/watch?v=2JiMmye2ezg",
+      "author": "AI News & Strategy Daily | Nate B Jones",
+      "date": "20260302"
+    },
+    "extracted_at": "2026-03-03T10:09:31.391999"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.215456+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

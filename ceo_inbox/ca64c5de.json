@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.665303+00:00",
+    "relevance_score": 0.79,
+    "matched_tags": [
+      "agent-identity"
+    ],
+    "domain_match": false,
+    "source_path": "technology/ca64c5de.json"
+  },
+  "framework": {
+    "id": "ca64c5de",
+    "type": "framework",
+    "name": "Agent Identity Management System (AIMS)",
+    "description": "Conceptual model (not product) defining 7+ functions: agent identifiers, credentials, attestation, credential provisioning, authentication (transport + application layer via mTLS, WIMSE Proof Tokens, HTTP Message Signatures), authorization (OAuth 2.0 delegation), monitoring/observability, compliance, and policy. Explicitly covers human-in-the-loop, cross-domain access, and transaction tokens for risk reduction.",
+    "domain": "technology",
+    "confidence": 0.9,
+    "tags": [
+      "aims",
+      "agent-identity",
+      "compliance",
+      "monitoring"
+    ],
+    "raw_quote": "An Agent Identity Management System ensures that the right Agent has access to the right resources and tools at the right time for the right reason.",
+    "value_tier": "meat",
+    "source": {
+      "title": "draft-klrc-aiagent-auth-00 - AI Agent Authentication and Authorization",
+      "url": "https://datatracker.ietf.org/doc/draft-klrc-aiagent-auth/"
+    },
+    "hunt_id": "f911b3bb",
+    "extracted_at": "2026-03-18T13:57:12.416646+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.204381+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

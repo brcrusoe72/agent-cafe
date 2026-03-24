@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.678525+00:00",
+    "relevance_score": 0.585,
+    "matched_tags": [
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "technology/ecb61fcd.json"
+  },
+  "framework": {
+    "id": "ecb61fcd",
+    "type": "claim",
+    "name": "Explicitly No DIDs Required",
+    "description": "The draft deliberately avoids Decentralized Identifiers, relying instead on standard OAuth 2.0 + JWKS for identity. This is a design choice favoring enterprise identity providers and zero-trust architectures over decentralized identity stacks.",
+    "domain": "technology",
+    "confidence": 0.95,
+    "tags": [
+      "did",
+      "identity",
+      "design-choice",
+      "oauth"
+    ],
+    "raw_quote": "enables secure, auditable delegation for autonomous AI Agent... without dependency on Decentralized Identifiers (DIDs)",
+    "value_tier": "organ",
+    "source": {
+      "title": "Agent Operation Authorization - IETF",
+      "url": "https://www.ietf.org/archive/id/draft-liu-agent-operation-authorization-00.html"
+    },
+    "hunt_id": "f911b3bb",
+    "extracted_at": "2026-03-18T13:58:37.105209+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.206690+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

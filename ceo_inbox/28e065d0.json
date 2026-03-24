@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.250435+00:00",
+    "relevance_score": 0.58,
+    "matched_tags": [
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/28e065d0.json"
+  },
+  "framework": {
+    "id": "28e065d0",
+    "type": "claim",
+    "name": "OpenAI GPT Actions as Current State-of-Art",
+    "description": "Casually mentions 'limited OAuth 2.0 support is enabled in some agent tools such as OpenAI GPT actions' \u2014 confirming that the actual shipping solution from major vendors is basic OAuth, not any sophisticated delegation chain.",
+    "domain": "ai-systems",
+    "confidence": 0.9,
+    "tags": [
+      "openai",
+      "current-state",
+      "oauth"
+    ],
+    "raw_quote": "limited OAuth 2.0 support is enabled in some agent tools such as OpenAI GPT actions",
+    "value_tier": "meat",
+    "source": {
+      "title": "Authenticated Delegation and Authorized AI Agents - arXiv",
+      "url": "https://arxiv.org/html/2501.09674v1"
+    },
+    "hunt_id": "5213bf37",
+    "extracted_at": "2026-03-18T14:22:35.965908+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.194966+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.615901+00:00",
+    "relevance_score": 0.545,
+    "matched_tags": [
+      "cryptography",
+      "security"
+    ],
+    "domain_match": false,
+    "source_path": "technology/1c074dec.json"
+  },
+  "framework": {
+    "id": "1c074dec",
+    "type": "technique",
+    "name": "Encryption vs Tokenization Security Model",
+    "description": "Two-pronged security approach: encryption protects data-in-transit (conversion to coded format reversible with decryption key), while tokenization protects data-at-rest (replacing sensitive data with non-reversible tokens). Encryption vulnerable if key compromised; tokenization ensures original data never stored, making breaches less valuable.",
+    "domain": "technology",
+    "confidence": 0.9,
+    "tags": [
+      "security",
+      "data-protection",
+      "payment-security",
+      "cryptography"
+    ],
+    "raw_quote": "encryption primarily protects data during Transit...while tokenization protects data at rest...with tokenization the original data is never stored or exposed in the first place...tokenized data is much less useful to hackers",
+    "source": {
+      "title": "watch?v=hWQCiO04CXk",
+      "url": "https://www.youtube.com/watch?v=hWQCiO04CXk"
+    },
+    "hunt_id": "0a8db7c7",
+    "extracted_at": "2026-03-05T15:18:10.649746+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.180848+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

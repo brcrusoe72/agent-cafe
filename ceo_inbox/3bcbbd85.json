@@ -1,0 +1,41 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.624676+00:00",
+    "relevance_score": 0.562,
+    "matched_tags": [
+      "authorization",
+      "open-standard",
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "technology/3bcbbd85.json"
+  },
+  "framework": {
+    "id": "3bcbbd85",
+    "type": "framework",
+    "name": "OAuth 2.0 Token-Based Authorization Architecture",
+    "description": "Open-standard authorization framework using access tokens with defined scopes instead of credential sharing. Separates resource owner, client, authorization server, and resource server into distinct roles with token-mediated access control. Tokens can be scoped to specific resources and revoked via expiration or refresh mechanisms.",
+    "domain": "technology",
+    "confidence": 0.95,
+    "tags": [
+      "oauth",
+      "authorization",
+      "access-control",
+      "tokens",
+      "open-standard",
+      "scopes",
+      "revocation"
+    ],
+    "raw_quote": "OAuth is an authorization protocol that is based on access tokens. Access tokens are pieces of information that determine the specific resources an application is allowed to access.",
+    "source": {
+      "title": "oauth",
+      "url": "https://www.ibm.com/think/topics/oauth"
+    },
+    "hunt_id": "c5cfd231",
+    "extracted_at": "2026-03-06T14:30:53.290575+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.181801+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.360708+00:00",
+    "relevance_score": 0.635,
+    "matched_tags": [
+      "governance"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/e0b547f2.json"
+  },
+  "framework": {
+    "id": "e0b547f2",
+    "type": "claim",
+    "name": "Compliance as Architectural Driver",
+    "description": "Regulatory requirements (EU AI Act, US Executive Order 14110) necessitate layer-specific audit trails and continuous monitoring of agent behavior, fundamentally differentiating agentic architectures from traditional n-tier systems that audit at fixed checkpoints.",
+    "domain": "ai-systems",
+    "confidence": 0.75,
+    "tags": [
+      "compliance",
+      "governance",
+      "audit-trails",
+      "regulation"
+    ],
+    "raw_quote": "Each layer needs independent audit trails and compliance monitoring... compliance teams must monitor learning algorithms, validate decision trees, and ensure agents maintain consistent behavior within acceptable parameters",
+    "source": {
+      "title": "Breaking Down the Agentic Layers of AI - Boomi",
+      "url": "https://boomi.com/blog/agentic-layers-of-ai-integration/"
+    },
+    "hunt_id": "40f17b42",
+    "extracted_at": "2026-03-04T20:51:24.671410+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.186478+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

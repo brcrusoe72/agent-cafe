@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.351301+00:00",
+    "relevance_score": 0.585,
+    "matched_tags": [
+      "delegation"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/ce6e18f3.json"
+  },
+  "framework": {
+    "id": "ce6e18f3",
+    "type": "contrarian",
+    "name": "The Delegation Chain Is Already Breaking",
+    "description": "Article confirms the thesis: every framework presented (Kolt, NIST, Baker Botts model, state laws) solves human\u2192agent. NONE address agent\u2081\u2192agent\u2082\u2192agent\u2083. Yet 45 billion non-human identities expected by end of 2026. The governance gap is not theoretical \u2014 it's structural and acknowledged by the very bodies trying to fill it.",
+    "domain": "ai-systems",
+    "confidence": 0.95,
+    "tags": [
+      "delegation",
+      "gap-confirmation",
+      "systemic"
+    ],
+    "raw_quote": "Non-human and agentic identities are expected to exceed 45 billion by the end of 2026, more than twelve times the human global workforce. Yet only 10% of organizations report having a strategy for managing these autonomous systems.",
+    "value_tier": "organ",
+    "source": {
+      "title": "When AI Agents Misbehave: Governance and Security for ... - Our Take",
+      "url": "https://ourtake.bakerbotts.com/post/102me2l/when-ai-agents-misbehave-governance-and-security-for-autonomous-ai"
+    },
+    "hunt_id": "d39fbdac",
+    "extracted_at": "2026-03-14T14:30:59.455011+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.204741+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

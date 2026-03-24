@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.402901+00:00",
+    "relevance_score": 0.495,
+    "matched_tags": [
+      "stripe"
+    ],
+    "domain_match": false,
+    "source_path": "finance/1ab1cf2d.json"
+  },
+  "framework": {
+    "id": "1ab1cf2d",
+    "type": "technique",
+    "name": "Geographic Authorization Fencing",
+    "description": "Country-level authorization controls via allowed_merchant_countries and blocked_merchant_countries arrays. Operates at merchant registration country rather than transaction location, creating potential bypass vectors through merchant country-of-incorporation arbitrage.",
+    "domain": "finance",
+    "confidence": 0.75,
+    "tags": [
+      "geofencing",
+      "stripe",
+      "country-controls",
+      "merchant-location"
+    ],
+    "raw_quote": "allowed_merchant_countries array: List of merchant countries to allow authorizations from. Authorizations from all other countries are blocked.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Issuing spending controls | Stripe Documentation",
+      "url": "https://docs.stripe.com/issuing/controls/spending-controls"
+    },
+    "hunt_id": "b977a620",
+    "extracted_at": "2026-03-07T14:45:43.641769+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.213025+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "payment_infrastructure"
+}

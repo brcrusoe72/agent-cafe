@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.340016+00:00",
+    "relevance_score": 0.69,
+    "matched_tags": [
+      "platform-strategy"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/bc8eaf7b.json"
+  },
+  "framework": {
+    "id": "bc8eaf7b",
+    "type": "framework",
+    "name": "Three-Tier MLOps Implementation Taxonomy",
+    "description": "Companies cluster into three MLOps patterns: serverless/cloud-native (Holiday Extras, Ocado, LUSH, Revolut), managed end-to-end platform like DataRobot (Carbon), and in-house ML platforms (Uber/Michelangelo, Netflix/Metaflow, DoorDash). The in-house builders are all tech-native companies; traditional businesses default to cloud-managed.",
+    "domain": "ai-systems",
+    "confidence": 0.6,
+    "tags": [
+      "mlops",
+      "architecture-patterns",
+      "platform-strategy"
+    ],
+    "raw_quote": "Cloud-based/Serverless Implementation... End-to-End Implementation with a Managed Platform... In-House ML Platform Implementation",
+    "value_tier": "bone",
+    "source": {
+      "title": "How These 8 Companies Implement MLOps: In-Depth Guide",
+      "url": "https://neptune.ai/blog/how-these-8-companies-implement-mlops"
+    },
+    "hunt_id": "e234ddc0",
+    "extracted_at": "2026-03-17T13:40:40.146885+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.191441+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "marketplace_design"
+}

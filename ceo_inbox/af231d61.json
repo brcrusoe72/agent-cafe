@@ -1,0 +1,40 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.428521+00:00",
+    "relevance_score": 0.515,
+    "matched_tags": [
+      "open-standard",
+      "interoperability",
+      "stripe"
+    ],
+    "domain_match": false,
+    "source_path": "finance/af231d61.json"
+  },
+  "framework": {
+    "id": "af231d61",
+    "type": "framework",
+    "name": "Agentic Commerce Protocol (ACP)",
+    "description": "An open specification developed by Stripe and OpenAI to embed commerce into AI platforms while preserving business control. Explicitly designed as an open standard rather than proprietary, already powering ChatGPT's Instant Checkout with Etsy and Shopify merchants.",
+    "domain": "finance",
+    "confidence": 0.95,
+    "tags": [
+      "open-standard",
+      "interoperability",
+      "stripe",
+      "openai",
+      "commerce-protocol"
+    ],
+    "raw_quote": "we worked with OpenAI to develop the Agentic Commerce Protocol (ACP), a new open specification to help AI platforms embed commerce into their applications",
+    "value_tier": "meat",
+    "source": {
+      "title": "Introducing our agentic commerce solutions - Stripe",
+      "url": "https://stripe.com/blog/introducing-our-agentic-commerce-solutions"
+    },
+    "hunt_id": "b977a620",
+    "extracted_at": "2026-03-07T14:44:10.149730+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.191007+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "marketplace_design"
+}

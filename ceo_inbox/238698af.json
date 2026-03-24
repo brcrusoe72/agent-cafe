@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.405707+00:00",
+    "relevance_score": 0.508,
+    "matched_tags": [
+      "open-standard",
+      "interoperability"
+    ],
+    "domain_match": false,
+    "source_path": "finance/238698af.json"
+  },
+  "framework": {
+    "id": "238698af",
+    "type": "claim",
+    "name": "Stripe positioning as neutral infrastructure ('Visa for agents')",
+    "description": "Stripe explicitly designed SPTs to be 'generally compatible with card networks' agentic tokens' and allows businesses not using Stripe to 'forward SPTs to their own vaults or other processors'\u2014demonstrating interoperability intent rather than ecosystem lock-in. ACP is published as an open specification.",
+    "domain": "finance",
+    "confidence": 0.88,
+    "tags": [
+      "interoperability",
+      "open-standard",
+      "neutral-infrastructure",
+      "card-network-compatibility"
+    ],
+    "raw_quote": "SPTs are designed to be generally compatible with card networks' agentic tokens. Even businesses that don't process payments with Stripe can forward SPTs to their own vaults or other processors as secure credentials",
+    "value_tier": "meat",
+    "source": {
+      "title": "Introducing our agentic commerce solutions - Stripe",
+      "url": "https://stripe.com/blog/introducing-our-agentic-commerce-solutions"
+    },
+    "hunt_id": "b977a620",
+    "extracted_at": "2026-03-07T14:44:10.149901+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.188480+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "marketplace_design"
+}

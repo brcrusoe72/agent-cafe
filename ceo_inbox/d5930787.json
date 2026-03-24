@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.669438+00:00",
+    "relevance_score": 0.495,
+    "matched_tags": [
+      "tokenization"
+    ],
+    "domain_match": false,
+    "source_path": "technology/d5930787.json"
+  },
+  "framework": {
+    "id": "d5930787",
+    "type": "claim",
+    "name": "Basis Theory \u2014 $50M Total, Leads Agentic Commerce Consortium",
+    "description": "$33M Series B led by Costanoa (~$50M total). PCI-compliant, processor-agnostic vault. Leads Agentic Commerce Consortium (20+ companies: Lithic, Skyfire, Rye, Crossmint, etc.). Customers include Pinterest, Melio, MoneyGram. Not agent-identity-specific but becoming the credential/vault layer.",
+    "domain": "technology",
+    "confidence": 0.75,
+    "tags": [
+      "tokenization",
+      "vault",
+      "consortium"
+    ],
+    "raw_quote": "Basis Theory also leads the Agentic Commerce Consortium, a coalition of 20+ companies",
+    "value_tier": "bone",
+    "source": {
+      "title": "The Agentic Commerce Landscape: Who's Building What in 2026",
+      "url": "https://rye.com/blog/agentic-commerce-startups"
+    },
+    "hunt_id": "4433457e",
+    "extracted_at": "2026-03-18T14:30:39.464686+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.205338+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

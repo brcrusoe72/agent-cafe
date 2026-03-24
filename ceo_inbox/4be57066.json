@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.412466+00:00",
+    "relevance_score": 0.515,
+    "matched_tags": [
+      "stripe"
+    ],
+    "domain_match": false,
+    "source_path": "finance/4be57066.json"
+  },
+  "framework": {
+    "id": "4be57066",
+    "type": "framework",
+    "name": "Shared Payment Tokens (SPT)",
+    "description": "A new payment primitive specifically designed for AI agent commerce that allows agents to initiate payments using buyer permission without exposing credentials. Unlike traditional payment tokens, SPTs are programmable with scope restrictions (specific business, time/amount limits), real-time revocability, webhook monitoring, and fraud detection integration.",
+    "domain": "finance",
+    "confidence": 0.95,
+    "tags": [
+      "agent-authorization",
+      "payment-protocol",
+      "stripe",
+      "scope-control",
+      "revocation"
+    ],
+    "raw_quote": "SPTs let agents initiate payments using a buyer's permission and preferred payment method, without exposing credentials. Tokens can be scoped to a specific business, limited by time or amount, revoked at any time, and monitored via webhook events.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Introducing our agentic commerce solutions - Stripe",
+      "url": "https://stripe.com/blog/introducing-our-agentic-commerce-solutions"
+    },
+    "hunt_id": "b977a620",
+    "extracted_at": "2026-03-07T14:44:10.149562+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.213795+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "payment_infrastructure"
+}

@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.231289+00:00",
+    "relevance_score": 0.645,
+    "matched_tags": [
+      "governance"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/0e15a2a9.json"
+  },
+  "framework": {
+    "id": "0e15a2a9",
+    "type": "framework",
+    "name": "Four AI Failure Modes Framework",
+    "description": "Enterprise AI failures cluster into four distinct operational modes: (1) Pilot-to-Production Chasm (46% scrapped between POC and adoption), (2) Data Foundation Problems (65% lack AI-ready data, 60%+ abandoned), (3) Security Review Velocity Killers (6-12 month IT backlogs), (4) Cultural Resistance and Skills Gaps (54% cite cultural barriers, 15% actual adoption despite training).",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "failure-modes",
+      "integration",
+      "governance",
+      "cultural-barriers",
+      "data-readiness"
+    ],
+    "raw_quote": "Four operational failure modes explain the gap... Failure Mode #1: The pilot-to-production chasm... Failure Mode #2: Data foundation problems... Failure Mode #3: Security reviews that kill momentum... Failure Mode #4: Cultural resistance and skills gaps",
+    "value_tier": "meat",
+    "source": {
+      "title": "The four AI failure modes keeping marketing teams stuck - WRITER",
+      "url": "https://writer.com/blog/four-ai-failure-modes/"
+    },
+    "hunt_id": "e1731343",
+    "extracted_at": "2026-03-10T14:08:18.541038+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.180000+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

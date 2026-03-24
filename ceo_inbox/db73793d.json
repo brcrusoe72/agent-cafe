@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.356128+00:00",
+    "relevance_score": 0.72,
+    "matched_tags": [
+      "platform-strategy"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/db73793d.json"
+  },
+  "framework": {
+    "id": "db73793d",
+    "type": "framework",
+    "name": "Vertical Integration Monopolization Strategy",
+    "description": "Nvidia's approach of combining GPU, CPU, memory, and interconnects into unified systems (Grace Hopper) creates hardware-software lock-in that prevents competitors from easily replacing components. This creates switching costs far beyond traditional CPU competition.",
+    "domain": "ai-systems",
+    "confidence": 0.9,
+    "tags": [
+      "monopoly",
+      "vertical-integration",
+      "switching-costs",
+      "platform-strategy"
+    ],
+    "raw_quote": "if you have these rigs and these rigs are the most capable for Learning and you have their SDK Cuda which is becoming the de facto software layer now... that could create a level of lock-in",
+    "source": {
+      "title": "watch?v=48rtLHcIvcw",
+      "url": "https://www.youtube.com/watch?v=48rtLHcIvcw"
+    },
+    "hunt_id": "69dfc43e",
+    "extracted_at": "2026-03-03T17:45:38.101984+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.192064+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "marketplace_design"
+}

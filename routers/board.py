@@ -282,12 +282,16 @@ async def get_board_positions(
         raise HTTPException(status_code=500, detail="Failed to get board positions")
 
 
-@router.get("/agents/{agent_id}", response_model=BoardPositionResponse)
-async def get_agent_position(agent_id: str):
+@router.get("/agents/{agent_id}")
+async def get_agent_position(agent_id: str, request: Request):
     """
     Get specific agent's board position.
+    Operators see full BoardPositionResponse; public sees redacted view.
     """
     try:
+        # Check if caller is operator
+        is_operator = getattr(request.state, 'is_operator', False)
+        
         position = presence_engine.compute_board_position(agent_id)
         if not position:
             # Check if this agent is dead
@@ -314,7 +318,30 @@ async def get_agent_position(agent_id: str):
                 logger.debug("Error checking agent corpse", exc_info=True)
             raise HTTPException(status_code=404, detail="Agent not found")
         
-        return BoardPositionResponse(
+        # Operators get full view with threat_level, earnings, etc.
+        if is_operator:
+            return BoardPositionResponse(
+                agent_id=position.agent_id,
+                name=position.name,
+                description=position.description,
+                capabilities_verified=position.capabilities_verified,
+                capabilities_claimed=position.capabilities_claimed,
+                trust_score=position.trust_score,
+                jobs_completed=position.jobs_completed,
+                jobs_failed=position.jobs_failed,
+                avg_rating=position.avg_rating,
+                avg_completion_sec=position.avg_completion_sec,
+                total_earned_cents=position.total_earned_cents,
+                position_strength=position.position_strength,
+                threat_level=position.threat_level,
+                cluster_id=position.cluster_id,
+                last_active=position.last_active.isoformat(),
+                registration_date=position.registration_date.isoformat(),
+                status=position.status.value
+            )
+        
+        # Public gets redacted view — no threat_level, earnings, position_strength, cluster_id
+        return PublicBoardPositionResponse(
             agent_id=position.agent_id,
             name=position.name,
             description=position.description,
@@ -325,10 +352,6 @@ async def get_agent_position(agent_id: str):
             jobs_failed=position.jobs_failed,
             avg_rating=position.avg_rating,
             avg_completion_sec=position.avg_completion_sec,
-            total_earned_cents=position.total_earned_cents,
-            position_strength=position.position_strength,
-            threat_level=position.threat_level,
-            cluster_id=position.cluster_id,
             last_active=position.last_active.isoformat(),
             registration_date=position.registration_date.isoformat(),
             status=position.status.value
@@ -581,8 +604,10 @@ async def list_agent_challenges(agent_id: str = Depends(get_current_agent)):
 # === AGENT REGISTRATION ===
 
 # Registration rate limiter (per-email, per-hour) with periodic cleanup
+# LRU-capped at 10K entries to prevent memory exhaustion from mass registration attempts
 _registration_attempts: dict = {}
 _registration_last_cleanup = None
+_REGISTRATION_MAX_ENTRIES = 10_000
 
 
 
@@ -700,7 +725,7 @@ async def register_agent(registration: AgentRegistrationRequest, request: Reques
         now = datetime.now()
         cutoff = now - timedelta(hours=1)
         
-        # Periodic cleanup — remove stale entries every 100 registrations
+        # Periodic cleanup — remove stale entries, enforce LRU cap
         global _registration_last_cleanup
         if _registration_last_cleanup is None or (now - _registration_last_cleanup).total_seconds() > 3600:
             stale_emails = [e for e, times in _registration_attempts.items() 
@@ -708,6 +733,14 @@ async def register_agent(registration: AgentRegistrationRequest, request: Reques
             for e in stale_emails:
                 del _registration_attempts[e]
             _registration_last_cleanup = now
+        
+        # LRU eviction if dict exceeds cap (prevents memory exhaustion)
+        if len(_registration_attempts) >= _REGISTRATION_MAX_ENTRIES:
+            # Evict oldest half
+            sorted_entries = sorted(_registration_attempts.items(), 
+                                    key=lambda x: max(x[1]) if x[1] else datetime.min)
+            for email_key, _ in sorted_entries[:len(sorted_entries) // 2]:
+                del _registration_attempts[email_key]
         
         if email in _registration_attempts:
             recent = [t for t in _registration_attempts[email] if t > cutoff]
@@ -737,13 +770,13 @@ async def register_agent(registration: AgentRegistrationRequest, request: Reques
             except Exception as e:
                 logger.debug("IP tracking failed during registration", exc_info=True)
         
-        # Generate API key (plaintext returned to agent, hash stored in DB)
+        # Generate API key (plaintext returned to agent, salted hash stored in DB)
         from middleware.security import generate_secure_api_key
-        plaintext_key, hashed_key = generate_secure_api_key()
+        plaintext_key, hashed_key, key_salt = generate_secure_api_key()
         api_key_prefix = plaintext_key[:8]
         
-        # Create agent with hashed key
-        agent_id = create_agent(registration, hashed_key, api_key_prefix=api_key_prefix)
+        # Create agent with salted hashed key
+        agent_id = create_agent(registration, hashed_key, api_key_prefix=api_key_prefix, api_key_salt=key_salt)
         
         # Record IP for Sybil tracking
         try:

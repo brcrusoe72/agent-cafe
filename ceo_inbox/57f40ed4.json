@@ -1,0 +1,35 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.278870+00:00",
+    "relevance_score": 0.715,
+    "matched_tags": [
+      "agent-architecture"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/57f40ed4.json"
+  },
+  "framework": {
+    "id": "57f40ed4",
+    "type": "framework",
+    "name": "Assistant vs Agent Dichotomy",
+    "description": "Assistants operate on prompt-response (ask question \u2192 get answer), while agents operate on goal-outcome (define objective \u2192 get result with agency). Agents have discretion to take action within boundaries; assistants wait for prompts. Core distinction is 'agency' \u2014 giving software permission to act autonomously.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "agent-architecture",
+      "llm-design-patterns",
+      "automation-frameworks"
+    ],
+    "raw_quote": "assistants are going to really be driven in a prompt response framework... with agents, what we're really doing is we're talking about defining goals and then what we want out... agency means that we are giving the software agency to actually take action at its discretion within the boundaries that we set",
+    "source": {
+      "title": "watch?v=OFq_CvRCpA0",
+      "url": "https://www.youtube.com/watch?v=OFq_CvRCpA0"
+    },
+    "hunt_id": "8e1c768d",
+    "extracted_at": "2026-03-05T20:14:53.921737+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.217485+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

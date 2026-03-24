@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.405275+00:00",
+    "relevance_score": 0.47,
+    "matched_tags": [
+      "cryptography",
+      "ap2"
+    ],
+    "domain_match": false,
+    "source_path": "finance/22ac9b9d.json"
+  },
+  "framework": {
+    "id": "22ac9b9d",
+    "type": "framework",
+    "name": "Verifiable Digital Credentials (VDCs)",
+    "description": "AP2's core trust mechanism \u2014 standardized, cryptographically signed data objects that convey authority between agents. These are tamper-evident, non-repudiable, portable digital credentials. This is the technical answer to 'how does the mandate chain work' \u2014 it's signed payloads, not on-chain attestation.",
+    "domain": "finance",
+    "confidence": 0.85,
+    "tags": [
+      "ap2",
+      "cryptography",
+      "agent-payments",
+      "vdc"
+    ],
+    "raw_quote": "Verifiable digital credentials are the standardized data structures used to convey trusted information between agents. They are tamper-evident, non-disputable, portable, and cryptographically signed digital objects that serve as the building blocks of a transaction.",
+    "value_tier": "meat",
+    "source": {
+      "title": "AP2 specification - AP2 - Agent Payments Protocol Documentation",
+      "url": "https://ap2-protocol.org/specification/"
+    },
+    "hunt_id": "7e7c0a23",
+    "extracted_at": "2026-03-14T14:18:52.267678+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.194539+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

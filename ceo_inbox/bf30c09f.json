@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.341649+00:00",
+    "relevance_score": 0.57,
+    "matched_tags": [
+      "mcp"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/bf30c09f.json"
+  },
+  "framework": {
+    "id": "bf30c09f",
+    "type": "technique",
+    "name": "Agent Architecture Pattern (LLM + RAG + MCP + RLHF)",
+    "description": "Standard architecture: LLM agent interfaces with (1) vector database for context (RAG), (2) system prompts with step-by-step thought process examples, (3) MCP servers for action execution, (4) reinforcement learning from human feedback loop. The pattern treats LLMs as reasoning engines that suggest actions while external systems execute them.",
+    "domain": "ai-systems",
+    "confidence": 0.8,
+    "tags": [
+      "architecture",
+      "llm",
+      "rag",
+      "mcp",
+      "rlhf",
+      "agent-design"
+    ],
+    "raw_quote": "your agent goes and talks to a vector database which tries to augment the query with relevant context ... with the advent of model context protocol, MCP, these agents can behave like MCP clients",
+    "source": {
+      "title": "watch?v=VDhQFBxIgtI",
+      "url": "https://www.youtube.com/watch?v=VDhQFBxIgtI"
+    },
+    "hunt_id": "207545cd",
+    "extracted_at": "2026-03-05T17:21:03.841458+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.219860+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

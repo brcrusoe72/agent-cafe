@@ -1,0 +1,40 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.634989+00:00",
+    "relevance_score": 0.655,
+    "matched_tags": [
+      "cryptography",
+      "agent-commerce",
+      "trust"
+    ],
+    "domain_match": false,
+    "source_path": "technology/59e50f01.json"
+  },
+  "framework": {
+    "id": "59e50f01",
+    "type": "framework",
+    "name": "Mastercard Verifiable Intent",
+    "description": "Cryptographic trust layer co-developed with Google that creates tamper-resistant records of user authorization when AI agents transact. Links identity, intent, and action into a single privacy-preserving record using Selective Disclosure. Built on FIDO Alliance, EMVCo, IETF, and W3C specs. Open-sourced at verifiableintent.dev.",
+    "domain": "technology",
+    "confidence": 0.95,
+    "tags": [
+      "payments",
+      "agent-commerce",
+      "cryptography",
+      "trust",
+      "mastercard"
+    ],
+    "raw_quote": "Verifiable Intent creates a tamper-resistant record of what a user authorized when an AI agent acts on their behalf, establishing a shared source of truth across the ecosystem. It provides cryptographic proof of authorization that consumers, merchants, and issuers can rely on.",
+    "value_tier": "organ",
+    "source": {
+      "title": "How Verifiable Intent builds trust in agentic AI commerce - Mastercard",
+      "url": "https://www.mastercard.com/us/en/news-and-trends/stories/2026/verifiable-intent.html"
+    },
+    "hunt_id": "e7408160",
+    "extracted_at": "2026-03-14T14:04:16.617467+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.198450+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

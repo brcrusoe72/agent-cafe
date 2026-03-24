@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.575057+00:00",
+    "relevance_score": 0.56,
+    "matched_tags": [
+      "pricing"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/bc46a929.json"
+  },
+  "framework": {
+    "id": "bc46a929",
+    "type": "claim",
+    "name": "Six Sigma ROI Higher in Pricing Than Manufacturing",
+    "description": "Author claims that benefits from applying Six Sigma to pricing are 'huge compared to those brought by more traditional manufacturing or services projects.' Pricing processes have high variability, multiple stakeholders, and direct bottom-line impact.",
+    "domain": "strategy",
+    "confidence": 0.7,
+    "tags": [
+      "six-sigma",
+      "pricing",
+      "ROI",
+      "comparative-advantage"
+    ],
+    "raw_quote": "Overall, the benefits from applying Six Sigma or other quality-based approaches to pricing are huge compared to those brought by more traditional manufacturing or services projects.",
+    "source": {
+      "title": "Improving Pricing Quality with Six Sigma Methods",
+      "url": "https://www.processexcellencenetwork.com/lean-six-sigma-business-performance/articles/improving-pricing-quality-with-six-sigma-methods"
+    },
+    "hunt_id": "f65e2a8b",
+    "extracted_at": "2026-03-05T20:40:42.314591+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.210759+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.628647+00:00",
+    "relevance_score": 0.64,
+    "matched_tags": [
+      "multi-agent",
+      "delegation"
+    ],
+    "domain_match": false,
+    "source_path": "technology/50789535.json"
+  },
+  "framework": {
+    "id": "50789535",
+    "type": "framework",
+    "name": "Token Exchange Protocol (RFC 8693)",
+    "description": "Standardized mechanism for exchanging one type of token for another, enabling delegation chains and impersonation scenarios. Critical for multi-agent systems where Agent A might delegate specific authority to Agent B, which then acts on behalf of A but with constrained permissions.",
+    "domain": "technology",
+    "confidence": 0.8,
+    "tags": [
+      "delegation",
+      "multi-agent",
+      "token-exchange",
+      "impersonation"
+    ],
+    "raw_quote": "Token Exchange - RFC 8693",
+    "source": {
+      "title": "OAuth 2.0 \u2014 OAuth",
+      "url": "https://oauth.net/2/"
+    },
+    "hunt_id": "c5cfd231",
+    "extracted_at": "2026-03-06T14:24:59.966107+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.217243+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

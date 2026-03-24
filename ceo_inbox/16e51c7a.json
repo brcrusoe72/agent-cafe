@@ -1,0 +1,35 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.511136+00:00",
+    "relevance_score": 0.58,
+    "matched_tags": [
+      "pricing"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/16e51c7a.json"
+  },
+  "framework": {
+    "id": "16e51c7a",
+    "type": "framework",
+    "name": "Risk Allocation Through Pricing Structure",
+    "description": "Different pricing models allocate execution risk differently. Hourly = client bears all risk. Project-based = provider bears efficiency risk but captures upside. Monthly = shared ongoing risk. Usage-based = provider takes upfront risk, client pays for results. Choose structure based on who can better manage the uncertainty.",
+    "domain": "strategy",
+    "confidence": 0.9,
+    "tags": [
+      "risk-management",
+      "pricing",
+      "contracts"
+    ],
+    "raw_quote": "Hourly protects you from that because as you'll see in project based if you charge a certain price at the start and then find out it's way more difficult it's really hard to go back to the client and say sorry it's actually going to be more expensive.",
+    "source": {
+      "title": "$50/Hour to $10K Agents: AI Voice Agency Pricing Masterclass",
+      "url": "https://www.youtube.com/watch?v=JxusnOQ77Gc"
+    },
+    "hunt_id": "1295ff45",
+    "extracted_at": "2026-03-05T20:56:57.687519+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.207992+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

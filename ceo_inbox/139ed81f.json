@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.400298+00:00",
+    "relevance_score": 0.44,
+    "matched_tags": [
+      "economics"
+    ],
+    "domain_match": false,
+    "source_path": "finance/139ed81f.json"
+  },
+  "framework": {
+    "id": "139ed81f",
+    "type": "claim",
+    "name": "Farmer Economics Pressure Point",
+    "description": "USDA data shows farmers receive only 15.5 cents per consumer dollar spent, with 84.5 cents going to 'marketing bill' (processing, packaging, transportation, retail). This imbalance is cited as driver forcing industry transformation.",
+    "domain": "finance",
+    "confidence": 0.9,
+    "tags": [
+      "economics",
+      "margin_pressure",
+      "cost_structure",
+      "usda_data"
+    ],
+    "raw_quote": "According to the USDA, for every single dollar you spend, the farmer gets just 15.5 cents",
+    "source": {
+      "title": "What's Turning the Food Supply Chain Into a Food Value Loop?",
+      "url": "https://www.youtube.com/watch?v=35j8GF5cYps"
+    },
+    "hunt_id": "571e707b",
+    "extracted_at": "2026-03-03T20:06:21.401779+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.207859+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

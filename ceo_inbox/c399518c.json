@@ -1,0 +1,35 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.662870+00:00",
+    "relevance_score": 0.51,
+    "matched_tags": [
+      "ap2"
+    ],
+    "domain_match": false,
+    "source_path": "technology/c399518c.json"
+  },
+  "framework": {
+    "id": "c399518c",
+    "type": "claim",
+    "name": "PayPal is AP2 coalition member",
+    "description": "PayPal is listed as a collaborating organization on AP2, confirming they're hedging across both their own agent commerce announcements AND Google's protocol. No specific PayPal technical details in this source beyond membership.",
+    "domain": "technology",
+    "confidence": 0.9,
+    "tags": [
+      "paypal",
+      "ap2"
+    ],
+    "raw_quote": "including... Paypal...",
+    "value_tier": "bone",
+    "source": {
+      "title": "Announcing Agent Payments Protocol (AP2) | Google Cloud Blog",
+      "url": "https://cloud.google.com/blog/products/ai-machine-learning/announcing-agents-to-payments-ap2-protocol"
+    },
+    "hunt_id": "e7408160",
+    "extracted_at": "2026-03-14T14:03:05.455475+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.210896+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

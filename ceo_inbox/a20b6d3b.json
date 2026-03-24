@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.323902+00:00",
+    "relevance_score": 0.61,
+    "matched_tags": [
+      "authentication",
+      "security"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/a20b6d3b.json"
+  },
+  "framework": {
+    "id": "a20b6d3b",
+    "type": "contrarian",
+    "name": "API Keys Are Insufficient for Production Agents",
+    "description": "Explicit rejection of API keys as adequate authentication for production agentic systems. Characterized as 'weak security' due to being static credentials that can be stolen, difficult to scope, and lacking granular control needed for autonomous agents.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "authentication",
+      "api-keys",
+      "security",
+      "best-practices"
+    ],
+    "raw_quote": "API keys offer weak security for production agentic systems. They're static credentials that can be stolen, difficult to scope, and don't provide the granular control needed for autonomous agents.",
+    "source": {
+      "title": "AI Agent Authentication & Authorization - datadome.co",
+      "url": "https://datadome.co/agent-trust-management/authentication-and-authorization/"
+    },
+    "hunt_id": "4f110637",
+    "extracted_at": "2026-03-06T14:17:42.636282+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.185260+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

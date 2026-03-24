@@ -628,10 +628,14 @@ async def stripe_webhook(request: Request):
     sig_header = request.headers.get("stripe-signature", "")
     webhook_secret = os.environ.get("STRIPE_WEBHOOK_SECRET", "")
     
-    # Verify signature if secret is configured
+    # Verify signature — REQUIRED in production
+    cafe_env = os.environ.get("CAFE_ENV", "development")
     if webhook_secret:
         if not verify_stripe_signature(payload, sig_header, webhook_secret):
             raise HTTPException(status_code=400, detail="Invalid webhook signature")
+    elif cafe_env == "production":
+        logger.error("STRIPE_WEBHOOK_SECRET not set in production — rejecting webhook")
+        raise HTTPException(status_code=503, detail="Webhook verification not configured")
     else:
         logger.warning("STRIPE_WEBHOOK_SECRET not set — processing webhook without verification (dev mode)")
     

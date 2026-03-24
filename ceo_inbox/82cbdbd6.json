@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.307507+00:00",
+    "relevance_score": 0.79,
+    "matched_tags": [
+      "agent-identity"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/82cbdbd6.json"
+  },
+  "framework": {
+    "id": "82cbdbd6",
+    "type": "framework",
+    "name": "Dual Holder Binding Mechanisms",
+    "description": "Two approaches to proving legitimate possession of authority: (1) Cryptographic Key Binding - prove control over private key, device-specific, high security; (2) Claims-based Binding - prove identity through claims like name/DOB, cross-device, long-term use. Financial agents could use cryptographic for high-value transactions, claims-based for persistent authorities across device migrations.",
+    "domain": "ai-systems",
+    "confidence": 0.9,
+    "tags": [
+      "cryptographic-binding",
+      "claims-based-auth",
+      "agent-identity",
+      "cross-device"
+    ],
+    "raw_quote": "Cryptographic Holder Binding or Cryptographic Key Binding: Ability of the Holder to prove legitimate possession of a Verifiable Credential by proving control over the same private key during the issuance and presentation... Claims-based Holder Binding: Ability of the Holder to prove legitimate possession of a Credential by proving certain claims, e.g., name and date of birth",
+    "source": {
+      "title": "openid-4-verifiable-credential-issuance-",
+      "url": "https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html"
+    },
+    "hunt_id": "4f110637",
+    "extracted_at": "2026-03-06T14:26:52.772432+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.199981+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

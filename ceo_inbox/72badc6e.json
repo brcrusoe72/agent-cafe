@@ -1,0 +1,39 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.297532+00:00",
+    "relevance_score": 0.645,
+    "matched_tags": [
+      "tokenization",
+      "agent-identity",
+      "security"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/72badc6e.json"
+  },
+  "framework": {
+    "id": "72badc6e",
+    "type": "technique",
+    "name": "Tokenization as Agent Payment Security Layer",
+    "description": "Using card network tokenization (Visa Intelligent Commerce, Mastercard Agent Pay) as the technical mechanism to enable AI agents to make payments securely without exposing actual card credentials. This leverages existing tokenization infrastructure built for digital wallets but applies it to agent-driven transactions.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "tokenization",
+      "security",
+      "card-networks",
+      "payment-infrastructure",
+      "agent-identity"
+    ],
+    "raw_quote": "We thought about tokenization and so we went to go talk with the networks and that's how our partnerships came to be. um very glad that you know Visa's uh Visa intelligent commerce the mascot agent pay both programs exist for that tokenization aspect",
+    "source": {
+      "title": "Inside PayOS with Jonathan McGowan: How Agentic Payments Will Power the AI Shopping Revolution",
+      "url": "https://www.youtube.com/watch?v=KHfTbWAsy-Y"
+    },
+    "hunt_id": "7d3db790",
+    "extracted_at": "2026-03-03T18:48:30.232093+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.214151+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "payment_infrastructure"
+}

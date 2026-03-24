@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.593352+00:00",
+    "relevance_score": 0.505,
+    "matched_tags": [
+      "open-standard"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/ecf08112.json"
+  },
+  "framework": {
+    "id": "ecf08112",
+    "type": "claim",
+    "name": "Open Standard Positioning Against Fragmentation",
+    "description": "Google explicitly positioning AP2 as open protocol to prevent fragmented ecosystem of proprietary agent payment systems. Uses public GitHub, collaborative development, extensions by community. Strategic positioning as infrastructure layer (like TCP/IP) rather than proprietary gatekeeper. Coalition includes 60+ organizations across payment networks, merchants, crypto.",
+    "domain": "strategy",
+    "confidence": 0.85,
+    "tags": [
+      "open-standard",
+      "ecosystem-strategy",
+      "platform-play",
+      "standards-war"
+    ],
+    "raw_quote": "AP2 is an open, shared protocol that provides a common language for secure, compliant transactions between agents and merchants, helping to prevent a fragmented ecosystem... We're committed to evolving this protocol in an open, collaborative process and invite the entire payments and technology community to build this future with us.",
+    "source": {
+      "title": "",
+      "url": "https://cybersecurityasia.net/google-pioneers-agent-payments-protocol/"
+    },
+    "hunt_id": "4f110637",
+    "extracted_at": "2026-03-06T14:28:17.938167+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.192456+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "marketplace_design"
+}

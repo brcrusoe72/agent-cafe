@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.637380+00:00",
+    "relevance_score": 0.515,
+    "matched_tags": [
+      "interoperability"
+    ],
+    "domain_match": false,
+    "source_path": "technology/68ab0bb3.json"
+  },
+  "framework": {
+    "id": "68ab0bb3",
+    "type": "framework",
+    "name": "Fragmentation Problem Pattern",
+    "description": "As ecosystems scale by creating specialized subsystems (L2s, agents, microservices), they fragment into 'digital islands or walled gardens' that don't communicate well. This creates friction, security risks, and poor user experience. The solution is a shared coordination layer that acts as universal translator.",
+    "domain": "technology",
+    "confidence": 0.95,
+    "tags": [
+      "scaling",
+      "fragmentation",
+      "interoperability",
+      "coordination",
+      "walled_gardens"
+    ],
+    "raw_quote": "The biggest issue in crypto scaling today is fragmentation. As the whole ecosystem has blown up, it's kind of become this collection of digital islands or walled gardens that just don't talk to each other very well.",
+    "source": {
+      "title": "watch?v=TZNO-z7apcE",
+      "url": "https://www.youtube.com/watch?v=TZNO-z7apcE"
+    },
+    "hunt_id": "c9aa917a",
+    "extracted_at": "2026-03-04T23:42:39.696211+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.218014+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

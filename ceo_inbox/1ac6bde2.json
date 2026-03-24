@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.512914+00:00",
+    "relevance_score": 0.795,
+    "matched_tags": [
+      "marketplace-design"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/1ac6bde2.json"
+  },
+  "framework": {
+    "id": "1ac6bde2",
+    "type": "framework",
+    "name": "Supply-First Marketplace Strategy",
+    "description": "Marketplaces succeed by solving supply aggregation first, then letting demand follow naturally. 99.9% of successful marketplaces focus on finding unique ways to acquire and aggregate supply that competitors cannot replicate. The supply side is typically the constraint, not demand.",
+    "domain": "strategy",
+    "confidence": 0.95,
+    "tags": [
+      "marketplace-design",
+      "cold-start",
+      "supply-side",
+      "network-effects"
+    ],
+    "raw_quote": "whatever Marketplace we're looking at we really think supplies supply supplies so can that business find a better way of acquiring an aggregating Supply than anyone else can't... if they find the right Supply demand will follow",
+    "source": {
+      "title": "watch?v=Aipa5QIdNhU",
+      "url": "https://www.youtube.com/watch?v=Aipa5QIdNhU"
+    },
+    "hunt_id": "c9aa917a",
+    "extracted_at": "2026-03-04T21:47:59.120755+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.188187+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "marketplace_design"
+}

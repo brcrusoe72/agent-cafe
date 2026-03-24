@@ -1,0 +1,35 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.534442+00:00",
+    "relevance_score": 0.495,
+    "matched_tags": [
+      "interoperability"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/56aa4fe9.json"
+  },
+  "framework": {
+    "id": "56aa4fe9",
+    "type": "technique",
+    "name": "Network Orchestration Strategy",
+    "description": "When unable to win as the dominant wallet, become the interoperability layer that connects all wallets - enabling any payment method to work anywhere through your infrastructure.",
+    "domain": "strategy",
+    "confidence": 0.75,
+    "tags": [
+      "network_effects",
+      "interoperability",
+      "platform_strategy"
+    ],
+    "raw_quote": "If PayPal can't win every wallet, it should be the network that connects them",
+    "source": {
+      "title": "what-happened-to-paypal",
+      "url": "https://insights.flagshipadvisorypartners.com/what-happened-to-paypal"
+    },
+    "hunt_id": "1486004a",
+    "extracted_at": "2026-03-03T17:40:46.032737+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.189392+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "marketplace_design"
+}

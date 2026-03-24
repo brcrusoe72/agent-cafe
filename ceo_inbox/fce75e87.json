@@ -1,0 +1,39 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.682180+00:00",
+    "relevance_score": 0.69,
+    "matched_tags": [
+      "agent-identity",
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "technology/fce75e87.json"
+  },
+  "framework": {
+    "id": "fce75e87",
+    "type": "framework",
+    "name": "IETF Agent Auth Draft (klrc-aiagent-auth-00)",
+    "description": "Individual I-D (NOT working group adopted, no stream, no intended RFC status) proposing agents-as-workloads model using WIMSE, OAuth 2.0, SPIFFE, and OpenID SSF. No new protocols \u2014 composes existing standards. Covers identity, credentials, attestation, auth, monitoring, compliance. Filed 2026-03-02.",
+    "domain": "technology",
+    "confidence": 0.95,
+    "tags": [
+      "ietf",
+      "agent-identity",
+      "oauth",
+      "wimse",
+      "spiffe"
+    ],
+    "raw_quote": "This I-D is not endorsed by the IETF and has no formal standing in the IETF standards process.",
+    "value_tier": "meat",
+    "source": {
+      "title": "draft-klrc-aiagent-auth-00 - AI Agent Authentication and Authorization",
+      "url": "https://datatracker.ietf.org/doc/draft-klrc-aiagent-auth/"
+    },
+    "hunt_id": "f911b3bb",
+    "extracted_at": "2026-03-18T13:57:12.416235+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.207467+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

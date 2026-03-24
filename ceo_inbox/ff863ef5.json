@@ -1,0 +1,35 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.377107+00:00",
+    "relevance_score": 0.715,
+    "matched_tags": [
+      "agent-architecture"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/ff863ef5.json"
+  },
+  "framework": {
+    "id": "ff863ef5",
+    "type": "framework",
+    "name": "Meatspace Layer for AI",
+    "description": "The concept that AI agents need a physical-world execution layer since they can't perform embodied tasks. Humans become the 'hands' for digital agents. Reveals fundamental constraint: agents are digital-native but world is physical.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "agent-architecture",
+      "physical-digital-bridge",
+      "embodiment-problem"
+    ],
+    "raw_quote": "it proudly bills itself as 'the meatspace layer for AI'",
+    "source": {
+      "title": "Rent-a-Human wants AI Agents to hire you | Mashable",
+      "url": "https://mashable.com/article/rent-a-human-wants-ai-agents-to-hire-you"
+    },
+    "hunt_id": "d375d104",
+    "extracted_at": "2026-03-05T15:46:33.649735+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.220890+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

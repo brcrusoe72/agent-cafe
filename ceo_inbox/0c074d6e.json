@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.398149+00:00",
+    "relevance_score": 0.65,
+    "matched_tags": [
+      "governance"
+    ],
+    "domain_match": false,
+    "source_path": "finance/0c074d6e.json"
+  },
+  "framework": {
+    "id": "0c074d6e",
+    "type": "claim",
+    "name": "Private Network Rules as Standards Pathway",
+    "description": "CBA explicitly advocates for private network rules (not legislation) as the mechanism to govern agentic payments\u2014modeled on how card network rules (Visa/MC voluntary protections) filled gaps beyond EFTA. This is the standards play: whoever writes the private network rules for agentic payments wins the standard, not ISO/W3C/IETF.",
+    "domain": "finance",
+    "confidence": 0.9,
+    "tags": [
+      "standards",
+      "network-rules",
+      "governance"
+    ],
+    "raw_quote": "industry should consider development of private network rules like those that, in addition to federal consumer finance law, have allowed electronic and card-based payments to flourish. Private network rules applicable to all participants in the agentic payment tool ecosystem\u2014including developers, merchants, marketplaces, banks, and others",
+    "value_tier": "organ",
+    "source": {
+      "title": "Agentic AI Payments: Navigating Consumer Protection, Innovation, ...",
+      "url": "https://consumerbankers.com/wp-content/uploads/2026/01/CBA-Agentic-Symposium-White-Paper-2026-01v2.pdf"
+    },
+    "hunt_id": "7e7c0a23",
+    "extracted_at": "2026-03-14T14:17:43.246800+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.179721+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

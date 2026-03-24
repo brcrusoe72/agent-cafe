@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.321199+00:00",
+    "relevance_score": 0.515,
+    "matched_tags": [
+      "open-standard",
+      "interoperability"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/9e0b235a.json"
+  },
+  "framework": {
+    "id": "9e0b235a",
+    "type": "framework",
+    "name": "Agent-to-Agent (A2A) Protocol",
+    "description": "A standardized protocol enabling AI agents to discover, communicate, and collaborate with other agents dynamically. Built on top of HTTP/JSON-RPC, it defines agent cards (capability advertisements), task specifications, and interaction patterns including clarifying questions and streaming responses. Distinct from Model Context Protocol (MCP) which handles agent-to-tool communication.",
+    "domain": "ai-systems",
+    "confidence": 0.95,
+    "tags": [
+      "protocol",
+      "interoperability",
+      "agent-communication",
+      "google",
+      "open-standard"
+    ],
+    "raw_quote": "A2A is a protocol which allows AI agents to communicate with each other in a standardized way",
+    "source": {
+      "title": "watch?v=Sl9EZpE61xA",
+      "url": "https://www.youtube.com/watch?v=Sl9EZpE61xA"
+    },
+    "hunt_id": "e8165180",
+    "extracted_at": "2026-03-05T16:17:23.197681+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.219089+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

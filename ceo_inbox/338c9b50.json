@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.407619+00:00",
+    "relevance_score": 0.64,
+    "matched_tags": [
+      "liability"
+    ],
+    "domain_match": false,
+    "source_path": "finance/338c9b50.json"
+  },
+  "framework": {
+    "id": "338c9b50",
+    "type": "contrarian",
+    "name": "AP2 solves accountability not just auth",
+    "description": "The real problem AP2 addresses isn't authentication \u2014 it's dispute resolution. When an agent buys the wrong thing, who's liable? AP2's tamper-evident audit trails give issuers/merchants/networks shared evidence. This reframes agent payments from a tech problem to a liability problem.",
+    "domain": "finance",
+    "confidence": 0.8,
+    "tags": [
+      "accountability",
+      "disputes",
+      "liability"
+    ],
+    "raw_quote": "If something goes wrong, who is responsible\u2014the user, the agent developer, the merchant, or the issuer?",
+    "value_tier": "organ",
+    "source": {
+      "title": "Agent Payments Protocol (AP2)",
+      "url": "https://agentpaymentsprotocol.info/"
+    },
+    "hunt_id": "4433457e",
+    "extracted_at": "2026-03-18T14:31:10.752121+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.195237+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

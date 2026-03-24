@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.398333+00:00",
+    "relevance_score": 0.585,
+    "matched_tags": [
+      "authorization"
+    ],
+    "domain_match": false,
+    "source_path": "finance/0d64d703.json"
+  },
+  "framework": {
+    "id": "0d64d703",
+    "type": "framework",
+    "name": "Agent Payments Protocol (AP2) Mandate Hierarchy",
+    "description": "Three-tier cryptographic mandate system: Cart Mandate (human-present, merchant + user signatures), Intent Mandate (human-not-present pre-approval with budget/category/timing constraints), and Payment Mandate (minimal credential derived from the above for authorization flows). All expressed as W3C Verifiable Credentials for tamper resistance and interoperability.",
+    "domain": "finance",
+    "confidence": 0.95,
+    "tags": [
+      "authorization",
+      "cryptographic-proofs",
+      "agent-boundaries",
+      "W3C-standards"
+    ],
+    "raw_quote": "AP2 defines three types of mandates: Cart Mandate ('Human-Present' or 'HP'), where the merchant signs the cart to guarantee fulfillment, and the user signs to approve it. Intent Mandate ('Human-Not-Present' or 'HNP'), where the user pre-approves defined conditions (e.g., budget, product categories, or timing) that authorize an agent to act later. Payment Mandate, which is a minimal credential derived from a Cart or Intent Mandate and appended to the authorization",
+    "value_tier": "organ",
+    "source": {
+      "title": "Agent Payments Protocol: Building Verifiable Trust for Agentic ...",
+      "url": "https://developer.paypal.com/community/blog/PayPal-Agent-Payments-Protocol/"
+    },
+    "hunt_id": "b977a620",
+    "extracted_at": "2026-03-07T14:43:18.906720+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.179816+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

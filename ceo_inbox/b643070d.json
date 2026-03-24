@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.336032+00:00",
+    "relevance_score": 0.67,
+    "matched_tags": [
+      "fraud-detection",
+      "liability"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/b643070d.json"
+  },
+  "framework": {
+    "id": "b643070d",
+    "type": "framework",
+    "name": "General vs Specific Intent in Agent Actions",
+    "description": "Legal systems distinguish between general intent (intent to perform an act) and specific intent (intent to achieve particular consequences). For AI agents, determining whether an action had 'general' or 'specific' intent affects criminal and civil liability, especially for wrongful transactions or fraud.",
+    "domain": "ai-systems",
+    "confidence": 0.75,
+    "tags": [
+      "legal-classification",
+      "liability",
+      "fraud-detection",
+      "criminal-law",
+      "agent-behavior"
+    ],
+    "raw_quote": "general intent : intent to perform an illegal act without the desire for further consequences or a precise result",
+    "source": {
+      "title": "intent",
+      "url": "https://www.merriam-webster.com/dictionary/intent"
+    },
+    "hunt_id": "66fe6cbe",
+    "extracted_at": "2026-03-03T18:23:44.372575+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.203154+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

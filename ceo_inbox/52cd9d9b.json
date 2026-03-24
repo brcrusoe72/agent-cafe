@@ -1,0 +1,40 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.632860+00:00",
+    "relevance_score": 0.538,
+    "matched_tags": [
+      "cryptography",
+      "verifiable-credentials",
+      "ap2"
+    ],
+    "domain_match": false,
+    "source_path": "technology/52cd9d9b.json"
+  },
+  "framework": {
+    "id": "52cd9d9b",
+    "type": "framework",
+    "name": "AP2 Mandate Architecture",
+    "description": "AP2 uses cryptographically-signed 'Mandates' (Intent Mandate \u2192 Cart Mandate) as tamper-proof digital contracts with verifiable credentials. Two modes: real-time (human present, signs cart) and delegated (human absent, pre-authorized rules). Creates non-repudiable audit trail for authorization, authenticity, and accountability.",
+    "domain": "technology",
+    "confidence": 0.95,
+    "tags": [
+      "ap2",
+      "payments",
+      "protocol",
+      "cryptography",
+      "verifiable-credentials"
+    ],
+    "raw_quote": "AP2 builds trust by using Mandates\u2014tamper-proof, cryptographically-signed digital contracts that serve as verifiable proof of a user's instructions. These mandates are signed by verifiable credentials (VCs)",
+    "value_tier": "meat",
+    "source": {
+      "title": "Announcing Agent Payments Protocol (AP2) | Google Cloud Blog",
+      "url": "https://cloud.google.com/blog/products/ai-machine-learning/announcing-agents-to-payments-ap2-protocol"
+    },
+    "hunt_id": "e7408160",
+    "extracted_at": "2026-03-14T14:03:05.453642+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.197873+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

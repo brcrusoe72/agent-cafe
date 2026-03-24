@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.263475+00:00",
+    "relevance_score": 0.58,
+    "matched_tags": [
+      "delegation"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/3b03582a.json"
+  },
+  "framework": {
+    "id": "3b03582a",
+    "type": "claim",
+    "name": "GNAP Client-as-Autonomous-Agent Pattern",
+    "description": "GNAP explicitly supports the client running 'autonomously on behalf of a resource owner' \u2014 not just user-present flows. This is the AI agent delegation use case. The spec already models software acting without a human in the loop, constrained by pre-granted privileges.",
+    "domain": "ai-systems",
+    "confidence": 0.9,
+    "tags": [
+      "autonomous-agent",
+      "delegation",
+      "ai-agent"
+    ],
+    "raw_quote": "The client is operated by the end user, or it runs autonomously on behalf of a resource owner.",
+    "value_tier": "meat",
+    "source": {
+      "title": "RFC 9635 - Grant Negotiation and Authorization Protocol (GNAP)",
+      "url": "https://datatracker.ietf.org/doc/html/rfc9635"
+    },
+    "hunt_id": "67bf6ff4",
+    "extracted_at": "2026-03-15T12:31:29.100483+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.196001+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

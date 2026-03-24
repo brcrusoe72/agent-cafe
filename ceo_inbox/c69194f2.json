@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.433760+00:00",
+    "relevance_score": 0.585,
+    "matched_tags": [
+      "pricing"
+    ],
+    "domain_match": false,
+    "source_path": "finance/c69194f2.json"
+  },
+  "framework": {
+    "id": "c69194f2",
+    "type": "framework",
+    "name": "Microtransaction Floor: $0.01 USDC",
+    "description": "Stripe supports charges as low as $0.01 USDC with 1.5% fees, enabling true pay-per-API-call economics. Card networks can't compete at this price point \u2014 interchange alone would exceed the transaction value. This positions crypto rails as the only viable substrate for high-frequency, low-value agent transactions.",
+    "domain": "finance",
+    "confidence": 0.95,
+    "tags": [
+      "microtransactions",
+      "pricing",
+      "unit-economics"
+    ],
+    "raw_quote": "Individual charges can be as low as 0.01 USDC. Pricing is 1.5% per successful charge (rounded to the nearest cent).",
+    "value_tier": "meat",
+    "source": {
+      "title": "Machine payments | Stripe Documentation",
+      "url": "https://docs.stripe.com/payments/machine"
+    },
+    "hunt_id": "da550186",
+    "extracted_at": "2026-03-15T12:05:11.462579+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.211031+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

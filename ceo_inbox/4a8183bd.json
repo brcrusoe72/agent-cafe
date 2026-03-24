@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.627501+00:00",
+    "relevance_score": 0.77,
+    "matched_tags": [
+      "agent-identity"
+    ],
+    "domain_match": false,
+    "source_path": "technology/4a8183bd.json"
+  },
+  "framework": {
+    "id": "4a8183bd",
+    "type": "technique",
+    "name": "Agent identity as checksum of prompt+tools+config",
+    "description": "A-JWT hashes the agent's prompt, tool list, and configuration into a one-way checksum that becomes the agent's cryptographic identity. Detects in-process impersonation (one agent pretending to be another within the same client process) with <2ms overhead. This is the missing piece current session keys lack \u2014 binding delegation to WHAT the agent is, not just WHO it represents.",
+    "domain": "technology",
+    "confidence": 0.7,
+    "tags": [
+      "agent-identity",
+      "checksum",
+      "impersonation"
+    ],
+    "raw_quote": "A checksum-based client shim and an optional TEE attestation profile that detect in-process impersonation with < 2 ms overhead",
+    "value_tier": "organ",
+    "source": {
+      "title": "Agentic JWT: A Secure Delegation Protocol for Autonomous AI Agents",
+      "url": "https://arxiv.org/pdf/2509.13597"
+    },
+    "hunt_id": "67bf6ff4",
+    "extracted_at": "2026-03-15T12:30:05.449507+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.196691+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.265832+00:00",
+    "relevance_score": 0.715,
+    "matched_tags": [
+      "trust"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/3de74e20.json"
+  },
+  "framework": {
+    "id": "3de74e20",
+    "type": "contrarian",
+    "name": "Policy-as-Rules Not Policy-as-Prompts",
+    "description": "Moveworks explicitly criticizes the common approach of using LLM prompts to enforce business policies, arguing that 'business policies are rules, not suggestions' and require deterministic enforcement mechanisms rather than probabilistic LLM behavior. This suggests a hybrid architecture where coordination/discovery might use LLMs but policy enforcement uses traditional rule engines.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "policy-enforcement",
+      "trust",
+      "reliability",
+      "hybrid-architecture"
+    ],
+    "raw_quote": "Most AI agent builders have a primitive approach to policy validation today \u2014 they feed text instructions into an LLM and expect the LLM to appropriately enforce those policies. Business policies are rules, not suggestions.",
+    "source": {
+      "title": "Fast-Track AI Agent Discovery and Deployment: Introducing AI ...",
+      "url": "https://www.moveworks.com/us/en/resources/blog/introducing-ai-agent-marketplace"
+    },
+    "hunt_id": "c9aa917a",
+    "extracted_at": "2026-03-04T20:59:26.107321+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.196315+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

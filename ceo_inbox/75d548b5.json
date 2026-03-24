@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.299031+00:00",
+    "relevance_score": 0.62,
+    "matched_tags": [
+      "security"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/75d548b5.json"
+  },
+  "framework": {
+    "id": "75d548b5",
+    "type": "framework",
+    "name": "Threat Model for Agent Tx Pipelines",
+    "description": "Covers prompt injection, policy misuse, key compromise, adversarial execution (MEV), multi-agent collusion. The 'policy misuse' category is relevant to delegation abuse but the paper doesn't detail revocation latency attacks specifically.",
+    "domain": "ai-systems",
+    "confidence": 0.6,
+    "tags": [
+      "threat-model",
+      "security",
+      "mev"
+    ],
+    "raw_quote": "a threat model tailored to agent-driven transaction pipelines that captures risks ranging from prompt injection and policy misuse to key compromise, adversarial execution dynamics, and multi-agent collusion",
+    "value_tier": "bone",
+    "source": {
+      "title": "Autonomous Agents on Blockchains: Standards, Execution Models, and ...",
+      "url": "https://arxiv.org/html/2601.04583v1"
+    },
+    "hunt_id": "67bf6ff4",
+    "extracted_at": "2026-03-15T12:28:59.704910+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.183940+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

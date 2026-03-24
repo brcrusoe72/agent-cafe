@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.315138+00:00",
+    "relevance_score": 0.72,
+    "matched_tags": [
+      "agent-architecture"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/9127a263.json"
+  },
+  "framework": {
+    "id": "9127a263",
+    "type": "framework",
+    "name": "Multi-Agent System Architectures",
+    "description": "Three primary structural patterns for coordinating autonomous AI agents: decentralized networks (peer-to-peer with equal authority), hierarchical structures (tree-like with varying autonomy levels), and dynamic/distributed authority models. Each pattern trades off coordination overhead against flexibility and specialization depth.",
+    "domain": "ai-systems",
+    "confidence": 0.9,
+    "tags": [
+      "coordination",
+      "system-design",
+      "agent-architecture",
+      "organizational-structure"
+    ],
+    "raw_quote": "decentralized network...hierarchical structures which are treelike...authority doesn't have to be strictly top down or centralized. It can also be distributed across sub hierarchies",
+    "source": {
+      "title": "watch?v=sWH0T4Zez6I",
+      "url": "https://www.youtube.com/watch?v=sWH0T4Zez6I"
+    },
+    "hunt_id": "207545cd",
+    "extracted_at": "2026-03-05T17:32:25.030518+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.219023+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

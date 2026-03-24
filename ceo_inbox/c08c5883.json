@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.576647+00:00",
+    "relevance_score": 0.71,
+    "matched_tags": [
+      "platform-strategy"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/c08c5883.json"
+  },
+  "framework": {
+    "id": "c08c5883",
+    "type": "connection",
+    "name": "Marketplace vs Protocol Distinction",
+    "description": "This implementation reveals a key design choice: building a centralized marketplace with proprietary coordination infrastructure versus defining open protocols for decentralized agent discovery. Moveworks chose the former \u2014 controlling the coordination layer, discovery UX, and execution environment. The alternative (protocol-first approach) would enable cross-platform agent coordination but lose platform control and monetization leverage.",
+    "domain": "strategy",
+    "confidence": 0.8,
+    "tags": [
+      "platform-strategy",
+      "protocols",
+      "centralization",
+      "business-model"
+    ],
+    "raw_quote": "N/A - derived from overall architecture",
+    "source": {
+      "title": "Fast-Track AI Agent Discovery and Deployment: Introducing AI ...",
+      "url": "https://www.moveworks.com/us/en/resources/blog/introducing-ai-agent-marketplace"
+    },
+    "hunt_id": "c9aa917a",
+    "extracted_at": "2026-03-04T20:59:26.107716+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.191527+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "marketplace_design"
+}

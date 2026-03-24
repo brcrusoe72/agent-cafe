@@ -1,0 +1,39 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.623329+00:00",
+    "relevance_score": 0.57,
+    "matched_tags": [
+      "authorization",
+      "delegation",
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "technology/3952d1e6.json"
+  },
+  "framework": {
+    "id": "3952d1e6",
+    "type": "framework",
+    "name": "Layered Authorization Stack for AI Agents",
+    "description": "OAuth 2.1 as base layer + policy-as-code (OPA/Cedar) for runtime constraints + delegation-aware tokens (RAR/RFC 9396, Token Exchange/RFC 8693) + runtime attestation (DPoP, SPIFFE). Paper argues no single primitive suffices \u2014 you need the stack.",
+    "domain": "technology",
+    "confidence": 0.8,
+    "tags": [
+      "oauth",
+      "ai-agents",
+      "delegation",
+      "authorization"
+    ],
+    "raw_quote": "securing AI agents requires a layered authorization stack that extends beyond OAuth alone",
+    "value_tier": "bone",
+    "source": {
+      "title": "OAuth Is Not Enough",
+      "url": "https://d197for5662m48.cloudfront.net/documents/publicationstatus/262756/preprint_pdf/21aad33dd971984a510d5f79277b7be8.pdf"
+    },
+    "hunt_id": "67bf6ff4",
+    "extracted_at": "2026-03-15T12:30:47.068329+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.195723+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

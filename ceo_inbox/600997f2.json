@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.442136+00:00",
+    "relevance_score": 0.64,
+    "matched_tags": [
+      "governance"
+    ],
+    "domain_match": false,
+    "source_path": "leadership/600997f2.json"
+  },
+  "framework": {
+    "id": "600997f2",
+    "type": "claim",
+    "name": "Executive Sponsorship ROI Differential",
+    "description": "Manufacturing organizations with comprehensive C-level sponsorship see 84% ROI realization versus 75% without executive alignment, showing 9 percentage point improvement and suggesting governance solutions have quantifiable value.",
+    "domain": "leadership",
+    "confidence": 0.8,
+    "tags": [
+      "governance",
+      "executive-sponsorship",
+      "roi"
+    ],
+    "raw_quote": "manufacturers with comprehensive C-level sponsorship are significantly more likely to see ROI (84%) compared to those without executive alignment (75%)",
+    "value_tier": "meat",
+    "source": {
+      "title": "AI Software Development: Why 95% Of Enterprise Pilots Fail - USM",
+      "url": "https://usmsystems.com/ai-software-development/"
+    },
+    "hunt_id": "e1731343",
+    "extracted_at": "2026-03-10T14:08:58.222475+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.182811+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

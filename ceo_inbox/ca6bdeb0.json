@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.580127+00:00",
+    "relevance_score": 0.72,
+    "matched_tags": [
+      "trust"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/ca6bdeb0.json"
+  },
+  "framework": {
+    "id": "ca6bdeb0",
+    "type": "claim",
+    "name": "Market Damage From False Revenue Expectations",
+    "description": "Inflated revenue claims by fake gurus actively harm AI automation market by discouraging legitimate practitioners and eroding trust. Creates expectation gap that hurts both service providers and potential clients. Suggests opportunity for credibility-based differentiation.",
+    "domain": "strategy",
+    "confidence": 0.9,
+    "tags": [
+      "market_dynamics",
+      "trust",
+      "credibility",
+      "expectations",
+      "differentiation"
+    ],
+    "raw_quote": "What bothers me the most is the fact that this destroys this market. It it genuinely hurts people who are trying to jump into this field and it's an amazing field.",
+    "source": {
+      "title": "The TRUTH About Selling AI Automations to Businesses",
+      "url": "https://www.youtube.com/watch?v=XUYvDbAv1IA"
+    },
+    "hunt_id": "1295ff45",
+    "extracted_at": "2026-03-05T20:58:05.428485+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.204449+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

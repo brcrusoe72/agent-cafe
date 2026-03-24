@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.428293+00:00",
+    "relevance_score": 0.505,
+    "matched_tags": [
+      "stripe"
+    ],
+    "domain_match": false,
+    "source_path": "finance/adea0de5.json"
+  },
+  "framework": {
+    "id": "adea0de5",
+    "type": "claim",
+    "name": "Best-Effort Spend Aggregation with Latency Window",
+    "description": "Stripe's spending limit enforcement has a 30-second aggregation delay and operates on best-effort basis, creating an exploitable window where rapid sequential transactions could exceed limits. Additional tips/fees posted later can also breach limits retroactively.",
+    "domain": "finance",
+    "confidence": 0.85,
+    "tags": [
+      "velocity-controls",
+      "race-conditions",
+      "stripe",
+      "limitations"
+    ],
+    "raw_quote": "Spending aggregation is done on a best-effort basis. You might notice a delay of up to 30 seconds between spend occurrence and spend aggregation. Additional tips and fees can be posted at a later time, causing a spending limit to be exceeded.",
+    "value_tier": "organ",
+    "source": {
+      "title": "Issuing spending controls | Stripe Documentation",
+      "url": "https://docs.stripe.com/issuing/controls/spending-controls"
+    },
+    "hunt_id": "b977a620",
+    "extracted_at": "2026-03-07T14:45:43.641412+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.214767+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "payment_infrastructure"
+}

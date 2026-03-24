@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.476409+00:00",
+    "relevance_score": 0.55,
+    "matched_tags": [
+      "pricing"
+    ],
+    "domain_match": false,
+    "source_path": "manufacturing/ae12fb2e.json"
+  },
+  "framework": {
+    "id": "ae12fb2e",
+    "type": "framework",
+    "name": "MachineMetrics Per-Machine Pricing Model",
+    "description": "MachineMetrics charges $150-$250/machine/month for basic OEE, $300-$450/machine/month for predictive analytics. 50-machine shop = $90K-$270K/year software + $35K-$115K upfront hardware. Proprietary edge device required per machine.",
+    "domain": "manufacturing",
+    "confidence": 0.6,
+    "tags": [
+      "pricing",
+      "machinemetrics",
+      "iiot"
+    ],
+    "raw_quote": "For a mid-sized shop with 50 CNC machines, you're looking at $7,500 to $22,500 per month \u00e2 that's $90,000 to $270,000 annually before hardware costs.",
+    "value_tier": "meat",
+    "source": {
+      "title": "MachineMetrics Pricing in 2026: What Does MachineMetrics Actually Cost?",
+      "url": "https://www.machinecdn.com/blog/machinemetrics-pricing-2026"
+    },
+    "hunt_id": "444db453",
+    "extracted_at": "2026-03-16T14:14:30.284918+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.210294+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

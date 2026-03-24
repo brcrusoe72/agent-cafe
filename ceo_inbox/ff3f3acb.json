@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.376430+00:00",
+    "relevance_score": 0.57,
+    "matched_tags": [
+      "authorization"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/ff3f3acb.json"
+  },
+  "framework": {
+    "id": "ff3f3acb",
+    "type": "technique",
+    "name": "Human-in-the-Loop Authorization Thresholds",
+    "description": "Design pattern where agent autonomy pauses at defined thresholds (transaction amounts, customer data access, compliance implications, production operations) requiring human approval before proceeding. Balances automation with control over high-stakes decisions.",
+    "domain": "ai-systems",
+    "confidence": 0.8,
+    "tags": [
+      "authorization",
+      "human-in-the-loop",
+      "spending-limits",
+      "escalation"
+    ],
+    "raw_quote": "Define clear escalation thresholds where agent autonomy pauses for human approval: financial transactions above a certain amount, actions that affect customer data, decisions with compliance implications, and operations in production environments.",
+    "source": {
+      "title": "AI Agent Authentication & Authorization - datadome.co",
+      "url": "https://datadome.co/agent-trust-management/authentication-and-authorization/"
+    },
+    "hunt_id": "4f110637",
+    "extracted_at": "2026-03-06T14:17:42.636085+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.187637+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.269550+00:00",
+    "relevance_score": 0.62,
+    "matched_tags": [
+      "governance"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/46ae2019.json"
+  },
+  "framework": {
+    "id": "46ae2019",
+    "type": "technique",
+    "name": "Composable Governance Modules",
+    "description": "Architectural approach using analytical components, decision tree logic, AI evaluations, and workflow triggers that can be selectively adopted rather than replacing entire governance structures wholesale.",
+    "domain": "ai-systems",
+    "confidence": 0.6,
+    "tags": [
+      "modularity",
+      "governance",
+      "incremental-adoption",
+      "composability"
+    ],
+    "raw_quote": "ENGMA's narrative emphasizes modularity, suggesting that ecosystems may adopt the specific components they need rather than replacing the governance structures wholesale",
+    "source": {
+      "title": "watch?v=IVFSqKB6Pw4",
+      "url": "https://www.youtube.com/watch?v=IVFSqKB6Pw4"
+    },
+    "hunt_id": "d871eeba",
+    "extracted_at": "2026-03-03T16:47:05.568171+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.182063+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

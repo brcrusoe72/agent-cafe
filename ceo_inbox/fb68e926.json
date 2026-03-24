@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.600101+00:00",
+    "relevance_score": 0.715,
+    "matched_tags": [
+      "platform-strategy"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/fb68e926.json"
+  },
+  "framework": {
+    "id": "fb68e926",
+    "type": "framework",
+    "name": "Vertical Integration Strategy",
+    "description": "Google is bundling Gemini deeply with existing Google services (Search, YouTube, Maps, Gmail, Workspace) rather than creating an open marketplace. This suggests they believe moat comes from ecosystem lock-in, not facilitating third-party agent interactions.",
+    "domain": "strategy",
+    "confidence": 0.85,
+    "tags": [
+      "vertical-integration",
+      "ecosystem",
+      "competitive-moat",
+      "platform-strategy"
+    ],
+    "raw_quote": "Connect with your favorite Google apps like Search, YouTube, Google Maps, Gmail, and more... Gemini app, as part of Google AI Pro, will continue to be available to qualifying Google Workspace business and education plans.",
+    "source": {
+      "title": "Google Gemini",
+      "url": "https://gemini.google.com/"
+    },
+    "hunt_id": "e8165180",
+    "extracted_at": "2026-03-05T16:09:00.178163+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.192846+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "marketplace_design"
+}

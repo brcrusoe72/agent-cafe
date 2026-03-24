@@ -1,0 +1,35 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.366950+00:00",
+    "relevance_score": 0.63,
+    "matched_tags": [
+      "governance"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/eb8326ac.json"
+  },
+  "framework": {
+    "id": "eb8326ac",
+    "type": "framework",
+    "name": "Error Amplification at Scale",
+    "description": "Automated systems don't just make errors\u2014they amplify them at machine speed. Toyota's $5B recall as physical analog for what biased AI models or flawed algorithms do digitally.",
+    "domain": "ai-systems",
+    "confidence": 0.7,
+    "tags": [
+      "governance",
+      "risk-amplification"
+    ],
+    "raw_quote": "When an error occurs, that same system becomes a massive error amplifier, multiplying the mistake at scale until a skilled human operator intervenes.",
+    "value_tier": "bone",
+    "source": {
+      "title": "The Automation Paradox: Why AI Needs More Human Expertise, Not ...",
+      "url": "https://www.baytechconsulting.com/blog/automation-paradox-smarter-humans-in-ai"
+    },
+    "hunt_id": "71f7039e",
+    "extracted_at": "2026-03-13T16:21:00.759613+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.187014+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

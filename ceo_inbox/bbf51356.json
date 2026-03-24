@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.339423+00:00",
+    "relevance_score": 0.575,
+    "matched_tags": [
+      "pricing"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/bbf51356.json"
+  },
+  "framework": {
+    "id": "bbf51356",
+    "type": "claim",
+    "name": "AI Project Cost Ranges",
+    "description": "Small to medium AI projects cost $50K-$500K, while large-scale initiatives exceed $5M. Moderate complexity custom projects fall in $50K-$500K range, establishing baseline pricing for integration solutions.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "pricing",
+      "cost-structure",
+      "willingness-to-pay"
+    ],
+    "raw_quote": "Cost Range: Small to medium AI projects: $50K-$500K; large-scale initiatives: $5M+",
+    "value_tier": "meat",
+    "source": {
+      "title": "AI Software Development: Why 95% Of Enterprise Pilots Fail - USM",
+      "url": "https://usmsystems.com/ai-software-development/"
+    },
+    "hunt_id": "e1731343",
+    "extracted_at": "2026-03-10T14:08:58.222248+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.210643+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

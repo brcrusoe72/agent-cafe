@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.422075+00:00",
+    "relevance_score": 0.49,
+    "matched_tags": [
+      "tokenization"
+    ],
+    "domain_match": false,
+    "source_path": "finance/88b185ee.json"
+  },
+  "framework": {
+    "id": "88b185ee",
+    "type": "technique",
+    "name": "Tokenization for Agent Identity",
+    "description": "PayPal uses 'tokenized identities' and 'secure orchestration' to enable agents to operate 'within an architecture that removes the burden of managing sensitive payment details altogether,' eliminating PCI compliance requirements for agent developers.",
+    "domain": "finance",
+    "confidence": 0.7,
+    "tags": [
+      "tokenization",
+      "pci-compliance",
+      "security-architecture"
+    ],
+    "raw_quote": "Agents can autonomously operate within an architecture that removes the burden of managing sensitive payment details altogether... cutting-edge technologies like tokenization and secure orchestration.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Enabling Agentic Payments with PayPal: Pioneering the Future of ...",
+      "url": "https://developer.paypal.com/community/blog/enabling-agentic-payments/"
+    },
+    "hunt_id": "b977a620",
+    "extracted_at": "2026-03-07T14:46:26.208993+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.184153+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

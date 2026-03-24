@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.646265+00:00",
+    "relevance_score": 0.58,
+    "matched_tags": [
+      "authentication"
+    ],
+    "domain_match": false,
+    "source_path": "technology/8260ddd5.json"
+  },
+  "framework": {
+    "id": "8260ddd5",
+    "type": "technique",
+    "name": "VIC Payment Instruction Authentication Flow",
+    "description": "Unlike Mastercard's cryptographic signed-intent chain, Visa uses a Passkey (FIDO) model: the agent requests user authentication of a Payment Instruction via Passkey, submits it to VIC, then VIC validates credential requests match the authenticated instruction and sets network-level controls on VisaNet. This is human-confirms-then-agent-executes, not agent-signs-intent.",
+    "domain": "technology",
+    "confidence": 0.9,
+    "tags": [
+      "fido",
+      "passkey",
+      "payment-instruction",
+      "authentication"
+    ],
+    "raw_quote": "The agent requests the user to authenticate the Payment Instruction using their Passkey and provides that instruction to the Visa Intelligent Commerce platform... controls will be enforced to ensure that the request originates from the intended merchant for the correct amount.",
+    "value_tier": "organ",
+    "source": {
+      "title": "Visa Intelligent Commerce (VIC) - Integration Starter Kit",
+      "url": "https://github.com/visa/mcp/"
+    },
+    "hunt_id": "da550186",
+    "extracted_at": "2026-03-15T12:07:17.155826+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.214448+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "payment_infrastructure"
+}

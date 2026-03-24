@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.286850+00:00",
+    "relevance_score": 0.65,
+    "matched_tags": [
+      "governance"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/6417aa98.json"
+  },
+  "framework": {
+    "id": "6417aa98",
+    "type": "claim",
+    "name": "Human Validation Process as Top Factor",
+    "description": "Having defined processes for when model outputs need human validation is one of the TOP differentiating factors for high performers. Governance > raw capability.",
+    "domain": "ai-systems",
+    "confidence": 0.9,
+    "tags": [
+      "governance",
+      "human-in-loop",
+      "validation"
+    ],
+    "raw_quote": "high performers are more likely than others are to say their organizations have defined processes to determine how and when model outputs need human validation to ensure accuracy... This is another one of the top factors",
+    "value_tier": "meat",
+    "source": {
+      "title": "The State of AI: Global Survey 2025 - McKinsey",
+      "url": "https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai"
+    },
+    "hunt_id": "f610268c",
+    "extracted_at": "2026-03-17T16:18:05.896823+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.183089+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

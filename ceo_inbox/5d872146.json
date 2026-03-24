@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.635380+00:00",
+    "relevance_score": 0.585,
+    "matched_tags": [
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "technology/5d872146.json"
+  },
+  "framework": {
+    "id": "5d872146",
+    "type": "framework",
+    "name": "AIMS \u2014 Agent Identity Management System",
+    "description": "The KLRC draft defines a conceptual model (AIMS) decomposing agent identity into five functions: identifiers, credentials, attestation, credential provisioning, and authentication. This is NOT a new protocol \u2014 it's explicitly a composition layer over SPIFFE, WIMSE, OAuth, and OpenID SSF.",
+    "domain": "technology",
+    "confidence": 0.95,
+    "tags": [
+      "agent-auth",
+      "ietf",
+      "oauth",
+      "identity"
+    ],
+    "raw_quote": "Rather than defining new protocols, this document describes how existing and widely deployed standards can be applied or extended to establish agent authentication and authorization.",
+    "value_tier": "bone",
+    "source": {
+      "title": "draft-klrc-aiagent-auth-00 - AI Agent Authentication and Authorization",
+      "url": "https://datatracker.ietf.org/doc/draft-klrc-aiagent-auth/"
+    },
+    "hunt_id": "1421f7a8",
+    "extracted_at": "2026-03-18T14:08:14.990892+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.198639+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

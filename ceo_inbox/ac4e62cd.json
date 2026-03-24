@@ -1,0 +1,35 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.568647+00:00",
+    "relevance_score": 0.695,
+    "matched_tags": [
+      "trust"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/ac4e62cd.json"
+  },
+  "framework": {
+    "id": "ac4e62cd",
+    "type": "contrarian",
+    "name": "Consumer Cognitive Load Reduction Assumption",
+    "description": "Visa assumes consumers WANT to delegate cognitive load of shopping to agents. But consumer research shows majority want to TRY AI experiences but are concerned about safety/security. There's tension between 'I want this automated' and 'I don't trust this to be automated.' The assumption that reducing friction is always good may not hold if consumers lose sense of control.",
+    "domain": "strategy",
+    "confidence": 0.65,
+    "tags": [
+      "consumer-behavior",
+      "trust",
+      "assumptions"
+    ],
+    "raw_quote": "We ran a consumer study earlier this year where we identified majority of the US consumers want to try these AI-driven experiences. However, they're also concerned about safety, reliability, and security of payments.",
+    "source": {
+      "title": "watch?v=6WfDk_oy8TE",
+      "url": "https://www.youtube.com/watch?v=6WfDk_oy8TE"
+    },
+    "hunt_id": "7d3db790",
+    "extracted_at": "2026-03-03T19:00:21.639562+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.202593+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

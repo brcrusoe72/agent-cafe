@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.336578+00:00",
+    "relevance_score": 0.56,
+    "matched_tags": [
+      "delegation"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/b73d2a46.json"
+  },
+  "framework": {
+    "id": "b73d2a46",
+    "type": "framework",
+    "name": "Five-Part Integration Taxonomy",
+    "description": "Read-only analytics \u2192 simulation/intent generation \u2192 delegated execution \u2192 autonomous signing \u2192 multi-agent workflows. This is the maturity ladder for agent-blockchain integration, and 'delegated execution' is exactly the constrained envelope pattern.",
+    "domain": "ai-systems",
+    "confidence": 0.7,
+    "tags": [
+      "delegation",
+      "agent-blockchain",
+      "taxonomy"
+    ],
+    "raw_quote": "a five-part taxonomy of integration patterns spanning read-only analytics, simulation and intent generation, delegated execution, autonomous signing, and multi-agent workflows",
+    "value_tier": "bone",
+    "source": {
+      "title": "Autonomous Agents on Blockchains: Standards, Execution Models, and ...",
+      "url": "https://arxiv.org/html/2601.04583v1"
+    },
+    "hunt_id": "67bf6ff4",
+    "extracted_at": "2026-03-15T12:28:59.703539+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.203223+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

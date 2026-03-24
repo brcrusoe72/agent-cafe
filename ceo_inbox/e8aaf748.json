@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.365426+00:00",
+    "relevance_score": 0.63,
+    "matched_tags": [
+      "tokenization",
+      "agent-identity",
+      "security"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/e8aaf748.json"
+  },
+  "framework": {
+    "id": "e8aaf748",
+    "type": "technique",
+    "name": "Agent-Specific Tokenization",
+    "description": "Issuing unique payment tokens for each agent-merchant pair to isolate risk, prevent replay attacks, and avoid exposing raw card numbers. Tokens are scoped to prevent agents from deviating from pre-defined permissions. Appears to be an extension of existing network tokenization but adapted for non-human actors.",
+    "domain": "ai-systems",
+    "confidence": 0.7,
+    "tags": [
+      "tokenization",
+      "security",
+      "agent-identity",
+      "risk-isolation"
+    ],
+    "raw_quote": "By issuing tokens unique to each agent and merchant, Visa isolates risk and prevents replay attacks or credential reuse. Consumers never expose raw card numbers, and agents cannot deviate from pre-defined scopes.",
+    "source": {
+      "title": "How Visa Enables AI Agents to Shop and Pay - Soniclinker - Create Agent Optimized Websites",
+      "url": "https://www.soniclinker.com/blog/visa-intelligent-commerce-ai-agents"
+    },
+    "hunt_id": "240ef939",
+    "extracted_at": "2026-03-05T14:54:15.144419+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.186714+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.262488+00:00",
+    "relevance_score": 0.435,
+    "matched_tags": [
+      "standardization"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/3aa8f035.json"
+  },
+  "framework": {
+    "id": "3aa8f035",
+    "type": "framework",
+    "name": "MCP (Model Context Protocol) - Client-Server Tool Integration",
+    "description": "Anthropic's protocol for connecting a single AI model to external tools, services, and data sources using a standardized client-server model. Uses HTTP, SSE, or local I/O streams to enable AI agents to access tools like Google Calendar, Slack, or file systems without custom API integrations.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "protocol",
+      "tool-integration",
+      "single-agent",
+      "anthropic",
+      "standardization",
+      "api-abstraction"
+    ],
+    "raw_quote": "MCP is about connecting a single AI model to external tools, services, and data. MCP is the belt, giving it access to things like your Google calendar, Slack, Workspace, or even files on your laptop.",
+    "source": {
+      "title": "watch?v=bP44vYoMvD4",
+      "url": "https://www.youtube.com/watch?v=bP44vYoMvD4"
+    },
+    "hunt_id": "e8165180",
+    "extracted_at": "2026-03-05T16:20:51.430248+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.216652+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

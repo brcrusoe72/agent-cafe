@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.306745+00:00",
+    "relevance_score": 0.63,
+    "matched_tags": [
+      "governance"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/828c3145.json"
+  },
+  "framework": {
+    "id": "828c3145",
+    "type": "framework",
+    "name": "Five-Stage AI Transformation Framework",
+    "description": "Diagnose\u2192Governance\u2192Redesign\u2192Reuse/Literacy\u2192Iterate. Field-tested framework for moving past pilot stage. Stages are interdependent, not sequential.",
+    "domain": "ai-systems",
+    "confidence": 0.7,
+    "tags": [
+      "scaling",
+      "organizational-design",
+      "governance"
+    ],
+    "raw_quote": "the difference between success and failure rarely hinged on the algorithm itself",
+    "value_tier": "bone",
+    "source": {
+      "title": "Bridging the Gaps in AI Transformation: An Evidence-Based ...",
+      "url": "https://cmr.berkeley.edu/2025/11/bridging-the-gaps-in-ai-transformation-an-evidence-based-framework-for-scalable-adoption/"
+    },
+    "hunt_id": "850ed033",
+    "extracted_at": "2026-03-17T13:55:17.791169+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.184007+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

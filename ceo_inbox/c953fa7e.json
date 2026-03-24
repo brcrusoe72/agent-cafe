@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.347072+00:00",
+    "relevance_score": 0.65,
+    "matched_tags": [
+      "delegation",
+      "agent-architecture"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/c953fa7e.json"
+  },
+  "framework": {
+    "id": "c953fa7e",
+    "type": "framework",
+    "name": "Agent Operating Constraints Model",
+    "description": "AI agents operate within pre-approved rules around price, brand preference, frequency, and payment credentials. They function as delegated decision-makers executing transactions within human-defined boundaries using existing payment infrastructure (authorization, authentication, dispute frameworks).",
+    "domain": "ai-systems",
+    "confidence": 0.9,
+    "tags": [
+      "agent-architecture",
+      "constraints",
+      "delegation",
+      "autonomy"
+    ],
+    "raw_quote": "Acting within user-defined rules, agents can search, negotiate and transact on consumers' behalf... AI effectively functions as a personal digital agent that can source and negotiate and complete purchases using pre-approved or approved payment methods",
+    "source": {
+      "title": "AI Agents Start Shopping and Payments Firms Adapt | PYMNTS.com",
+      "url": "https://www.pymnts.com/news/artificial-intelligence/2026/ai-agents-start-shopping-and-payments-firms-adapt/"
+    },
+    "hunt_id": "7d3db790",
+    "extracted_at": "2026-03-03T18:52:28.346455+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.204316+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

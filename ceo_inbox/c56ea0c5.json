@@ -1,0 +1,35 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.663673+00:00",
+    "relevance_score": 0.63,
+    "matched_tags": [
+      "security"
+    ],
+    "domain_match": false,
+    "source_path": "technology/c56ea0c5.json"
+  },
+  "framework": {
+    "id": "c56ea0c5",
+    "type": "framework",
+    "name": "Multimodal Platform Security",
+    "description": "A security framework combining different access control mechanisms (role-based, classification-based, purpose-based) to enable autonomous data product teams while maintaining oversight.",
+    "domain": "technology",
+    "confidence": 0.7,
+    "tags": [
+      "security",
+      "access-control",
+      "data-governance"
+    ],
+    "raw_quote": "A multimodal platform security framework that combines different access control mechanisms (such as role-based, classification-based, or purpose-based)",
+    "source": {
+      "title": "",
+      "url": "https://aws.amazon.com/blogs/apn/implementing-an-operational-data-mesh-with-palantir-foundry-on-aws-to-transform-your-organization/"
+    },
+    "hunt_id": "69dfc43e",
+    "extracted_at": "2026-03-03T17:39:52.475409+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.185743+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

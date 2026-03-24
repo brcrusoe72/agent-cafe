@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.666584+00:00",
+    "relevance_score": 0.445,
+    "matched_tags": [
+      "economics"
+    ],
+    "domain_match": false,
+    "source_path": "technology/cd48c8bb.json"
+  },
+  "framework": {
+    "id": "cd48c8bb",
+    "type": "case_study",
+    "name": "Reusable Rocket Economics",
+    "description": "SpaceX transformed space economics by making rockets reusable, reducing launch costs from $60M to $30M. Like airlines reusing planes instead of building new ones for each flight.",
+    "domain": "technology",
+    "confidence": 0.95,
+    "tags": [
+      "reusability",
+      "cost-reduction",
+      "economics",
+      "aerospace"
+    ],
+    "raw_quote": "It's economic alchemy, turning $60 million launches into $30 million bargains",
+    "source": {
+      "title": "spacex-s-radical-reduction-in-launch-cos",
+      "url": "https://www.careyaya.org/resources/blog/spacex-s-radical-reduction-in-launch-costs-and-lessons-for-innovation"
+    },
+    "hunt_id": "1486004a",
+    "extracted_at": "2026-03-03T17:44:17.322699+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.211197+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

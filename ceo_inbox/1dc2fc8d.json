@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.498199+00:00",
+    "relevance_score": 0.89,
+    "matched_tags": [
+      "platform-scaling",
+      "trust-mechanisms"
+    ],
+    "domain_match": true,
+    "source_path": "marketplace-design/1dc2fc8d.json"
+  },
+  "framework": {
+    "id": "1dc2fc8d",
+    "type": "framework",
+    "name": "Trust Ladder for Marketplace Evolution",
+    "description": "A six-stage progression for building trust in marketplaces as they scale: (1) Code of Conduct, (2) Declaration (identity disclosure), (3) Communication channels, (4) Social Dimension (network effects), (5) Verification (identity/capability proofs), (6) Reputation systems. Each stage corresponds to increasing platform size and transaction risk.",
+    "domain": "marketplace-design",
+    "confidence": 0.95,
+    "tags": [
+      "trust-mechanisms",
+      "marketplace-evolution",
+      "platform-scaling",
+      "peer-to-peer"
+    ],
+    "raw_quote": "the mechanism that is needed in the early days is different from the one needed when you achieve scale... moving from the early phases to trust at scale",
+    "source": {
+      "title": "watch?v=W5q02P8GNzs",
+      "url": "https://www.youtube.com/watch?v=W5q02P8GNzs"
+    },
+    "hunt_id": "c9aa917a",
+    "extracted_at": "2026-03-04T21:50:31.446440+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.188319+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "marketplace_design"
+}

@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.569828+00:00",
+    "relevance_score": 0.765,
+    "matched_tags": [
+      "agent-commerce"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/b0378518.json"
+  },
+  "framework": {
+    "id": "b0378518",
+    "type": "claim",
+    "name": "B2B Micropayment Economies",
+    "description": "When businesses can settle payments instantly (not net 60) through agents without requiring trust, entirely new economic models emerge. Agent-to-agent commerce for information exchange and services via blockchain micropayments could create 'entire economies that don't exist today' \u2014 business models impossible under current payment infrastructure due to transaction costs and settlement delays.",
+    "domain": "strategy",
+    "confidence": 0.65,
+    "tags": [
+      "b2b",
+      "micropayments",
+      "economic-models",
+      "agent-commerce",
+      "second-order-effects"
+    ],
+    "raw_quote": "when businesses can pay for in the moment. So not net 60...you can imagine entire economies that don't exist today forming when you give the technology capability for these agents to orchestrate commerce between one another...What are the new business models that will come from that?",
+    "source": {
+      "title": "From Protocol to Payments: Agentic Commerce and the Universal Ledger | DAS London 2025 | Day 3",
+      "url": "https://www.youtube.com/watch?v=hyed27TgYxc"
+    },
+    "hunt_id": "7d3db790",
+    "extracted_at": "2026-03-03T18:51:04.307874+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.210421+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.521419+00:00",
+    "relevance_score": 0.705,
+    "matched_tags": [
+      "platform-strategy"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/30a092a1.json"
+  },
+  "framework": {
+    "id": "30a092a1",
+    "type": "contrarian",
+    "name": "Google as Infrastructure Play Not Consumer Platform",
+    "description": "Despite Google's history of consumer products, AP2 positioning is pure infrastructure layer\u2014enabling agent commerce for merchants/platforms, not building Google Shopping for agents. Partners include direct competitors (PayPal, Mastercard, Amex). Suggests strategic pivot to protocol provider role.",
+    "domain": "strategy",
+    "confidence": 0.75,
+    "tags": [
+      "business-model",
+      "platform-strategy",
+      "competitive-positioning"
+    ],
+    "raw_quote": "Collaborating with a diverse group of more than 60 organizations to help shape the future of agentic payments, including Adyen, American Express, Ant International, Coinbase, Etsy, Forter, Intuit, JCB, Mastercard, Mysten Labs, Paypal, Revolut, Salesforce, ServiceNow, UnionPay International, Worldpay, and more.",
+    "value_tier": "organ",
+    "source": {
+      "title": "Announcing Agent Payments Protocol (AP2) | Google Cloud Blog",
+      "url": "https://cloud.google.com/blog/products/ai-machine-learning/announcing-agents-to-payments-ap2-protocol"
+    },
+    "hunt_id": "b977a620",
+    "extracted_at": "2026-03-07T14:42:04.608701+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.188806+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "marketplace_design"
+}

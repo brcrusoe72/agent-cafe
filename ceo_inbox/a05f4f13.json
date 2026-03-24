@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.323451+00:00",
+    "relevance_score": 0.56,
+    "matched_tags": [
+      "mcp"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/a05f4f13.json"
+  },
+  "framework": {
+    "id": "a05f4f13",
+    "type": "technique",
+    "name": "Model Context Protocol (MCP) for Capability Restriction",
+    "description": "An agent harness approach that provides controlled access to specific tools (terminal, browser, domain-specific search) through a standardized server interface. Acts as a capability boundary layer between the agent and available actions, though authorization/permission mechanisms aren't detailed.",
+    "domain": "ai-systems",
+    "confidence": 0.7,
+    "tags": [
+      "mcp",
+      "capability-restriction",
+      "agent-tooling",
+      "access-control"
+    ],
+    "raw_quote": "we used a goose-based harness for all evaluation runs, and provided models with a Model Context Protocol (MCP) server that grants access to a terminal, browser, and Stripe-specific search tools.",
+    "source": {
+      "title": "can-ai-agents-build-real-stripe-integrat",
+      "url": "https://stripe.com/blog/can-ai-agents-build-real-stripe-integrations"
+    },
+    "hunt_id": "c5cfd231",
+    "extracted_at": "2026-03-06T14:34:09.777197+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.219207+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

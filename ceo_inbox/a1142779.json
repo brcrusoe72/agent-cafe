@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.426213+00:00",
+    "relevance_score": 0.569,
+    "matched_tags": [
+      "authentication"
+    ],
+    "domain_match": false,
+    "source_path": "finance/a1142779.json"
+  },
+  "framework": {
+    "id": "a1142779",
+    "type": "technique",
+    "name": "Challenge Orchestration for Agent Authentication",
+    "description": "Standardized redirect challenges (3DS2/OTP) completed on trusted credential provider or issuer surfaces. Results propagated to avoid duplicate step-ups. Supports re-entry for human-not-present flows when agents need to escalate authentication.",
+    "domain": "finance",
+    "confidence": 0.79,
+    "tags": [
+      "authentication",
+      "3DS2",
+      "challenge-flows",
+      "step-up-auth"
+    ],
+    "raw_quote": "Challenge orchestration: Standardizing redirect challenges (3DS2/OTP); completing them on trusted credential provider or issuer surfaces; propagating the results to avoid duplicate step-ups; and supporting re-entry for human-not-present flows",
+    "value_tier": "bone",
+    "source": {
+      "title": "Agent Payments Protocol: Building Verifiable Trust for Agentic ...",
+      "url": "https://developer.paypal.com/community/blog/PayPal-Agent-Payments-Protocol/"
+    },
+    "hunt_id": "b977a620",
+    "extracted_at": "2026-03-07T14:43:18.908168+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.202042+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.559752+00:00",
+    "relevance_score": 0.64,
+    "matched_tags": [
+      "governance"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/9495b02b.json"
+  },
+  "framework": {
+    "id": "9495b02b",
+    "type": "framework",
+    "name": "Three-Pillar Responsible Autonomy Framework",
+    "description": "Sustainable autonomous system deployment requires: (1) Robust guardrails for safety/ethics, (2) Timely workforce upskilling/reskilling, (3) Purposeful deployments addressing societal needs through cross-sector collaboration.",
+    "domain": "strategy",
+    "confidence": 0.8,
+    "tags": [
+      "responsible-ai",
+      "governance",
+      "workforce-transition",
+      "stakeholder-collaboration"
+    ],
+    "raw_quote": "Three points remain key: Robust guardrails... Timely workforce upskilling and reskilling... Purposeful deployments.",
+    "source": {
+      "title": "Bringing AI into the physical world with autonomous systems | World Economic Forum",
+      "url": "https://www.weforum.org/stories/2025/01/ai-and-autonomous-systems/"
+    },
+    "hunt_id": "d871eeba",
+    "extracted_at": "2026-03-03T16:44:45.361204+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.184828+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

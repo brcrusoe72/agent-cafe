@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.518692+00:00",
+    "relevance_score": 0.64,
+    "matched_tags": [
+      "platform-scaling"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/283f2f2e.json"
+  },
+  "framework": {
+    "id": "283f2f2e",
+    "type": "case_study",
+    "name": "50+ Vertical Expansion Strategy",
+    "description": "Palantir's expansion from counterterrorism to 50+ verticals including healthcare, shipbuilding, energy, and insurance across Western-aligned operations.",
+    "domain": "strategy",
+    "confidence": 0.8,
+    "tags": [
+      "market-expansion",
+      "vertical-integration",
+      "platform-scaling",
+      "government-to-commercial"
+    ],
+    "raw_quote": "From an initial focus on counterterrorism, Palantir's scope now encompasses 50+ verticals spanning everything from healthcare to shipbuilding to energy production to insurance",
+    "source": {
+      "title": "overview",
+      "url": "https://www.palantir.com/docs/foundry/architecture-center/overview"
+    },
+    "hunt_id": "1486004a",
+    "extracted_at": "2026-03-03T17:41:43.550167+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.188574+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "marketplace_design"
+}

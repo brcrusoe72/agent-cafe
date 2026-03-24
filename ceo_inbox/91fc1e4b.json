@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.559122+00:00",
+    "relevance_score": 0.575,
+    "matched_tags": [
+      "pricing"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/91fc1e4b.json"
+  },
+  "framework": {
+    "id": "91fc1e4b",
+    "type": "technique",
+    "name": "Anchoring Price Manipulation",
+    "description": "Strategic technique where initial price points dramatically influence perceived value of subsequent offers, regardless of actual worth.",
+    "domain": "strategy",
+    "confidence": 0.85,
+    "tags": [
+      "pricing",
+      "negotiation",
+      "manipulation",
+      "anchoring"
+    ],
+    "raw_quote": "I want to sell you a car... Let's say you ask me what the price is and I tell you $30,000. Now, if you come back a week later and I say, 'I'll sell it to you for $20,000.' This seems like a new very cheap price to you",
+    "source": {
+      "title": "watch?v=wEwGBIr_RIw",
+      "url": "https://www.youtube.com/watch?v=wEwGBIr_RIw"
+    },
+    "hunt_id": "1486004a",
+    "extracted_at": "2026-03-03T17:46:15.738040+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.209968+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

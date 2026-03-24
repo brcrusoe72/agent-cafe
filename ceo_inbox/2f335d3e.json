@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.621021+00:00",
+    "relevance_score": 0.435,
+    "matched_tags": [
+      "standardization"
+    ],
+    "domain_match": false,
+    "source_path": "technology/2f335d3e.json"
+  },
+  "framework": {
+    "id": "2f335d3e",
+    "type": "claim",
+    "name": "The 'USB-C Moment' for AI",
+    "description": "MCP represents a standardization inflection point analogous to USB-C for hardware - moving from custom integrations (different wires for each device) to a unified interface. This centralized development of integrations (e.g., Yahoo Finance builds one MCP server) rather than thousands of developers each writing custom code.",
+    "domain": "technology",
+    "confidence": 0.85,
+    "tags": [
+      "standardization",
+      "metaphor",
+      "infrastructure",
+      "developer-tools"
+    ],
+    "raw_quote": "that USBC moment has arrived for AI and that is your model context protocol",
+    "source": {
+      "title": "watch?v=tzrwxLNHtRY",
+      "url": "https://www.youtube.com/watch?v=tzrwxLNHtRY"
+    },
+    "hunt_id": "e8165180",
+    "extracted_at": "2026-03-05T16:13:54.174726+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.188731+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "marketplace_design"
+}

@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.670470+00:00",
+    "relevance_score": 0.505,
+    "matched_tags": [
+      "ap2"
+    ],
+    "domain_match": false,
+    "source_path": "technology/d81323a6.json"
+  },
+  "framework": {
+    "id": "d81323a6",
+    "type": "technique",
+    "name": "PayPal's AP2 Integration Path: Existing infra, no rework",
+    "description": "PayPal maps AP2 roles directly onto existing architecture: wallet=credential provider, checkout=transaction mediator, Braintree/core=processor. Mandates flow through existing ISO 8583 authorization packets. Issuers need zero new infrastructure. This is deliberately non-disruptive.",
+    "domain": "technology",
+    "confidence": 0.85,
+    "tags": [
+      "paypal",
+      "integration",
+      "ap2"
+    ],
+    "raw_quote": "Mandates can flow through existing authorization packets; role separation would be reinforced by the wallet, checkout, and processing layers",
+    "value_tier": "bone",
+    "source": {
+      "title": "PayPal Community Blog | Agent Payments Protocol: Building Verifiable Trust for Agentic Commerce",
+      "url": "https://developer.paypal.com/community/blog/PayPal-Agent-Payments-Protocol/"
+    },
+    "hunt_id": "e7408160",
+    "extracted_at": "2026-03-14T14:04:59.129190+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.205467+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

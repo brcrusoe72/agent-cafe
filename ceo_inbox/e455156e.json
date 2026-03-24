@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.362188+00:00",
+    "relevance_score": 0.445,
+    "matched_tags": [
+      "standardization"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/e455156e.json"
+  },
+  "framework": {
+    "id": "e455156e",
+    "type": "framework",
+    "name": "Evolution of AI Application Architecture",
+    "description": "AI applications evolved through three stages: (1) LLMs without tools, (2) Agentic frameworks where LLMs use tools and knowledge via custom glue code, (3) Standardized protocols (like MCP) for tool/knowledge interaction. Each stage reduces integration complexity and increases development velocity.",
+    "domain": "ai-systems",
+    "confidence": 0.95,
+    "tags": [
+      "architecture",
+      "evolution",
+      "standardization",
+      "developer-experience"
+    ],
+    "raw_quote": "if you think about a of building a applications we are seeing a clear Evolution first we started with llm without any tools Etc then we started building this agentic Frameworks ET where llm gets help from tools and knowledge now we are entering the realm of standardized ways of interacting with these tools and knowledge",
+    "source": {
+      "title": "watch?v=tzrwxLNHtRY",
+      "url": "https://www.youtube.com/watch?v=tzrwxLNHtRY"
+    },
+    "hunt_id": "e8165180",
+    "extracted_at": "2026-03-05T16:13:54.174234+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.192264+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "marketplace_design"
+}

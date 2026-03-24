@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.269286+00:00",
+    "relevance_score": 0.7,
+    "matched_tags": [
+      "agent-architecture"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/4681e870.json"
+  },
+  "framework": {
+    "id": "4681e870",
+    "type": "claim",
+    "name": "Tool Count Threshold for Agent Performance",
+    "description": "Anecdotal evidence suggests agents perform optimally with 5-10 tools maximum. Beyond this threshold, agents make poor decisions about tool selection. This implies a cognitive load limit for LLM-based routing decisions.",
+    "domain": "ai-systems",
+    "confidence": 0.7,
+    "tags": [
+      "agent-architecture",
+      "tool-selection",
+      "performance",
+      "design-constraints"
+    ],
+    "raw_quote": "anecdotally we've seen that around 5 to 10 tools is the sweet spot for the maximum number of tools an agent should have",
+    "source": {
+      "title": "watch?v=4nZl32FwU-o",
+      "url": "https://www.youtube.com/watch?v=4nZl32FwU-o"
+    },
+    "hunt_id": "c9aa917a",
+    "extracted_at": "2026-03-04T23:36:46.550872+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.216895+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

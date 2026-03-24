@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.642570+00:00",
+    "relevance_score": 0.58,
+    "matched_tags": [
+      "mcp"
+    ],
+    "domain_match": false,
+    "source_path": "technology/76c0b40e.json"
+  },
+  "framework": {
+    "id": "76c0b40e",
+    "type": "claim",
+    "name": "Visa MCP Server Architecture",
+    "description": "Visa is hosting MCP (Model Context Protocol) servers on AWS Bedrock AgentCore, meaning their payment integration is designed as tool-callable endpoints for AI agents rather than traditional API-first design. This is architecturally distinct from Mastercard's AP2 SDK approach.",
+    "domain": "technology",
+    "confidence": 0.9,
+    "tags": [
+      "MCP",
+      "visa",
+      "aws",
+      "architecture"
+    ],
+    "raw_quote": "Visa is planning to use Amazon Bedrock AgentCore to host Model Context Protocol (MCP) tools so partners can build end-to-end, network agnostic agentic workflows",
+    "value_tier": "organ",
+    "source": {
+      "title": "Introducing Visa Intelligent Commerce on AWS: Enabling agentic commerce with Amazon Bedrock AgentCore | Artificial Intelligence",
+      "url": "https://aws.amazon.com/blogs/machine-learning/introducing-visa-intelligent-commerce-on-aws-enabling-agentic-commerce-with-amazon-bedrock-agentcore/"
+    },
+    "hunt_id": "da550186",
+    "extracted_at": "2026-03-15T12:05:52.906341+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.218425+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

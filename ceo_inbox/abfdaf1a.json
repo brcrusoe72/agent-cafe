@@ -1,0 +1,35 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.568139+00:00",
+    "relevance_score": 0.415,
+    "matched_tags": [
+      "standardization"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/abfdaf1a.json"
+  },
+  "framework": {
+    "id": "abfdaf1a",
+    "type": "claim",
+    "name": "Standardized Methodology as Competitive Moat",
+    "description": "Agentic AI's ability to create consistent, reusable enterprise assets across departments (vs. fragmented solutions) builds institutional knowledge that compounds over time. This positions consulting firms or domain experts who can deliver standardized frameworks.",
+    "domain": "strategy",
+    "confidence": 0.65,
+    "tags": [
+      "institutional-knowledge",
+      "standardization",
+      "competitive-advantage"
+    ],
+    "raw_quote": "Rather than having different departments developing disparate solutions \u2014 like separate strategic planning approaches for marketing, logistics and executive teams \u2014 agentic AI can establish standardized methodologies that ensure consistency while adapting to specific needs.",
+    "source": {
+      "title": "",
+      "url": "https://www.reworked.co/digital-workplace/the-business-case-for-agentic-ai/"
+    },
+    "hunt_id": "f65e2a8b",
+    "extracted_at": "2026-03-05T20:46:39.723137+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.190913+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "marketplace_design"
+}

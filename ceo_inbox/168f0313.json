@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.613077+00:00",
+    "relevance_score": 0.645,
+    "matched_tags": [
+      "security"
+    ],
+    "domain_match": false,
+    "source_path": "technology/168f0313.json"
+  },
+  "framework": {
+    "id": "168f0313",
+    "type": "framework",
+    "name": "High-Security OAuth Enhancements (PAR, DPoP, mTLS)",
+    "description": "OAuth extensions designed for high-security contexts include Pushed Authorization Requests (PAR, RFC 9126) which prevent request manipulation, Demonstration of Proof of Possession (DPoP, RFC 9449) which binds tokens to specific clients cryptographically, and Mutual TLS (RFC 8705) for bidirectional certificate-based authentication. These would be critical for autonomous agent scenarios.",
+    "domain": "technology",
+    "confidence": 0.85,
+    "tags": [
+      "security",
+      "cryptographic-binding",
+      "agent-authentication",
+      "zero-trust"
+    ],
+    "raw_quote": "These specs are used to add additional security properties on top of OAuth 2.0: Pushed Authorization Requests (PAR) - RFC 9126, Demonstration of Proof of Possession (DPoP) - RFC 9449, Mutual TLS - RFC 8705",
+    "source": {
+      "title": "OAuth 2.0 \u2014 OAuth",
+      "url": "https://oauth.net/2/"
+    },
+    "hunt_id": "c5cfd231",
+    "extracted_at": "2026-03-06T14:24:59.965810+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.193943+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

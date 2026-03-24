@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.587948+00:00",
+    "relevance_score": 0.55,
+    "matched_tags": [
+      "pricing"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/e20f0863.json"
+  },
+  "framework": {
+    "id": "e20f0863",
+    "type": "contrarian",
+    "name": "Agent Mode as Vaporware Pricing Justification",
+    "description": "Agent Mode is mentioned only as a locked feature in the highest tier (Ultra) with no explanation of functionality. This could indicate either experimental/nascent agent capabilities, or marketing language to justify premium pricing without substantive differentiation.",
+    "domain": "strategy",
+    "confidence": 0.6,
+    "tags": [
+      "agent-mode",
+      "pricing",
+      "vaporware",
+      "market-positioning"
+    ],
+    "raw_quote": "You'll also get early access to try our newest AI innovations as they become available, including Agent Mode.",
+    "source": {
+      "title": "Google Gemini",
+      "url": "https://gemini.google.com/"
+    },
+    "hunt_id": "e8165180",
+    "extracted_at": "2026-03-05T16:09:00.178519+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.211579+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.233738+00:00",
+    "relevance_score": 0.715,
+    "matched_tags": [
+      "agent-architecture"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/1103592d.json"
+  },
+  "framework": {
+    "id": "1103592d",
+    "type": "framework",
+    "name": "Pull-to-Push Commerce Transition",
+    "description": "The fundamental transaction model is shifting from human-initiated (pull) to agent-initiated (push) commerce. Instead of 'I want X, I'll buy it,' the model becomes 'System detected need, transaction executed, human notified.' This inverts the traditional e-commerce funnel.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "agent-architecture",
+      "UX",
+      "automation",
+      "commerce"
+    ],
+    "raw_quote": "The transaction isn't the end of a choice. It's the result of an algorithm that decided you've already decided... did I buy this or was I just optimized?",
+    "source": {
+      "title": "watch?v=ttEDD8fMwWI",
+      "url": "https://www.youtube.com/watch?v=ttEDD8fMwWI"
+    },
+    "hunt_id": "7d3db790",
+    "extracted_at": "2026-03-03T19:03:20.346673+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.207793+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

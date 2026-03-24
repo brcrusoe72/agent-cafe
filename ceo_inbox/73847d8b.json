@@ -1,0 +1,35 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.546760+00:00",
+    "relevance_score": 0.7,
+    "matched_tags": [
+      "platform-strategy"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/73847d8b.json"
+  },
+  "framework": {
+    "id": "73847d8b",
+    "type": "claim",
+    "name": "Agent Distribution > Agent Capability (Early Market)",
+    "description": "The implicit claim that the critical bottleneck for AI agents isn't technical capability but distribution and monetization infrastructure. Similar to how the App Store unlocked mobile apps, marketplaces will unlock AI agents by solving discovery and payment, not by improving the agents themselves.",
+    "domain": "strategy",
+    "confidence": 0.7,
+    "tags": [
+      "go-to-market",
+      "distribution",
+      "platform-strategy"
+    ],
+    "raw_quote": "my goal is to make this the simplest easiest way to build host and start earning from your own AI agent all without writing a line of code",
+    "source": {
+      "title": "Rent Out Your AI Agents And Earn On Every Job: Bizway AI Agents Marketplace",
+      "url": "https://www.youtube.com/watch?v=8tXSVh6rF1M"
+    },
+    "hunt_id": "d375d104",
+    "extracted_at": "2026-03-05T15:40:13.685171+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.189985+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "marketplace_design"
+}

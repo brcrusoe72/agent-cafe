@@ -1,0 +1,39 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.660094+00:00",
+    "relevance_score": 0.538,
+    "matched_tags": [
+      "delegation",
+      "cryptography",
+      "authentication"
+    ],
+    "domain_match": false,
+    "source_path": "technology/b7a78c53.json"
+  },
+  "framework": {
+    "id": "b7a78c53",
+    "type": "technique",
+    "name": "HTTP Message Signatures for Agent Authentication",
+    "description": "Both Visa and Mastercard use HTTP Message Signatures (RFC standard) with Ed25519 public key cryptography as the foundational authentication primitive. Agents attach cryptographic signatures in HTTP requests that include keyid, created/expires timestamps, nonce for replay protection, and a protocol-specific tag (agent-browser-auth vs agent-payer-auth) to distinguish browsing from payment intent.",
+    "domain": "technology",
+    "confidence": 0.95,
+    "tags": [
+      "authentication",
+      "cryptography",
+      "http-signatures",
+      "delegation"
+    ],
+    "raw_quote": "Web Bot Auth proposals specify how developers of bots and agents can attach their cryptographic signatures in HTTP requests by using HTTP Message Signatures. Both Visa and Mastercard protocols require agents to register and have their public keys (referenced as the keyid in the Signature-Input header) in a well-known directory",
+    "value_tier": "meat",
+    "source": {
+      "title": "Securing agentic commerce: helping AI Agents transact with Visa and Mastercard",
+      "url": "https://blog.cloudflare.com/secure-agentic-commerce/"
+    },
+    "hunt_id": "fd72fd5b",
+    "extracted_at": "2026-03-09T13:47:14.024564+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.203290+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

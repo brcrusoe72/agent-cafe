@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.291212+00:00",
+    "relevance_score": 0.575,
+    "matched_tags": [
+      "authorization"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/6a12f92a.json"
+  },
+  "framework": {
+    "id": "6a12f92a",
+    "type": "technique",
+    "name": "Rich Authorization Requests (RAR) for Fine-Grained Agent Limits",
+    "description": "OAuth extension enabling extremely granular permissions beyond traditional scopes. Instead of broad permissions like 'purchase_flights', RAR allows specific constraints: 'purchase one flight from SFO to JFK, today, with a spending limit of $500.' This is the technical mechanism for implementing spending limits and action boundaries.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "authorization",
+      "spending-limits",
+      "granular-permissions",
+      "rar",
+      "agent-boundaries"
+    ],
+    "raw_quote": "Rich Authorization Requests (RAR): Allows for extremely fine-grained permissions. Instead of a broad scope like purchase_flights, which would allow an agent to book unlimited flights, an agent can be given a more limited permission, for example, to 'purchase one flight from SFO to JFK, today, with a spending limit of $500.'",
+    "source": {
+      "title": "AI agent authentication methods - Stytch",
+      "url": "https://stytch.com/blog/ai-agent-authentication-methods/"
+    },
+    "hunt_id": "4f110637",
+    "extracted_at": "2026-03-06T14:20:59.866840+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.183307+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.528482+00:00",
+    "relevance_score": 0.63,
+    "matched_tags": [
+      "governance"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/3f72de07.json"
+  },
+  "framework": {
+    "id": "3f72de07",
+    "type": "claim",
+    "name": "Regulatory vs Bureaucratic Process Constraints",
+    "description": "Fortune author notes Mollick's process-abandonment thesis underestimates extent to which enterprise processes reflect regulatory demands rather than pure bureaucracy, particularly in regulated industries.",
+    "domain": "strategy",
+    "confidence": 0.7,
+    "tags": [
+      "regulatory-compliance",
+      "process-design",
+      "governance"
+    ],
+    "raw_quote": "I think Mollick underestimates the extent to which processes in many large companies reflect regulatory demands, but he no doubt has a point in many cases.",
+    "value_tier": "bone",
+    "source": {
+      "title": "An MIT report finding 95% of AI pilots fail spooked investors. It should have spooked C-suite execs instead. | Fortune",
+      "url": "https://fortune.com/2025/08/21/an-mit-report-that-95-of-ai-pilots-fail-spooked-investors-but-the-reason-why-those-pilots-failed-is-what-should-make-the-c-suite-anxious/"
+    },
+    "hunt_id": "5e0ef8ee",
+    "extracted_at": "2026-03-10T14:08:50.528021+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.181874+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

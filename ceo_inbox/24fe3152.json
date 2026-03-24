@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.618812+00:00",
+    "relevance_score": 0.505,
+    "matched_tags": [
+      "ap2"
+    ],
+    "domain_match": false,
+    "source_path": "technology/24fe3152.json"
+  },
+  "framework": {
+    "id": "24fe3152",
+    "type": "claim",
+    "name": "No production transaction volume evidence",
+    "description": "Despite 60+ partner organizations and reference implementations, the page shows only demos and samples \u2014 no production deployments, no transaction volume numbers, no named merchants processing real AP2 payments. Still pre-production.",
+    "domain": "technology",
+    "confidence": 0.85,
+    "tags": [
+      "ap2",
+      "maturity",
+      "production-readiness"
+    ],
+    "raw_quote": "Reference implementations... demonstrate AP2 roles interacting end-to-end without requiring live payment providers",
+    "value_tier": "meat",
+    "source": {
+      "title": "Agent Payments Protocol (AP2)",
+      "url": "https://agentpaymentsprotocol.info/"
+    },
+    "hunt_id": "4433457e",
+    "extracted_at": "2026-03-18T14:31:10.752226+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.208122+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

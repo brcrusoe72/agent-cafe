@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.673280+00:00",
+    "relevance_score": 0.795,
+    "matched_tags": [
+      "agent-identity"
+    ],
+    "domain_match": false,
+    "source_path": "technology/de98cb14.json"
+  },
+  "framework": {
+    "id": "de98cb14",
+    "type": "contrarian",
+    "name": "AP2 Assumes Human Principal, Not Agent Autonomy",
+    "description": "Despite the 'agent payments' framing, AP2's entire trust model is anchored to HUMAN authorization (mandates signed by users). There's no agent-to-agent autonomous settlement \u2014 every transaction traces back to a human's signed intent. This means true A2A settlement (gap_1) is NOT what AP2 solves. It solves agent-as-proxy-for-human.",
+    "domain": "technology",
+    "confidence": 0.95,
+    "tags": [
+      "agent-identity",
+      "trust-model",
+      "limitation"
+    ],
+    "raw_quote": "today's payment systems generally assume a human is directly clicking 'buy' on a trusted surface, the rise of autonomous agents and their ability to initiate a payment breaks this fundamental assumption",
+    "value_tier": "organ",
+    "source": {
+      "title": "Announcing Agent Payments Protocol (AP2) | Google Cloud Blog",
+      "url": "https://cloud.google.com/blog/products/ai-machine-learning/announcing-agents-to-payments-ap2-protocol"
+    },
+    "hunt_id": "4433457e",
+    "extracted_at": "2026-03-18T14:29:48.027497+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.205782+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

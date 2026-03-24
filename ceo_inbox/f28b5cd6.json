@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.369831+00:00",
+    "relevance_score": 0.635,
+    "matched_tags": [
+      "governance"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/f28b5cd6.json"
+  },
+  "framework": {
+    "id": "f28b5cd6",
+    "type": "claim",
+    "name": "Decision Rights Clarification as Scaling Prerequisite",
+    "description": "Scaling requires clarifying decision rights \u2014 who decides what when AI recommends something. This is a concrete org-chart move: cross-functional councils, data stewardship assignments, model validation ownership.",
+    "domain": "ai-systems",
+    "confidence": 0.75,
+    "tags": [
+      "decision-rights",
+      "governance",
+      "organizational-design"
+    ],
+    "raw_quote": "data stewardship within finance, model validation within IT, and decision oversight through cross-functional councils",
+    "value_tier": "meat",
+    "source": {
+      "title": "Bridging the Gaps in AI Transformation: An Evidence-Based ...",
+      "url": "https://cmr.berkeley.edu/2025/11/bridging-the-gaps-in-ai-transformation-an-evidence-based-framework-for-scalable-adoption/"
+    },
+    "hunt_id": "850ed033",
+    "extracted_at": "2026-03-17T13:55:17.792257+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.187279+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

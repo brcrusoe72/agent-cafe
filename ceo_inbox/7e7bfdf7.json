@@ -1,0 +1,41 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.304786+00:00",
+    "relevance_score": 0.53,
+    "matched_tags": [
+      "delegation",
+      "interoperability"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/7e7bfdf7.json"
+  },
+  "framework": {
+    "id": "7e7bfdf7",
+    "type": "framework",
+    "name": "Agent Policy Specification (WS-Policy/WS-Security/OAuth2 Integration)",
+    "description": "Proposed unified policy framework for AI agent authorization combining WS-Policy (for declaring requirements), WS-Security (for message-level security: signing, encryption, tokens), and OAuth 2.0 (for delegated authorization flows). Creates three-layer architecture: policy advertisement \u2192 negotiation \u2192 runtime enforcement, ensuring agents only act under explicit human authorization with cryptographic proof.",
+    "domain": "ai-systems",
+    "confidence": 0.75,
+    "tags": [
+      "agent-authorization",
+      "delegation",
+      "policy-enforcement",
+      "standards",
+      "interoperability",
+      "WS-Policy",
+      "WS-Security",
+      "OAuth2"
+    ],
+    "raw_quote": "By combining them, we envision an Agent Policy spec that allows agents to negotiate trust and authority at the start of any interaction. WS-Policy \u2014 for expressing what an agent requires or capable of in terms of security... WS-Security \u2014 for the low-level mechanics of signing, encrypting, and attaching tokens to messages... OAuth 2.0 \u2014 for delegated authorization flows, so agents can obtain and use tokens on behalf of users, under user consent.",
+    "source": {
+      "title": "architecting-a-unified-agent-policy-for-",
+      "url": "https://blog.metamirror.io/architecting-a-unified-agent-policy-for-delegated-authority-in-ai-ecosystems-befe268f4708"
+    },
+    "hunt_id": "c5cfd231",
+    "extracted_at": "2026-03-06T14:30:02.285582+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.199791+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

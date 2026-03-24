@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.666910+00:00",
+    "relevance_score": 0.535,
+    "matched_tags": [
+      "standardization",
+      "governance"
+    ],
+    "domain_match": false,
+    "source_path": "technology/ce37ad4c.json"
+  },
+  "framework": {
+    "id": "ce37ad4c",
+    "type": "contrarian",
+    "name": "Delegation Standards Without Standards Body Coordination",
+    "description": "The paper proposes extending OAuth 2.0 and OpenID Connect but provides no evidence of coordination with IETF OAuth Working Group, OpenID Foundation, or other standards bodies that would be necessary for actual standardization. This is an academic proposal, not an industry-driven standard.",
+    "domain": "technology",
+    "confidence": 0.8,
+    "tags": [
+      "standardization",
+      "governance",
+      "academic-vs-industry"
+    ],
+    "raw_quote": "This framework builds on existing identification and access management protocols, extending OAuth 2.0 and OpenID Connect with agent-specific credentials and metadata",
+    "source": {
+      "title": "2501.09674v1",
+      "url": "https://arxiv.org/html/2501.09674v1"
+    },
+    "hunt_id": "c5cfd231",
+    "extracted_at": "2026-03-06T14:28:18.508852+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.191748+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "marketplace_design"
+}

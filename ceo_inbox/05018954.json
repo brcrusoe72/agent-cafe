@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.396477+00:00",
+    "relevance_score": 0.49,
+    "matched_tags": [
+      "stripe"
+    ],
+    "domain_match": false,
+    "source_path": "finance/05018954.json"
+  },
+  "framework": {
+    "id": "05018954",
+    "type": "claim",
+    "name": "Card Network Incompatibility Thesis",
+    "description": "Despite Stripe, Visa, and Mastercard announcing agent payment solutions, early experiments show signs of incompatibility because card networks and payments industry were 'designed for humans and designed to prevent automated usage.' This suggests incumbents may be announcing solutions without fundamentally solving the architectural mismatch.",
+    "domain": "finance",
+    "confidence": 0.7,
+    "tags": [
+      "card-networks",
+      "stripe",
+      "visa",
+      "mastercard",
+      "architectural-mismatch"
+    ],
+    "raw_quote": "Incumbent payment infrastructure companies like Stripe, Visa and Mastercard have recently announced payment solutions for AI agents that use card networks. However, early experiments have shown signs of incompatibility as card networks and the entire payments industry have been designed for humans and designed to prevent automated usage.",
+    "source": {
+      "title": "Agentic Finance: The Financial Infrastructure Powering AI Agent Commerce",
+      "url": "https://blog.crossmint.com/agentic-finance/"
+    },
+    "hunt_id": "c5cfd231",
+    "extracted_at": "2026-03-06T14:19:05.271927+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.212241+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "payment_infrastructure"
+}

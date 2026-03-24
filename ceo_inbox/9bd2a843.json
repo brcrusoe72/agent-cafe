@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.562036+00:00",
+    "relevance_score": 0.712,
+    "matched_tags": [
+      "platform-strategy"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/9bd2a843.json"
+  },
+  "framework": {
+    "id": "9bd2a843",
+    "type": "framework",
+    "name": "Platform vs Application Business Model Split",
+    "description": "Infrastructure vendors (AWS, Dell, HPE) sell platforms and compute resources. The opportunity exists to build specialized applications ON these platforms that solve specific manufacturing problems. Partner ecosystem play rather than competing on infrastructure.",
+    "domain": "strategy",
+    "confidence": 0.82,
+    "tags": [
+      "business-model",
+      "platform-strategy",
+      "ecosystem",
+      "vertical-specialization"
+    ],
+    "raw_quote": "AWS provides innovative cloud infrastructure that enables organisations, governments, and enterprises to resolve complex challenges, drive operational efficiency, and accelerate digital transformation.",
+    "source": {
+      "title": "industrial-edge-market.asp",
+      "url": "https://www.marketsandmarkets.com/ResearchInsight/industrial-edge-market.asp"
+    },
+    "hunt_id": "6d8fece9",
+    "extracted_at": "2026-03-04T04:19:51.028703+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.190672+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "marketplace_design"
+}

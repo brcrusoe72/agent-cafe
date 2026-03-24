@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.284098+00:00",
+    "relevance_score": 0.55,
+    "matched_tags": [
+      "mcp"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/61a494c2.json"
+  },
+  "framework": {
+    "id": "61a494c2",
+    "type": "contrarian",
+    "name": "MCP Security Theater Hypothesis",
+    "description": "Argues that MCP's static protocol-based security model creates false confidence while failing to address real agentic risks: contextual decision-making, tool chaining, emergent behavior, and indirect data exfiltration. Claims MCP 'secures the connection but not the consequence.'",
+    "domain": "ai-systems",
+    "confidence": 0.6,
+    "tags": [
+      "MCP",
+      "agent-security",
+      "protocol-limitations",
+      "behavioral-security"
+    ],
+    "raw_quote": "MCP secures the connection, but not the consequence. Just because an agent is MCP-compliant doesn't mean it's behaving safely.",
+    "source": {
+      "title": "understanding-mcp-limitations-beyond-the",
+      "url": "https://www.f5.com/company/blog/understanding-mcp-limitations-beyond-the-protocol"
+    },
+    "hunt_id": "e8165180",
+    "extracted_at": "2026-03-05T16:16:05.395209+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.217690+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.635820+00:00",
+    "relevance_score": 0.515,
+    "matched_tags": [
+      "ap2"
+    ],
+    "domain_match": false,
+    "source_path": "technology/5eed0db6.json"
+  },
+  "framework": {
+    "id": "5eed0db6",
+    "type": "framework",
+    "name": "AP2 Architecture: W3C Verifiable Credentials over existing rails",
+    "description": "AP2 is NOT blockchain-based or a new payment rail. It's a credential layer using W3C Verifiable Credentials (signed mandates) that embed into existing ISO 8583 and API authorization flows. It extends A2A and MCP protocols, proposed by Google with PayPal as co-author.",
+    "domain": "technology",
+    "confidence": 0.95,
+    "tags": [
+      "ap2",
+      "payments",
+      "architecture",
+      "w3c"
+    ],
+    "raw_quote": "All mandates are expressed as W3C Verifiable Credentials, ensuring tamper resistance, portability, and interoperability across the ecosystem.",
+    "value_tier": "organ",
+    "source": {
+      "title": "PayPal Community Blog | Agent Payments Protocol: Building Verifiable Trust for Agentic Commerce",
+      "url": "https://developer.paypal.com/community/blog/PayPal-Agent-Payments-Protocol/"
+    },
+    "hunt_id": "e7408160",
+    "extracted_at": "2026-03-14T14:04:59.127591+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.213863+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "payment_infrastructure"
+}

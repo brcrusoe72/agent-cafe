@@ -1,0 +1,35 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.362439+00:00",
+    "relevance_score": 0.77,
+    "matched_tags": [
+      "marketplace-design"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/e4913bae.json"
+  },
+  "framework": {
+    "id": "e4913bae",
+    "type": "connection",
+    "name": "Parallel Between Human Marketplaces and Agent Coordination Platforms",
+    "description": "The trust mechanisms used in human peer-to-peer marketplaces (reputation, verification, communication protocols, capability disclosure) map directly to needs in agent-to-agent marketplaces: capability attestation, agent reputation systems, negotiation protocols, service discovery. The architectural patterns are identical even though the actors differ.",
+    "domain": "ai-systems",
+    "confidence": 0.7,
+    "tags": [
+      "agent-coordination",
+      "marketplace-design",
+      "cross-domain-analogy"
+    ],
+    "raw_quote": "N/A - this is an inference from the entire source",
+    "source": {
+      "title": "watch?v=W5q02P8GNzs",
+      "url": "https://www.youtube.com/watch?v=W5q02P8GNzs"
+    },
+    "hunt_id": "c9aa917a",
+    "extracted_at": "2026-03-04T21:50:31.448581+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.192328+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "marketplace_design"
+}

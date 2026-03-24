@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.651302+00:00",
+    "relevance_score": 0.56,
+    "matched_tags": [
+      "delegation",
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "technology/99391175.json"
+  },
+  "framework": {
+    "id": "99391175",
+    "type": "framework",
+    "name": "Agentic JWT (A-JWT) Dual-Token Design",
+    "description": "Extends JWT with intent tokens (binding agent actions to cryptographically verifiable user intent) and delegation assertions (proving which downstream agent may execute a task). Adds agent identity via one-way checksum of prompt+tools+config, plus per-agent proof-of-possession keys.",
+    "domain": "technology",
+    "confidence": 0.7,
+    "tags": [
+      "oauth",
+      "delegation",
+      "agent-auth",
+      "jwt"
+    ],
+    "raw_quote": "A-JWT carries an agent's identity as a one-way checksum hash derived from its prompt, tools and configuration and a chained delegation assertion to prove which downstream agent may execute a given task.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Agentic JWT: A Secure Delegation Protocol for Autonomous AI Agents",
+      "url": "https://arxiv.org/pdf/2509.13597"
+    },
+    "hunt_id": "67bf6ff4",
+    "extracted_at": "2026-03-15T12:30:05.448834+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.201491+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

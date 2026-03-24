@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.677950+00:00",
+    "relevance_score": 0.575,
+    "matched_tags": [
+      "authorization",
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "technology/eb08ca4c.json"
+  },
+  "framework": {
+    "id": "eb08ca4c",
+    "type": "technique",
+    "name": "OAuth Scope Granularity Spectrum",
+    "description": "OAuth implementations can choose between broad scopes (comprehensive resource access, simpler UX, more data exposure) or narrow scopes (precise permissions, complex UX, tighter security). Service providers must balance security vs user experience when defining scope granularity.",
+    "domain": "technology",
+    "confidence": 0.85,
+    "tags": [
+      "oauth",
+      "authorization",
+      "scope-design",
+      "security-architecture",
+      "user-experience"
+    ],
+    "raw_quote": "Wider scopes offer the advantage of simplified authorization requiring fewer permissions but might lead to the access of superfluous data. Contrastingly, condensed scopes offer granular control over data access but might overcomplicate user permissions due to multiple permission requests.",
+    "source": {
+      "title": "oauth-scopes",
+      "url": "https://www.wallarm.com/what/oauth-scopes"
+    },
+    "hunt_id": "c5cfd231",
+    "extracted_at": "2026-03-06T14:25:46.149801+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.186947+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

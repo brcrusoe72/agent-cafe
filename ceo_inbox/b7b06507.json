@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.660322+00:00",
+    "relevance_score": 0.65,
+    "matched_tags": [
+      "verifiable-credentials"
+    ],
+    "domain_match": false,
+    "source_path": "technology/b7b06507.json"
+  },
+  "framework": {
+    "id": "b7b06507",
+    "type": "technique",
+    "name": "JWT-VC Prompt Evidence Chain",
+    "description": "The user's natural-language instruction is wrapped in a JWT-based Verifiable Credential (credentialSubject type 'UserInputEvidence') signed by the agent client's RSA key, discoverable via JWKS. This creates cryptographic provenance from prompt \u2192 proposal \u2192 authorization, explicitly designed to prevent 'hallucinated actions' where agents act beyond user intent.",
+    "domain": "technology",
+    "confidence": 0.9,
+    "tags": [
+      "verifiable-credentials",
+      "jwt",
+      "prompt-provenance",
+      "anti-hallucination"
+    ],
+    "raw_quote": "It cryptographically verifies user intent, prevents unauthorized or hallucinated actions, and ensures auditable traceability of each authorized operation.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Agent Operation Authorization - IETF",
+      "url": "https://www.ietf.org/archive/id/draft-liu-agent-operation-authorization-00.html"
+    },
+    "hunt_id": "f911b3bb",
+    "extracted_at": "2026-03-18T13:58:37.104938+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.203378+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

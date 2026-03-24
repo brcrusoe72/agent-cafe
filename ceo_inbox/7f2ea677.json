@@ -1,0 +1,35 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.645150+00:00",
+    "relevance_score": 0.495,
+    "matched_tags": [
+      "stripe"
+    ],
+    "domain_match": false,
+    "source_path": "technology/7f2ea677.json"
+  },
+  "framework": {
+    "id": "7f2ea677",
+    "type": "claim",
+    "name": "Stripe Agentic Commerce Suite \u2014 Broad Distribution Play",
+    "description": "Stripe co-developed ACP, powers ChatGPT checkout, launched Agentic Commerce Suite (Dec 2025) via Wix, WooCommerce, BigCommerce, Squarespace, commercetools, Akeneo. Early adopters: URBN, Etsy, Coach, Kate Spade, Ashley Furniture, Revolve.",
+    "domain": "technology",
+    "confidence": 0.75,
+    "tags": [
+      "stripe",
+      "checkout"
+    ],
+    "raw_quote": "Stripe launched the Agentic Commerce Suite \u2014 a turnkey solution rolling out via Wix, WooCommerce, BigCommerce, Squarespace, commercetools, Akeneo, and more.",
+    "value_tier": "meat",
+    "source": {
+      "title": "The Agentic Commerce Landscape: Who's Building What in 2026",
+      "url": "https://rye.com/blog/agentic-commerce-startups"
+    },
+    "hunt_id": "4433457e",
+    "extracted_at": "2026-03-18T14:30:39.465221+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.214291+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "payment_infrastructure"
+}

@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.503076+00:00",
+    "relevance_score": 0.55,
+    "matched_tags": [
+      "pricing"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/085dc6e3.json"
+  },
+  "framework": {
+    "id": "085dc6e3",
+    "type": "claim",
+    "name": "Top-Tier Rate Outliers Exist But Are Opaque",
+    "description": "GLG has no official rate cap and 'rumored to have big name experts charging $5,000/hour,' but no transparency on qualification criteria, industries, or volume of work at that tier. Suggests expert networks support celebrity/unique expertise premium but don't systematize it.",
+    "domain": "strategy",
+    "confidence": 0.6,
+    "tags": [
+      "pricing",
+      "expert-networks",
+      "GLG",
+      "outliers"
+    ],
+    "raw_quote": "GLG has no official cap on the rates you can charge and is rumored to have a number of big name experts who charge $5,000 for an hour of their time!",
+    "value_tier": "bone",
+    "source": {
+      "title": "Setting Your Expert Network Consulting Rate \u2022 Expert Opportunities",
+      "url": "https://expertopportunities.com/expert-network-hourly-rates/"
+    },
+    "hunt_id": "b38ad25e",
+    "extracted_at": "2026-03-07T16:15:35.162560+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.207663+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

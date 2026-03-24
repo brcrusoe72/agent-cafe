@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.409184+00:00",
+    "relevance_score": 0.44,
+    "matched_tags": [
+      "cryptography"
+    ],
+    "domain_match": false,
+    "source_path": "finance/3bc2d859.json"
+  },
+  "framework": {
+    "id": "3bc2d859",
+    "type": "technique",
+    "name": "Verifiable Intent \u2014 Cryptographic Mechanism",
+    "description": "Verifiable Intent creates a 'tamper resistant cryptographic record linking a user's identity, instructions and the resulting transaction.' This is signed payload architecture, not on-chain attestation. It uses selective disclosure (minimum data shared for fraud/dispute resolution).",
+    "domain": "finance",
+    "confidence": 0.9,
+    "tags": [
+      "agentic-commerce",
+      "cryptography",
+      "payments",
+      "mastercard",
+      "google"
+    ],
+    "raw_quote": "Verifiable Intent creates a tamper resistant cryptographic record linking a user's identity, instructions and the resulting transaction.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Mastercard, Google Introduce Verifiable Intent as AI Agents Begin ...",
+      "url": "https://fintechnews.sg/127287/ai/mastercard-google-verifiable-intent/"
+    },
+    "hunt_id": "7e7c0a23",
+    "extracted_at": "2026-03-14T14:19:21.917271+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.208471+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

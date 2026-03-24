@@ -1,0 +1,39 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.309121+00:00",
+    "relevance_score": 0.72,
+    "matched_tags": [
+      "multi-agent"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/87127c1c.json"
+  },
+  "framework": {
+    "id": "87127c1c",
+    "type": "framework",
+    "name": "A2A (Agent-to-Agent Protocol) - Multi-Agent Coordination",
+    "description": "Google's protocol launched April 2025 for standardizing how AI agents discover, communicate, and delegate tasks across platforms. Uses agent cards (JSON files), JSON-RPC over HTTP/SSE, and includes built-in authentication/encryption. Backed by 50+ industry partners including Salesforce, Accenture, Uber.",
+    "domain": "ai-systems",
+    "confidence": 0.9,
+    "tags": [
+      "protocol",
+      "multi-agent",
+      "google",
+      "agent-coordination",
+      "enterprise",
+      "service-discovery",
+      "2025-launch"
+    ],
+    "raw_quote": "A2A or agent-to-agent protocol is Google's big move. Launched in April 2025 with over 50 industry partners like Salesforce, Accenture, and Uber. A2A is about AI agents talking to each other.",
+    "source": {
+      "title": "watch?v=bP44vYoMvD4",
+      "url": "https://www.youtube.com/watch?v=bP44vYoMvD4"
+    },
+    "hunt_id": "e8165180",
+    "extracted_at": "2026-03-05T16:20:51.430816+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.218952+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

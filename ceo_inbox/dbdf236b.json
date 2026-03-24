@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.672325+00:00",
+    "relevance_score": 0.425,
+    "matched_tags": [
+      "standardization"
+    ],
+    "domain_match": false,
+    "source_path": "technology/dbdf236b.json"
+  },
+  "framework": {
+    "id": "dbdf236b",
+    "type": "connection",
+    "name": "Protocol Wars Mirror Early Web Services Debates",
+    "description": "The MCP vs A2A competition resembles historical protocol battles (SOAP vs REST, etc.). Both are fighting for developer mindshare and standardization, with adoption driven by corporate backing, ease of use, and ecosystem maturity rather than purely technical superiority.",
+    "domain": "technology",
+    "confidence": 0.75,
+    "tags": [
+      "protocol-wars",
+      "standardization",
+      "developer-adoption",
+      "historical-parallel"
+    ],
+    "raw_quote": "MCP is already a heavyweight with adoption by Google, OpenAI, Microsoft, and startups like Block and Apollo... A 2A is poised to dominate multi-agent systems.",
+    "source": {
+      "title": "watch?v=bP44vYoMvD4",
+      "url": "https://www.youtube.com/watch?v=bP44vYoMvD4"
+    },
+    "hunt_id": "e8165180",
+    "extracted_at": "2026-03-05T16:20:51.432012+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.220386+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

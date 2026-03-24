@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.286556+00:00",
+    "relevance_score": 0.565,
+    "matched_tags": [
+      "authorization"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/63d33cbd.json"
+  },
+  "framework": {
+    "id": "63d33cbd",
+    "type": "framework",
+    "name": "Context-Aware Agent Authorization",
+    "description": "Dynamic authorization model that evaluates multiple real-time factors beyond static permissions: current task context, data sensitivity, time/location, agent behavioral history, user consent. Enables policies like 'allow customer data access only during business hours, only for opted-in customers, only if behavior matches expected patterns.'",
+    "domain": "ai-systems",
+    "confidence": 0.75,
+    "tags": [
+      "authorization",
+      "context-aware",
+      "dynamic-permissions",
+      "abac"
+    ],
+    "raw_quote": "Authorization policies should evaluate multiple factors in real time: the current task context, the sensitivity level of the data being requested, time and location factors, the agent's recent behavioral history, and whether the user has provided explicit consent for this type of action.",
+    "source": {
+      "title": "AI Agent Authentication & Authorization - datadome.co",
+      "url": "https://datadome.co/agent-trust-management/authentication-and-authorization/"
+    },
+    "hunt_id": "4f110637",
+    "extracted_at": "2026-03-06T14:17:42.635689+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.183020+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.526546+00:00",
+    "relevance_score": 0.655,
+    "matched_tags": [
+      "liability"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/3ca9410d.json"
+  },
+  "framework": {
+    "id": "3ca9410d",
+    "type": "claim",
+    "name": "Legal Personhood Gap for Autonomous Agents",
+    "description": "AI agents have no legal identity or personality \u2014 only legal persons (individuals or registered organizations) can hold assets and enter contracts. This means any transaction an agent makes is legally the user's/organization's responsibility, but creates ambiguity about enforceability of agent-signed agreements and liability allocation. Currently no legal framework for 'electronic personhood' despite debate.",
+    "domain": "strategy",
+    "confidence": 0.95,
+    "tags": [
+      "legal-framework",
+      "liability",
+      "personhood",
+      "regulatory-gap",
+      "accountability"
+    ],
+    "raw_quote": "By law, only legal persons (individuals or registered organizations) can hold assets and enter contracts. An AI agent, no matter how autonomous, is not a legal person; it's more akin to a tool or software service.",
+    "source": {
+      "title": "Enabling Autonomous AI Agents to Make Payments - LinkedIn",
+      "url": "https://www.linkedin.com/pulse/enabling-autonomous-ai-agents-make-payments-challenges-david-paluy-xmq4c"
+    },
+    "hunt_id": "c5cfd231",
+    "extracted_at": "2026-03-06T14:21:31.648036+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.196249+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

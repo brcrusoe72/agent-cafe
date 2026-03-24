@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.615367+00:00",
+    "relevance_score": 0.575,
+    "matched_tags": [
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "technology/1aeb5ca1.json"
+  },
+  "framework": {
+    "id": "1aeb5ca1",
+    "type": "claim",
+    "name": "Transaction Tokens as agent authorization primitive",
+    "description": "Section 10.4 explicitly references Transaction Tokens for risk reduction in agent authorization chains. This confirms TxTokens (draft-ietf-oauth-transaction-tokens) are the expected mechanism for scoping agent actions within multi-hop delegation chains \u2014 not a new agent-specific token type.",
+    "domain": "technology",
+    "confidence": 0.85,
+    "tags": [
+      "transaction-tokens",
+      "oauth",
+      "delegation-chain"
+    ],
+    "raw_quote": "Risk Reduction with Transaction Tokens",
+    "value_tier": "meat",
+    "source": {
+      "title": "draft-klrc-aiagent-auth-00 - AI Agent Authentication and Authorization",
+      "url": "https://datatracker.ietf.org/doc/draft-klrc-aiagent-auth/"
+    },
+    "hunt_id": "4433457e",
+    "extracted_at": "2026-03-18T14:31:50.601638+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.194347+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.340356+00:00",
+    "relevance_score": 0.57,
+    "matched_tags": [
+      "authorization"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/bcc00163.json"
+  },
+  "framework": {
+    "id": "bcc00163",
+    "type": "claim",
+    "name": "Fine-Grained Identity Breaks Authorization Policy Model",
+    "description": "The author identifies but doesn't solve the key problem: if every agent instance gets a unique dynamic identity, you can't write static authorization policies. This is the same structural gap as hop-2 delegation \u2014 identity proliferation makes policy unwritable.",
+    "domain": "ai-systems",
+    "confidence": 0.8,
+    "tags": [
+      "authorization",
+      "policy-explosion",
+      "dynamic-identity"
+    ],
+    "raw_quote": "if identities are more fine-grained, and even potentially generated on the fly, how can you possibly write authorization policies around this?",
+    "value_tier": "meat",
+    "source": {
+      "title": "Agent Identity and Access Management - Can SPIFFE Work? | Solo.io",
+      "url": "https://www.solo.io/blog/agent-identity-and-access-management---can-spiffe-work"
+    },
+    "hunt_id": "5213bf37",
+    "extracted_at": "2026-03-18T14:21:38.710619+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.203826+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

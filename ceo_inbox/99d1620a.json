@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.651937+00:00",
+    "relevance_score": 0.47,
+    "matched_tags": [
+      "tokenization"
+    ],
+    "domain_match": false,
+    "source_path": "technology/99d1620a.json"
+  },
+  "framework": {
+    "id": "99d1620a",
+    "type": "technique",
+    "name": "Visa Payment Passkey (FIDO-based Authentication)",
+    "description": "Federated FIDO solution using device-binding technology with Visa as the relying party. Enables trusted authentication for ecommerce with interoperability across Visa Token Service, Visa Secure, and Click-to-Pay. Potentially repurposable for agent authentication scenarios.",
+    "domain": "technology",
+    "confidence": 0.5,
+    "tags": [
+      "FIDO",
+      "device-binding",
+      "relying-party",
+      "ecommerce",
+      "tokenization"
+    ],
+    "raw_quote": "Visa has developed its device-binding technology using a certified FIDO server and it's Visa Payment Passkey Service to enable Visa to be the relying party on FIDO authentication requests.",
+    "source": {
+      "title": "apibrowser",
+      "url": "https://developer.visa.com/apibrowser"
+    },
+    "hunt_id": "0a8db7c7",
+    "extracted_at": "2026-03-05T15:15:59.384380+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.210101+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

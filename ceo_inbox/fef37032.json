@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.375949+00:00",
+    "relevance_score": 0.63,
+    "matched_tags": [
+      "security"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/fef37032.json"
+  },
+  "framework": {
+    "id": "fef37032",
+    "type": "framework",
+    "name": "AI Supervision Architecture for Agent Economies",
+    "description": "Multi-agent oversight system where 17+ LLM-driven AI agents continuously monitor, audit, optimize and safeguard an autonomous agent economy. Suggests agents-watching-agents as a governance model.",
+    "domain": "ai-systems",
+    "confidence": 0.7,
+    "tags": [
+      "AI-governance",
+      "multi-agent-systems",
+      "oversight",
+      "security"
+    ],
+    "raw_quote": "XYZ.Credit runs on a sophisticated AI supervision architecture powered by more than 17 LLMdriven AI agents continuously monitoring, auditing, optimizing and safeguarding the agent economy.",
+    "source": {
+      "title": "Nilfee powers USDC-based neo banking for humans, XYZ CREDIT is designed exclusively for AI agents.",
+      "url": "https://www.youtube.com/watch?v=7IxDVr7R9yM"
+    },
+    "hunt_id": "e8165180",
+    "extracted_at": "2026-03-05T16:06:53.001425+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.187567+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

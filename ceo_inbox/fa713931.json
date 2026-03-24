@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.372837+00:00",
+    "relevance_score": 0.615,
+    "matched_tags": [
+      "authentication",
+      "security"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/fa713931.json"
+  },
+  "framework": {
+    "id": "fa713931",
+    "type": "technique",
+    "name": "OAuth 2.1 with PKCE for Agent Auth",
+    "description": "Using OAuth 2.1 client credentials flow with Proof Key for Code Exchange (PKCE) as the authentication standard for AI agents. PKCE is critical because agents often run in environments where storing secrets securely is difficult (containers, serverless, distributed systems). Allows public clients to use authorization code flow without requiring a client secret.",
+    "domain": "ai-systems",
+    "confidence": 0.9,
+    "tags": [
+      "oauth-2.1",
+      "pkce",
+      "authentication",
+      "client-credentials",
+      "security"
+    ],
+    "raw_quote": "PKCE allows public clients to use authorization code flow securely without relying on a client secret, reducing the risk of token interception. It binds the authorization code to the specific client that requested it.",
+    "source": {
+      "title": "AI Agent Authentication & Authorization - datadome.co",
+      "url": "https://datadome.co/agent-trust-management/authentication-and-authorization/"
+    },
+    "hunt_id": "4f110637",
+    "extracted_at": "2026-03-06T14:17:42.635467+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.207135+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

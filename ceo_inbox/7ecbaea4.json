@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.551545+00:00",
+    "relevance_score": 0.71,
+    "matched_tags": [
+      "platform-strategy"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/7ecbaea4.json"
+  },
+  "framework": {
+    "id": "7ecbaea4",
+    "type": "connection",
+    "name": "Protocol Commoditization Shifts Value Upstack",
+    "description": "By open-sourcing A2A protocol, Google is commoditizing the communication layer, which historically pushes value creation to higher abstraction levels. Similar to how HTTP commoditization enabled web marketplaces, A2A commoditization may enable agent marketplaces. The unsolved problems (payment, reputation, SLAs, matching algorithms) become the value capture points.",
+    "domain": "strategy",
+    "confidence": 0.8,
+    "tags": [
+      "commoditization",
+      "value-capture",
+      "platform-strategy",
+      "market-dynamics"
+    ],
+    "raw_quote": "this was released just yesterday... It starts a new era for agent interoperability",
+    "source": {
+      "title": "watch?v=Sl9EZpE61xA",
+      "url": "https://www.youtube.com/watch?v=Sl9EZpE61xA"
+    },
+    "hunt_id": "e8165180",
+    "extracted_at": "2026-03-05T16:17:23.199119+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.190277+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "marketplace_design"
+}

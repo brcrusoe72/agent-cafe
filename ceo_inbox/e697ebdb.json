@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.675720+00:00",
+    "relevance_score": 0.785,
+    "matched_tags": [
+      "agent-commerce"
+    ],
+    "domain_match": false,
+    "source_path": "technology/e697ebdb.json"
+  },
+  "framework": {
+    "id": "e697ebdb",
+    "type": "framework",
+    "name": "Dual-Interaction Protocol: Browse vs. Payment Authorization",
+    "description": "Visa distinguishes two agent-merchant interaction modes with different signature requirements: (1) browsing interactions for product information, inventory checks, and pricing use 'agent-browser-auth' tag, (2) payment interactions for purchase completion use 'agent-payer-auth' tag. Both phases use same HTTP signature structure but different semantic tags and potentially different signed content in request bodies.",
+    "domain": "technology",
+    "confidence": 0.85,
+    "tags": [
+      "protocol-phases",
+      "visa",
+      "agent-commerce",
+      "authorization-flow"
+    ],
+    "raw_quote": "In the context of Visa Intelligent Commerce, Agents are expected to interact with a Merchant site at two points... when the Agent is navigating to a product detail page... when the Agent is navigating to a checkout page to complete the purchase... tag: Will contain the value of agent-browser-auth or agent-payer-auth based on the type of interaction",
+    "value_tier": "meat",
+    "source": {
+      "title": "Specifications - Trusted Agent Protocol - developer.visa.com",
+      "url": "https://developer.visa.com/capabilities/trusted-agent-protocol/trusted-agent-protocol-specifications"
+    },
+    "hunt_id": "fd72fd5b",
+    "extracted_at": "2026-03-09T13:44:50.915450+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.211648+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

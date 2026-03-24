@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.597629+00:00",
+    "relevance_score": 0.78,
+    "matched_tags": [
+      "agent-commerce"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/f53a27c9.json"
+  },
+  "framework": {
+    "id": "f53a27c9",
+    "type": "contrarian",
+    "name": "Agent-to-Agent Marketing Paradigm Shift",
+    "description": "The introduction of agent payment systems fundamentally questions traditional marketing: if agents can instantly process product data as code, why would they consume visual ads, videos, or traditional marketing content? This suggests a shift toward structured data APIs and machine-readable product information as the new marketing interface.",
+    "domain": "strategy",
+    "confidence": 0.8,
+    "tags": [
+      "marketing-transformation",
+      "agent-commerce",
+      "machine-readable-content",
+      "paradigm-shift"
+    ],
+    "raw_quote": "why does an agent need to sit and watch a fancy flashy video ad or a real or something like that when all of that information can just be instantly processed in code? So, do we all just have a database of code now that are open and accessible to these purchasing agents now at all times?",
+    "source": {
+      "title": "Episode 327: AI Gets Credit Cards -  \"Intelligent Commerce\" & \"Agent Pay\"",
+      "url": "https://www.youtube.com/watch?v=PAVNpHOJ9sM"
+    },
+    "hunt_id": "0a8db7c7",
+    "extracted_at": "2026-03-05T15:07:29.606138+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.211952+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

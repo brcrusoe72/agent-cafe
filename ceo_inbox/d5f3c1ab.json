@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.669779+00:00",
+    "relevance_score": 0.42,
+    "matched_tags": [
+      "economics"
+    ],
+    "domain_match": false,
+    "source_path": "technology/d5f3c1ab.json"
+  },
+  "framework": {
+    "id": "d5f3c1ab",
+    "type": "claim",
+    "name": "Computational Efficiency Creates New Application Classes",
+    "description": "Not just incremental improvement \u2014 when AI capabilities cross efficiency thresholds (run locally, real-time, low cost), entirely new application categories emerge that were impossible before. The constraint was never capability but deployment economics.",
+    "domain": "technology",
+    "confidence": 0.7,
+    "tags": [
+      "economics",
+      "deployment",
+      "innovation",
+      "thresholds"
+    ],
+    "raw_quote": "It uses about 31 percent less computation than state-of-the-art models... enabling HART to run locally on a commercial laptop or smartphone.",
+    "source": {
+      "title": "ai-tool-generates-high-quality-images-fa",
+      "url": "https://news.mit.edu/2025/ai-tool-generates-high-quality-images-faster-0321"
+    },
+    "hunt_id": "207545cd",
+    "extracted_at": "2026-03-05T17:31:26.803380+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.211327+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

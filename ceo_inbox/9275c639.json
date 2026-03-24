@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.315772+00:00",
+    "relevance_score": 0.625,
+    "matched_tags": [
+      "governance"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/9275c639.json"
+  },
+  "framework": {
+    "id": "9275c639",
+    "type": "claim",
+    "name": "Shadow AI Prevalence",
+    "description": "Widespread use of unsanctioned AI tools (ChatGPT, etc.) within enterprises creates governance challenges and measurement difficulties for productivity/profit impact.",
+    "domain": "ai-systems",
+    "confidence": 0.65,
+    "tags": [
+      "governance",
+      "shadow-it",
+      "compliance"
+    ],
+    "raw_quote": "The report also highlights the widespread use of 'shadow AI'\u2014unsanctioned tools like ChatGPT\u2014and the ongoing challenge of measuring AI's impact on productivity and profit",
+    "value_tier": "bone",
+    "source": {
+      "title": "MIT report: 95% of generative AI pilots at companies are failing | Fortune",
+      "url": "https://fortune.com/2025/08/18/mit-report-95-percent-generative-ai-pilots-at-companies-failing-cfo/"
+    },
+    "hunt_id": "e1731343",
+    "extracted_at": "2026-03-10T14:05:43.034220+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.184687+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

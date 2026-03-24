@@ -1,0 +1,39 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.667625+00:00",
+    "relevance_score": 0.57,
+    "matched_tags": [
+      "tokenization",
+      "security"
+    ],
+    "domain_match": false,
+    "source_path": "technology/d0c0b91d.json"
+  },
+  "framework": {
+    "id": "d0c0b91d",
+    "type": "technique",
+    "name": "Tokenization/Virtual Cards for PCI-DSS Avoidance",
+    "description": "Using tokenization or virtual cards via APIs so autonomous agents never handle raw sensitive payment data (PAN numbers, CVV). This offloads PCI-DSS compliance requirements to the payment provider rather than requiring the agent's environment to be secure and audited like a payment processor. Enables agent payments without bringing the entire AI system into PCI compliance scope.",
+    "domain": "technology",
+    "confidence": 0.8,
+    "tags": [
+      "security",
+      "compliance",
+      "pci-dss",
+      "tokenization",
+      "virtual-cards",
+      "workaround"
+    ],
+    "raw_quote": "One workaround is to use tokenization or virtual cards via APIs so the agent never 'sees' raw sensitive data (thus offloading PCI compliance to the provider).",
+    "source": {
+      "title": "Enabling Autonomous AI Agents to Make Payments - LinkedIn",
+      "url": "https://www.linkedin.com/pulse/enabling-autonomous-ai-agents-make-payments-challenges-david-paluy-xmq4c"
+    },
+    "hunt_id": "c5cfd231",
+    "extracted_at": "2026-03-06T14:21:31.647775+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.185948+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.224624+00:00",
+    "relevance_score": 0.58,
+    "matched_tags": [
+      "delegation"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/0535893e.json"
+  },
+  "framework": {
+    "id": "0535893e",
+    "type": "framework",
+    "name": "Two-Mode Agent Authorization Model",
+    "description": "Distinguishes between 'human present' (real-time purchases requiring explicit cart approval) and 'human not present' (delegated tasks with pre-authorized Intent Mandates containing constraints). Different authorization flows for interactive vs autonomous agent behavior. Intent Mandates for delegated tasks specify 'rules of engagement' including price limits and conditions.",
+    "domain": "ai-systems",
+    "confidence": 0.9,
+    "tags": [
+      "authorization-modes",
+      "spending-limits",
+      "delegation",
+      "human-in-loop"
+    ],
+    "raw_quote": "Real-time purchases (human present): your request is captured in an initial Intent Mandate... After the agent presents a cart, your approval signs a Cart Mandate. Delegated tasks (human not present): you sign a detailed Intent Mandate upfront. This mandate specifies the rules of engagement: price limits, timing, and other conditions.",
+    "source": {
+      "title": "",
+      "url": "https://cybersecurityasia.net/google-pioneers-agent-payments-protocol/"
+    },
+    "hunt_id": "4f110637",
+    "extracted_at": "2026-03-06T14:28:17.937866+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.193120+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

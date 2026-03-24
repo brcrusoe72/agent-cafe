@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.503941+00:00",
+    "relevance_score": 0.55,
+    "matched_tags": [
+      "standardization",
+      "governance"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/09039a0d.json"
+  },
+  "framework": {
+    "id": "09039a0d",
+    "type": "claim",
+    "name": "OAuth as Open Standard vs Proprietary Gatekeeping",
+    "description": "OAuth 2.0 is explicitly positioned as an open, industry-standard protocol developed through the IETF (Internet Engineering Task Force) working group process, not controlled by any single vendor. This represents the 'open standard' approach rather than proprietary gatekeeping. However, implementations and extensions (like FAPI) can introduce vendor-specific elements.",
+    "domain": "strategy",
+    "confidence": 0.95,
+    "tags": [
+      "open-standards",
+      "IETF",
+      "governance",
+      "standardization"
+    ],
+    "raw_quote": "This specification and its extensions are being developed within the IETF OAuth Working Group.",
+    "source": {
+      "title": "OAuth 2.0 \u2014 OAuth",
+      "url": "https://oauth.net/2/"
+    },
+    "hunt_id": "c5cfd231",
+    "extracted_at": "2026-03-06T14:24:59.966476+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.187992+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "marketplace_design"
+}

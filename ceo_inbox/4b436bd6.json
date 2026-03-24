@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.271348+00:00",
+    "relevance_score": 0.645,
+    "matched_tags": [
+      "governance"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/4b436bd6.json"
+  },
+  "framework": {
+    "id": "4b436bd6",
+    "type": "claim",
+    "name": "Compliance-First Agent Governance Mental Model",
+    "description": "Financial services organizations are framing AI agent governance primarily through the lens of existing regulatory compliance (GDPR, SOX, GLBA) rather than designing new technical authorization protocols. The approach is retrofitting agents into legacy compliance frameworks rather than building agent-specific authorization standards.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "financial-services",
+      "compliance",
+      "governance",
+      "regulatory-retrofit"
+    ],
+    "raw_quote": "AI agents must be treated not as experimental technologies, but as regulated applications that fall squarely within each organization's enterprise risk, audit, and compliance programs.",
+    "source": {
+      "title": "Compliance for AI Agents: What Financial Services Organizations Need to Know - Banking Exchange",
+      "url": "https://www.bankingexchange.com/news-feed/item/10465-compliance-for-ai-agents-what-financial-services-organizations-need-to-know"
+    },
+    "hunt_id": "4f110637",
+    "extracted_at": "2026-03-06T14:19:45.026764+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.182248+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

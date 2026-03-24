@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.224355+00:00",
+    "relevance_score": 0.71,
+    "matched_tags": [
+      "multi-agent"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/04e0af15.json"
+  },
+  "framework": {
+    "id": "04e0af15",
+    "type": "framework",
+    "name": "Multi-Agent Specialist Coordinator Pattern",
+    "description": "Architecture with a central coordinator agent orchestrating multiple specialist agents (e.g., satellite imagery analysis, social media monitoring, damage forecasting). Specialists work in parallel, write to shared memory/situational map, coordinator synthesizes and executes coordinated actions.",
+    "domain": "ai-systems",
+    "confidence": 0.8,
+    "tags": [
+      "multi-agent",
+      "coordination",
+      "parallel-processing",
+      "specialist-agents",
+      "shared-memory"
+    ],
+    "raw_quote": "the planner is actually a coordinator agent working with specialist agents... Each specialist agent feeds intelligence back to the main planner... memory component is a shared situational map that all agents can read from and write to",
+    "source": {
+      "title": "10 Use Cases for AI Agents: IoT, RAG, & Disaster Response Explained",
+      "url": "https://www.youtube.com/watch?v=Ts42JTye-AI"
+    },
+    "hunt_id": "8e1c768d",
+    "extracted_at": "2026-03-05T20:08:02.254667+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.215559+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

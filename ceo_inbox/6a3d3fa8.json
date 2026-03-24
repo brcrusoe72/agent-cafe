@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.291505+00:00",
+    "relevance_score": 0.68,
+    "matched_tags": [
+      "governance",
+      "agent-architecture"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/6a3d3fa8.json"
+  },
+  "framework": {
+    "id": "6a3d3fa8",
+    "type": "framework",
+    "name": "Deterministic-Probabilistic Spectrum for Agent Design",
+    "description": "A framework for positioning different types of agents on a spectrum from fully deterministic (predictable, auditable, policy-bound) to fully probabilistic (exploratory, adaptive, discovery-oriented). Workflow Agents sit on the deterministic end but incorporate probabilistic reasoning at decision points. The key trade-off is between control/auditability and flexibility/intelligence.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "agent-architecture",
+      "enterprise-ai",
+      "orchestration",
+      "governance"
+    ],
+    "raw_quote": "Workflow Agents sit on the deterministic end of the agentic spectrum, but they're far from dumb pipelines. They bring agentic behaviors like dynamic path selection, multi-turn reasoning across steps, parallel branching, multi-agent collaboration, and self-correction.",
+    "source": {
+      "title": "introducing-workflow-agents",
+      "url": "https://blogs.oracle.com/fusionhcmcoe/introducing-workflow-agents"
+    },
+    "hunt_id": "207545cd",
+    "extracted_at": "2026-03-05T17:23:28.570279+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.218084+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

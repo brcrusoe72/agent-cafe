@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.360342+00:00",
+    "relevance_score": 0.65,
+    "matched_tags": [
+      "governance"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/e0792c1c.json"
+  },
+  "framework": {
+    "id": "e0792c1c",
+    "type": "framework",
+    "name": "Human Override Kill Switch for Agent Systems",
+    "description": "Safety mechanism allowing human intervention to halt AI agent operations if they threaten human interests or overstep boundaries. Governance failsafe for autonomous systems.",
+    "domain": "ai-systems",
+    "confidence": 0.9,
+    "tags": [
+      "AI-safety",
+      "governance",
+      "human-in-loop",
+      "risk-mitigation"
+    ],
+    "raw_quote": "including an integrated kill switch mechanism, ensuring that if AI agents ever attempt to overstep boundaries or disrupt human livelihood, human oversight can immediately intervene",
+    "source": {
+      "title": "Nilfee powers USDC-based neo banking for humans, XYZ CREDIT is designed exclusively for AI agents.",
+      "url": "https://www.youtube.com/watch?v=7IxDVr7R9yM"
+    },
+    "hunt_id": "e8165180",
+    "extracted_at": "2026-03-05T16:06:53.002857+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.186405+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

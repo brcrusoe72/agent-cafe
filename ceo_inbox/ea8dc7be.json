@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.677510+00:00",
+    "relevance_score": 0.56,
+    "matched_tags": [
+      "oauth",
+      "delegation"
+    ],
+    "domain_match": false,
+    "source_path": "technology/ea8dc7be.json"
+  },
+  "framework": {
+    "id": "ea8dc7be",
+    "type": "framework",
+    "name": "IETF OBO Nested Claims for Chained Delegation",
+    "description": "Scalekit describes using nested JWT claims (sub + act.sub) to represent multi-hop delegation chains like user\u2192InfraBot\u2192ArgoCD\u2192AWS. Each hop's identity is encoded in nested claim layers, with scope filtering at each level. This is the closest any production-oriented guide gets to agent-to-agent delegation representation in tokens.",
+    "domain": "technology",
+    "confidence": 0.7,
+    "tags": [
+      "delegation",
+      "JWT",
+      "OAuth",
+      "identity-chaining"
+    ],
+    "raw_quote": "You can support this by nesting claims inside each other to reflect the delegation depth",
+    "value_tier": "meat",
+    "source": {
+      "title": "Understanding \"On-Behalf-Of\" in AI agent authentication - Scalekit",
+      "url": "https://www.scalekit.com/blog/delegated-agent-access"
+    },
+    "hunt_id": "d39fbdac",
+    "extracted_at": "2026-03-14T14:32:03.713397+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.206561+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

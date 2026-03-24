@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.414564+00:00",
+    "relevance_score": 0.715,
+    "matched_tags": [
+      "agent-identity",
+      "liability"
+    ],
+    "domain_match": false,
+    "source_path": "finance/51c8934b.json"
+  },
+  "framework": {
+    "id": "51c8934b",
+    "type": "framework",
+    "name": "KYA (Know Your Agent)",
+    "description": "Banks must perform KYC on software agents, not just humans. Blueprint: agent registry (publisher identity, deterministic versioning, attestation proofs, real-time revocation), delegation tokens (amount/frequency/merchant/time scopes with instant revocation and anomaly triggers), and agent-origin transaction flags with specific dispute codes. Critical insight: banks must OWN this requirement even if processors build it.",
+    "domain": "finance",
+    "confidence": 0.85,
+    "tags": [
+      "KYA",
+      "agent-identity",
+      "banking",
+      "liability"
+    ],
+    "raw_quote": "If banks do not build it, Big Tech will, reducing the bank to a dumb pipe.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Agentic checkout beyond the hype: what European players can do to stay ...",
+      "url": "https://www.reply.com/en/strategy-and-business-model-transformation/agentic-checkout-beyond-the-hype"
+    },
+    "hunt_id": "eeb6b019",
+    "extracted_at": "2026-03-15T12:18:53.033078+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.197541+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

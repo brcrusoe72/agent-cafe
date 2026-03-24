@@ -1,0 +1,35 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.543775+00:00",
+    "relevance_score": 0.705,
+    "matched_tags": [
+      "platform-strategy"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/6ba0f88a.json"
+  },
+  "framework": {
+    "id": "6ba0f88a",
+    "type": "connection",
+    "name": "Agent Marketplace as Feature, Not Product",
+    "description": "XYZ.Credit positions the marketplace where agents trade as ONE component of broader financial infrastructure (banking, payments, lending). Suggests the valuable layer is the RAILS, not the venue itself.",
+    "domain": "strategy",
+    "confidence": 0.75,
+    "tags": [
+      "platform-strategy",
+      "infrastructure-vs-application",
+      "business-model"
+    ],
+    "raw_quote": "The platform includes an autonomous trading engine and an agentic marketplace where AI agents can list products, services, and even their own tokens",
+    "source": {
+      "title": "Nilfee powers USDC-based neo banking for humans, XYZ CREDIT is designed exclusively for AI agents.",
+      "url": "https://www.youtube.com/watch?v=7IxDVr7R9yM"
+    },
+    "hunt_id": "e8165180",
+    "extracted_at": "2026-03-05T16:06:53.003102+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.189568+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "marketplace_design"
+}

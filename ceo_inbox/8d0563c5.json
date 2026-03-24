@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.312407+00:00",
+    "relevance_score": 0.54,
+    "matched_tags": [
+      "authorization"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/8d0563c5.json"
+  },
+  "framework": {
+    "id": "8d0563c5",
+    "type": "claim",
+    "name": "Stateful vs Stateless Auth Trade-off",
+    "description": "Server-side sessions (stateful) provide better control and revocability but create database bottlenecks in distributed systems. Token-based auth (stateless) scales horizontally but sacrifices immediate revocation capability. For agent authorization, this trade-off may determine whether systems can enforce real-time spending limits.",
+    "domain": "ai-systems",
+    "confidence": 0.5,
+    "tags": [
+      "architecture",
+      "scalability",
+      "authorization",
+      "distributed-systems"
+    ],
+    "raw_quote": "you'll need to store the session id in a database or keep it in memory on the server because most of today's cloud applications are scaled horizontally this can be a huge bottleneck",
+    "source": {
+      "title": "watch?v=UBUNrFtufWo",
+      "url": "https://www.youtube.com/watch?v=UBUNrFtufWo"
+    },
+    "hunt_id": "c5cfd231",
+    "extracted_at": "2026-03-06T14:31:24.222697+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.184291+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

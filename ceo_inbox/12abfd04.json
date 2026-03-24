@@ -1,0 +1,39 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.612280+00:00",
+    "relevance_score": 0.685,
+    "matched_tags": [
+      "agent-identity",
+      "mcp"
+    ],
+    "domain_match": false,
+    "source_path": "technology/12abfd04.json"
+  },
+  "framework": {
+    "id": "12abfd04",
+    "type": "case_study",
+    "name": "Vouched KYA - Agent Identity Verification",
+    "description": "Vouched Identity raised $17M Series A (Spring Rock Ventures) to pivot from human ID verification to AI agent identification. Products: Agent Shield (detects agent sessions via proprietary heuristics, not protocols), Agent Bouncer (MCP-integrated trust gateway). No established protocol exists yet \u2014 they use spam-detection-style heuristics. CEO admits proposed protocols haven't been adopted.",
+    "domain": "technology",
+    "confidence": 0.9,
+    "tags": [
+      "agent-identity",
+      "KYA",
+      "MCP",
+      "series-a",
+      "verification"
+    ],
+    "raw_quote": "There is no established mechanism, so we created a proprietary heuristic, which works much like spam detection. Both we and some other companies in the industry have proposed new protocols for the identification of agents, but it is so early that none of these have been adopted yet.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Agentic AI identity verification startup Vouched gets $17M to build trust in autonomous agents - SiliconANGLE",
+      "url": "https://siliconangle.com/2025/09/04/agentic-ai-identity-verification-startup-vouched-gets-17m-build-trust-autonomous-agents/"
+    },
+    "hunt_id": "f911b3bb",
+    "extracted_at": "2026-03-18T13:59:05.236785+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.193784+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.356392+00:00",
+    "relevance_score": 0.58,
+    "matched_tags": [
+      "mcp"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/dbe6dc34.json"
+  },
+  "framework": {
+    "id": "dbe6dc34",
+    "type": "framework",
+    "name": "MCP vs A2A Architecture Pattern",
+    "description": "Model Context Protocol (MCP) handles LLM-to-tool communication within a single agent system. A2A handles agent-to-agent communication for inter-agent collaboration. The car repair analogy: MCP is the mechanic using their tools; A2A is the mechanic talking to the customer and parts supplier. This creates a layered architecture where agents internally use MCP for tools and externally use A2A for collaboration.",
+    "domain": "ai-systems",
+    "confidence": 0.9,
+    "tags": [
+      "architecture",
+      "protocol-layers",
+      "mcp",
+      "comparison"
+    ],
+    "raw_quote": "MCP is a protocol that helps LLM communicate with tools, resources, prompt, and so on. But in real life, agent will communicate with another agent",
+    "source": {
+      "title": "watch?v=Sl9EZpE61xA",
+      "url": "https://www.youtube.com/watch?v=Sl9EZpE61xA"
+    },
+    "hunt_id": "e8165180",
+    "extracted_at": "2026-03-05T16:17:23.198634+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.220452+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

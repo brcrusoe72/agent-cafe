@@ -1,0 +1,40 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.672125+00:00",
+    "relevance_score": 0.655,
+    "matched_tags": [
+      "agent-identity",
+      "authorization",
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "technology/dbb0309d.json"
+  },
+  "framework": {
+    "id": "dbb0309d",
+    "type": "framework",
+    "name": "OAuth Transaction Tokens for Agents (draft-oauth-transaction-tokens-for-agents-00)",
+    "description": "Amazon-authored IETF Internet-Draft extending OAuth Transaction Tokens with 'actor' (agent identity) and 'principal' (initiating human/system) context fields. Defines two flows: principal-initiated (auth code grant) and autonomous (client credentials grant). Not endorsed by IETF, no working group adoption, no RFC stream assigned.",
+    "domain": "technology",
+    "confidence": 0.95,
+    "tags": [
+      "ietf",
+      "oauth",
+      "agent-identity",
+      "authorization",
+      "zero-trust"
+    ],
+    "raw_quote": "This I-D is not endorsed by the IETF and has no formal standing in the IETF standards process.",
+    "value_tier": "meat",
+    "source": {
+      "title": "draft-oauth-transaction-tokens-for-agents-00 - IETF Datatracker",
+      "url": "https://datatracker.ietf.org/doc/draft-oauth-transaction-tokens-for-agents/00/"
+    },
+    "hunt_id": "f911b3bb",
+    "extracted_at": "2026-03-18T13:57:44.340470+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.205580+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

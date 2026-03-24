@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.612700+00:00",
+    "relevance_score": 0.795,
+    "matched_tags": [
+      "agent-commerce"
+    ],
+    "domain_match": false,
+    "source_path": "technology/14a84ebd.json"
+  },
+  "framework": {
+    "id": "14a84ebd",
+    "type": "claim",
+    "name": "Worldpay (Global Payments) has dedicated 'Head of Agentic Commerce'",
+    "description": "Reshmi Suresh holds the title 'head of agentic commerce at Worldpay, now Global Payments' \u2014 indicating a dedicated org function for agent payments at one of the world's largest processors. They're partnering with Mastercard on Verifiable Intent.",
+    "domain": "technology",
+    "confidence": 0.95,
+    "tags": [
+      "worldpay",
+      "global-payments",
+      "org-structure",
+      "agent-commerce"
+    ],
+    "raw_quote": "said Reshmi Suresh, head of agentic commerce at Worldpay, now Global Payments.",
+    "value_tier": "meat",
+    "source": {
+      "title": "How Verifiable Intent builds trust in agentic AI commerce - Mastercard",
+      "url": "https://www.mastercard.com/us/en/news-and-trends/stories/2026/verifiable-intent.html"
+    },
+    "hunt_id": "e7408160",
+    "extracted_at": "2026-03-14T14:04:16.617936+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.212699+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "payment_infrastructure"
+}

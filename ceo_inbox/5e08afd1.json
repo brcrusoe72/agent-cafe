@@ -1,0 +1,35 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.383172+00:00",
+    "relevance_score": 0.56,
+    "matched_tags": [
+      "pricing"
+    ],
+    "domain_match": false,
+    "source_path": "economics/5e08afd1.json"
+  },
+  "framework": {
+    "id": "5e08afd1",
+    "type": "claim",
+    "name": "Tariff Pass-Through Pricing Model",
+    "description": "When import tariffs are imposed, importers typically raise product prices to cover the tax burden, which shifts the cost burden to consumers rather than absorbing it as reduced profit margins.",
+    "domain": "economics",
+    "confidence": 0.7,
+    "tags": [
+      "trade-policy",
+      "pricing",
+      "import-economics"
+    ],
+    "raw_quote": "the company that do the importing pay the Tariff to the government they typically raise the price of their products to cover it",
+    "source": {
+      "title": "watch?v=6d1XsGInzZc",
+      "url": "https://www.youtube.com/watch?v=6d1XsGInzZc"
+    },
+    "hunt_id": "571e707b",
+    "extracted_at": "2026-03-03T20:18:58.579610+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.209017+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.619655+00:00",
+    "relevance_score": 0.575,
+    "matched_tags": [
+      "delegation",
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "technology/26e1a78a.json"
+  },
+  "framework": {
+    "id": "26e1a78a",
+    "type": "framework",
+    "name": "Three-Mode Agent OAuth (OBO User/Self/Agent)",
+    "description": "Yao's draft defines three distinct operational modes for agent auth: agent on-behalf-of user, agent on-behalf-of itself (autonomous), and agent on-behalf-of other agents. Each gets its own OAuth workflow extension. This is the most explicit attempt to solve multi-hop delegation within OAuth rather than inventing new crypto.",
+    "domain": "technology",
+    "confidence": 0.85,
+    "tags": [
+      "agent-auth",
+      "oauth",
+      "delegation",
+      "ietf"
+    ],
+    "raw_quote": "AI agents may work On-behalf-of(OBO) users, itself, or other AI agents. In different cases, there are different requirements on the authentication and authorization, leading to different workflows.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Further considerations on AI Agent Authentication and Authorization ...",
+      "url": "https://datatracker.ietf.org/doc/draft-yao-agent-auth-considerations/01/"
+    },
+    "hunt_id": "1421f7a8",
+    "extracted_at": "2026-03-18T14:09:49.489172+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.194655+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

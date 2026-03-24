@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.637765+00:00",
+    "relevance_score": 0.505,
+    "matched_tags": [
+      "ap2"
+    ],
+    "domain_match": false,
+    "source_path": "technology/68e759d7.json"
+  },
+  "framework": {
+    "id": "68e759d7",
+    "type": "claim",
+    "name": "AP2 is protocol-agnostic REST+crypto layer, not blockchain",
+    "description": "Verifiable Intent is described as 'aligned with Google's Agent Payments Protocol (AP2) and Universal Commerce Protocol (UCP) and designed to be protocol agnostic.' The architecture uses cryptographic proofs, Verifiable Credentials (W3C), FIDO, and EMVCo \u2014 standard web/payments infra, not blockchain. AP2 is a standards-based protocol layer, not a distributed ledger.",
+    "domain": "technology",
+    "confidence": 0.85,
+    "tags": [
+      "AP2",
+      "architecture",
+      "google",
+      "standards"
+    ],
+    "raw_quote": "Aligned with Google's Agent Payments Protocol (AP2) and Universal Commerce Protocol (UCP) and designed to be protocol agnostic... built on widely adopted specifications from the FIDO Alliance, EMVCo, the Internet Engineering Task Force, and the World Wide Web Consortium.",
+    "value_tier": "meat",
+    "source": {
+      "title": "How Verifiable Intent builds trust in agentic AI commerce - Mastercard",
+      "url": "https://www.mastercard.com/us/en/news-and-trends/stories/2026/verifiable-intent.html"
+    },
+    "hunt_id": "e7408160",
+    "extracted_at": "2026-03-14T14:04:16.617693+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.214060+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "payment_infrastructure"
+}

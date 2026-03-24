@@ -1,0 +1,39 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.676829+00:00",
+    "relevance_score": 0.608,
+    "matched_tags": [
+      "delegation",
+      "authorization",
+      "security"
+    ],
+    "domain_match": false,
+    "source_path": "technology/e8d67b2f.json"
+  },
+  "framework": {
+    "id": "e8d67b2f",
+    "type": "technique",
+    "name": "OAuth 2.0 Authorization Flow",
+    "description": "A delegation protocol where a resource owner grants a client limited access to resources on a server without sharing credentials. Uses authorization codes, access tokens, and refresh tokens with scope-based permissions and built-in revocation mechanisms.",
+    "domain": "technology",
+    "confidence": 0.95,
+    "tags": [
+      "authorization",
+      "delegation",
+      "security",
+      "api-access",
+      "token-based-auth"
+    ],
+    "raw_quote": "OA 2 is like giving someone a special key this key allows them to access specific information in another application we control who gets access to our data without having to share a password and yes we can revoke that key at any time",
+    "source": {
+      "title": "OAuth 2 Explained In Simple Terms",
+      "url": "https://www.youtube.com/watch?v=ZV5yTm4pT8g"
+    },
+    "hunt_id": "c5cfd231",
+    "extracted_at": "2026-03-06T14:18:02.743973+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.186807+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

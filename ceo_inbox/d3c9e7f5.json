@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.669056+00:00",
+    "relevance_score": 0.5,
+    "matched_tags": [
+      "interoperability"
+    ],
+    "domain_match": false,
+    "source_path": "technology/d3c9e7f5.json"
+  },
+  "framework": {
+    "id": "d3c9e7f5",
+    "type": "framework",
+    "name": "A2A x402 Crypto Extension",
+    "description": "Production-ready extension to AP2 for agent-based cryptocurrency payments, developed with Coinbase, Ethereum Foundation, MetaMask. Demonstrates extensible protocol design where domain-specific payment types can plug into core AP2 constructs while maintaining interoperability.",
+    "domain": "technology",
+    "confidence": 0.8,
+    "tags": [
+      "cryptocurrency",
+      "protocol-extensions",
+      "web3",
+      "interoperability"
+    ],
+    "raw_quote": "To accelerate support for the web3 ecosystem, in collaboration with Coinbase, Ethereum Foundation, MetaMask and other leading organizations, we have extended the core constructs of AP2 and launched the A2A x402 extension, a production-ready solution for agent-based crypto payments.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Announcing Agent Payments Protocol (AP2) | Google Cloud Blog",
+      "url": "https://cloud.google.com/blog/products/ai-machine-learning/announcing-agents-to-payments-ap2-protocol"
+    },
+    "hunt_id": "b977a620",
+    "extracted_at": "2026-03-07T14:42:04.608424+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.220250+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

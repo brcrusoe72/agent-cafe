@@ -1,0 +1,39 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.338118+00:00",
+    "relevance_score": 0.585,
+    "matched_tags": [
+      "verifiable-credentials",
+      "open-standard"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/ba828766.json"
+  },
+  "framework": {
+    "id": "ba828766",
+    "type": "framework",
+    "name": "Agent Payments Protocol (AP2)",
+    "description": "Open-standard protocol extending A2A and MCP that uses Verifiable Credentials (cryptographically signed Mandates) for agent authorization in e-commerce. Implements role-based architecture with separate Shopping Agents, Credentials Providers, Merchant Endpoints, and Payment Processors. Defines three mandate types: Cart Mandate (human-present), Intent Mandate (human-not-present with TTL/budget constraints), and Payment Mandate (issuer-ready with AI risk signals).",
+    "domain": "ai-systems",
+    "confidence": 0.95,
+    "tags": [
+      "agent-authorization",
+      "verifiable-credentials",
+      "payment-protocol",
+      "open-standard",
+      "cryptographic-signing"
+    ],
+    "raw_quote": "The Agent Payments Protocol (AP2) [1], an open extension to Agent2Agent (A2A) [2] and Model Context Protocol (MCP) [3], introduces Verifiable Credentials (VCs) in the form of cryptographically signed Mandates to establish trust without relying solely on probabilistic AI inferences.",
+    "value_tier": "organ",
+    "source": {
+      "title": "Secure Use of the Agent Payments Protocol (AP2) | CSA",
+      "url": "https://cloudsecurityalliance.org/blog/2025/10/06/secure-use-of-the-agent-payments-protocol-ap2-a-framework-for-trustworthy-ai-driven-transactions"
+    },
+    "hunt_id": "bd6202e2",
+    "extracted_at": "2026-03-07T14:42:51.934578+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.203450+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

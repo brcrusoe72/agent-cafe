@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.363945+00:00",
+    "relevance_score": 0.78,
+    "matched_tags": [
+      "agent-identity"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/e6a55ab3.json"
+  },
+  "framework": {
+    "id": "e6a55ab3",
+    "type": "claim",
+    "name": "Agents are not microservices",
+    "description": "Core argument that agent workloads break the microservice identity model because behavior is non-deterministic, context-dependent, and diverges across instances \u2014 meaning service-level identity is insufficient for compliance/auditing.",
+    "domain": "ai-systems",
+    "confidence": 0.8,
+    "tags": [
+      "agent-identity",
+      "compliance",
+      "auditing"
+    ],
+    "raw_quote": "AI Agents are not microservices, APIs, or traditional stateless workloads. They are non-deterministic and their behavior cannot be fully defined by looking at the code.",
+    "value_tier": "bone",
+    "source": {
+      "title": "Agent Identity and Access Management - Can SPIFFE Work?",
+      "url": "https://www.linkedin.com/pulse/agent-identity-access-management-can-spiffe-work-christian-posta-hffnc"
+    },
+    "hunt_id": "5213bf37",
+    "extracted_at": "2026-03-18T14:22:05.015605+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.186544+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

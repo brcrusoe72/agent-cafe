@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.307002+00:00",
+    "relevance_score": 0.645,
+    "matched_tags": [
+      "governance"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/829aa622.json"
+  },
+  "framework": {
+    "id": "829aa622",
+    "type": "contrarian",
+    "name": "Regulatory Timeline Absence as Design Choice",
+    "description": "NIST AI RMF deliberately avoids prescribing measurement timelines, meaning gap_5's hypothesis (that regulatory mandates would force timeline data) is falsified. Even the US government's primary AI governance framework punts on 'when' \u2014 it only addresses 'what' and 'how'. This is intentional flexibility, not an oversight.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "governance",
+      "timeline-gap",
+      "regulatory-design"
+    ],
+    "raw_quote": "What should be measured depends on the purpose, audience, and needs of the evaluations",
+    "value_tier": "meat",
+    "source": {
+      "title": "Measure - AIRC - NIST AI Resource Center",
+      "url": "https://airc.nist.gov/airmf-resources/playbook/measure/"
+    },
+    "hunt_id": "7d99a65e",
+    "extracted_at": "2026-03-13T16:28:19.670614+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.184072+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.332098+00:00",
+    "relevance_score": 0.64,
+    "matched_tags": [
+      "authorization",
+      "trust",
+      "security"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/af080013.json"
+  },
+  "framework": {
+    "id": "af080013",
+    "type": "framework",
+    "name": "Agentic Commerce Trust Framework Requirements",
+    "description": "A common trust framework needed across all parties (consumers, agents, merchants, issuers) addressing: (1) Agent authentication and authorization, (2) Malicious agent prevention, (3) Transaction transparency, (4) Consumer control boundaries, (5) First-party fraud detection (was transaction truly authorized?), (6) Error handling (wrong items, addresses).",
+    "domain": "ai-systems",
+    "confidence": 0.8,
+    "tags": [
+      "trust",
+      "security",
+      "fraud-prevention",
+      "authorization"
+    ],
+    "raw_quote": "All these parties have one thing in common that they can all benefit from a common trust framework... making sure that a malicious agent should not be able to transact... ensuring that agents can only transact within the bounds of consumers instructions.",
+    "source": {
+      "title": "watch?v=6WfDk_oy8TE",
+      "url": "https://www.youtube.com/watch?v=6WfDk_oy8TE"
+    },
+    "hunt_id": "7d3db790",
+    "extracted_at": "2026-03-03T19:00:21.638525+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.185459+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

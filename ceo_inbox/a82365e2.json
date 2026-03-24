@@ -1,0 +1,35 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.655453+00:00",
+    "relevance_score": 0.785,
+    "matched_tags": [
+      "agent-identity"
+    ],
+    "domain_match": false,
+    "source_path": "technology/a82365e2.json"
+  },
+  "framework": {
+    "id": "a82365e2",
+    "type": "claim",
+    "name": "No novel crypto needed for agent auth",
+    "description": "Draft's core thesis: agent auth does NOT require new protocols or crypto primitives. Existing OAuth 2.0, SPIFFE, WIMSE, mTLS, HTTP Message Signatures compose into a complete solution. This directly counters startups claiming novel agent identity protocols are needed.",
+    "domain": "technology",
+    "confidence": 0.85,
+    "tags": [
+      "contrarian",
+      "agent-identity"
+    ],
+    "raw_quote": "Rather than defining new protocols, this document describes how existing and widely deployed standards can be applied or extended to establish agent authentication and authorization.",
+    "value_tier": "organ",
+    "source": {
+      "title": "draft-klrc-aiagent-auth-00 - AI Agent Authentication and Authorization",
+      "url": "https://datatracker.ietf.org/doc/draft-klrc-aiagent-auth/"
+    },
+    "hunt_id": "f911b3bb",
+    "extracted_at": "2026-03-18T13:57:12.416767+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.202397+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.411137+00:00",
+    "relevance_score": 0.58,
+    "matched_tags": [
+      "stripe",
+      "security"
+    ],
+    "domain_match": false,
+    "source_path": "finance/4382b4f9.json"
+  },
+  "framework": {
+    "id": "4382b4f9",
+    "type": "technique",
+    "name": "Pre-Authorization Spending Control Blocking",
+    "description": "Spending controls execute before real-time authorization webhooks, declining transactions at the protocol level before issuing_authorization.request events are sent. This creates a defense-in-depth model where rule violations never reach the authorization logic.",
+    "domain": "finance",
+    "confidence": 0.9,
+    "tags": [
+      "authorization-flow",
+      "security",
+      "stripe",
+      "pre-screening"
+    ],
+    "raw_quote": "Spending controls run before real-time authorizations and can decline a purchase before the issuing_authorization.request is sent, resulting in a declined issuing_authorization.created event.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Issuing spending controls | Stripe Documentation",
+      "url": "https://docs.stripe.com/issuing/controls/spending-controls"
+    },
+    "hunt_id": "b977a620",
+    "extracted_at": "2026-03-07T14:45:43.641319+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.181985+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

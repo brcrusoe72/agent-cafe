@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.339043+00:00",
+    "relevance_score": 0.58,
+    "matched_tags": [
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/bbddc989.json"
+  },
+  "framework": {
+    "id": "bbddc989",
+    "type": "framework",
+    "name": "A2A Profile for Transaction Tokens",
+    "description": "Huawei authors (Liu/Ni) wrote an individual I-D mapping Google's A2A protocol message structs directly onto OAuth Transaction Token claims (tctx for immutable user input, rctx for mutable agent context). Filed Oct 2025, no IETF endorsement, no stream assigned.",
+    "domain": "ai-systems",
+    "confidence": 0.9,
+    "tags": [
+      "oauth",
+      "transaction-tokens",
+      "a2a",
+      "ietf",
+      "multi-hop-auth"
+    ],
+    "raw_quote": "Agentic systems execute multi-step, cross-domain actions where conversational state can sometimes drift from the originally authorized intent, creating 'context rot' that undermines least-privilege guarantees and auditability.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Agent-to-Agent (A2A) Profile for OAuth Transaction Tokens",
+      "url": "https://datatracker.ietf.org/doc/draft-liu-oauth-a2a-profile/"
+    },
+    "hunt_id": "5213bf37",
+    "extracted_at": "2026-03-18T14:19:46.958805+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.203583+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

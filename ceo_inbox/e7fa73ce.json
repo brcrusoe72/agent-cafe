@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.364810+00:00",
+    "relevance_score": 0.645,
+    "matched_tags": [
+      "liability"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/e7fa73ce.json"
+  },
+  "framework": {
+    "id": "e7fa73ce",
+    "type": "claim",
+    "name": "Cross-Org Vendor Liability Is Contractual Only",
+    "description": "The article's only answer to cross-organizational agent chains is vendor contracts \u2014 content safety, security attestations, audit rights, indemnification. No tort framework, no statutory framework. Pure contract law. 'The vendor's security posture becomes your security posture when the agent acts on your behalf.'",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "cross-org",
+      "liability",
+      "contracts"
+    ],
+    "raw_quote": "Organizations using third-party AI agents or APIs may wish to address content safety practices, security attestations, audit rights, and indemnification for both regulatory enforcement and third-party claims.",
+    "value_tier": "meat",
+    "source": {
+      "title": "When AI Agents Misbehave: Governance and Security for ... - Our Take",
+      "url": "https://ourtake.bakerbotts.com/post/102me2l/when-ai-agents-misbehave-governance-and-security-for-autonomous-ai"
+    },
+    "hunt_id": "d39fbdac",
+    "extracted_at": "2026-03-14T14:30:59.455335+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.206352+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

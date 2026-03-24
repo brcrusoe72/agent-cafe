@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.429970+00:00",
+    "relevance_score": 0.515,
+    "matched_tags": [
+      "ap2"
+    ],
+    "domain_match": false,
+    "source_path": "finance/b5b34464.json"
+  },
+  "framework": {
+    "id": "b5b34464",
+    "type": "claim",
+    "name": "AP2\u2013Verifiable Intent Alignment Confirmed",
+    "description": "Verifiable Intent is explicitly 'compatible with Agent Payments Protocol' (AP2) and UCP. Google co-developed it. This collapses two of our four framings into one \u2014 Mastercard's and Google's are the same thing, not competing.",
+    "domain": "finance",
+    "confidence": 0.95,
+    "tags": [
+      "AP2",
+      "UCP",
+      "google",
+      "mastercard",
+      "convergence"
+    ],
+    "raw_quote": "aligned with Google's Agent Payments Protocol (AP2) and Universal Commerce Protocol (UCP)",
+    "value_tier": "organ",
+    "source": {
+      "title": "Mastercard, Google Introduce Verifiable Intent as AI Agents Begin ...",
+      "url": "https://fintechnews.sg/127287/ai/mastercard-google-verifiable-intent/"
+    },
+    "hunt_id": "7e7c0a23",
+    "extracted_at": "2026-03-14T14:19:21.917579+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.214835+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "payment_infrastructure"
+}

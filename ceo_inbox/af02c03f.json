@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.331878+00:00",
+    "relevance_score": 0.725,
+    "matched_tags": [
+      "agent-architecture"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/af02c03f.json"
+  },
+  "framework": {
+    "id": "af02c03f",
+    "type": "framework",
+    "name": "Three-Dimensional Agent Evolution Framework (What/When/How)",
+    "description": "Systematic taxonomy for understanding self-evolving agents across three orthogonal dimensions: WHAT evolves (model/memory/tools/architecture), WHEN evolution occurs (intra-test-time vs inter-test-time), and HOW evolution is implemented (reward-based, feedback-based, single vs multi-agent). This provides a structured way to analyze and design adaptive agent systems.",
+    "domain": "ai-systems",
+    "confidence": 0.95,
+    "tags": [
+      "agent-architecture",
+      "taxonomy",
+      "self-evolution",
+      "adaptive-systems"
+    ],
+    "raw_quote": "We organize our analysis around three foundational questions \u2014 what, when, and how to evolve \u2014 and provide a structured framework for understanding each.",
+    "source": {
+      "title": "2507.21046v2",
+      "url": "https://arxiv.org/html/2507.21046v2"
+    },
+    "hunt_id": "8e1c768d",
+    "extracted_at": "2026-03-05T20:18:33.036851+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.219659+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

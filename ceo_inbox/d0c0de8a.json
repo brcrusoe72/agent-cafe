@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.435792+00:00",
+    "relevance_score": 0.715,
+    "matched_tags": [
+      "fraud-detection",
+      "trust"
+    ],
+    "domain_match": false,
+    "source_path": "finance/d0c0de8a.json"
+  },
+  "framework": {
+    "id": "d0c0de8a",
+    "type": "framework",
+    "name": "Mature Trust Infrastructure as Competitive Moat",
+    "description": "Existing payment rails have decades of built trust infrastructure (chargeback systems, dispute resolution, fraud detection) that represents a significant barrier to new payment systems. While not perfect, this infrastructure provides a foundation that new systems (like crypto/stablecoins) must rebuild from scratch.",
+    "domain": "finance",
+    "confidence": 0.85,
+    "tags": [
+      "trust",
+      "infrastructure",
+      "chargebacks",
+      "fraud-detection",
+      "institutional-knowledge"
+    ],
+    "raw_quote": "There's an entire ecosystem around cards that have been built to maturity around, you know, how do you handle chargebacks, disputes, fraud, all these different types of things. And of course, there's still a lot of problems in the payment space today around those those particular items. And it's not 100% solved, but there's a good foundation for it.",
+    "source": {
+      "title": "Inside PayOS with Jonathan McGowan: How Agentic Payments Will Power the AI Shopping Revolution",
+      "url": "https://www.youtube.com/watch?v=KHfTbWAsy-Y"
+    },
+    "hunt_id": "7d3db790",
+    "extracted_at": "2026-03-03T18:48:30.232384+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.205116+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

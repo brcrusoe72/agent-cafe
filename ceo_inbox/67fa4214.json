@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.637136+00:00",
+    "relevance_score": 0.51,
+    "matched_tags": [
+      "ap2"
+    ],
+    "domain_match": false,
+    "source_path": "technology/67fa4214.json"
+  },
+  "framework": {
+    "id": "67fa4214",
+    "type": "claim",
+    "name": "PayPal Adopts ACP Not AP2",
+    "description": "PayPal adopted OpenAI's Agentic Commerce Protocol (ACP), NOT the Agent Payments Protocol (AP2). ACP is OpenAI's proprietary protocol for commerce within ChatGPT \u2014 distinct from AP2. This means PayPal's agent commerce bet is platform-specific (OpenAI ecosystem) rather than protocol-agnostic.",
+    "domain": "technology",
+    "confidence": 0.9,
+    "tags": [
+      "ACP",
+      "AP2",
+      "protocol-distinction",
+      "paypal"
+    ],
+    "raw_quote": "PayPal, Inc. today announced it will adopt the Agentic Commerce Protocol (ACP) to expand payments and commerce in ChatGPT.",
+    "value_tier": "organ",
+    "source": {
+      "title": "Press Release: OpenAI and PayPal Team Up to Power Instant Checkout and Agentic Commerce in ChatGPT - Oct 28, 2025",
+      "url": "https://newsroom.paypal-corp.com/2025-10-28-OpenAI-and-PayPal-Team-Up-to-Power-Instant-Checkout-and-Agentic-Commerce-in-ChatGPT"
+    },
+    "hunt_id": "e7408160",
+    "extracted_at": "2026-03-14T14:07:50.105280+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.217922+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

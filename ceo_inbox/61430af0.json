@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.380871+00:00",
+    "relevance_score": 0.71,
+    "matched_tags": [
+      "trust"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems|strategy/61430af0.json"
+  },
+  "framework": {
+    "id": "61430af0",
+    "type": "claim",
+    "name": "Explainable AI as Trust Requirement",
+    "description": "Brief mention that building trust through explainable AI is crucial for maintaining Lean's ethical focus. This acknowledges that black-box AI recommendations will face resistance in continuous improvement cultures that value understanding root causes.",
+    "domain": "ai-systems|strategy",
+    "confidence": 0.8,
+    "tags": [
+      "explainable-ai",
+      "trust",
+      "ethics",
+      "transparency"
+    ],
+    "raw_quote": "building trust through explainable AI is crucial in maintaining Lan's ethical Focus",
+    "source": {
+      "title": "Warning: If you're still approaching Lean Six Sigma the traditional way, you risk falling behind \ud83d\udea8",
+      "url": "https://www.youtube.com/watch?v=JeR_CLfx5-w"
+    },
+    "hunt_id": "bb70a202",
+    "extracted_at": "2026-03-05T22:15:29.697124+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.198810+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

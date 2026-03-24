@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.513669+00:00",
+    "relevance_score": 0.775,
+    "matched_tags": [
+      "agent-commerce"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/1b541799.json"
+  },
+  "framework": {
+    "id": "1b541799",
+    "type": "claim",
+    "name": "Global B2B and B2C Agent Commerce Simultaneity",
+    "description": "Agent-driven commerce will emerge simultaneously in both consumer (B2C) and business (B2B) contexts, and at global scale rather than being a US-centric phenomenon. This creates compounding complexity for payment infrastructure design.",
+    "domain": "strategy",
+    "confidence": 0.75,
+    "tags": [
+      "b2b",
+      "b2c",
+      "global-commerce",
+      "scale",
+      "agent-commerce"
+    ],
+    "raw_quote": "These step change functions happen, models get better, agents will start appearing more in in consumer iterative flows, but they're also going to appear within the B2B flows. It's also at global scale. So, this is not something that's just happening within the states. This is happening globally as well.",
+    "source": {
+      "title": "Inside PayOS with Jonathan McGowan: How Agentic Payments Will Power the AI Shopping Revolution",
+      "url": "https://www.youtube.com/watch?v=KHfTbWAsy-Y"
+    },
+    "hunt_id": "7d3db790",
+    "extracted_at": "2026-03-03T18:48:30.232708+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.208056+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

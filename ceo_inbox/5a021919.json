@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.635203+00:00",
+    "relevance_score": 0.565,
+    "matched_tags": [
+      "authorization"
+    ],
+    "domain_match": false,
+    "source_path": "technology/5a021919.json"
+  },
+  "framework": {
+    "id": "5a021919",
+    "type": "framework",
+    "name": "Visa User Intent Capture",
+    "description": "Visa has a specific 'user intent capture' tool as part of their agentic commerce stack. This appears to be their analog to Mastercard's Verifiable Intent but the implementation is human-confirmation-based rather than cryptographic-signature-based.",
+    "domain": "technology",
+    "confidence": 0.75,
+    "tags": [
+      "intent",
+      "visa",
+      "authorization"
+    ],
+    "raw_quote": "authentication, agentic tokenization, and user intent capture",
+    "value_tier": "meat",
+    "source": {
+      "title": "Introducing Visa Intelligent Commerce on AWS: Enabling agentic commerce with Amazon Bedrock AgentCore | Artificial Intelligence",
+      "url": "https://aws.amazon.com/blogs/machine-learning/introducing-visa-intelligent-commerce-on-aws-enabling-agentic-commerce-with-amazon-bedrock-agentcore/"
+    },
+    "hunt_id": "da550186",
+    "extracted_at": "2026-03-15T12:05:52.906828+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.182563+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

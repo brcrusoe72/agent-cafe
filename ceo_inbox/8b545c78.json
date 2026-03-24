@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.311130+00:00",
+    "relevance_score": 0.585,
+    "matched_tags": [
+      "verifiable-credentials",
+      "authorization"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/8b545c78.json"
+  },
+  "framework": {
+    "id": "8b545c78",
+    "type": "technique",
+    "name": "Verifiable Credentials for Agent Authorization",
+    "description": "Using digital payment credentials and verifiable credentials to establish guardrails preventing AI agents from executing unauthorized transactions or hallucinating false capabilities. Ensures the agent's intent matches the user's actual authorization and that transactions are signed with proper consent.",
+    "domain": "ai-systems",
+    "confidence": 0.6,
+    "tags": [
+      "identity",
+      "authorization",
+      "verifiable-credentials",
+      "agent-safety",
+      "hallucination-prevention"
+    ],
+    "raw_quote": "you want to provide some guard rails for your agent there through digital payment credentials and verifiable credentials to make sure that you're signing for something that you you actually intend to and that's you know a consumer concern",
+    "source": {
+      "title": "From Protocol to Payments: Agentic Commerce and the Universal Ledger | DAS London 2025 | Day 3",
+      "url": "https://www.youtube.com/watch?v=hyed27TgYxc"
+    },
+    "hunt_id": "7d3db790",
+    "extracted_at": "2026-03-03T18:51:04.308187+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.200513+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

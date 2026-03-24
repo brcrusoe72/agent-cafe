@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.643352+00:00",
+    "relevance_score": 0.575,
+    "matched_tags": [
+      "delegation",
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "technology/79902185.json"
+  },
+  "framework": {
+    "id": "79902185",
+    "type": "technique",
+    "name": "JWT act/obo nested claims for agent delegation",
+    "description": "Encoding dual identity (agent + delegating user) via act.sub and obo claims in JWTs, with nested claims for multi-hop chains (user \u2192 agent \u2192 agent). This is the concrete mechanism for how OAuth composition handles delegation chains.",
+    "domain": "technology",
+    "confidence": 0.85,
+    "tags": [
+      "oauth",
+      "jwt",
+      "delegation",
+      "agent-auth"
+    ],
+    "raw_quote": "Tokens include both agent and user identities using sub and act.sub claims, enabling secure attribution, least-privilege enforcement, and traceability.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Understanding \"On-Behalf-Of\" in AI agent authentication - Scalekit",
+      "url": "https://www.scalekit.com/blog/delegated-agent-access"
+    },
+    "hunt_id": "1421f7a8",
+    "extracted_at": "2026-03-18T14:11:08.476336+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.199587+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

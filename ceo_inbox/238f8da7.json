@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.246137+00:00",
+    "relevance_score": 0.785,
+    "matched_tags": [
+      "agent-identity"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/238f8da7.json"
+  },
+  "framework": {
+    "id": "238f8da7",
+    "type": "technique",
+    "name": "Inherited But Constrained Agent Access",
+    "description": "Agents should have unique identities for auditability but their access must never exceed the constraints of the humans deploying them. Prevents privilege escalation where users bypass authorization by delegating to agents. Suggests agents should be independently scrutinized and often given MORE restrictive access than humans due to their destructive potential.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "agent-identity",
+      "privilege-escalation",
+      "access-control",
+      "least-privilege"
+    ],
+    "raw_quote": "These identities should never surpass the constraints levied on the users that are deploying them. Otherwise, users could use agents to bypass authorization. In fact, the opposite is required: humans are frequently over-permissioned, and given the additional hazard that AI agents risk, their access should be independently scrutinized.",
+    "source": {
+      "title": "Best Practices of Authorizing AI Agents - Oso",
+      "url": "https://www.osohq.com/learn/best-practices-of-authorizing-ai-agents"
+    },
+    "hunt_id": "4f110637",
+    "extracted_at": "2026-03-06T14:18:45.228422+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.181187+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

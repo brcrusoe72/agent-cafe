@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.638786+00:00",
+    "relevance_score": 0.55,
+    "matched_tags": [
+      "interoperability",
+      "mcp"
+    ],
+    "domain_match": false,
+    "source_path": "technology/6b40882e.json"
+  },
+  "framework": {
+    "id": "6b40882e",
+    "type": "framework",
+    "name": "AP2 as A2A/MCP Extension (Not Standalone)",
+    "description": "AP2 positions itself explicitly as an extension layer for Google's A2A and Anthropic's MCP protocols, not a competing standard. This is a smart standards strategy \u2014 parasitic adoption on existing protocol momentum rather than building from scratch.",
+    "domain": "technology",
+    "confidence": 0.95,
+    "tags": [
+      "a2a",
+      "mcp",
+      "standards-strategy",
+      "interoperability"
+    ],
+    "raw_quote": "This protocol, designed as an extension for emerging agent-to-agent (A2A) and model-context protocols (MCP), establishes a secure and reliable framework for AI-driven commerce.",
+    "value_tier": "meat",
+    "source": {
+      "title": "AP2 specification - AP2 - Agent Payments Protocol Documentation",
+      "url": "https://ap2-protocol.org/specification/"
+    },
+    "hunt_id": "7e7c0a23",
+    "extracted_at": "2026-03-14T14:18:52.268315+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.218220+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

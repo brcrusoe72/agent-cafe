@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.542967+00:00",
+    "relevance_score": 0.57,
+    "matched_tags": [
+      "pricing"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/6b051647.json"
+  },
+  "framework": {
+    "id": "6b051647",
+    "type": "case_study",
+    "name": "Tommy's 10x Revenue Increase from Pricing Change Alone",
+    "description": "Agency owner kept builds identical but switched from guessing to incentive-matched pricing. Revenue increased 10x in ~1 month. Demonstrates pricing strategy is higher-leverage than build optimization for early-stage operators.",
+    "domain": "strategy",
+    "confidence": 0.8,
+    "tags": [
+      "case-study",
+      "pricing",
+      "revenue-growth",
+      "solo-operator"
+    ],
+    "raw_quote": "I switched to something called incentive match pricing, and I began to actually align my pricing with what the actual project was and required for the client. And then after doing that, I actually 10xed my agency revenue in around a month. And let me remind you, these were the exact same builds, same complexity, everything.",
+    "source": {
+      "title": "$50/Hour to $10K Agents: AI Voice Agency Pricing Masterclass",
+      "url": "https://www.youtube.com/watch?v=JxusnOQ77Gc"
+    },
+    "hunt_id": "1295ff45",
+    "extracted_at": "2026-03-05T20:56:57.687182+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.209310+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

@@ -1,0 +1,35 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.367438+00:00",
+    "relevance_score": 0.7,
+    "matched_tags": [
+      "multi-agent"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/ec062d18.json"
+  },
+  "framework": {
+    "id": "ec062d18",
+    "type": "framework",
+    "name": "Multi-Agent Specialist Network Architecture",
+    "description": "Enterprise value emerges from networks of specialized agents (data analysis, pattern recognition, domain knowledge) collaborating on complex workflows rather than single-purpose agents. Creates reusable analytical frameworks and institutional knowledge.",
+    "domain": "ai-systems",
+    "confidence": 0.7,
+    "tags": [
+      "multi-agent",
+      "specialization",
+      "enterprise-architecture"
+    ],
+    "raw_quote": "For example, in a consumer goods company, one agent might analyze sales data, another optimize supply chain operations and a third track market trends. Together, they can identify emerging opportunities and risks, generate actionable recommendations, automate complex business processes and create reusable analytical frameworks.",
+    "source": {
+      "title": "",
+      "url": "https://www.reworked.co/digital-workplace/the-business-case-for-agentic-ai/"
+    },
+    "hunt_id": "f65e2a8b",
+    "extracted_at": "2026-03-05T20:46:39.722887+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.220815+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

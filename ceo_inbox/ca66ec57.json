@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.665511+00:00",
+    "relevance_score": 0.41,
+    "matched_tags": [
+      "cryptography"
+    ],
+    "domain_match": false,
+    "source_path": "technology/ca66ec57.json"
+  },
+  "framework": {
+    "id": "ca66ec57",
+    "type": "framework",
+    "name": "HSM-Based Cryptographic Authorization Model",
+    "description": "Hardware Security Modules provide tamper-resistant environments for storing and managing cryptographic keys, ensuring that private keys never leave secure hardware while allowing authorized operations. Applied to agent systems, this could mean authorization credentials (API keys, signing keys) are stored in HSMs, with operations executed inside the secure boundary rather than exposing keys to application memory.",
+    "domain": "technology",
+    "confidence": 0.6,
+    "tags": [
+      "cryptography",
+      "key-management",
+      "zero-trust",
+      "hardware-security",
+      "authorization-infrastructure"
+    ],
+    "raw_quote": "The cryptographic functions involved in securing data during transmission all occur within the HSM environment, where data is shielded from attackers. The way an HSM is designed makes it impossible for an attacker to impact the processes happening inside the hardware unit.",
+    "source": {
+      "title": "hardware-security-module",
+      "url": "https://www.fortinet.com/resources/cyberglossary/hardware-security-module"
+    },
+    "hunt_id": "c5cfd231",
+    "extracted_at": "2026-03-06T14:27:02.006676+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.185884+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

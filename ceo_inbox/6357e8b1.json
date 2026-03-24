@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.417473+00:00",
+    "relevance_score": 0.44,
+    "matched_tags": [
+      "cryptography"
+    ],
+    "domain_match": false,
+    "source_path": "finance/6357e8b1.json"
+  },
+  "framework": {
+    "id": "6357e8b1",
+    "type": "framework",
+    "name": "Verifiable Intent Cryptographic Audit Trail",
+    "description": "Mastercard+Google's mechanism: links consumer identity, original instructions, and transaction outcome into a single tamper-resistant record using Selective Disclosure. Built on FIDO, EMVCo, IETF, W3C standards. Open-sourced at verifiableintent.dev, announced March 5, 2026.",
+    "domain": "finance",
+    "confidence": 0.9,
+    "tags": [
+      "agentic-commerce",
+      "cryptography",
+      "payments",
+      "mastercard",
+      "google"
+    ],
+    "raw_quote": "creates tamper-resistant proof of consumer authorization for every transaction executed by an AI agent. It links three elements into a single immutable record: the consumer's identity, their original instructions, and the outcome of the transaction.",
+    "value_tier": "meat",
+    "source": {
+      "title": "What Is Mastercard Verifiable Intent? Agentic Commerce Trust Layer ...",
+      "url": "https://agenticplug.ai/blog/mastercard-verifiable-intent-for-agentic-commerce"
+    },
+    "hunt_id": "7e7c0a23",
+    "extracted_at": "2026-03-14T14:16:58.725054+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.209174+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

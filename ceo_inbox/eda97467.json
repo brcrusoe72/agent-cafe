@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.594149+00:00",
+    "relevance_score": 0.65,
+    "matched_tags": [
+      "governance"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/eda97467.json"
+  },
+  "framework": {
+    "id": "eda97467",
+    "type": "claim",
+    "name": "Governance Token Centralization Paradox",
+    "description": "Governance tokens intended for decentralization often become concentrated among whales and early funders, leading to 'voter apathy' among small holders and de facto centralized control. Low participation rates mean large holders disproportionately influence protocol decisions.",
+    "domain": "strategy",
+    "confidence": 0.9,
+    "tags": [
+      "governance",
+      "decentralization",
+      "power-concentration",
+      "participation"
+    ],
+    "raw_quote": "Governance tokens may still be concentrated with whales or early stage funders, weakening the decentralization ethos of the protocol, thereby leading to a degradation of community trust and representativeness... if only a very small fraction of holders participate in a governance proposal, then the vote may be disproportionately influenced by a single holder of a large number of tokens.",
+    "source": {
+      "title": "choosing-the-right-token-model-utility-s",
+      "url": "https://vocal.media/geeks/choosing-the-right-token-model-utility-security-or-governance"
+    },
+    "hunt_id": "c9aa917a",
+    "extracted_at": "2026-03-04T23:41:37.536219+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.187079+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.338465+00:00",
+    "relevance_score": 0.615,
+    "matched_tags": [
+      "authorization",
+      "liability"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/ba9f3e09.json"
+  },
+  "framework": {
+    "id": "ba9f3e09",
+    "type": "claim",
+    "name": "First-Party Fraud as Core Agentic Commerce Problem",
+    "description": "The shift from human-authorized to agent-authorized transactions creates fundamental ambiguity: Did the consumer truly authorize this? Was it a trusted agent or rogue bot? Did the agent make an error? Traditional fraud detection assumes human-in-loop; agent commerce breaks this model. Merchants and issuers will bear dispute costs unless new authorization mechanisms exist.",
+    "domain": "ai-systems",
+    "confidence": 0.9,
+    "tags": [
+      "fraud",
+      "authorization",
+      "liability",
+      "disputes"
+    ],
+    "raw_quote": "Merchants and issuers are wondering about first party fraud. Was this transaction really authorized by a consumer? Did this actually come from a trusted agent or was it a rogue bot?",
+    "source": {
+      "title": "watch?v=6WfDk_oy8TE",
+      "url": "https://www.youtube.com/watch?v=6WfDk_oy8TE"
+    },
+    "hunt_id": "7d3db790",
+    "extracted_at": "2026-03-03T19:00:21.639663+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.203518+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

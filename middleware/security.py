@@ -45,23 +45,97 @@ class RequestIDMiddleware(BaseHTTPMiddleware):
 # ============================================================
 
 class IPRegistry:
-    """In-memory IP → agent tracking for Sybil detection."""
+    """Persistent IP → agent tracking for Sybil detection.
+    
+    Backed by SQLite (ip_registry table). In-memory caches are rebuilt
+    from DB on startup, so data survives restarts.
+    """
     
     def __init__(self):
-        # ip -> list of (agent_id, timestamp, event_type)
+        # In-memory caches (rebuilt from DB on init)
         self.ip_history: dict = {}
-        # ip -> set of agent_ids that were killed from this IP
         self.death_ips: dict = {}
-        # agent_id -> ip (registration IP)
         self.agent_ips: dict = {}
-        # ip -> trust scores (for trusted IP tracking)
         self.ip_trust_scores: dict = {}
         
         # Thresholds
-        self.MAX_AGENTS_PER_IP = 20         # Max agents from same IP (per hour) - normal
-        self.MAX_AGENTS_PER_IP_TRUSTED = 50 # Max agents from trusted IP (per hour)
-        self.DEATH_IP_COOLDOWN_HOURS = 24   # Hours before a death IP can register again
-        self.TRUSTED_THRESHOLD = 0.5        # Trust score threshold for trusted IPs
+        self.MAX_AGENTS_PER_IP = 20
+        self.MAX_AGENTS_PER_IP_TRUSTED = 50
+        self.DEATH_IP_COOLDOWN_HOURS = 24
+        self.TRUSTED_THRESHOLD = 0.5
+        
+        # Initialize DB table and load persisted state
+        self._init_db()
+        self._load_from_db()
+    
+    def _init_db(self):
+        """Create the ip_registry table if it doesn't exist."""
+        try:
+            from db import DATABASE_PATH
+            import sqlite3
+            with sqlite3.connect(DATABASE_PATH, timeout=10) as conn:
+                conn.execute("""
+                    CREATE TABLE IF NOT EXISTS ip_registry (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        ip TEXT NOT NULL,
+                        agent_id TEXT NOT NULL,
+                        event_type TEXT NOT NULL CHECK (event_type IN ('register', 'death')),
+                        timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+                    )
+                """)
+                conn.execute("CREATE INDEX IF NOT EXISTS idx_ip_registry_ip ON ip_registry(ip)")
+                conn.execute("CREATE INDEX IF NOT EXISTS idx_ip_registry_agent ON ip_registry(agent_id)")
+                conn.commit()
+        except Exception as e:
+            _security_logger.warning("IPRegistry DB init failed: %s", e)
+    
+    def _load_from_db(self):
+        """Rebuild in-memory caches from persisted DB state."""
+        try:
+            from db import DATABASE_PATH
+            import sqlite3
+            with sqlite3.connect(DATABASE_PATH, timeout=10) as conn:
+                conn.row_factory = sqlite3.Row
+                rows = conn.execute(
+                    "SELECT ip, agent_id, event_type, timestamp FROM ip_registry ORDER BY timestamp"
+                ).fetchall()
+                
+                for row in rows:
+                    ip = row['ip']
+                    agent_id = row['agent_id']
+                    event_type = row['event_type']
+                    ts = datetime.fromisoformat(row['timestamp'])
+                    
+                    if ip not in self.ip_history:
+                        self.ip_history[ip] = []
+                    self.ip_history[ip].append((agent_id, ts, event_type))
+                    
+                    if event_type == 'register':
+                        self.agent_ips[agent_id] = ip
+                    elif event_type == 'death':
+                        if ip not in self.death_ips:
+                            self.death_ips[ip] = set()
+                        self.death_ips[ip].add(agent_id)
+                
+                loaded = len(rows)
+                if loaded > 0:
+                    _security_logger.info("IPRegistry loaded %d events from DB", loaded)
+        except Exception as e:
+            _security_logger.warning("IPRegistry DB load failed: %s", e)
+    
+    def _persist_event(self, ip: str, agent_id: str, event_type: str):
+        """Write an event to the persistent DB."""
+        try:
+            from db import DATABASE_PATH
+            import sqlite3
+            with sqlite3.connect(DATABASE_PATH, timeout=10) as conn:
+                conn.execute(
+                    "INSERT INTO ip_registry (ip, agent_id, event_type, timestamp) VALUES (?, ?, ?, ?)",
+                    (ip, agent_id, event_type, datetime.now().isoformat())
+                )
+                conn.commit()
+        except Exception as e:
+            _security_logger.warning("IPRegistry persist failed: %s", e)
     
     def record_registration(self, ip: str, agent_id: str):
         """Record that an agent was registered from this IP."""
@@ -70,6 +144,7 @@ class IPRegistry:
             self.ip_history[ip] = []
         self.ip_history[ip].append((agent_id, now, "register"))
         self.agent_ips[agent_id] = ip
+        self._persist_event(ip, agent_id, "register")
         self._update_ip_trust(ip)
     
     def record_death(self, agent_id: str):
@@ -79,10 +154,10 @@ class IPRegistry:
             if ip not in self.death_ips:
                 self.death_ips[ip] = set()
             self.death_ips[ip].add(agent_id)
-            # Also record in ip_history for cooldown timing
             if ip not in self.ip_history:
                 self.ip_history[ip] = []
             self.ip_history[ip].append((agent_id, datetime.now(), "death"))
+            self._persist_event(ip, agent_id, "death")
     
     def check_registration_allowed(self, ip: str) -> tuple[bool, Optional[str]]:
         """
@@ -158,13 +233,11 @@ class IPRegistry:
         try:
             from db import get_db
             with get_db() as conn:
-                # Get all active agents from this IP and their trust scores
                 agent_ids = [aid for aid, _, evt in self.ip_history.get(ip, []) 
                             if evt == "register"]
                 if not agent_ids:
                     return
                 
-                # Build placeholders for SQL IN clause
                 placeholders = ','.join('?' * len(agent_ids))
                 query = f"""
                     SELECT AVG(trust_score) as avg_trust 
@@ -179,7 +252,6 @@ class IPRegistry:
                 else:
                     self.ip_trust_scores[ip] = 0.0
         except Exception as e:
-            # Don't break registration on trust calculation errors
             pass
 
 
@@ -257,20 +329,30 @@ def validate_operator_key():
 #    Agent sees key once at registration, never again.
 # ============================================================
 
-def hash_api_key(api_key: str) -> str:
-    """Hash an API key for storage. SHA-256, not reversible."""
+def hash_api_key(api_key: str, salt: str = None) -> str:
+    """Hash an API key for storage using PBKDF2-HMAC-SHA256 with salt.
+    
+    If salt is provided, uses salted PBKDF2. Otherwise falls back to
+    bare SHA-256 for backward compatibility with existing keys.
+    New keys should always use generate_secure_api_key() which includes salt.
+    """
+    if salt:
+        dk = hashlib.pbkdf2_hmac('sha256', api_key.encode(), salt.encode(), iterations=100_000)
+        return dk.hex()
+    # Legacy fallback — bare SHA-256 for existing keys
     return hashlib.sha256(api_key.encode()).hexdigest()
 
 
-def generate_secure_api_key() -> tuple[str, str]:
+def generate_secure_api_key() -> tuple[str, str, str]:
     """
-    Generate an API key and its hash.
-    Returns (plaintext_key, hashed_key).
-    Agent sees plaintext once. DB stores hash only.
+    Generate an API key, its salt, and its salted hash.
+    Returns (plaintext_key, hashed_key, salt).
+    Agent sees plaintext once. DB stores hash + salt.
     """
     plaintext = f"cafe_{secrets.token_urlsafe(32)}"
-    hashed = hash_api_key(plaintext)
-    return plaintext, hashed
+    salt = secrets.token_hex(16)
+    hashed = hash_api_key(plaintext, salt=salt)
+    return plaintext, hashed, salt
 
 
 # ============================================================

@@ -1,0 +1,42 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.492937+00:00",
+    "relevance_score": 0.48,
+    "matched_tags": [
+      "interoperability"
+    ],
+    "domain_match": false,
+    "source_path": "manufacturing/f9863425-df80-4bc6-a21a-5e7d62b4ee02.json"
+  },
+  "framework": {
+    "type": "technique",
+    "name": "OpenUSD-Based Large-Scale Simulation",
+    "description": "A method for implementing physically-based simulations at scale using OpenUSD (Universal Scene Description) standards, enabling standardized data exchange and interoperability across different simulation platforms.",
+    "domain": "manufacturing",
+    "confidence": 0.6,
+    "tags": [
+      "OpenUSD",
+      "simulation",
+      "standards",
+      "interoperability"
+    ],
+    "implications": [
+      "Enables cross-platform simulation data sharing",
+      "Reduces vendor lock-in for simulation workflows",
+      "Facilitates collaboration across different simulation tools"
+    ],
+    "raw_quote": "Harness the power of large-scale, physically-based OpenUSD simulation",
+    "id": "f9863425-df80-4bc6-a21a-5e7d62b4ee02",
+    "source": {
+      "title": "Industrial Facility Digital Twins\u2014Use Case | NVIDIA",
+      "url": "https://www.nvidia.com/en-us/use-cases/industrial-facility-digital-twins/",
+      "author": "Unknown",
+      "date": ""
+    },
+    "extracted_at": "2026-03-03T10:14:23.125730"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.192777+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "marketplace_design"
+}

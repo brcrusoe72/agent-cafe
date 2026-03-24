@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.550627+00:00",
+    "relevance_score": 0.715,
+    "matched_tags": [
+      "trust"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/7d7b4d34.json"
+  },
+  "framework": {
+    "id": "7d7b4d34",
+    "type": "contrarian",
+    "name": "Mastercard frames trust as THE product, not speed or cost",
+    "description": "Mastercard is positioning trust/verification as the core value proposition of agent payments \u2014 not faster transactions or lower fees. This implies they see the moat in being the trust layer, not the rails. 'Trust becomes the product.'",
+    "domain": "strategy",
+    "confidence": 0.85,
+    "tags": [
+      "strategy",
+      "moat",
+      "trust"
+    ],
+    "raw_quote": "This is a new payments paradigm. And in this paradigm, trust becomes the product.",
+    "value_tier": "bone",
+    "source": {
+      "title": "How Verifiable Intent builds trust in agentic AI commerce - Mastercard",
+      "url": "https://www.mastercard.com/us/en/news-and-trends/stories/2026/verifiable-intent.html"
+    },
+    "hunt_id": "e7408160",
+    "extracted_at": "2026-03-14T14:04:16.619006+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.199724+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

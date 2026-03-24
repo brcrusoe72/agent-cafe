@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.665681+00:00",
+    "relevance_score": 0.52,
+    "matched_tags": [
+      "open-standard"
+    ],
+    "domain_match": false,
+    "source_path": "technology/cb1b3374.json"
+  },
+  "framework": {
+    "id": "cb1b3374",
+    "type": "claim",
+    "name": "OAuth 2.0 as Industry-Standard Open Protocol",
+    "description": "OAuth 2.0 was released by IETF as RFC 6749/6750 in 2012 and is now the industry standard for authorization. Being an open standard (not proprietary) means any implementer can build on it without vendor lock-in.",
+    "domain": "technology",
+    "confidence": 1.0,
+    "tags": [
+      "oauth2",
+      "ietf",
+      "rfc",
+      "open-standard",
+      "industry-standard",
+      "non-proprietary"
+    ],
+    "raw_quote": "In 2012, the Internet Engineering Task Force (IETF) released OAuth 2.0 as RFC 6749 and RFC 6750... OAuth 2.0 replaced OAuth 1.0 and is now the industry standard.",
+    "source": {
+      "title": "oauth",
+      "url": "https://www.ibm.com/think/topics/oauth"
+    },
+    "hunt_id": "c5cfd231",
+    "extracted_at": "2026-03-06T14:30:53.298828+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.204514+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

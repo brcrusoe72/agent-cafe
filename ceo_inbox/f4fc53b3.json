@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.680733+00:00",
+    "relevance_score": 0.515,
+    "matched_tags": [
+      "ap2"
+    ],
+    "domain_match": false,
+    "source_path": "technology/f4fc53b3.json"
+  },
+  "framework": {
+    "id": "f4fc53b3",
+    "type": "claim",
+    "name": "AP2 September 2025 launch with GitHub spec available",
+    "description": "AP2 announced September 16, 2025 with public GitHub repo containing technical spec, docs, and reference implementations. This is further along than 'announced-only' \u2014 it has shipped artifacts. But no GA production timeline mentioned.",
+    "domain": "technology",
+    "confidence": 0.95,
+    "tags": [
+      "ap2",
+      "timeline",
+      "launch"
+    ],
+    "raw_quote": "visit our public GitHub repository to review the complete technical specification, documentation, and reference implementations",
+    "value_tier": "meat",
+    "source": {
+      "title": "Announcing Agent Payments Protocol (AP2) | Google Cloud Blog",
+      "url": "https://cloud.google.com/blog/products/ai-machine-learning/announcing-agents-to-payments-ap2-protocol"
+    },
+    "hunt_id": "e7408160",
+    "extracted_at": "2026-03-14T14:03:05.457421+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:37:33.712198+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "protocols_standards"
+}

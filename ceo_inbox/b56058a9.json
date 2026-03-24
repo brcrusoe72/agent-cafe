@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.659521+00:00",
+    "relevance_score": 0.655,
+    "matched_tags": [
+      "agent-commerce",
+      "ap2"
+    ],
+    "domain_match": false,
+    "source_path": "technology/b56058a9.json"
+  },
+  "framework": {
+    "id": "b56058a9",
+    "type": "claim",
+    "name": "Adyen explicitly backing AP2 as infrastructure play",
+    "description": "Adyen's Co-CEO publicly positioned AP2 collaboration as extending their mission to provide 'payments building blocks for tomorrow's commerce' and establishing a 'common rulebook' for security and interoperability. This is Adyen's clearest public stance on agent commerce architecture.",
+    "domain": "technology",
+    "confidence": 0.95,
+    "tags": [
+      "adyen",
+      "ap2",
+      "agent-commerce"
+    ],
+    "raw_quote": "Adyen's collaboration on Google's Agent Payments Protocol (AP2) is a natural extension of our mission to provide the merchants with the payments building blocks for tomorrow's commerce.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Announcing Agent Payments Protocol (AP2) | Google Cloud Blog",
+      "url": "https://cloud.google.com/blog/products/ai-machine-learning/announcing-agents-to-payments-ap2-protocol"
+    },
+    "hunt_id": "e7408160",
+    "extracted_at": "2026-03-14T14:03:05.455357+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.210501+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

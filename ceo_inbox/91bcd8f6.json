@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.649886+00:00",
+    "relevance_score": 0.575,
+    "matched_tags": [
+      "authorization",
+      "delegation"
+    ],
+    "domain_match": false,
+    "source_path": "technology/91bcd8f6.json"
+  },
+  "framework": {
+    "id": "91bcd8f6",
+    "type": "framework",
+    "name": "GNAP Constrained Delegation Model",
+    "description": "GNAP explicitly models delegation as a negotiated grant with time-bounded, revocable access tokens issued to client instances by an AS on behalf of an RO. The grant is the 'constrained envelope' \u2014 it carries rights, duration, and can be rotated or revoked. This is structurally the same primitive as VRP mandates and session keys.",
+    "domain": "technology",
+    "confidence": 0.85,
+    "tags": [
+      "gnap",
+      "delegation",
+      "authorization",
+      "constrained-envelope"
+    ],
+    "raw_quote": "GNAP defines a mechanism for delegating authorization to a piece of software and conveying the results and artifacts of that delegation to the software.",
+    "value_tier": "bone",
+    "source": {
+      "title": "RFC 9635 - Grant Negotiation and Authorization Protocol (GNAP)",
+      "url": "https://datatracker.ietf.org/doc/html/rfc9635"
+    },
+    "hunt_id": "67bf6ff4",
+    "extracted_at": "2026-03-15T12:31:29.100042+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.200841+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

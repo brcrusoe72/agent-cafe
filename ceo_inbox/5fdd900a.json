@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.636109+00:00",
+    "relevance_score": 0.785,
+    "matched_tags": [
+      "agent-commerce"
+    ],
+    "domain_match": false,
+    "source_path": "technology/5fdd900a.json"
+  },
+  "framework": {
+    "id": "5fdd900a",
+    "type": "framework",
+    "name": "UCP Three-Party Payment Separation",
+    "description": "UCP separates payment instruments (cards, wallets) from payment handlers (processing specs) from merchant configuration. Providers author handler specs, merchants configure credentials, platforms execute. This is orchestration-layer abstraction, not portable spending authority.",
+    "domain": "technology",
+    "confidence": 0.85,
+    "tags": [
+      "agent-commerce",
+      "payment-protocols",
+      "google",
+      "UCP"
+    ],
+    "raw_quote": "Google Pay or Stripe author handler specs, merchants configure them with credentials, platforms execute them. This three-way separation lets merchants use any processor while supporting any payment method.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Google's Universal Commerce Protocol: What It Means for Payment ...",
+      "url": "https://juspay.io/blog/google-s-universal-commerce-protocol-what-it-means-for-payment-orchestration"
+    },
+    "hunt_id": "eeb6b019",
+    "extracted_at": "2026-03-15T12:20:10.217488+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.217623+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

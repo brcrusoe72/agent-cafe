@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.253109+00:00",
+    "relevance_score": 0.785,
+    "matched_tags": [
+      "agent-identity"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/2c321ab9.json"
+  },
+  "framework": {
+    "id": "2c321ab9",
+    "type": "claim",
+    "name": "SPIFFE identity-per-replica for agents",
+    "description": "Current SPIFFE/Istio assigns identical identities to all pod replicas via service accounts. Posta argues agents are non-deterministic and context-dependent, so each instance needs a unique SPIFFE ID (e.g., /instance/001). SPIRE's pluggable attestation can support this, but no one does it today.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "spiffe",
+      "agent-identity",
+      "kubernetes",
+      "non-deterministic"
+    ],
+    "raw_quote": "no two replicas of an 'agent' are guaranteed to behave the same and from a compliance, security, and auditing standpoint they cannot be considered the same identities",
+    "value_tier": "meat",
+    "source": {
+      "title": "Agent Identity and Access Management - Can SPIFFE Work?",
+      "url": "https://www.linkedin.com/pulse/agent-identity-access-management-can-spiffe-work-christian-posta-hffnc"
+    },
+    "hunt_id": "5213bf37",
+    "extracted_at": "2026-03-18T14:22:05.015010+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.195101+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

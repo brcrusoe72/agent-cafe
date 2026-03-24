@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.659132+00:00",
+    "relevance_score": 0.79,
+    "matched_tags": [
+      "agent-identity"
+    ],
+    "domain_match": false,
+    "source_path": "technology/b2620e92.json"
+  },
+  "framework": {
+    "id": "b2620e92",
+    "type": "claim",
+    "name": "Agent Identifier (AID) as OAuth Extension Not Novel Crypto",
+    "description": "Introduces 'Agent Identifier (AID)' \u2014 an independent identifier for AI agents \u2014 but explicitly within OAuth framework, not as a novel cryptographic identity scheme. This is the boring-infra-wins pattern in action: even when they need something new (agent identity), they compose it into existing standards.",
+    "domain": "technology",
+    "confidence": 0.9,
+    "tags": [
+      "agent-identity",
+      "oauth-extension",
+      "convergence"
+    ],
+    "raw_quote": "This document describes an extension to the OAuth to support authentication and authorization among AI agents within ACNs. It defines three operational modes... introduces the concept of an AID",
+    "value_tier": "bone",
+    "source": {
+      "title": "Further considerations on AI Agent Authentication and Authorization ...",
+      "url": "https://datatracker.ietf.org/doc/draft-yao-agent-auth-considerations/01/"
+    },
+    "hunt_id": "1421f7a8",
+    "extracted_at": "2026-03-18T14:09:49.489639+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.202927+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

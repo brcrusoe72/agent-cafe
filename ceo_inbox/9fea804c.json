@@ -1,0 +1,39 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.323225+00:00",
+    "relevance_score": 0.58,
+    "matched_tags": [
+      "authorization",
+      "oauth",
+      "delegation"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/9fea804c.json"
+  },
+  "framework": {
+    "id": "9fea804c",
+    "type": "framework",
+    "name": "Authenticated Delegation via OAuth 2.0 / OIDC Extension",
+    "description": "Extends OAuth 2.0 and OpenID Connect with agent-specific credentials, cryptographic delegation chains, and natural language \u2192 access control translation. Solves human\u2192agent authorization with scoping, auditability, and mutual authentication between agents.",
+    "domain": "ai-systems",
+    "confidence": 0.9,
+    "tags": [
+      "delegation",
+      "oauth",
+      "authorization",
+      "credentials"
+    ],
+    "raw_quote": "We introduce a novel framework for authenticated, authorized, and auditable delegation of authority to AI agents, where human users can securely delegate and restrict the permissions and scope of agents while maintaining clear chains of accountability.",
+    "value_tier": "bone",
+    "source": {
+      "title": "Authenticated Delegation and Authorized AI Agents",
+      "url": "https://arxiv.org/html/2501.09674v1"
+    },
+    "hunt_id": "d39fbdac",
+    "extracted_at": "2026-03-14T14:28:48.349111+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.201905+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

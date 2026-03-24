@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.621942+00:00",
+    "relevance_score": 0.58,
+    "matched_tags": [
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "technology/3500737d.json"
+  },
+  "framework": {
+    "id": "3500737d",
+    "type": "framework",
+    "name": "OAuth PAR as Agent Authorization Transport",
+    "description": "Uses RFC 9126 Pushed Authorization Requests as the submission mechanism \u2014 the agent pushes the proposal JWT to the AS before redirecting the user for consent. This reuses existing OAuth infrastructure rather than inventing new protocols.",
+    "domain": "technology",
+    "confidence": 0.9,
+    "tags": [
+      "oauth",
+      "par",
+      "rfc9126"
+    ],
+    "raw_quote": "submits the resulting JWT to the Authorization Server (AS) via OAuth 2.0 Pushed Authorization Requests (PAR) [RFC9126]",
+    "value_tier": "bone",
+    "source": {
+      "title": "Agent Operation Authorization - IETF",
+      "url": "https://www.ietf.org/archive/id/draft-liu-agent-operation-authorization-00.html"
+    },
+    "hunt_id": "f911b3bb",
+    "extracted_at": "2026-03-18T13:58:37.106050+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.195424+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

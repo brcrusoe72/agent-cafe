@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.396146+00:00",
+    "relevance_score": 0.785,
+    "matched_tags": [
+      "marketplace-design"
+    ],
+    "domain_match": false,
+    "source_path": "finance/04f83128.json"
+  },
+  "framework": {
+    "id": "04f83128",
+    "type": "framework",
+    "name": "Two-Token Economic Model",
+    "description": "Uses a base currency (CHZ) that fuels purchase of capability-specific tokens (fan tokens). Base token provides liquidity and platform access; specific tokens unlock services from providers (teams). Analogous to how agent platforms might use native tokens to access agent-specific service tokens. Platform can manipulate base token value through buybacks funded by coordination fees.",
+    "domain": "finance",
+    "confidence": 0.85,
+    "tags": [
+      "tokenomics",
+      "marketplace-design",
+      "currency-systems",
+      "platform-economics"
+    ],
+    "raw_quote": "You get some CHZ. That's the Chilis token. You use that to buy your team's specific fan token on socios.com... they're even planning to use some of their revenue to buy back their own CHZ tokens",
+    "source": {
+      "title": "watch?v=woIAKaj3tlc",
+      "url": "https://www.youtube.com/watch?v=woIAKaj3tlc"
+    },
+    "hunt_id": "c9aa917a",
+    "extracted_at": "2026-03-04T23:40:18.972668+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.207599+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

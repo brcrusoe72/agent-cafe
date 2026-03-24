@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.308168+00:00",
+    "relevance_score": 0.57,
+    "matched_tags": [
+      "delegation"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/84c03619.json"
+  },
+  "framework": {
+    "id": "84c03619",
+    "type": "framework",
+    "name": "Section 6: Agent-to-Agent Delegation with Trust Chain",
+    "description": "Dedicated section for multi-hop delegation \u2014 delegation request, AS validation at each hop, and trust chain preservation. This is the draft's answer to hop-2+. Critically, it's a NEW mechanism, not RFC 8693 token exchange \u2014 confirming that token exchange alone doesn't solve this.",
+    "domain": "ai-systems",
+    "confidence": 0.8,
+    "tags": [
+      "multi-hop",
+      "delegation",
+      "trust-chain"
+    ],
+    "raw_quote": "Agent-to-Agent Delegation... Delegation Request... Authorization Server Validation... Trust Chain Preservation",
+    "value_tier": "meat",
+    "source": {
+      "title": "draft-liu-agent-operation-authorization-01 - IETF Datatracker",
+      "url": "https://datatracker.ietf.org/doc/draft-liu-agent-operation-authorization/"
+    },
+    "hunt_id": "5213bf37",
+    "extracted_at": "2026-03-18T14:20:26.635514+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.200167+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

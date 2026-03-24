@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.392460+00:00",
+    "relevance_score": 0.515,
+    "matched_tags": [
+      "open-standard"
+    ],
+    "domain_match": false,
+    "source_path": "finance/03695108.json"
+  },
+  "framework": {
+    "id": "03695108",
+    "type": "framework",
+    "name": "Agent Payments Protocol (AP2)",
+    "description": "Open protocol for agent-initiated payments using cryptographically-signed mandates (Intent Mandates and Cart Mandates) to establish verifiable proof of user authorization. Distinguishes between human-present (real-time) and human-absent (delegated) purchase scenarios with different authorization chains. Explicitly designed as payment-method agnostic (cards, stablecoins, real-time bank transfers).",
+    "domain": "finance",
+    "confidence": 0.95,
+    "tags": [
+      "agent-authorization",
+      "payment-protocol",
+      "cryptographic-mandates",
+      "open-standard",
+      "Google"
+    ],
+    "raw_quote": "AP2 builds trust by using Mandates\u2014tamper-proof, cryptographically-signed digital contracts that serve as verifiable proof of a user's instructions. These mandates are signed by verifiable credentials (VCs) and act as the foundational evidence for every transaction.",
+    "value_tier": "organ",
+    "source": {
+      "title": "Announcing Agent Payments Protocol (AP2) | Google Cloud Blog",
+      "url": "https://cloud.google.com/blog/products/ai-machine-learning/announcing-agents-to-payments-ap2-protocol"
+    },
+    "hunt_id": "b977a620",
+    "extracted_at": "2026-03-07T14:42:04.607611+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.212104+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "payment_infrastructure"
+}

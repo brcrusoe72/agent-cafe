@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.610396+00:00",
+    "relevance_score": 0.79,
+    "matched_tags": [
+      "agent-identity"
+    ],
+    "domain_match": false,
+    "source_path": "technology/0c71a052.json"
+  },
+  "framework": {
+    "id": "0c71a052",
+    "type": "technique",
+    "name": "Actor/Principal separation for agent auth",
+    "description": "The draft's core contribution: separating 'who is acting' (the agent) from 'on whose behalf' (the principal) in transaction tokens. For autonomous agents, principal MAY be omitted. This enables fine-grained access control deep in service call chains \u2014 not just at the API gateway.",
+    "domain": "technology",
+    "confidence": 0.9,
+    "tags": [
+      "agent-identity",
+      "access-control",
+      "zero-trust"
+    ],
+    "raw_quote": "The 'actor' field identifies the agent performing the action, while the 'principal' field identifies the human or system entity that initiated the agent's action. For autonomous agents operating independently, the 'principal' field MAY be omitted.",
+    "value_tier": "meat",
+    "source": {
+      "title": "draft-oauth-transaction-tokens-for-agents-00 - IETF Datatracker",
+      "url": "https://datatracker.ietf.org/doc/draft-oauth-transaction-tokens-for-agents/00/"
+    },
+    "hunt_id": "f911b3bb",
+    "extracted_at": "2026-03-18T13:57:44.341630+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.193446+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

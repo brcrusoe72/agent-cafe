@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.273116+00:00",
+    "relevance_score": 0.72,
+    "matched_tags": [
+      "multi-agent"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/4e0a2697.json"
+  },
+  "framework": {
+    "id": "4e0a2697",
+    "type": "framework",
+    "name": "Five-Protocol Multi-Agent AI Architecture",
+    "description": "A structured approach to building multi-agent AI systems using five key protocols: MCP (Model Context Protocol), ACP (Agent Communication Protocol), A2A (Agent-to-Agent Protocol), ANP (Agent Network Protocol), and AG-UI (Agent-User Interaction Protocol). This creates a comprehensive ecosystem for autonomous agents to collaborate.",
+    "domain": "ai-systems",
+    "confidence": 0.9,
+    "tags": [
+      "multi-agent",
+      "protocols",
+      "autonomous-systems",
+      "enterprise-ai"
+    ],
+    "raw_quote": "For those looking to build scalable multi-agent AI systems, it's essential to understand five key protocols: MCP (Model Context Protocol), ACP (Agent Communication Protocol), A2A (Agent-to-Agent Protocol), ANP (Agent Network Protocol), and AG-UI (Agent-User Interaction Protocol).",
+    "source": {
+      "title": "",
+      "url": "https://onereach.ai/blog/power-of-multi-agent-ai-open-protocols/"
+    },
+    "hunt_id": "d871eeba",
+    "extracted_at": "2026-03-03T16:48:40.939333+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.216990+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

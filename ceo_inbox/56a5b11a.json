@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.278070+00:00",
+    "relevance_score": 0.603,
+    "matched_tags": [
+      "authorization",
+      "authentication",
+      "security"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/56a5b11a.json"
+  },
+  "framework": {
+    "id": "56a5b11a",
+    "type": "claim",
+    "name": "Traditional Auth Models Don't Work for Agents",
+    "description": "Fundamental assertion that security frameworks designed for human authentication/authorization fail when applied to autonomous agents. Agents need machine-to-machine credentials, can initiate invisible chains of events, and require different trust models than human users.",
+    "domain": "ai-systems",
+    "confidence": 0.9,
+    "tags": [
+      "authentication",
+      "authorization",
+      "paradigm-shift",
+      "security"
+    ],
+    "raw_quote": "Traditional security models focused on humans don't translate to autonomous agents. New frameworks like Agent Trust are needed.",
+    "source": {
+      "title": "AI Agent Authentication & Authorization - datadome.co",
+      "url": "https://datadome.co/agent-trust-management/authentication-and-authorization/"
+    },
+    "hunt_id": "4f110637",
+    "extracted_at": "2026-03-06T14:17:42.635913+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.182470+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

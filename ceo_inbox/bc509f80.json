@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.661331+00:00",
+    "relevance_score": 0.55,
+    "matched_tags": [
+      "tokenization",
+      "security"
+    ],
+    "domain_match": false,
+    "source_path": "technology/bc509f80.json"
+  },
+  "framework": {
+    "id": "bc509f80",
+    "type": "technique",
+    "name": "Tokenized Payment Rights",
+    "description": "Customer wallets store tokenized representations of payment authority rather than raw credentials, allowing AI agents to trigger payments within approved limits without direct access to sensitive financial data.",
+    "domain": "technology",
+    "confidence": 0.6,
+    "tags": [
+      "tokenization",
+      "credentials",
+      "payment-abstraction",
+      "security"
+    ],
+    "raw_quote": "Customer wallets store tokenized payment rights not raw credentials.",
+    "source": {
+      "title": "How to Integrate Agentic Commerce into Payment Systems",
+      "url": "https://www.youtube.com/watch?v=1lxwuTF-t4E"
+    },
+    "hunt_id": "7d3db790",
+    "extracted_at": "2026-03-03T18:49:30.816280+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.203648+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

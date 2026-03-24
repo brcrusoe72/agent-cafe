@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.625454+00:00",
+    "relevance_score": 0.51,
+    "matched_tags": [
+      "interoperability"
+    ],
+    "domain_match": false,
+    "source_path": "technology/3f201ea8.json"
+  },
+  "framework": {
+    "id": "3f201ea8",
+    "type": "framework",
+    "name": "Coordination Layer Economics",
+    "description": "Infrastructure platforms can monetize by providing coordination/ordering services rather than processing transactions themselves. The value comes from being the neutral shared layer that enables interoperability between otherwise fragmented systems. Like an air traffic controller that doesn't fly planes but coordinates all flights.",
+    "domain": "technology",
+    "confidence": 0.9,
+    "tags": [
+      "coordination",
+      "infrastructure",
+      "platform_economics",
+      "interoperability",
+      "neutral_layers"
+    ],
+    "raw_quote": "Espresso is positioning itself as the solution, a shared neutral layer that's built to connect all these different L2s, acting like a universal translator and coordinator for everyone.",
+    "source": {
+      "title": "watch?v=TZNO-z7apcE",
+      "url": "https://www.youtube.com/watch?v=TZNO-z7apcE"
+    },
+    "hunt_id": "c9aa917a",
+    "extracted_at": "2026-03-04T23:42:39.695613+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.189054+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "marketplace_design"
+}

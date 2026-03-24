@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.441972+00:00",
+    "relevance_score": 0.64,
+    "matched_tags": [
+      "governance"
+    ],
+    "domain_match": false,
+    "source_path": "leadership/520f4255.json"
+  },
+  "framework": {
+    "id": "520f4255",
+    "type": "claim",
+    "name": "10% Higher ROI with CAIO Role",
+    "description": "Organizations with Chief AI Officers report 10% higher ROI on AI spend according to IBM research. 26% of enterprises now have CAIOs, up from 11% two years earlier, suggesting governance leadership impacts success.",
+    "domain": "leadership",
+    "confidence": 0.8,
+    "tags": [
+      "governance",
+      "CAIO",
+      "ROI",
+      "organizational_structure"
+    ],
+    "raw_quote": "26% of enterprises now have Chief AI Officers, reporting 10% higher ROI",
+    "value_tier": "meat",
+    "source": {
+      "title": "Enterprise AI Adoption Strategy: Complete 2025 Guide",
+      "url": "https://www.digitalapplied.com/blog/enterprise-ai-adoption-strategy-2025"
+    },
+    "hunt_id": "5e0ef8ee",
+    "extracted_at": "2026-03-10T14:10:00.082756+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.182315+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

@@ -1,0 +1,39 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.368674+00:00",
+    "relevance_score": 0.705,
+    "matched_tags": [
+      "agent-identity",
+      "governance"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/ee4ec006.json"
+  },
+  "framework": {
+    "id": "ee4ec006",
+    "type": "contrarian",
+    "name": "Capability-Identity Gap Framework",
+    "description": "Zhou argues existing 'boring infra' (OAuth, X.509, SPIFFE) fails because none detects when an agent's capabilities change post-authorization. Proposes novel composition: X.509 v3 extended with skills manifest hashes, reproducibility commitments, and hash-linked interaction ledgers. Critically, claims 'no existing framework translates governance aspirations into enforceable cryptographic infrastructure' \u2014 directly contradicting the 'just compose OAuth+JWT' consensus.",
+    "domain": "ai-systems",
+    "confidence": 0.75,
+    "tags": [
+      "agent-identity",
+      "capability-binding",
+      "X.509",
+      "governance",
+      "cryptographic-infrastructure"
+    ],
+    "raw_quote": "Our contribution is not in novel cryptographic primitives; rather, we show that standard mechanisms\u2014X.509 certificates, SHA-256 hashing, Ed25519 signatures, hash chains\u2014when composed through the capability-context separation, are sufficient to enforce G1\u2013G3 with negligible overhead",
+    "value_tier": "organ",
+    "source": {
+      "title": "Cryptographic Binding and Reproducibility Verification for AI Agent ...",
+      "url": "https://arxiv.org/html/2603.14332v1"
+    },
+    "hunt_id": "1421f7a8",
+    "extracted_at": "2026-03-18T14:10:34.621676+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.187146+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

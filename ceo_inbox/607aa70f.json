@@ -1,0 +1,35 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.283133+00:00",
+    "relevance_score": 0.615,
+    "matched_tags": [
+      "governance"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/607aa70f.json"
+  },
+  "framework": {
+    "id": "607aa70f",
+    "type": "technique",
+    "name": "Safeguard Agent Architecture",
+    "description": "Implementation pattern using monitoring agents that observe behavior of primary agents and flag potential risks, enabling accountability while maintaining efficiency. Addresses enterprise governance concerns.",
+    "domain": "ai-systems",
+    "confidence": 0.55,
+    "tags": [
+      "governance",
+      "risk-management",
+      "monitoring"
+    ],
+    "raw_quote": "Consider implementing 'safeguard agents' that monitor behavior and flag potential risks. This ensures accountability while maintaining efficiency.",
+    "source": {
+      "title": "",
+      "url": "https://www.reworked.co/digital-workplace/the-business-case-for-agentic-ai/"
+    },
+    "hunt_id": "f65e2a8b",
+    "extracted_at": "2026-03-05T20:46:39.723861+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.182884+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

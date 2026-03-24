@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.510001+00:00",
+    "relevance_score": 0.72,
+    "matched_tags": [
+      "platform-strategy"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/1387fa87.json"
+  },
+  "framework": {
+    "id": "1387fa87",
+    "type": "connection",
+    "name": "Platform Strategy: Commoditize Complementary Layers",
+    "description": "OpenAI is building the agent creation infrastructure (picks and shovels) rather than specific agent solutions. This commoditizes the agent-building layer, pushing value to specialized domains, proprietary data, or orchestration services that sit above the infrastructure.",
+    "domain": "strategy",
+    "confidence": 0.9,
+    "tags": [
+      "platform-strategy",
+      "commoditization",
+      "value-capture",
+      "ecosystem"
+    ],
+    "raw_quote": "Not explicitly stated, but implied by the entire demo \u2014 OpenAI is providing the tooling, not the solutions.",
+    "source": {
+      "title": "NEW ChatGPT Agent Builder: From Zero to Automation Hero (2026 Guide)",
+      "url": "https://www.youtube.com/watch?v=YlqXKDP1c5k"
+    },
+    "hunt_id": "d375d104",
+    "extracted_at": "2026-03-05T15:38:53.238518+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.188115+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "marketplace_design"
+}

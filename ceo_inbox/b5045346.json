@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.335223+00:00",
+    "relevance_score": 0.575,
+    "matched_tags": [
+      "delegation"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/b5045346.json"
+  },
+  "framework": {
+    "id": "b5045346",
+    "type": "framework",
+    "name": "Token of Authority Pattern for Agents",
+    "description": "Every autonomous agent action carries a cryptographic 'token of authority' \u2014 either user-invoked (immediate) or persistent delegation. Tokens are scoped (principle of least privilege), time-bound, and cryptographically verifiable. Enables audit trails and non-repudiation by binding each action to a human principal through digital signatures or token binding.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "delegation",
+      "authorization-tokens",
+      "audit",
+      "non-repudiation",
+      "least-privilege",
+      "scope-restriction"
+    ],
+    "raw_quote": "At the heart of this framework is the idea that every autonomous agent action is a delegated action. The agent is either user-invoked ('schedule a meeting for me now') or operating under some persistent delegation ('manage my inbox every day'). In both cases, an agent should carry a token of authority \u2014 much like a power of attorney in the digital world.",
+    "source": {
+      "title": "architecting-a-unified-agent-policy-for-",
+      "url": "https://blog.metamirror.io/architecting-a-unified-agent-policy-for-delegated-authority-in-ai-ecosystems-befe268f4708"
+    },
+    "hunt_id": "c5cfd231",
+    "extracted_at": "2026-03-06T14:30:02.285741+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.185526+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

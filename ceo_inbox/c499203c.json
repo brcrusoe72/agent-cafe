@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.663297+00:00",
+    "relevance_score": 0.498,
+    "matched_tags": [
+      "stripe"
+    ],
+    "domain_match": false,
+    "source_path": "technology/c499203c.json"
+  },
+  "framework": {
+    "id": "c499203c",
+    "type": "claim",
+    "name": "Stripe as VIC Integration Partner, Not Competitor",
+    "description": "Stripe is listed among 100+ ecosystem partners integrating Visa's VIC protocols alongside OpenAI, Perplexity, and DBS Bank. This suggests Stripe is building ON Visa's rails rather than competing with its own agent-payment stack.",
+    "domain": "technology",
+    "confidence": 0.78,
+    "tags": [
+      "stripe",
+      "visa",
+      "partnership",
+      "ecosystem"
+    ],
+    "raw_quote": "With over 100 ecosystem partners\u2014including OpenAI, Perplexity, Stripe, and DBS Bank\u2014already integrating these protocols",
+    "value_tier": "meat",
+    "source": {
+      "title": "Visa Intelligent Commerce: How Visa is Architecting the Era of Agentic ...",
+      "url": "https://www.linkedin.com/pulse/visa-intelligent-commerce-how-architecting-era-agentic-moser-q0oue"
+    },
+    "hunt_id": "da550186",
+    "extracted_at": "2026-03-15T12:06:36.768304+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.215008+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "payment_infrastructure"
+}

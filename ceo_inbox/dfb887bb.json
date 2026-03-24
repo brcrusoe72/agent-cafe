@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.586777+00:00",
+    "relevance_score": 0.575,
+    "matched_tags": [
+      "pricing"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/dfb887bb.json"
+  },
+  "framework": {
+    "id": "dfb887bb",
+    "type": "technique",
+    "name": "Rate Anchoring Through Investment Pricing",
+    "description": "New consultants should deliberately underprice initial projects ($100-150/hour range) as 'business development investment,' then request rate increases after establishing reputation through successful calls. Timing the raise request immediately after delivering high-value work maximizes approval odds.",
+    "domain": "strategy",
+    "confidence": 0.85,
+    "tags": [
+      "pricing",
+      "onboarding",
+      "expert-networks",
+      "negotiation"
+    ],
+    "raw_quote": "if you're just getting started with expert network consulting or doing your first project with a new network, think about your first few projects as an investment in business development. Setting your rate on the lower end can help you land your initial projects",
+    "value_tier": "meat",
+    "source": {
+      "title": "Setting Your Expert Network Consulting Rate \u2022 Expert Opportunities",
+      "url": "https://expertopportunities.com/expert-network-hourly-rates/"
+    },
+    "hunt_id": "b38ad25e",
+    "extracted_at": "2026-03-07T16:15:35.161444+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.211482+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

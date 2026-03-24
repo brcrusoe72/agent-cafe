@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.434962+00:00",
+    "relevance_score": 0.58,
+    "matched_tags": [
+      "ap2",
+      "liability"
+    ],
+    "domain_match": false,
+    "source_path": "finance/cec06c52.json"
+  },
+  "framework": {
+    "id": "cec06c52",
+    "type": "framework",
+    "name": "AP2 Liability Model: Accountability anchored to real-world entities, never the agent",
+    "description": "AP2 explicitly assigns accountability to users, merchants, or issuers \u2014 never the agent itself. Disputes resolved via cryptographic audit trails (signed mandates). For HNP flows, the user's pre-signed Intent Mandate serves as non-repudiable proof of intent, meaning the user bears responsibility for what they authorized the agent to do within defined conditions.",
+    "domain": "finance",
+    "confidence": 0.9,
+    "tags": [
+      "liability",
+      "chargeback",
+      "disputes",
+      "ap2"
+    ],
+    "raw_quote": "Accountability tied to real-world entities such as the user, merchant or the issuer, and not the agent. Cryptographic audit trails are designed to ensure that disputes are resolved with verifiable evidence.",
+    "value_tier": "meat",
+    "source": {
+      "title": "PayPal Community Blog | Agent Payments Protocol: Building Verifiable Trust for Agentic Commerce",
+      "url": "https://developer.paypal.com/community/blog/PayPal-Agent-Payments-Protocol/"
+    },
+    "hunt_id": "e7408160",
+    "extracted_at": "2026-03-14T14:04:59.128078+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.204807+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

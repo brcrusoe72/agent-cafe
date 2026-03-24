@@ -1,0 +1,40 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.640553+00:00",
+    "relevance_score": 0.559,
+    "matched_tags": [
+      "tokenization",
+      "authentication",
+      "mcp"
+    ],
+    "domain_match": false,
+    "source_path": "technology/6fea7d21.json"
+  },
+  "framework": {
+    "id": "6fea7d21",
+    "type": "framework",
+    "name": "Visa Intelligent Commerce (VIC) Four-Layer Stack",
+    "description": "Visa's complete agentic payment architecture launched April 2025: (1) Scoped AMT Tokens (merchant+amount+duration+SKU constraints), (2) Trusted Agent Protocol (TAP) with cryptographic agent passports verified against a central registry, (3) Delegated Authentication via FIDO2 Passkeys eliminating real-time SCA, (4) MCP integration for machine-readable merchant endpoints. Three-phase lifecycle: Provisioning\u2192Instruction\u2192Execution.",
+    "domain": "technology",
+    "confidence": 0.92,
+    "tags": [
+      "agentic-payments",
+      "visa",
+      "authentication",
+      "tokenization",
+      "MCP"
+    ],
+    "raw_quote": "VIC issues Agent-Merchant-Task (AMT) Tokens. Unlike standard merchant-locked tokens, these are 'programmable' and restricted by user-defined boundaries",
+    "value_tier": "organ",
+    "source": {
+      "title": "Visa Intelligent Commerce: How Visa is Architecting the Era of Agentic ...",
+      "url": "https://www.linkedin.com/pulse/visa-intelligent-commerce-how-architecting-era-agentic-moser-q0oue"
+    },
+    "hunt_id": "da550186",
+    "extracted_at": "2026-03-15T12:06:36.767659+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.218357+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

@@ -1,0 +1,35 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.298530+00:00",
+    "relevance_score": 0.56,
+    "matched_tags": [
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/7576bb56.json"
+  },
+  "framework": {
+    "id": "7576bb56",
+    "type": "claim",
+    "name": "OAuth 2.0 Naively Supports Agent Delegation",
+    "description": "The paper claims that existing OAuth 2.0 flows already 'naively' support AI agent delegation for simple use cases like calendar access, and that their framework is primarily about adding agent-specific metadata and stronger scoping, not replacing the underlying protocol.",
+    "domain": "ai-systems",
+    "confidence": 0.7,
+    "tags": [
+      "oauth",
+      "backward-compatibility",
+      "incremental-improvement"
+    ],
+    "raw_quote": "For calendars, users are used to the expected flow of granting access to applications to access their calendar data. This would be no different for an AI agent (and would be naively supported in the solution outlined in section 3)\u2013indeed, limited OAuth 2.0 support is enabled in some agent tools such as OpenAI GPT actions.",
+    "source": {
+      "title": "2501.09674v1",
+      "url": "https://arxiv.org/html/2501.09674v1"
+    },
+    "hunt_id": "c5cfd231",
+    "extracted_at": "2026-03-06T14:28:18.508633+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.199394+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

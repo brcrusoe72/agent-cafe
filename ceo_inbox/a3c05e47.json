@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.381645+00:00",
+    "relevance_score": 0.695,
+    "matched_tags": [
+      "platform-strategy"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems|strategy/a3c05e47.json"
+  },
+  "framework": {
+    "id": "a3c05e47",
+    "type": "technique",
+    "name": "Platform-Based Agent Monetization (ZBrain Model)",
+    "description": "Hackett Group's ZBrain platform represents a 'low-code enterprise-grade Gen AI orchestration platform' model where agent deployment is standardized through pre-built templates, data connectors (200+), and multi-agent orchestration. This suggests a potential monetization path: build a platform that non-technical plant managers can use to deploy agents, charge for platform access + usage.",
+    "domain": "ai-systems|strategy",
+    "confidence": 0.65,
+    "tags": [
+      "platform-strategy",
+      "agent-orchestration",
+      "low-code",
+      "enterprise-software"
+    ],
+    "raw_quote": "ZBrain\u2122 is a low-code, enterprise-grade Gen AI orchestration platform designed to build and deploy AI agents at scale. Its intuitive interface empowers teams to build and iterate on complex business logic rapidly, while a library of pre-built agents and templates accelerates time-to-value for high-impact use cases.",
+    "source": {
+      "title": "",
+      "url": "https://www.thehackettgroup.com/ai-implementation-services/"
+    },
+    "hunt_id": "f65e2a8b",
+    "extracted_at": "2026-03-05T20:50:42.823943+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.219349+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

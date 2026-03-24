@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.442422+00:00",
+    "relevance_score": 0.7,
+    "matched_tags": [
+      "trust"
+    ],
+    "domain_match": false,
+    "source_path": "leadership|strategy/3aee0734.json"
+  },
+  "framework": {
+    "id": "3aee0734",
+    "type": "framework",
+    "name": "AI Explainability as Trust Requirement",
+    "description": "Positions AI transparency not as technical requirement but as organizational trust-building mechanism. Decision-makers need to understand AI recommendations to accept them, creating intermediary role for explainer/translator.",
+    "domain": "leadership|strategy",
+    "confidence": 0.7,
+    "tags": [
+      "ai-explainability",
+      "trust",
+      "organizational-adoption",
+      "decision-making"
+    ],
+    "raw_quote": "AI Explainability \u2013 Decision-makers need transparency in AI-driven recommendations to build trust.",
+    "source": {
+      "title": "How to Implement Six Sigma with AI - AI at work for all - secure AI agents, search, workflows",
+      "url": "https://shieldbase.ai/blog/how-to-implement-six-sigma-with-ai"
+    },
+    "hunt_id": "bb70a202",
+    "extracted_at": "2026-03-05T22:21:59.525326+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.195934+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

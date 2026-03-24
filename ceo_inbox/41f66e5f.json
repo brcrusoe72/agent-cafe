@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.410760+00:00",
+    "relevance_score": 0.5,
+    "matched_tags": [
+      "stripe"
+    ],
+    "domain_match": false,
+    "source_path": "finance/41f66e5f.json"
+  },
+  "framework": {
+    "id": "41f66e5f",
+    "type": "claim",
+    "name": "Stripe's Proprietary Controls (No Open Standard Evidence)",
+    "description": "Documentation presents spending controls as Stripe-specific API parameters with no references to open standards, interoperability protocols, or cross-platform authorization frameworks. Implementation is deeply tied to Stripe's issuing_authorization event model.",
+    "domain": "finance",
+    "confidence": 0.8,
+    "tags": [
+      "proprietary",
+      "stripe",
+      "vendor-lock-in"
+    ],
+    "raw_quote": "None directly supporting open standards",
+    "value_tier": "meat",
+    "source": {
+      "title": "Issuing spending controls | Stripe Documentation",
+      "url": "https://docs.stripe.com/issuing/controls/spending-controls"
+    },
+    "hunt_id": "b977a620",
+    "extracted_at": "2026-03-07T14:45:43.641566+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.213658+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "payment_infrastructure"
+}

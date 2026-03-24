@@ -1,0 +1,34 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.440654+00:00",
+    "relevance_score": 0.29,
+    "matched_tags": [],
+    "domain_match": true,
+    "source_path": "fintech/a7ac52ca.json"
+  },
+  "framework": {
+    "id": "a7ac52ca",
+    "type": "case_study",
+    "name": "PayPal's Checkout Disruption",
+    "description": "PayPal's branded checkout growth collapsed from 6% to 1% as Apple Pay, Shop Pay, Klarna, and other frictionless alternatives captured market share. Despite activist investor pressure and new leadership, execution couldn't overcome structural market shifts.",
+    "domain": "fintech",
+    "confidence": 0.9,
+    "tags": [
+      "payments",
+      "market-disruption",
+      "checkout-technology",
+      "competitive-pressure"
+    ],
+    "raw_quote": "Growth in branded checkout slowed to 1% in the last quarter, down from 6% a year ago.",
+    "source": {
+      "title": "watch?v=SM5gTG2Fr9I",
+      "url": "https://www.youtube.com/watch?v=SM5gTG2Fr9I"
+    },
+    "hunt_id": "1486004a",
+    "extracted_at": "2026-03-03T17:40:14.694427+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.214701+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "payment_infrastructure"
+}

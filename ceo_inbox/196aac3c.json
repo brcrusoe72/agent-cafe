@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.614598+00:00",
+    "relevance_score": 0.79,
+    "matched_tags": [
+      "agent-identity"
+    ],
+    "domain_match": false,
+    "source_path": "technology/196aac3c.json"
+  },
+  "framework": {
+    "id": "196aac3c",
+    "type": "claim",
+    "name": "Agents-are-workloads paradigm",
+    "description": "Draft explicitly frames AI agents as workloads (not users, not services) \u2014 meaning existing workload identity infra (SPIFFE, WIMSE) applies directly. No need for novel identity primitives. This is the key architectural decision.",
+    "domain": "technology",
+    "confidence": 0.9,
+    "tags": [
+      "agent-identity",
+      "workload-identity",
+      "architecture"
+    ],
+    "raw_quote": "An Agent is a workload that iteratively interacts with a Large Language Model (LLM) and a set of Tools, Services and Resources.",
+    "value_tier": "meat",
+    "source": {
+      "title": "draft-klrc-aiagent-auth-00 - AI Agent Authentication and Authorization",
+      "url": "https://datatracker.ietf.org/doc/draft-klrc-aiagent-auth/"
+    },
+    "hunt_id": "f911b3bb",
+    "extracted_at": "2026-03-18T13:57:12.416503+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.194219+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

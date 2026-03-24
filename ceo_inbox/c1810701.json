@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.343795+00:00",
+    "relevance_score": 0.725,
+    "matched_tags": [
+      "multi-agent"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/c1810701.json"
+  },
+  "framework": {
+    "id": "c1810701",
+    "type": "claim",
+    "name": "Multi-Agent Mutual Authentication Acknowledged But Not Solved",
+    "description": "Paper explicitly names multi-agent verification as 'paramount' (\u00a72.1.3) but only solves it for two agents representing known human principals \u2014 hospital agent talks to insurance agent. The delegation is always human\u2081\u2192agent\u2081 and human\u2082\u2192agent\u2082, never agent\u2081\u2192agent\u2082\u2192agent\u2083 where agent\u2082 sub-delegates autonomously.",
+    "domain": "ai-systems",
+    "confidence": 0.95,
+    "tags": [
+      "multi-agent",
+      "delegation-depth",
+      "gap-confirmation"
+    ],
+    "raw_quote": "agents must also verify that they authentically represent the users or organizations they claim to represent. Mutual authentication ensures that agents can trust each other's intentions, capabilities, and authority",
+    "value_tier": "meat",
+    "source": {
+      "title": "Authenticated Delegation and Authorized AI Agents",
+      "url": "https://arxiv.org/html/2501.09674v1"
+    },
+    "hunt_id": "d39fbdac",
+    "extracted_at": "2026-03-14T14:28:48.349591+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.204025+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

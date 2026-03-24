@@ -1,0 +1,39 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.318326+00:00",
+    "relevance_score": 0.585,
+    "matched_tags": [
+      "authentication",
+      "authorization",
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/9848e8df.json"
+  },
+  "framework": {
+    "id": "9848e8df",
+    "type": "framework",
+    "name": "OAuth 2.0/2.1 as Agent Authorization Substrate",
+    "description": "Industry convergence on OAuth 2.0 (evolving to 2.1) as the standard protocol for AI agent authentication and authorization. Provides user consent flows, scoped tokens, revocation mechanisms, and audit trails. OAuth 2.1 makes PKCE mandatory and removes insecure flows, creating a more secure foundation for agentic systems.",
+    "domain": "ai-systems",
+    "confidence": 0.95,
+    "tags": [
+      "oauth",
+      "authentication",
+      "authorization",
+      "technical-standard",
+      "agent-boundaries"
+    ],
+    "raw_quote": "OAuth 2.0 solves the four critical requirements for delegated agent access... User consent flow, User-scoped tokens, Instant revocation, Delegation audit trail",
+    "source": {
+      "title": "AI agent authentication methods - Stytch",
+      "url": "https://stytch.com/blog/ai-agent-authentication-methods/"
+    },
+    "hunt_id": "4f110637",
+    "extracted_at": "2026-03-06T14:20:59.866512+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.184968+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

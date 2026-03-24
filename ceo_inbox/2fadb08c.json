@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.406762+00:00",
+    "relevance_score": 0.645,
+    "matched_tags": [
+      "governance"
+    ],
+    "domain_match": false,
+    "source_path": "finance/2fadb08c.json"
+  },
+  "framework": {
+    "id": "2fadb08c",
+    "type": "case_study",
+    "name": "Uniswap UNI Governance Token",
+    "description": "Uniswap's UNI token allows holders to vote on protocol changes, liquidity mining programs, and treasury spending. Despite decentralization goals, faces challenges of low voter participation, concentrated voting power, and inactive token holders.",
+    "domain": "finance",
+    "confidence": 0.85,
+    "tags": [
+      "DeFi",
+      "decentralized-exchange",
+      "governance",
+      "Ethereum",
+      "voting"
+    ],
+    "raw_quote": "The largest decentralized exchange on the Ethereum blockchain, Uniswap, released governance tokens as UNI, which allow holders to vote on protocol changes, liquidity mining programs for the exchange, and how the Uniswap treasury is spent. Governance tokens have been criticized as a poor solution to decentralized governance and market dynamics due to low voter participation rates, voting power concentrated in a small number of holders, and inactive token holders.",
+    "source": {
+      "title": "choosing-the-right-token-model-utility-s",
+      "url": "https://vocal.media/geeks/choosing-the-right-token-model-utility-security-or-governance"
+    },
+    "hunt_id": "c9aa917a",
+    "extracted_at": "2026-03-04T23:41:37.536532+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.181398+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

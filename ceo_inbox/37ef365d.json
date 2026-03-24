@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.622562+00:00",
+    "relevance_score": 0.58,
+    "matched_tags": [
+      "authorization"
+    ],
+    "domain_match": false,
+    "source_path": "technology/37ef365d.json"
+  },
+  "framework": {
+    "id": "37ef365d",
+    "type": "technique",
+    "name": "Dual-Tag Transaction Intent Signaling",
+    "description": "Both protocols introduce a mandatory 'tag' field in the Signature-Input header with two discrete values: 'agent-browser-auth' for browsing/price discovery and 'agent-payer-auth' for actual purchase authorization. This allows merchants to apply different security policies based on transaction intent without inspecting request payloads.",
+    "domain": "technology",
+    "confidence": 0.9,
+    "tags": [
+      "authorization",
+      "policy-enforcement",
+      "transaction-lifecycle"
+    ],
+    "raw_quote": "Both protocols build on Web Bot Auth by introducing a new tag that agents must supply in the Signature-Input header, which indicates whether the agent is browsing or purchasing. If the agent is browsing, the tag should be agent-browser-auth. If the agent is paying, the tag should be agent-payer-auth",
+    "value_tier": "meat",
+    "source": {
+      "title": "Securing agentic commerce: helping AI Agents transact with Visa and Mastercard",
+      "url": "https://blog.cloudflare.com/secure-agentic-commerce/"
+    },
+    "hunt_id": "fd72fd5b",
+    "extracted_at": "2026-03-09T13:47:14.026372+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.181636+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

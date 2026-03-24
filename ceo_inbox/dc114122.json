@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.356588+00:00",
+    "relevance_score": 0.715,
+    "matched_tags": [
+      "platform-strategy"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/dc114122.json"
+  },
+  "framework": {
+    "id": "dc114122",
+    "type": "framework",
+    "name": "AI Agents as New Apps Mental Model",
+    "description": "The comparison of AI agents to mobile apps during the iPhone/App Store era. Just as apps replaced complex software with simpler interfaces, AI agents will replace apps with even simpler, fewer-click experiences. The key insight is that the real catalyst isn't the technology itself, but the MARKETPLACE infrastructure that enables distribution and monetization.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "platform-strategy",
+      "marketplace-dynamics",
+      "historical-analogy",
+      "distribution"
+    ],
+    "raw_quote": "AI agents are quickly becoming the new apps... just like the mobile app wave that came with the introduction of the iPhone the real Catalyst was the App Store it gave developers a way to earn from the apps that they built",
+    "source": {
+      "title": "Rent Out Your AI Agents And Earn On Every Job: Bizway AI Agents Marketplace",
+      "url": "https://www.youtube.com/watch?v=8tXSVh6rF1M"
+    },
+    "hunt_id": "d375d104",
+    "extracted_at": "2026-03-05T15:40:13.684198+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.192131+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "marketplace_design"
+}

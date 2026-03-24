@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.414929+00:00",
+    "relevance_score": 0.635,
+    "matched_tags": [
+      "liability"
+    ],
+    "domain_match": false,
+    "source_path": "finance/539665ae.json"
+  },
+  "framework": {
+    "id": "539665ae",
+    "type": "framework",
+    "name": "Buyer/Seller Protections Extended to Agent Commerce",
+    "description": "PayPal explicitly extends existing buyer/seller protections, dispute resolution, and tracking to agent-initiated transactions. This is a partial answer to the liability question \u2014 PayPal is treating agent purchases like human purchases under existing chargeback frameworks rather than creating new ones.",
+    "domain": "finance",
+    "confidence": 0.75,
+    "tags": [
+      "liability",
+      "chargebacks",
+      "protections"
+    ],
+    "raw_quote": "PayPal's buyer and seller protections, and post-purchase services such as tracking and dispute resolution, benefits that consumers value when checking out with PayPal",
+    "value_tier": "meat",
+    "source": {
+      "title": "Press Release: OpenAI and PayPal Team Up to Power Instant Checkout and Agentic Commerce in ChatGPT - Oct 28, 2025",
+      "url": "https://newsroom.paypal-corp.com/2025-10-28-OpenAI-and-PayPal-Team-Up-to-Power-Instant-Checkout-and-Agentic-Commerce-in-ChatGPT"
+    },
+    "hunt_id": "e7408160",
+    "extracted_at": "2026-03-14T14:07:50.106154+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.197966+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.420417+00:00",
+    "relevance_score": 0.51,
+    "matched_tags": [
+      "stripe"
+    ],
+    "domain_match": false,
+    "source_path": "finance/75f9fc6a.json"
+  },
+  "framework": {
+    "id": "75f9fc6a",
+    "type": "framework",
+    "name": "Replacement Card Spending Inheritance",
+    "description": "Spending limits persist across card replacements through a replacement_for chain, ensuring limits follow the cardholder relationship rather than physical card instances. Prevents circumvention through card reissuance.",
+    "domain": "finance",
+    "confidence": 0.9,
+    "tags": [
+      "card-lifecycle",
+      "stripe",
+      "limit-persistence",
+      "anti-fraud"
+    ],
+    "raw_quote": "A card's spending limits apply across any cards it replaces (that is, its replacement_for card and that card's replacement_for card, and so on).",
+    "value_tier": "meat",
+    "source": {
+      "title": "Issuing spending controls | Stripe Documentation",
+      "url": "https://docs.stripe.com/issuing/controls/spending-controls"
+    },
+    "hunt_id": "b977a620",
+    "extracted_at": "2026-03-07T14:45:43.641506+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.214224+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "payment_infrastructure"
+}

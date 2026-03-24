@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.226710+00:00",
+    "relevance_score": 0.58,
+    "matched_tags": [
+      "mcp"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/077b2c64.json"
+  },
+  "framework": {
+    "id": "077b2c64",
+    "type": "case_study",
+    "name": "Cross-Agent Config Rewriting (Rehberger)",
+    "description": "Prompt-injected Copilot rewrites Claude's .mcp.json, so on next use Claude runs arbitrary code and can reconfigure Copilot back \u2014 creating a self-reinforcing control loop across agent boundaries.",
+    "domain": "ai-systems",
+    "confidence": 0.9,
+    "tags": [
+      "vulnerability",
+      "cross-agent",
+      "mcp",
+      "config-rewrite"
+    ],
+    "raw_quote": "A prompt-injected Copilot can alter Claude's .mcp.json. On the next use, Claude would run arbitrary code and could then reconfigure Copilot.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Control the Chain, Secure the System: Fixing AI Agent Delegation",
+      "url": "https://www.okta.com/blog/ai/agent-security-delegation-chain/"
+    },
+    "hunt_id": "1421f7a8",
+    "extracted_at": "2026-03-18T14:09:06.829574+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.179581+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

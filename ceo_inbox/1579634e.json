@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.236882+00:00",
+    "relevance_score": 0.64,
+    "matched_tags": [
+      "liability"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/1579634e.json"
+  },
+  "framework": {
+    "id": "1579634e",
+    "type": "claim",
+    "name": "Principal-Agent Problem Escalates in Agent Chains",
+    "description": "Paper acknowledges that in agent economies where agents delegate on behalf of other agents with 'unknown objectives,' the principal-agent problem compounds. Each hop adds alignment uncertainty. But offers no concrete solution \u2014 just flags the problem.",
+    "domain": "ai-systems",
+    "confidence": 0.8,
+    "tags": [
+      "principal-agent",
+      "alignment",
+      "liability"
+    ],
+    "raw_quote": "AI agents may act on behalf of different human users, groups and organizations, or as delegates on behalf of other agents, with associated unknown objectives",
+    "value_tier": "meat",
+    "source": {
+      "title": "Intelligent AI Delegation",
+      "url": "https://arxiv.org/html/2602.11865v1"
+    },
+    "hunt_id": "d39fbdac",
+    "extracted_at": "2026-03-14T14:28:05.840990+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.193855+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

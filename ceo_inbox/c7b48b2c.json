@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.664253+00:00",
+    "relevance_score": 0.69,
+    "matched_tags": [
+      "authorization",
+      "agent-identity"
+    ],
+    "domain_match": false,
+    "source_path": "technology/c7b48b2c.json"
+  },
+  "framework": {
+    "id": "c7b48b2c",
+    "type": "framework",
+    "name": "NIST AI Agent Standards Initiative (3 Pillars)",
+    "description": "NIST CAISI launched Feb 2026 with industry-led standards, community-led protocols, and research into agent authentication/identity. RFI closed March 9; NCCoE concept paper on agent identity/authorization open through April 2.",
+    "domain": "technology",
+    "confidence": 0.95,
+    "tags": [
+      "nist",
+      "standards",
+      "agent-identity",
+      "authorization"
+    ],
+    "raw_quote": "NIST conducts fundamental research into agent authentication and identity infrastructure to enable secure human-agent and multi-agent interactions.",
+    "value_tier": "bone",
+    "source": {
+      "title": "NIST AI Agent Standards Initiative: What Companies Need to Know",
+      "url": "https://www.bdemerson.com/article/nist-ai-agent-standards-initiative"
+    },
+    "hunt_id": "d39fbdac",
+    "extracted_at": "2026-03-14T14:31:29.852394+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.204250+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

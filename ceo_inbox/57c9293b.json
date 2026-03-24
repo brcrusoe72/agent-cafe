@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.535189+00:00",
+    "relevance_score": 0.64,
+    "matched_tags": [
+      "liability",
+      "governance"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/57c9293b.json"
+  },
+  "framework": {
+    "id": "57c9293b",
+    "type": "contrarian",
+    "name": "Agency and Liability Confusion",
+    "description": "The introduction of AI agents creates novel legal and accountability challenges when purchase decisions are made by 'synthetic characters' rather than humans, potentially leading to unpredictable legal outcomes.",
+    "domain": "strategy",
+    "confidence": 0.8,
+    "tags": [
+      "liability",
+      "legal-risk",
+      "agency-theory",
+      "governance"
+    ],
+    "raw_quote": "how do we get unpredictable legal results when there's when something goes wrong and the buying decision was that of this synthetic character a new arguably a new type of entity",
+    "source": {
+      "title": "The Race to Standardize Agentic Commerce",
+      "url": "https://www.youtube.com/watch?v=LtFCXOOGPrw"
+    },
+    "hunt_id": "dbee9bd2",
+    "extracted_at": "2026-03-03T18:11:22.068966+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.198261+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

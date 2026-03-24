@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.400846+00:00",
+    "relevance_score": 0.5,
+    "matched_tags": [
+      "open-standard"
+    ],
+    "domain_match": false,
+    "source_path": "finance/15c5a662.json"
+  },
+  "framework": {
+    "id": "15c5a662",
+    "type": "claim",
+    "name": "Decentralized Bundler Network Model",
+    "description": "ERC-4337 explicitly designs for permissionless bundler participation through public mempools and MEV-boost integration, positioning against proprietary gatekeepers. Any block builder can bundle UserOperations without special permissions.",
+    "domain": "finance",
+    "confidence": 0.8,
+    "tags": [
+      "decentralization",
+      "mev-boost",
+      "permissionless",
+      "open-standard"
+    ],
+    "raw_quote": "Decentralization: Allow any bundler (think: block builder) to participate in the process of including account-abstracted UserOperations. Work with all activity happening over a public mempool; users do not need to know the direct communication addresses (eg. IP, onion) of any specific actors",
+    "value_tier": "organ",
+    "source": {
+      "title": "ERC-4337: Account Abstraction Using Alt Mempool",
+      "url": "https://eips.ethereum.org/EIPS/eip-4337"
+    },
+    "hunt_id": "bd6202e2",
+    "extracted_at": "2026-03-07T14:41:00.366991+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.180556+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

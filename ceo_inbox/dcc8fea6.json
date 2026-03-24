@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.437283+00:00",
+    "relevance_score": 0.63,
+    "matched_tags": [
+      "liability"
+    ],
+    "domain_match": false,
+    "source_path": "finance/dcc8fea6.json"
+  },
+  "framework": {
+    "id": "dcc8fea6",
+    "type": "framework",
+    "name": "Transferred Intent Doctrine Applied to Agents",
+    "description": "Legal doctrine that a wrongdoer intending to harm Person A but accidentally harming Person B can still be held liable. In agentic commerce, if Agent A intends to transact with Seller X but due to error transacts with Seller Y, existing legal frameworks may assign intent in unexpected ways. This creates settlement and dispute resolution challenges.",
+    "domain": "finance",
+    "confidence": 0.7,
+    "tags": [
+      "legal-doctrine",
+      "liability",
+      "settlement",
+      "dispute-resolution",
+      "error-handling"
+    ],
+    "raw_quote": "transferred intent : intent attributed to a person who intends to cause another harm when the harm is accidentally inflicted on an unintended victim",
+    "source": {
+      "title": "intent",
+      "url": "https://www.merriam-webster.com/dictionary/intent"
+    },
+    "hunt_id": "66fe6cbe",
+    "extracted_at": "2026-03-03T18:23:44.372394+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.215224+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "payment_infrastructure"
+}

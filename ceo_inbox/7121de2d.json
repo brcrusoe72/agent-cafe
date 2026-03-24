@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.641044+00:00",
+    "relevance_score": 0.51,
+    "matched_tags": [
+      "ap2"
+    ],
+    "domain_match": false,
+    "source_path": "technology/7121de2d.json"
+  },
+  "framework": {
+    "id": "7121de2d",
+    "type": "claim",
+    "name": "AP2 Founding Partners: Google (proposer) + PayPal",
+    "description": "AP2 was proposed by Google in collaboration with PayPal and other unnamed industry partners. PayPal is leading an extension effort for commerce use cases beyond payments. No mention of Visa as AP2 partner \u2014 suggesting AP2 and Visa TAP are competing standards.",
+    "domain": "technology",
+    "confidence": 0.9,
+    "tags": [
+      "ap2",
+      "google",
+      "paypal",
+      "ecosystem"
+    ],
+    "raw_quote": "Proposed by Google in collaboration with PayPal and other industry partners",
+    "value_tier": "meat",
+    "source": {
+      "title": "PayPal Community Blog | Agent Payments Protocol: Building Verifiable Trust for Agentic Commerce",
+      "url": "https://developer.paypal.com/community/blog/PayPal-Agent-Payments-Protocol/"
+    },
+    "hunt_id": "e7408160",
+    "extracted_at": "2026-03-14T14:04:59.127902+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.209458+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.275188+00:00",
+    "relevance_score": 0.645,
+    "matched_tags": [
+      "liability",
+      "governance"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/517a237a.json"
+  },
+  "framework": {
+    "id": "517a237a",
+    "type": "framework",
+    "name": "Kolt Agency Law Framework",
+    "description": "Noam Kolt's Notre Dame Law Review article applies traditional agency law (inclusivity, visibility, liability) to AI agents. Explicitly addresses human\u2192agent governance but does NOT address agent\u2192agent delegation chains.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "agency-law",
+      "governance",
+      "liability"
+    ],
+    "raw_quote": "Kolt argues that AI agents exhibit the classic markers of agency relationships: information asymmetry, discretionary authority, and divided loyalty. The difficulty is that conventional solutions to agency problems fail for AI.",
+    "value_tier": "bone",
+    "source": {
+      "title": "When AI Agents Misbehave: Governance and Security for ... - Our Take",
+      "url": "https://ourtake.bakerbotts.com/post/102me2l/when-ai-agents-misbehave-governance-and-security-for-autonomous-ai"
+    },
+    "hunt_id": "d39fbdac",
+    "extracted_at": "2026-03-14T14:30:59.454037+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.197433+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

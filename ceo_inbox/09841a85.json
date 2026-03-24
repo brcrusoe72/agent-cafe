@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.227965+00:00",
+    "relevance_score": 0.72,
+    "matched_tags": [
+      "multi-agent"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/09841a85.json"
+  },
+  "framework": {
+    "id": "09841a85",
+    "type": "framework",
+    "name": "Multi-Agent System Architecture Pattern",
+    "description": "A design approach where multiple autonomous AI agents work together like a beehive, each with specialized roles but coordinating to solve complex problems that single agents cannot handle effectively.",
+    "domain": "ai-systems",
+    "confidence": 0.9,
+    "tags": [
+      "multi-agent",
+      "distributed-systems",
+      "ai-architecture",
+      "coordination"
+    ],
+    "raw_quote": "Many simple AI agents, each with a small job, coming together to solve big, complex problems",
+    "source": {
+      "title": "watch?v=sWH0T4Zez6I",
+      "url": "https://www.youtube.com/watch?v=sWH0T4Zez6I"
+    },
+    "hunt_id": "d871eeba",
+    "extracted_at": "2026-03-03T16:48:07.096873+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.215796+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

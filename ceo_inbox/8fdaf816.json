@@ -1,0 +1,40 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.649182+00:00",
+    "relevance_score": 0.585,
+    "matched_tags": [
+      "delegation",
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "technology/8fdaf816.json"
+  },
+  "framework": {
+    "id": "8fdaf816",
+    "type": "framework",
+    "name": "IETF Agent Operation Authorization (draft-liu-agent-operation-authorization-00)",
+    "description": "Alibaba-authored IETF OAuth WG draft (Nov 2025) defining a two-phase JWT-based delegation framework: agent proposes operations via PAR, human confirms, AS issues a scoped authorization token the agent carries to resource servers. Uses W3C Verifiable Credentials to bind the user's original natural-language prompt to the structured authorization.",
+    "domain": "technology",
+    "confidence": 0.95,
+    "tags": [
+      "ietf",
+      "oauth",
+      "jwt",
+      "agent-auth",
+      "delegation",
+      "standards"
+    ],
+    "raw_quote": "A JSON Web Token representing confirmed authorization for a specific agent operation, enforceable at runtime by agents and verifiers. It cryptographically verifies user intent, prevents unauthorized or hallucinated actions, and ensures auditable traceability of each authorized operation.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Agent Operation Authorization - IETF",
+      "url": "https://www.ietf.org/archive/id/draft-liu-agent-operation-authorization-00.html"
+    },
+    "hunt_id": "eeb6b019",
+    "extracted_at": "2026-03-15T12:15:28.798734+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.200713+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

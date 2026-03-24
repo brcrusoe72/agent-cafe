@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.404970+00:00",
+    "relevance_score": 0.56,
+    "matched_tags": [
+      "authentication"
+    ],
+    "domain_match": false,
+    "source_path": "finance/228d2f1c.json"
+  },
+  "framework": {
+    "id": "228d2f1c",
+    "type": "framework",
+    "name": "Strong Customer Authentication (SCA) Exemption Model for Agents",
+    "description": "EU's PSD2 requires two-factor authentication for many online payments, which conflicts with autonomous agent operations. Solution requires either regulatory extensions/exemptions for pre-authorized autonomous payments or treating agent transactions similarly to existing exemptions for recurring payments or trusted beneficiaries.",
+    "domain": "finance",
+    "confidence": 0.7,
+    "tags": [
+      "regulation",
+      "psd2",
+      "authentication",
+      "exemptions",
+      "europe",
+      "regulatory-gap"
+    ],
+    "raw_quote": "Similarly, in the EU's PSD2 regulations, Strong Customer Authentication requires two-factor auth for many online payments. If an AI agent is initiating a payment, it might not be feasible to involve the human for 2FA each time \u2013 regulators may need to create extensions or exemptions for pre-authorized autonomous payments (similar to how they treat recurring payments or trusted beneficiaries today).",
+    "source": {
+      "title": "Enabling Autonomous AI Agents to Make Payments - LinkedIn",
+      "url": "https://www.linkedin.com/pulse/enabling-autonomous-ai-agents-make-payments-challenges-david-paluy-xmq4c"
+    },
+    "hunt_id": "c5cfd231",
+    "extracted_at": "2026-03-06T14:21:31.647917+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.213402+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "payment_infrastructure"
+}

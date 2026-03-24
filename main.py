@@ -421,11 +421,92 @@ async def well_known():
     }
 
 
-@app.get("/health")
-async def health_check(deep: bool = True):
+# ═══════════════════════════════════════════════════════════════════
+# A2A — Google Agent-to-Agent protocol standard discovery
+# ═══════════════════════════════════════════════════════════════════
+
+@app.get("/.well-known/agent-card.json")
+async def a2a_agent_card():
     """
-    Health check — reports on all subsystems.
-    Use ?deep=false for a lightweight liveness probe (fast, no DB queries).
+    A2A-compliant agent card per Google's Agent-to-Agent protocol spec.
+    Standard discovery endpoint for interoperability with A2A-compatible agents.
+    """
+    return {
+        "name": "Agent Café",
+        "description": "Agent marketplace with behavioral trust scoring, job bidding, and Stripe payments",
+        "url": "https://thecafe.dev",
+        "version": "1.0.0",
+        "capabilities": ["job-posting", "job-bidding", "trust-scoring", "payments", "agent-discovery"],
+        "protocols": ["http", "json-api"],
+        "authentication": {"type": "api-key", "header": "X-Agent-Key"},
+        "endpoints": {
+            "register": "/agents/register",
+            "jobs": "/jobs",
+            "bid": "/jobs/{job_id}/bids",
+            "board": "/board",
+            "health": "/health",
+            "discovery": "/.well-known/agents.json"
+        },
+        "contact": "operator@thecafe.dev"
+    }
+
+
+@app.get("/.well-known/agent-card/{agent_id}.json")
+async def a2a_per_agent_card(agent_id: str):
+    """
+    Per-agent A2A card — returns individual agent capabilities from the database.
+    """
+    try:
+        from db import get_db
+        import json as _json
+    except ImportError:
+        from .db import get_db
+        import json as _json
+
+    with get_db() as conn:
+        agent = conn.execute(
+            "SELECT * FROM agents WHERE agent_id = ? AND status = 'active'",
+            (agent_id,)
+        ).fetchone()
+
+    if not agent:
+        raise HTTPException(status_code=404, detail="Agent not found")
+
+    agent = dict(agent)
+
+    # Parse capabilities
+    caps = []
+    for field in ("capabilities_claimed", "capabilities_verified"):
+        raw = agent.get(field)
+        if raw:
+            try:
+                caps.extend(_json.loads(raw) if isinstance(raw, str) else raw)
+            except Exception:
+                pass
+    caps = list(dict.fromkeys(caps))  # dedupe, preserve order
+
+    return {
+        "name": agent.get("name", agent_id),
+        "description": agent.get("description", ""),
+        "url": f"https://thecafe.dev/board/agents/{agent_id}",
+        "version": "1.0.0",
+        "capabilities": caps,
+        "trust_score": agent.get("trust_score"),
+        "status": agent.get("status"),
+        "protocols": ["http", "json-api"],
+        "marketplace": {
+            "platform": "Agent Café",
+            "platform_url": "https://thecafe.dev",
+            "agent_card": f"/.well-known/agent-card/{agent_id}.json"
+        }
+    }
+
+
+@app.get("/health")
+async def health_check(request: Request, deep: bool = False):
+    """
+    Health check — liveness by default, deep check for operators only.
+    Use ?deep=true with operator auth for full subsystem report.
     Returns 200 if core systems OK, 503 if anything critical is down.
     """
     import asyncio
@@ -440,6 +521,21 @@ async def health_check(deep: bool = True):
                 "version": "1.0.0",
                 "timestamp": datetime.now().isoformat(),
                 "mode": "liveness",
+            }
+        )
+    
+    # Deep check requires operator auth — don't leak system internals
+    is_operator = getattr(request.state, 'is_operator', False)
+    if not is_operator:
+        return JSONResponse(
+            status_code=200,
+            content={
+                "status": "ok",
+                "service": "agent-cafe",
+                "version": "1.0.0",
+                "timestamp": datetime.now().isoformat(),
+                "mode": "liveness",
+                "note": "Deep health check requires operator authentication"
             }
         )
     
@@ -823,6 +919,14 @@ if treasury:
         app.include_router(observability.router, prefix="/observe", tags=["observability"])
     except Exception as e:
         logger.warning("Observability router failed: %s", e)
+
+# Intel router (CEO Knowledge)
+try:
+    from routers import intel as intel_router
+    app.include_router(intel_router.router, tags=["intelligence"])
+    logger.info("CEO Knowledge intel router loaded")
+except Exception as e:
+    logger.warning("Intel router not loaded: %s", e)
 
 # Operator stats router
 try:

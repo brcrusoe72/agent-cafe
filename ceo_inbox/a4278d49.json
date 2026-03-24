@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.325096+00:00",
+    "relevance_score": 0.65,
+    "matched_tags": [
+      "liability"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/a4278d49.json"
+  },
+  "framework": {
+    "id": "a4278d49",
+    "type": "case_study",
+    "name": "Mobley v. Workday \u2014 AI Deployer Liability",
+    "description": "Federal court granted preliminary collective certification for AI hiring discrimination claims, potentially covering hundreds of millions of applicants. Establishes that deployers (not AI vendors) bear liability for AI decisions.",
+    "domain": "ai-systems",
+    "confidence": 0.9,
+    "tags": [
+      "case-law",
+      "liability",
+      "hiring"
+    ],
+    "raw_quote": "With notice now approved to a collective that could include hundreds of millions of affected applicants, the case signals that AI systems making consequential decisions will face judicial scrutiny",
+    "value_tier": "bone",
+    "source": {
+      "title": "When AI Agents Misbehave: Governance and Security for ... - Our Take",
+      "url": "https://ourtake.bakerbotts.com/post/102me2l/when-ai-agents-misbehave-governance-and-security-for-autonomous-ai"
+    },
+    "hunt_id": "d39fbdac",
+    "extracted_at": "2026-03-14T14:30:59.454642+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.202194+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

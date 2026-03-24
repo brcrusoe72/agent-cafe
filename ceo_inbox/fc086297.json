@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.374219+00:00",
+    "relevance_score": 0.585,
+    "matched_tags": [
+      "delegation"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/fc086297.json"
+  },
+  "framework": {
+    "id": "fc086297",
+    "type": "claim",
+    "name": "Recursive delegation explicitly unsolved",
+    "description": "OpenID explicitly lists 'Recursive Delegation in Dynamic Agent Networks' as a future use case (Section 4.4) and 'Delegated Authorization and Transitive Trust' (Section 3.2) as an open problem. This is the standards body itself admitting hop-2+ has no standard solution \u2014 not a vendor reinventing, but the governing body acknowledging the gap.",
+    "domain": "ai-systems",
+    "confidence": 0.95,
+    "tags": [
+      "delegation",
+      "multi-hop",
+      "standards-gap"
+    ],
+    "raw_quote": "Agents spawning sub-agents or communicating tasks to other agents create complex authorization chains without clear scope attenuation mechanisms.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Identity Management for Agentic AI - OpenID",
+      "url": "https://openid.net/wp-content/uploads/2025/10/Identity-Management-for-Agentic-AI.pdf"
+    },
+    "hunt_id": "5213bf37",
+    "extracted_at": "2026-03-18T14:21:08.141619+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.207400+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

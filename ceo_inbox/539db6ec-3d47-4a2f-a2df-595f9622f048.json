@@ -1,0 +1,41 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.275957+00:00",
+    "relevance_score": 0.62,
+    "matched_tags": [
+      "security"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/539db6ec-3d47-4a2f-a2df-595f9622f048.json"
+  },
+  "framework": {
+    "type": "CASE_STUDY",
+    "name": "Agent Success Through Secure Memory Access",
+    "description": "Autonomous agents achieving significant results (like securing thousands in car purchase savings) succeed specifically because they can securely access relevant user context and memory, not because of superior reasoning.",
+    "domain": "ai-systems",
+    "confidence": 0.6,
+    "tags": [
+      "autonomous-agents",
+      "security",
+      "context-access"
+    ],
+    "implications": [
+      "Design agent systems with secure memory access first",
+      "Evaluate agent tools on memory integration capability",
+      "Expect agent performance to correlate with context quality"
+    ],
+    "raw_quote": "the use cases that are shining, like the guy who got thousands of dollars off a car purchase, they're shining because the agent has the ability to securely and safely access relevant memories, relevant context from the user",
+    "id": "539db6ec-3d47-4a2f-a2df-595f9622f048",
+    "source": {
+      "title": "You Don't Need SaaS. The $0.10 System That Replaced My AI Workflow (45 Min No-Code Build)",
+      "url": "https://www.youtube.com/watch?v=2JiMmye2ezg",
+      "author": "AI News & Strategy Daily | Nate B Jones",
+      "date": "20260302"
+    },
+    "extracted_at": "2026-03-03T10:09:31.392007"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.217410+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

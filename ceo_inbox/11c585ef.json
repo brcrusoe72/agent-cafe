@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.234304+00:00",
+    "relevance_score": 0.61,
+    "matched_tags": [
+      "authentication",
+      "verifiable-credentials"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/11c585ef.json"
+  },
+  "framework": {
+    "id": "11c585ef",
+    "type": "framework",
+    "name": "Verifiable Credential-Based Agent Authentication",
+    "description": "AP2 uses verifiable credentials (VCs) to cryptographically sign mandates, creating a chain of evidence for authorization, authenticity, and accountability in agent transactions. This establishes non-repudiable audit trails that prove user intent and agent authority.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "verifiable-credentials",
+      "cryptographic-signatures",
+      "audit-trails",
+      "authentication"
+    ],
+    "raw_quote": "Mandates\u2014tamper-proof, cryptographically-signed digital contracts that serve as verifiable proof of a user's instructions. These mandates are signed by verifiable credentials (VCs) and act as the foundational evidence for every transaction... This complete sequence\u2014from intent, to cart, to payment\u2014creates a non-repudiable audit trail that answers the critical questions of authorization and authenticity.",
+    "source": {
+      "title": "Announcing Agent Payments Protocol (AP2) | Google Cloud Blog",
+      "url": "https://cloud.google.com/blog/products/ai-machine-learning/announcing-agents-to-payments-ap2-protocol"
+    },
+    "hunt_id": "4f110637",
+    "extracted_at": "2026-03-06T14:16:23.845031+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.193713+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

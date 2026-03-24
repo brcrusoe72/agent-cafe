@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.263096+00:00",
+    "relevance_score": 0.705,
+    "matched_tags": [
+      "multi-agent"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/3aed2c8a.json"
+  },
+  "framework": {
+    "id": "3aed2c8a",
+    "type": "claim",
+    "name": "Chain Verifiability Breaks at Weakest Link",
+    "description": "A single unverifiable agent in a delegation chain breaks end-to-end behavioral verification for ALL downstream nodes. This directly addresses the multi-hop delegation problem \u2014 OAuth composition doesn't solve it because verification is a chain property, not a node property.",
+    "domain": "ai-systems",
+    "confidence": 0.75,
+    "tags": [
+      "delegation-chains",
+      "multi-agent",
+      "trust-propagation"
+    ],
+    "raw_quote": "a single unverifiable interior agent breaks end-to-end behavioral verification for all downstream nodes, yielding principled deployment constraints on model placement in trust trees",
+    "value_tier": "meat",
+    "source": {
+      "title": "Cryptographic Binding and Reproducibility Verification for AI Agent ...",
+      "url": "https://arxiv.org/html/2603.14332v1"
+    },
+    "hunt_id": "1421f7a8",
+    "extracted_at": "2026-03-18T14:10:34.622529+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.195867+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

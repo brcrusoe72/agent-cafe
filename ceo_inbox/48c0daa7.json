@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.626980+00:00",
+    "relevance_score": 0.575,
+    "matched_tags": [
+      "authorization"
+    ],
+    "domain_match": false,
+    "source_path": "technology/48c0daa7.json"
+  },
+  "framework": {
+    "id": "48c0daa7",
+    "type": "technique",
+    "name": "Two-Mode Authorization Model",
+    "description": "Distinguishes human-in-the-loop (consumer present, cart approved, transaction authorized) from autonomous (agent acts within pre-set parameters, merchant can request additional confirmation). In autonomous mode, disputes become cryptographic record vs. claimed intent \u2014 not he-said-she-said.",
+    "domain": "technology",
+    "confidence": 0.85,
+    "tags": [
+      "authorization",
+      "dispute-resolution",
+      "autonomous-agents"
+    ],
+    "raw_quote": "If an agent books a flight outside a stated budget, or purchases the wrong product variant, the question of what was actually authorized moves from being a matter of memory to one of cryptographic record.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Mastercard and Google's new trust layer could reshape how AI buys for you",
+      "url": "https://ppc.land/mastercard-and-googles-new-trust-layer-could-reshape-how-ai-buys-for-you/"
+    },
+    "hunt_id": "7e7c0a23",
+    "extracted_at": "2026-03-14T14:20:13.454841+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.182170+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

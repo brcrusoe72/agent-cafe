@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.370255+00:00",
+    "relevance_score": 0.57,
+    "matched_tags": [
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/f313c2cb.json"
+  },
+  "framework": {
+    "id": "f313c2cb",
+    "type": "framework",
+    "name": "Okta's Sell-The-Problem-Sell-The-Solution Pattern",
+    "description": "Okta admits OAuth/JWT composition doesn't solve multi-hop delegation (no offline attenuation, no lineage after 3 hops), then sells their proprietary products (XAA, Token Vault, FGA) as the fix \u2014 built ON TOP of OAuth. They're simultaneously the strongest evidence that composition doesn't work AND the strongest vendor pushing composition.",
+    "domain": "ai-systems",
+    "confidence": 0.8,
+    "tags": [
+      "vendor-incentive",
+      "oauth",
+      "meta-analysis"
+    ],
+    "raw_quote": null,
+    "value_tier": "organ",
+    "source": {
+      "title": "Control the Chain, Secure the System: Fixing AI Agent Delegation",
+      "url": "https://www.okta.com/blog/ai/agent-security-delegation-chain/"
+    },
+    "hunt_id": "1421f7a8",
+    "extracted_at": "2026-03-18T14:09:06.829686+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.206881+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

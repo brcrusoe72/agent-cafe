@@ -1,0 +1,35 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.563001+00:00",
+    "relevance_score": 0.575,
+    "matched_tags": [
+      "delegation"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/9cd8ece3.json"
+  },
+  "framework": {
+    "id": "9cd8ece3",
+    "type": "claim",
+    "name": "Paradigm Shift from Recommendation to Execution",
+    "description": "The fundamental change in commerce is moving from systems that suggest products to systems that autonomously execute purchasing decisions based on user-defined goals and constraints.",
+    "domain": "strategy",
+    "confidence": 0.85,
+    "tags": [
+      "paradigm-shift",
+      "automation",
+      "delegation"
+    ],
+    "raw_quote": "The future isn't about suggesting the right product. It's about autonomously executing the right outcome.",
+    "source": {
+      "title": "What Is Agentic Commerce?",
+      "url": "https://www.youtube.com/watch?v=HHWRhtzvsOU"
+    },
+    "hunt_id": "dbee9bd2",
+    "extracted_at": "2026-03-03T18:12:05.518042+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.201825+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

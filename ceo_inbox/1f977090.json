@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.616475+00:00",
+    "relevance_score": 0.575,
+    "matched_tags": [
+      "mcp"
+    ],
+    "domain_match": false,
+    "source_path": "technology/1f977090.json"
+  },
+  "framework": {
+    "id": "1f977090",
+    "type": "claim",
+    "name": "RFC 9396 RAR as task-scoped constrained envelope",
+    "description": "Paper confirms RAR (Rich Authorization Requests) is being used in MCP implementations (Auth0 gateway, Stytch) to attach per-task authorization_details objects to agent calls \u2014 enabling per-task least privilege even though MCP spec is silent on it. This is practitioners treating RAR as the constrained envelope primitive.",
+    "domain": "technology",
+    "confidence": 0.85,
+    "tags": [
+      "RFC-9396",
+      "RAR",
+      "MCP",
+      "constrained-envelope"
+    ],
+    "raw_quote": "a Rich Authorization Request authorization_details object (RFC 9396) can accompany every agent call, enabling per-task least privilege even though the core MCP specification is currently silent on that semantic",
+    "value_tier": "meat",
+    "source": {
+      "title": "OAuth Is Not Enough",
+      "url": "https://d197for5662m48.cloudfront.net/documents/publicationstatus/262756/preprint_pdf/21aad33dd971984a510d5f79277b7be8.pdf"
+    },
+    "hunt_id": "67bf6ff4",
+    "extracted_at": "2026-03-15T12:30:47.068541+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.216069+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

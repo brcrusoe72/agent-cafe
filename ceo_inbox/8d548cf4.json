@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.313150+00:00",
+    "relevance_score": 0.58,
+    "matched_tags": [
+      "delegation"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/8d548cf4.json"
+  },
+  "framework": {
+    "id": "8d548cf4",
+    "type": "claim",
+    "name": "EU AI Act Makes Delegation Lineage Legally Required",
+    "description": "Article 14 of EU AI Act demands humans fully understand and monitor AI operations. Without verifiable delegation chains, compliance collapses. Regulatory forcing function for solving the multi-hop problem.",
+    "domain": "ai-systems",
+    "confidence": 0.9,
+    "tags": [
+      "regulation",
+      "eu-ai-act",
+      "compliance",
+      "delegation"
+    ],
+    "raw_quote": "Under the EU AI Act, traceability and oversight are legal obligations for high-risk systems. Article 14 demands humans fully understand and monitor how AI operates.",
+    "value_tier": "bone",
+    "source": {
+      "title": "Control the Chain, Secure the System: Fixing AI Agent Delegation",
+      "url": "https://www.okta.com/blog/ai/agent-security-delegation-chain/"
+    },
+    "hunt_id": "1421f7a8",
+    "extracted_at": "2026-03-18T14:09:06.830184+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.200581+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

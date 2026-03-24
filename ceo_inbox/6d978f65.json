@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.418697+00:00",
+    "relevance_score": 0.58,
+    "matched_tags": [
+      "authorization"
+    ],
+    "domain_match": false,
+    "source_path": "finance/6d978f65.json"
+  },
+  "framework": {
+    "id": "6d978f65",
+    "type": "technique",
+    "name": "Real-time Authorization Approval/Decline API",
+    "description": "Stripe implements synchronous authorization decisions via POST endpoints for approve/decline with fraud challenge verification. The system maintains request_history arrays tracking authorization attempts with timestamps, amounts, and rejection reasons.",
+    "domain": "finance",
+    "confidence": 0.9,
+    "tags": [
+      "api-design",
+      "authorization",
+      "real-time-validation",
+      "revocation"
+    ],
+    "raw_quote": "POST /v1/issuing/authorizations/:id/approve, POST /v1/issuing/authorizations/:id/decline",
+    "value_tier": "meat",
+    "source": {
+      "title": "Authorizations | Stripe API Reference",
+      "url": "https://docs.stripe.com/api/issuing/authorizations"
+    },
+    "hunt_id": "bd6202e2",
+    "extracted_at": "2026-03-07T14:41:37.098598+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.183514+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

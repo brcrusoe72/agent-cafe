@@ -1,0 +1,40 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.354512+00:00",
+    "relevance_score": 0.575,
+    "matched_tags": [
+      "authentication",
+      "mcp",
+      "authorization"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/d5eeb96a.json"
+  },
+  "framework": {
+    "id": "d5eeb96a",
+    "type": "framework",
+    "name": "Model Context Protocol (MCP) Authorization Framework",
+    "description": "Anthropic's emerging standard for AI agent interactions that mandates OAuth 2.1 with PKCE for authorization. MCP servers act as OAuth 2.1 resource servers, and agents dynamically discover authorization requirements through a 401 response flow. Positioned as becoming THE standard for how AI agents interact with external tools and resources.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "mcp",
+      "oauth-2.1",
+      "authentication",
+      "authorization",
+      "anthropic",
+      "emerging-standard"
+    ],
+    "raw_quote": "The Model Context Protocol (MCP) specification, initially introduced by Anthropic, mandates OAuth 2.1 for authorization. This is quickly becoming the standard for how AI agents interact with external tools and resources.",
+    "source": {
+      "title": "AI Agent Authentication & Authorization - datadome.co",
+      "url": "https://datadome.co/agent-trust-management/authentication-and-authorization/"
+    },
+    "hunt_id": "4f110637",
+    "extracted_at": "2026-03-06T14:17:42.634726+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.220317+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

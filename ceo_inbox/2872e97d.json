@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.249491+00:00",
+    "relevance_score": 0.685,
+    "matched_tags": [
+      "authentication",
+      "agent-commerce"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/2872e97d.json"
+  },
+  "framework": {
+    "id": "2872e97d",
+    "type": "framework",
+    "name": "Visa Trusted Agent Protocol",
+    "description": "A signature-based authentication protocol for AI agents in commerce contexts. Agents receive credentials from Visa, then generate time-bound, merchant-specific, non-replayable signatures when interacting with merchant sites. Merchants verify these signatures to distinguish 'trusted' commerce agents from malicious bots.",
+    "domain": "ai-systems",
+    "confidence": 0.9,
+    "tags": [
+      "authentication",
+      "cryptographic-signatures",
+      "agent-commerce",
+      "pki",
+      "protocol-design"
+    ],
+    "raw_quote": "New specifications include details related to signatures that are specific to the merchant and purpose, and are time bound, cannot be replayed or relayed.",
+    "source": {
+      "title": "Trusted Agent Protocol - Visa Developer",
+      "url": "https://developer.visa.com/capabilities/trusted-agent-protocol"
+    },
+    "hunt_id": "0a8db7c7",
+    "extracted_at": "2026-03-05T15:08:46.512554+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.208250+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

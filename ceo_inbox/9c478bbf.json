@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.562453+00:00",
+    "relevance_score": 0.57,
+    "matched_tags": [
+      "pricing"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/9c478bbf.json"
+  },
+  "framework": {
+    "id": "9c478bbf",
+    "type": "framework",
+    "name": "SMB Payment Ceiling for AI Services",
+    "description": "Small businesses have limited willingness/ability to pay for AI automation services. Creator who works with SMBs states they definitively do not pay $300K scale amounts. Suggests SMB market has natural ceiling that limits solo operator revenue potential without moving upmarket or changing model.",
+    "domain": "strategy",
+    "confidence": 0.8,
+    "tags": [
+      "smb",
+      "pricing",
+      "market_constraints",
+      "payment_capacity"
+    ],
+    "raw_quote": "And a lot of them actually say to small businesses. I've worked with small businesses. I guarantee you they are not paying you that much money.",
+    "source": {
+      "title": "The TRUTH About Selling AI Automations to Businesses",
+      "url": "https://www.youtube.com/watch?v=XUYvDbAv1IA"
+    },
+    "hunt_id": "1295ff45",
+    "extracted_at": "2026-03-05T20:58:05.428113+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.214565+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "payment_infrastructure"
+}

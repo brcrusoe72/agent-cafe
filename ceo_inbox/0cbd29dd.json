@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.230004+00:00",
+    "relevance_score": 0.55,
+    "matched_tags": [
+      "tokenization",
+      "security"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/0cbd29dd.json"
+  },
+  "framework": {
+    "id": "0cbd29dd",
+    "type": "technique",
+    "name": "Tokenization-Based Agent Authentication",
+    "description": "Both Visa and Mastercard are using tokenization as the core security mechanism for agent payments. Tokenization replaces actual card details with temporary tokens, allowing agents to transact without exposing raw payment credentials. Mastercard adds an additional 'registration and authorization process' layer.",
+    "domain": "ai-systems",
+    "confidence": 0.6,
+    "tags": [
+      "tokenization",
+      "security",
+      "agent-authentication",
+      "api-design"
+    ],
+    "raw_quote": "the announcement comes with all the usual assurances about data authentication and tokenization... Mastercard's agent pay. They're also going to have a tokenization-based system. They're going to require their agents go through a little bit of an extra layer of security apparently with a registration and authorization process.",
+    "source": {
+      "title": "Episode 327: AI Gets Credit Cards -  \"Intelligent Commerce\" & \"Agent Pay\"",
+      "url": "https://www.youtube.com/watch?v=PAVNpHOJ9sM"
+    },
+    "hunt_id": "0a8db7c7",
+    "extracted_at": "2026-03-05T15:07:29.605689+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.193511+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.529537+00:00",
+    "relevance_score": 0.71,
+    "matched_tags": [
+      "platform-strategy"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/441d9d51.json"
+  },
+  "framework": {
+    "id": "441d9d51",
+    "type": "framework",
+    "name": "Engagement Flywheel Through Token-Gated Actions",
+    "description": "Three-step feedback loop: acquire tokens, use tokens to participate in governance/decisions, earn rewards that increase token value and engagement. Creates self-reinforcing cycle where participation generates value which drives more participation. Platform sits in the middle capturing coordination value.",
+    "domain": "strategy",
+    "confidence": 0.8,
+    "tags": [
+      "flywheels",
+      "engagement-loops",
+      "token-utility",
+      "platform-strategy"
+    ],
+    "raw_quote": "First, you get some CHZ... Step two, you use those fan tokens to vote on all sorts of official polls the team puts out. And step three, you earn rewards... It's this perfect little feedback loop of engagement.",
+    "source": {
+      "title": "watch?v=woIAKaj3tlc",
+      "url": "https://www.youtube.com/watch?v=woIAKaj3tlc"
+    },
+    "hunt_id": "c9aa917a",
+    "extracted_at": "2026-03-04T23:40:18.973731+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.189124+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "marketplace_design"
+}

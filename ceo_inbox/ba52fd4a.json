@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.337580+00:00",
+    "relevance_score": 0.645,
+    "matched_tags": [
+      "security"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/ba52fd4a.json"
+  },
+  "framework": {
+    "id": "ba52fd4a",
+    "type": "technique",
+    "name": "Semantic Privilege Escalation",
+    "description": "Agents can chain actions across integrated systems to achieve aggregate privileges no single human would possess. This is the INVERSE of capability attenuation (gap_5) \u2014 authority INCREASES across hops rather than diminishing. Directly contradicts any assumption that delegation naturally constrains.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "security",
+      "privilege-escalation",
+      "capability"
+    ],
+    "raw_quote": "Agents that integrate with multiple systems can chain actions to achieve aggregate privileges no single human user would possess.",
+    "value_tier": "organ",
+    "source": {
+      "title": "When AI Agents Misbehave: Governance and Security for ... - Our Take",
+      "url": "https://ourtake.bakerbotts.com/post/102me2l/when-ai-agents-misbehave-governance-and-security-for-autonomous-ai"
+    },
+    "hunt_id": "d39fbdac",
+    "extracted_at": "2026-03-14T14:30:59.455119+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.185593+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

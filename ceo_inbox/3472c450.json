@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.621708+00:00",
+    "relevance_score": 0.585,
+    "matched_tags": [
+      "mcp"
+    ],
+    "domain_match": false,
+    "source_path": "technology/3472c450.json"
+  },
+  "framework": {
+    "id": "3472c450",
+    "type": "framework",
+    "name": "Visa MCP Integration (Model Context Protocol)",
+    "description": "Visa has adopted Anthropic's MCP as a primary integration pattern \u2014 StreamableHTTP transport, tool discovery, typed tool invocations (enroll-card, initiate-purchase-instruction, retrieve-payment-credentials). This is a real, public, MIT-licensed SDK with working code, not vaporware. They also ship a Documentation MCP Server at sandbox.mcp.visa.com/mcp/doc.",
+    "domain": "technology",
+    "confidence": 0.95,
+    "tags": [
+      "mcp",
+      "sdk",
+      "open-source",
+      "developer-tools"
+    ],
+    "raw_quote": "Use the Model Context Protocol with StreamableHTTP transport for standardized AI agent integration",
+    "value_tier": "meat",
+    "source": {
+      "title": "Visa Intelligent Commerce (VIC) - Integration Starter Kit",
+      "url": "https://github.com/visa/mcp/"
+    },
+    "hunt_id": "da550186",
+    "extracted_at": "2026-03-15T12:07:17.156016+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.216269+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

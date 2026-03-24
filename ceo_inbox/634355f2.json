@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.285824+00:00",
+    "relevance_score": 0.72,
+    "matched_tags": [
+      "trust"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/634355f2.json"
+  },
+  "framework": {
+    "id": "634355f2",
+    "type": "framework",
+    "name": "Three-Factor Overtrust Model",
+    "description": "Automation bias (assumption of perfection), authority bias (belief in expert without evidence), mental shortcuts for complex information. Combined factors create overtrust even among domain experts who should know better.",
+    "domain": "ai-systems",
+    "confidence": 0.9,
+    "tags": [
+      "cognitive-bias",
+      "trust",
+      "human-factors",
+      "decision-making"
+    ],
+    "raw_quote": "Research highlights three prevalent ones: 1. Humans can assume automation is perfect; therefore, they have high initial trust. 2. Similarly, people generally believe something is true if it comes from an authority or expert, even if no supporting evidence is supplied. 3. Humans use mental shortcuts to make sense of complex information.",
+    "value_tier": "meat",
+    "source": {
+      "title": "FIVE AI FAILS (AND HOW WE CAN LEARN FROM THEM) - MITRE.org",
+      "url": "https://www.mitre.org/sites/default/files/2025-03/pr-21-2414-five-ai-fails.pdf"
+    },
+    "hunt_id": "8c8aa3cc",
+    "extracted_at": "2026-03-12T16:26:20.276697+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.199002+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

@@ -1,0 +1,40 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.620318+00:00",
+    "relevance_score": 0.605,
+    "matched_tags": [
+      "authorization",
+      "delegation",
+      "trust",
+      "mcp"
+    ],
+    "domain_match": false,
+    "source_path": "technology/2b4ac0c0.json"
+  },
+  "framework": {
+    "id": "2b4ac0c0",
+    "type": "claim",
+    "name": "MCP as Agent Trust Gateway",
+    "description": "Agent Bouncer integrates with MCP servers/gateways to intercept agent actions and verify identity, trustworthiness, delegation authority, and explicit human permission before allowing actions. MCP is being used as the interoperability layer for agent trust, not a custom protocol.",
+    "domain": "technology",
+    "confidence": 0.8,
+    "tags": [
+      "MCP",
+      "trust",
+      "authorization",
+      "delegation"
+    ],
+    "raw_quote": "When an AI agent connects with an MCP server or gateway so it can take actions on a particular website, Agent Bouncer will identify what that agent is, decide if it's trustworthy, determine who it is acting for, and then ensure that the individual has given the agent explicit permission",
+    "value_tier": "meat",
+    "source": {
+      "title": "Agentic AI identity verification startup Vouched gets $17M to build trust in autonomous agents - SiliconANGLE",
+      "url": "https://siliconangle.com/2025/09/04/agentic-ai-identity-verification-startup-vouched-gets-17m-build-trust-autonomous-agents/"
+    },
+    "hunt_id": "f911b3bb",
+    "extracted_at": "2026-03-18T13:59:05.237265+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.195034+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

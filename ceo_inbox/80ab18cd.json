@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.645884+00:00",
+    "relevance_score": 0.58,
+    "matched_tags": [
+      "authorization"
+    ],
+    "domain_match": false,
+    "source_path": "technology/80ab18cd.json"
+  },
+  "framework": {
+    "id": "80ab18cd",
+    "type": "framework",
+    "name": "OAuth 2.0 Role Architecture",
+    "description": "Separates authorization into four distinct roles: resource owner (user), resource server (data storage), client (requesting application), and authorization server (manages OAuth process). This separation allows delegation without credential sharing.",
+    "domain": "technology",
+    "confidence": 0.9,
+    "tags": [
+      "architecture",
+      "separation-of-concerns",
+      "authorization",
+      "delegation-model"
+    ],
+    "raw_quote": "we are the resource owner because we own our photos on Snap Store Snap Store is the resource server that stores our photos pre magic is the client that wants to access the photos the authorization server could be a part of snap store or an external identity provider",
+    "source": {
+      "title": "OAuth 2 Explained In Simple Terms",
+      "url": "https://www.youtube.com/watch?v=ZV5yTm4pT8g"
+    },
+    "hunt_id": "c5cfd231",
+    "extracted_at": "2026-03-06T14:18:02.744607+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.199911+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

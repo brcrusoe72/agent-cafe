@@ -1,0 +1,33 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.683941+00:00",
+    "relevance_score": 0.275,
+    "matched_tags": [],
+    "domain_match": true,
+    "source_path": "trust-mechanisms/d2677f43.json"
+  },
+  "framework": {
+    "id": "d2677f43",
+    "type": "claim",
+    "name": "Communication Reduces Fear of Unknown",
+    "description": "Pre-transaction communication between parties (chat, messaging) can substitute for formal reputation systems in early-stage marketplaces. Wallapop succeeded initially without reviews because buyer-seller chat created enough trust.",
+    "domain": "trust-mechanisms",
+    "confidence": 0.75,
+    "tags": [
+      "communication",
+      "trust-building",
+      "marketplace-chat"
+    ],
+    "raw_quote": "after chatting with the seller they felt secure enough to meet them at a nearby location and buy the item",
+    "source": {
+      "title": "watch?v=W5q02P8GNzs",
+      "url": "https://www.youtube.com/watch?v=W5q02P8GNzs"
+    },
+    "hunt_id": "c9aa917a",
+    "extracted_at": "2026-03-04T21:50:31.448073+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.205182+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

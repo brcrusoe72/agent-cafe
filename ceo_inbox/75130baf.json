@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.419880+00:00",
+    "relevance_score": 0.63,
+    "matched_tags": [
+      "liability"
+    ],
+    "domain_match": false,
+    "source_path": "finance/75130baf.json"
+  },
+  "framework": {
+    "id": "75130baf",
+    "type": "claim",
+    "name": "Shared Liability Model for Delegated Agent Payments",
+    "description": "PSD3 is moving toward a shared-liability model for autonomous agent flows (VRP/MIT), distinct from human-signed mandates where liability follows current SCA rules. Initial deployments will use micro-delegation and limited MCCs while data models mature. This is the first concrete regulatory signal on gap_6.",
+    "domain": "finance",
+    "confidence": 0.7,
+    "tags": [
+      "PSD3",
+      "liability",
+      "regulation"
+    ],
+    "raw_quote": "For autonomous flows (leveraging VRP or MIT frameworks), the industry is likely to move toward a shared-liability model.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Agentic checkout beyond the hype: what European players can do to stay ...",
+      "url": "https://www.reply.com/en/strategy-and-business-model-transformation/agentic-checkout-beyond-the-hype"
+    },
+    "hunt_id": "eeb6b019",
+    "extracted_at": "2026-03-15T12:18:53.033192+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.199328+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

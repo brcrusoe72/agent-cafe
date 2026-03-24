@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.307929+00:00",
+    "relevance_score": 0.69,
+    "matched_tags": [
+      "fraud-detection"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/8468995c.json"
+  },
+  "framework": {
+    "id": "8468995c",
+    "type": "case_study",
+    "name": "Ocado Feature Store Pattern",
+    "description": "Ocado's fraud detection pipeline uses Google Cloud Datastore as a feature store enriching real-time predictions with historical customer/transaction features from BigQuery. Daily retraining schedule with Apache Beam for feature engineering. Human-in-the-loop fraud agent for edge cases where model confidence is low.",
+    "domain": "ai-systems",
+    "confidence": 0.6,
+    "tags": [
+      "feature-store",
+      "fraud-detection",
+      "human-in-loop",
+      "ocado"
+    ],
+    "raw_quote": "Google Cloud Datastore serves as the feature store... a fraud agent is used as the human-in-the-loop subject matter expert",
+    "value_tier": "bone",
+    "source": {
+      "title": "How These 8 Companies Implement MLOps: In-Depth Guide",
+      "url": "https://neptune.ai/blog/how-these-8-companies-implement-mlops"
+    },
+    "hunt_id": "e234ddc0",
+    "extracted_at": "2026-03-17T13:40:40.147694+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.209664+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.301448+00:00",
+    "relevance_score": 0.575,
+    "matched_tags": [
+      "delegation"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/794b3bba.json"
+  },
+  "framework": {
+    "id": "794b3bba",
+    "type": "technique",
+    "name": "Offline-Attenuable Token Formats (Macaroons/Biscuits/Wafers)",
+    "description": "Token formats where holders can append caveats that ONLY reduce permissions, never expand them, enabling offline scope attenuation across delegation hops without recontacting the auth server. Okta acknowledges no major IdP supports these natively yet, but says the principles can be applied via existing OAuth.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "delegation",
+      "scope-attenuation",
+      "tokens",
+      "macaroons",
+      "biscuits"
+    ],
+    "raw_quote": "Although no major identity provider currently supports Macaroons or Biscuits natively, their core principles (offline attenuation, cryptographic delegation, and append-only constraints) can be applied today using existing OAuth infrastructure.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Control the Chain, Secure the System: Fixing AI Agent Delegation",
+      "url": "https://www.okta.com/blog/ai/agent-security-delegation-chain/"
+    },
+    "hunt_id": "1421f7a8",
+    "extracted_at": "2026-03-18T14:09:06.827903+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.199521+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.257443+00:00",
+    "relevance_score": 0.775,
+    "matched_tags": [
+      "agent-commerce"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/333b28e8.json"
+  },
+  "framework": {
+    "id": "333b28e8",
+    "type": "framework",
+    "name": "Agent Payment Protocol (AP2)",
+    "description": "An open-source protocol enabling AI agents to transact on behalf of consumers and businesses. Infrastructure-agnostic, supporting both traditional payment rails (credit cards) and blockchain-based settlement. Integrates with agent-to-agent (A2A) communication protocol and Model Context Protocol (MCP). Designed to enable micropayments and prevent agent hallucination of unauthorized transactions.",
+    "domain": "ai-systems",
+    "confidence": 0.75,
+    "tags": [
+      "agent-commerce",
+      "payment-protocol",
+      "micropayments",
+      "infrastructure",
+      "open-source"
+    ],
+    "raw_quote": "agent payment protocol is an extension to our A2A work...when combined with agent payment protocol and blockchain rails are a really great fit to support the future of commerce. But it also supports credit card payments...if you want to pay for something that's maybe even sub cent, certainly sub dollar or pound, you need a set of technologies that can do that cheaply and efficiently",
+    "source": {
+      "title": "From Protocol to Payments: Agentic Commerce and the Universal Ledger | DAS London 2025 | Day 3",
+      "url": "https://www.youtube.com/watch?v=hyed27TgYxc"
+    },
+    "hunt_id": "7d3db790",
+    "extracted_at": "2026-03-03T18:51:04.307423+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.213510+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "payment_infrastructure"
+}

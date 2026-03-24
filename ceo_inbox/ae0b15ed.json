@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.569536+00:00",
+    "relevance_score": 0.625,
+    "matched_tags": [
+      "governance"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/ae0b15ed.json"
+  },
+  "framework": {
+    "id": "ae0b15ed",
+    "type": "adjacent_discovery",
+    "name": "Governance-as-Competitive-Advantage in Banking",
+    "description": "Evident AI Index positioning governance sophistication as 'the new marker for leadership' in banking suggests banks may compete on compliance capabilities. This could drive either open standards (to prove best practices) or proprietary moats (to differentiate).",
+    "domain": "strategy",
+    "confidence": 0.65,
+    "tags": [
+      "competitive-dynamics",
+      "banking",
+      "governance",
+      "differentiation"
+    ],
+    "raw_quote": "Evident's research highlights leading financial institutions that prioritize responsible, transparent AI adoption, ranking governance as the new marker for leadership in the sector.",
+    "source": {
+      "title": "Compliance for AI Agents: What Financial Services Organizations Need to Know - Banking Exchange",
+      "url": "https://www.bankingexchange.com/news-feed/item/10465-compliance-for-ai-agents-what-financial-services-organizations-need-to-know"
+    },
+    "hunt_id": "4f110637",
+    "extracted_at": "2026-03-06T14:19:45.027522+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.185394+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

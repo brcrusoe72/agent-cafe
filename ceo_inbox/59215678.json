@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.379242+00:00",
+    "relevance_score": 0.71,
+    "matched_tags": [
+      "agent-architecture"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems|manufacturing|strategy/59215678.json"
+  },
+  "framework": {
+    "id": "59215678",
+    "type": "connection",
+    "name": "DMAIC as Agent Decision-Making Framework",
+    "description": "The DMAIC cycle (Define-Measure-Analyze-Improve-Control) maps directly to autonomous agent behavior loops: Define = goal setting, Measure = sensor data collection, Analyze = pattern detection/root cause analysis, Improve = action execution, Control = monitoring and feedback. Manufacturing experts already think in these loops \u2014 they just need to formalize them for machines.",
+    "domain": "ai-systems|manufacturing|strategy",
+    "confidence": 0.8,
+    "tags": [
+      "agent-architecture",
+      "decision-loops",
+      "formalization",
+      "process-automation"
+    ],
+    "raw_quote": "N/A - derived from DMAIC structure analysis",
+    "source": {
+      "title": "watch?v=s2HCrhNVfak",
+      "url": "https://www.youtube.com/watch?v=s2HCrhNVfak"
+    },
+    "hunt_id": "bb70a202",
+    "extracted_at": "2026-03-05T22:29:25.077233+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.217554+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

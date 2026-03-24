@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.462195+00:00",
+    "relevance_score": 0.44,
+    "matched_tags": [
+      "economics"
+    ],
+    "domain_match": false,
+    "source_path": "manufacturing/68cf25db.json"
+  },
+  "framework": {
+    "id": "68cf25db",
+    "type": "claim",
+    "name": "Manufacturing Economic Multiplier Effect",
+    "description": "Every dollar spent on manufacturing generates $2.69 in total economic activity, one of the highest multipliers of any sector. This creates significant ripple effects through supply chains, logistics, and supporting services.",
+    "domain": "manufacturing",
+    "confidence": 0.9,
+    "tags": [
+      "economics",
+      "multiplier-effect",
+      "supply-chain",
+      "economic-impact"
+    ],
+    "raw_quote": "For every dollar spent on manufacturing, it creates $2.69 in total economic activity. This is one of the largest impacts of any sector.",
+    "source": {
+      "title": "Manufacturing in America \u2013 Contributing to Our Economy, \u2026",
+      "url": "https://www.nist.gov/blogs/manufacturing-innovation-blog/manufacturing-america-contributing-our-economy-employment-and"
+    },
+    "hunt_id": "6d8fece9",
+    "extracted_at": "2026-03-03T20:53:51.866961+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.209242+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.652249+00:00",
+    "relevance_score": 0.795,
+    "matched_tags": [
+      "agent-identity"
+    ],
+    "domain_match": false,
+    "source_path": "technology/9b957574.json"
+  },
+  "framework": {
+    "id": "9b957574",
+    "type": "framework",
+    "name": "Visa Trusted Agent Protocol (TAP)",
+    "description": "RFC 9421-compliant cryptographic signature protocol for AI agents to prove identity and authorization to merchants. Uses domain-bound, timestamp-validated signatures with session identifiers to prevent replay attacks. Agents present signatures containing key identifiers, algorithm identifiers, and transaction-specific authorization scope (browsing vs payment).",
+    "domain": "technology",
+    "confidence": 0.95,
+    "tags": [
+      "payment-authorization",
+      "cryptographic-signatures",
+      "agent-identity",
+      "rfc-9421",
+      "domain-binding"
+    ],
+    "raw_quote": "Visa's Trusted Agent Protocol provides a standardized, cryptographic method for an AI agent to prove its identity and associated authorization directly to merchants. By presenting a secure digital signature with every interaction, a merchant can verify that an agent is legitimate and has the user's permission to act.",
+    "value_tier": "meat",
+    "source": {
+      "title": "GitHub - visa/trusted-agent-protocol: Establishing a universal standard of trust between AI agents and merchants for the next phase of agentic commerce. \u00b7 GitHub",
+      "url": "https://github.com/visa/trusted-agent-protocol"
+    },
+    "hunt_id": "fd72fd5b",
+    "extracted_at": "2026-03-09T13:45:43.315943+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.201712+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

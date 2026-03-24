@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.561319+00:00",
+    "relevance_score": 0.635,
+    "matched_tags": [
+      "governance"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/97f05369.json"
+  },
+  "framework": {
+    "id": "97f05369",
+    "type": "claim",
+    "name": "Governance-Before-Scale Sequencing",
+    "description": "Governance frameworks and change management must be in place BEFORE scaling, not retrofitted after problems surface. This implies a specific organizational sequencing: governance \u2192 pilot \u2192 scale, not pilot \u2192 scale \u2192 governance.",
+    "domain": "strategy",
+    "confidence": 0.75,
+    "tags": [
+      "governance",
+      "change-management",
+      "sequencing"
+    ],
+    "raw_quote": "Governance Frameworks and Change Management planning should be in place before scaling begins, not retrofitted after problems surface.",
+    "value_tier": "bone",
+    "source": {
+      "title": "Workflow Redesign and Intelligent Automation - Agility at Scale",
+      "url": "https://agility-at-scale.com/ai/people-change/workflow-redesign-and-intelligent-automation/"
+    },
+    "hunt_id": "850ed033",
+    "extracted_at": "2026-03-17T13:56:59.513853+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.184900+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

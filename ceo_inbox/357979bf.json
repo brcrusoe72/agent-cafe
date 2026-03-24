@@ -1,0 +1,39 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.259836+00:00",
+    "relevance_score": 0.658,
+    "matched_tags": [
+      "multi-agent",
+      "liability",
+      "security"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/357979bf.json"
+  },
+  "framework": {
+    "id": "357979bf",
+    "type": "framework",
+    "name": "MAESTRO Agent-Specific Threat Taxonomy",
+    "description": "CSA's MAESTRO framework identifies threats STRIDE misses: emergent agent collusion, reputation exploitation, policy reinterpretation by LLMs, and observability bypass via emergent behaviors. Key insight for gap_6: the liability surface isn't just 'agent makes bad purchase' \u2014 it's agents collectively gaming systems in ways no single party authorized.",
+    "domain": "ai-systems",
+    "confidence": 0.75,
+    "tags": [
+      "security",
+      "multi-agent",
+      "emergent-behavior",
+      "liability"
+    ],
+    "raw_quote": "Emergent Ecosystem Collusion: Multiple agents coordinating to manipulate markets (e.g., inflating prices via puppeteered negotiations)",
+    "value_tier": "meat",
+    "source": {
+      "title": "Secure Use of the Agent Payments Protocol (AP2)",
+      "url": "https://cloudsecurityalliance.org/blog/2025/10/06/secure-use-of-the-agent-payments-protocol-ap2-a-framework-for-trustworthy-ai-driven-transactions"
+    },
+    "hunt_id": "eeb6b019",
+    "extracted_at": "2026-03-15T12:19:37.655446+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.195496+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.624934+00:00",
+    "relevance_score": 0.51,
+    "matched_tags": [
+      "ap2"
+    ],
+    "domain_match": false,
+    "source_path": "technology/3c80bbcf.json"
+  },
+  "framework": {
+    "id": "3c80bbcf",
+    "type": "claim",
+    "name": "AP2 Coalition: 60+ Organizations",
+    "description": "Google has 60+ organizations collaborating on AP2 including Adyen, Amex, Coinbase, Mastercard, PayPal, Revolut, Worldpay, Etsy, Salesforce, ServiceNow. This is the largest agent-payment coalition announced, dwarfing Visa TAP's partner list.",
+    "domain": "technology",
+    "confidence": 0.9,
+    "tags": [
+      "ap2",
+      "ecosystem",
+      "payments"
+    ],
+    "raw_quote": "We're collaborating with a diverse group of more than 60 organizations",
+    "value_tier": "meat",
+    "source": {
+      "title": "Announcing Agent Payments Protocol (AP2) | Google Cloud Blog",
+      "url": "https://cloud.google.com/blog/products/ai-machine-learning/announcing-agents-to-payments-ap2-protocol"
+    },
+    "hunt_id": "4433457e",
+    "extracted_at": "2026-03-18T14:29:48.027275+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.213588+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "payment_infrastructure"
+}

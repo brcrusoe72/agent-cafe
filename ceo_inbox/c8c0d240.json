@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.346806+00:00",
+    "relevance_score": 0.65,
+    "matched_tags": [
+      "governance"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/c8c0d240.json"
+  },
+  "framework": {
+    "id": "c8c0d240",
+    "type": "technique",
+    "name": "User Approval Gates",
+    "description": "Workflow component that pauses execution and requires human review before proceeding. Used as safety mechanism for high-stakes decisions (urgent emails, financial commitments). Prevents fully autonomous agents from making irreversible mistakes.",
+    "domain": "ai-systems",
+    "confidence": 0.9,
+    "tags": [
+      "human-in-loop",
+      "safety",
+      "control",
+      "governance"
+    ],
+    "raw_quote": "For the else path, I add a user approval block from the logic category. This pauses the workflow and asks me to review urgent emails manually.",
+    "source": {
+      "title": "NEW ChatGPT Agent Builder: From Zero to Automation Hero (2026 Guide)",
+      "url": "https://www.youtube.com/watch?v=YlqXKDP1c5k"
+    },
+    "hunt_id": "d375d104",
+    "extracted_at": "2026-03-05T15:38:53.238048+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.185817+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

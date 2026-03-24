@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.673906+00:00",
+    "relevance_score": 0.64,
+    "matched_tags": [
+      "verifiable-credentials"
+    ],
+    "domain_match": false,
+    "source_path": "technology/e0a4d145.json"
+  },
+  "framework": {
+    "id": "e0a4d145",
+    "type": "claim",
+    "name": "AP2 Uses Verifiable Credentials for Agent Identity",
+    "description": "Mandates are signed by verifiable credentials (VCs), which implies an agent identity layer. However the blog describes VC as proving USER authority, not agent-authenticates-agent. Agent identity verification (gap_6) remains unaddressed \u2014 this is user-identity-delegated-to-agent.",
+    "domain": "technology",
+    "confidence": 0.8,
+    "tags": [
+      "verifiable-credentials",
+      "identity",
+      "W3C"
+    ],
+    "raw_quote": "These mandates are signed by verifiable credentials (VCs)",
+    "value_tier": "meat",
+    "source": {
+      "title": "Announcing Agent Payments Protocol (AP2) | Google Cloud Blog",
+      "url": "https://cloud.google.com/blog/products/ai-machine-learning/announcing-agents-to-payments-ap2-protocol"
+    },
+    "hunt_id": "4433457e",
+    "extracted_at": "2026-03-18T14:29:48.027602+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.206048+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

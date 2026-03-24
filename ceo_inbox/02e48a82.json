@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.222896+00:00",
+    "relevance_score": 0.575,
+    "matched_tags": [
+      "trust",
+      "cryptography"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/02e48a82.json"
+  },
+  "framework": {
+    "id": "02e48a82",
+    "type": "claim",
+    "name": "Verifiable Intent Not Inferred Action",
+    "description": "Core design principle that agent transactions cannot rely on ambiguous LLM outputs. All financial actions must be anchored in deterministic, cryptographically provable intent from all parties. Directly challenges the 'just let the LLM decide' approach to agent autonomy.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "trust",
+      "cryptography",
+      "agent-safety",
+      "design-principles"
+    ],
+    "raw_quote": "They talk about verifiable intent not inferred action. Any sort of trust cannot be based on just an ambiguous response from an LLM. These transactions need to be anchored and they need to be deterministic and there needs to be a cryptographical proof of intent from all parties.",
+    "source": {
+      "title": "Google's NEW Agent Money Protocol",
+      "url": "https://www.youtube.com/watch?v=1bIVaODEbTo"
+    },
+    "hunt_id": "e8165180",
+    "extracted_at": "2026-03-05T16:05:34.088839+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.192976+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

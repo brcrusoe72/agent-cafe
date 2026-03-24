@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.417053+00:00",
+    "relevance_score": 0.505,
+    "matched_tags": [
+      "stripe"
+    ],
+    "domain_match": false,
+    "source_path": "finance/61f968fe.json"
+  },
+  "framework": {
+    "id": "61f968fe",
+    "type": "technique",
+    "name": "Merchant Category Code (MCC) Filtering via Allow/Block Lists",
+    "description": "Stripe implements MCC-based authorization through mutually exclusive allowed_categories and blocked_categories arrays. Categories use Stripe's taxonomy (e.g., 'car_rental_agencies', 'fast_food_restaurants') rather than standard ISO 18245 MCC codes in documentation.",
+    "domain": "finance",
+    "confidence": 0.85,
+    "tags": [
+      "mcc",
+      "category-filtering",
+      "stripe",
+      "merchant-controls"
+    ],
+    "raw_quote": "You can set... allowed_categories array: List of categories of authorizations to allow. All other categories will be blocked. blocked_categories array: List of categories of authorizations to decline.",
+    "value_tier": "bone",
+    "source": {
+      "title": "Issuing spending controls | Stripe Documentation",
+      "url": "https://docs.stripe.com/issuing/controls/spending-controls"
+    },
+    "hunt_id": "b977a620",
+    "extracted_at": "2026-03-07T14:45:43.641617+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.213928+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "payment_infrastructure"
+}

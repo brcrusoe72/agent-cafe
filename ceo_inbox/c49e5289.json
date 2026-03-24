@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.579186+00:00",
+    "relevance_score": 0.57,
+    "matched_tags": [
+      "pricing"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/c49e5289.json"
+  },
+  "framework": {
+    "id": "c49e5289",
+    "type": "claim",
+    "name": "Rate Flexibility Across Networks as Arbitrage Strategy",
+    "description": "Same project circulates through multiple expert networks at different price points. Consultants can lose a project at $500/hour on GLG, then win the identical project at $400/hour on AlphaSights. GLG specifically known for aggressive rate negotiation downward.",
+    "domain": "strategy",
+    "confidence": 0.8,
+    "tags": [
+      "expert-networks",
+      "pricing",
+      "arbitrage",
+      "GLG",
+      "AlphaSights"
+    ],
+    "raw_quote": "you may have been passed over for a project with GLG at a $500 hourly rate, but a few days later you could land the same project through Alphasights by offering to do it at a $400 hourly rate. (This is also a good place to note that GLG is notorious for fiercely negotiating rates lower)",
+    "value_tier": "meat",
+    "source": {
+      "title": "Setting Your Expert Network Consulting Rate \u2022 Expert Opportunities",
+      "url": "https://expertopportunities.com/expert-network-hourly-rates/"
+    },
+    "hunt_id": "b38ad25e",
+    "extracted_at": "2026-03-07T16:15:35.161325+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.210963+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

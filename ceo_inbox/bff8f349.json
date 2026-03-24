@@ -1,0 +1,35 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.342597+00:00",
+    "relevance_score": 0.715,
+    "matched_tags": [
+      "agent-architecture"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/bff8f349.json"
+  },
+  "framework": {
+    "id": "bff8f349",
+    "type": "framework",
+    "name": "Five Properties of Agentic Commerce",
+    "description": "Autonomous commerce agents require: clear goals, autonomy to act independently, tools (APIs) to interact with systems, memory to learn preferences, and feedback loops to improve over time. These five properties combine to enable true autonomous purchasing action.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "autonomy",
+      "agent-architecture",
+      "commerce-automation"
+    ],
+    "raw_quote": "an agent has a clear goal, like get me the best price. It's got the autonomy to act on its own without you holding its hand. It uses tools, think of APIs as its hands and feet... It has a memory, so it learns what you like. And crucially, it uses feedback from past purchases to get smarter every single time.",
+    "source": {
+      "title": "What Is Agentic Commerce?",
+      "url": "https://www.youtube.com/watch?v=HHWRhtzvsOU"
+    },
+    "hunt_id": "dbee9bd2",
+    "extracted_at": "2026-03-03T18:12:05.517625+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.210828+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

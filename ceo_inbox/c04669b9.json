@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.342889+00:00",
+    "relevance_score": 0.505,
+    "matched_tags": [
+      "mcp",
+      "standardization"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/c04669b9.json"
+  },
+  "framework": {
+    "id": "c04669b9",
+    "type": "framework",
+    "name": "Model Context Protocol (MCP) for Agent Authorization",
+    "description": "MCP standardizes how applications provide context to AI agents through tools, resources, and prompts. Notably adopts OAuth 2.1 (not OAuth 2.0) with PKCE and Dynamic Client Registration to allow agents to authorize themselves automatically without requiring user presence. Separates authentication (OAuth 2.1) from authorization policy (separate policy engines).",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "mcp",
+      "oauth-2.1",
+      "agent-authorization",
+      "authentication-protocol",
+      "standardization"
+    ],
+    "raw_quote": "MCP opts for OAuth 2.1\u2014a more secure specification than the massively popular OAuth 2.0 standard\u2014for authorization. With Proof Key for Code Exchange (PKCE) and Dynamic Client Registration (DCR), OAuth 2.1 allows AI Agents to authorize themselves securely and automatically without requiring a user to be present.",
+    "source": {
+      "title": "Best Practices of Authorizing AI Agents - Oso",
+      "url": "https://www.osohq.com/learn/best-practices-of-authorizing-ai-agents"
+    },
+    "hunt_id": "4f110637",
+    "extracted_at": "2026-03-06T14:18:45.227750+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.220037+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.439920+00:00",
+    "relevance_score": 0.76,
+    "matched_tags": [
+      "agent-commerce"
+    ],
+    "domain_match": false,
+    "source_path": "finance/f4e3a9d1.json"
+  },
+  "framework": {
+    "id": "f4e3a9d1",
+    "type": "claim",
+    "name": "$3-5T Agentic Commerce by 2030",
+    "description": "McKinsey projects agentic commerce at $3-5T globally by 2030; Morgan Stanley estimates 10-20% of US e-commerce via AI agents by decade's end. Scale numbers that make the per-transaction latency question economically critical.",
+    "domain": "finance",
+    "confidence": 0.6,
+    "tags": [
+      "market-size",
+      "projections",
+      "agent-commerce"
+    ],
+    "raw_quote": "McKinsey projects agentic commerce will reach $3-5 trillion globally by 2030. Morgan Stanley estimates AI agents could drive 10-20% of U.S. e-commerce by decade's end.",
+    "value_tier": "bone",
+    "source": {
+      "title": "Google's Universal Commerce Protocol: What It Means for Payment ...",
+      "url": "https://juspay.io/blog/google-s-universal-commerce-protocol-what-it-means-for-payment-orchestration"
+    },
+    "hunt_id": "eeb6b019",
+    "extracted_at": "2026-03-15T12:20:10.218145+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.211879+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

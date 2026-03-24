@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.408259+00:00",
+    "relevance_score": 0.645,
+    "matched_tags": [
+      "verifiable-credentials"
+    ],
+    "domain_match": false,
+    "source_path": "finance/34c6a5be.json"
+  },
+  "framework": {
+    "id": "34c6a5be",
+    "type": "framework",
+    "name": "AP2 Mandate Architecture",
+    "description": "AP2 uses W3C Verifiable Credentials as cryptographically signed 'Mandates' (Cart Mandate for human-present, Intent Mandate for human-not-present) that travel with the agent. Intent Mandates include TTL, budget constraints, and NLP 'prompt playback' of user intent \u2014 this is the closest thing to a portable spending authority spec in production.",
+    "domain": "finance",
+    "confidence": 0.85,
+    "tags": [
+      "agent-payments",
+      "verifiable-credentials",
+      "pre-authorization"
+    ],
+    "raw_quote": "Intent Mandate: Human-not-present; SA creates, U signs. Adds 'prompt playback' (NLP summary of user intent) and TTL for temporal limits.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Secure Use of the Agent Payments Protocol (AP2)",
+      "url": "https://cloudsecurityalliance.org/blog/2025/10/06/secure-use-of-the-agent-payments-protocol-ap2-a-framework-for-trustworthy-ai-driven-transactions"
+    },
+    "hunt_id": "eeb6b019",
+    "extracted_at": "2026-03-15T12:19:37.654369+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.195304+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

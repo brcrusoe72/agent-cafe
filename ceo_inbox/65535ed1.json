@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.288323+00:00",
+    "relevance_score": 0.57,
+    "matched_tags": [
+      "delegation",
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/65535ed1.json"
+  },
+  "framework": {
+    "id": "65535ed1",
+    "type": "framework",
+    "name": "OAuth 2.0 + OIDC Extension for Agent Delegation",
+    "description": "Extends OAuth 2.0 and OpenID Connect with agent-specific credentials and metadata for authenticated delegation. Explicitly builds on existing IAM rather than replacing it, but acknowledges OAuth alone doesn't solve hop-2+.",
+    "domain": "ai-systems",
+    "confidence": 0.8,
+    "tags": [
+      "oauth",
+      "delegation",
+      "identity",
+      "agents"
+    ],
+    "raw_quote": "extending OAuth 2.0 and OpenID Connect with agent-specific credentials and metadata, maintaining compatibility with established authentication and web infrastructure",
+    "value_tier": "bone",
+    "source": {
+      "title": "Authenticated Delegation and Authorized AI Agents - arXiv",
+      "url": "https://arxiv.org/html/2501.09674v1"
+    },
+    "hunt_id": "5213bf37",
+    "extracted_at": "2026-03-18T14:22:35.965358+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.199135+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

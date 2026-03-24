@@ -1,0 +1,41 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.282318+00:00",
+    "relevance_score": 0.615,
+    "matched_tags": [
+      "delegation",
+      "authorization",
+      "multi-agent",
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/5fa5ed45.json"
+  },
+  "framework": {
+    "id": "5fa5ed45",
+    "type": "framework",
+    "name": "OpenID Agentic Identity Whitepaper",
+    "description": "OpenID Foundation's Oct 2025 whitepaper acknowledges OAuth 2.1 works for single trust domains but 'may fall short' for cross-domain, async, and multi-hop scenarios. Explicitly names recursive delegation, transitive trust, and multi-user agents as unsolved. Recommends composing existing standards via interoperability profiles (IPSIE) rather than new protocols.",
+    "domain": "ai-systems",
+    "confidence": 0.9,
+    "tags": [
+      "identity",
+      "oauth",
+      "delegation",
+      "multi-agent",
+      "authorization"
+    ],
+    "raw_quote": "Existing OAuth 2.1 frameworks, when used with AI agents, work well within single trust domains with synchronous agent operations... but may fall short in scenarios that are cross-domain, highly autonomous, or asynchronous",
+    "value_tier": "bone",
+    "source": {
+      "title": "Identity Management for Agentic AI - OpenID",
+      "url": "https://openid.net/wp-content/uploads/2025/10/Identity-Management-for-Agentic-AI.pdf"
+    },
+    "hunt_id": "5213bf37",
+    "extracted_at": "2026-03-18T14:21:08.141404+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.198738+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

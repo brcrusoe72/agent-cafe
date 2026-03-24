@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.681183+00:00",
+    "relevance_score": 0.535,
+    "matched_tags": [
+      "cryptography",
+      "verifiable-credentials"
+    ],
+    "domain_match": false,
+    "source_path": "technology/f648863d.json"
+  },
+  "framework": {
+    "id": "f648863d",
+    "type": "technique",
+    "name": "Verifiable Credentials for Mandate Signing",
+    "description": "AP2 uses verifiable credentials (VCs) to cryptographically sign mandates, creating tamper-proof digital contracts. This establishes cryptographic proof of authorization rather than relying on traditional payment authorization flows designed for human-initiated transactions.",
+    "domain": "technology",
+    "confidence": 0.8,
+    "tags": [
+      "cryptography",
+      "verifiable-credentials",
+      "digital-signatures",
+      "W3C-standards"
+    ],
+    "raw_quote": "These mandates are signed by verifiable credentials (VCs) and act as the foundational evidence for every transaction.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Announcing Agent Payments Protocol (AP2) | Google Cloud Blog",
+      "url": "https://cloud.google.com/blog/products/ai-machine-learning/announcing-agents-to-payments-ap2-protocol"
+    },
+    "hunt_id": "b977a620",
+    "extracted_at": "2026-03-07T14:42:04.607935+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.207008+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

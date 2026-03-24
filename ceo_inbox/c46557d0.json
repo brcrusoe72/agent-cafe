@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.345442+00:00",
+    "relevance_score": 0.645,
+    "matched_tags": [
+      "liability"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/c46557d0.json"
+  },
+  "framework": {
+    "id": "c46557d0",
+    "type": "claim",
+    "name": "Intent Attribution Gap in Agentic Systems",
+    "description": "Legal and payment infrastructure assumes human volition and intent as foundational primitives. AI agents operating autonomously break this assumption because they lack consciousness and cannot form 'intent' in the legal sense. This creates unresolved questions about who bears responsibility when an agent transacts.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "legal-infrastructure",
+      "liability",
+      "agency-theory",
+      "intent",
+      "autonomous-agents"
+    ],
+    "raw_quote": "the state of mind with which an act is done : volition",
+    "source": {
+      "title": "intent",
+      "url": "https://www.merriam-webster.com/dictionary/intent"
+    },
+    "hunt_id": "66fe6cbe",
+    "extracted_at": "2026-03-03T18:23:44.372129+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.220183+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

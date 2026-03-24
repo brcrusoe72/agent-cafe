@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.246798+00:00",
+    "relevance_score": 0.58,
+    "matched_tags": [
+      "interoperability",
+      "agent-architecture"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/24bc49d7.json"
+  },
+  "framework": {
+    "id": "24bc49d7",
+    "type": "connection",
+    "name": "A2A + MCP + AP2 Stack",
+    "description": "Integration architecture where Model Context Protocol (MCP) enables agent tool/data access, Agent-to-Agent (A2A) protocol handles agent communication, and Agent Payment Protocol (AP2) manages transaction execution. Together these form a potential standard stack for autonomous agent commerce.",
+    "domain": "ai-systems",
+    "confidence": 0.55,
+    "tags": [
+      "protocol-stack",
+      "agent-architecture",
+      "interoperability",
+      "standards"
+    ],
+    "raw_quote": "agent payment protocol is an extension to our A2A work...there's obviously lots of people are familiar with model context protocol. A2A is a complimentary piece of technology that I think when combined with agent payment protocol and blockchain rails are a really great fit",
+    "source": {
+      "title": "From Protocol to Payments: Agentic Commerce and the Universal Ledger | DAS London 2025 | Day 3",
+      "url": "https://www.youtube.com/watch?v=hyed27TgYxc"
+    },
+    "hunt_id": "7d3db790",
+    "extracted_at": "2026-03-03T18:51:04.308583+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.216136+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

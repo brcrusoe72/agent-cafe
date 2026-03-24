@@ -1,0 +1,39 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.604466+00:00",
+    "relevance_score": 0.585,
+    "matched_tags": [
+      "pricing"
+    ],
+    "domain_match": false,
+    "source_path": "strategy|manufacturing/106a478f.json"
+  },
+  "framework": {
+    "id": "106a478f",
+    "type": "case_study",
+    "name": "Six Sigma for Pricing Process Improvement",
+    "description": "Manufacturing firm (Acme) applied Six Sigma DMAIC methodology to pricing processes, reducing discount variability from 5-95% range, generating $5.8M incremental revenue in 6 months against $500K goal. Project team included pricing, finance, marketing, IT, sales with Master Black Belt from manufacturing. Demonstrates transferability of manufacturing quality methods to business processes.",
+    "domain": "strategy|manufacturing",
+    "confidence": 0.95,
+    "tags": [
+      "six-sigma",
+      "pricing",
+      "process-improvement",
+      "case-study",
+      "ROI",
+      "cross-functional",
+      "DMAIC"
+    ],
+    "raw_quote": "The initial goal of generating $500,000 in incremental revenues during the first year was handily exceeded in only three months. More importantly, a subsequent across-the-board list-price increase was fully reflected in the top line for this product... resulted in $5.8 million in incremental sales in just the first six months of implementation, all going straight to the bottom line.",
+    "source": {
+      "title": "Improving Pricing Quality with Six Sigma Methods",
+      "url": "https://www.processexcellencenetwork.com/lean-six-sigma-business-performance/articles/improving-pricing-quality-with-six-sigma-methods"
+    },
+    "hunt_id": "f65e2a8b",
+    "extracted_at": "2026-03-05T20:40:42.313682+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.207728+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

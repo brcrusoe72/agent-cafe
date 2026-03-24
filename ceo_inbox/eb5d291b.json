@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.591933+00:00",
+    "relevance_score": 0.575,
+    "matched_tags": [
+      "pricing"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/eb5d291b.json"
+  },
+  "framework": {
+    "id": "eb5d291b",
+    "type": "technique",
+    "name": "Graduated Discount Approval Authority",
+    "description": "Three-tier approval system (sales reps/managers, pricing analysts, pricing manager) with clear escalation guidelines based on discount depth. Speeds transaction approval while maintaining control. Exception codes track reasons for deviations and accountability.",
+    "domain": "strategy",
+    "confidence": 0.85,
+    "tags": [
+      "pricing",
+      "approval-process",
+      "accountability",
+      "process-design"
+    ],
+    "raw_quote": "The project team proposed giving graduated discount-approval authority to individuals in three levels of the organization's hierarchy: sales reps or managers, pricing analysts and the pricing manager. Making the guidelines and the escalation process clear sped up the transaction process.",
+    "source": {
+      "title": "Improving Pricing Quality with Six Sigma Methods",
+      "url": "https://www.processexcellencenetwork.com/lean-six-sigma-business-performance/articles/improving-pricing-quality-with-six-sigma-methods"
+    },
+    "hunt_id": "f65e2a8b",
+    "extracted_at": "2026-03-05T20:40:42.314437+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.211785+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

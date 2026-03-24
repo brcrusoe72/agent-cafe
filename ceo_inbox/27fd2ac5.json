@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.248295+00:00",
+    "relevance_score": 0.58,
+    "matched_tags": [
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/27fd2ac5.json"
+  },
+  "framework": {
+    "id": "27fd2ac5",
+    "type": "technique",
+    "name": "Token Exchange for Privilege Downscoping",
+    "description": "Use OAuth token exchange (RFC 8693) to convert an access token with broad scopes into a new token with narrower scopes when calling less-trusted downstream services. The forwarding service acts as an OAuth client, requesting a new token with reduced privileges while preserving user identity and other claims. Critical for multi-agent systems where one agent delegates to another with restricted capabilities.",
+    "domain": "ai-systems",
+    "confidence": 0.9,
+    "tags": [
+      "token-exchange",
+      "privilege-reduction",
+      "agent-delegation",
+      "zero-trust",
+      "oauth"
+    ],
+    "raw_quote": "The following flow shows the use of token exchange to downscope an access token when an orders API calls a shipping API. The only scopes left in the access token are those that the shipping API needs.",
+    "source": {
+      "title": "",
+      "url": "https://curity.io/resources/learn/scope-best-practices/"
+    },
+    "hunt_id": "c5cfd231",
+    "extracted_at": "2026-03-06T14:23:55.902874+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.194824+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.656090+00:00",
+    "relevance_score": 0.645,
+    "matched_tags": [
+      "verifiable-credentials",
+      "agent-identity",
+      "ap2"
+    ],
+    "domain_match": false,
+    "source_path": "technology/a94fa546.json"
+  },
+  "framework": {
+    "id": "a94fa546",
+    "type": "framework",
+    "name": "AP2 three-mandate architecture",
+    "description": "AP2 uses three verifiable credential types: Cart Mandates (human-present checkout), Intent Mandates (human-not-present, bounded agent authority), and Payment Mandates (risk signals to issuers/networks). This is the actual technical mechanism for agent authorization \u2014 cryptographic proof of user intent, not just API keys.",
+    "domain": "technology",
+    "confidence": 0.85,
+    "tags": [
+      "ap2",
+      "verifiable-credentials",
+      "agent-identity"
+    ],
+    "raw_quote": "AP2 defines three primary mandates: Cart Mandate, User-Signed Intent Mandate, Payment Mandate",
+    "value_tier": "meat",
+    "source": {
+      "title": "Agent Payments Protocol (AP2)",
+      "url": "https://agentpaymentsprotocol.info/"
+    },
+    "hunt_id": "4433457e",
+    "extracted_at": "2026-03-18T14:31:10.751775+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.202464+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

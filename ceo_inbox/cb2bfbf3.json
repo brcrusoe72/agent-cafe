@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.580390+00:00",
+    "relevance_score": 0.79,
+    "matched_tags": [
+      "marketplace-design"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/cb2bfbf3.json"
+  },
+  "framework": {
+    "id": "cb2bfbf3",
+    "type": "framework",
+    "name": "SaaS-to-Marketplace Transition Pattern",
+    "description": "Using a SaaS tool to lock in one side of the marketplace (typically supply) creates stickiness and engagement before the marketplace mechanics fully activate. The tool provides immediate value, while marketplace features layer on top over time. This is described as a 'proven' pattern for marketplace success.",
+    "domain": "strategy",
+    "confidence": 0.9,
+    "tags": [
+      "saas",
+      "marketplace-design",
+      "lock-in",
+      "supply-side",
+      "product-strategy"
+    ],
+    "raw_quote": "one of the key tactics to overcome the cold stock problem is to is really find a SAS tool to lock in one or both sides of the marketplace so typically Supply you'd use a SAS store to lock and Supply very proven",
+    "source": {
+      "title": "watch?v=Aipa5QIdNhU",
+      "url": "https://www.youtube.com/watch?v=Aipa5QIdNhU"
+    },
+    "hunt_id": "c9aa917a",
+    "extracted_at": "2026-03-04T21:47:59.121650+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.191600+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "marketplace_design"
+}

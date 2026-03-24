@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.278497+00:00",
+    "relevance_score": 0.785,
+    "matched_tags": [
+      "agent-identity"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/578cef33.json"
+  },
+  "framework": {
+    "id": "578cef33",
+    "type": "framework",
+    "name": "SPIFFE Per-Instance Agent Identity",
+    "description": "Solo.io argues SPIFFE IDs today are anchored to Kubernetes service accounts, making all replicas identical. Agents need per-instance SPIFFE IDs (e.g., /instance/001) because non-deterministic behavior means no two agent replicas can be treated as the same identity for compliance/audit purposes.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "spiffe",
+      "agent-identity",
+      "kubernetes",
+      "non-deterministic"
+    ],
+    "raw_quote": "no two replicas of an 'agent' are guaranteed to behave the same and from a compliance, security, and auditing standpoint they cannot be considered the same identities",
+    "value_tier": "meat",
+    "source": {
+      "title": "Agent Identity and Access Management - Can SPIFFE Work? | Solo.io",
+      "url": "https://www.solo.io/blog/agent-identity-and-access-management---can-spiffe-work"
+    },
+    "hunt_id": "5213bf37",
+    "extracted_at": "2026-03-18T14:21:38.710027+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.198191+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.290419+00:00",
+    "relevance_score": 0.645,
+    "matched_tags": [
+      "governance"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/6967ce06.json"
+  },
+  "framework": {
+    "id": "6967ce06",
+    "type": "technique",
+    "name": "Built-in Guard Rails (PII Protection)",
+    "description": "Safety mechanism that prevents agents from exposing sensitive data (credit card numbers, SSNs, PII). Configured at block level. Runs automatic checks on agent outputs before execution. Provides compliance layer for enterprise use cases.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "safety",
+      "compliance",
+      "privacy",
+      "governance"
+    ],
+    "raw_quote": "I can add guard rails. I click the plus icon, select personally identifiable information, and toggle it on. Now the agent won't accidentally leak sensitive data like credit card numbers or SSNs in its outputs.",
+    "source": {
+      "title": "NEW ChatGPT Agent Builder: From Zero to Automation Hero (2026 Guide)",
+      "url": "https://www.youtube.com/watch?v=YlqXKDP1c5k"
+    },
+    "hunt_id": "d375d104",
+    "extracted_at": "2026-03-05T15:38:53.238387+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.183168+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

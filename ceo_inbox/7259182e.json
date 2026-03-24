@@ -1,0 +1,39 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.419579+00:00",
+    "relevance_score": 0.57,
+    "matched_tags": [
+      "tokenization",
+      "security",
+      "authentication"
+    ],
+    "domain_match": false,
+    "source_path": "finance/7259182e.json"
+  },
+  "framework": {
+    "id": "7259182e",
+    "type": "technique",
+    "name": "Tokenized Authentication for Agent Payment Security",
+    "description": "Replaces sensitive payment data with 'unique, non-reversible tokens' so agents never access raw financial information. Ensures PCI DSS compliance. MCP server 'handles authentication, validates permissions, and executes requested payment operations' as intermediary layer.",
+    "domain": "finance",
+    "confidence": 0.8,
+    "tags": [
+      "security",
+      "tokenization",
+      "pci-compliance",
+      "authentication"
+    ],
+    "raw_quote": "Advanced tokenization that secures payment flows by replacing sensitive data with unique, non-reversible tokens... AI agents never access sensitive financial data directly, relying on tokenized flows for PCI DSS-compliant operations.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Accelerating Agentic Payments with PayPal",
+      "url": "https://developer.paypal.com/community/blog/accelerating-agentic-payments/"
+    },
+    "hunt_id": "b977a620",
+    "extracted_at": "2026-03-07T14:44:56.233722+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.183798+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

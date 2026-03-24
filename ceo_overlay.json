@@ -1,0 +1,1197 @@
+{
+  "generated_at": "2026-03-22T19:47:29.178376+00:00",
+  "source": "ceo_adapter_agent_cafe",
+  "version": 3,
+  "adapter_frameworks_consumed": 12,
+  "market": {
+    "tam_2025": "69.4B",
+    "tam_2033": "183B",
+    "cagr": "49.6%"
+  },
+  "competitors": {
+    "auth_identity": [],
+    "payment_rails": [],
+    "discovery": [],
+    "behavioral_trust": []
+  },
+  "legal": {
+    "agents_can_contract": true,
+    "framework": "Agents as instrumentalities of humans",
+    "gap": "** No public statement on who is liable when an agent makes an unauthorized purchase"
+  },
+  "positioning": {
+    "layer": "Reputation + Commerce (above identity, above payments, above protocols)",
+    "not_competing_with": [
+      "Keycard (auth)",
+      "Visa/Stripe (payments)",
+      "MCP/A2A (protocols)"
+    ],
+    "unique_value": "Behavioral trust scoring \u2014 is this agent good? Track record, quality ratings, capability verification",
+    "analogy": "Stripe for agent commerce, not Okta for agent IAM",
+    "unoccupied_gap": "Web-native behavioral trust layer \u2014 nobody is there"
+  },
+  "build_priorities": [
+    {
+      "priority": 1,
+      "action": "Ship A2A agent cards (/.well-known/agent-card.json)",
+      "signal_strength": 12
+    },
+    {
+      "priority": 2,
+      "action": "Build behavioral trust scoring",
+      "signal_strength": 8
+    },
+    {
+      "priority": 3,
+      "action": "Agent authority protocol",
+      "signal_strength": 6
+    },
+    {
+      "priority": 4,
+      "action": "Workflow templates marketplace",
+      "signal_strength": 6
+    },
+    {
+      "priority": 5,
+      "action": "Integrate Stripe MPP",
+      "signal_strength": 3
+    }
+  ],
+  "cost_intelligence": {},
+  "categories": {
+    "security_governance": {
+      "count": 103,
+      "top_items": [
+        {
+          "name": "Inherited But Constrained Agent Access",
+          "relevance": 0.785,
+          "confidence": 0.85,
+          "type": "technique",
+          "description": "Agents should have unique identities for auditability but their access must never exceed the constraints of the humans deploying them. Prevents privilege escalation where users bypass authorization by",
+          "source_url": "https://www.osohq.com/learn/best-practices-of-authorizing-ai-agents",
+          "claims": []
+        },
+        {
+          "name": "Agents are not microservices",
+          "relevance": 0.78,
+          "confidence": 0.8,
+          "type": "claim",
+          "description": "Core argument that agent workloads break the microservice identity model because behavior is non-deterministic, context-dependent, and diverges across instances \u2014 meaning service-level identity is ins",
+          "source_url": "https://www.linkedin.com/pulse/agent-identity-access-management-can-spiffe-work-christian-posta-hffnc",
+          "claims": []
+        },
+        {
+          "name": "Commerce Signals for Dispute Resolution",
+          "relevance": 0.712,
+          "confidence": 0.82,
+          "type": "technique",
+          "description": "Agents submit purchase outcomes back to Visa platform, creating a signal stream alongside user instructions. This data enables rapid dispute resolution by providing both intent (what user authorized) ",
+          "source_url": "https://developer.visa.com/capabilities/visa-intelligent-commerce",
+          "claims": []
+        },
+        {
+          "name": "Agent Transaction Transparency and Explainability Requirements",
+          "relevance": 0.71,
+          "confidence": 0.8,
+          "type": "framework",
+          "description": "Ethical agent payment systems should provide traceability and reasoning for financial decisions. Users should be able to audit why an agent made a particular purchase (e.g., 'Service X was due for ren",
+          "source_url": "https://www.linkedin.com/pulse/enabling-autonomous-ai-agents-make-payments-challenges-david-paluy-xmq4c",
+          "claims": []
+        },
+        {
+          "name": "Capability-Context Separation Principle",
+          "relevance": 0.71,
+          "confidence": 0.8,
+          "type": "framework",
+          "description": "Distinguishes capability envelope (model + tools + permissions, changes rarely, requires re-auth) from runtime context (conversation, user input, changes per-interaction, requires auditability). Argue",
+          "source_url": "https://arxiv.org/html/2603.14332v1",
+          "claims": []
+        },
+        {
+          "name": "Static Protocols vs Dynamic Agents Tradeoff",
+          "relevance": 0.705,
+          "confidence": 0.75,
+          "type": "framework",
+          "description": "Identifies fundamental tension between rigid permission structures (good for simple tasks) and adaptive agent behavior (needed for complex workflows). Argues that as agents become more autonomous, sta",
+          "source_url": "https://www.f5.com/company/blog/understanding-mcp-limitations-beyond-the-protocol",
+          "claims": []
+        },
+        {
+          "name": "Capability-Identity Gap Framework",
+          "relevance": 0.705,
+          "confidence": 0.75,
+          "type": "contrarian",
+          "description": "Zhou argues existing 'boring infra' (OAuth, X.509, SPIFFE) fails because none detects when an agent's capabilities change post-authorization. Proposes novel composition: X.509 v3 extended with skills ",
+          "source_url": "https://arxiv.org/html/2603.14332v1",
+          "claims": []
+        },
+        {
+          "name": "NIST AI RMF Govern-Map-Measure-Manage",
+          "relevance": 0.655,
+          "confidence": 0.95,
+          "type": "framework",
+          "description": "Four-function risk management framework (GOVERN, MAP, MEASURE, MANAGE) that prescribes WHAT to measure but never WHEN. No timelines, no cadences, no phase-gate durations. The word 'timeline' doesn't a",
+          "source_url": "https://nvlpubs.nist.gov/nistpubs/ai/nist.ai.100-1.pdf",
+          "claims": []
+        },
+        {
+          "name": "Prompt-Based Limitations Are Insufficient",
+          "relevance": 0.655,
+          "confidence": 0.95,
+          "type": "claim",
+          "description": "The paper argues that relying on prompts to constrain agent behavior is inadequate due to failure modes like prompt injection, jailbreaks, and inherent model unreliability. Instead, technical enforcem",
+          "source_url": "https://arxiv.org/html/2501.09674v1",
+          "claims": []
+        },
+        {
+          "name": "NIST Measure Function - Use-Case Dependent Metrics",
+          "relevance": 0.655,
+          "confidence": 0.95,
+          "type": "framework",
+          "description": "NIST AI RMF explicitly states 'What should be measured depends on the purpose, audience, and needs of the evaluations' \u2014 meaning metrics are NOT prescribed universally. The framework delegates measure",
+          "source_url": "https://airc.nist.gov/airmf-resources/playbook/measure/",
+          "claims": []
+        },
+        {
+          "name": "NIST AI RMF Measure Function",
+          "relevance": 0.655,
+          "confidence": 0.95,
+          "type": "framework",
+          "description": "Prescribes what to measure and how to assess metric effectiveness, but specifies zero timelines for when measurement should begin post-deployment. The framework is deliberately timeline-agnostic \u2014 it ",
+          "source_url": "https://airc.nist.gov/airmf-resources/playbook/measure/",
+          "claims": []
+        },
+        {
+          "name": "Private Network Rules as Standards Pathway",
+          "relevance": 0.65,
+          "confidence": 0.9,
+          "type": "claim",
+          "description": "CBA explicitly advocates for private network rules (not legislation) as the mechanism to govern agentic payments\u2014modeled on how card network rules (Visa/MC voluntary protections) filled gaps beyond EF",
+          "source_url": "https://consumerbankers.com/wp-content/uploads/2026/01/CBA-Agentic-Symposium-White-Paper-2026-01v2.pdf",
+          "claims": []
+        },
+        {
+          "name": "Web3-Powered Ex-Ante AI Governance",
+          "relevance": 0.65,
+          "confidence": 0.9,
+          "type": "framework",
+          "description": "A proactive governance system that regulates AI during development phase rather than after deployment, using decentralized Web3 mechanisms for real-time feedback and adjustment. Contrasts with traditi",
+          "source_url": "https://stanford-jblp.pubpub.org/pub/aigov-via-web3",
+          "claims": []
+        },
+        {
+          "name": "Human Validation Process as Top Factor",
+          "relevance": 0.65,
+          "confidence": 0.9,
+          "type": "claim",
+          "description": "Having defined processes for when model outputs need human validation is one of the TOP differentiating factors for high performers. Governance > raw capability.",
+          "source_url": "https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai",
+          "claims": []
+        },
+        {
+          "name": "Nonce-Based Replay Attack Prevention",
+          "relevance": 0.65,
+          "confidence": 0.9,
+          "type": "technique",
+          "description": "Both protocols mandate a unique nonce field in each signature, cached by Cloudflare to detect reuse. This provides time-window replay protection in addition to created/expires timestamps, ensuring req",
+          "source_url": "https://blog.cloudflare.com/secure-agentic-commerce/",
+          "claims": []
+        },
+        {
+          "name": "Governance Framework Implementation Timeline",
+          "relevance": 0.65,
+          "confidence": 0.9,
+          "type": "framework",
+          "description": "NIST AI RMF requires 3-6 months implementation, ISO 42001 certification takes 6-12 months, SOC 2 Type II requires 8-11 months including 6-month operational period. This quantifies governance deploymen",
+          "source_url": "https://www.digitalapplied.com/blog/enterprise-ai-adoption-strategy-2025",
+          "claims": []
+        },
+        {
+          "name": "User Approval Gates",
+          "relevance": 0.65,
+          "confidence": 0.9,
+          "type": "technique",
+          "description": "Workflow component that pauses execution and requires human review before proceeding. Used as safety mechanism for high-stakes decisions (urgent emails, financial commitments). Prevents fully autonomo",
+          "source_url": "https://www.youtube.com/watch?v=YlqXKDP1c5k",
+          "claims": []
+        },
+        {
+          "name": "VIC X-Pay + MLE Security Stack",
+          "relevance": 0.65,
+          "confidence": 0.9,
+          "type": "technique",
+          "description": "Visa uses HMAC-SHA256 X-Pay tokens for API auth plus JWE Message Level Encryption for payload security. This is traditional API security, not a novel agent-auth paradigm \u2014 contrast with Mastercard's c",
+          "source_url": "https://github.com/visa/mcp/",
+          "claims": [
+            {
+              "value": 256.0,
+              "unit": "x",
+              "context": "VIC X-Pay + MLE Security Stack Visa uses HMAC-SHA256 X-Pay tokens for API auth p"
+            }
+          ]
+        },
+        {
+          "name": "Human Override Kill Switch for Agent Systems",
+          "relevance": 0.65,
+          "confidence": 0.9,
+          "type": "framework",
+          "description": "Safety mechanism allowing human intervention to halt AI agent operations if they threaten human interests or overstep boundaries. Governance failsafe for autonomous systems.",
+          "source_url": "https://www.youtube.com/watch?v=7IxDVr7R9yM",
+          "claims": []
+        },
+        {
+          "name": "Governance Token Centralization Paradox",
+          "relevance": 0.65,
+          "confidence": 0.9,
+          "type": "claim",
+          "description": "Governance tokens intended for decentralization often become concentrated among whales and early funders, leading to 'voter apathy' among small holders and de facto centralized control. Low participat",
+          "source_url": "https://vocal.media/geeks/choosing-the-right-token-model-utility-security-or-governance",
+          "claims": []
+        }
+      ]
+    },
+    "marketplace_design": {
+      "count": 66,
+      "top_items": [
+        {
+          "name": "BlaBlaCar's Trust-as-Product Strategy",
+          "relevance": 0.915,
+          "confidence": 0.85,
+          "type": "case_study",
+          "description": "BlaBlaCar built its entire business model around trust infrastructure rather than transaction facilitation. They force users to create detailed profiles, share personal information, and communicate be",
+          "source_url": "https://www.youtube.com/watch?v=W5q02P8GNzs",
+          "claims": []
+        },
+        {
+          "name": "Trust Ladder for Marketplace Evolution",
+          "relevance": 0.89,
+          "confidence": 0.95,
+          "type": "framework",
+          "description": "A six-stage progression for building trust in marketplaces as they scale: (1) Code of Conduct, (2) Declaration (identity disclosure), (3) Communication channels, (4) Social Dimension (network effects)",
+          "source_url": "https://www.youtube.com/watch?v=W5q02P8GNzs",
+          "claims": []
+        },
+        {
+          "name": "Supply-First Marketplace Strategy",
+          "relevance": 0.795,
+          "confidence": 0.95,
+          "type": "framework",
+          "description": "Marketplaces succeed by solving supply aggregation first, then letting demand follow naturally. 99.9% of successful marketplaces focus on finding unique ways to acquire and aggregate supply that compe",
+          "source_url": "https://www.youtube.com/watch?v=Aipa5QIdNhU",
+          "claims": [
+            {
+              "value": 99.9,
+              "unit": "%",
+              "context": "Supply-First Marketplace Strategy Marketplaces succeed by solving supply aggrega"
+            }
+          ]
+        },
+        {
+          "name": "SaaS-to-Marketplace Transition Pattern",
+          "relevance": 0.79,
+          "confidence": 0.9,
+          "type": "framework",
+          "description": "Using a SaaS tool to lock in one side of the marketplace (typically supply) creates stickiness and engagement before the marketplace mechanics fully activate. The tool provides immediate value, while ",
+          "source_url": "https://www.youtube.com/watch?v=Aipa5QIdNhU",
+          "claims": []
+        },
+        {
+          "name": "Parallel Between Human Marketplaces and Agent Coordination Platforms",
+          "relevance": 0.77,
+          "confidence": 0.7,
+          "type": "connection",
+          "description": "The trust mechanisms used in human peer-to-peer marketplaces (reputation, verification, communication protocols, capability disclosure) map directly to needs in agent-to-agent marketplaces: capability",
+          "source_url": "https://www.youtube.com/watch?v=W5q02P8GNzs",
+          "claims": []
+        },
+        {
+          "name": "XYZ.Credit - AI Agent Banking Infrastructure",
+          "relevance": 0.76,
+          "confidence": 0.6,
+          "type": "case_study",
+          "description": "Live platform providing financial services (banking, payments, lending, insurance, treasury) exclusively for AI agents, using USDC/EURC stablecoins, governed by AI supervision layer and blockchain sma",
+          "source_url": "https://www.youtube.com/watch?v=7IxDVr7R9yM",
+          "claims": []
+        },
+        {
+          "name": "Platform Strategy: Commoditize Complementary Layers",
+          "relevance": 0.72,
+          "confidence": 0.9,
+          "type": "connection",
+          "description": "OpenAI is building the agent creation infrastructure (picks and shovels) rather than specific agent solutions. This commoditizes the agent-building layer, pushing value to specialized domains, proprie",
+          "source_url": "https://www.youtube.com/watch?v=YlqXKDP1c5k",
+          "claims": []
+        },
+        {
+          "name": "Embedded Finance Super-App Strategy",
+          "relevance": 0.72,
+          "confidence": 0.9,
+          "type": "framework",
+          "description": "PayPal demonstrates a comprehensive financial ecosystem that embeds banking, payments, credit, savings, and investment services within a single platform. This represents the evolution from payment pro",
+          "source_url": "https://www.paypal.com/",
+          "claims": []
+        },
+        {
+          "name": "Bundling-Unbundling Cycle",
+          "relevance": 0.72,
+          "confidence": 0.9,
+          "type": "framework",
+          "description": "Technology markets go through cycles of unbundling (specialized point solutions proliferate) followed by rebundling (platforms consolidate tools). Currently entering a bundling phase after 10+ years o",
+          "source_url": "https://www.youtube.com/watch?v=tlZuqzeYDiU",
+          "claims": []
+        },
+        {
+          "name": "Vertical Integration Monopolization Strategy",
+          "relevance": 0.72,
+          "confidence": 0.9,
+          "type": "framework",
+          "description": "Nvidia's approach of combining GPU, CPU, memory, and interconnects into unified systems (Grace Hopper) creates hardware-software lock-in that prevents competitors from easily replacing components. Thi",
+          "source_url": "https://www.youtube.com/watch?v=48rtLHcIvcw",
+          "claims": []
+        },
+        {
+          "name": "Existing Payment Systems Designed for Humans, Not Bots",
+          "relevance": 0.72,
+          "confidence": 0.9,
+          "type": "claim",
+          "description": "Today's financial infrastructure and fraud detection systems were explicitly designed for human actors and actively try to distinguish automated systems from genuine users. This creates a fundamental ",
+          "source_url": "https://www.linkedin.com/pulse/enabling-autonomous-ai-agents-make-payments-challenges-david-paluy-xmq4c",
+          "claims": []
+        },
+        {
+          "name": "AI Agents as New Apps Mental Model",
+          "relevance": 0.715,
+          "confidence": 0.85,
+          "type": "framework",
+          "description": "The comparison of AI agents to mobile apps during the iPhone/App Store era. Just as apps replaced complex software with simpler interfaces, AI agents will replace apps with even simpler, fewer-click e",
+          "source_url": "https://www.youtube.com/watch?v=8tXSVh6rF1M",
+          "claims": []
+        },
+        {
+          "name": "Vertical Integration Strategy",
+          "relevance": 0.715,
+          "confidence": 0.85,
+          "type": "framework",
+          "description": "Google is bundling Gemini deeply with existing Google services (Search, YouTube, Maps, Gmail, Workspace) rather than creating an open marketplace. This suggests they believe moat comes from ecosystem ",
+          "source_url": "https://gemini.google.com/",
+          "claims": []
+        },
+        {
+          "name": "Platform vs Application Business Model Split",
+          "relevance": 0.712,
+          "confidence": 0.82,
+          "type": "framework",
+          "description": "Infrastructure vendors (AWS, Dell, HPE) sell platforms and compute resources. The opportunity exists to build specialized applications ON these platforms that solve specific manufacturing problems. Pa",
+          "source_url": "https://www.marketsandmarkets.com/ResearchInsight/industrial-edge-market.asp",
+          "claims": []
+        },
+        {
+          "name": "Engagement Flywheel Through Token-Gated Actions",
+          "relevance": 0.71,
+          "confidence": 0.8,
+          "type": "framework",
+          "description": "Three-step feedback loop: acquire tokens, use tokens to participate in governance/decisions, earn rewards that increase token value and engagement. Creates self-reinforcing cycle where participation g",
+          "source_url": "https://www.youtube.com/watch?v=woIAKaj3tlc",
+          "claims": []
+        },
+        {
+          "name": "Protocol Commoditization Shifts Value Upstack",
+          "relevance": 0.71,
+          "confidence": 0.8,
+          "type": "connection",
+          "description": "By open-sourcing A2A protocol, Google is commoditizing the communication layer, which historically pushes value creation to higher abstraction levels. Similar to how HTTP commoditization enabled web m",
+          "source_url": "https://www.youtube.com/watch?v=Sl9EZpE61xA",
+          "claims": []
+        },
+        {
+          "name": "High-Trust Community Launch Strategy",
+          "relevance": 0.71,
+          "confidence": 0.8,
+          "type": "technique",
+          "description": "Launch marketplaces in controlled, high-trust environments first (example: Harvard parking lot for car-sharing). Pre-existing trust between participants reduces friction and encourages early investmen",
+          "source_url": "https://www.youtube.com/watch?v=Aipa5QIdNhU",
+          "claims": []
+        },
+        {
+          "name": "Platform Memory as Intentional Lock-in Strategy",
+          "relevance": 0.71,
+          "confidence": 0.8,
+          "type": "CONTRARIAN",
+          "description": "AI platforms deliberately create memory silos not for user benefit but to prevent switching to competitors, effectively holding user knowledge hostage.",
+          "source_url": "https://www.youtube.com/watch?v=2JiMmye2ezg",
+          "claims": []
+        },
+        {
+          "name": "Marketplace vs Protocol Distinction",
+          "relevance": 0.71,
+          "confidence": 0.8,
+          "type": "connection",
+          "description": "This implementation reveals a key design choice: building a centralized marketplace with proprietary coordination infrastructure versus defining open protocols for decentralized agent discovery. Movew",
+          "source_url": "https://www.moveworks.com/us/en/resources/blog/introducing-ai-agent-marketplace",
+          "claims": []
+        },
+        {
+          "name": "Platform Memory as Lock-in Strategy",
+          "relevance": 0.71,
+          "confidence": 0.8,
+          "type": "CONTRARIAN",
+          "description": "AI platforms deliberately design memory systems to create vendor lock-in rather than user benefit, trapping context within individual tools and preventing cross-platform knowledge transfer.",
+          "source_url": "https://www.youtube.com/watch?v=2JiMmye2ezg",
+          "claims": []
+        }
+      ]
+    },
+    "trust_reputation": {
+      "count": 181,
+      "top_items": [
+        {
+          "name": "Visa TAP Registry-Based Verification Model",
+          "relevance": 0.795,
+          "confidence": 0.95,
+          "type": "framework",
+          "description": "Visa's Trusted Agent Protocol uses a public key registry architecture with RFC 9421 cryptographic signatures that are domain-bound, operation-specific, and timestamp-validated. Each agent request incl",
+          "source_url": "https://github.com/visa/trusted-agent-protocol",
+          "claims": []
+        },
+        {
+          "name": "Visa Trusted Agent Protocol (TAP)",
+          "relevance": 0.795,
+          "confidence": 0.95,
+          "type": "framework",
+          "description": "RFC 9421-compliant cryptographic signature protocol for AI agents to prove identity and authorization to merchants. Uses domain-bound, timestamp-validated signatures with session identifiers to preven",
+          "source_url": "https://github.com/visa/trusted-agent-protocol",
+          "claims": []
+        },
+        {
+          "name": "AP2 Assumes Human Principal, Not Agent Autonomy",
+          "relevance": 0.795,
+          "confidence": 0.95,
+          "type": "contrarian",
+          "description": "Despite the 'agent payments' framing, AP2's entire trust model is anchored to HUMAN authorization (mandates signed by users). There's no agent-to-agent autonomous settlement \u2014 every transaction traces",
+          "source_url": "https://cloud.google.com/blog/products/ai-machine-learning/announcing-agents-to-payments-ap2-protocol",
+          "claims": []
+        },
+        {
+          "name": "Actor/Principal separation for agent auth",
+          "relevance": 0.79,
+          "confidence": 0.9,
+          "type": "technique",
+          "description": "The draft's core contribution: separating 'who is acting' (the agent) from 'on whose behalf' (the principal) in transaction tokens. For autonomous agents, principal MAY be omitted. This enables fine-g",
+          "source_url": "https://datatracker.ietf.org/doc/draft-oauth-transaction-tokens-for-agents/00/",
+          "claims": []
+        },
+        {
+          "name": "Agents-are-workloads paradigm",
+          "relevance": 0.79,
+          "confidence": 0.9,
+          "type": "claim",
+          "description": "Draft explicitly frames AI agents as workloads (not users, not services) \u2014 meaning existing workload identity infra (SPIFFE, WIMSE) applies directly. No need for novel identity primitives. This is the",
+          "source_url": "https://datatracker.ietf.org/doc/draft-klrc-aiagent-auth/",
+          "claims": []
+        },
+        {
+          "name": "Dual Holder Binding Mechanisms",
+          "relevance": 0.79,
+          "confidence": 0.9,
+          "type": "framework",
+          "description": "Two approaches to proving legitimate possession of authority: (1) Cryptographic Key Binding - prove control over private key, device-specific, high security; (2) Claims-based Binding - prove identity ",
+          "source_url": "https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html",
+          "claims": []
+        },
+        {
+          "name": "Agent Identifier (AID) as OAuth Extension Not Novel Crypto",
+          "relevance": 0.79,
+          "confidence": 0.9,
+          "type": "claim",
+          "description": "Introduces 'Agent Identifier (AID)' \u2014 an independent identifier for AI agents \u2014 but explicitly within OAuth framework, not as a novel cryptographic identity scheme. This is the boring-infra-wins patte",
+          "source_url": "https://datatracker.ietf.org/doc/draft-yao-agent-auth-considerations/01/",
+          "claims": []
+        },
+        {
+          "name": "Trust Deficit in Agent Marketplaces",
+          "relevance": 0.79,
+          "confidence": 0.9,
+          "type": "framework",
+          "description": "Critical gap in agent-human transactions: no identity verification, irreversible crypto payments, anonymous task posters, no dispute resolution. Mirrors early internet marketplace problems but with ad",
+          "source_url": "https://mashable.com/article/rent-a-human-wants-ai-agents-to-hire-you",
+          "claims": []
+        },
+        {
+          "name": "Agent Identity Management System (AIMS)",
+          "relevance": 0.79,
+          "confidence": 0.9,
+          "type": "framework",
+          "description": "Conceptual model (not product) defining 7+ functions: agent identifiers, credentials, attestation, credential provisioning, authentication (transport + application layer via mTLS, WIMSE Proof Tokens, ",
+          "source_url": "https://datatracker.ietf.org/doc/draft-klrc-aiagent-auth/",
+          "claims": []
+        },
+        {
+          "name": "SPIFFE identity-per-replica for agents",
+          "relevance": 0.785,
+          "confidence": 0.85,
+          "type": "claim",
+          "description": "Current SPIFFE/Istio assigns identical identities to all pod replicas via service accounts. Posta argues agents are non-deterministic and context-dependent, so each instance needs a unique SPIFFE ID (",
+          "source_url": "https://www.linkedin.com/pulse/agent-identity-access-management-can-spiffe-work-christian-posta-hffnc",
+          "claims": []
+        },
+        {
+          "name": "SPIFFE Per-Instance Agent Identity",
+          "relevance": 0.785,
+          "confidence": 0.85,
+          "type": "framework",
+          "description": "Solo.io argues SPIFFE IDs today are anchored to Kubernetes service accounts, making all replicas identical. Agents need per-instance SPIFFE IDs (e.g., /instance/001) because non-deterministic behavior",
+          "source_url": "https://www.solo.io/blog/agent-identity-and-access-management---can-spiffe-work",
+          "claims": []
+        },
+        {
+          "name": "No novel crypto needed for agent auth",
+          "relevance": 0.785,
+          "confidence": 0.85,
+          "type": "claim",
+          "description": "Draft's core thesis: agent auth does NOT require new protocols or crypto primitives. Existing OAuth 2.0, SPIFFE, WIMSE, mTLS, HTTP Message Signatures compose into a complete solution. This directly co",
+          "source_url": "https://datatracker.ietf.org/doc/draft-klrc-aiagent-auth/",
+          "claims": []
+        },
+        {
+          "name": "Public Key Infrastructure with Centralized Key Store",
+          "relevance": 0.785,
+          "confidence": 0.85,
+          "type": "framework",
+          "description": "Visa's architecture relies on merchants or site protection providers retrieving agent public keys from a centralized Key Store using keyId identifiers embedded in signature metadata. The keyId field (",
+          "source_url": "https://developer.visa.com/capabilities/trusted-agent-protocol/trusted-agent-protocol-specifications",
+          "claims": []
+        },
+        {
+          "name": "Agent Identity is Heuristic, Not Cryptographic",
+          "relevance": 0.785,
+          "confidence": 0.85,
+          "type": "claim",
+          "description": "Vouched's CEO explicitly states no established agent identification mechanism exists. Their approach is proprietary heuristic-based (like spam detection), not DID/VC/X.509. This contradicts the assump",
+          "source_url": "https://siliconangle.com/2025/09/04/agentic-ai-identity-verification-startup-vouched-gets-17m-build-trust-autonomous-agents/",
+          "claims": []
+        },
+        {
+          "name": "Dual-actor token (composite identity)",
+          "relevance": 0.78,
+          "confidence": 0.8,
+          "type": "technique",
+          "description": "Agents need tokens encoding BOTH the user's entitlements AND the agent's service account \u2014 effective scope is the intersection. OAuth has no native construct for two distinct actors in one token. This",
+          "source_url": "https://d197for5662m48.cloudfront.net/documents/publicationstatus/262756/preprint_pdf/21aad33dd971984a510d5f79277b7be8.pdf",
+          "claims": []
+        },
+        {
+          "name": "Agent identity as checksum of prompt+tools+config",
+          "relevance": 0.77,
+          "confidence": 0.7,
+          "type": "technique",
+          "description": "A-JWT hashes the agent's prompt, tool list, and configuration into a one-way checksum that becomes the agent's cryptographic identity. Detects in-process impersonation (one agent pretending to be anot",
+          "source_url": "https://arxiv.org/pdf/2509.13597",
+          "claims": []
+        },
+        {
+          "name": "Skyfire KYAPay \u2014 Signed JWTs for Agent Identity",
+          "relevance": 0.765,
+          "confidence": 0.65,
+          "type": "claim",
+          "description": "Skyfire's KYAPay protocol uses signed JWTs for verified agent identity. $9.5M raised from Neuberger Berman, a16z CSX, Coinbase Ventures. Claims 'thousands of transactions daily' via Agent Checkout. Jo",
+          "source_url": "https://rye.com/blog/agentic-commerce-startups",
+          "claims": []
+        },
+        {
+          "name": "Visa TAP \u2014 10+ Partners but Thin on Details",
+          "relevance": 0.725,
+          "confidence": 0.6,
+          "type": "claim",
+          "description": "Visa TAP described as 'open framework to distinguish legitimate AI agents from malicious bots, with 10+ partners including Akamai.' Visa Intelligent Commerce has 100+ partners building, 30+ in sandbox",
+          "source_url": "https://rye.com/blog/agentic-commerce-startups",
+          "claims": []
+        },
+        {
+          "name": "Two-Scenario Agent Auth Model",
+          "relevance": 0.725,
+          "confidence": 0.95,
+          "type": "framework",
+          "description": "Industry distinction between 'delegated access' (agent acts on behalf of specific user, requires consent) and 'service accounts' (agent acts as itself for system tasks, no user context). Different OAu",
+          "source_url": "https://stytch.com/blog/ai-agent-authentication-methods/",
+          "claims": []
+        },
+        {
+          "name": "Multi-Agent Mutual Authentication Acknowledged But Not Solved",
+          "relevance": 0.725,
+          "confidence": 0.95,
+          "type": "claim",
+          "description": "Paper explicitly names multi-agent verification as 'paramount' (\u00a72.1.3) but only solves it for two agents representing known human principals \u2014 hospital agent talks to insurance agent. The delegation ",
+          "source_url": "https://arxiv.org/html/2501.09674v1",
+          "claims": []
+        }
+      ]
+    },
+    "pricing_economics": {
+      "count": 63,
+      "top_items": [
+        {
+          "name": "Payment Network Convergence on Agent Commerce",
+          "relevance": 0.795,
+          "confidence": 0.95,
+          "type": "claim",
+          "description": "Multiple major payment networks (Visa, Mastercard, PayPal) and platforms (Amazon) are simultaneously building agent commerce capabilities, suggesting industry-wide belief that AI agents will become pr",
+          "source_url": "https://www.youtube.com/watch?v=OEzhJIlF-zo",
+          "claims": []
+        },
+        {
+          "name": "Visa Intelligent Commerce Early Deployment",
+          "relevance": 0.79,
+          "confidence": 0.9,
+          "type": "case_study",
+          "description": "Visa has already processed hundreds of transactions through AI agents using their Intelligent Commerce platform, in partnership with OpenAI, Microsoft, and Anthropic. This represents one of the first ",
+          "source_url": "https://www.youtube.com/watch?v=OEzhJIlF-zo",
+          "claims": []
+        },
+        {
+          "name": "Adyen publicly endorsing Verifiable Intent as foundational",
+          "relevance": 0.79,
+          "confidence": 0.9,
+          "type": "claim",
+          "description": "Adyen CTO Tom Adams gave a public endorsement of Verifiable Intent, positioning it as foundational for agent-initiated transactions. This is Adyen's first concrete public stance on agent commerce arch",
+          "source_url": "https://www.mastercard.com/us/en/news-and-trends/stories/2026/verifiable-intent.html",
+          "claims": []
+        },
+        {
+          "name": "Two-Token Economic Model",
+          "relevance": 0.785,
+          "confidence": 0.85,
+          "type": "framework",
+          "description": "Uses a base currency (CHZ) that fuels purchase of capability-specific tokens (fan tokens). Base token provides liquidity and platform access; specific tokens unlock services from providers (teams). An",
+          "source_url": "https://www.youtube.com/watch?v=woIAKaj3tlc",
+          "claims": []
+        },
+        {
+          "name": "Dual-Interaction Protocol: Browse vs. Payment Authorization",
+          "relevance": 0.785,
+          "confidence": 0.85,
+          "type": "framework",
+          "description": "Visa distinguishes two agent-merchant interaction modes with different signature requirements: (1) browsing interactions for product information, inventory checks, and pricing use 'agent-browser-auth'",
+          "source_url": "https://developer.visa.com/capabilities/trusted-agent-protocol/trusted-agent-protocol-specifications",
+          "claims": []
+        },
+        {
+          "name": "Agent-to-Agent Marketing Paradigm Shift",
+          "relevance": 0.78,
+          "confidence": 0.8,
+          "type": "contrarian",
+          "description": "The introduction of agent payment systems fundamentally questions traditional marketing: if agents can instantly process product data as code, why would they consume visual ads, videos, or traditional",
+          "source_url": "https://www.youtube.com/watch?v=PAVNpHOJ9sM",
+          "claims": []
+        },
+        {
+          "name": "Global B2B and B2C Agent Commerce Simultaneity",
+          "relevance": 0.775,
+          "confidence": 0.75,
+          "type": "claim",
+          "description": "Agent-driven commerce will emerge simultaneously in both consumer (B2C) and business (B2B) contexts, and at global scale rather than being a US-centric phenomenon. This creates compounding complexity ",
+          "source_url": "https://www.youtube.com/watch?v=KHfTbWAsy-Y",
+          "claims": []
+        },
+        {
+          "name": "B2B Micropayment Economies",
+          "relevance": 0.765,
+          "confidence": 0.65,
+          "type": "claim",
+          "description": "When businesses can settle payments instantly (not net 60) through agents without requiring trust, entirely new economic models emerge. Agent-to-agent commerce for information exchange and services vi",
+          "source_url": "https://www.youtube.com/watch?v=hyed27TgYxc",
+          "claims": []
+        },
+        {
+          "name": "$3-5T Agentic Commerce by 2030",
+          "relevance": 0.76,
+          "confidence": 0.6,
+          "type": "claim",
+          "description": "McKinsey projects agentic commerce at $3-5T globally by 2030; Morgan Stanley estimates 10-20% of US e-commerce via AI agents by decade's end. Scale numbers that make the per-transaction latency questi",
+          "source_url": "https://juspay.io/blog/google-s-universal-commerce-protocol-what-it-means-for-payment-orchestration",
+          "claims": [
+            {
+              "value": 20.0,
+              "unit": "%",
+              "context": "$3-5T Agentic Commerce by 2030 McKinsey projects agentic commerce at $3-5T globa"
+            }
+          ]
+        },
+        {
+          "name": "Pull-to-Push Commerce Transition",
+          "relevance": 0.715,
+          "confidence": 0.85,
+          "type": "framework",
+          "description": "The fundamental transaction model is shifting from human-initiated (pull) to agent-initiated (push) commerce. Instead of 'I want X, I'll buy it,' the model becomes 'System detected need, transaction e",
+          "source_url": "https://www.youtube.com/watch?v=ttEDD8fMwWI",
+          "claims": []
+        },
+        {
+          "name": "Five Properties of Agentic Commerce",
+          "relevance": 0.715,
+          "confidence": 0.85,
+          "type": "framework",
+          "description": "Autonomous commerce agents require: clear goals, autonomy to act independently, tools (APIs) to interact with systems, memory to learn preferences, and feedback loops to improve over time. These five ",
+          "source_url": "https://www.youtube.com/watch?v=HHWRhtzvsOU",
+          "claims": []
+        },
+        {
+          "name": "Ocado Feature Store Pattern",
+          "relevance": 0.69,
+          "confidence": 0.6,
+          "type": "case_study",
+          "description": "Ocado's fraud detection pipeline uses Google Cloud Datastore as a feature store enriching real-time predictions with historical customer/transaction features from BigQuery. Daily retraining schedule w",
+          "source_url": "https://neptune.ai/blog/how-these-8-companies-implement-mlops",
+          "claims": []
+        },
+        {
+          "name": "Visa Trusted Agent Protocol",
+          "relevance": 0.685,
+          "confidence": 0.9,
+          "type": "framework",
+          "description": "A signature-based authentication protocol for AI agents in commerce contexts. Agents receive credentials from Visa, then generate time-bound, merchant-specific, non-replayable signatures when interact",
+          "source_url": "https://developer.visa.com/capabilities/trusted-agent-protocol",
+          "claims": []
+        },
+        {
+          "name": "MCP as Commerce Discovery Layer",
+          "relevance": 0.685,
+          "confidence": 0.9,
+          "type": "technique",
+          "description": "Visa adopted Anthropic's Model Context Protocol as the standard for agent-to-merchant communication, replacing web scraping with structured API endpoints. Merchants expose 'agent-ready' MCP endpoints;",
+          "source_url": "https://www.linkedin.com/pulse/visa-intelligent-commerce-how-architecting-era-agentic-moser-q0oue",
+          "claims": []
+        },
+        {
+          "name": "Adyen explicitly backing AP2 as infrastructure play",
+          "relevance": 0.655,
+          "confidence": 0.95,
+          "type": "claim",
+          "description": "Adyen's Co-CEO publicly positioned AP2 collaboration as extending their mission to provide 'payments building blocks for tomorrow's commerce' and establishing a 'common rulebook' for security and inte",
+          "source_url": "https://cloud.google.com/blog/products/ai-machine-learning/announcing-agents-to-payments-ap2-protocol",
+          "claims": []
+        },
+        {
+          "name": "Visa Intelligent Commerce (VIC) Architecture",
+          "relevance": 0.655,
+          "confidence": 0.95,
+          "type": "framework",
+          "description": "Visa's answer to Mastercard's Verifiable Intent is a full platform with agent-specific tokens, Passkey-based authentication (FIDO), and VisaNet-level transaction controls. Agents are onboarded to the ",
+          "source_url": "https://github.com/visa/mcp/",
+          "claims": []
+        },
+        {
+          "name": "Visa Intelligent Commerce Agent Payment Framework",
+          "relevance": 0.597,
+          "confidence": 0.6,
+          "type": "framework",
+          "description": "An infrastructure layer enabling AI agents to execute secure, personalized transactions on behalf of users through agent-specific tokenization, consent-based personalization, device-based authenticati",
+          "source_url": "https://www.soniclinker.com/blog/visa-intelligent-commerce-ai-agents",
+          "claims": []
+        },
+        {
+          "name": "Six Sigma for Pricing Process Improvement",
+          "relevance": 0.585,
+          "confidence": 0.95,
+          "type": "case_study",
+          "description": "Manufacturing firm (Acme) applied Six Sigma DMAIC methodology to pricing processes, reducing discount variability from 5-95% range, generating $5.8M incremental revenue in 6 months against $500K goal.",
+          "source_url": "https://www.processexcellencenetwork.com/lean-six-sigma-business-performance/articles/improving-pricing-quality-with-six-sigma-methods",
+          "claims": [
+            {
+              "value": 95.0,
+              "unit": "%",
+              "context": "Six Sigma for Pricing Process Improvement Manufacturing firm (Acme) applied Six "
+            }
+          ]
+        },
+        {
+          "name": "Pricing as Product Framing",
+          "relevance": 0.585,
+          "confidence": 0.95,
+          "type": "claim",
+          "description": "Price isn't just exchange rate \u2014 it impacts close rates, client quality, sales cycle, hiring capacity, product quality, and respect level. Pricing IS positioning. Same build at different price points ",
+          "source_url": "https://www.youtube.com/watch?v=JxusnOQ77Gc",
+          "claims": []
+        },
+        {
+          "name": "ChatGPT Enterprise Pricing ($60/user/month)",
+          "relevance": 0.585,
+          "confidence": 0.95,
+          "type": "claim",
+          "description": "ChatGPT Enterprise costs $60 per user per month, Microsoft Copilot $30/user/month, Claude Enterprise custom pricing. This provides willingness-to-pay benchmarks for general AI platforms but not for sp",
+          "source_url": "https://www.digitalapplied.com/blog/enterprise-ai-adoption-strategy-2025",
+          "claims": []
+        }
+      ]
+    },
+    "payment_infrastructure": {
+      "count": 40,
+      "top_items": [
+        {
+          "name": "Worldpay (Global Payments) has dedicated 'Head of Agentic Commerce'",
+          "relevance": 0.795,
+          "confidence": 0.95,
+          "type": "claim",
+          "description": "Reshmi Suresh holds the title 'head of agentic commerce at Worldpay, now Global Payments' \u2014 indicating a dedicated org function for agent payments at one of the world's largest processors. They're par",
+          "source_url": "https://www.mastercard.com/us/en/news-and-trends/stories/2026/verifiable-intent.html",
+          "claims": []
+        },
+        {
+          "name": "Stripe x402 Machine Payments",
+          "relevance": 0.795,
+          "confidence": 0.95,
+          "type": "framework",
+          "description": "Stripe has launched a private preview for machine-to-machine payments using the x402 HTTP payment protocol, built on USDC stablecoin on Base (Coinbase L2). Agents pay per-invocation using crypto walle",
+          "source_url": "https://docs.stripe.com/payments/machine",
+          "claims": []
+        },
+        {
+          "name": "Agent Payment Protocol (AP2)",
+          "relevance": 0.775,
+          "confidence": 0.75,
+          "type": "framework",
+          "description": "An open-source protocol enabling AI agents to transact on behalf of consumers and businesses. Infrastructure-agnostic, supporting both traditional payment rails (credit cards) and blockchain-based set",
+          "source_url": "https://www.youtube.com/watch?v=hyed27TgYxc",
+          "claims": []
+        },
+        {
+          "name": "Stripe Radar integration for agent fraud detection",
+          "relevance": 0.72,
+          "confidence": 0.9,
+          "type": "technique",
+          "description": "SPTs integrate with Stripe Radar to relay risk signals including likelihood of fraudulent disputes, card testing, stolen cards, issuer declines. Designed to 'help differentiate between high-intent age",
+          "source_url": "https://stripe.com/blog/introducing-our-agentic-commerce-solutions",
+          "claims": []
+        },
+        {
+          "name": "AP2 Mandate Chain",
+          "relevance": 0.65,
+          "confidence": 0.9,
+          "type": "framework",
+          "description": "Three-layer cryptographic mandate system (Intent \u2192 Cart \u2192 Payment) using W3C Verifiable Credentials. Intent Mandate = pre-authorized spending authority with boundaries. Cart Mandate = deterministic lo",
+          "source_url": "https://www.descope.com/learn/post/ap2",
+          "claims": []
+        },
+        {
+          "name": "Tokenization as Agent Payment Security Layer",
+          "relevance": 0.645,
+          "confidence": 0.85,
+          "type": "technique",
+          "description": "Using card network tokenization (Visa Intelligent Commerce, Mastercard Agent Pay) as the technical mechanism to enable AI agents to make payments securely without exposing actual card credentials. Thi",
+          "source_url": "https://www.youtube.com/watch?v=KHfTbWAsy-Y",
+          "claims": []
+        },
+        {
+          "name": "Tokenized Digital Credentials for Agent Payments",
+          "relevance": 0.64,
+          "confidence": 0.8,
+          "type": "technique",
+          "description": "Using tokenization (replacing sensitive payment data with unique tokens) to secure AI agent transactions. This allows agents to make purchases without exposing actual card numbers, combined with real-",
+          "source_url": "https://www.youtube.com/watch?v=OEzhJIlF-zo",
+          "claims": []
+        },
+        {
+          "name": "Agent Payment Systems as Identity Layer",
+          "relevance": 0.63,
+          "confidence": 0.7,
+          "type": "claim",
+          "description": "Visa and Mastercard are positioning their agent payment systems (Intelligent Commerce and Agent Pay) not just as transaction mechanisms but as authentication/authorization layers for AI agents. This r",
+          "source_url": "https://www.youtube.com/watch?v=PAVNpHOJ9sM",
+          "claims": []
+        },
+        {
+          "name": "Transferred Intent Doctrine Applied to Agents",
+          "relevance": 0.63,
+          "confidence": 0.7,
+          "type": "framework",
+          "description": "Legal doctrine that a wrongdoer intending to harm Person A but accidentally harming Person B can still be held liable. In agentic commerce, if Agent A intends to transact with Seller X but due to erro",
+          "source_url": "https://www.merriam-webster.com/dictionary/intent",
+          "claims": []
+        },
+        {
+          "name": "Network Tokenization",
+          "relevance": 0.62,
+          "confidence": 0.95,
+          "type": "technique",
+          "description": "Replacing static card numbers with programmable tokens that contain transaction rules (merchant restrictions, amount limits, time constraints). Tokens validate transaction 'DNA' without human authenti",
+          "source_url": "https://www.youtube.com/watch?v=ttEDD8fMwWI",
+          "claims": []
+        },
+        {
+          "name": "VIC Payment Instruction Authentication Flow",
+          "relevance": 0.58,
+          "confidence": 0.9,
+          "type": "technique",
+          "description": "Unlike Mastercard's cryptographic signed-intent chain, Visa uses a Passkey (FIDO) model: the agent requests user authentication of a Payment Instruction via Passkey, submits it to VIC, then VIC valida",
+          "source_url": "https://github.com/visa/mcp/",
+          "claims": []
+        },
+        {
+          "name": "Transaction Tokens for agent risk reduction",
+          "relevance": 0.57,
+          "confidence": 0.8,
+          "type": "technique",
+          "description": "Section 10.4 covers transaction tokens as a mechanism to reduce risk in agent-to-service authorization \u2014 scoped, short-lived tokens per transaction rather than broad access tokens. Relevant to autonom",
+          "source_url": "https://datatracker.ietf.org/doc/draft-klrc-aiagent-auth/",
+          "claims": []
+        },
+        {
+          "name": "Shared Payment Token System",
+          "relevance": 0.57,
+          "confidence": 0.8,
+          "type": "technique",
+          "description": "A payment primitive that allows AI platforms to securely package customer payment credentials and pass them to merchants without exposing raw payment account numbers, enabling secure agent transaction",
+          "source_url": "https://www.youtube.com/watch?v=LtFCXOOGPrw",
+          "claims": []
+        },
+        {
+          "name": "SMB Payment Ceiling for AI Services",
+          "relevance": 0.57,
+          "confidence": 0.8,
+          "type": "framework",
+          "description": "Small businesses have limited willingness/ability to pay for AI automation services. Creator who works with SMBs states they definitively do not pay $300K scale amounts. Suggests SMB market has natura",
+          "source_url": "https://www.youtube.com/watch?v=XUYvDbAv1IA",
+          "claims": []
+        },
+        {
+          "name": "Strong Customer Authentication (SCA) Exemption Model for Agents",
+          "relevance": 0.56,
+          "confidence": 0.7,
+          "type": "framework",
+          "description": "EU's PSD2 requires two-factor authentication for many online payments, which conflicts with autonomous agent operations. Solution requires either regulatory extensions/exemptions for pre-authorized au",
+          "source_url": "https://www.linkedin.com/pulse/enabling-autonomous-ai-agents-make-payments-challenges-david-paluy-xmq4c",
+          "claims": []
+        },
+        {
+          "name": "Stripe and PayPal at CBA Symposium Table",
+          "relevance": 0.52,
+          "confidence": 1.0,
+          "type": "claim",
+          "description": "Both Stripe and PayPal participated in the CBA's Fall 2025 Agentic Payments Symposium alongside Mastercard, Google, JPMorgan, Plaid, and Fiserv. Confirms active engagement but reveals no specific prod",
+          "source_url": "https://consumerbankers.com/wp-content/uploads/2026/01/CBA-Agentic-Symposium-White-Paper-2026-01v2.pdf",
+          "claims": []
+        },
+        {
+          "name": "Agent Payments Protocol (AP2)",
+          "relevance": 0.515,
+          "confidence": 0.95,
+          "type": "framework",
+          "description": "Open protocol for agent-initiated payments using cryptographically-signed mandates (Intent Mandates and Cart Mandates) to establish verifiable proof of user authorization. Distinguishes between human-",
+          "source_url": "https://cloud.google.com/blog/products/ai-machine-learning/announcing-agents-to-payments-ap2-protocol",
+          "claims": []
+        },
+        {
+          "name": "Agent Payments Protocol (AP2) Authorization Architecture",
+          "relevance": 0.515,
+          "confidence": 0.95,
+          "type": "framework",
+          "description": "Two-tier mandate system for agent payment authorization: Intent Mandates (initial user request/delegation) and Cart Mandates (final transaction approval). Creates cryptographically-signed, tamper-proo",
+          "source_url": "https://cloud.google.com/blog/products/ai-machine-learning/announcing-agents-to-payments-ap2-protocol",
+          "claims": []
+        },
+        {
+          "name": "Shared Payment Tokens (SPT)",
+          "relevance": 0.515,
+          "confidence": 0.95,
+          "type": "framework",
+          "description": "A new payment primitive specifically designed for AI agent commerce that allows agents to initiate payments using buyer permission without exposing credentials. Unlike traditional payment tokens, SPTs",
+          "source_url": "https://stripe.com/blog/introducing-our-agentic-commerce-solutions",
+          "claims": []
+        },
+        {
+          "name": "AP2 Architecture: W3C Verifiable Credentials over existing rails",
+          "relevance": 0.515,
+          "confidence": 0.95,
+          "type": "framework",
+          "description": "AP2 is NOT blockchain-based or a new payment rail. It's a credential layer using W3C Verifiable Credentials (signed mandates) that embed into existing ISO 8583 and API authorization flows. It extends ",
+          "source_url": "https://developer.paypal.com/community/blog/PayPal-Agent-Payments-Protocol/",
+          "claims": []
+        }
+      ]
+    },
+    "agent_architecture": {
+      "count": 64,
+      "top_items": [
+        {
+          "name": "UCP Three-Party Payment Separation",
+          "relevance": 0.785,
+          "confidence": 0.85,
+          "type": "framework",
+          "description": "UCP separates payment instruments (cards, wallets) from payment handlers (processing specs) from merchant configuration. Providers author handler specs, merchants configure credentials, platforms exec",
+          "source_url": "https://juspay.io/blog/google-s-universal-commerce-protocol-what-it-means-for-payment-orchestration",
+          "claims": []
+        },
+        {
+          "name": "Agent Cards for Service Discovery",
+          "relevance": 0.78,
+          "confidence": 0.8,
+          "type": "technique",
+          "description": "Digital identity mechanism where each AI agent publishes a JSON file (agent card) over HTTP describing its capabilities, identity, and communication endpoints. Enables dynamic discovery of agents in a",
+          "source_url": "https://www.youtube.com/watch?v=bP44vYoMvD4",
+          "claims": []
+        },
+        {
+          "name": "Query Routing Pattern",
+          "relevance": 0.725,
+          "confidence": 0.95,
+          "type": "framework",
+          "description": "Use a lightweight router to direct incoming requests to specialized downstream agents rather than using a monolithic system. The router analyzes intent and sends queries to the most appropriate specia",
+          "source_url": "https://www.youtube.com/watch?v=WHTKFgbBqIE",
+          "claims": []
+        },
+        {
+          "name": "Agent Evaluation Taxonomy",
+          "relevance": 0.725,
+          "confidence": 0.95,
+          "type": "framework",
+          "description": "A structured approach to evaluating AI agents using three types of graders (code-based, model-based, human) applied to two outputs (transcript and outcome). Includes concepts of tasks, trials, graders",
+          "source_url": "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents",
+          "claims": []
+        },
+        {
+          "name": "Three-Dimensional Agent Evolution Framework (What/When/How)",
+          "relevance": 0.725,
+          "confidence": 0.95,
+          "type": "framework",
+          "description": "Systematic taxonomy for understanding self-evolving agents across three orthogonal dimensions: WHAT evolves (model/memory/tools/architecture), WHEN evolution occurs (intra-test-time vs inter-test-time",
+          "source_url": "https://arxiv.org/html/2507.21046v2",
+          "claims": []
+        },
+        {
+          "name": "AP2 Role Separation Architecture",
+          "relevance": 0.722,
+          "confidence": 0.92,
+          "type": "framework",
+          "description": "Defines five distinct roles with confined data access: User (intent originator), Agent (executor), Credential Provider (secures payment methods/authentication), Merchant Endpoint/Processor (receives m",
+          "source_url": "https://developer.paypal.com/community/blog/PayPal-Agent-Payments-Protocol/",
+          "claims": []
+        },
+        {
+          "name": "Multi-Agent System Architecture Pattern",
+          "relevance": 0.72,
+          "confidence": 0.9,
+          "type": "framework",
+          "description": "A design approach where multiple autonomous AI agents work together like a beehive, each with specialized roles but coordinating to solve complex problems that single agents cannot handle effectively.",
+          "source_url": "https://www.youtube.com/watch?v=sWH0T4Zez6I",
+          "claims": []
+        },
+        {
+          "name": "Five-Protocol Multi-Agent AI Architecture",
+          "relevance": 0.72,
+          "confidence": 0.9,
+          "type": "framework",
+          "description": "A structured approach to building multi-agent AI systems using five key protocols: MCP (Model Context Protocol), ACP (Agent Communication Protocol), A2A (Agent-to-Agent Protocol), ANP (Agent Network P",
+          "source_url": "https://onereach.ai/blog/power-of-multi-agent-ai-open-protocols/",
+          "claims": []
+        },
+        {
+          "name": "A2A (Agent-to-Agent Protocol) - Multi-Agent Coordination",
+          "relevance": 0.72,
+          "confidence": 0.9,
+          "type": "framework",
+          "description": "Google's protocol launched April 2025 for standardizing how AI agents discover, communicate, and delegate tasks across platforms. Uses agent cards (JSON files), JSON-RPC over HTTP/SSE, and includes bu",
+          "source_url": "https://www.youtube.com/watch?v=bP44vYoMvD4",
+          "claims": []
+        },
+        {
+          "name": "Multi-Agent System Architectures",
+          "relevance": 0.72,
+          "confidence": 0.9,
+          "type": "framework",
+          "description": "Three primary structural patterns for coordinating autonomous AI agents: decentralized networks (peer-to-peer with equal authority), hierarchical structures (tree-like with varying autonomy levels), a",
+          "source_url": "https://www.youtube.com/watch?v=sWH0T4Zez6I",
+          "claims": []
+        },
+        {
+          "name": "Assistant vs Agent Dichotomy",
+          "relevance": 0.715,
+          "confidence": 0.85,
+          "type": "framework",
+          "description": "Assistants operate on prompt-response (ask question \u2192 get answer), while agents operate on goal-outcome (define objective \u2192 get result with agency). Agents have discretion to take action within bounda",
+          "source_url": "https://www.youtube.com/watch?v=OFq_CvRCpA0",
+          "claims": []
+        },
+        {
+          "name": "Five-Stage Agentic AI Architecture Pattern",
+          "relevance": 0.715,
+          "confidence": 0.85,
+          "type": "framework",
+          "description": "Generic architecture for AI agents consisting of: (1) Goal definition, (2) Planner (LLM with tool access), (3) Memory (context storage, history, vector databases), (4) Executor (action plan generation",
+          "source_url": "https://www.youtube.com/watch?v=Ts42JTye-AI",
+          "claims": []
+        },
+        {
+          "name": "Microagents Architecture Pattern",
+          "relevance": 0.715,
+          "confidence": 0.85,
+          "type": "framework",
+          "description": "A software architecture for autonomous agents featuring: Agent class (send/receive messages), Bureau class (agent registry and communication manager), Context object (agent runtime environment), Ident",
+          "source_url": "https://www.youtube.com/watch?v=ySqquVT50aM",
+          "claims": []
+        },
+        {
+          "name": "Meatspace Layer for AI",
+          "relevance": 0.715,
+          "confidence": 0.85,
+          "type": "framework",
+          "description": "The concept that AI agents need a physical-world execution layer since they can't perform embodied tasks. Humans become the 'hands' for digital agents. Reveals fundamental constraint: agents are digit",
+          "source_url": "https://mashable.com/article/rent-a-human-wants-ai-agents-to-hire-you",
+          "claims": []
+        },
+        {
+          "name": "Multi-Agent Specialist Coordinator Pattern",
+          "relevance": 0.71,
+          "confidence": 0.8,
+          "type": "framework",
+          "description": "Architecture with a central coordinator agent orchestrating multiple specialist agents (e.g., satellite imagery analysis, social media monitoring, damage forecasting). Specialists work in parallel, wr",
+          "source_url": "https://www.youtube.com/watch?v=Ts42JTye-AI",
+          "claims": []
+        },
+        {
+          "name": "DMAIC as Agent Decision-Making Framework",
+          "relevance": 0.71,
+          "confidence": 0.8,
+          "type": "connection",
+          "description": "The DMAIC cycle (Define-Measure-Analyze-Improve-Control) maps directly to autonomous agent behavior loops: Define = goal setting, Measure = sensor data collection, Analyze = pattern detection/root cau",
+          "source_url": "https://www.youtube.com/watch?v=s2HCrhNVfak",
+          "claims": []
+        },
+        {
+          "name": "Coordinated Multi-Agent Budget-Constrained Booking",
+          "relevance": 0.71,
+          "confidence": 0.8,
+          "type": "case_study",
+          "description": "Example of agent coordinating across multiple merchants (airline, hotel) with total budget constraint. Agent interacts with multiple other agents and booking platforms, finds combination within $700 b",
+          "source_url": "https://cybersecurityasia.net/google-pioneers-agent-payments-protocol/",
+          "claims": []
+        },
+        {
+          "name": "Multi-Agent Specialist Architecture",
+          "relevance": 0.705,
+          "confidence": 0.75,
+          "type": "technique",
+          "description": "Rather than one monolithic AI, agentic commerce uses coordinated teams of specialized agents: searchers, negotiators, payment handlers, managed by a coordinator agent that orchestrates the workflow.",
+          "source_url": "https://www.youtube.com/watch?v=HHWRhtzvsOU",
+          "claims": []
+        },
+        {
+          "name": "Tool Count Threshold for Agent Performance",
+          "relevance": 0.7,
+          "confidence": 0.7,
+          "type": "claim",
+          "description": "Anecdotal evidence suggests agents perform optimally with 5-10 tools maximum. Beyond this threshold, agents make poor decisions about tool selection. This implies a cognitive load limit for LLM-based ",
+          "source_url": "https://www.youtube.com/watch?v=4nZl32FwU-o",
+          "claims": []
+        },
+        {
+          "name": "Multi-Agent Specialist Network Architecture",
+          "relevance": 0.7,
+          "confidence": 0.7,
+          "type": "framework",
+          "description": "Enterprise value emerges from networks of specialized agents (data analysis, pattern recognition, domain knowledge) collaborating on complex workflows rather than single-purpose agents. Creates reusab",
+          "source_url": "https://www.reworked.co/digital-workplace/the-business-case-for-agentic-ai/",
+          "claims": []
+        }
+      ]
+    }
+  }
+}

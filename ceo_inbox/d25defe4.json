@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.668671+00:00",
+    "relevance_score": 0.645,
+    "matched_tags": [
+      "security"
+    ],
+    "domain_match": false,
+    "source_path": "technology/d25defe4.json"
+  },
+  "framework": {
+    "id": "d25defe4",
+    "type": "framework",
+    "name": "Speed vs Security Trade-off in Coordination",
+    "description": "Coordination layers face a fundamental dilemma: Fort Knox security with slow finality (12+ minutes) vs lightning speed with network lock-in. The innovation is achieving near-instant finality (6 seconds) while borrowing security from a slower but more secure base layer.",
+    "domain": "technology",
+    "confidence": 0.85,
+    "tags": [
+      "security",
+      "performance",
+      "trade-offs",
+      "finality",
+      "consensus"
+    ],
+    "raw_quote": "Do you want the Fort Knox level security you get with Ethereum, but have to wait over 12 minutes for your transaction to be truly 100% final? Or do you want the lightning speed of an L2, but risk getting stuck on that one specific network?",
+    "source": {
+      "title": "watch?v=TZNO-z7apcE",
+      "url": "https://www.youtube.com/watch?v=TZNO-z7apcE"
+    },
+    "hunt_id": "c9aa917a",
+    "extracted_at": "2026-03-04T23:42:39.696659+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.186036+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

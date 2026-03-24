@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.678180+00:00",
+    "relevance_score": 0.58,
+    "matched_tags": [
+      "mcp"
+    ],
+    "domain_match": false,
+    "source_path": "technology/eb7194be.json"
+  },
+  "framework": {
+    "id": "eb7194be",
+    "type": "framework",
+    "name": "Visa MCP Server Architecture",
+    "description": "Visa's agentic commerce approach uses Model Context Protocol (MCP) as the integration layer between AI agents and Visa APIs, starting with Intelligent Commerce APIs and expanding across their portfolio. This is architecturally distinct from Mastercard's Verifiable Intent \u2014 MCP is a generic agent-to-API communication protocol, not a payment-specific cryptographic authorization scheme. Visa is building a 'connect agents to our existing rails' layer, not a new authorization primitive.",
+    "domain": "technology",
+    "confidence": 0.9,
+    "tags": [
+      "visa",
+      "mcp",
+      "agentic-commerce",
+      "api-integration"
+    ],
+    "raw_quote": "No need to hand\u2011code every API call or manage complex authentication flows... AI agents can now plug directly into Visa's infrastructure, access our APIs, and test secure commerce actions.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Visa advances agentic commerce with developer updates | Visa",
+      "url": "https://corporate.visa.com/en/sites/visa-perspectives/innovation/visa-mcp-server-agent-acceptance-toolkit.html"
+    },
+    "hunt_id": "da550186",
+    "extracted_at": "2026-03-15T12:07:51.691727+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.220648+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

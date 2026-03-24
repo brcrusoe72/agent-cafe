@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.287908+00:00",
+    "relevance_score": 0.67,
+    "matched_tags": [
+      "security",
+      "agent-architecture"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/647ecafb.json"
+  },
+  "framework": {
+    "id": "647ecafb",
+    "type": "framework",
+    "name": "Multi-Agent Payment Orchestration",
+    "description": "An architectural pattern that separates agent responsibilities into specialized roles (interaction, recommendation, payment execution) coordinated through a shared orchestration layer, rather than using a single monolithic agent with all permissions.",
+    "domain": "ai-systems",
+    "confidence": 0.75,
+    "tags": [
+      "agent-architecture",
+      "separation-of-concerns",
+      "orchestration",
+      "security"
+    ],
+    "raw_quote": "Instead of one monolithic agent responsibilities were separated. Interaction agents handled customer engagement. Recommendation agents focused on product selection. Payment agents executed transactions. All agents were coordinated through a shared orchestration layer.",
+    "source": {
+      "title": "How to Integrate Agentic Commerce into Payment Systems",
+      "url": "https://www.youtube.com/watch?v=1lxwuTF-t4E"
+    },
+    "hunt_id": "7d3db790",
+    "extracted_at": "2026-03-03T18:49:30.816108+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.217755+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.276253+00:00",
+    "relevance_score": 0.58,
+    "matched_tags": [
+      "delegation"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/53a7b582.json"
+  },
+  "framework": {
+    "id": "53a7b582",
+    "type": "framework",
+    "name": "Click-to-Buy vs Delegate-to-Buy Paradigm Shift",
+    "description": "The fundamental transition from direct human purchase decisions (clicking to buy) to delegated AI agent purchase decisions (delegate to buy), where AI agents complete transactions autonomously on behalf of consumers.",
+    "domain": "ai-systems",
+    "confidence": 0.9,
+    "tags": [
+      "paradigm-shift",
+      "commerce",
+      "automation",
+      "delegation"
+    ],
+    "raw_quote": "We're moving from a click to buy to a delegate delegate to buy paradigm. So AI agents aren't just basically recommending products at this point in a chat session. They're completing transactions on your behalf.",
+    "source": {
+      "title": "The Race to Standardize Agentic Commerce",
+      "url": "https://www.youtube.com/watch?v=LtFCXOOGPrw"
+    },
+    "hunt_id": "dbee9bd2",
+    "extracted_at": "2026-03-03T18:11:22.068545+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.208737+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

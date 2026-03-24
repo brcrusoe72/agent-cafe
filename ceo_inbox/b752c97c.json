@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.659898+00:00",
+    "relevance_score": 0.44,
+    "matched_tags": [
+      "standardization"
+    ],
+    "domain_match": false,
+    "source_path": "technology/b752c97c.json"
+  },
+  "framework": {
+    "id": "b752c97c",
+    "type": "framework",
+    "name": "Agentic Commerce Protocol (ACP) Standard",
+    "description": "Open source protocol co-developed by Stripe and OpenAI that creates a shared language between AI agents and merchants, allowing one-to-many integrations while preserving merchant control over brand, products, and fulfillment.",
+    "domain": "technology",
+    "confidence": 0.9,
+    "tags": [
+      "protocol",
+      "standardization",
+      "integration",
+      "open-source"
+    ],
+    "raw_quote": "ACP was co-developed with OpenAI as a standard protocol. It's actually open sourced under the Apache 2.0 their license and it gives agents and sellers this shared language",
+    "source": {
+      "title": "The Race to Standardize Agentic Commerce",
+      "url": "https://www.youtube.com/watch?v=LtFCXOOGPrw"
+    },
+    "hunt_id": "dbee9bd2",
+    "extracted_at": "2026-03-03T18:11:22.068861+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.191243+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "marketplace_design"
+}

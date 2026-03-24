@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.366737+00:00",
+    "relevance_score": 0.675,
+    "matched_tags": [
+      "multi-agent",
+      "security"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/ea7b9fd9.json"
+  },
+  "framework": {
+    "id": "ea7b9fd9",
+    "type": "claim",
+    "name": "Cascading Failure Propagation Speed",
+    "description": "A single compromised agent poisoned 87% of downstream decision-making within four hours in simulated environments. This quantifies why delegation chains without depth limits are catastrophic \u2014 compromise at any hop propagates faster than humans can respond.",
+    "domain": "ai-systems",
+    "confidence": 0.8,
+    "tags": [
+      "cascading-failure",
+      "multi-agent",
+      "security"
+    ],
+    "raw_quote": "single compromised agent poisoned 87% of downstream decision-making within four hours in simulated environments",
+    "value_tier": "meat",
+    "source": {
+      "title": "When AI Agents Misbehave: Governance and Security for ... - Our Take",
+      "url": "https://ourtake.bakerbotts.com/post/102me2l/when-ai-agents-misbehave-governance-and-security-for-autonomous-ai"
+    },
+    "hunt_id": "d39fbdac",
+    "extracted_at": "2026-03-14T14:30:59.455229+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.220581+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

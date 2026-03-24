@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.601792+00:00",
+    "relevance_score": 0.7,
+    "matched_tags": [
+      "platform-strategy"
+    ],
+    "domain_match": false,
+    "source_path": "strategy|ai-systems/074b974c.json"
+  },
+  "framework": {
+    "id": "074b974c",
+    "type": "claim",
+    "name": "Zuckerberg's 'Every Business Needs AI Agent' Vision",
+    "description": "Meta's vision that every business will have AI agents for customer support and sales, similar to having email/website/social presence today. Aspirational market-making claim, not current reality. Relevant for understanding where platform companies want to push SMB AI adoption.",
+    "domain": "strategy|ai-systems",
+    "confidence": 0.7,
+    "tags": [
+      "meta",
+      "platform-strategy",
+      "market-vision",
+      "smb-agents",
+      "customer-support"
+    ],
+    "raw_quote": "every business in the future just like they have an email address and a website and the social media presence today I think every business is going to have a um an AI agent that their customers can talk to in the future",
+    "source": {
+      "title": "AI Agents Every Business Needs to Skyrocket Efficiency and Cut Costs",
+      "url": "https://www.youtube.com/watch?v=S9dc0y_Zesc"
+    },
+    "hunt_id": "f65e2a8b",
+    "extracted_at": "2026-03-05T20:39:35.235059+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.187806+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "marketplace_design"
+}

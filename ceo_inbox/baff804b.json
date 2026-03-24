@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.338667+00:00",
+    "relevance_score": 0.715,
+    "matched_tags": [
+      "agent-architecture"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/baff804b.json"
+  },
+  "framework": {
+    "id": "baff804b",
+    "type": "framework",
+    "name": "Microagents Architecture Pattern",
+    "description": "A software architecture for autonomous agents featuring: Agent class (send/receive messages), Bureau class (agent registry and communication manager), Context object (agent runtime environment), Identity module (cryptographic operations), and Message models (structured communication). Agents operate with periodic behaviors and event-driven message handlers.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "agent-architecture",
+      "multi-agent-systems",
+      "software-patterns",
+      "distributed-systems"
+    ],
+    "raw_quote": "the bureau class which is a not class provided by the microagents library and which represents a collection of agents and margin and manages their communication",
+    "source": {
+      "title": "watch?v=ySqquVT50aM",
+      "url": "https://www.youtube.com/watch?v=ySqquVT50aM"
+    },
+    "hunt_id": "e8165180",
+    "extracted_at": "2026-03-05T16:22:57.787268+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.219795+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

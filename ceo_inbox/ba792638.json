@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.337816+00:00",
+    "relevance_score": 0.715,
+    "matched_tags": [
+      "agent-architecture"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/ba792638.json"
+  },
+  "framework": {
+    "id": "ba792638",
+    "type": "framework",
+    "name": "Five-Stage Agentic AI Architecture Pattern",
+    "description": "Generic architecture for AI agents consisting of: (1) Goal definition, (2) Planner (LLM with tool access), (3) Memory (context storage, history, vector databases), (4) Executor (action plan generation), (5) Action (integration with external systems/APIs). This pattern is presented as universal across use cases from agriculture to disaster response.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "agent-architecture",
+      "design-pattern",
+      "llm-framework",
+      "iot-integration"
+    ],
+    "raw_quote": "the first part of that framework is to start with a goal. This is a goal for the agent to achieve... Once we have a goal, we can start planning... that information is then combined with whatever is stored in the memory... that all feeds into the executor... that execution plan that's passed to the final stage which is the action component",
+    "source": {
+      "title": "10 Use Cases for AI Agents: IoT, RAG, & Disaster Response Explained",
+      "url": "https://www.youtube.com/watch?v=Ts42JTye-AI"
+    },
+    "hunt_id": "8e1c768d",
+    "extracted_at": "2026-03-05T20:08:02.253738+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.219728+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

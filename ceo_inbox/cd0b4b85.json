@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.434767+00:00",
+    "relevance_score": 0.635,
+    "matched_tags": [
+      "liability"
+    ],
+    "domain_match": false,
+    "source_path": "finance/cd0b4b85.json"
+  },
+  "framework": {
+    "id": "cd0b4b85",
+    "type": "framework",
+    "name": "Stupid Agent Dispute Class",
+    "description": "A new dispute category distinct from 'Unauthorized Transaction' is needed: 'Agent Error' \u2014 when the agent bought the wrong thing or misunderstood policy. This is NOT fraud, it's incompetence. No existing chargeback framework handles this. Reveals that liability isn't just about authorization but about agent competence.",
+    "domain": "finance",
+    "confidence": 0.75,
+    "tags": [
+      "disputes",
+      "liability",
+      "agent-error"
+    ],
+    "raw_quote": "What happens when a user claims, 'My agent bought the wrong color'? The industry needs a new class of dispute codes specifically for 'Agent Error,' distinct from 'Unauthorized Transaction.'",
+    "value_tier": "organ",
+    "source": {
+      "title": "Agentic checkout beyond the hype: what European players can do to stay ...",
+      "url": "https://www.reply.com/en/strategy-and-business-model-transformation/agentic-checkout-beyond-the-hype"
+    },
+    "hunt_id": "eeb6b019",
+    "extracted_at": "2026-03-15T12:18:53.033406+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.204668+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

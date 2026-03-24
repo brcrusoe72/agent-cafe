@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.319342+00:00",
+    "relevance_score": 0.705,
+    "matched_tags": [
+      "trust"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/9923acd4.json"
+  },
+  "framework": {
+    "id": "9923acd4",
+    "type": "technique",
+    "name": "Generative Watermarking",
+    "description": "Invisible tagging system embedded in AI-generated content at pixel level to identify synthetic media and combat misinformation.",
+    "domain": "ai-systems",
+    "confidence": 0.75,
+    "tags": [
+      "authenticity",
+      "misinformation",
+      "trust",
+      "detection"
+    ],
+    "raw_quote": "adds invisible tags to AI-generated content, which makes it easier to identify what's real and what isn't",
+    "source": {
+      "title": "These are the top 10 emerging technologies of 2025 | World Economic Forum",
+      "url": "https://www.weforum.org/stories/2025/06/top-10-emerging-technologies-of-2025/"
+    },
+    "hunt_id": "69dfc43e",
+    "extracted_at": "2026-03-03T17:32:28.964624+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.201414+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

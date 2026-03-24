@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.333076+00:00",
+    "relevance_score": 0.58,
+    "matched_tags": [
+      "authorization"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/b1f0fc0d.json"
+  },
+  "framework": {
+    "id": "b1f0fc0d",
+    "type": "framework",
+    "name": "SPIFFE solves identity, not delegation",
+    "description": "Posta explicitly scopes SPIFFE to the identity/authentication layer ('who is this agent?') but stops before authorization/delegation ('what can it do on behalf of whom?'). The article ends at 'how can you possibly write authorization policies around [fine-grained identities]?' \u2014 acknowledging SPIFFE handles hop-1 identity but punts on the hop-2+ delegation problem entirely.",
+    "domain": "ai-systems",
+    "confidence": 0.9,
+    "tags": [
+      "spiffe",
+      "delegation-gap",
+      "authorization"
+    ],
+    "raw_quote": "if identities are more fine-grained, and even potentially generated on the fly, how can you possibly write authorization policies around this?",
+    "value_tier": "organ",
+    "source": {
+      "title": "Agent Identity and Access Management - Can SPIFFE Work?",
+      "url": "https://www.linkedin.com/pulse/agent-identity-access-management-can-spiffe-work-christian-posta-hffnc"
+    },
+    "hunt_id": "5213bf37",
+    "extracted_at": "2026-03-18T14:22:05.015461+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.202846+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

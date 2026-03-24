@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.234623+00:00",
+    "relevance_score": 0.515,
+    "matched_tags": [
+      "open-standard"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/11fa0aae.json"
+  },
+  "framework": {
+    "id": "11fa0aae",
+    "type": "framework",
+    "name": "Agent Payments Protocol (AP2) Authorization Architecture",
+    "description": "Two-tier mandate system for agent payment authorization: Intent Mandates (initial user request/delegation) and Cart Mandates (final transaction approval). Creates cryptographically-signed, tamper-proof proof chain from user intent \u2192 agent action \u2192 payment execution. Distinguishes 'human present' (real-time approval) vs 'human not present' (pre-authorized delegation with limits).",
+    "domain": "ai-systems",
+    "confidence": 0.95,
+    "tags": [
+      "agent-authorization",
+      "payment-protocols",
+      "cryptographic-proofs",
+      "spending-limits",
+      "open-standard"
+    ],
+    "raw_quote": "Mandates address the two primary ways a user will shop with an agent: Real-time purchases (human present): When you ask an agent, 'Find me new white running shoes,' your request is captured in an initial Intent Mandate... After the agent presents a cart with the shoes you want, your approval signs a Cart Mandate. Delegated tasks (human not present): When you delegate a task like, 'Buy concert tickets the moment they go on sale,' you sign a detailed Intent Mandate upfront. This mandate specifies the rules of engagement\u2014price limits, timing, and other conditions.",
+    "source": {
+      "title": "Announcing Agent Payments Protocol (AP2) | Google Cloud Blog",
+      "url": "https://cloud.google.com/blog/products/ai-machine-learning/announcing-agents-to-payments-ap2-protocol"
+    },
+    "hunt_id": "4f110637",
+    "extracted_at": "2026-03-06T14:16:23.844699+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.212630+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "payment_infrastructure"
+}

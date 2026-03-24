@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.306245+00:00",
+    "relevance_score": 0.53,
+    "matched_tags": [
+      "interoperability",
+      "mcp"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/81b27fda.json"
+  },
+  "framework": {
+    "id": "81b27fda",
+    "type": "technique",
+    "name": "Model Context Protocol (MCP) Integration Strategy",
+    "description": "Visa provides a remote MCP server as a standardized interface to their proprietary APIs. This positions Visa's protocols within the emerging MCP ecosystem (Anthropic-backed) while maintaining control over core primitives.",
+    "domain": "ai-systems",
+    "confidence": 0.75,
+    "tags": [
+      "mcp",
+      "protocol-integration",
+      "api-gateway",
+      "interoperability"
+    ],
+    "raw_quote": "Connect to Visa's Model Context Protocol (MCP) server to simplify the process of integrating Visa APIs into your agentic workflows.",
+    "source": {
+      "title": "visa-intelligent-commerce",
+      "url": "https://developer.visa.com/capabilities/visa-intelligent-commerce"
+    },
+    "hunt_id": "0a8db7c7",
+    "extracted_at": "2026-03-05T15:14:52.140568+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.218685+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

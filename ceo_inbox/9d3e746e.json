@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.652598+00:00",
+    "relevance_score": 0.64,
+    "matched_tags": [
+      "security",
+      "governance"
+    ],
+    "domain_match": false,
+    "source_path": "technology/9d3e746e.json"
+  },
+  "framework": {
+    "id": "9d3e746e",
+    "type": "technique",
+    "name": "Federated Computational Governance",
+    "description": "Decentralization of historically-centralized responsibilities like infrastructure and security management, giving data product teams total ownership over their products while maintaining governance controls.",
+    "domain": "technology",
+    "confidence": 0.8,
+    "tags": [
+      "governance",
+      "decentralization",
+      "automation",
+      "security"
+    ],
+    "raw_quote": "data product teams require total ownership over their products in order to meet infrastructure needs, and must have the autonomy to grant or prevent access to available services",
+    "source": {
+      "title": "",
+      "url": "https://aws.amazon.com/blogs/apn/implementing-an-operational-data-mesh-with-palantir-foundry-on-aws-to-transform-your-organization/"
+    },
+    "hunt_id": "69dfc43e",
+    "extracted_at": "2026-03-03T17:39:52.475286+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.185123+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

@@ -1,0 +1,35 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.617042+00:00",
+    "relevance_score": 0.63,
+    "matched_tags": [
+      "security"
+    ],
+    "domain_match": false,
+    "source_path": "technology/216d5c75.json"
+  },
+  "framework": {
+    "id": "216d5c75",
+    "type": "technique",
+    "name": "Virtual Payment Address (VPA) System",
+    "description": "A method to enable payments without sharing sensitive bank details by using simplified identifiers that map to bank accounts behind the scenes.",
+    "domain": "technology",
+    "confidence": 0.7,
+    "tags": [
+      "security",
+      "user-experience",
+      "identity-abstraction"
+    ],
+    "raw_quote": "the customer also creates a virtual payment address or vpa through the PSP app which links directly to their bank account once confirmed the vpa allows secure payments without sharing sensitive Bank details",
+    "source": {
+      "title": "watch?v=iI2NaN_QVTI",
+      "url": "https://www.youtube.com/watch?v=iI2NaN_QVTI"
+    },
+    "hunt_id": "1486004a",
+    "extracted_at": "2026-03-03T17:38:46.583073+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.194410+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

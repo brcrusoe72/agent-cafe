@@ -1,0 +1,40 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.359890+00:00",
+    "relevance_score": 0.575,
+    "matched_tags": [
+      "delegation",
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/dfd24b09.json"
+  },
+  "framework": {
+    "id": "dfd24b09",
+    "type": "framework",
+    "name": "Agent Operation Authorization (Liu/Zhu/Krishnan draft-02)",
+    "description": "Alibaba+Cisco individual I-D proposing two-phase JWT flow: agent proposes operations via PAR, AS issues operation-scoped authorization token. Uses OPA/Rego for policy, WIMSE workload identity tokens for agent identity. Section 6 explicitly addresses agent-to-agent delegation with trust chain preservation.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "oauth",
+      "jwt",
+      "agent-auth",
+      "delegation",
+      "ietf",
+      "opa"
+    ],
+    "raw_quote": "The agent_workload_token identifies the running agent workload. Unless otherwise specified, it SHOULD be a Workload Identity Token (WIT) as defined in [I-D.ietf-wimse-workload-creds]. Deployments that already use other workload identity mechanisms (such as SPIFFE SVID) MAY map those tokens into this field.",
+    "value_tier": "meat",
+    "source": {
+      "title": "draft-liu-agent-operation-authorization-01 - IETF Datatracker",
+      "url": "https://datatracker.ietf.org/doc/draft-liu-agent-operation-authorization/"
+    },
+    "hunt_id": "5213bf37",
+    "extracted_at": "2026-03-18T14:20:26.634582+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.205915+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

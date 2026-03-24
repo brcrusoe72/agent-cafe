@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.402702+00:00",
+    "relevance_score": 0.51,
+    "matched_tags": [
+      "stripe"
+    ],
+    "domain_match": false,
+    "source_path": "finance/1a24c07d.json"
+  },
+  "framework": {
+    "id": "1a24c07d",
+    "type": "claim",
+    "name": "Private Preview Status of Merchant ID Controls",
+    "description": "Merchant-specific blocking (individual merchant ID restrictions) is still in private preview as of documentation date, requiring Stripe partnership for access. Indicates this granular control isn't production-ready for autonomous agent use cases.",
+    "domain": "finance",
+    "confidence": 0.9,
+    "tags": [
+      "private-preview",
+      "stripe",
+      "merchant-id",
+      "availability"
+    ],
+    "raw_quote": "Merchant ID spending controls is in private preview. You must be an Issuing user to participate. To learn more or request access, contact Stripe.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Issuing spending controls | Stripe Documentation",
+      "url": "https://docs.stripe.com/issuing/controls/spending-controls"
+    },
+    "hunt_id": "b977a620",
+    "extracted_at": "2026-03-07T14:45:43.641829+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.212961+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "payment_infrastructure"
+}

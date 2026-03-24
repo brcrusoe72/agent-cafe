@@ -1,0 +1,33 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.498418+00:00",
+    "relevance_score": 0.275,
+    "matched_tags": [],
+    "domain_match": true,
+    "source_path": "marketplace-design/98f5688b.json"
+  },
+  "framework": {
+    "id": "98f5688b",
+    "type": "contrarian",
+    "name": "Trust Can Be Overrated in Low-Risk Contexts",
+    "description": "Counter to conventional wisdom that marketplaces always need elaborate trust mechanisms, Peerby demonstrated that minimal/zero trust infrastructure works when actual risk is low. Over-engineering trust creates friction without value.",
+    "domain": "marketplace-design",
+    "confidence": 0.75,
+    "tags": [
+      "trust-minimalism",
+      "product-design",
+      "friction-reduction"
+    ],
+    "raw_quote": "trust is overrated... hereby was able to trust each other without the need for any specific trust or safety mechanisms",
+    "source": {
+      "title": "watch?v=W5q02P8GNzs",
+      "url": "https://www.youtube.com/watch?v=W5q02P8GNzs"
+    },
+    "hunt_id": "c9aa917a",
+    "extracted_at": "2026-03-04T21:50:31.448690+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.201187+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

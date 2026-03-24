@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.259078+00:00",
+    "relevance_score": 0.79,
+    "matched_tags": [
+      "agent-commerce"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/349bc0d8.json"
+  },
+  "framework": {
+    "id": "349bc0d8",
+    "type": "case_study",
+    "name": "Visa Intelligent Commerce Early Deployment",
+    "description": "Visa has already processed hundreds of transactions through AI agents using their Intelligent Commerce platform, in partnership with OpenAI, Microsoft, and Anthropic. This represents one of the first production deployments of agent-native payment infrastructure.",
+    "domain": "ai-systems",
+    "confidence": 0.9,
+    "tags": [
+      "production",
+      "visa",
+      "agent-commerce",
+      "early-adoption"
+    ],
+    "raw_quote": "Visa has already seen hundreds of successful transactions using this technology. The company is working with major AI platforms including OpenAI, Microsoft, and Anthropic",
+    "source": {
+      "title": "watch?v=OEzhJIlF-zo",
+      "url": "https://www.youtube.com/watch?v=OEzhJIlF-zo"
+    },
+    "hunt_id": "7d3db790",
+    "extracted_at": "2026-03-03T19:04:16.007699+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.208399+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

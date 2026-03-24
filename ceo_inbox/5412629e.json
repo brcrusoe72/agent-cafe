@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.415489+00:00",
+    "relevance_score": 0.575,
+    "matched_tags": [
+      "authorization"
+    ],
+    "domain_match": false,
+    "source_path": "finance/5412629e.json"
+  },
+  "framework": {
+    "id": "5412629e",
+    "type": "claim",
+    "name": "Agent Pay vs Verifiable Intent Distinction",
+    "description": "Agent Pay (April 2025) answers 'is this agent authorized to transact?' \u2014 identity/credentialing. Verifiable Intent (March 2026) answers 'did this transaction match what the consumer authorized?' \u2014 intent verification. Two separate problems, now two separate layers.",
+    "domain": "finance",
+    "confidence": 0.85,
+    "tags": [
+      "mastercard",
+      "agent-pay",
+      "authorization"
+    ],
+    "raw_quote": "Agent Pay answers 'is this agent authorized to transact?' Verifiable Intent answers 'did this transaction match what the consumer actually authorized?'",
+    "value_tier": "meat",
+    "source": {
+      "title": "What Is Mastercard Verifiable Intent? Agentic Commerce Trust Layer ...",
+      "url": "https://agenticplug.ai/blog/mastercard-verifiable-intent-for-agentic-commerce"
+    },
+    "hunt_id": "7e7c0a23",
+    "extracted_at": "2026-03-14T14:16:58.725564+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.198105+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

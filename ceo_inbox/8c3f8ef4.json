@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.311736+00:00",
+    "relevance_score": 0.585,
+    "matched_tags": [
+      "authorization",
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/8c3f8ef4.json"
+  },
+  "framework": {
+    "id": "8c3f8ef4",
+    "type": "framework",
+    "name": "Hierarchical Scope Design Pattern",
+    "description": "Structure scopes using colon-separated hierarchies (e.g., order:item, order:payment:address) to represent parent-child resource relationships. Parent scopes grant access to all child scopes, enabling flexible but bounded authorization. Prevents scope explosion by organizing privileges hierarchically rather than creating independent scopes for every resource combination.",
+    "domain": "ai-systems",
+    "confidence": 0.95,
+    "tags": [
+      "authorization",
+      "oauth",
+      "scope-design",
+      "agent-boundaries",
+      "privilege-management"
+    ],
+    "raw_quote": "When data is hierarchical you can use hierarchical scopes, as in the below examples, where colon characters represent subresources: order, order:item, order:payment, order:shipping:address, order:shipping:status",
+    "source": {
+      "title": "",
+      "url": "https://curity.io/resources/learn/scope-best-practices/"
+    },
+    "hunt_id": "c5cfd231",
+    "extracted_at": "2026-03-06T14:23:55.896429+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.184224+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

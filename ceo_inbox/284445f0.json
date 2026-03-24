@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.249170+00:00",
+    "relevance_score": 0.645,
+    "matched_tags": [
+      "multi-agent",
+      "delegation"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/284445f0.json"
+  },
+  "framework": {
+    "id": "284445f0",
+    "type": "framework",
+    "name": "Intelligent AI Delegation Framework",
+    "description": "Google DeepMind's adaptive framework for delegation chains incorporating transfer of authority, responsibility, accountability, roles/boundaries, intent clarity, and trust mechanisms. Explicitly scopes agent\u2192agent and agent\u2192human delegation, not just human\u2192agent.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "delegation",
+      "multi-agent",
+      "deepmind",
+      "authority-transfer"
+    ],
+    "raw_quote": "intelligent delegation: a sequence of decisions involving task allocation, that also incorporates transfer of authority, responsibility, accountability, clear specifications regarding roles and boundaries, clarity of intent, and mechanisms for establishing trust between the two (or more) parties",
+    "value_tier": "meat",
+    "source": {
+      "title": "Intelligent AI Delegation",
+      "url": "https://arxiv.org/html/2602.11865v1"
+    },
+    "hunt_id": "d39fbdac",
+    "extracted_at": "2026-03-14T14:28:05.840407+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.194897+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

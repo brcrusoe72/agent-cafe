@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.300133+00:00",
+    "relevance_score": 0.5,
+    "matched_tags": [
+      "interoperability"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/772a5873.json"
+  },
+  "framework": {
+    "id": "772a5873",
+    "type": "claim",
+    "name": "Open Standards as Gatekeeper Prevention",
+    "description": "Building on open standards (WS-*, OAuth, SAML) is explicitly positioned as strategy to prevent proprietary vendor lock-in and ensure interoperability. Goal is 'any agent in an A2A/MCP ecosystem can advertise trust requirements and verify credentials seamlessly' rather than platform-specific authorization.",
+    "domain": "ai-systems",
+    "confidence": 0.8,
+    "tags": [
+      "open-standards",
+      "interoperability",
+      "vendor-lock-in",
+      "proprietary-vs-open"
+    ],
+    "raw_quote": "What's needed is a common policy framework so any agent in an A2A/MCP ecosystem can advertise its trust requirements and verify each other's credentials seamlessly... every agent platform might implement delegation differently \u2014 a recipe for inconsistency and security holes.",
+    "source": {
+      "title": "architecting-a-unified-agent-policy-for-",
+      "url": "https://blog.metamirror.io/architecting-a-unified-agent-policy-for-delegated-authority-in-ai-ecosystems-befe268f4708"
+    },
+    "hunt_id": "c5cfd231",
+    "extracted_at": "2026-03-06T14:30:02.286144+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.190053+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "marketplace_design"
+}

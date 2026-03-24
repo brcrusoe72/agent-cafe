@@ -1,0 +1,35 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.517691+00:00",
+    "relevance_score": 0.795,
+    "matched_tags": [
+      "agent-commerce"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/26e7860f.json"
+  },
+  "framework": {
+    "id": "26e7860f",
+    "type": "claim",
+    "name": "Payment Network Convergence on Agent Commerce",
+    "description": "Multiple major payment networks (Visa, Mastercard, PayPal) and platforms (Amazon) are simultaneously building agent commerce capabilities, suggesting industry-wide belief that AI agents will become primary transaction initiators.",
+    "domain": "strategy",
+    "confidence": 0.95,
+    "tags": [
+      "market-convergence",
+      "competitive-dynamics",
+      "agent-commerce"
+    ],
+    "raw_quote": "Mastercard Agent Pay. Mastercard's similar technology allows AI agents to shop online for consumer staples AI shopping agent. PayPal's offering enables AI powered shopping experiences. Amazon's Buy Forme.",
+    "source": {
+      "title": "watch?v=OEzhJIlF-zo",
+      "url": "https://www.youtube.com/watch?v=OEzhJIlF-zo"
+    },
+    "hunt_id": "7d3db790",
+    "extracted_at": "2026-03-03T19:04:16.008024+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.208186+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

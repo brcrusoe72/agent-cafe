@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.435521+00:00",
+    "relevance_score": 0.515,
+    "matched_tags": [
+      "stripe"
+    ],
+    "domain_match": false,
+    "source_path": "finance/d01450c5.json"
+  },
+  "framework": {
+    "id": "d01450c5",
+    "type": "claim",
+    "name": "Default Spending Limits as Invisible Guardrails",
+    "description": "Stripe applies non-obvious default limits: 500 USD/day if no spending_limits set, and an unconfigurable 10,000 USD per-authorization ceiling. These 'training wheels' limits could unexpectedly block legitimate agent transactions without explicit configuration.",
+    "domain": "finance",
+    "confidence": 0.95,
+    "tags": [
+      "defaults",
+      "stripe",
+      "hidden-limits",
+      "configuration"
+    ],
+    "raw_quote": "Stripe automatically applies the following limits, which you can contact support to disable: If you don't set spending_limits, a default spending limit of 500 USD per day applies... an unconfigurable default spending limit of 10000 USD also applies to each authorization.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Issuing spending controls | Stripe Documentation",
+      "url": "https://docs.stripe.com/issuing/controls/spending-controls"
+    },
+    "hunt_id": "b977a620",
+    "extracted_at": "2026-03-07T14:45:43.641688+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.215097+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "payment_infrastructure"
+}

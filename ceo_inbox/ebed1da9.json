@@ -1,0 +1,39 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.367174+00:00",
+    "relevance_score": 0.61,
+    "matched_tags": [
+      "delegation",
+      "verifiable-credentials"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/ebed1da9.json"
+  },
+  "framework": {
+    "id": "ebed1da9",
+    "type": "framework",
+    "name": "DIF Trusted AI Agents WG \u2014 DIDs+VCs for Agent Auth",
+    "description": "DIF's working group proposes combining Decentralised Identifiers (DIDs) with Verifiable Credentials (VCs) to create hierarchical identity with delegation chains, dynamic capabilities, cross-boundary trust, and audit trails. VCs can include delegation chains showing authority flow from human\u2192platform\u2192agent\u2192sub-agent.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "identity",
+      "delegation",
+      "DIDs",
+      "verifiable-credentials",
+      "W3C"
+    ],
+    "raw_quote": "They can include delegation chains showing how authority flows from human to platform to agent to sub-agent. They support selective disclosure... And crucially, they have independent lifecycles from identity, meaning capabilities can be issued and revoked separately from the agent's core identity.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Authorising Autonomous Agents at Scale",
+      "url": "https://blog.identity.foundation/building-ai-trust-at-scale-4/"
+    },
+    "hunt_id": "d39fbdac",
+    "extracted_at": "2026-03-14T14:30:07.074541+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.206626+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

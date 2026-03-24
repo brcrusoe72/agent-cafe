@@ -1,0 +1,39 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.373270+00:00",
+    "relevance_score": 0.585,
+    "matched_tags": [
+      "verifiable-credentials",
+      "open-standard"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/fad4f792.json"
+  },
+  "framework": {
+    "id": "fad4f792",
+    "type": "framework",
+    "name": "Agent Payments Protocol (AP2) - Google",
+    "description": "Open-source protocol for AI agent-initiated payments using cryptographically signed verifiable credentials to establish authorization boundaries and accountability. Uses role-based architecture separating shopping agents, credential providers, merchant endpoints, and payment processors. Designed for compatibility with Agent-to-Agent (A2A) and Model Context Protocol (MCP).",
+    "domain": "ai-systems",
+    "confidence": 0.95,
+    "tags": [
+      "agent-authorization",
+      "payment-protocol",
+      "open-standard",
+      "google",
+      "verifiable-credentials",
+      "cryptographic-proof"
+    ],
+    "raw_quote": "AP2 is an open-source protocol designed to create a secure and trusted foundation for the future of AI-driven payments. It's compatible with existing standards such as agent to agent or A2A and model context protocol MCP.",
+    "source": {
+      "title": "watch?v=yLTp3ic2j5c",
+      "url": "https://www.youtube.com/watch?v=yLTp3ic2j5c"
+    },
+    "hunt_id": "4f110637",
+    "extracted_at": "2026-03-06T14:31:38.236018+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.207198+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

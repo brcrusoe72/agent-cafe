@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.646614+00:00",
+    "relevance_score": 0.715,
+    "matched_tags": [
+      "fraud-detection"
+    ],
+    "domain_match": false,
+    "source_path": "technology/8379fad3.json"
+  },
+  "framework": {
+    "id": "8379fad3",
+    "type": "claim",
+    "name": "Fraud Detection Systems Must Be Retrained for Good Bots",
+    "description": "Current fraud detection engines are tuned to flag non-human patterns as threats. Enabling legitimate agent payments requires retraining these systems to differentiate 'good bots' from malicious ones, possibly through whitelisting or registering trusted agents. This is non-trivial and requires new behavioral models.",
+    "domain": "technology",
+    "confidence": 0.85,
+    "tags": [
+      "fraud-detection",
+      "machine-learning",
+      "whitelisting",
+      "behavioral-models",
+      "good-vs-bad-bots"
+    ],
+    "raw_quote": "If we want certain bots (our agents) to transact, those systems need to be retrained to differentiate 'good bots' from malicious ones. This is non-trivial \u2013 it requires new behavioral models and possibly whitelisting or registering trusted agents.",
+    "source": {
+      "title": "Enabling Autonomous AI Agents to Make Payments - LinkedIn",
+      "url": "https://www.linkedin.com/pulse/enabling-autonomous-ai-agents-make-payments-challenges-david-paluy-xmq4c"
+    },
+    "hunt_id": "c5cfd231",
+    "extracted_at": "2026-03-06T14:21:31.648373+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.200051+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

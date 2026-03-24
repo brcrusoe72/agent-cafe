@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.401631+00:00",
+    "relevance_score": 0.72,
+    "matched_tags": [
+      "fraud-detection"
+    ],
+    "domain_match": false,
+    "source_path": "finance/1726c80e.json"
+  },
+  "framework": {
+    "id": "1726c80e",
+    "type": "technique",
+    "name": "Stripe Radar integration for agent fraud detection",
+    "description": "SPTs integrate with Stripe Radar to relay risk signals including likelihood of fraudulent disputes, card testing, stolen cards, issuer declines. Designed to 'help differentiate between high-intent agents and low-trust automated bots' using transaction and payment method details.",
+    "domain": "finance",
+    "confidence": 0.9,
+    "tags": [
+      "fraud-detection",
+      "risk-signals",
+      "radar",
+      "bot-detection"
+    ],
+    "raw_quote": "SPTs are powered by Stripe Radar and can relay the underlying risk signals using transaction and payment method details\u2014including the likelihood of a fraudulent dispute, card testing, a stolen card, a card issuer decline, and other signals\u2014that help differentiate between high-intent agents and low-trust automated bots.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Introducing our agentic commerce solutions - Stripe",
+      "url": "https://stripe.com/blog/introducing-our-agentic-commerce-solutions"
+    },
+    "hunt_id": "b977a620",
+    "extracted_at": "2026-03-07T14:44:10.150105+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.212832+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "payment_infrastructure"
+}

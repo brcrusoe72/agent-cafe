@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.273531+00:00",
+    "relevance_score": 0.598,
+    "matched_tags": [
+      "authorization",
+      "delegation",
+      "verifiable-credentials"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/4e99cf47.json"
+  },
+  "framework": {
+    "id": "4e99cf47",
+    "type": "framework",
+    "name": "Issuer-Holder-Verifier Model for Delegated Authority",
+    "description": "Three-party model where authority (credentials) is issued independently of verification/presentation. Credentials can be used multiple times without issuer involvement. Maps to agent authorization where financial institution issues authority, agent holds it, and services verify it without calling back to the institution.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "authorization",
+      "delegation",
+      "verifiable-credentials",
+      "decoupled-verification"
+    ],
+    "raw_quote": "Model that facilitates the exchange of claims, where claims are issued as Verifiable Credentials independently of the process of presenting them to Verifiers in the form of Presentations. An issued Verifiable Credential may be used multiple times, although this is not a requirement.",
+    "source": {
+      "title": "openid-4-verifiable-credential-issuance-",
+      "url": "https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html"
+    },
+    "hunt_id": "4f110637",
+    "extracted_at": "2026-03-06T14:26:52.772163+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.197201+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

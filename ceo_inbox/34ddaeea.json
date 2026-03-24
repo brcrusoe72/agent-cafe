@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.259406+00:00",
+    "relevance_score": 0.58,
+    "matched_tags": [
+      "mcp"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/34ddaeea.json"
+  },
+  "framework": {
+    "id": "34ddaeea",
+    "type": "technique",
+    "name": "MCP Dynamic Authorization Discovery",
+    "description": "A protocol flow where agents discover authorization requirements on-the-fly: agent requests resource \u2192 receives 401 with discovery link \u2192 discovers auth server and required scopes \u2192 initiates OAuth 2.1 flow with PKCE \u2192 receives token \u2192 accesses resource. Enables agents to interact with thousands of unknown APIs without pre-configuration.",
+    "domain": "ai-systems",
+    "confidence": 0.9,
+    "tags": [
+      "mcp",
+      "dynamic-discovery",
+      "oauth-2.1",
+      "pkce",
+      "protocol"
+    ],
+    "raw_quote": "Agent makes initial request to MCP server, Server responds with 401 Unauthorized, providing a discovery link, Agent discovers the authorization server and required scopes, Agent initiates OAuth 2.1 authorization code flow with PKCE",
+    "source": {
+      "title": "AI Agent Authentication & Authorization - datadome.co",
+      "url": "https://datadome.co/agent-trust-management/authentication-and-authorization/"
+    },
+    "hunt_id": "4f110637",
+    "extracted_at": "2026-03-06T14:17:42.635038+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.216411+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.557578+00:00",
+    "relevance_score": 0.57,
+    "matched_tags": [
+      "pricing"
+    ],
+    "domain_match": false,
+    "source_path": "strategy/8f4310a9.json"
+  },
+  "framework": {
+    "id": "8f4310a9",
+    "type": "technique",
+    "name": "Transparent Marketplace Competitive Intelligence",
+    "description": "Newer expert network platforms (DeepBench mentioned) allow searching competitor profiles including their hourly rates. Example: 24 State Farm agents visible with rates $60-300/hour, enabling data-driven rate positioning at $250-300 to maximize earnings without overpricing.",
+    "domain": "strategy",
+    "confidence": 0.8,
+    "tags": [
+      "competitive-intelligence",
+      "pricing",
+      "expert-networks",
+      "market-research"
+    ],
+    "raw_quote": "search for State Farm agents on DeepBench and you'll find profiles of nearly two dozen current and former agents available for projects, with hourly rates ranging from $60 \u2013 $300.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Setting Your Expert Network Consulting Rate \u2022 Expert Opportunities",
+      "url": "https://expertopportunities.com/expert-network-hourly-rates/"
+    },
+    "hunt_id": "b38ad25e",
+    "extracted_at": "2026-03-07T16:15:35.161831+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.209838+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

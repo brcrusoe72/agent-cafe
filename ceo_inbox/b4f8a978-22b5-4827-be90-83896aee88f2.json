@@ -1,0 +1,41 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.334980+00:00",
+    "relevance_score": 0.71,
+    "matched_tags": [
+      "platform-strategy"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/b4f8a978-22b5-4827-be90-83896aee88f2.json"
+  },
+  "framework": {
+    "type": "CONTRARIAN",
+    "name": "Platform Memory as Intentional Lock-in Strategy",
+    "description": "AI platforms deliberately create memory silos not for user benefit but to prevent switching to competitors, effectively holding user knowledge hostage.",
+    "domain": "ai-systems",
+    "confidence": 0.8,
+    "tags": [
+      "platform-strategy",
+      "vendor-lock-in",
+      "ai-industry"
+    ],
+    "implications": [
+      "Build platform-agnostic memory systems",
+      "Avoid deep investment in single-platform memory features",
+      "Demand data portability from AI vendors"
+    ],
+    "raw_quote": "the big corporations are betting that if they can trap you with memory, you will only use their agents and they will get to keep you and your attention and your dollars forever",
+    "id": "b4f8a978-22b5-4827-be90-83896aee88f2",
+    "source": {
+      "title": "You Don't Need SaaS. The $0.10 System That Replaced My AI Workflow (45 Min No-Code Build)",
+      "url": "https://www.youtube.com/watch?v=2JiMmye2ezg",
+      "author": "AI News & Strategy Daily | Nate B Jones",
+      "date": "20260302"
+    },
+    "extracted_at": "2026-03-03T10:09:31.391995"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.191098+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "marketplace_design"
+}

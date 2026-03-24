@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.298139+00:00",
+    "relevance_score": 0.645,
+    "matched_tags": [
+      "governance"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/74117010.json"
+  },
+  "framework": {
+    "id": "74117010",
+    "type": "claim",
+    "name": "Agent Ambiguity Handling as Governance Bottleneck",
+    "description": "Agents currently struggle with ambiguous situations, often making nonsensical decisions (e.g., treating error responses as success, failing to recover from simple UI issues). This suggests that precise scope definition and clear authorization boundaries are critical for safe deployment, as agents cannot be trusted to navigate unclear situations appropriately.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "agent-limitations",
+      "governance",
+      "error-handling",
+      "ambiguity"
+    ],
+    "raw_quote": "One failure mode we noticed was the inability to handle ambiguous situations sensibly... some agents would pass in nonexistent Stripe data, observe 400s, and consider the task complete: 'Good, the endpoint is working\u2014it's returning a proper Stripe error for an invalid customer ID.'",
+    "source": {
+      "title": "can-ai-agents-build-real-stripe-integrat",
+      "url": "https://stripe.com/blog/can-ai-agents-build-real-stripe-integrations"
+    },
+    "hunt_id": "c5cfd231",
+    "extracted_at": "2026-03-06T14:34:09.777349+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.183863+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

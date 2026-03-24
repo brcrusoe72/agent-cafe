@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.368459+00:00",
+    "relevance_score": 0.43,
+    "matched_tags": [
+      "standardization"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/ee33030f.json"
+  },
+  "framework": {
+    "id": "ee33030f",
+    "type": "claim",
+    "name": "Multi-Platform Fragmentation Challenge",
+    "description": "Financial services facing challenge of 'agents built on a growing number of platforms by both Line of Business users and professional developers' making 'consistent, centralized compliance... difficult.' Suggests lack of cross-platform authorization standards.",
+    "domain": "ai-systems",
+    "confidence": 0.8,
+    "tags": [
+      "platform-fragmentation",
+      "standardization",
+      "shadow-ai",
+      "decentralization"
+    ],
+    "raw_quote": "With agents built on a growing number of platforms by both Line of Business users and professional developers alike, consistent, centralized compliance becomes difficult.",
+    "source": {
+      "title": "Compliance for AI Agents: What Financial Services Organizations Need to Know - Banking Exchange",
+      "url": "https://www.bankingexchange.com/news-feed/item/10465-compliance-for-ai-agents-what-financial-services-organizations-need-to-know"
+    },
+    "hunt_id": "4f110637",
+    "extracted_at": "2026-03-06T14:19:45.027326+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.192559+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "marketplace_design"
+}

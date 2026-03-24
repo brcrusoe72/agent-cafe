@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.625202+00:00",
+    "relevance_score": 0.58,
+    "matched_tags": [
+      "delegation"
+    ],
+    "domain_match": false,
+    "source_path": "technology/3e9de5aa.json"
+  },
+  "framework": {
+    "id": "3e9de5aa",
+    "type": "framework",
+    "name": "HP vs HNP Transaction Modes",
+    "description": "AP2 formally splits agent commerce into Human-Present (real-time, user confirms cart) and Human-Not-Present (delegated, agent acts autonomously within Intent Mandate boundaries). HNP mode explicitly allows agent to create Cart Mandates WITHOUT human callback \u2014 this is genuine pre-authorized spending authority with cryptographic proof.",
+    "domain": "technology",
+    "confidence": 0.9,
+    "tags": [
+      "agent-autonomy",
+      "delegation",
+      "pre-auth"
+    ],
+    "raw_quote": "In HNP scenarios, the Intent Mandate allows the agent to create a Cart Mandate once the exact parameters have been met.",
+    "value_tier": "meat",
+    "source": {
+      "title": "What is the Agent Payments Protocol (AP2) and How Does It Work?",
+      "url": "https://www.descope.com/learn/post/ap2"
+    },
+    "hunt_id": "eeb6b019",
+    "extracted_at": "2026-03-15T12:16:17.316963+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.196419+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.247207+00:00",
+    "relevance_score": 0.635,
+    "matched_tags": [
+      "multi-agent",
+      "delegation"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/265b4089.json"
+  },
+  "framework": {
+    "id": "265b4089",
+    "type": "claim",
+    "name": "Multi-Agent Delegation Creates Permission Leakage Risk",
+    "description": "When agents delegate tasks to other agents, permissions don't automatically align, and stored context in memory creates data leakage risks between agents. Requires orchestration to either align permissions or wipe access context when switching between agents. Suggests multi-agent workflows amplify authorization complexity nonlinearly.",
+    "domain": "ai-systems",
+    "confidence": 0.75,
+    "tags": [
+      "multi-agent",
+      "delegation",
+      "permission-inheritance",
+      "context-isolation"
+    ],
+    "raw_quote": "Authorization is complex for multi-agent workflows because two different agents might have different access grants. Additionally, because agents have stored context in memory, this draws the risk of data leaking from one agent to another. Accordingly, multiple agents need to be orchestrated so that permissions either align or the system wipes access to align with whatever agent is interacting with.",
+    "source": {
+      "title": "Best Practices of Authorizing AI Agents - Oso",
+      "url": "https://www.osohq.com/learn/best-practices-of-authorizing-ai-agents"
+    },
+    "hunt_id": "4f110637",
+    "extracted_at": "2026-03-06T14:18:45.232002+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.216202+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

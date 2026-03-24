@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.380479+00:00",
+    "relevance_score": 0.575,
+    "matched_tags": [
+      "pricing"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems|strategy/3d3ab97b.json"
+  },
+  "framework": {
+    "id": "3d3ab97b",
+    "type": "framework",
+    "name": "AI Agent Pricing Tier Model",
+    "description": "Three-tier pricing framework for AI agent development: Rule-based/simple ML ($5K-$25K), moderate ML agents ($25K-$80K), and enterprise Gen AI autonomous agents ($100K-$500K+). Each tier represents a non-linear increase in complexity, not just features, because agents must decide which capabilities to use.",
+    "domain": "ai-systems|strategy",
+    "confidence": 0.85,
+    "tags": [
+      "pricing",
+      "market-segmentation",
+      "ai-agents",
+      "development-costs"
+    ],
+    "raw_quote": "For a simple rule-based bot, US-based AI developers usually charge $5,000\u2013$25,000. Moderately advanced machine learning agents cost $25,000\u2013$80,000 to develop. Enterprise-grade generative AI agents... $100,000\u2013$500,000 (and counting).",
+    "source": {
+      "title": "",
+      "url": "https://itrexgroup.com/blog/how-much-does-ai-agent-development-cost/"
+    },
+    "hunt_id": "f65e2a8b",
+    "extracted_at": "2026-03-05T20:44:17.224580+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.208541+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "pricing_economics"
+}

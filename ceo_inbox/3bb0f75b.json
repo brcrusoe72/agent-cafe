@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.624460+00:00",
+    "relevance_score": 0.575,
+    "matched_tags": [
+      "authentication"
+    ],
+    "domain_match": false,
+    "source_path": "technology/3bb0f75b.json"
+  },
+  "framework": {
+    "id": "3bb0f75b",
+    "type": "framework",
+    "name": "Visa Trusted Agent Protocol",
+    "description": "Visa has a named protocol called 'Trusted Agent Protocol' for secure communication between agents and merchants. This is their answer to Mastercard's Verifiable Intent \u2014 a distinct architectural approach using agent-to-merchant trust rather than signed-intent chains.",
+    "domain": "technology",
+    "confidence": 0.85,
+    "tags": [
+      "agentic-payments",
+      "visa",
+      "protocol",
+      "authentication"
+    ],
+    "raw_quote": "enables secure communication between agents and merchants using Visa's Trusted Agent Protocol",
+    "value_tier": "meat",
+    "source": {
+      "title": "Introducing Visa Intelligent Commerce on AWS: Enabling agentic commerce with Amazon Bedrock AgentCore | Artificial Intelligence",
+      "url": "https://aws.amazon.com/blogs/machine-learning/introducing-visa-intelligent-commerce-on-aws-enabling-agentic-commerce-with-amazon-bedrock-agentcore/"
+    },
+    "hunt_id": "da550186",
+    "extracted_at": "2026-03-15T12:05:52.905616+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.216740+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

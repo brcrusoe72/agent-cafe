@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-21T02:31:42.421606+00:00",
+    "relevance_score": 0.722,
+    "matched_tags": [
+      "agent-architecture"
+    ],
+    "domain_match": false,
+    "source_path": "finance/86a7d55e.json"
+  },
+  "framework": {
+    "id": "86a7d55e",
+    "type": "framework",
+    "name": "AP2 Role Separation Architecture",
+    "description": "Defines five distinct roles with confined data access: User (intent originator), Agent (executor), Credential Provider (secures payment methods/authentication), Merchant Endpoint/Processor (receives mandates/executes settlement), Issuer/Network (authorizes with mandate context). PCI data confined to credential providers only.",
+    "domain": "finance",
+    "confidence": 0.92,
+    "tags": [
+      "role-separation",
+      "PCI-compliance",
+      "security-boundaries",
+      "agent-architecture"
+    ],
+    "raw_quote": "Roles are core AP2 constructs and serve to delineate responsibilities for ecosystem participants, ensuring sensitive data is only handled by the appropriate entities... This role separation confines PCI data and authentication to credential providers, limits merchant and agent exposure",
+    "value_tier": "meat",
+    "source": {
+      "title": "Agent Payments Protocol: Building Verifiable Trust for Agentic ...",
+      "url": "https://developer.paypal.com/community/blog/PayPal-Agent-Payments-Protocol/"
+    },
+    "hunt_id": "b977a620",
+    "extracted_at": "2026-03-07T14:43:18.906984+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-22T19:47:29.218881+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}
