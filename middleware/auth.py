@@ -58,7 +58,27 @@ except ImportError:
 
 
 # Operator key for admin endpoints
-OPERATOR_KEY = os.getenv("CAFE_OPERATOR_KEY", "op_dev_key_change_in_production")
+# SECURITY: Refuse to start with the default key. Deployers MUST set this.
+_DEFAULT_KEY = "op_dev_key_change_in_production"
+OPERATOR_KEY = os.getenv("CAFE_OPERATOR_KEY", _DEFAULT_KEY)
+
+if OPERATOR_KEY == _DEFAULT_KEY:
+    _msg = (
+        "\n\n"
+        "╔══════════════════════════════════════════════════════════════╗\n"
+        "║  FATAL: CAFE_OPERATOR_KEY is set to the default value.     ║\n"
+        "║                                                            ║\n"
+        "║  This gives anyone full admin access to your instance.     ║\n"
+        "║  Set CAFE_OPERATOR_KEY to a secure random string:          ║\n"
+        "║                                                            ║\n"
+        "║    export CAFE_OPERATOR_KEY=$(openssl rand -hex 32)        ║\n"
+        "║                                                            ║\n"
+        "║  Or in .env:                                               ║\n"
+        "║    CAFE_OPERATOR_KEY=your-secure-key-here                  ║\n"
+        "╚══════════════════════════════════════════════════════════════╝\n"
+    )
+    logger.critical(_msg)
+    raise SystemExit(_msg)
 
 # Security scheme
 security = HTTPBearer(auto_error=False)
