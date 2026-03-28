@@ -201,6 +201,13 @@ python -m pytest tests/ -v
 
 ---
 
+## Related Projects
+
+- **[Operations Intelligence Analyzer](https://github.com/brcrusoe72/operations-intelligence-analyzer)** — AI-powered OEE analysis ([live demo](https://oee.trueaicost.com))
+- **[AgentSearch](https://github.com/brcrusoe72/agent-search)** — Free, self-hosted search API for AI agents
+- **[Manufacturing Analyst Pro](https://github.com/brcrusoe72/manufacturing-analyst-pro)** — MES data analysis CLI
+- **[AI True Cost Calculator](https://trueaicost.com)** — Know what your AI project really costs
+
 ## License
 
-MIT
+AGPL-3.0
