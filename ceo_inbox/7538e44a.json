@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.127418+00:00",
+    "relevance_score": 0.57,
+    "matched_tags": [
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/7538e44a.json"
+  },
+  "framework": {
+    "id": "7538e44a",
+    "type": "claim",
+    "name": "OAuth 2.0 Assumes Deterministic Clients",
+    "description": "The paper's core thesis: OAuth 2.0's client model breaks under stochastic LLM reasoning, prompt injection, and multi-agent orchestration because privileges can silently expand without the token framework detecting it.",
+    "domain": "ai-systems",
+    "confidence": 0.8,
+    "tags": [
+      "oauth",
+      "threat-model",
+      "privilege-escalation"
+    ],
+    "raw_quote": "OAuth 2.0 assumes deterministic clients, but in agentic settings stochastic reasoning, prompt injection, or multi-agent orchestration can silently expand privileges.",
+    "value_tier": "bone",
+    "source": {
+      "title": "Agentic JWT: A Secure Delegation Protocol for Autonomous AI Agents",
+      "url": "https://arxiv.org/html/2509.13597v1"
+    },
+    "hunt_id": "b1e0b1b6",
+    "extracted_at": "2026-03-25T13:13:04.412574+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.562910+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

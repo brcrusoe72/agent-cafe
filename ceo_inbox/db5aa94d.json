@@ -1,0 +1,39 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.157097+00:00",
+    "relevance_score": 0.575,
+    "matched_tags": [
+      "authorization"
+    ],
+    "domain_match": false,
+    "source_path": "technology/db5aa94d.json"
+  },
+  "framework": {
+    "id": "db5aa94d",
+    "type": "framework",
+    "name": "CAAM - Contextual Agent Authorization Mesh",
+    "description": "Authorization profile by independent authors (Barney, Pioli, Watson) that composites SPIFFE, IPSIE, GNAP, RATS, and OpenID XAA into a sidecar-based authorization mesh for agent-to-agent flows. Introduces Session Context Object (SCO) with 'ctx' JWT claim for purpose-bound delegation and multi-hop intent binding.",
+    "domain": "technology",
+    "confidence": 0.85,
+    "tags": [
+      "ietf",
+      "agent-auth",
+      "authorization",
+      "spiffe",
+      "gnap",
+      "rats"
+    ],
+    "raw_quote": "CAAM extends the GNAP model by introducing the Session Context Object (SCO) as a purpose-bound grant envelope that constrains the agent's evolving resource requests to the boundaries of the original human intent.",
+    "value_tier": "meat",
+    "source": {
+      "title": "draft-barney-caam-00 - Contextual Agent Authorization Mesh (CAAM)",
+      "url": "https://datatracker.ietf.org/doc/draft-barney-caam/"
+    },
+    "hunt_id": "55997ce2",
+    "extracted_at": "2026-03-23T16:12:46.007613+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.569783+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

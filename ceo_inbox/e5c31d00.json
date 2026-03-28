@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.134633+00:00",
+    "relevance_score": 0.77,
+    "matched_tags": [
+      "agent-identity"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/e5c31d00.json"
+  },
+  "framework": {
+    "id": "e5c31d00",
+    "type": "technique",
+    "name": "Agent Identity via Prompt/Config Checksum",
+    "description": "Binds agent identity to a hash of its prompt, tools, and configuration \u2014 meaning if an agent's prompt is injected or tools change, its identity changes and tokens become invalid. This is a novel approach to detecting prompt injection at the auth layer.",
+    "domain": "ai-systems",
+    "confidence": 0.7,
+    "tags": [
+      "agent-identity",
+      "prompt-injection",
+      "checksum"
+    ],
+    "raw_quote": "agent's identity as a one-way checksum hash derived from its prompt, tools and configuration",
+    "value_tier": "organ",
+    "source": {
+      "title": "Agentic JWT: A Secure Delegation Protocol for Autonomous AI Agents",
+      "url": "https://arxiv.org/html/2509.13597v1"
+    },
+    "hunt_id": "b1e0b1b6",
+    "extracted_at": "2026-03-25T13:13:04.412699+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.570511+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

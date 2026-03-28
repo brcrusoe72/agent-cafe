@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.122042+00:00",
+    "relevance_score": 0.575,
+    "matched_tags": [
+      "authorization"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/365dc4c7.json"
+  },
+  "framework": {
+    "id": "365dc4c7",
+    "type": "technique",
+    "name": "Execution-Count Release Consistency (RCC) for credentials",
+    "description": "Operation-bounded credentials that force revalidation after N operations rather than after T seconds. Grounded in release consistency theory \u2014 equivalent to acquire/release synchronization at coherence boundaries. Achieves 184\u00d7 reduction vs lease TTL in anomaly scenarios (16.0\u00b13.7 vs 2,950.8\u00b13.6 unauthorized ops).",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "authorization",
+      "credentials",
+      "release-consistency",
+      "operation-bounded"
+    ],
+    "raw_quote": "RCC at n=50 yields 50.0\u00b10 (\u03c3=0, confirming theorem 3.1 exactly)",
+    "value_tier": "meat",
+    "source": {
+      "title": "[PDF] Structural Equivalence Between Memory Consistency Models ... - arXiv",
+      "url": "https://arxiv.org/pdf/2603.09875"
+    },
+    "hunt_id": "14d2594b",
+    "extracted_at": "2026-03-25T11:07:00.141088+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.559099+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

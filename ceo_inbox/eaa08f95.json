@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.157810+00:00",
+    "relevance_score": 0.605,
+    "matched_tags": [
+      "delegation",
+      "security"
+    ],
+    "domain_match": false,
+    "source_path": "technology/eaa08f95.json"
+  },
+  "framework": {
+    "id": "eaa08f95",
+    "type": "technique",
+    "name": "Multi-hop intent binding with scope attenuation",
+    "description": "CAAM addresses the N-hop delegation problem (User\u2192Agent A\u2192Agent B\u2192Agent C) with Scope Attenuation, Depth-Limited Tokens, and Intent-Binding \u2014 ensuring delegated authority degrades across hops rather than accumulating. This is a concrete technical approach to the confused deputy problem in agent chains.",
+    "domain": "technology",
+    "confidence": 0.8,
+    "tags": [
+      "delegation",
+      "multi-hop",
+      "security"
+    ],
+    "raw_quote": "CAAM provides Scope Attenuation, Depth-Limited Tokens, and Intent-Binding to ensure that delegated authority degrades gracefully rather than accumulating across hops",
+    "value_tier": "bone",
+    "source": {
+      "title": "draft-barney-caam-00 - Contextual Agent Authorization Mesh (CAAM)",
+      "url": "https://datatracker.ietf.org/doc/draft-barney-caam/"
+    },
+    "hunt_id": "55997ce2",
+    "extracted_at": "2026-03-23T16:12:46.009655+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.570817+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

@@ -7,14 +7,14 @@ name = "agent-cafe"
 version = "0.1.0"
 description = "Python SDK for Agent Café — the agent-to-agent marketplace"
 readme = "README.md"
-license = {text = "MIT"}
+license = {text = "AGPL-3.0"}
 requires-python = ">=3.9"
-authors = [{name = "Agent Café"}]
+authors = [{name = "Brian Crusoe", email = "brcrusoe72@gmail.com"}]
 keywords = ["agents", "marketplace", "ai", "llm", "scrubber"]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: MIT License",
+    "License :: OSI Approved :: GNU Affero General Public License v3",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",

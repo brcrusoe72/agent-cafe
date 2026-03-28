@@ -1,0 +1,39 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.149704+00:00",
+    "relevance_score": 0.69,
+    "matched_tags": [
+      "oauth",
+      "agent-identity"
+    ],
+    "domain_match": false,
+    "source_path": "technology/3213b952.json"
+  },
+  "framework": {
+    "id": "3213b952",
+    "type": "framework",
+    "name": "OpenID Foundation Agentic AI Identity Whitepaper",
+    "description": "OpenID Foundation published a comprehensive whitepaper (Oct 2025, lead editor Tobin South) positioning OAuth 2.1, SCIM, SSO, and IPSIE as the baseline for AI agent auth, while identifying critical gaps in recursive delegation, agent-to-agent auth, and multi-user shared agents.",
+    "domain": "technology",
+    "confidence": 0.95,
+    "tags": [
+      "openid",
+      "oauth",
+      "agent-identity",
+      "ietf",
+      "standards"
+    ],
+    "raw_quote": "This report was prepared for the OpenID Foundation by Tobin South starting in April 2025, in collaboration with the Artificial Intelligence Identity Management Community Group, Stanford's Loyal Agents Initiative, and many independent reviewers and contributors, with thanks to WorkOS for supporting its completion.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Identity Management for Agentic AI - OpenID",
+      "url": "https://openid.net/wp-content/uploads/2025/10/Identity-Management-for-Agentic-AI.pdf"
+    },
+    "hunt_id": "f4fe2b6b",
+    "extracted_at": "2026-03-23T16:19:42.307886+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.558771+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.149862+00:00",
+    "relevance_score": 0.57,
+    "matched_tags": [
+      "delegation"
+    ],
+    "domain_match": false,
+    "source_path": "technology/3692bde1.json"
+  },
+  "framework": {
+    "id": "3692bde1",
+    "type": "framework",
+    "name": "Committed Chain profiles (hash-chain delegation)",
+    "description": "The 'Committed Chain' profiles use cryptographic commitments (likely hash chains or Merkle structures) to bind each delegation hop, enabling verification without full disclosure of the chain. This directly addresses token bloat (gap_5) by allowing subset or zero disclosure of intermediate actors while maintaining auditability.",
+    "domain": "technology",
+    "confidence": 0.8,
+    "tags": [
+      "hash-chain",
+      "privacy",
+      "token-size",
+      "delegation"
+    ],
+    "raw_quote": "Committed Chain with Subset Disclosure; and Committed Chain with No Chain Disclosure",
+    "value_tier": "meat",
+    "source": {
+      "title": "Cryptographically Verifiable Actor Chain for OAuth 2.0 Token Exchange",
+      "url": "https://datatracker.ietf.org/doc/draft-mw-spice-actor-chain/"
+    },
+    "hunt_id": "14d2594b",
+    "extracted_at": "2026-03-25T11:04:10.762189+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.559204+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

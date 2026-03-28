@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.154132+00:00",
+    "relevance_score": 0.58,
+    "matched_tags": [
+      "delegation"
+    ],
+    "domain_match": false,
+    "source_path": "technology/a6408551.json"
+  },
+  "framework": {
+    "id": "a6408551",
+    "type": "framework",
+    "name": "Agent OBO Other Agents authentication model",
+    "description": "Section 5 explicitly addresses agent-to-agent delegation authentication \u2014 an agent acting on behalf of other agents that lack capabilities. This is direct evidence of IETF drafts addressing agent-to-agent mutual auth scenarios, not just client-to-server.",
+    "domain": "technology",
+    "confidence": 0.9,
+    "tags": [
+      "agent-to-agent",
+      "delegation",
+      "oauth-extension"
+    ],
+    "raw_quote": "OBO Other Agent(s): the agent may represent other agents to implement some jobs, given that other agents may not have the capabilities to implement the jobs.",
+    "value_tier": "meat",
+    "source": {
+      "title": "draft-yao-agent-auth-considerations-01 - Further considerations on AI Agent Authentication and Authorization Based on OAuth Extension",
+      "url": "https://datatracker.ietf.org/doc/draft-yao-agent-auth-considerations/01/"
+    },
+    "hunt_id": "f4fe2b6b",
+    "extracted_at": "2026-03-23T16:18:35.408271+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.566046+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

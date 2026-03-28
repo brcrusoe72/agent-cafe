@@ -1,0 +1,39 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.127897+00:00",
+    "relevance_score": 0.585,
+    "matched_tags": [
+      "oauth",
+      "delegation"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/801bf2e4.json"
+  },
+  "framework": {
+    "id": "801bf2e4",
+    "type": "framework",
+    "name": "Attenuating Authorization Tokens (AATs)",
+    "description": "JWT-based credential format where each holder can derive a MORE RESTRICTIVE token offline without contacting the authorization server. Monotonic attenuation enforced cryptographically \u2014 scope can only narrow, never widen. Chain verification is offline using only the root trust anchor key.",
+    "domain": "ai-systems",
+    "confidence": 0.95,
+    "tags": [
+      "oauth",
+      "delegation",
+      "capability-security",
+      "IETF",
+      "agent-auth"
+    ],
+    "raw_quote": "a holder can attenuate a capability before passing it on, but cannot amplify it... The enforcement point verifies the complete chain using only the root token's trust anchor key; no network calls are required.",
+    "value_tier": "organ",
+    "source": {
+      "title": "Attenuating Authorization Tokens for Agentic Delegation Chains",
+      "url": "https://datatracker.ietf.org/doc/draft-niyikiza-oauth-attenuating-agent-tokens/"
+    },
+    "hunt_id": "14d2594b",
+    "extracted_at": "2026-03-25T11:05:01.262157+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.563422+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

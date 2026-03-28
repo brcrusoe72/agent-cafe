@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.133840+00:00",
+    "relevance_score": 0.565,
+    "matched_tags": [
+      "authorization"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/d5588fe1.json"
+  },
+  "framework": {
+    "id": "d5588fe1",
+    "type": "claim",
+    "name": "AuthZEN gap \u2014 interface without content",
+    "description": "AuthZEN only defines the request interface (send a PARC request) but doesn't specify what goes in it. For complex engines like Cedar, OPA, or graphs, governance across federated domains remains unsolved.",
+    "domain": "ai-systems",
+    "confidence": 0.75,
+    "tags": [
+      "authzen",
+      "authorization",
+      "policy-engines"
+    ],
+    "raw_quote": "AuthZen only defines the interface (send a PARC request...), but it doesn't say what goes in that request.",
+    "value_tier": "meat",
+    "source": {
+      "title": "IETF Draft: AI Agent Auth & Authz Framework - LinkedIn",
+      "url": "https://www.linkedin.com/posts/christina-jean-tubb_ai-agent-authentication-and-authorization-activity-7435357650831257600-ju3i"
+    },
+    "hunt_id": "b1e0b1b6",
+    "extracted_at": "2026-03-25T13:13:43.895264+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.550088+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

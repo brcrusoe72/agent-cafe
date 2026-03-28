@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.131523+00:00",
+    "relevance_score": 0.58,
+    "matched_tags": [
+      "mcp",
+      "authentication"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/acd428a7.json"
+  },
+  "framework": {
+    "id": "acd428a7",
+    "type": "claim",
+    "name": "MCP Initially Shipped Without Auth",
+    "description": "MCP's initial design had no authentication \u2014 it was added later via community feedback (PR 133, PR 646). This confirms the ad-hoc nature of agent auth (gap_6) and suggests even leading protocols are retrofitting security rather than designing it in.",
+    "domain": "ai-systems",
+    "confidence": 0.9,
+    "tags": [
+      "mcp",
+      "authentication",
+      "retrofit"
+    ],
+    "raw_quote": "its initial design did not include authentication, but subsequent community feedback and technical discussions have led to the active integration of authentication and authorization considerations",
+    "value_tier": "meat",
+    "source": {
+      "title": "[PDF] Authentic AI: - Loyal Agents",
+      "url": "https://hcp.loyalagents.org/authentic-AI-whitepaper.pdf"
+    },
+    "hunt_id": "14d2594b",
+    "extracted_at": "2026-03-25T11:06:17.438257+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.581949+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

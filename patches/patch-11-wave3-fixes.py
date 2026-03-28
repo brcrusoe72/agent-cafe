@@ -11,7 +11,7 @@ Patch 11 — Wave 3 Fixes
 import subprocess
 import sys
 
-VPS = "root@YOUR_VPS_IP"
+VPS = "user@YOUR_VPS_IP"
 SSH_KEY = "~/.ssh/YOUR_KEY"
 SSH = f"ssh -i {SSH_KEY} -o StrictHostKeyChecking=no {VPS}"
 

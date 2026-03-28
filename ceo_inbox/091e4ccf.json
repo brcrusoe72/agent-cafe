@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.117358+00:00",
+    "relevance_score": 0.57,
+    "matched_tags": [
+      "delegation",
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/091e4ccf.json"
+  },
+  "framework": {
+    "id": "091e4ccf",
+    "type": "claim",
+    "name": "OpenID Foundation: offline-attenuated delegation chains 'largely unsolved'",
+    "description": "The OpenID Foundation explicitly identifies revocation across offline-attenuated delegation chains as 'largely unsolved.' This confirms that recursive OAuth delegation (gap_2) lacks standards-body solutions.",
+    "domain": "ai-systems",
+    "confidence": 0.8,
+    "tags": [
+      "oauth",
+      "delegation",
+      "openid",
+      "standards-gap"
+    ],
+    "raw_quote": "The OpenID Foundation identifies revocation across offline-attenuated delegation chains as 'largely unsolved.'",
+    "value_tier": "meat",
+    "source": {
+      "title": "[PDF] Structural Equivalence Between Memory Consistency Models ... - arXiv",
+      "url": "https://arxiv.org/pdf/2603.09875"
+    },
+    "hunt_id": "14d2594b",
+    "extracted_at": "2026-03-25T11:07:00.141208+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.556507+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

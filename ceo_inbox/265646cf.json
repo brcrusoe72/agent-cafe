@@ -1,0 +1,40 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.120469+00:00",
+    "relevance_score": 0.65,
+    "matched_tags": [
+      "oauth",
+      "delegation",
+      "agent-identity"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/265646cf.json"
+  },
+  "framework": {
+    "id": "265646cf",
+    "type": "framework",
+    "name": "OpenID Agentic Identity Whitepaper (Oct 2025)",
+    "description": "OpenID Foundation's first comprehensive whitepaper on agent identity. Confirms OAuth 2.1 works within single trust domains but explicitly states it falls short for cross-domain, async, and recursive delegation. Names recursive delegation as an unsolved problem, not a solved one.",
+    "domain": "ai-systems",
+    "confidence": 0.9,
+    "tags": [
+      "oauth",
+      "spiffe",
+      "agent-identity",
+      "delegation",
+      "openid"
+    ],
+    "raw_quote": "Recursive delegation creates risks. Agents spawning sub-agents or communicating tasks to other agents create complex authorization chains without clear scope attenuation mechanisms.",
+    "value_tier": "meat",
+    "source": {
+      "title": "[PDF] Identity Management for Agentic AI - OpenID",
+      "url": "https://openid.net/wp-content/uploads/2025/10/Identity-Management-for-Agentic-AI.pdf"
+    },
+    "hunt_id": "14d2594b",
+    "extracted_at": "2026-03-25T11:05:38.572620+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.558083+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

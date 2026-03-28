@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.131992+00:00",
+    "relevance_score": 0.565,
+    "matched_tags": [
+      "delegation",
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/b56b03af.json"
+  },
+  "framework": {
+    "id": "b56b03af",
+    "type": "framework",
+    "name": "AAuth Grant (draft-rosenberg-oauth-aauth-00)",
+    "description": "Agent Authorization Grant specifically designed so LLM hallucination cannot result in tokens being issued for the wrong user. Separates agent identity from user delegation.",
+    "domain": "ai-systems",
+    "confidence": 0.75,
+    "tags": [
+      "oauth",
+      "delegation",
+      "hallucination-safety"
+    ],
+    "raw_quote": "Agent Authorization Grant designed so that LLM hallucination cannot result in tokens being issued for the wrong user",
+    "value_tier": "meat",
+    "source": {
+      "title": "IETF Draft: AI Agent Auth & Authz Framework - LinkedIn",
+      "url": "https://www.linkedin.com/posts/christina-jean-tubb_ai-agent-authentication-and-authorization-activity-7435357650831257600-ju3i"
+    },
+    "hunt_id": "b1e0b1b6",
+    "extracted_at": "2026-03-25T13:13:43.894706+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.566798+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

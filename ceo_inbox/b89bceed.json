@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.154880+00:00",
+    "relevance_score": 0.58,
+    "matched_tags": [
+      "mcp",
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "technology/b89bceed.json"
+  },
+  "framework": {
+    "id": "b89bceed",
+    "type": "claim",
+    "name": "MCP server as API proxy in OAuth model",
+    "description": "The draft explicitly integrates MCP server as an 'API proxy server' into the OAuth model, adding a new intermediary between agent and resource servers. This creates new auth surface area (token relay, intermediary exfiltration risks noted in security considerations).",
+    "domain": "technology",
+    "confidence": 0.9,
+    "tags": [
+      "mcp",
+      "oauth",
+      "api-proxy"
+    ],
+    "raw_quote": "industries have proposed Model Context Protocol(MCP). It introduces MCP server and protocol to let AI agents only communicate with the MCP server to request for resources.",
+    "value_tier": "meat",
+    "source": {
+      "title": "draft-yao-agent-auth-considerations-01 - Further considerations on AI Agent Authentication and Authorization Based on OAuth Extension",
+      "url": "https://datatracker.ietf.org/doc/draft-yao-agent-auth-considerations/01/"
+    },
+    "hunt_id": "f4fe2b6b",
+    "extracted_at": "2026-03-23T16:18:35.409066+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.582132+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

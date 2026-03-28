@@ -1,0 +1,39 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.128522+00:00",
+    "relevance_score": 0.575,
+    "matched_tags": [
+      "oauth",
+      "delegation"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/8422b69d.json"
+  },
+  "framework": {
+    "id": "8422b69d",
+    "type": "framework",
+    "name": "OpenID Agentic Identity Whitepaper - The Architecture-Forward Gap",
+    "description": "OpenID Foundation's Oct 2025 whitepaper on agent identity management is entirely forward-looking ('future challenges', 'should be avoided', 'lacks support'). Zero post-mortems, zero incident references, zero 'we tried X and it broke.' From the standards body closest to the problem, this is the strongest confirmation yet that multi-hop delegation failures aren't being published because they haven't been attempted at scale in production.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "identity",
+      "oauth",
+      "delegation",
+      "standards",
+      "openid"
+    ],
+    "raw_quote": "Recursive delegation creates risks. Agents spawning sub-agents or communicating tasks to other agents create complex authorization chains without clear scope attenuation mechanisms.",
+    "value_tier": "meat",
+    "source": {
+      "title": "[PDF] Identity Management for Agentic AI - OpenID",
+      "url": "https://openid.net/wp-content/uploads/2025/10/Identity-Management-for-Agentic-AI.pdf"
+    },
+    "hunt_id": "cc8ef0cd",
+    "extracted_at": "2026-03-25T13:23:33.896317+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.563748+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

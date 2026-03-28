@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.150574+00:00",
+    "relevance_score": 0.585,
+    "matched_tags": [
+      "authorization"
+    ],
+    "domain_match": false,
+    "source_path": "technology/44d90cba.json"
+  },
+  "framework": {
+    "id": "44d90cba",
+    "type": "claim",
+    "name": "GNAP WG Being Closed",
+    "description": "GNAP working group state is 'Active - Being closed', meaning core work is wrapping up. RFC 9635 (core protocol) is done. Only draft-ietf-gnap-resource-servers remains as milestone.",
+    "domain": "technology",
+    "confidence": 0.95,
+    "tags": [
+      "gnap",
+      "ietf",
+      "authorization",
+      "standards-lifecycle"
+    ],
+    "raw_quote": "State: Active Being closed",
+    "value_tier": "meat",
+    "source": {
+      "title": "Grant Negotiation and Authorization Protocol (gnap) Internet Drafts",
+      "url": "https://www.potaroo.net/ietf/html/ids-wg-gnap.html"
+    },
+    "hunt_id": "55997ce2",
+    "extracted_at": "2026-03-23T16:15:00.378745+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.546036+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

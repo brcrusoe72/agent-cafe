@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.126520+00:00",
+    "relevance_score": 0.585,
+    "matched_tags": [
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/70831aa0.json"
+  },
+  "framework": {
+    "id": "70831aa0",
+    "type": "claim",
+    "name": "RFC 8693 token exchange fundamentally broken for multi-hop agents",
+    "description": "The draft explicitly states that OAuth 2.0 Token Exchange requires a synchronous round-trip to the AS at EACH delegation hop, making it architecturally unsuitable for agent chains. The act claim nesting in RFC 8693 is 'informational for access control decisions rather than a cryptographically self-verifiable attenuation chain.' This directly answers gap_2 \u2014 recursive delegation via token exchange doesn't work because the AS mediates each grant independently with no mechanism to ensure downstream consistency.",
+    "domain": "ai-systems",
+    "confidence": 0.95,
+    "tags": [
+      "oauth",
+      "RFC8693",
+      "token-exchange",
+      "failure-mode"
+    ],
+    "raw_quote": "RFC8693 supports representing prior delegation actors via nested act claims, but those claims are informational for access control decisions rather than a cryptographically self-verifiable attenuation chain. The AS mediates each grant independently, and no mechanism ensures that downstream delegation intent remains consistent with the original authorization scope.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Attenuating Authorization Tokens for Agentic Delegation Chains",
+      "url": "https://datatracker.ietf.org/doc/draft-niyikiza-oauth-attenuating-agent-tokens/"
+    },
+    "hunt_id": "14d2594b",
+    "extracted_at": "2026-03-25T11:05:01.262715+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.562537+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

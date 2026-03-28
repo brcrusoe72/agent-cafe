@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-22T19:47:29.178376+00:00",
+  "generated_at": "2026-03-26T15:49:15.543002+00:00",
   "source": "ceo_adapter_agent_cafe",
   "version": 3,
   "adapter_frameworks_consumed": 12,
@@ -60,7 +60,7 @@
   "cost_intelligence": {},
   "categories": {
     "security_governance": {
-      "count": 103,
+      "count": 110,
       "top_items": [
         {
           "name": "Inherited But Constrained Agent Access",
@@ -141,6 +141,15 @@
           "type": "claim",
           "description": "The paper argues that relying on prompts to constrain agent behavior is inadequate due to failure modes like prompt injection, jailbreaks, and inherent model unreliability. Instead, technical enforcem",
           "source_url": "https://arxiv.org/html/2501.09674v1",
+          "claims": []
+        },
+        {
+          "name": "Agents should not have direct secret access",
+          "relevance": 0.655,
+          "confidence": 0.95,
+          "type": "claim",
+          "description": "Draft takes explicit position that AI agents SHOULD NOT have direct access to secrets due to prompt injection threats, should instead reuse platform secret management (cloud secret managers, TEE/keyst",
+          "source_url": "https://datatracker.ietf.org/doc/draft-ni-a2a-ai-agent-security-requirements/",
           "claims": []
         },
         {
@@ -237,15 +246,6 @@
           "type": "framework",
           "description": "Safety mechanism allowing human intervention to halt AI agent operations if they threaten human interests or overstep boundaries. Governance failsafe for autonomous systems.",
           "source_url": "https://www.youtube.com/watch?v=7IxDVr7R9yM",
-          "claims": []
-        },
-        {
-          "name": "Governance Token Centralization Paradox",
-          "relevance": 0.65,
-          "confidence": 0.9,
-          "type": "claim",
-          "description": "Governance tokens intended for decentralization often become concentrated among whales and early funders, leading to 'voter apathy' among small holders and de facto centralized control. Low participat",
-          "source_url": "https://vocal.media/geeks/choosing-the-right-token-model-utility-security-or-governance",
           "claims": []
         }
       ]
@@ -442,8 +442,17 @@
       ]
     },
     "trust_reputation": {
-      "count": 181,
+      "count": 243,
       "top_items": [
+        {
+          "name": "AWS contributing to agent identity frameworks",
+          "relevance": 0.795,
+          "confidence": 0.95,
+          "type": "claim",
+          "description": "Vineeth Sai Narajala, Application Security Engineer at AWS, co-authoring agent identity research. Confirms Amazon's involvement extends beyond IETF drafts into CSA working groups.",
+          "source_url": "https://arxiv.org/html/2505.19301v1",
+          "claims": []
+        },
         {
           "name": "Visa TAP Registry-Based Verification Model",
           "relevance": 0.795,
@@ -472,6 +481,24 @@
           "claims": []
         },
         {
+          "name": "Salesforce active in agent auth standards",
+          "relevance": 0.795,
+          "confidence": 0.95,
+          "type": "claim",
+          "description": "Json Ross, Product Security Principal at Salesforce, is co-authoring this CSA framework paper. This is direct evidence of Salesforce participation in agent authentication standards work \u2014 not IETF dra",
+          "source_url": "https://arxiv.org/html/2505.19301v1",
+          "claims": []
+        },
+        {
+          "name": "WIMSE reuse for agent identity management",
+          "relevance": 0.792,
+          "confidence": 0.92,
+          "type": "claim",
+          "description": "The draft explicitly references WIMSE (Workload Identity in Multi-System Environments) and a companion draft (draft-ni-wimse-ai-agent-identity-01) discussing WIMSE applicability to agentic AI. This li",
+          "source_url": "https://datatracker.ietf.org/doc/draft-ni-a2a-ai-agent-security-requirements/",
+          "claims": []
+        },
+        {
           "name": "Actor/Principal separation for agent auth",
           "relevance": 0.79,
           "confidence": 0.9,
@@ -487,6 +514,15 @@
           "type": "claim",
           "description": "Draft explicitly frames AI agents as workloads (not users, not services) \u2014 meaning existing workload identity infra (SPIFFE, WIMSE) applies directly. No need for novel identity primitives. This is the",
           "source_url": "https://datatracker.ietf.org/doc/draft-klrc-aiagent-auth/",
+          "claims": []
+        },
+        {
+          "name": "Agent Credential Authority (ACA) + Agent Registry Service (ARS)",
+          "relevance": 0.79,
+          "confidence": 0.9,
+          "type": "technique",
+          "description": "Proposes two new infrastructure components: ACA (trusted third party issuing X.509 certs and identity tokens to agents) and ARS (agent identity registration and discovery-matching). Credential request",
+          "source_url": "https://datatracker.ietf.org/doc/draft-ni-a2a-ai-agent-security-requirements/",
           "claims": []
         },
         {
@@ -544,6 +580,15 @@
           "claims": []
         },
         {
+          "name": "Agent Identifier (AID) concept",
+          "relevance": 0.785,
+          "confidence": 0.85,
+          "type": "framework",
+          "description": "Proposes a specific independent identifier for AI agents (AID), distinct from OAuth client_id, acknowledging agents need their own identity layer. Also introduces task-wise vs application domains for ",
+          "source_url": "https://datatracker.ietf.org/doc/draft-yao-agent-auth-considerations/01/",
+          "claims": []
+        },
+        {
           "name": "No novel crypto needed for agent auth",
           "relevance": 0.785,
           "confidence": 0.85,
@@ -562,66 +607,21 @@
           "claims": []
         },
         {
+          "name": "Microsoft Entra Agent ID",
+          "relevance": 0.785,
+          "confidence": 0.85,
+          "type": "framework",
+          "description": "Microsoft is building enterprise SaaS directory with policy and zero-trust integration specifically for agent identity \u2014 positioned as 'Entra Agent ID' (not just Workload ID). This confirms proprietar",
+          "source_url": "https://arxiv.org/html/2508.03095v3",
+          "claims": []
+        },
+        {
           "name": "Agent Identity is Heuristic, Not Cryptographic",
           "relevance": 0.785,
           "confidence": 0.85,
           "type": "claim",
           "description": "Vouched's CEO explicitly states no established agent identification mechanism exists. Their approach is proprietary heuristic-based (like spam detection), not DID/VC/X.509. This contradicts the assump",
           "source_url": "https://siliconangle.com/2025/09/04/agentic-ai-identity-verification-startup-vouched-gets-17m-build-trust-autonomous-agents/",
-          "claims": []
-        },
-        {
-          "name": "Dual-actor token (composite identity)",
-          "relevance": 0.78,
-          "confidence": 0.8,
-          "type": "technique",
-          "description": "Agents need tokens encoding BOTH the user's entitlements AND the agent's service account \u2014 effective scope is the intersection. OAuth has no native construct for two distinct actors in one token. This",
-          "source_url": "https://d197for5662m48.cloudfront.net/documents/publicationstatus/262756/preprint_pdf/21aad33dd971984a510d5f79277b7be8.pdf",
-          "claims": []
-        },
-        {
-          "name": "Agent identity as checksum of prompt+tools+config",
-          "relevance": 0.77,
-          "confidence": 0.7,
-          "type": "technique",
-          "description": "A-JWT hashes the agent's prompt, tool list, and configuration into a one-way checksum that becomes the agent's cryptographic identity. Detects in-process impersonation (one agent pretending to be anot",
-          "source_url": "https://arxiv.org/pdf/2509.13597",
-          "claims": []
-        },
-        {
-          "name": "Skyfire KYAPay \u2014 Signed JWTs for Agent Identity",
-          "relevance": 0.765,
-          "confidence": 0.65,
-          "type": "claim",
-          "description": "Skyfire's KYAPay protocol uses signed JWTs for verified agent identity. $9.5M raised from Neuberger Berman, a16z CSX, Coinbase Ventures. Claims 'thousands of transactions daily' via Agent Checkout. Jo",
-          "source_url": "https://rye.com/blog/agentic-commerce-startups",
-          "claims": []
-        },
-        {
-          "name": "Visa TAP \u2014 10+ Partners but Thin on Details",
-          "relevance": 0.725,
-          "confidence": 0.6,
-          "type": "claim",
-          "description": "Visa TAP described as 'open framework to distinguish legitimate AI agents from malicious bots, with 10+ partners including Akamai.' Visa Intelligent Commerce has 100+ partners building, 30+ in sandbox",
-          "source_url": "https://rye.com/blog/agentic-commerce-startups",
-          "claims": []
-        },
-        {
-          "name": "Two-Scenario Agent Auth Model",
-          "relevance": 0.725,
-          "confidence": 0.95,
-          "type": "framework",
-          "description": "Industry distinction between 'delegated access' (agent acts on behalf of specific user, requires consent) and 'service accounts' (agent acts as itself for system tasks, no user context). Different OAu",
-          "source_url": "https://stytch.com/blog/ai-agent-authentication-methods/",
-          "claims": []
-        },
-        {
-          "name": "Multi-Agent Mutual Authentication Acknowledged But Not Solved",
-          "relevance": 0.725,
-          "confidence": 0.95,
-          "type": "claim",
-          "description": "Paper explicitly names multi-agent verification as 'paramount' (\u00a72.1.3) but only solves it for two agents representing known human principals \u2014 hospital agent talks to insurance agent. The delegation ",
-          "source_url": "https://arxiv.org/html/2501.09674v1",
           "claims": []
         }
       ]
@@ -1009,7 +1009,7 @@
       ]
     },
     "agent_architecture": {
-      "count": 64,
+      "count": 71,
       "top_items": [
         {
           "name": "UCP Three-Party Payment Separation",
@@ -1129,6 +1129,15 @@
           "claims": []
         },
         {
+          "name": "Five Families of Agent Challenges (TU Delft/JetBrains)",
+          "relevance": 0.715,
+          "confidence": 0.85,
+          "type": "framework",
+          "description": "Empirical study of 3,191 SO questions + 64,098 GitHub issues across 18 agent repos identifies five challenge families: (1) environment/deps, (2) retrieval/memory, (3) orchestration/execution control, ",
+          "source_url": "https://arxiv.org/html/2510.25423v2",
+          "claims": []
+        },
+        {
           "name": "Meatspace Layer for AI",
           "relevance": 0.715,
           "confidence": 0.85,
@@ -1180,15 +1189,6 @@
           "type": "claim",
           "description": "Anecdotal evidence suggests agents perform optimally with 5-10 tools maximum. Beyond this threshold, agents make poor decisions about tool selection. This implies a cognitive load limit for LLM-based ",
           "source_url": "https://www.youtube.com/watch?v=4nZl32FwU-o",
-          "claims": []
-        },
-        {
-          "name": "Multi-Agent Specialist Network Architecture",
-          "relevance": 0.7,
-          "confidence": 0.7,
-          "type": "framework",
-          "description": "Enterprise value emerges from networks of specialized agents (data analysis, pattern recognition, domain knowledge) collaborating on complex workflows rather than single-purpose agents. Creates reusab",
-          "source_url": "https://www.reworked.co/digital-workplace/the-business-case-for-agentic-ai/",
           "claims": []
         }
       ]

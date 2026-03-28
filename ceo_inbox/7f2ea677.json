@@ -29,7 +29,7 @@
     "extracted_at": "2026-03-18T14:30:39.465221+00:00"
   },
   "consumed": true,
-  "consumed_at": "2026-03-22T19:47:29.214291+00:00",
+  "consumed_at": "2026-03-26T15:49:15.577909+00:00",
   "consumed_by": "agent_cafe_adapter",
   "category": "payment_infrastructure"
 }

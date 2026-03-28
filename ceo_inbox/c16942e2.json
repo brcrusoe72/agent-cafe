@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.155737+00:00",
+    "relevance_score": 0.57,
+    "matched_tags": [
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "technology/c16942e2.json"
+  },
+  "framework": {
+    "id": "c16942e2",
+    "type": "claim",
+    "name": "Paper positions OAuth/OIDC/SAML as fundamentally insufficient, not extensible",
+    "description": "The paper explicitly argues against extending OAuth 2.0 for agent auth, claiming purpose-built protocols are needed. This directly contrasts with IETF's approach of extending OAuth via token-exchange drafts. Signals fragmentation between 'extend existing' (IETF) vs 'build new' (CSA/academic) camps.",
+    "domain": "technology",
+    "confidence": 0.8,
+    "tags": [
+      "OAuth",
+      "IETF",
+      "fragmentation",
+      "standards-conflict"
+    ],
+    "raw_quote": "We contend that merely adapting existing protocols is insufficient. Instead, a purpose-built approach is required.",
+    "value_tier": "organ",
+    "source": {
+      "title": "A Novel Zero-Trust Identity Framework for Agentic AI - arXiv",
+      "url": "https://arxiv.org/html/2505.19301v1"
+    },
+    "hunt_id": "55997ce2",
+    "extracted_at": "2026-03-23T16:15:39.792109+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.567878+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

@@ -1,0 +1,35 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.149170+00:00",
+    "relevance_score": 0.575,
+    "matched_tags": [
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "technology/171419da.json"
+  },
+  "framework": {
+    "id": "171419da",
+    "type": "claim",
+    "name": "Transaction tokens referenced for agent risk reduction",
+    "description": "Section 10.4 'Risk Reduction with Transaction Tokens' directly references transaction tokens in agentic context, linking draft-ietf-oauth-transaction-tokens to agent authorization chains.",
+    "domain": "technology",
+    "confidence": 0.85,
+    "tags": [
+      "transaction-tokens",
+      "oauth"
+    ],
+    "raw_quote": "Risk Reduction with Transaction Tokens",
+    "value_tier": "meat",
+    "source": {
+      "title": "draft-klrc-aiagent-auth-00 - AI Agent Authentication and Authorization",
+      "url": "https://datatracker.ietf.org/doc/draft-klrc-aiagent-auth/"
+    },
+    "hunt_id": "f4fe2b6b",
+    "extracted_at": "2026-03-23T16:17:57.944426+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.557487+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

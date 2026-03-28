@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.135738+00:00",
+    "relevance_score": 0.575,
+    "matched_tags": [
+      "delegation"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/fb355428.json"
+  },
+  "framework": {
+    "id": "fb355428",
+    "type": "claim",
+    "name": "WIMSE architecture complements but doesn't solve delegation",
+    "description": "The draft positions itself explicitly as the delegation layer that WIMSE's identity layer lacks. WIMSE provides workload identity propagation; AATs provide attenuation. This confirms gap_3 intuition \u2014 identity propagation and delegation authorization are separate problems.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "WIMSE",
+      "workload-identity",
+      "delegation"
+    ],
+    "raw_quote": "complementing WIMSE's identity layer with a delegation and attenuation layer",
+    "value_tier": "meat",
+    "source": {
+      "title": "Attenuating Authorization Tokens for Agentic Delegation Chains",
+      "url": "https://datatracker.ietf.org/doc/draft-niyikiza-oauth-attenuating-agent-tokens/"
+    },
+    "hunt_id": "14d2594b",
+    "extracted_at": "2026-03-25T11:05:01.263131+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.571629+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

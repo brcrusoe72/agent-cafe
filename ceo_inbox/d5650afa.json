@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.134016+00:00",
+    "relevance_score": 0.56,
+    "matched_tags": [
+      "delegation"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/d5650afa.json"
+  },
+  "framework": {
+    "id": "d5650afa",
+    "type": "technique",
+    "name": "Macaroons/Biscuits/Wafers for Offline Scope Attenuation",
+    "description": "Token formats where holders can only ADD restrictions (append-only caveats), never expand permissions. Each sub-agent adds a signed caveat narrowing scope, creating verifiable delegation chains without recontacting the auth server. No major IdP supports these natively yet.",
+    "domain": "ai-systems",
+    "confidence": 0.7,
+    "tags": [
+      "delegation",
+      "tokens",
+      "scope-attenuation"
+    ],
+    "raw_quote": "Each token is 'baked' with core attributes: identity, expiry, and a cryptographic root. Holders can add layers that only reduce permissions. Tokens remain verifiable offline.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Control the Chain, Secure the System: Fixing AI Agent Delegation",
+      "url": "https://www.okta.com/es-es/blog/ai/agent-security-delegation-chain/"
+    },
+    "hunt_id": "b1e0b1b6",
+    "extracted_at": "2026-03-25T13:10:56.735053+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.569474+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

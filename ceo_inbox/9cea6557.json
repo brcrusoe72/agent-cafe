@@ -1,0 +1,35 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.130901+00:00",
+    "relevance_score": 0.575,
+    "matched_tags": [
+      "delegation"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/9cea6557.json"
+  },
+  "framework": {
+    "id": "9cea6557",
+    "type": "claim",
+    "name": "Scope attenuation mechanisms don't exist yet",
+    "description": "The paper identifies the absence of scope attenuation for recursive delegation \u2014 meaning even if you could technically chain tokens, there's no standard way to narrow permissions at each hop.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "scope-attenuation",
+      "delegation"
+    ],
+    "raw_quote": "complex authorization chains without clear scope attenuation mechanisms",
+    "value_tier": "meat",
+    "source": {
+      "title": "[PDF] Identity Management for Agentic AI - OpenID",
+      "url": "https://openid.net/wp-content/uploads/2025/10/Identity-Management-for-Agentic-AI.pdf"
+    },
+    "hunt_id": "14d2594b",
+    "extracted_at": "2026-03-25T11:05:38.573486+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.565518+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

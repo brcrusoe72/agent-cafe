@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.153022+00:00",
+    "relevance_score": 0.58,
+    "matched_tags": [
+      "mcp"
+    ],
+    "domain_match": false,
+    "source_path": "technology/85545b9c.json"
+  },
+  "framework": {
+    "id": "85545b9c",
+    "type": "claim",
+    "name": "MCP positioned as leading agent protocol",
+    "description": "OpenID Foundation acknowledges MCP (Anthropic's Model Context Protocol) as the leading adoption framework for agent-tool connections, with A2A (Google) as secondary. This confirms MCP's de facto standard status even from the identity standards community.",
+    "domain": "technology",
+    "confidence": 0.9,
+    "tags": [
+      "mcp",
+      "anthropic",
+      "a2a",
+      "google"
+    ],
+    "raw_quote": "The Model Context Protocol (MCP) is leading in adoption as the key framework for connecting language models to external data sources and tools",
+    "value_tier": "bone",
+    "source": {
+      "title": "Identity Management for Agentic AI - OpenID",
+      "url": "https://openid.net/wp-content/uploads/2025/10/Identity-Management-for-Agentic-AI.pdf"
+    },
+    "hunt_id": "55997ce2",
+    "extracted_at": "2026-03-23T16:13:36.533624+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.581209+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

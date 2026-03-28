@@ -1,0 +1,40 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.117970+00:00",
+    "relevance_score": 0.575,
+    "matched_tags": [
+      "oauth",
+      "delegation",
+      "mcp"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/0f2cf89e.json"
+  },
+  "framework": {
+    "id": "0f2cf89e",
+    "type": "framework",
+    "name": "OpenID Foundation Agent Identity Whitepaper",
+    "description": "Multi-author whitepaper from OpenID Foundation (April 2025+) that explicitly names recursive delegation, agent impersonation, consent fatigue, and multi-user shared agents as UNSOLVED problems. Notably architecture-forward with zero post-mortems or production failure citations.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "identity",
+      "oauth",
+      "delegation",
+      "mcp",
+      "agent-auth"
+    ],
+    "raw_quote": "Recursive delegation creates risks. Agents spawning sub-agents or communicating tasks to other agents create complex authorization chains without clear scope attenuation mechanisms.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Executive Summary - arXiv",
+      "url": "https://arxiv.org/html/2510.25819v1"
+    },
+    "hunt_id": "cc8ef0cd",
+    "extracted_at": "2026-03-25T13:24:51.648440+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.556847+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

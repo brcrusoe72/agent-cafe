@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.124973+00:00",
+    "relevance_score": 0.555,
+    "matched_tags": [
+      "delegation"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/5a0cd117.json"
+  },
+  "framework": {
+    "id": "5a0cd117",
+    "type": "framework",
+    "name": "Chained Delegation Assertions in JWT",
+    "description": "A-JWT uses chained delegation assertions (not recursive token exchange) to prove which downstream agent may execute a task. This is a token-nesting approach where delegation proof is embedded in the token rather than exchanged at each hop.",
+    "domain": "ai-systems",
+    "confidence": 0.65,
+    "tags": [
+      "delegation",
+      "token-nesting",
+      "multi-hop"
+    ],
+    "raw_quote": "a chained delegation assertion to prove which downstream agent may execute a given task",
+    "value_tier": "meat",
+    "source": {
+      "title": "Agentic JWT: A Secure Delegation Protocol for Autonomous AI Agents",
+      "url": "https://arxiv.org/html/2509.13597v1"
+    },
+    "hunt_id": "b1e0b1b6",
+    "extracted_at": "2026-03-25T13:13:04.412920+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.561641+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

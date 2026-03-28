@@ -1,0 +1,39 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.130207+00:00",
+    "relevance_score": 0.575,
+    "matched_tags": [
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/986ff7e3.json"
+  },
+  "framework": {
+    "id": "986ff7e3",
+    "type": "framework",
+    "name": "AIMS (Agent Identity Management System) - IETF draft-klrc-aiagent-auth-00",
+    "description": "First IETF draft composing WIMSE + SPIFFE + OAuth 2.0 into a unified agent identity framework. Authentication layer is solid but authorization stops at the token boundary. Security Considerations section literally says 'TODO Security.' Version -00 dropped March 2, 2026.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "ietf",
+      "spiffe",
+      "wimse",
+      "oauth",
+      "agent-auth",
+      "standards"
+    ],
+    "raw_quote": "The authentication layer is solid. The authorization layer stops at the token boundary. The Security Considerations section contains two words: 'TODO Security.'",
+    "value_tier": "meat",
+    "source": {
+      "title": "AI Agent Authentication Gets the Hard Part Right. Authorization Is Still ...",
+      "url": "https://www.rockcybermusings.com/p/i-agent-authentication-authorization-gap"
+    },
+    "hunt_id": "b1e0b1b6",
+    "extracted_at": "2026-03-25T13:12:02.200519+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.564886+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

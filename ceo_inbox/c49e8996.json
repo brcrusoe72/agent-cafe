@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.155999+00:00",
+    "relevance_score": 0.785,
+    "matched_tags": [
+      "agent-identity"
+    ],
+    "domain_match": false,
+    "source_path": "technology/c49e8996.json"
+  },
+  "framework": {
+    "id": "c49e8996",
+    "type": "framework",
+    "name": "Microsoft Entra Agent ID",
+    "description": "Microsoft is building enterprise SaaS directory with policy and zero-trust integration specifically for agent identity \u2014 positioned as 'Entra Agent ID' (not just Workload ID). This confirms proprietary path with enterprise governance focus rather than open standards contribution.",
+    "domain": "technology",
+    "confidence": 0.85,
+    "tags": [
+      "microsoft",
+      "agent-identity",
+      "enterprise",
+      "proprietary"
+    ],
+    "raw_quote": "Microsoft Entra Agent ID (enterprise SaaS directory with policy and zero-trust integration)",
+    "value_tier": "meat",
+    "source": {
+      "title": "Evolution of AI Agent Registry Solutions: Centralized, Enterprise ...",
+      "url": "https://arxiv.org/html/2508.03095v3"
+    },
+    "hunt_id": "55997ce2",
+    "extracted_at": "2026-03-23T16:14:33.701373+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.568212+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

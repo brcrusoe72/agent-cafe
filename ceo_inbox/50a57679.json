@@ -1,0 +1,39 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.151148+00:00",
+    "relevance_score": 0.582,
+    "matched_tags": [
+      "oauth",
+      "delegation"
+    ],
+    "domain_match": false,
+    "source_path": "technology/50a57679.json"
+  },
+  "framework": {
+    "id": "50a57679",
+    "type": "framework",
+    "name": "SPICE Actor Chain Profiles (draft-mw-spice-actor-chain-03)",
+    "description": "IETF draft defining 5 distinct profiles for cryptographically verifiable multi-hop delegation chains built on RFC 8693 token exchange. Critically, it acknowledges that RFC 8693's nested `act` claims are 'informational only' \u2014 meaning current OAuth token exchange has NO mechanism to validate or enforce delegation paths. The 5 profiles trade off between full disclosure, subset disclosure, and committed (hash-chain) approaches.",
+    "domain": "technology",
+    "confidence": 0.92,
+    "tags": [
+      "oauth",
+      "delegation",
+      "spice",
+      "multi-hop",
+      "ietf"
+    ],
+    "raw_quote": "RFC8693 permits nested act claims, but prior actors remain informational only and token exchange does not define how a delegation path is preserved and validated across successive exchanges.",
+    "value_tier": "organ",
+    "source": {
+      "title": "Cryptographically Verifiable Actor Chain for OAuth 2.0 Token Exchange",
+      "url": "https://datatracker.ietf.org/doc/draft-mw-spice-actor-chain/"
+    },
+    "hunt_id": "14d2594b",
+    "extracted_at": "2026-03-25T11:04:10.761437+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.560924+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

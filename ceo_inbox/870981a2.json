@@ -1,0 +1,35 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.153192+00:00",
+    "relevance_score": 0.585,
+    "matched_tags": [
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "technology/870981a2.json"
+  },
+  "framework": {
+    "id": "870981a2",
+    "type": "claim",
+    "name": "OAuth 2.1 deemed sufficient for single-domain synchronous agents",
+    "description": "The paper explicitly states existing OAuth 2.1 works for single trust domain synchronous operations but falls short for cross-domain, highly autonomous, asynchronous, or multi-user agent scenarios.",
+    "domain": "technology",
+    "confidence": 0.95,
+    "tags": [
+      "oauth",
+      "limitations"
+    ],
+    "raw_quote": "Existing OAuth 2.1 frameworks, when used with AI agents, work well within single trust domains with synchronous agent operations... but may fall short in scenarios that are cross-domain, highly autonomous, or asynchronous",
+    "value_tier": "bone",
+    "source": {
+      "title": "Identity Management for Agentic AI - OpenID",
+      "url": "https://openid.net/wp-content/uploads/2025/10/Identity-Management-for-Agentic-AI.pdf"
+    },
+    "hunt_id": "f4fe2b6b",
+    "extracted_at": "2026-03-23T16:19:42.308441+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.563933+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

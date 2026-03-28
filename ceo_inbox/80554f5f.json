@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.152519+00:00",
+    "relevance_score": 0.585,
+    "matched_tags": [
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "technology/80554f5f.json"
+  },
+  "framework": {
+    "id": "80554f5f",
+    "type": "framework",
+    "name": "OpenID Foundation Agentic AI Identity Whitepaper",
+    "description": "OpenID Foundation published a comprehensive whitepaper (Oct 2025, lead editor Tobin South) positioning OAuth 2.1 as the baseline for agent auth within single trust domains, while identifying critical gaps for cross-domain, autonomous, and async agent scenarios. This is the OpenID Foundation's direct play into the agent identity space.",
+    "domain": "technology",
+    "confidence": 0.95,
+    "tags": [
+      "openid",
+      "agent-auth",
+      "oauth",
+      "identity"
+    ],
+    "raw_quote": "Existing OAuth 2.1 frameworks, when used with AI agents, work well within single trust domains with synchronous agent operations... but may fall short in scenarios that are cross-domain, highly autonomous, or asynchronous",
+    "value_tier": "meat",
+    "source": {
+      "title": "Identity Management for Agentic AI - OpenID",
+      "url": "https://openid.net/wp-content/uploads/2025/10/Identity-Management-for-Agentic-AI.pdf"
+    },
+    "hunt_id": "55997ce2",
+    "extracted_at": "2026-03-23T16:13:36.532445+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.563485+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

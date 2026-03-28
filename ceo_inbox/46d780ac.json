@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.123847+00:00",
+    "relevance_score": 0.575,
+    "matched_tags": [
+      "delegation"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/46d780ac.json"
+  },
+  "framework": {
+    "id": "46d780ac",
+    "type": "claim",
+    "name": "Transient states are the actual damage window",
+    "description": "Formal analyses that collapse transient states (EIA = revocation in-flight, MIC = cascade revocation pending sub-agent acks) into atomic transitions systematically underestimate the damage window. This is the multi-hop problem formalized: MIC state duration IS the delegation depth penalty.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "delegation",
+      "revocation",
+      "transient-states",
+      "multi-hop"
+    ],
+    "raw_quote": "The transient states are not cosmetic: the duration of EIA and MIC is precisely the interval over which unauthorised operations accumulate.",
+    "value_tier": "organ",
+    "source": {
+      "title": "[PDF] Structural Equivalence Between Memory Consistency Models ... - arXiv",
+      "url": "https://arxiv.org/pdf/2603.09875"
+    },
+    "hunt_id": "14d2594b",
+    "extracted_at": "2026-03-25T11:07:00.141427+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.560448+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.120218+00:00",
+    "relevance_score": 0.58,
+    "matched_tags": [
+      "delegation"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/24da7ce6.json"
+  },
+  "framework": {
+    "id": "24da7ce6",
+    "type": "framework",
+    "name": "User Impersonation as Current Default Pattern",
+    "description": "OpenID confirms agents currently act indistinguishably from users rather than using delegated authority. This is the actual production pattern \u2014 not multi-hop delegation, but direct user impersonation. Explains why there are no delegation failures: nobody is delegating, they're impersonating.",
+    "domain": "ai-systems",
+    "confidence": 0.9,
+    "tags": [
+      "impersonation",
+      "delegation",
+      "production-pattern"
+    ],
+    "raw_quote": "User impersonation by agents should be replaced by delegated authority. Currently, agents often act indistinguishably from users, creating accountability gaps and security risks.",
+    "value_tier": "organ",
+    "source": {
+      "title": "[PDF] Identity Management for Agentic AI - OpenID",
+      "url": "https://openid.net/wp-content/uploads/2025/10/Identity-Management-for-Agentic-AI.pdf"
+    },
+    "hunt_id": "cc8ef0cd",
+    "extracted_at": "2026-03-25T13:23:33.896938+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.558020+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

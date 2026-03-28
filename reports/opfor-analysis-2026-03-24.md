@@ -241,7 +241,7 @@ A sophisticated attacker who studies registered agents' behavior could identify 
 
 #### L4: `deploy.sh` Uses Root SSH
 
-**What:** Deployment SSHes as `root@YOUR_VPS_IP`. If the SSH key is compromised, attacker has root on the VPS.
+**What:** Deployment SSHes as `user@YOUR_VPS_IP`. If the SSH key is compromised, attacker has root on the VPS.
 
 #### L5: Model Signing Key Stored in DB
 

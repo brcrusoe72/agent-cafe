@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.158438+00:00",
+    "relevance_score": 0.575,
+    "matched_tags": [
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "technology/f8b7936f.json"
+  },
+  "framework": {
+    "id": "f8b7936f",
+    "type": "claim",
+    "name": "Company affiliations in OpenID agent auth work",
+    "description": "Key named contributors with identifiable affiliations: George Fletcher (Capital One/identity veteran), Aaron Parecki (Okta), Pamela Dingle (Microsoft), Atul Tulshibagwale (SGNL), WorkOS (funded Tobin South's time), Stanford (Loyal Agents Initiative via Alex Pentland). This is an OpenID Foundation effort, not IETF drafts directly, but these individuals overlap heavily with IETF OAuth WG.",
+    "domain": "technology",
+    "confidence": 0.85,
+    "tags": [
+      "companies",
+      "authors",
+      "oauth",
+      "openid"
+    ],
+    "raw_quote": "Special thanks for direct contributions goes to Subramanya Nagabhushanaradhya, Sarah Cecchetti, Ayesha Dissanayaka, George Fletcher, Aaron Parecki, Pamela Dingle, Tom Jones, Aldo Pietropaolo...",
+    "value_tier": "meat",
+    "source": {
+      "title": "Identity Management for Agentic AI - OpenID",
+      "url": "https://openid.net/wp-content/uploads/2025/10/Identity-Management-for-Agentic-AI.pdf"
+    },
+    "hunt_id": "f4fe2b6b",
+    "extracted_at": "2026-03-23T16:19:42.308091+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.571386+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.153933+00:00",
+    "relevance_score": 0.58,
+    "matched_tags": [
+      "mcp"
+    ],
+    "domain_match": false,
+    "source_path": "technology/a1ad11ea.json"
+  },
+  "framework": {
+    "id": "a1ad11ea",
+    "type": "claim",
+    "name": "MCP referenced as agent protocol needing auth",
+    "description": "Model Context Protocol (MCP) explicitly cited as a protocol agents use that needs identity/auth integration. Three MCP references in bibliography. Shows awareness of Anthropic's protocol in the standards conversation.",
+    "domain": "technology",
+    "confidence": 0.9,
+    "tags": [
+      "MCP",
+      "anthropic",
+      "agent-protocols"
+    ],
+    "raw_quote": "it would go through a standard OAuth 2.0 flow, obtaining an access token scoped specifically to read project documentation and code structures that the developer has authorized",
+    "value_tier": "meat",
+    "source": {
+      "title": "A Novel Zero-Trust Identity Framework for Agentic AI - arXiv",
+      "url": "https://arxiv.org/html/2505.19301v1"
+    },
+    "hunt_id": "55997ce2",
+    "extracted_at": "2026-03-23T16:15:39.792865+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.581703+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

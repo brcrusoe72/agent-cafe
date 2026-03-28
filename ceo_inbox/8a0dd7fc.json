@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.129469+00:00",
+    "relevance_score": 0.645,
+    "matched_tags": [
+      "mcp",
+      "multi-agent"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/8a0dd7fc.json"
+  },
+  "framework": {
+    "id": "8a0dd7fc",
+    "type": "case_study",
+    "name": "Cross-Agent Privilege Escalation via Config Rewrite",
+    "description": "Rehberger showed a prompt-injected Copilot rewriting Claude's .mcp.json, so on next use Claude runs arbitrary code and can reconfigure Copilot back \u2014 creating a self-reinforcing compromise loop across agent boundaries.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "privilege-escalation",
+      "mcp",
+      "multi-agent"
+    ],
+    "raw_quote": "What starts as a single indirect prompt injection can quickly escalate into a multi-agent compromise.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Control the Chain, Secure the System: Fixing AI Agent Delegation",
+      "url": "https://www.okta.com/es-es/blog/ai/agent-security-delegation-chain/"
+    },
+    "hunt_id": "b1e0b1b6",
+    "extracted_at": "2026-03-25T13:10:56.735391+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.581395+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

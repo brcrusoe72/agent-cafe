@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.151820+00:00",
+    "relevance_score": 0.785,
+    "matched_tags": [
+      "agent-identity"
+    ],
+    "domain_match": false,
+    "source_path": "technology/6ba64bc2.json"
+  },
+  "framework": {
+    "id": "6ba64bc2",
+    "type": "framework",
+    "name": "Agent Identifier (AID) concept",
+    "description": "Proposes a specific independent identifier for AI agents (AID), distinct from OAuth client_id, acknowledging agents need their own identity layer. Also introduces task-wise vs application domains for scoping agent auth.",
+    "domain": "technology",
+    "confidence": 0.85,
+    "tags": [
+      "agent-identity",
+      "aid",
+      "identifier"
+    ],
+    "raw_quote": "Agent Identifier(AID): An independent identifier of AI agent.",
+    "value_tier": "meat",
+    "source": {
+      "title": "draft-yao-agent-auth-considerations-01 - Further considerations on AI Agent Authentication and Authorization Based on OAuth Extension",
+      "url": "https://datatracker.ietf.org/doc/draft-yao-agent-auth-considerations/01/"
+    },
+    "hunt_id": "f4fe2b6b",
+    "extracted_at": "2026-03-23T16:18:35.408783+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.562333+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

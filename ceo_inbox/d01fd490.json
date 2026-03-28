@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.133242+00:00",
+    "relevance_score": 0.58,
+    "matched_tags": [
+      "delegation",
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/d01fd490.json"
+  },
+  "framework": {
+    "id": "d01fd490",
+    "type": "claim",
+    "name": "OAuth 2.1 Works Only for Single Trust Domain + Synchronous",
+    "description": "Explicit admission that existing OAuth 2.1 'may fall short in scenarios that are cross-domain, highly autonomous, or asynchronous.' This is the identity establishment saying the foundation isn't ready for multi-hop.",
+    "domain": "ai-systems",
+    "confidence": 0.9,
+    "tags": [
+      "oauth",
+      "delegation",
+      "limitations"
+    ],
+    "raw_quote": "Existing OAuth 2.1 frameworks, when used with AI agents, work well within single trust domains with synchronous agent operations... but may fall short in scenarios that are cross-domain, highly autonomous, or asynchronous",
+    "value_tier": "meat",
+    "source": {
+      "title": "Executive Summary - arXiv",
+      "url": "https://arxiv.org/html/2510.25819v1"
+    },
+    "hunt_id": "cc8ef0cd",
+    "extracted_at": "2026-03-25T13:24:51.648749+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.569162+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

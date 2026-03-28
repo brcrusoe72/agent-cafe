@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.156262+00:00",
+    "relevance_score": 0.58,
+    "matched_tags": [
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "technology/c937e3ab.json"
+  },
+  "framework": {
+    "id": "c937e3ab",
+    "type": "claim",
+    "name": "GNAP-OAuth Relationship Defined as Non-Competing",
+    "description": "Charter explicitly states GNAP is NOT chartered to develop OAuth 2.0 extensions, and OAuth-compatible work goes back to OAuth WG. This is a clean scope boundary \u2014 not fragmentation but parallel tracks with backport path.",
+    "domain": "technology",
+    "confidence": 0.9,
+    "tags": [
+      "gnap",
+      "oauth",
+      "standards-coordination"
+    ],
+    "raw_quote": "This group is not chartered to develop extensions to OAuth 2.0... Functionality back-ported from the protocol developed here to OAuth 2.0 will be directed to the OAuth Working Group",
+    "value_tier": "meat",
+    "source": {
+      "title": "Grant Negotiation and Authorization Protocol (gnap) Internet Drafts",
+      "url": "https://www.potaroo.net/ietf/html/ids-wg-gnap.html"
+    },
+    "hunt_id": "55997ce2",
+    "extracted_at": "2026-03-23T16:15:00.379357+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.568358+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

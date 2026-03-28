@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.132363+00:00",
+    "relevance_score": 0.55,
+    "matched_tags": [
+      "mcp",
+      "delegation"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/bddfe823.json"
+  },
+  "framework": {
+    "id": "bddfe823",
+    "type": "technique",
+    "name": "XAA (Cross App Access) as MCP Enterprise-Managed Authorization",
+    "description": "Okta's XAA shifts consent to the identity provider level, now part of MCP spec since Nov 2025. Tracks and revokes delegation lineage centrally.",
+    "domain": "ai-systems",
+    "confidence": 0.6,
+    "tags": [
+      "mcp",
+      "okta",
+      "delegation"
+    ],
+    "raw_quote": "XAA... shifts consent to the identity provider, now part of MCP (as of Nov 2025) under 'Enterprise-Managed Authorization.' Based on ID-JAG, it tracks and revokes delegation lineage.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Control the Chain, Secure the System: Fixing AI Agent Delegation",
+      "url": "https://www.okta.com/es-es/blog/ai/agent-security-delegation-chain/"
+    },
+    "hunt_id": "b1e0b1b6",
+    "extracted_at": "2026-03-25T13:10:56.736484+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.567587+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

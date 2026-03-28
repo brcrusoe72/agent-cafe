@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.132859+00:00",
+    "relevance_score": 0.56,
+    "matched_tags": [
+      "delegation",
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/cae69d2f.json"
+  },
+  "framework": {
+    "id": "cae69d2f",
+    "type": "claim",
+    "name": "OAuth Tokens Lose Lineage by Hop 3",
+    "description": "By the third delegation hop, standard OAuth tokens have no cryptographic link to the initiating agent or user. This is the specific failure mode for multi-hop token chains.",
+    "domain": "ai-systems",
+    "confidence": 0.7,
+    "tags": [
+      "oauth",
+      "delegation",
+      "lineage"
+    ],
+    "raw_quote": "By the third delegation hop, there is no cryptographic link to the initiating agent or user.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Control the Chain, Secure the System: Fixing AI Agent Delegation",
+      "url": "https://www.okta.com/es-es/blog/ai/agent-security-delegation-chain/"
+    },
+    "hunt_id": "b1e0b1b6",
+    "extracted_at": "2026-03-25T13:10:56.735718+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.568602+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

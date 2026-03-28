@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.155329+00:00",
+    "relevance_score": 0.58,
+    "matched_tags": [
+      "delegation"
+    ],
+    "domain_match": false,
+    "source_path": "technology/be975ac9.json"
+  },
+  "framework": {
+    "id": "be975ac9",
+    "type": "claim",
+    "name": "Agent-to-agent auth is explicitly scoped",
+    "description": "Section 10.3.3 'Agents Accessed by Systems or Other Agents' and the interaction model (step 4: 'A Tool endpoint may itself be implemented by another AI agent') show agent-to-agent scenarios are in scope. Uses OAuth delegation + transaction tokens for multi-hop chains rather than novel mutual auth.",
+    "domain": "technology",
+    "confidence": 0.9,
+    "tags": [
+      "agent-to-agent",
+      "mutual-auth",
+      "delegation"
+    ],
+    "raw_quote": "A Tool endpoint may itself be implemented by another AI agent.",
+    "value_tier": "meat",
+    "source": {
+      "title": "draft-klrc-aiagent-auth-00 - AI Agent Authentication and Authorization",
+      "url": "https://datatracker.ietf.org/doc/draft-klrc-aiagent-auth/"
+    },
+    "hunt_id": "f4fe2b6b",
+    "extracted_at": "2026-03-23T16:17:57.944201+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.567701+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

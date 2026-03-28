@@ -1,0 +1,39 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.158889+00:00",
+    "relevance_score": 0.785,
+    "matched_tags": [
+      "agent-identity"
+    ],
+    "domain_match": false,
+    "source_path": "technology/fcebd487.json"
+  },
+  "framework": {
+    "id": "fcebd487",
+    "type": "framework",
+    "name": "CSA Zero-Trust Agentic AI IAM Framework",
+    "description": "Cloud Security Alliance paper proposing DID/VC-based identity for multi-agent systems, with ZKPs for privacy-preserving auth. Authored by cross-org team including AWS, Salesforce, MIT, and CSA leadership. Proposes Agent Naming Service (ANS) and unified session management layer.",
+    "domain": "technology",
+    "confidence": 0.85,
+    "tags": [
+      "agent-identity",
+      "zero-trust",
+      "DIDs",
+      "VCs",
+      "ZKP",
+      "multi-agent-systems"
+    ],
+    "raw_quote": "We contend that merely adapting existing protocols is insufficient. Instead, a purpose-built approach is required, one that redefines agent identity, incorporates novel cryptographic primitives.",
+    "value_tier": "meat",
+    "source": {
+      "title": "A Novel Zero-Trust Identity Framework for Agentic AI - arXiv",
+      "url": "https://arxiv.org/html/2505.19301v1"
+    },
+    "hunt_id": "55997ce2",
+    "extracted_at": "2026-03-23T16:15:39.791224+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.571917+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

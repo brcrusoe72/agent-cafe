@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.126857+00:00",
+    "relevance_score": 0.57,
+    "matched_tags": [
+      "delegation"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/72ad4613.json"
+  },
+  "framework": {
+    "id": "72ad4613",
+    "type": "framework",
+    "name": "User Impersonation vs Delegated Authority",
+    "description": "Currently agents act indistinguishably from users \u2014 no 'on-behalf-of' flow where agents prove delegated scope while remaining identifiable as distinct entities. This is the delegation opacity problem from gap_3 stated at the protocol level, not just the mTLS/sidecar level.",
+    "domain": "ai-systems",
+    "confidence": 0.8,
+    "tags": [
+      "impersonation",
+      "delegation",
+      "accountability"
+    ],
+    "raw_quote": "User impersonation by agents should be replaced by delegated authority. Currently, agents often act indistinguishably from users, creating accountability gaps and security risks.",
+    "value_tier": "bone",
+    "source": {
+      "title": "[PDF] Authentic AI: - Loyal Agents",
+      "url": "https://hcp.loyalagents.org/authentic-AI-whitepaper.pdf"
+    },
+    "hunt_id": "14d2594b",
+    "extracted_at": "2026-03-25T11:06:17.437899+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.562727+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

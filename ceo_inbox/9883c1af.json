@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.130395+00:00",
+    "relevance_score": 0.575,
+    "matched_tags": [
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/9883c1af.json"
+  },
+  "framework": {
+    "id": "9883c1af",
+    "type": "framework",
+    "name": "IETF AIMS Draft (draft-klrc-aiagent-auth-00)",
+    "description": "Composes WIMSE, SPIFFE, and OAuth into an explicit agent identity framework. Treats agents as workloads, uses transaction tokens to limit blast radius in delegation chains, and models HITL via CIBA rather than UI prompts.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "oauth",
+      "spiffe",
+      "wimse",
+      "ietf",
+      "agent-auth"
+    ],
+    "raw_quote": "Instead of passing access tokens between microservices inside an agent chain, you exchange them for short-lived, transaction-scoped tokens.",
+    "value_tier": "meat",
+    "source": {
+      "title": "IETF Draft: AI Agent Auth & Authz Framework - LinkedIn",
+      "url": "https://www.linkedin.com/posts/christina-jean-tubb_ai-agent-authentication-and-authorization-activity-7435357650831257600-ju3i"
+    },
+    "hunt_id": "b1e0b1b6",
+    "extracted_at": "2026-03-25T13:13:43.894483+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.564950+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

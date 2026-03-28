@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.126137+00:00",
+    "relevance_score": 0.56,
+    "matched_tags": [
+      "authorization"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/6effa9a9.json"
+  },
+  "framework": {
+    "id": "6effa9a9",
+    "type": "framework",
+    "name": "Multi-User Agent Authorization Gap",
+    "description": "Agents acting on behalf of teams (shared codebases, chat channels) have no support in OAuth/OIDC which was designed for individual user authorization. This is a novel dimension \u2014 our gaps focused on multi-hop single-user delegation but multi-user single-agent is equally unsolved.",
+    "domain": "ai-systems",
+    "confidence": 0.7,
+    "tags": [
+      "multi-user",
+      "teams",
+      "authorization"
+    ],
+    "raw_quote": "Agents acting on behalf of and reporting to teams of humans lack support. While OAuth and OpenID Connect were designed for individual user authorization, agents can be employed in shared codebases or chat channels in groups.",
+    "value_tier": "organ",
+    "source": {
+      "title": "[PDF] Authentic AI: - Loyal Agents",
+      "url": "https://hcp.loyalagents.org/authentic-AI-whitepaper.pdf"
+    },
+    "hunt_id": "14d2594b",
+    "extracted_at": "2026-03-25T11:06:17.438143+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.547657+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

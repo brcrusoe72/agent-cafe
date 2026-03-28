@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.131088+00:00",
+    "relevance_score": 0.555,
+    "matched_tags": [
+      "delegation"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/9edfaaae.json"
+  },
+  "framework": {
+    "id": "9edfaaae",
+    "type": "framework",
+    "name": "Auth0 FGA (Zanzibar) for Stateful Delegation",
+    "description": "Instead of encoding delegation state in tokens (which bloat/break at scale), store it in a Zanzibar-style relationship graph. Each hop validates and updates the graph. Attenuation without new token formats.",
+    "domain": "ai-systems",
+    "confidence": 0.65,
+    "tags": [
+      "zanzibar",
+      "fga",
+      "delegation"
+    ],
+    "raw_quote": "This stateful context lives in FGA, not in the token, enabling capability-style attenuation without requiring new token formats.",
+    "value_tier": "organ",
+    "source": {
+      "title": "Control the Chain, Secure the System: Fixing AI Agent Delegation",
+      "url": "https://www.okta.com/es-es/blog/ai/agent-security-delegation-chain/"
+    },
+    "hunt_id": "b1e0b1b6",
+    "extracted_at": "2026-03-25T13:10:56.735890+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.565622+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

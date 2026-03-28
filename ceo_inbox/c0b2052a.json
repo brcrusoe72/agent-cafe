@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.155567+00:00",
+    "relevance_score": 0.575,
+    "matched_tags": [
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "technology/c0b2052a.json"
+  },
+  "framework": {
+    "id": "c0b2052a",
+    "type": "claim",
+    "name": "CAAM positions itself as GNAP extension, not competitor",
+    "description": "CAAM explicitly frames itself as a 'GNAP Extension for Non-Deterministic Clients' \u2014 evidence of complementary rather than competing scope. Also positions as complementary to OAuth 2.1/Token Exchange (single-hop) by adding multi-hop delegation. This is consolidation signal, not fragmentation.",
+    "domain": "technology",
+    "confidence": 0.85,
+    "tags": [
+      "gnap",
+      "oauth",
+      "consolidation"
+    ],
+    "raw_quote": "CAAM is not intended as a replacement for existing identity, authorization, or attestation protocols. It functions as an orchestration profile",
+    "value_tier": "meat",
+    "source": {
+      "title": "draft-barney-caam-00 - Contextual Agent Authorization Mesh (CAAM)",
+      "url": "https://datatracker.ietf.org/doc/draft-barney-caam/"
+    },
+    "hunt_id": "55997ce2",
+    "extracted_at": "2026-03-23T16:12:46.008813+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.567758+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

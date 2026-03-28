@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.128832+00:00",
+    "relevance_score": 0.76,
+    "matched_tags": [
+      "agent-identity"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/86a6344b.json"
+  },
+  "framework": {
+    "id": "86a6344b",
+    "type": "claim",
+    "name": "OIDC-A: OpenID Connect extension for agent identity",
+    "description": "Nagabhushanaradhya proposes OIDC-A, an OIDC extension specifically for agent identity \u2014 treating agents as first-class identity subjects rather than repurposed human credentials. Referenced but not deeply analyzed in this paper.",
+    "domain": "ai-systems",
+    "confidence": 0.6,
+    "tags": [
+      "oidc",
+      "agent-identity",
+      "standards"
+    ],
+    "raw_quote": "Nagabhushanaradhya proposes OIDC-A, an OpenID Connect extension for agent identity",
+    "value_tier": "meat",
+    "source": {
+      "title": "[PDF] Structural Equivalence Between Memory Consistency Models ... - arXiv",
+      "url": "https://arxiv.org/pdf/2603.09875"
+    },
+    "hunt_id": "14d2594b",
+    "extracted_at": "2026-03-25T11:07:00.141320+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.563870+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

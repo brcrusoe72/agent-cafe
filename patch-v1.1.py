@@ -15,7 +15,7 @@ import subprocess
 import sys
 import textwrap
 
-VPS = "root@YOUR_VPS_IP"
+VPS = "user@YOUR_VPS_IP"
 SSH_KEY = "~/.ssh/YOUR_KEY"
 APP_DIR = "/opt/agent-cafe"
 

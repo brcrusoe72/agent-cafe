@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.135232+00:00",
+    "relevance_score": 0.715,
+    "matched_tags": [
+      "multi-agent"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/fa254a86.json"
+  },
+  "framework": {
+    "id": "fa254a86",
+    "type": "framework",
+    "name": "Five Families of Agent Challenges (TU Delft/JetBrains)",
+    "description": "Empirical study of 3,191 SO questions + 64,098 GitHub issues across 18 agent repos identifies five challenge families: (1) environment/deps, (2) retrieval/memory, (3) orchestration/execution control, (4) model-tool interaction contracts, (5) runtime reliability. Orchestration and retrieval are the HARDEST and LEAST VISIBLE \u2014 they persist as maintenance burdens while install/prompting issues get resolved quickly.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "multi-agent",
+      "empirical",
+      "developer-challenges",
+      "orchestration"
+    ],
+    "raw_quote": "retrieval- and orchestration-related challenges are less visible, more complex, and tend to persist as ongoing maintenance burdens on GitHub",
+    "value_tier": "meat",
+    "source": {
+      "title": "What Challenges Do Developers Face in AI Agent Systems? An Empirical ...",
+      "url": "https://arxiv.org/html/2510.25423v2"
+    },
+    "hunt_id": "cc8ef0cd",
+    "extracted_at": "2026-03-25T13:24:07.579716+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.583276+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

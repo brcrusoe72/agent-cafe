@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.132701+00:00",
+    "relevance_score": 0.58,
+    "matched_tags": [
+      "delegation"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/c1be28d5.json"
+  },
+  "framework": {
+    "id": "c1be28d5",
+    "type": "claim",
+    "name": "Recursive Delegation Acknowledged as Unsolved",
+    "description": "OpenID explicitly lists recursive delegation (agent\u2192sub-agent chains) as a future problem without solutions, not a current problem with failures. They have no scope attenuation mechanism. This confirms gap_3: nobody has done deep delegation chains because the auth infrastructure literally doesn't support it yet.",
+    "domain": "ai-systems",
+    "confidence": 0.9,
+    "tags": [
+      "delegation",
+      "recursive",
+      "scope-attenuation"
+    ],
+    "raw_quote": "Agents spawning sub-agents or communicating tasks to other agents create complex authorization chains without clear scope attenuation mechanisms.",
+    "value_tier": "meat",
+    "source": {
+      "title": "[PDF] Identity Management for Agentic AI - OpenID",
+      "url": "https://openid.net/wp-content/uploads/2025/10/Identity-Management-for-Agentic-AI.pdf"
+    },
+    "hunt_id": "cc8ef0cd",
+    "extracted_at": "2026-03-25T13:23:33.896805+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.568003+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.155162+00:00",
+    "relevance_score": 0.62,
+    "matched_tags": [
+      "security",
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "technology/bb7db660.json"
+  },
+  "framework": {
+    "id": "bb7db660",
+    "type": "claim",
+    "name": "RFC 8693 act claims are unvalidated",
+    "description": "The draft explicitly confirms that nested `act` claims in RFC 8693 are informational only \u2014 they can be forged, omitted, or fabricated with no cryptographic binding. This means every current OAuth 2.1 token exchange implementation claiming multi-hop delegation is running on trust, not verification.",
+    "domain": "technology",
+    "confidence": 0.95,
+    "tags": [
+      "oauth",
+      "security",
+      "delegation-gap"
+    ],
+    "raw_quote": "prior actors remain informational only and token exchange does not define how a delegation path is preserved and validated",
+    "value_tier": "organ",
+    "source": {
+      "title": "Cryptographically Verifiable Actor Chain for OAuth 2.0 Token Exchange",
+      "url": "https://datatracker.ietf.org/doc/draft-mw-spice-actor-chain/"
+    },
+    "hunt_id": "14d2594b",
+    "extracted_at": "2026-03-25T11:04:10.762020+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.567296+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

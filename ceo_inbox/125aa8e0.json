@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.118438+00:00",
+    "relevance_score": 0.58,
+    "matched_tags": [
+      "delegation"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/125aa8e0.json"
+  },
+  "framework": {
+    "id": "125aa8e0",
+    "type": "claim",
+    "name": "Dog That Didn't Bark \u2014 No Production Failures Published",
+    "description": "Your meta-observation is the real finding: the OpenID Foundation, with 20+ contributors from WorkOS, Stanford, and enterprise identity vendors, frames recursive delegation entirely as a FUTURE risk. Zero references to actual incidents. This strongly supports gap_3 \u2014 nobody is doing multi-hop delegation in production yet.",
+    "domain": "ai-systems",
+    "confidence": 0.9,
+    "tags": [
+      "meta-analysis",
+      "absence-of-evidence",
+      "delegation"
+    ],
+    "raw_quote": "Near-term development of highly capable autonomous systems will continue to create new challenges and questions regarding authorization and authentication for AI agents.",
+    "value_tier": "organ",
+    "source": {
+      "title": "Executive Summary - arXiv",
+      "url": "https://arxiv.org/html/2510.25819v1"
+    },
+    "hunt_id": "cc8ef0cd",
+    "extracted_at": "2026-03-25T13:24:51.648629+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.557050+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

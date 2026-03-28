@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.148893+00:00",
+    "relevance_score": 0.795,
+    "matched_tags": [
+      "agent-identity"
+    ],
+    "domain_match": false,
+    "source_path": "technology/1458df5f.json"
+  },
+  "framework": {
+    "id": "1458df5f",
+    "type": "claim",
+    "name": "AWS contributing to agent identity frameworks",
+    "description": "Vineeth Sai Narajala, Application Security Engineer at AWS, co-authoring agent identity research. Confirms Amazon's involvement extends beyond IETF drafts into CSA working groups.",
+    "domain": "technology",
+    "confidence": 0.95,
+    "tags": [
+      "aws",
+      "amazon",
+      "agent-identity"
+    ],
+    "raw_quote": "Vineeth Sai Narajala2, Application Security Engineer, Amazon Web Services",
+    "value_tier": "bone",
+    "source": {
+      "title": "A Novel Zero-Trust Identity Framework for Agentic AI - arXiv",
+      "url": "https://arxiv.org/html/2505.19301v1"
+    },
+    "hunt_id": "55997ce2",
+    "extracted_at": "2026-03-23T16:15:39.791731+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.557178+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

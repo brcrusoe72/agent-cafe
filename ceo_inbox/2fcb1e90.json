@@ -1,0 +1,39 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.149536+00:00",
+    "relevance_score": 0.585,
+    "matched_tags": [
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "technology/2fcb1e90.json"
+  },
+  "framework": {
+    "id": "2fcb1e90",
+    "type": "framework",
+    "name": "draft-klrc-aiagent-auth-00 (AI Agent Authentication and Authorization)",
+    "description": "Individual I-D (not WG-adopted) proposing a composable framework for AI agent auth using existing SPIFFE, WIMSE, OAuth 2.0, and OpenID SSF standards. Defines 'Agent Identity Management System' (AIMS) as conceptual model. Explicitly frames agents as workloads, not new entity types. Filed March 2, 2026.",
+    "domain": "technology",
+    "confidence": 0.95,
+    "tags": [
+      "ietf",
+      "agent-auth",
+      "oauth",
+      "wimse",
+      "spiffe",
+      "identity"
+    ],
+    "raw_quote": "Rather than defining new protocols, this document describes how existing and widely deployed standards can be applied or extended to establish agent authentication and authorization.",
+    "value_tier": "meat",
+    "source": {
+      "title": "draft-klrc-aiagent-auth-00 - AI Agent Authentication and Authorization",
+      "url": "https://datatracker.ietf.org/doc/draft-klrc-aiagent-auth/"
+    },
+    "hunt_id": "f4fe2b6b",
+    "extracted_at": "2026-03-23T16:17:57.943540+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.558710+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

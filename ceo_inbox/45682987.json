@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.150732+00:00",
+    "relevance_score": 0.79,
+    "matched_tags": [
+      "agent-identity"
+    ],
+    "domain_match": false,
+    "source_path": "technology/45682987.json"
+  },
+  "framework": {
+    "id": "45682987",
+    "type": "technique",
+    "name": "Agent Credential Authority (ACA) + Agent Registry Service (ARS)",
+    "description": "Proposes two new infrastructure components: ACA (trusted third party issuing X.509 certs and identity tokens to agents) and ARS (agent identity registration and discovery-matching). Credential requests require Proof of Possession, Remote Attestation, AIBOM, Provider Endorsement, and Identity Binding.",
+    "domain": "technology",
+    "confidence": 0.9,
+    "tags": [
+      "agent-identity",
+      "pki",
+      "attestation",
+      "ietf"
+    ],
+    "raw_quote": "ACA (Agent Credential Authority): A trusted third party that issues and manages credentials for agents. Credential formats include but not limited to: X.509 certificates, identity tokens, etc.",
+    "value_tier": "meat",
+    "source": {
+      "title": "draft-ni-a2a-ai-agent-security-requirements-01 - Security Requirements for AI Agents",
+      "url": "https://datatracker.ietf.org/doc/draft-ni-a2a-ai-agent-security-requirements/"
+    },
+    "hunt_id": "f4fe2b6b",
+    "extracted_at": "2026-03-23T16:19:08.802084+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.560386+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

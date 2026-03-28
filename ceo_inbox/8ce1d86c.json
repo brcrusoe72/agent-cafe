@@ -1,0 +1,38 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.153452+00:00",
+    "relevance_score": 0.59,
+    "matched_tags": [
+      "oauth"
+    ],
+    "domain_match": false,
+    "source_path": "technology/8ce1d86c.json"
+  },
+  "framework": {
+    "id": "8ce1d86c",
+    "type": "claim",
+    "name": "China Mobile authoring agent OAuth draft",
+    "description": "Kehan Yao from China Mobile authored draft-yao-agent-auth-considerations-01, an individual (non-WG-adopted) internet-draft proposing OAuth extensions for AI agent authentication across three modes: agent OBO user, OBO itself, and OBO other agents. This is a Chinese telecom company authoring IETF agent auth work \u2014 not a US tech giant.",
+    "domain": "technology",
+    "confidence": 1.0,
+    "tags": [
+      "ietf",
+      "oauth",
+      "agent-auth",
+      "china-mobile",
+      "telecom"
+    ],
+    "raw_quote": "K. Yao, China Mobile, Intended status: Informational, 20 October 2025",
+    "value_tier": "meat",
+    "source": {
+      "title": "draft-yao-agent-auth-considerations-01 - Further considerations on AI Agent Authentication and Authorization Based on OAuth Extension",
+      "url": "https://datatracker.ietf.org/doc/draft-yao-agent-auth-considerations/01/"
+    },
+    "hunt_id": "f4fe2b6b",
+    "extracted_at": "2026-03-23T16:18:35.407784+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.564437+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

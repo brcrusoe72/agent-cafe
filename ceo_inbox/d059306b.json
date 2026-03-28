@@ -1,0 +1,39 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.133412+00:00",
+    "relevance_score": 0.645,
+    "matched_tags": [
+      "multi-agent",
+      "authorization"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/d059306b.json"
+  },
+  "framework": {
+    "id": "d059306b",
+    "type": "framework",
+    "name": "Capability Coherence System (CCS)",
+    "description": "Formal mapping from hardware MESI cache coherence states to authorization states for multi-agent delegation. Treats revocation as a coherence problem rather than a latency problem, with transient states (EIA, MIC) representing the actual damage window where unauthorized ops accumulate.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "authorization",
+      "revocation",
+      "cache-coherence",
+      "multi-agent",
+      "formal-methods"
+    ],
+    "raw_quote": "authorisation revocation in multi-agent delegation chains is operationally equivalent to cache coherence in shared-memory multiprocessors under bounded-staleness semantics",
+    "value_tier": "organ",
+    "source": {
+      "title": "[PDF] Structural Equivalence Between Memory Consistency Models ... - arXiv",
+      "url": "https://arxiv.org/pdf/2603.09875"
+    },
+    "hunt_id": "14d2594b",
+    "extracted_at": "2026-03-25T11:07:00.140691+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.582650+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "agent_architecture"
+}

@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.122475+00:00",
+    "relevance_score": 0.57,
+    "matched_tags": [
+      "authorization"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/39167609.json"
+  },
+  "framework": {
+    "id": "39167609",
+    "type": "contrarian",
+    "name": "Authorization gap in AIMS is structural, not incomplete",
+    "description": "The draft stops at token boundary for authorization. Per-action authorization is entirely unaddressed. People are already reading this -00 draft as deployment guidance despite the gap. This means anyone deploying agent-to-agent delegation TODAY has no standard for the authorization side.",
+    "domain": "ai-systems",
+    "confidence": 0.8,
+    "tags": [
+      "authorization",
+      "gap",
+      "standards"
+    ],
+    "raw_quote": "people are already reading this as deployment guidance, and the gaps matter for anyone building agentic systems today",
+    "value_tier": "meat",
+    "source": {
+      "title": "AI Agent Authentication Gets the Hard Part Right. Authorization Is Still ...",
+      "url": "https://www.rockcybermusings.com/p/i-agent-authentication-authorization-gap"
+    },
+    "hunt_id": "b1e0b1b6",
+    "extracted_at": "2026-03-25T13:12:02.201054+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.545714+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

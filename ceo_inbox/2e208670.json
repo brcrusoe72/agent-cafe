@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.121474+00:00",
+    "relevance_score": 0.57,
+    "matched_tags": [
+      "delegation"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/2e208670.json"
+  },
+  "framework": {
+    "id": "2e208670",
+    "type": "claim",
+    "name": "OpenID Foundation Acknowledges Exponential Delegation Challenges",
+    "description": "OpenID Foundation explicitly names scope attenuation across chains, on-behalf-of flows, and interop between different agent identity systems as unsolved problems.",
+    "domain": "ai-systems",
+    "confidence": 0.8,
+    "tags": [
+      "openid",
+      "standards",
+      "delegation"
+    ],
+    "raw_quote": "Challenges multiply exponentially with recursive delegation, scope attenuation across delegation chains, true on-behalf-of user flows that maintain accountability, and the interoperability nightmare of different agent identity systems.",
+    "value_tier": "bone",
+    "source": {
+      "title": "Control the Chain, Secure the System: Fixing AI Agent Delegation",
+      "url": "https://www.okta.com/es-es/blog/ai/agent-security-delegation-chain/"
+    },
+    "hunt_id": "b1e0b1b6",
+    "extracted_at": "2026-03-25T13:10:56.736355+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.558590+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

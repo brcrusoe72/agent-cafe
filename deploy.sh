@@ -5,7 +5,7 @@ set -euo pipefail
 # Tests must pass locally before anything gets pushed or deployed.
 
 REPO_DIR="$(cd "$(dirname "$0")" && pwd)"
-VPS_HOST="root@YOUR_VPS_IP"
+VPS_HOST="user@YOUR_VPS_IP"
 SSH_KEY="$HOME/.ssh/YOUR_KEY"
 HEALTH_URL="http://YOUR_VPS_IP/health"
 

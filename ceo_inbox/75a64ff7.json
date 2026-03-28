@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.127584+00:00",
+    "relevance_score": 0.58,
+    "matched_tags": [
+      "authorization"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/75a64ff7.json"
+  },
+  "framework": {
+    "id": "75a64ff7",
+    "type": "claim",
+    "name": "Velocity Vulnerability metric (Vv = v\u00b7TTL)",
+    "description": "Agent velocity is a first-class security parameter absent from human-centric IAM. At AWS Lambda scale (10K TPS) with 60s TTL, 6\u00d710\u2075 unauthorized ops execute before self-invalidation. Operation-count bounds (RCC) are velocity-independent \u2014 D \u2264 n regardless of agent speed.",
+    "domain": "ai-systems",
+    "confidence": 0.9,
+    "tags": [
+      "authorization",
+      "TTL",
+      "agent-velocity",
+      "damage-bounds"
+    ],
+    "raw_quote": "a sixty-second revocation window permits on the order of 6\u00d710\u00b3 unauthorized API calls at 100 ops/tick; at AWS Lambda scale, the figure approaches 6\u00d710\u2075",
+    "value_tier": "organ",
+    "source": {
+      "title": "[PDF] Structural Equivalence Between Memory Consistency Models ... - arXiv",
+      "url": "https://arxiv.org/pdf/2603.09875"
+    },
+    "hunt_id": "14d2594b",
+    "extracted_at": "2026-03-25T11:07:00.140950+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.547962+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

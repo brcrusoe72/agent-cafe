@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.156941+00:00",
+    "relevance_score": 0.792,
+    "matched_tags": [
+      "agent-identity"
+    ],
+    "domain_match": false,
+    "source_path": "technology/da400ce7.json"
+  },
+  "framework": {
+    "id": "da400ce7",
+    "type": "claim",
+    "name": "WIMSE reuse for agent identity management",
+    "description": "The draft explicitly references WIMSE (Workload Identity in Multi-System Environments) and a companion draft (draft-ni-wimse-ai-agent-identity-01) discussing WIMSE applicability to agentic AI. This links the SPIFFE/workload identity world to AI agent authentication.",
+    "domain": "technology",
+    "confidence": 0.92,
+    "tags": [
+      "wimse",
+      "spiffe",
+      "workload-identity",
+      "agent-identity"
+    ],
+    "raw_quote": "From the identity management perspective, we recommend reusing IETF works like WIMSE. This draft [I-D.draft-ni-wimse-ai-agent-identity-01] discusses WIMSE applicability to Agentic AI.",
+    "value_tier": "organ",
+    "source": {
+      "title": "draft-ni-a2a-ai-agent-security-requirements-01 - Security Requirements for AI Agents",
+      "url": "https://datatracker.ietf.org/doc/draft-ni-a2a-ai-agent-security-requirements/"
+    },
+    "hunt_id": "f4fe2b6b",
+    "extracted_at": "2026-03-23T16:19:08.802246+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.569721+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

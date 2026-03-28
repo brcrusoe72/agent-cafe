@@ -1,0 +1,37 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.150243+00:00",
+    "relevance_score": 0.7,
+    "matched_tags": [
+      "verifiable-credentials",
+      "agent-identity"
+    ],
+    "domain_match": false,
+    "source_path": "technology/3db66fab.json"
+  },
+  "framework": {
+    "id": "3db66fab",
+    "type": "framework",
+    "name": "NANDA Index AgentFacts",
+    "description": "Cryptographically verifiable, privacy-preserving fact model with credentialed assertions for agent identity. This is a new entrant in the agent identity space \u2014 distinct from IETF OAuth/GNAP track.",
+    "domain": "technology",
+    "confidence": 0.7,
+    "tags": [
+      "agent-identity",
+      "verifiable-credentials",
+      "privacy"
+    ],
+    "raw_quote": "NANDA Index AgentFacts (cryptographically verifiable, privacy-preserving fact model with credentialed assertions)",
+    "value_tier": "bone",
+    "source": {
+      "title": "Evolution of AI Agent Registry Solutions: Centralized, Enterprise ...",
+      "url": "https://arxiv.org/html/2508.03095v3"
+    },
+    "hunt_id": "55997ce2",
+    "extracted_at": "2026-03-23T16:14:33.701989+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.559957+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

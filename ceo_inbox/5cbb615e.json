@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.151386+00:00",
+    "relevance_score": 0.655,
+    "matched_tags": [
+      "security"
+    ],
+    "domain_match": false,
+    "source_path": "technology/5cbb615e.json"
+  },
+  "framework": {
+    "id": "5cbb615e",
+    "type": "claim",
+    "name": "Agents should not have direct secret access",
+    "description": "Draft takes explicit position that AI agents SHOULD NOT have direct access to secrets due to prompt injection threats, should instead reuse platform secret management (cloud secret managers, TEE/keystore).",
+    "domain": "technology",
+    "confidence": 0.95,
+    "tags": [
+      "prompt-injection",
+      "secret-management",
+      "security"
+    ],
+    "raw_quote": "AI Agents SHOULD NOT have direct access to secrets due to new threats like Prompt Injection.",
+    "value_tier": "bone",
+    "source": {
+      "title": "draft-ni-a2a-ai-agent-security-requirements-01 - Security Requirements for AI Agents",
+      "url": "https://datatracker.ietf.org/doc/draft-ni-a2a-ai-agent-security-requirements/"
+    },
+    "hunt_id": "f4fe2b6b",
+    "extracted_at": "2026-03-23T16:19:08.802434+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.546695+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "security_governance"
+}

@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.116688+00:00",
+    "relevance_score": 0.575,
+    "matched_tags": [
+      "delegation"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/073b747d.json"
+  },
+  "framework": {
+    "id": "073b747d",
+    "type": "claim",
+    "name": "User Impersonation Is Current Default, Not Delegation",
+    "description": "Agents currently act indistinguishably from users \u2014 the industry hasn't even solved agent-as-distinct-identity yet, let alone multi-hop delegation. This confirms gap_6: production systems are using impersonation (shared credentials), not delegation chains.",
+    "domain": "ai-systems",
+    "confidence": 0.85,
+    "tags": [
+      "impersonation",
+      "delegation",
+      "production-patterns"
+    ],
+    "raw_quote": "User impersonation by agents should be replaced by delegated authority. Currently, agents often act indistinguishably from users, creating accountability gaps and security risks.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Executive Summary - arXiv",
+      "url": "https://arxiv.org/html/2510.25819v1"
+    },
+    "hunt_id": "cc8ef0cd",
+    "extracted_at": "2026-03-25T13:24:51.648857+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.556379+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

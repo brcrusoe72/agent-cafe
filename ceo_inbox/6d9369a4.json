@@ -1,0 +1,39 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.125984+00:00",
+    "relevance_score": 0.58,
+    "matched_tags": [
+      "oauth",
+      "delegation"
+    ],
+    "domain_match": false,
+    "source_path": "ai-systems/6d9369a4.json"
+  },
+  "framework": {
+    "id": "6d9369a4",
+    "type": "framework",
+    "name": "Transaction Tokens for Agents (TxT-Agents)",
+    "description": "IETF individual draft (draft-04, Feb 2026) by Ashay Raut (Amazon) extending OAuth Transaction Tokens with 'actor' and 'principal' context fields specifically for AI agent workloads. Defines principal-initiated and autonomous flows where a Txn-Token Service within each trust domain mints short-lived JWTs carrying agent identity through the call chain.",
+    "domain": "ai-systems",
+    "confidence": 0.9,
+    "tags": [
+      "oauth",
+      "transaction-tokens",
+      "agent-auth",
+      "ietf",
+      "delegation"
+    ],
+    "raw_quote": "The 'actor' field identifies the agent performing the action, while the 'principal' field identifies the human or system entity that initiated the agent's action. For autonomous agents operating independently, the 'principal' field MAY be omitted.",
+    "value_tier": "meat",
+    "source": {
+      "title": "Transaction Tokens For Agents - IETF Datatracker",
+      "url": "https://datatracker.ietf.org/doc/draft-oauth-transaction-tokens-for-agents/"
+    },
+    "hunt_id": "b1e0b1b6",
+    "extracted_at": "2026-03-25T13:12:37.831066+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.562464+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}

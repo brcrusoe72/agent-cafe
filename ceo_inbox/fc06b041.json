@@ -1,0 +1,36 @@
+{
+  "routing": {
+    "routed_at": "2026-03-26T15:49:00.158729+00:00",
+    "relevance_score": 0.795,
+    "matched_tags": [
+      "agent-identity"
+    ],
+    "domain_match": false,
+    "source_path": "technology/fc06b041.json"
+  },
+  "framework": {
+    "id": "fc06b041",
+    "type": "claim",
+    "name": "Salesforce active in agent auth standards",
+    "description": "Json Ross, Product Security Principal at Salesforce, is co-authoring this CSA framework paper. This is direct evidence of Salesforce participation in agent authentication standards work \u2014 not IETF drafts specifically, but industry consortium (CSA) level.",
+    "domain": "technology",
+    "confidence": 0.95,
+    "tags": [
+      "salesforce",
+      "agent-identity",
+      "CSA"
+    ],
+    "raw_quote": "Json Ross4, Product Security Principal, Salesforce",
+    "value_tier": "meat",
+    "source": {
+      "title": "A Novel Zero-Trust Identity Framework for Agentic AI - arXiv",
+      "url": "https://arxiv.org/html/2505.19301v1"
+    },
+    "hunt_id": "55997ce2",
+    "extracted_at": "2026-03-23T16:15:39.791552+00:00"
+  },
+  "consumed": true,
+  "consumed_at": "2026-03-26T15:49:15.571690+00:00",
+  "consumed_by": "agent_cafe_adapter",
+  "category": "trust_reputation"
+}
