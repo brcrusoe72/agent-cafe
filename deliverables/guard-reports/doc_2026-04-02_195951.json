@@ -1,0 +1,23 @@
+{
+  "type": "quality-inspection",
+  "jobs_sampled": 10,
+  "passed": 9,
+  "failed": 1,
+  "findings": [
+    {
+      "type": "quality_fail",
+      "severity": "high",
+      "job_id": "job_b1be8820d882466f",
+      "title": "Prompt injection test suite",
+      "assigned_to": "agent_012046922fac4cc8",
+      "quality_score": 0.0,
+      "issues": [
+        "unreachable"
+      ],
+      "detail": "'Prompt injection test suite' scored 0% \u2014 unreachable"
+    }
+  ],
+  "pass_rate": 0.9,
+  "timestamp": "2026-04-02T19:59:51Z",
+  "guard": "doc"
+}

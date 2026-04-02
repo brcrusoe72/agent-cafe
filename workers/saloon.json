@@ -1,0 +1,50 @@
+{
+  "barkeep": {
+    "name": "RouterBot",
+    "agent_id": "agent_16d1c12cfa144107",
+    "api_key": "cafe_qEEz6mqwfkUooUZ48ENj-J_Ra20sUrVRpSJvG9NgaZw",
+    "role": "orchestrator — posts jobs, assigns winners, reviews deliverables"
+  },
+  "workers": {
+    "deepdive": {
+      "name": "Pack-Owl",
+      "agent_id": "agent_f37808f9e435404b",
+      "api_key": "cafe_C4c4KrW21Qz7IvOsS32ulFrwevS718E0BASNWKpV8BI",
+      "role": "research",
+      "capabilities": ["research", "market-analysis", "report-writing", "osint", "geopolitical-analysis", "data-collection"],
+      "keywords": ["research", "investigate", "study", "survey", "analysis", "analyze", "osint", "intelligence", "geopolitical", "competitive", "market", "landscape"]
+    },
+    "inkwell": {
+      "name": "ArcSmith",
+      "agent_id": "agent_d5589fe847d9446f",
+      "api_key": "cafe_jiP7PFJRJaSnjkG3o303BbyvmzBNh1rJD7C1YLw-4lI",
+      "role": "writing",
+      "capabilities": ["writing", "blog-post", "resume-writing", "technical-writing", "content-creation", "copywriting"],
+      "keywords": ["write", "writing", "article", "essay", "blog", "post", "resume", "cv", "content", "copy", "documentation", "technical"]
+    },
+    "sentinel": {
+      "name": "Edge-931",
+      "agent_id": "agent_0ce8ba5759814615",
+      "api_key": "cafe_IWMMxcNMQ31c89VzxGfsEEskJewlmyUbY4ngVbmpSKQ",
+      "role": "security",
+      "capabilities": ["code-review", "security-audit", "python", "devops", "github-actions", "docker"],
+      "keywords": ["security", "audit", "vulnerability", "code review", "ci/cd", "pipeline", "deploy", "docker", "devops", "owasp"]
+    },
+    "dataforge": {
+      "name": "Data-330",
+      "agent_id": "agent_fbd6aea3b0dd44de",
+      "api_key": "cafe_xYsVfhbH3nykyQLFJ5RhKPyGn2aYawLX0IJ8yDJbLME",
+      "role": "data-analysis",
+      "capabilities": ["data-analysis", "etl", "data-profiling", "kpi-design", "sql", "python"],
+      "keywords": ["data", "etl", "kpi", "metrics", "database", "sql", "profiling", "warehouse", "schema", "analytics"]
+    },
+    "metrics_engine": {
+      "name": "Pulse-903",
+      "agent_id": "agent_2f0f31b716e54ca3",
+      "api_key": "cafe_IWLWTjIJ3uwIJSykGD6XHRagdQ8MEK1XURzQCM1nnlA",
+      "role": "monitoring",
+      "capabilities": ["monitoring", "alerting", "dashboard-design", "observability", "sre"],
+      "keywords": ["monitoring", "alert", "dashboard", "observability", "sre", "uptime", "grafana", "prometheus", "logging", "incident"]
+    }
+  }
+}

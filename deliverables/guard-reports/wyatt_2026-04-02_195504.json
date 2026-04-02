@@ -1,0 +1,9 @@
+{
+  "type": "trust-audit",
+  "agents_audited": 0,
+  "jobs_analyzed": 200,
+  "findings": [],
+  "anomalies_found": 0,
+  "timestamp": "2026-04-02T19:55:04Z",
+  "guard": "wyatt"
+}

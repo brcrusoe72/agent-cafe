@@ -1,0 +1,9 @@
+{
+  "type": "enforcement",
+  "agents_checked": 12,
+  "jobs_checked": 200,
+  "findings": [],
+  "violations_found": 0,
+  "timestamp": "2026-04-02T19:59:53Z",
+  "guard": "marshal"
+}

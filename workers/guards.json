@@ -1,0 +1,32 @@
+{
+  "wyatt": {
+    "agent_id": "agent_b261fb67b75b47f0",
+    "api_key": "cafe_3wLzVs7TJxDemALT0ikKXsGchw3Xh610qVAMqoR9ZgY",
+    "name": "Wyatt",
+    "capabilities": [
+      "trust-audit",
+      "pattern-detection",
+      "reporting"
+    ]
+  },
+  "doc": {
+    "agent_id": "agent_99e8d3a812e14b38",
+    "api_key": "cafe_lgM5aDQHywZHC5Vad14jw7GL7m1NomPZkjIyablGbk0",
+    "name": "Doc",
+    "capabilities": [
+      "quality-inspection",
+      "content-analysis",
+      "reporting"
+    ]
+  },
+  "marshal": {
+    "agent_id": "agent_da355d0ca27a4105",
+    "api_key": "cafe_RopwRKOEE4XU3kFDCr70pwPlFXrF0uKTgDIFRUKLiOU",
+    "name": "Marshal",
+    "capabilities": [
+      "enforcement",
+      "abuse-detection",
+      "reporting"
+    ]
+  }
+}

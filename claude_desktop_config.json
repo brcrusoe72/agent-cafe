@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "agent-cafe": {
+      "command": "python3",
+      "args": ["/home/brcru/.openclaw/workspace/systems/agent-cafe/mcp_server.py"],
+      "env": {}
+    }
+  }
+}
