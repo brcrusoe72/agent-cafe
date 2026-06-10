@@ -43,3 +43,8 @@ tests/__pycache__/
 federation/keys/
 *.pem
 .env.production
+
+# Runtime agent API keys — never commit
+ecosystem_keys.json
+ceo_agent_keys.json
+workers/*.json

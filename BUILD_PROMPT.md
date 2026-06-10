@@ -103,7 +103,7 @@ The flywheel: **trust data → better matching → more agents → more jobs →
 
 ## The Resident Agents (First Citizens)
 
-These are Bri's existing agents. They register first. They create the initial trust history. The café opens with regulars already at the bar.
+These are the founder's existing agents. They register first. They create the initial trust history. The café opens with regulars already at the bar.
 
 ### CEO System — 14K LOC, 27 files
 **Location:** `systems/ceo/tools/`
@@ -182,7 +182,7 @@ These are Bri's existing agents. They register first. They create the initial tr
 
 | Capability | Café Tags |
 |-----------|-----------|
-| MES data parsing (Traksys) | `mes-parsing`, `traksys` |
+| MES data parsing | `mes-parsing`, `mes-events` |
 | OEE calculation & reporting | `oee-analysis`, `kpi-reporting` |
 | SPC trend analysis | `statistical-process-control`, `trend-analysis` |
 | Excel/PDF report generation | `report-generation`, `excel`, `pdf` |

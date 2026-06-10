@@ -7,7 +7,7 @@
 ### 1a. Deeply Nested JSON (100 levels)
 - Response: 200
 ```json
-{"success":true,"agent_id":"agent_4a032f1d2bc747e8","api_key":"cafe_gfpSARbpOcdjbayx2NH_2cFh8_FlFRAguqMRGfG-loY","message":"Agent registered successfully","next_steps":["Request capability challenges to verify claimed capabilities","Browse available jobs and submit bids"]}
+{"success":true,"agent_id":"agent_4a032f1d2bc747e8","api_key":"cafe_[REDACTED]","message":"Agent registered successfully","next_steps":["Request capability challenges to verify claimed capabilities","Browse available jobs and submit bids"]}
 ```
 
 ### 1b. Massive Capabilities Array (10000 items)
@@ -22,13 +22,13 @@
 ### 1d. Null Bytes in Fields
 - Response: 200
 ```json
-{"success":true,"agent_id":"agent_37615eed5a3249a4","api_key":"cafe_VCqLcr0p63SBLb1y3QtUH17r8SWxMGPVApo_rbR0_ig","message":"Agent registered successfully","next_steps":["Request capability challenges to verify claimed capabilities","Browse available jobs and submit bids"]}
+{"success":true,"agent_id":"agent_37615eed5a3249a4","api_key":"cafe_[REDACTED]","message":"Agent registered successfully","next_steps":["Request capability challenges to verify claimed capabilities","Browse available jobs and submit bids"]}
 ```
 
 ### 1e. Unicode Homoglyphs in Fields
 - Response: 200
 ```json
-{"success":true,"agent_id":"agent_459fd1510d724c03","api_key":"cafe_1vDt_cFGPDaIAQvVFNtgQSWmP_unhjja6GegIK8GuF0","message":"Agent registered successfully","next_steps":["Request capability challenges to verify claimed capabilities","Browse available jobs and submit bids"]}
+{"success":true,"agent_id":"agent_459fd1510d724c03","api_key":"cafe_[REDACTED]","message":"Agent registered successfully","next_steps":["Request capability challenges to verify claimed capabilities","Browse available jobs and submit bids"]}
 ```
 
 ## Vector 2: Federation Poisoning
@@ -57,19 +57,19 @@
 ### 4a. Injection in Capabilities Array
 - Response: 200
 ```json
-{"success":true,"agent_id":"agent_60f7fe4500db456c","api_key":"cafe_xD2WRjwPBeZHcs0Y5QZP11ieUAgKNDUyivM2J7bgoz4","message":"Agent registered successfully","next_steps":["Request capability challenges to verify claimed capabilities","Browse available jobs and submit bids"]}
+{"success":true,"agent_id":"agent_60f7fe4500db456c","api_key":"cafe_[REDACTED]","message":"Agent registered successfully","next_steps":["Request capability challenges to verify claimed capabilities","Browse available jobs and submit bids"]}
 ```
 
 ### 4b. Injection in Email Field
 - Response: 200
 ```json
-{"success":true,"agent_id":"agent_e4e666aabdbb4b18","api_key":"cafe_OxdSnTzScxHNaTfW8GGULTPlDyj9Sdxc-Pd8KozE7NY","message":"Agent registered successfully","next_steps":["Request capability challenges to verify claimed capabilities","Browse available jobs and submit bids"]}
+{"success":true,"agent_id":"agent_e4e666aabdbb4b18","api_key":"cafe_[REDACTED]","message":"Agent registered successfully","next_steps":["Request capability challenges to verify claimed capabilities","Browse available jobs and submit bids"]}
 ```
 
 ### 4c. SQL Injection in Capabilities
 - Response: 200
 ```json
-{"success":true,"agent_id":"agent_7730a866dc064fa0","api_key":"cafe_hX6lpsoiRiHJT6ORXMnTq5RxM7lTVQmwr_m-DJOLZyc","message":"Agent registered successfully","next_steps":["Request capability challenges to verify claimed capabilities","Browse available jobs and submit bids"]}
+{"success":true,"agent_id":"agent_7730a866dc064fa0","api_key":"cafe_[REDACTED]","message":"Agent registered successfully","next_steps":["Request capability challenges to verify claimed capabilities","Browse available jobs and submit bids"]}
 ```
 
 ## Vector 5: Header Attacks
@@ -77,7 +77,7 @@
 ### 5a. X-Forwarded-For IP Spoofing
 - Response: 200
 ```json
-{"success":true,"agent_id":"agent_70dba07a8a5a4047","api_key":"cafe_AxlFeQOiFN21Y7jKoxsEtKFIPH-GMWFAeL4rgtL4kkY","message":"Agent registered successfully","next_steps":["Request capability challenges to verify claimed capabilities","Browse available jobs and submit bids"]}
+{"success":true,"agent_id":"agent_70dba07a8a5a4047","api_key":"cafe_[REDACTED]","message":"Agent registered successfully","next_steps":["Request capability challenges to verify claimed capabilities","Browse available jobs and submit bids"]}
 ```
 
 ### 5b. Double Authorization Header

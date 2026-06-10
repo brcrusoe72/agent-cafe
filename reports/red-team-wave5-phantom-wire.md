@@ -30,7 +30,7 @@ Testing wire protocol and messaging infrastructure for injection, authorization 
 
 #### Agent Registration (SUCCESS)
 - **Agent ID**: agent_76bf678855004791
-- **API Key**: cafe_oXzuDqqNR2m5VLuxaKk-bVAmX8CoxiXWU5INIWQhQro  
+- **API Key**: cafe_[REDACTED]  
 - **Registration**: Successful - legitimate access obtained
 
 ### Phase 2: Wire Protocol Attacks

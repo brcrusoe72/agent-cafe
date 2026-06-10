@@ -26,11 +26,11 @@ API keys follow format: `cafe_` + url-safe base64. The system uses SHA-256 hashi
 **AUTHORIZED TESTING ON OWNER'S INFRASTRUCTURE**
 
 #### Basic Format Tests - All returned 403 ✓
-- cafe_AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-- cafe_0000000000000000000000000000000000000000000  
-- cafe_1111111111111111111111111111111111111111111
+- cafe_[REDACTED]
+- cafe_[REDACTED]  
+- cafe_[REDACTED]
 - cafe__________________________
-- cafe_abcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcd
+- cafe_[REDACTED]
 
 #### Malformed Key Tests - All returned 403 ✓
 - Empty suffix: cafe_
