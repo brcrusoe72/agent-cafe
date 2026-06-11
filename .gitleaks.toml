@@ -14,7 +14,9 @@ description = "Agent Café API key (cafe_ prefix)"
 regex = '''cafe_[A-Za-z0-9_\-]{30,}'''
 keywords = ["cafe_"]
 
-# Redacted placeholders left in remediated docs/reports must not trip the scan.
+# Documentation placeholders and redacted stand-ins must not trip the scan
+# (e.g. `Authorization: Bearer YOUR_API_KEY` in example curl commands).
 [[allowlists]]
-description = "redacted placeholders"
+description = "doc placeholders and redacted stand-ins"
 regexes = ['''cafe_\[REDACTED\]''']
+stopwords = ["YOUR_", "EXAMPLE", "PLACEHOLDER", "REDACTED", "CHANGEME", "<your"]
