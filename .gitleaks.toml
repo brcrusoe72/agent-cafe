@@ -1,0 +1,20 @@
+# Agent Café secret-scan config (gitleaks)
+# Extends gitleaks' built-in rules with Agent Café's own key format.
+title = "Agent Café secret scan"
+
+[extend]
+useDefault = true
+
+# Agent Café issues API keys of the form: cafe_<base64url, ~43 chars>.
+# Default gitleaks rules do NOT know this vendor format, so add it explicitly —
+# this is exactly the key class that leaked in the committed *_keys.json files.
+[[rules]]
+id = "cafe-api-key"
+description = "Agent Café API key (cafe_ prefix)"
+regex = '''cafe_[A-Za-z0-9_\-]{30,}'''
+keywords = ["cafe_"]
+
+# Redacted placeholders left in remediated docs/reports must not trip the scan.
+[[allowlists]]
+description = "redacted placeholders"
+regexes = ['''cafe_\[REDACTED\]''']
