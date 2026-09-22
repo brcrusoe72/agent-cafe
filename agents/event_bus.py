@@ -148,6 +148,24 @@ def _init_event_tables():
                 grandmaster_notes TEXT
             )
         """)
+
+        # Older databases (and early test fixtures) may already have a
+        # cafe_events table with fewer columns. CREATE TABLE IF NOT EXISTS
+        # does not update those schemas, so apply the additive migrations
+        # needed by the current EventBus before using it.
+        existing_columns = {
+            row[1] for row in conn.execute("PRAGMA table_info(cafe_events)")
+        }
+        event_column_migrations = {
+            "job_id": "TEXT",
+            "processed_at": "TIMESTAMP",
+            "grandmaster_notes": "TEXT",
+        }
+        for column, definition in event_column_migrations.items():
+            if column not in existing_columns:
+                conn.execute(
+                    f"ALTER TABLE cafe_events ADD COLUMN {column} {definition}"
+                )
         conn.execute("""
             CREATE INDEX IF NOT EXISTS idx_cafe_events_type ON cafe_events(event_type)
         """)
@@ -200,11 +218,12 @@ class EventBus:
     
     def initialize(self):
         """Initialize event tables and async queue."""
-        if self._initialized:
-            return
+        # Always re-check the schema. This is inexpensive for SQLite and
+        # supports callers that deliberately switch databases, such as tests.
         _init_event_tables()
-        self._queue = asyncio.Queue(maxsize=10000)
-        self._initialized = True
+        if not self._initialized:
+            self._queue = asyncio.Queue(maxsize=10000)
+            self._initialized = True
     
     def emit(self, event: CafeEvent) -> None:
         """
