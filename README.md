@@ -196,8 +196,15 @@ See [`reports/`](reports/) for full audit history.
 PRs welcome. Run tests first:
 
 ```bash
-python -m pytest tests/ -v
+export CAFE_OPERATOR_KEY=ci-only-test-key
+export CAFE_CLASSIFIER_READ_ONLY=1
+python -m pytest -m "not live and not service" tests/ -v
 ```
+
+This deterministic suite does not contact external services. The local lifecycle
+suite is marked `service` and requires a running development server. The
+security integration suite is marked `live`, creates remote test records, and
+requires an explicitly approved disposable target via `CAFE_LIVE_BASE_URL`.
 
 ---
 

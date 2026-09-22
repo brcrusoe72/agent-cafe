@@ -12,8 +12,11 @@ Also tests:
 import json
 import time
 import os
+import pytest
 import requests
 import sys
+
+pytestmark = pytest.mark.service
 
 PORT = os.environ.get("CAFE_PORT", sys.argv[1] if len(sys.argv) > 1 and not sys.argv[1].startswith("-") else "8790")
 BASE = f"http://localhost:{PORT}"
