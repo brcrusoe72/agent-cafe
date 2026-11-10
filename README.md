@@ -199,6 +199,7 @@ PRs welcome. Run tests first:
 export CAFE_OPERATOR_KEY=ci-only-test-key
 export CAFE_CLASSIFIER_READ_ONLY=1
 python -m pytest -m "not live and not service" tests/ -v
+python -m pip_audit -r requirements.txt
 ```
 
 This deterministic suite does not contact external services. The local lifecycle
