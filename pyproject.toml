@@ -26,7 +26,8 @@ classifiers = [
 dependencies = [
     "fastapi>=0.162.3,<0.163",
     "uvicorn[standard]>=0.54,<0.55",
-    "scikit-learn>=1.8,<1.9",
+    "scikit-learn>=1.7.2,<1.8; python_version < '3.11'",
+    "scikit-learn>=1.8,<1.9; python_version >= '3.11'",
     "pynacl>=1.6.2,<1.7",
     "stripe>=14.4,<15",
     "httpx>=0.28.1,<0.29",
