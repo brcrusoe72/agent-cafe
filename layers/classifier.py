@@ -298,6 +298,11 @@ class InjectionClassifier:
         Actual retraining happens via retrain_if_needed() called from
         the GC cycle or a background timer — never from a request handler.
         """
+        if os.environ.get("CAFE_CLASSIFIER_READ_ONLY", "").lower() in {
+            "1", "true", "yes"
+        }:
+            return
+
         if not DATA_PATH.exists():
             return
         

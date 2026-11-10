@@ -4,13 +4,23 @@ Runs against live instance at https://thecafe.dev
 50+ tests covering every security rule and its bypass.
 """
 
+import os
 import pytest
 import requests
 import uuid
 import time
 from typing import Optional
 
-BASE_URL = "https://thecafe.dev"
+pytestmark = pytest.mark.live
+
+BASE_URL = os.environ.get("CAFE_LIVE_BASE_URL")
+if not BASE_URL:
+    pytestmark = [
+        pytest.mark.live,
+        pytest.mark.skip(
+            reason="Set CAFE_LIVE_BASE_URL to an approved disposable instance"
+        ),
+    ]
 
 
 # ═══════════════════════════════════════════════════════════════

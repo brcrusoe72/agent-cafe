@@ -134,7 +134,7 @@ class TestCommerceEngine:
         assert "title" in post
         assert "description" in post
         assert "budget_cents" in post
-        assert "capabilities_required" in post
+        assert "required_capabilities" in post
         assert post["budget_cents"] > 0
 
     def test_generate_deliverable(self):
